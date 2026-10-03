@@ -1,0 +1,58 @@
+{
+  "trace": [
+    {
+      "status": "created",
+      "record": {
+        "business_key": "NOVA-D001",
+        "version": 1,
+        "amount": 1250
+      }
+    },
+    {
+      "status": "replayed",
+      "record": {
+        "business_key": "NOVA-D001",
+        "version": 1,
+        "amount": 1250
+      }
+    },
+    {
+      "status": "timeout_reconciled",
+      "record": {
+        "business_key": "NOVA-D002",
+        "version": 1,
+        "amount": 800
+      }
+    },
+    {
+      "status": "updated",
+      "record": {
+        "business_key": "NOVA-D001",
+        "version": 2,
+        "amount": 1500
+      }
+    },
+    {
+      "status": "stale_rejected",
+      "record": {
+        "business_key": "NOVA-D001",
+        "version": 2,
+        "amount": 1500
+      }
+    },
+    {
+      "status": "conflict_rejected",
+      "record": {
+        "business_key": "NOVA-D001",
+        "version": 2,
+        "amount": 1500
+      }
+    }
+  ],
+  "destination_rows": 2,
+  "latest_D001": {
+    "business_key": "NOVA-D001",
+    "version": 2,
+    "amount": 1500
+  }
+}

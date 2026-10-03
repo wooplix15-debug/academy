@@ -1,0 +1,464 @@
+{
+  "accepted": [
+    {
+      "source_id": "L001",
+      "last_name": "Learner001",
+      "company": "Example Company 01",
+      "email": "person001@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L002",
+      "last_name": "Learner002",
+      "company": "Example Company 01",
+      "email": "person002@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L003",
+      "last_name": "Learner003",
+      "company": "Example Company 01",
+      "email": "person003@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L004",
+      "last_name": "Learner004",
+      "company": "Example Company 02",
+      "email": "person004@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L005",
+      "last_name": "Learner005",
+      "company": "Example Company 02",
+      "email": "person005@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L006",
+      "last_name": "Learner006",
+      "company": "Example Company 02",
+      "email": "person006@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L007",
+      "last_name": "Learner007",
+      "company": "Example Company 03",
+      "email": "person007@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L008",
+      "last_name": "Learner008",
+      "company": "Example Company 03",
+      "email": "person008@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L009",
+      "last_name": "Learner009",
+      "company": "Example Company 03",
+      "email": "person009@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L010",
+      "last_name": "Learner010",
+      "company": "Example Company 04",
+      "email": "person010@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L011",
+      "last_name": "Learner011",
+      "company": "Example Company 04",
+      "email": "person011@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L012",
+      "last_name": "Learner012",
+      "company": "Example Company 04",
+      "email": "person012@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L013",
+      "last_name": "Learner013",
+      "company": "Example Company 05",
+      "email": "person013@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L014",
+      "last_name": "Learner014",
+      "company": "Example Company 05",
+      "email": "person014@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L015",
+      "last_name": "Learner015",
+      "company": "Example Company 05",
+      "email": "person015@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L016",
+      "last_name": "Learner016",
+      "company": "Example Company 06",
+      "email": "person016@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L017",
+      "last_name": "Learner017",
+      "company": "Example Company 06",
+      "email": "person017@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L018",
+      "last_name": "Learner018",
+      "company": "Example Company 06",
+      "email": "person018@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L019",
+      "last_name": "Learner019",
+      "company": "Example Company 07",
+      "email": "person019@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L020",
+      "last_name": "Learner020",
+      "company": "Example Company 07",
+      "email": "person020@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L021",
+      "last_name": "Learner021",
+      "company": "Example Company 07",
+      "email": "person021@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L022",
+      "last_name": "Learner022",
+      "company": "Example Company 08",
+      "email": "person022@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L023",
+      "last_name": "Learner023",
+      "company": "Example Company 08",
+      "email": "person023@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L024",
+      "last_name": "Learner024",
+      "company": "Example Company 08",
+      "email": "person024@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L025",
+      "last_name": "Learner025",
+      "company": "Example Company 09",
+      "email": "person025@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L026",
+      "last_name": "Learner026",
+      "company": "Example Company 09",
+      "email": "person026@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L027",
+      "last_name": "Learner027",
+      "company": "Example Company 09",
+      "email": "person027@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L028",
+      "last_name": "Learner028",
+      "company": "Example Company 10",
+      "email": "person028@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L029",
+      "last_name": "Learner029",
+      "company": "Example Company 10",
+      "email": "person029@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L030",
+      "last_name": "Learner030",
+      "company": "Example Company 10",
+      "email": "person030@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L031",
+      "last_name": "Learner031",
+      "company": "Example Company 11",
+      "email": "person031@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L032",
+      "last_name": "Learner032",
+      "company": "Example Company 11",
+      "email": "person032@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L033",
+      "last_name": "Learner033",
+      "company": "Example Company 11",
+      "email": "person033@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L034",
+      "last_name": "Learner034",
+      "company": "Example Company 12",
+      "email": "person034@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L035",
+      "last_name": "Learner035",
+      "company": "Example Company 12",
+      "email": "person035@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L036",
+      "last_name": "Learner036",
+      "company": "Example Company 12",
+      "email": "person036@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L037",
+      "last_name": "Learner037",
+      "company": "Example Company 13",
+      "email": "person037@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L038",
+      "last_name": "Learner038",
+      "company": "Example Company 13",
+      "email": "person038@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L039",
+      "last_name": "Learner039",
+      "company": "Example Company 13",
+      "email": "person039@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    },
+    {
+      "source_id": "L040",
+      "last_name": "Learner040",
+      "company": "Example Company 14",
+      "email": "person040@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "East Sales"
+    },
+    {
+      "source_id": "L041",
+      "last_name": "Learner041",
+      "company": "Example Company 14",
+      "email": "person041@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "Review Queue"
+    },
+    {
+      "source_id": "L042",
+      "last_name": "Learner042",
+      "company": "Example Company 14",
+      "email": "person042@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "owner_queue": "West Sales"
+    }
+  ],
+  "rejected": [
+    {
+      "source_id": "L043",
+      "last_name": "",
+      "company": "Example Company 15",
+      "email": "person043@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "missing_lab_required_name"
+    },
+    {
+      "source_id": "L044",
+      "last_name": "Learner044",
+      "company": "",
+      "email": "person044@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "missing_lab_required_company"
+    },
+    {
+      "source_id": "L045",
+      "last_name": "Learner045",
+      "company": "Example Company 15",
+      "email": "not-an-email",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "invalid_lab_email_format"
+    },
+    {
+      "source_id": "L046",
+      "last_name": "Learner046",
+      "company": "Example Company 16",
+      "email": "",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "invalid_lab_email_format"
+    },
+    {
+      "source_id": "L047",
+      "last_name": "",
+      "company": "Example Company 16",
+      "email": "person047@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "missing_lab_required_name"
+    }
+  ],
+  "excluded": [
+    {
+      "source_id": "L048",
+      "last_name": "Learner048",
+      "company": "Example Company 16",
+      "email": "person001@example.test",
+      "region": "West",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "duplicate_normalized_email_keep_first"
+    },
+    {
+      "source_id": "L049",
+      "last_name": "Learner049",
+      "company": "Example Company 17",
+      "email": "person002@example.test",
+      "region": "East",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "duplicate_normalized_email_keep_first"
+    },
+    {
+      "source_id": "L050",
+      "last_name": "Learner050",
+      "company": "Example Company 17",
+      "email": "person003@example.test",
+      "region": "",
+      "migration_batch": "NOVA-TRAIN-01",
+      "reason": "duplicate_normalized_email_keep_first"
+    }
+  ],
+  "counts": {
+    "source": 50,
+    "accepted": 42,
+    "rejected": 5,
+    "excluded": 3
+  }
+}

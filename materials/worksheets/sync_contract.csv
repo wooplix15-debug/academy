@@ -1,0 +1,2 @@
+field,source,destination,owner,type,missing_behavior,conflict_rule,business_key
+Amount,CRM,Creator request,CRM,integer in mock; verify real API numeric type,validation failure,source version cannot downgrade target,NOVA plus stable deal ID

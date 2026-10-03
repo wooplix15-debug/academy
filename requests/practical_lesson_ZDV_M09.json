@@ -1,0 +1,15 @@
+{
+  "mode": "lesson",
+  "course_id": "ZDV",
+  "module_id": "ZDV-M09",
+  "source_ids": [
+    "S09",
+    "S10"
+  ],
+  "input_assets": [
+    "materials/lesson_plans/ZDV-M09.md",
+    "materials/trainer_keys/ZDV-M09.md",
+    "materials/Practical_Assessment_Rubric.md"
+  ],
+  "instructions": "Draft a stronger synchronization lesson with two new conflict scenarios. Include sample input, expected output, negative and recovery tests, an independent variant and trainer answer guidance. Preserve 4 live plus 2 practice hours; identify assessment and capstone impact. Label simulator behavior and official product behavior separately."
+}

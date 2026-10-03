@@ -1,0 +1,2 @@
+batch_id,source_count,staging_accepted,staging_rejected,staging_excluded,target_created,target_updated,target_failed,target_reconciled,rollback_evidence
+NOVA-TRAIN-01,50,42,5,3,,,,,

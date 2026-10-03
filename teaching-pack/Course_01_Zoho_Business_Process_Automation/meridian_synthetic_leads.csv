@@ -1,0 +1,16 @@
+source_id,first_name,last_name,company,email,region,product_interest,source,created_date,status,owner,notes
+MS-1001,Asha,Rao,Cedar Works,asha@cedar.example,West,Storage,Website,2026-09-02,New,,Valid training row
+MS-1002,Rohan,Mehta,Bluebird Retail,rohan@bluebird.example,South,Packaging,Referral,2026-09-03,Contacted,Rep South,Valid training row
+MS-1003,Mina,Shah,Harbor Foods,mina@harbor.example,East,Cold-chain,Trade Show,2026-09-04,Qualified,Rep East,Valid training row
+MS-1004,Dev,Iyer,Northstar Parts,dev@northstar.example,North,Fasteners,Website,2026-09-05,New,,Possible duplicate of MS-1012
+MS-1005,Leena,Das,Juniper Labs,leena@juniper.example,West,Safety,Partner,2026-09-06,New,,Valid training row
+MS-1006,Omar,Khan,Fieldstone Build,omar@fieldstone.example,,Storage,Website,2026-09-07,New,,Missing region; route for review
+MS-1007,Ira,Patel,Red Kite Supply,ira@redkite.example,South,Packaging,Referral,not-a-date,New,,Invalid date format
+MS-1008,Nia,Roy,Willow Market,nia@willow.example,East,Cold-chain,Website,2026-09-09,Contacted,Rep East,Valid training row
+MS-1009,Arjun,Sen,Granite & Co,arjun@granite.example,North,Fasteners,Trade Show,2026-09-10,Qualified,Rep North,Valid training row
+MS-1010,Sara,Ali,Mosaic Kitchens,sara@mosaic.example,West,Safety,Website,2026-09-11,New,,Valid training row
+MS-1011,Ishaan,Ghosh,Orchid Medical,ishaan@orchid.example,East,Packaging,Referral,2026-09-12,New,,Valid training row
+MS-1012,Dev,Iyer,Northstar Parts,dev@northstar.example,North,Fasteners,Website,2026-09-13,New,,Duplicate candidate; compare source key
+MS-1013,Tara,Nair,Pine Street Cafe,tara@pine.example,South,Storage,Website,2026-09-14,Unknown,,Unrecognized status; do not map silently
+MS-1014,Avi,Kapoor,Riverbend School,avi@riverbend.example,West,Safety,Partner,2026-09-15,Contacted,Rep West,Valid training row
+MS-1015,Noor,Fernandes,Clearwater Tools,noor@clearwater.example,North,Fasteners,Trade Show,2026-09-16,New,,Valid training row

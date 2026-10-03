@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Learn by predicting and testing</text>
+<rect x="45" y="140" width="270" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="188" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Explain</text>
+<text x="63" y="233" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">State the rule</text>
+<line x1="315" y1="235" x2="350" y2="235" stroke="#087F8C" stroke-width="4"/>
+<polygon points="350,235 334.2035138859733,243.62965969487564 334.2035138859733,226.37034030512436" fill="#087F8C"/>
+<rect x="353" y="140" width="270" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="371" y="188" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Predict</text>
+<text x="371" y="233" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Choose input</text>
+<text x="371" y="271" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">and output</text>
+<line x1="623" y1="235" x2="658" y2="235" stroke="#087F8C" stroke-width="4"/>
+<polygon points="658,235 642.2035138859733,243.62965969487564 642.2035138859733,226.37034030512436" fill="#087F8C"/>
+<rect x="661" y="140" width="270" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="679" y="188" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Build</text>
+<text x="679" y="233" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Make the</text>
+<text x="679" y="271" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">small change</text>
+<line x1="931" y1="235" x2="966" y2="235" stroke="#087F8C" stroke-width="4"/>
+<polygon points="966,235 950.2035138859733,243.62965969487564 950.2035138859733,226.37034030512436" fill="#087F8C"/>
+<rect x="969" y="140" width="270" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="987" y="188" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Break</text>
+<text x="987" y="233" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Run a negative</text>
+<text x="987" y="271" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">case</text>
+<line x1="1239" y1="235" x2="1274" y2="235" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1274,235 1258.2035138859733,243.62965969487564 1258.2035138859733,226.37034030512436" fill="#087F8C"/>
+<rect x="1277" y="140" width="270" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1295" y="188" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Recover</text>
+<text x="1295" y="233" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Repair and</text>
+<text x="1295" y="271" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">retest</text>
+<rect x="45" y="415" width="1500" height="150" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="463" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">One portfolio across the course</text>
+<text x="63" y="508" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Requirement ID -&gt; design -&gt; configuration or code -&gt; tests -&gt; handover</text>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Each week adds evidence to the capstone. Independent practice changes the scenario.</text></svg>

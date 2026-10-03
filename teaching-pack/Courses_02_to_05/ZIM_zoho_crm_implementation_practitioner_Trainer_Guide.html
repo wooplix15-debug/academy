@@ -1,0 +1,603 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Zoho CRM Implementation Practitioner | Wooplix Academy Trainer Guide</title>
+<style>
+:root{--ink:#1c303a;--muted:#526973;--blue:#096b9b;--teal:#16878a;--red:#c52c40;--line:#dbe4e7;--paper:#fff;--canvas:#f3f6f7;--pale:#eaf5f4}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.68 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.bar{position:sticky;top:0;z-index:3;background:white;border-bottom:1px solid var(--line);padding:11px 20px;display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-weight:800;letter-spacing:.08em;color:var(--blue)}.brand b{color:var(--red)}.brand-badge{height:32px;max-width:210px;object-fit:contain;vertical-align:middle;margin-right:9px}.tools{display:flex;gap:8px;align-items:center}input[type=search]{border:1px solid var(--line);border-radius:8px;padding:9px 12px;min-width:230px;font:inherit}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:9px 12px;font:inherit;cursor:pointer}.wrap{max-width:1280px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:280px minmax(0,900px);gap:24px;align-items:start}nav{position:sticky;top:67px;max-height:calc(100vh - 84px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}nav h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 9px}nav a{display:flex;gap:9px;padding:8px 9px;text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.35;border-radius:7px}nav a:hover{background:var(--pale)}nav span{color:var(--teal);font-weight:800}main{min-width:0}.cover,.overview,.module,.references{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,38px);margin-bottom:18px;box-shadow:0 8px 25px #102b3b0a}.cover{border-top:5px solid var(--teal)}.eyebrow{font-size:.74rem;letter-spacing:.12em;font-weight:800;color:var(--blue);text-transform:uppercase;margin:0 0 7px}h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;letter-spacing:-.035em;margin:4px 0 15px}h2{font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.2;margin:3px 0 8px}h3{font-size:1.14rem;line-height:1.35;margin:24px 0 8px}h4{font-size:1rem;margin:20px 0 7px}.muted,.cover p{color:var(--muted)}.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}.fact{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdfd}.fact strong{display:block;color:var(--blue);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}.fact span{display:block;margin-top:3px}.module-head{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start}.module-code{font-size:1.15rem;font-weight:800;color:var(--teal);padding-top:9px}.outcomes,.module-check{background:#f4f9f9;border:1px solid var(--line);border-radius:11px;padding:13px 17px;margin:20px 0}.outcomes ul,.module-check ul{margin:6px 0 0;padding-left:21px}ul,ol{padding-left:1.35rem}li{margin:4px 0}.lesson-content h2{font-size:1.36rem;margin-top:27px}.lesson-content h3{font-size:1.1rem}.lesson-content p{margin:9px 0 14px}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1f4f5;padding:1px 4px;border-radius:4px}pre{overflow:auto;background:#172b35;color:#f5f8f9;padding:14px;border-radius:10px}blockquote{border-left:3px solid var(--teal);padding-left:14px;color:var(--muted)}.trainer-key{border:1px solid #ead8dc;border-radius:11px;padding:0 15px;background:#fffafa;margin:20px 0}.trainer-key summary{padding:13px 0;cursor:pointer;font-weight:750;color:#9f2f45}.trainer-key[open]{padding-bottom:14px}.source-line{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}.prepared{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:.88rem}.prepared input{accent-color:var(--teal);width:17px;height:17px}.hidden{display:none!important}.references a{color:var(--blue)}.references li{padding:4px 0}.notice{border-left:4px solid var(--teal);padding:11px 15px;background:#eff8f7;margin:20px 0}footer{text-align:center;color:var(--muted);font-size:.83rem;padding:16px}@media(max-width:900px){.wrap{grid-template-columns:1fr}nav{position:static;max-height:270px;display:flex;flex-wrap:wrap;align-content:start}nav h2{width:100%}nav a{width:49%}}@media(max-width:600px){.wrap{padding:0 10px;margin:12px auto;gap:12px}.bar{padding:9px 11px}.tools{flex-wrap:wrap;justify-content:end}input[type=search]{min-width:120px;width:40vw}button{padding:7px}.summary-grid{grid-template-columns:1fr}nav a{width:100%}}@media print{body{background:#fff;font-size:10.5pt}.bar,nav,.prepared{display:none!important}.wrap{display:block;margin:0;padding:0}.cover,.overview,.module,.references{box-shadow:none;border:0;border-radius:0;margin:0;padding:12mm;break-after:page}.module{break-before:page}.trainer-key:not([open])>*:not(summary){display:block!important}.trainer-key>summary{list-style:none}a{color:inherit;text-decoration:none}}
+.chapter-head{display:grid;grid-template-columns:82px minmax(0,1fr);gap:20px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:20px}.chapter-number{font-size:4.8rem;line-height:.95;font-weight:300;letter-spacing:-.08em;color:var(--teal);font-variant-numeric:tabular-nums}.chapter-head h2{font-size:clamp(1.7rem,3.5vw,2.35rem);margin:4px 0 10px}.chapter-head p{margin:7px 0}.builds-on{font-size:.9rem}.section-label{font-size:.73rem;letter-spacing:.12em;font-weight:850;color:var(--blue);margin:0 0 9px}.teach-block,.example-block,.expected-block,.independent-block,.reflection-block{border-radius:12px;padding:17px 20px;margin:20px 0}.teach-block{background:#f4f9fa;border:1px solid var(--line)}.example-block{background:#fff8ed;border-left:4px solid #db9d43}.expected-block{background:#eff8f5;border-left:4px solid var(--teal);padding:4px 18px 14px}.independent-block{background:#f5f4fb;border-left:4px solid #7e70ad}.reflection-block{background:#f6f8f9;border:1px solid var(--line)}.teaching-sequence ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:10px 0}.teaching-sequence li{margin:0;padding:10px 13px;background:#f8fafb;border:1px solid var(--line);border-radius:8px}.flow-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0 18px}.flow-step{min-height:102px;padding:11px 12px;background:#f8fbfb;border:1px solid var(--line);border-radius:10px}.flow-step span{display:inline-block;color:var(--teal);font-weight:850;font-size:.78rem;letter-spacing:.08em}.flow-step p{font-size:.88rem;line-height:1.45;margin:5px 0}.recovery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.recovery-grid section{padding:12px 16px;border:1px solid var(--line);border-radius:11px}.recovery-grid section:first-child{background:#fff8f7;border-top:3px solid var(--red)}.recovery-grid section:last-child{background:#f1f8f6;border-top:3px solid var(--teal)}.recovery-grid h3{margin:4px 0 8px}.capstone-note,.source-notes{border:1px solid var(--line);border-radius:10px;padding:0 14px;margin:17px 0;background:#fbfcfc}.capstone-note summary,.source-notes summary{cursor:pointer;padding:11px 0;font-weight:750;color:var(--blue)}.capstone-note[open],.source-notes[open]{padding-bottom:12px}.module-check h3{margin-top:4px}.module-check>p{margin-bottom:4px}@media(max-width:700px){.chapter-head{grid-template-columns:55px 1fr;gap:12px}.chapter-number{font-size:3.4rem}.flow-strip{grid-template-columns:1fr 1fr}.recovery-grid,.teaching-sequence ul{grid-template-columns:1fr}}</style></head><body><header class="bar"><div class="brand"><img class="brand-badge" src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"> · ZIM</div><div class="tools"><input id="search" type="search" placeholder="Find a module or topic"><button id="expand" type="button">Open trainer keys</button><button onclick="window.print()" type="button">Print</button></div></header>
+<div class="wrap"><nav><h2>10 modules</h2><a href="#ZIM-M01"><span>M01</span>Discovery and scope</a><a href="#ZIM-M02"><span>M02</span>Solution and data design</a><a href="#ZIM-M03"><span>M03</span>Permissions and environment</a><a href="#ZIM-M04"><span>M04</span>Workflow configuration</a><a href="#ZIM-M05"><span>M05</span>Blueprint and approval design</a><a href="#ZIM-M06"><span>M06</span>Data migration</a><a href="#ZIM-M07"><span>M07</span>Integration planning</a><a href="#ZIM-M08"><span>M08</span>Reporting and adoption</a><a href="#ZIM-M09"><span>M09</span>UAT and release</a><a href="#ZIM-M10"><span>M10</span>Implementation defense</a></nav><main>
+<section class="cover"><p class="eyebrow">TRAINER GUIDE · DRAFT FOR TEAM REVIEW</p><h1>Zoho CRM Implementation Practitioner</h1><p>Translate a business requirement into a tested CRM configuration and deliver a documented implementation handover.</p><div class="summary-grid"><div class="fact"><strong>Audience</strong><span>Corporate CRM administrators, sales operations teams and implementation consultants</span></div><div class="fact"><strong>Entry requirements</strong><span>Demonstrate CRM record, workflow and spreadsheet import proficiency in the admission practical; use a bridge lesson for a small gap.</span></div><div class="fact"><strong>Course outcome</strong><span>Translate a business requirement into a tested CRM configuration and deliver a documented implementation handover.</span></div><div class="fact"><strong>Class environment</strong><span>Zoho CRM training organization with required automation features; synthetic data; API test client where permitted.</span></div><div class="fact"><strong>Duration</strong><span>10 weeks · 60 hours total</span></div><div class="fact"><strong>Time split</strong><span>40 facilitated · 20 independent practice hours</span></div></div><div class="notice"><strong>Trainer note.</strong> Course examples and test values are synthetic teaching material. Use current official documentation and the actual training organization for product steps; distinguish mock results from observed results. Do not claim vendor certification, employment or client outcomes.</div><p><strong>Capstone:</strong> Deliver a lead to delivery CRM implementation for fictional Nova Services.</p></section>
+<section class="overview"><p class="eyebrow">ASSESSMENT AND PROJECT</p><h2>What learners build</h2><p>Discovery brief, scope, process map, data model, permission matrix, automation register, migration reconciliation, UAT log and handover.</p><h3>Capstone scenarios to demonstrate</h3><ul><li>Qualification failure</li><li>duplicate inquiry</li><li>missing required approval</li><li>user without permission</li><li>failed integration</li><li>reopened deal</li><li>import mismatch</li><li>handover recovery.</li></ul><h3>Assessment weighting</h3><ul><li><strong>Quizzes:</strong> 15%</li><li><strong>Module Labs:</strong> 35%</li><li><strong>Capstone:</strong> 40%</li><li><strong>Practical Defense:</strong> 10%</li></ul><p class="muted">The syllabus contains proposed completion rules. Confirm current grading, attendance, resubmission and credential wording with the academic lead before enrollment.</p><h3>How to use the trainer guide</h3><p>Each module contains the authored lesson plan followed by its trainer key. Use the linked module navigation, search, and print controls. Check the stated prerequisites and time budget; retain one portfolio of evidence through the capstone.</p></section>
+<section class="overview"><p class="eyebrow">CLASS MATERIALS</p><h2>Download synthetic worksheets and datasets</h2><p>These files support the guided labs. They contain synthetic training material and should not be treated as live-system import files.</p><ul><li><a href="resources/datasets/leads_50.csv" download>leads_50.csv</a></li><li><a href="resources/worksheets/requirements.csv" download>requirements.csv</a></li><li><a href="resources/worksheets/data_dictionary.csv" download>data_dictionary.csv</a></li><li><a href="resources/worksheets/migration_reconciliation.csv" download>migration_reconciliation.csv</a></li><li><a href="resources/worksheets/automation_register.csv" download>automation_register.csv</a></li><li><a href="resources/worksheets/access_tests.csv" download>access_tests.csv</a></li><li><a href="resources/worksheets/uat_log.csv" download>uat_log.csv</a></li><li><a href="resources/assessment_ZIM.csv" download>assessment_ZIM.csv</a></li><li><a href="resources/Practical_Assessment_Rubric.md" download>Practical_Assessment_Rubric.md</a></li></ul></section>
+<article class="module" id="ZIM-M01" data-search="Discovery and scope Discovery interviews User stories and acceptance criteria Scope and success measures Interview a simulated sales manager and write eight requirements.">
+      <header class="chapter-head"><span class="chapter-number">01</span><div><p class="eyebrow">ZIM-M01 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Discovery and scope</h2><ul>
+<li>Write testable requirements</li>
+<li>Separate scope assumptions and exclusions</li>
+</ul><p class="muted builds-on">Builds on: Course entry module</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Write testable requirements</li><li>Separate scope assumptions and exclusions</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Start the course capstone evidence folder and record the training environment.</p>
+<p>Save this module evidence in the same course portfolio: Discovery brief and scope statement.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Discovery interviews</li><li>User stories and acceptance criteria</li><li>Scope and success measures</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A requirement describes observable business behavior. A preference such as faster follow up needs a clock, a responsible person and an exception path before it can be tested.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Manager says new West-region leads should go to West Sales. Rewrite as R01: when a new valid West lead arrives, assign West Sales and record assignment time; missing region goes to the review queue. The proposed first-response target is four business hours, not a claim about Nova performance.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 4 steps"><div class="flow-step"><span>01</span><p>Role-play manager, sales representative and administrator.</p></div><div class="flow-step"><span>02</span><p>Capture eight requirements with IDs and owners.</p></div><div class="flow-step"><span>03</span><p>Separate a requirement from the feature chosen to implement it.</p></div><div class="flow-step"><span>04</span><p>Add one normal and one exception acceptance case to each requirement.</p></div></div><div class="lesson-content"><ol>
+<li>Role-play manager, sales representative and administrator.</li>
+<li>Capture eight requirements with IDs and owners.</li>
+<li>Separate a requirement from the feature chosen to implement it.</li>
+<li>Add one normal and one exception acceptance case to each requirement.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>Eight requirements, sixteen acceptance cases and a scope section. R01 must include the missing-region path. Keep unresolved working-hours and holiday definitions visible.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>The manager asks for guaranteed revenue improvement. Do not convert this into an acceptance test without evidence and an agreed measurement design.</p></section><section><h3>Recovery to demonstrate</h3><p>The sponsor changes region ownership. Revise R01, identify affected routing and access tests, and keep its previous version.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Interview a support-team persona and create four additional requirements without using the sales examples.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Discovery brief and scope statement.</p>
+<ul>
+<li>Every requirement has an owner</li>
+<li>Acceptance criteria can be tested</li>
+<li>Unanswered questions remain visible</li>
+</ul><ul><li>Every requirement has an owner</li><li>Acceptance criteria can be tested</li><li>Unanswered questions remain visible</li></ul><p><strong>Evidence to collect:</strong> Discovery brief and scope statement.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why is assign leads quickly not testable?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>Eight requirements, sixteen acceptance cases and a scope section. R01 must include the missing-region path. Keep unresolved working-hours and holiday definitions visible.</p>
+<h3>Oral answer</h3>
+<p>Question: Why is assign leads quickly not testable?</p>
+<p>It omits the trigger, time measure, owner and exception behavior. Specify these before configuration.</p>
+<h3>Failure diagnosis</h3>
+<p>The manager asks for guaranteed revenue improvement. Do not convert this into an acceptance test without evidence and an agreed measurement design.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>The sponsor changes region ownership. Revise R01, identify affected routing and access tests, and keep its previous version.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Interview a support-team persona and create four additional requirements without using the sales examples.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M01.md · ZIM-M01.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M01"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M02" data-search="Solution and data design Module design Data dictionary Configuration versus customization Design the CRM data model for three departments without duplicating core records.">
+      <header class="chapter-head"><span class="chapter-number">02</span><div><p class="eyebrow">ZIM-M02 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Solution and data design</h2><ul>
+<li>Map requirements to configuration</li>
+<li>Design field and relationship choices</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M01</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Map requirements to configuration</li><li>Design field and relationship choices</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M01</p>
+<p>Save this module evidence in the same course portfolio: Diagram and configuration decision log.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Module design</li><li>Data dictionary</li><li>Configuration versus customization</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>Store a business fact once and connect records through relationships. Repeated customer names are not a reliable identity rule; people can share names and names can change.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Nova has account A001, contacts C001 and C002, and deals D001 and D002. Both deals reference A001; a delivery request references D001. Updating the account name must not require editing four copies.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 4 steps"><div class="flow-step"><span>01</span><p>Identify Accounts, Contacts, Deals and Delivery Requests.</p></div><div class="flow-step"><span>02</span><p>Assign a stable key and data owner to each.</p></div><div class="flow-step"><span>03</span><p>Draw one-to-many relationships and mark optional lookups.</p></div><div class="flow-step"><span>04</span><p>Map all eight requirements to a field, configuration feature or explicit gap.</p></div></div><div class="lesson-content"><ol>
+<li>Identify Accounts, Contacts, Deals and Delivery Requests.</li>
+<li>Assign a stable key and data owner to each.</li>
+<li>Draw one-to-many relationships and mark optional lookups.</li>
+<li>Map all eight requirements to a field, configuration feature or explicit gap.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>A dictionary with field type, API name to verify, required rule, owner and sample value. Deal amount uses INR in this exercise and cannot be a free text string.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Create two customers called Nova Services. The design must keep their identifiers distinct rather than merging by display name.</p></section><section><h3>Recovery to demonstrate</h3><p>Rename account A001 and show that linked deals still reference the same identity.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Add a recurring service renewal without duplicating the original account; explain the new entity or field decision.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Diagram and configuration decision log.</p>
+<ul>
+<li>Every entity has an identifier</li>
+<li>Required fields have a business reason</li>
+<li>Each requirement maps to a feature or gap</li>
+</ul><ul><li>Every entity has an identifier</li><li>Required fields have a business reason</li><li>Each requirement maps to a feature or gap</li></ul><p><strong>Evidence to collect:</strong> Diagram and configuration decision log.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>When should a new module be created?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>A dictionary with field type, API name to verify, required rule, owner and sample value. Deal amount uses INR in this exercise and cannot be a free text string.</p>
+<h3>Oral answer</h3>
+<p>Question: When should a new module be created?</p>
+<p>When a distinct entity has its own lifecycle or repeated records and cannot be represented clearly by existing relationships. Document the tradeoff.</p>
+<h3>Failure diagnosis</h3>
+<p>Create two customers called Nova Services. The design must keep their identifiers distinct rather than merging by display name.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Rename account A001 and show that linked deals still reference the same identity.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Add a recurring service renewal without duplicating the original account; explain the new entity or field decision.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M02.md · ZIM-M02.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M02"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M03" data-search="Permissions and environment Roles profiles sharing Least privilege Environment and release planning Set up sales, manager and administrator personas and run access tests.">
+      <header class="chapter-head"><span class="chapter-number">03</span><div><p class="eyebrow">ZIM-M03 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Permissions and environment</h2><ul>
+<li>Test a role based access model</li>
+<li>Plan separated test and production work</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M02</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Test a role based access model</li><li>Plan separated test and production work</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M02</p>
+<p>Save this module evidence in the same course portfolio: Access matrix and test evidence.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Roles profiles sharing</li><li>Least privilege</li><li>Environment and release planning</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A profile controls allowed operations; role and sharing choices affect record visibility. Test both with actual training personas, because a diagram alone does not prove access.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Sales West can edit assigned West leads; Sales East cannot read West-only records; the manager can review both regions; the integration persona receives only the operations needed by its contract.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Create an operation-by-persona matrix.</p></div><div class="flow-step"><span>02</span><p>Configure three training users or simulate unavailable roles on paper.</p></div><div class="flow-step"><span>03</span><p>Test own-region read and edit.</p></div><div class="flow-step"><span>04</span><p>Test other-region read, export and administrative changes.</p></div><div class="flow-step"><span>05</span><p>Record edition, sharing rules and observed results.</p></div></div><div class="lesson-content"><ol>
+<li>Create an operation-by-persona matrix.</li>
+<li>Configure three training users or simulate unavailable roles on paper.</li>
+<li>Test own-region read and edit.</li>
+<li>Test other-region read, export and administrative changes.</li>
+<li>Record edition, sharing rules and observed results.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>At least six allowed and six denied checks with tester, expected outcome and evidence. Screenshots must not contain credentials.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Try exporting records using the Sales East persona when export is denied by the proposed profile. A denial must be observable, not assumed.</p></section><section><h3>Recovery to demonstrate</h3><p>Remove an accidental broad sharing rule and repeat every visibility test it could affect.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Design access for a temporary reviewer who needs read-only deal access for one department.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Access matrix and test evidence.</p>
+<ul>
+<li>Sales access meets scope</li>
+<li>Manager visibility is tested</li>
+<li>Admin privileges are not given to all learners</li>
+</ul><ul><li>Sales access meets scope</li><li>Manager visibility is tested</li><li>Admin privileges are not given to all learners</li></ul><p><strong>Evidence to collect:</strong> Access matrix and test evidence.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why does hiding a field on a page not prove security?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>At least six allowed and six denied checks with tester, expected outcome and evidence. Screenshots must not contain credentials.</p>
+<h3>Oral answer</h3>
+<p>Question: Why does hiding a field on a page not prove security?</p>
+<p>UI visibility and underlying read or API permissions can differ. Test the relevant authorized access paths.</p>
+<h3>Failure diagnosis</h3>
+<p>Try exporting records using the Sales East persona when export is denied by the proposed profile. A denial must be observable, not assumed.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Remove an accidental broad sharing rule and repeat every visibility test it could affect.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Design access for a temporary reviewer who needs read-only deal access for one department.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M03.md · ZIM-M03.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M03"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M04" data-search="Workflow configuration Trigger timing Conditions and actions Automation register Implement inquiry assignment and follow up with repeat edit tests.">
+      <header class="chapter-head"><span class="chapter-number">04</span><div><p class="eyebrow">ZIM-M04 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Workflow configuration</h2><ul>
+<li>Build and test conditional automations</li>
+<li>Identify duplicate execution risk</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M03</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Build and test conditional automations</li><li>Identify duplicate execution risk</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M03</p>
+<p>Save this module evidence in the same course portfolio: Two workflows and trigger test matrix.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Trigger timing</li><li>Conditions and actions</li><li>Automation register</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>Automation is an event plus a condition plus an action. A rule that works on creation may produce repeated tasks on later edits unless its event and duplicate behavior are deliberate.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>For valid West leads, assignment selects West Sales. A follow-up task uses a proposed business key lead_id plus follow_up_type. L001 edited twice must still have one intended follow-up task.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Write a trigger-condition-action table before configuring.</p></div><div class="flow-step"><span>02</span><p>Build region assignment and follow-up in the training organization.</p></div><div class="flow-step"><span>03</span><p>Test creation then two unrelated edits.</p></div><div class="flow-step"><span>04</span><p>Test missing region.</p></div><div class="flow-step"><span>05</span><p>Record when each action is eligible to fire.</p></div></div><div class="lesson-content"><ol>
+<li>Write a trigger-condition-action table before configuring.</li>
+<li>Build region assignment and follow-up in the training organization.</li>
+<li>Test creation then two unrelated edits.</li>
+<li>Test missing region.</li>
+<li>Record when each action is eligible to fire.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>West lead routes to West Sales; missing region routes to review; repeat edits do not create unintended duplicate tasks. If a platform feature cannot enforce the proposed key, record a customization or monitoring gap.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>An update changes only a phone number. Demonstrate whether the follow-up rule fires again and explain the configuration.</p></section><section><h3>Recovery to demonstrate</h3><p>Disable an incorrect rule, remove only its identified training tasks, then replay one input and reconcile counts.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Introduce a product-family condition and revise the trigger matrix without breaking missing-region handling.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Two workflows and trigger test matrix.</p>
+<ul>
+<li>Positive and negative cases pass</li>
+<li>Repeated events are considered</li>
+<li>Automation ownership is recorded</li>
+</ul><ul><li>Positive and negative cases pass</li><li>Repeated events are considered</li><li>Automation ownership is recorded</li></ul><p><strong>Evidence to collect:</strong> Two workflows and trigger test matrix.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why is a successful first run insufficient?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>West lead routes to West Sales; missing region routes to review; repeat edits do not create unintended duplicate tasks. If a platform feature cannot enforce the proposed key, record a customization or monitoring gap.</p>
+<h3>Oral answer</h3>
+<p>Question: Why is a successful first run insufficient?</p>
+<p>It does not test later edits, condition changes, overlapping rules or duplicate execution.</p>
+<h3>Failure diagnosis</h3>
+<p>An update changes only a phone number. Demonstrate whether the follow-up rule fires again and explain the configuration.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Disable an incorrect rule, remove only its identified training tasks, then replay one input and reconcile counts.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Introduce a product-family condition and revise the trigger matrix without breaking missing-region handling.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M04.md · ZIM-M04.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M04"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M05" data-search="Blueprint and approval design States and transitions Required transition inputs Approval routing Model quote review and deal progression with a rejected quote path.">
+      <header class="chapter-head"><span class="chapter-number">05</span><div><p class="eyebrow">ZIM-M05 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Blueprint and approval design</h2><ul>
+<li>Represent controlled stages and transitions</li>
+<li>Explain approval and exception handling</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M04</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Represent controlled stages and transitions</li><li>Explain approval and exception handling</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M04</p>
+<p>Save this module evidence in the same course portfolio: Blueprint diagram and transition evidence.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>States and transitions</li><li>Required transition inputs</li><li>Approval routing</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A workflow reacts to events. A controlled transition represents a permitted move between business states with required inputs. Approval is a separate business decision that needs an owner and rejection route.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Synthetic quote policy: amount greater than INR 50000 requires manager review. INR 50000 takes the normal route; INR 50001 needs approval. Proposed states are Draft, Review, Approved, Sent and Rejected.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Draw permitted transitions before opening Blueprint.</p></div><div class="flow-step"><span>02</span><p>Add required quote amount and review evidence.</p></div><div class="flow-step"><span>03</span><p>Configure the available training features or simulate unavailable approval behavior.</p></div><div class="flow-step"><span>04</span><p>Test boundary values 49999, 50000 and 50001.</p></div><div class="flow-step"><span>05</span><p>Test rejection and resubmission.</p></div></div><div class="lesson-content"><ol>
+<li>Draw permitted transitions before opening Blueprint.</li>
+<li>Add required quote amount and review evidence.</li>
+<li>Configure the available training features or simulate unavailable approval behavior.</li>
+<li>Test boundary values 49999, 50000 and 50001.</li>
+<li>Test rejection and resubmission.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>A quote requiring approval cannot be sent through the normal route. Rejected quotes return for correction with their history intact. Record the edition and exact feature used.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Attempt Draft to Sent for INR 50001 with no approval. Expected outcome is a blocked transition under the proposed policy.</p></section><section><h3>Recovery to demonstrate</h3><p>Reject then revise the amount and resubmit. Record whether prior approval is invalidated by the policy.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Add a discount-above-15-percent review rule and write all boundary tests before configuration.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Blueprint diagram and transition evidence.</p>
+<ul>
+<li>Invalid progression is blocked</li>
+<li>Rejection path is usable</li>
+<li>Feature availability is checked in the training edition</li>
+</ul><ul><li>Invalid progression is blocked</li><li>Rejection path is usable</li><li>Feature availability is checked in the training edition</li></ul><p><strong>Evidence to collect:</strong> Blueprint diagram and transition evidence.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Does a Blueprint automatically implement every approval requirement?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>A quote requiring approval cannot be sent through the normal route. Rejected quotes return for correction with their history intact. Record the edition and exact feature used.</p>
+<h3>Oral answer</h3>
+<p>Question: Does a Blueprint automatically implement every approval requirement?</p>
+<p>No. Map the requirement to the supported transition, approval or custom behavior and verify it in the training edition.</p>
+<h3>Failure diagnosis</h3>
+<p>Attempt Draft to Sent for INR 50001 with no approval. Expected outcome is a blocked transition under the proposed policy.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Reject then revise the amount and resubmit. Record whether prior approval is invalidated by the policy.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Add a discount-above-15-percent review rule and write all boundary tests before configuration.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M05.md · ZIM-M05.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M05"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M06" data-search="Data migration Mapping and cleansing Trial import Reconciliation and rollback Migrate 50 synthetic leads including duplicates and invalid values.">
+      <header class="chapter-head"><span class="chapter-number">06</span><div><p class="eyebrow">ZIM-M06 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Data migration</h2><ul>
+<li>Reconcile source and target records</li>
+<li>Prepare a reversible migration procedure</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M05</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Reconcile source and target records</li><li>Prepare a reversible migration procedure</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M05</p>
+<p>Save this module evidence in the same course portfolio: Migration checklist and reconciliation report.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Mapping and cleansing</li><li>Trial import</li><li>Reconciliation and rollback</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>Migration is a controlled transformation with evidence. A source count alone is not enough: rejected and intentionally excluded rows need separate reasons and stable source identifiers.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>The new leads_50.csv fixture has 50 rows. Lab policy requires name, company and syntactically valid email. Rows 43-47 are invalid and rows 48-50 duplicate emails 1-3. Keep the first valid email occurrence: 42 accepted, 5 rejected, 3 excluded.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Preserve the source file and record its hash.</p></div><div class="flow-step"><span>02</span><p>Map fields and normalize email case and whitespace.</p></div><div class="flow-step"><span>03</span><p>Run the offline validator before a trial import.</p></div><div class="flow-step"><span>04</span><p>Import only the accepted file into a training organization.</p></div><div class="flow-step"><span>05</span><p>Reconcile source IDs to target IDs.</p></div></div><div class="lesson-content"><ol>
+<li>Preserve the source file and record its hash.</li>
+<li>Map fields and normalize email case and whitespace.</li>
+<li>Run the offline validator before a trial import.</li>
+<li>Import only the accepted file into a training organization.</li>
+<li>Reconcile source IDs to target IDs.</li>
+<li>Rehearse removal using the migration batch identifier.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>50 = 42 accepted + 5 rejected + 3 excluded. Offline accepted is not proof of 42 successful Zoho imports; record target success and failures separately after the actual trial.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Change one accepted row to an existing destination email. Predict the chosen import duplicate behavior and reconcile its actual result.</p></section><section><h3>Recovery to demonstrate</h3><p>Rollback only records created by the trial batch. Restore separately any existing record the import changed.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Change policy to permit a blank company, rerun classification and explain the count difference.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Migration checklist and reconciliation report.</p>
+<ul>
+<li>Source equals imported plus rejected plus intentionally excluded</li>
+<li>Rejected records have reasons</li>
+<li>Rollback steps are documented</li>
+</ul><ul><li>Source equals imported plus rejected plus intentionally excluded</li><li>Rejected records have reasons</li><li>Rollback steps are documented</li></ul><p><strong>Evidence to collect:</strong> Migration checklist and reconciliation report.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why preserve a migration batch ID?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>50 = 42 accepted + 5 rejected + 3 excluded. Offline accepted is not proof of 42 successful Zoho imports; record target success and failures separately after the actual trial.</p>
+<h3>Oral answer</h3>
+<p>Question: Why preserve a migration batch ID?</p>
+<p>It links evidence to a specific run and limits rollback scope; record counts alone cannot identify affected records.</p>
+<h3>Failure diagnosis</h3>
+<p>Change one accepted row to an existing destination email. Predict the chosen import duplicate behavior and reconcile its actual result.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Rollback only records created by the trial batch. Restore separately any existing record the import changed.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Change policy to permit a blank company, rerun classification and explain the count difference.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M06.md · ZIM-M06.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M06"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M07" data-search="Integration planning OAuth and scopes Payload mapping Failures and retry design Design CRM to project handoff, using a mock destination if access is unavailable.">
+      <header class="chapter-head"><span class="chapter-number">07</span><div><p class="eyebrow">ZIM-M07 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Integration planning</h2><ul>
+<li>Define a minimal integration contract</li>
+<li>Test authentication and failure behavior</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M06</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Define a minimal integration contract</li><li>Test authentication and failure behavior</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M06</p>
+<p>Save this module evidence in the same course portfolio: Contract, sample payload and failure log.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>OAuth and scopes</li><li>Payload mapping</li><li>Failures and retry design</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>An integration contract states identity, field ownership, accepted payloads, responses and recovery. A timeout does not reveal whether the destination already committed.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Deal D001 emits event EVT001 with request key NOVA-D001. The destination stores that key uniquely. If its response is lost after committing, querying the key must find the existing request before any retry decision.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Write source-to-destination field mappings.</p></div><div class="flow-step"><span>02</span><p>Define request key and version ownership.</p></div><div class="flow-step"><span>03</span><p>Describe allowed OAuth scopes and training environment.</p></div><div class="flow-step"><span>04</span><p>Walk through success, denied authorization and ambiguous timeout.</p></div><div class="flow-step"><span>05</span><p>Link the contract to the synchronization simulator.</p></div></div><div class="lesson-content"><ol>
+<li>Write source-to-destination field mappings.</li>
+<li>Define request key and version ownership.</li>
+<li>Describe allowed OAuth scopes and training environment.</li>
+<li>Walk through success, denied authorization and ambiguous timeout.</li>
+<li>Link the contract to the synchronization simulator.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>One destination business record for NOVA-D001 even after replay; an unresolved timeout is marked unknown until reconciled. Real API behavior still needs a connected sandbox test.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Return a permission denial. Do not repeatedly retry the same operation using broader access.</p></section><section><h3>Recovery to demonstrate</h3><p>Lose the success response after commit, query by stable key and reconcile before replay.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Add a destination-maintained delivery date and explain why the CRM writer must not overwrite it.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Contract, sample payload and failure log.</p>
+<ul>
+<li>Credentials are not in artifacts</li>
+<li>Duplicate event behavior is specified</li>
+<li>Environment specific authorization is respected</li>
+</ul><ul><li>Credentials are not in artifacts</li><li>Duplicate event behavior is specified</li><li>Environment specific authorization is respected</li></ul><p><strong>Evidence to collect:</strong> Contract, sample payload and failure log.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Can an HTTP timeout be treated as a failed write?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>One destination business record for NOVA-D001 even after replay; an unresolved timeout is marked unknown until reconciled. Real API behavior still needs a connected sandbox test.</p>
+<h3>Oral answer</h3>
+<p>Question: Can an HTTP timeout be treated as a failed write?</p>
+<p>No. The write may have committed; reconcile identity before retrying.</p>
+<h3>Failure diagnosis</h3>
+<p>Return a permission denial. Do not repeatedly retry the same operation using broader access.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Lose the success response after commit, query by stable key and reconcile before replay.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Add a destination-maintained delivery date and explain why the CRM writer must not overwrite it.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M07.md · ZIM-M07.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M07"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M08" data-search="Reporting and adoption Dashboard definitions Role based training Support and adoption tracking Build a manager report and a 20 minute end user walkthrough.">
+      <header class="chapter-head"><span class="chapter-number">08</span><div><p class="eyebrow">ZIM-M08 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Reporting and adoption</h2><ul>
+<li>Define business metrics correctly</li>
+<li>Plan end user adoption</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M07</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Define business metrics correctly</li><li>Plan end user adoption</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M07</p>
+<p>Save this module evidence in the same course portfolio: Metric definitions and training outline.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Dashboard definitions</li><li>Role based training</li><li>Support and adoption tracking</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A useful metric has a population, numerator, denominator, time window and exclusions. Adoption evidence comes from users completing tasks, not attendance alone.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Synthetic weekly cohort: 20 qualified leads and 5 converted leads gives 25 percent cohort conversion. Open pipeline INR 120000 plus INR 80000 equals INR 200000; closed or cancelled deals are excluded.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Define conversion and open-pipeline metrics.</p></div><div class="flow-step"><span>02</span><p>Calculate the examples by hand.</p></div><div class="flow-step"><span>03</span><p>Reproduce them in a report using verified filters.</p></div><div class="flow-step"><span>04</span><p>Ask a learner to create, qualify and hand off a lead without narration.</p></div><div class="flow-step"><span>05</span><p>Record errors and support owner.</p></div></div><div class="lesson-content"><ol>
+<li>Define conversion and open-pipeline metrics.</li>
+<li>Calculate the examples by hand.</li>
+<li>Reproduce them in a report using verified filters.</li>
+<li>Ask a learner to create, qualify and hand off a lead without narration.</li>
+<li>Record errors and support owner.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>The report reproduces 25 percent and INR 200000 for the supplied example. Numerator belongs to the same lead cohort as denominator; currency is shown.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Mix conversions from old leads with only this week new leads. Identify why the resulting rate is invalid.</p></section><section><h3>Recovery to demonstrate</h3><p>Correct the date filters, recalculate and annotate the previous dashboard error.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Define time-to-first-response including business hours and pending exceptions.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Metric definitions and training outline.</p>
+<ul>
+<li>Filters and denominators are explicit</li>
+<li>Users can complete core tasks</li>
+<li>Support ownership is named</li>
+</ul><ul><li>Filters and denominators are explicit</li><li>Users can complete core tasks</li><li>Support ownership is named</li></ul><p><strong>Evidence to collect:</strong> Metric definitions and training outline.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why can a high attendance rate coexist with poor adoption?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>The report reproduces 25 percent and INR 200000 for the supplied example. Numerator belongs to the same lead cohort as denominator; currency is shown.</p>
+<h3>Oral answer</h3>
+<p>Question: Why can a high attendance rate coexist with poor adoption?</p>
+<p>Learners may attend but fail core tasks. Measure task completion and support demand alongside participation.</p>
+<h3>Failure diagnosis</h3>
+<p>Mix conversions from old leads with only this week new leads. Identify why the resulting rate is invalid.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Correct the date filters, recalculate and annotate the previous dashboard error.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Define time-to-first-response including business hours and pending exceptions.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M08.md · ZIM-M08.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M08"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M09" data-search="UAT and release UAT scripts Defect severity Deployment and rollback Execute eight scenario tests and triage defects with a release recommendation.">
+      <header class="chapter-head"><span class="chapter-number">09</span><div><p class="eyebrow">ZIM-M09 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>UAT and release</h2><ul>
+<li>Run acceptance tests against requirements</li>
+<li>Write a release and recovery plan</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M08</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Run acceptance tests against requirements</li><li>Write a release and recovery plan</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M08</p>
+<p>Save this module evidence in the same course portfolio: Signed style UAT template and release checklist.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>UAT scripts</li><li>Defect severity</li><li>Deployment and rollback</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>User acceptance testing traces business requirements to observed outcomes. A checked box without inputs, tester and evidence cannot support a release decision.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>R01 routes a valid West lead to West Sales. UAT01 records L001, Sales West persona, expected owner, actual owner and screenshot reference. UAT02 tests missing region and expects review queue.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Select eight end-to-end scenarios from the requirement matrix.</p></div><div class="flow-step"><span>02</span><p>Run them with relevant personas.</p></div><div class="flow-step"><span>03</span><p>Compare expected to actual.</p></div><div class="flow-step"><span>04</span><p>Classify defects by business consequence.</p></div><div class="flow-step"><span>05</span><p>Rehearse recovery in training.</p></div></div><div class="lesson-content"><ol>
+<li>Select eight end-to-end scenarios from the requirement matrix.</li>
+<li>Run them with relevant personas.</li>
+<li>Compare expected to actual.</li>
+<li>Classify defects by business consequence.</li>
+<li>Rehearse recovery in training.</li>
+<li>Write release recommendation and unresolved limitations.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>Eight cases have explicit pass or fail and evidence. Any critical permission or unintended-write failure blocks the proposed release, even if the numerical score passes.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Seed a broad sharing defect and confirm the access case fails and blocks release.</p></section><section><h3>Recovery to demonstrate</h3><p>Fix the sharing defect, rerun impacted tests and keep original failure evidence.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Add a scope change after UAT and choose the regression tests affected by it.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Signed style UAT template and release checklist.</p>
+<ul>
+<li>Each requirement has evidence</li>
+<li>Critical defects block release</li>
+<li>Rollback is rehearsed in the training environment</li>
+</ul><ul><li>Each requirement has evidence</li><li>Critical defects block release</li><li>Rollback is rehearsed in the training environment</li></ul><p><strong>Evidence to collect:</strong> Signed style UAT template and release checklist.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Who accepts a business requirement?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>Eight cases have explicit pass or fail and evidence. Any critical permission or unintended-write failure blocks the proposed release, even if the numerical score passes.</p>
+<h3>Oral answer</h3>
+<p>Question: Who accepts a business requirement?</p>
+<p>The named business owner or authorized reviewer accepts evidence; the implementer does not substitute a successful configuration screen.</p>
+<h3>Failure diagnosis</h3>
+<p>Seed a broad sharing defect and confirm the access case fails and blocks release.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Fix the sharing defect, rerun impacted tests and keep original failure evidence.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Add a scope change after UAT and choose the regression tests affected by it.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M09.md · ZIM-M09.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M09"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="ZIM-M10" data-search="Implementation defense Capstone review Architecture explanation Operations handover Present the full Nova Services implementation to a simulated client.">
+      <header class="chapter-head"><span class="chapter-number">10</span><div><p class="eyebrow">ZIM-M10 · 4 FACILITATED HOURS · 2 PRACTICE HOURS</p><h2>Implementation defense</h2><ul>
+<li>Demonstrate business fit and configuration</li>
+<li>Complete a delivery handover</li>
+</ul><p class="muted builds-on">Builds on: ZIM-M09</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Demonstrate business fit and configuration</li><li>Complete a delivery handover</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: ZIM-M09</p>
+<p>Save this module evidence in the same course portfolio: Capstone bundle and reviewer feedback.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Capstone review</li><li>Architecture explanation</li><li>Operations handover</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A handover transfers the ability to operate, diagnose and recover the implementation. The practical defense checks learner understanding beyond a prepared demonstration.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Give a second trainer only the configuration register and runbook. Ask them to locate R01, explain its routing, diagnose a missing region and find recovery steps without help.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Retrieve prior learning: 15 minutes</li>
+<li>Explain and predict: 30 minutes</li>
+<li>Trainer demonstration: 35 minutes</li>
+<li>Guided build: 75 minutes</li>
+<li>Break: 15 minutes</li>
+<li>Failure and recovery tests: 40 minutes</li>
+<li>Evidence review and exit check: 30 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Assemble prior module evidence into one indexed bundle.</p></div><div class="flow-step"><span>02</span><p>Demonstrate eight UAT cases.</p></div><div class="flow-step"><span>03</span><p>Explain one configuration tradeoff.</p></div><div class="flow-step"><span>04</span><p>Receive a surprise region-rule change.</p></div><div class="flow-step"><span>05</span><p>Update the change record and show impacted tests.</p></div></div><div class="lesson-content"><ol>
+<li>Assemble prior module evidence into one indexed bundle.</li>
+<li>Demonstrate eight UAT cases.</li>
+<li>Explain one configuration tradeoff.</li>
+<li>Receive a surprise region-rule change.</li>
+<li>Update the change record and show impacted tests.</li>
+<li>Ask a peer to execute the runbook.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>Reviewer can trace every requirement to design, configuration and test evidence. The learner can explain the change and limits independently.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>A reviewer asks for production deployment or an official Zoho certificate. Record these as outside the training exercise.</p></section><section><h3>Recovery to demonstrate</h3><p>The peer cannot find the failed-rule owner. Repair the runbook and repeat the handover test.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Prepare a ten-minute department-specific demonstration using the same implementation.</p>
+<p>Budget: 120 minutes. Use 15 minutes planning, 75 building and testing, 30 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Capstone bundle and reviewer feedback.</p>
+<ul>
+<li>Eight acceptance scenarios pass</li>
+<li>Known limitations are disclosed</li>
+<li>Another trainer can follow the handover</li>
+</ul><ul><li>Eight acceptance scenarios pass</li><li>Known limitations are disclosed</li><li>Another trainer can follow the handover</li></ul><p><strong>Evidence to collect:</strong> Capstone bundle and reviewer feedback.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>What proves the handover is usable?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>Reviewer can trace every requirement to design, configuration and test evidence. The learner can explain the change and limits independently.</p>
+<h3>Oral answer</h3>
+<p>Question: What proves the handover is usable?</p>
+<p>Another person performs an agreed operation or recovery task using the supplied documentation and records the result.</p>
+<h3>Failure diagnosis</h3>
+<p>A reviewer asks for production deployment or an official Zoho certificate. Record these as outside the training exercise.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>The peer cannot find the failed-rule owner. Repair the runbook and repeat the handover test.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Prepare a ten-minute department-specific demonstration using the same implementation.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S02, S03, S06, S09, S11. Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> ZIM-M10.md · ZIM-M10.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="ZIM-M10"> Mark trainer preparation complete</label>
+    </article>
+<section class="references"><p class="eyebrow">SOURCE NOTES</p><h2>Official references used by these modules</h2><p>The lesson source records a reference ID for each product or AI claim. Check the cited pages again before teaching, especially where editions, API versions, event support, account access or usage limits can change.</p><ul><li><a href="https://www.zoho.com/crm/developer/docs/api/v8/" target="_blank" rel="noopener">Zoho CRM API reference</a> <span class="muted">(S02 · verified public reference)</span></li><li><a href="https://www.zoho.com/crm/developer/docs/api/v8/auth-request.html" target="_blank" rel="noopener">Zoho CRM authorization</a> <span class="muted">(S03 · verified public reference)</span></li><li><a href="https://www.zoho.com/crm/tutorials/blueprint/summary.html" target="_blank" rel="noopener">CRM Blueprint overview</a> <span class="muted">(S06 · verified public reference)</span></li><li><a href="https://www.zoho.com/crm/developer/docs/api/v8/upsert-records.html" target="_blank" rel="noopener">CRM upsert</a> <span class="muted">(S09 · verified public reference)</span></li><li><a href="https://help.zoho.com/portal/pt/community/topic/crm-developer-update-mandatory-field-behavior-changes-in-zoho-crm-apis" target="_blank" rel="noopener">Planned mandatory-field change</a> <span class="muted">(S11 · verified public reference)</span></li></ul><p class="muted">Source status and review date are recorded in the course workspace knowledge manifest. Trainer rehearsal is required before a live product demonstration.</p></section>
+<footer>Wooplix Academy · ZIM trainer guide · Draft for trainer and academic review</footer></main></div><script>
+const q=document.getElementById('search'),mods=[...document.querySelectorAll('.module')],links=[...document.querySelectorAll('nav a')];q.addEventListener('input',()=>{const s=q.value.toLowerCase().trim();mods.forEach((m,i)=>{let show=!s||m.innerText.toLowerCase().includes(s);m.classList.toggle('hidden',!show);links[i].classList.toggle('hidden',!show)})});document.getElementById('expand').addEventListener('click',e=>{const ds=[...document.querySelectorAll('.trainer-key')],open=ds.some(d=>!d.open);ds.forEach(d=>d.open=open);e.currentTarget.textContent=open?'Close trainer keys':'Open trainer keys'});const marks=[...document.querySelectorAll('[data-module]')],key='wooplix_ZIM_trainer_prep';try{const saved=JSON.parse(localStorage.getItem(key)||'[]');marks.forEach(x=>x.checked=saved.includes(x.dataset.module))}catch{}marks.forEach(x=>x.addEventListener('change',()=>{try{localStorage.setItem(key,JSON.stringify(marks.filter(y=>y.checked).map(y=>y.dataset.module)))}catch{}}));
+</script></body></html>

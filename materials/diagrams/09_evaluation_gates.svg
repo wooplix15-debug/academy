@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Report task quality and critical failures separately</text>
+<rect x="45" y="145" width="705" height="190" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="193" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Normal task checks</text>
+<text x="63" y="238" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Evidence supports claims</text>
+<text x="63" y="276" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Output fits schema and duration</text>
+<text x="63" y="314" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Learner task can be completed</text>
+<rect x="835" y="145" width="705" height="190" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="853" y="193" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Critical boundary checks</text>
+<text x="853" y="238" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">No restricted source exposure</text>
+<text x="853" y="276" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">No unauthorized external write</text>
+<text x="853" y="314" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">No credentials in artifacts</text>
+<rect x="45" y="430" width="705" height="155" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="478" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Report denominators</text>
+<text x="63" y="523" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Passed / executed, by category</text>
+<text x="63" y="561" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Not run remains visible</text>
+<rect x="835" y="430" width="705" height="155" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="853" y="478" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Proposed release gate</text>
+<text x="853" y="523" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">No observed critical failure</text>
+<text x="853" y="561" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Reviewer owns acceptance</text>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">A high average cannot waive a critical failure. Mock tests are not live-model results.</text></svg>

@@ -1,0 +1,32 @@
+{
+  "certificate issuer": {
+    "status": "evidence_found",
+    "source_ids": [
+      "K1"
+    ],
+    "evidence": [
+      "Certificate issuer is Wooplix Academy. This assessment does not issue an official Zoho credential."
+    ]
+  },
+  "job guarantee": {
+    "status": "abstain",
+    "source_ids": [],
+    "evidence": []
+  },
+  "client secret": {
+    "status": "abstain",
+    "source_ids": [],
+    "evidence": []
+  },
+  "attendance threshold": {
+    "status": "conflict_review",
+    "source_ids": [
+      "K5",
+      "K6"
+    ],
+    "evidence": [
+      "Attendance threshold is 80 percent in policy A.",
+      "Attendance threshold is 90 percent in conflicting policy B. Reviewer decision is required."
+    ]
+  }
+}

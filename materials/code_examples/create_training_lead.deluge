@@ -1,0 +1,28 @@
+// ZDV-M08 reviewed training-only starter. External write is disabled.
+// Verify edition, actual layout required fields, API names and scopes first.
+// Create and authorize your own TRAINING connection named crm_training.
+run_training_write = false;
+if(run_training_write)
+{
+    lead = Map();
+    lead.put("Last_Name","TrainingLearner");
+    lead.put("Company","Fictional Nova Services");
+    lead.put("Email","training.person@example.test");
+    options = Map();
+    options.put("trigger",List());
+    response = zoho.crm.v8.createRecord("Leads",lead,options,"crm_training");
+    returned_id = response.get("id");
+    if(!isNull(returned_id))
+    {
+        // Log only the synthetic record identity, never a token or full payload.
+        info "training_created_id=" + returned_id;
+    }
+    else
+    {
+        info "training_create_failed_code=" + response.get("code");
+    }
+}
+else
+{
+    info "External write disabled. Review training environment before enabling.";
+}

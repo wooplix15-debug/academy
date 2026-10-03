@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Reconcile every source row before and after import</text>
+<text x="45" y="160" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#152E42">50 source rows = 42 staging accepted + 5 rejected + 3 excluded</text>
+<rect x="45" y="220" width="1260.0" height="130" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<rect x="1305.0" y="220" width="150.0" height="130" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<rect x="1455.0" y="220" width="90.0" height="130" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="60" y="296" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">84 percent accepted for the lab policy</text>
+<rect x="45" y="425" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Accepted staging</text>
+<text x="63" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">42 rows ready for trial</text>
+<rect x="565" y="425" width="450" height="150" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="583" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Target trial import</text>
+<text x="583" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Record actual results</text>
+<rect x="1085" y="425" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1103" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Reconciliation</text>
+<text x="1103" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Created + updated</text>
+<text x="1103" y="556" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">+ failed + exceptions</text>
+<line x1="495" y1="500" x2="565" y2="500" stroke="#087F8C" stroke-width="4"/>
+<polygon points="565,500 549.2035138859733,508.62965969487567 549.2035138859733,491.37034030512433" fill="#087F8C"/>
+<line x1="1015" y1="500" x2="1085" y2="500" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1085,500 1069.2035138859733,508.62965969487567 1069.2035138859733,491.37034030512433" fill="#087F8C"/>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Staging acceptance is not target success. Preserve source IDs and migration batch.</text></svg>

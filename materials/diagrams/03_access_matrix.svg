@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Test operations and record visibility separately</text>
+<rect x="45" y="135" width="390" height="85" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="61" y="184" font-family="Arial, sans-serif" font-size="29" font-weight="bold" fill="#152E42">Training persona</text>
+<rect x="435" y="135" width="355" height="85" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="451" y="184" font-family="Arial, sans-serif" font-size="29" font-weight="bold" fill="#152E42">Own-region read</text>
+<rect x="790" y="135" width="350" height="85" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="806" y="184" font-family="Arial, sans-serif" font-size="29" font-weight="bold" fill="#152E42">Other-region read</text>
+<rect x="1140" y="135" width="405" height="85" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="1156" y="184" font-family="Arial, sans-serif" font-size="29" font-weight="bold" fill="#152E42">Admin change</text>
+<rect x="45" y="235" width="390" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="61" y="293" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Sales West</text>
+<rect x="435" y="235" width="355" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="451" y="293" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Allow</text>
+<rect x="790" y="235" width="350" height="90" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="806" y="293" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Deny</text>
+<rect x="1140" y="235" width="405" height="90" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="1156" y="293" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Deny</text>
+<rect x="45" y="335" width="390" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="61" y="393" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Sales East</text>
+<rect x="435" y="335" width="355" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="451" y="393" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Allow</text>
+<rect x="790" y="335" width="350" height="90" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="806" y="393" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Deny</text>
+<rect x="1140" y="335" width="405" height="90" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="1156" y="393" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Deny</text>
+<rect x="45" y="435" width="390" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="61" y="493" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Manager</text>
+<rect x="435" y="435" width="355" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="451" y="493" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Allow</text>
+<rect x="790" y="435" width="350" height="90" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="806" y="493" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Allow</text>
+<rect x="1140" y="435" width="405" height="90" rx="15" fill="#FBE7E4" stroke="#087F8C" stroke-width="3"/>
+<text x="1156" y="493" font-family="Arial, sans-serif" font-size="31" font-weight="normal" fill="#152E42">Deny</text>
+<text x="45" y="594" font-family="Arial, sans-serif" font-size="29" font-weight="normal" fill="#152E42">Proposed lab policy. Execute allowed and denied checks with the actual training personas.</text>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Role, profile and sharing behavior must be verified in the selected Zoho edition.</text></svg>

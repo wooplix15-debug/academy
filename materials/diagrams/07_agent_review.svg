@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Review binds to the candidate content version</text>
+<rect x="45" y="150" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="198" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Request</text>
+<text x="63" y="243" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Known module + scope</text>
+<rect x="565" y="150" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="583" y="198" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Generate draft</text>
+<text x="583" y="243" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Approved source context</text>
+<rect x="1085" y="150" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1103" y="198" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Validate</text>
+<text x="1103" y="243" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Shape + teaching checks</text>
+<line x1="495" y1="225" x2="565" y2="225" stroke="#087F8C" stroke-width="4"/>
+<polygon points="565,225 549.2035138859733,233.62965969487564 549.2035138859733,216.37034030512436" fill="#087F8C"/>
+<line x1="1015" y1="225" x2="1085" y2="225" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1085,225 1069.2035138859733,233.62965969487564 1069.2035138859733,216.37034030512436" fill="#087F8C"/>
+<rect x="45" y="425" width="450" height="150" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Release decision</text>
+<text x="63" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Separate destination access</text>
+<rect x="565" y="425" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="583" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Local approval</text>
+<text x="583" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Selected artifact + hash</text>
+<rect x="1085" y="425" width="450" height="150" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="1103" y="473" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Human review</text>
+<text x="1103" y="518" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Technical and teaching</text>
+<line x1="1310" y1="300" x2="1310" y2="425" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1310,425 1301.3703403051243,409.2035138859733 1318.6296596948757,409.2035138859733" fill="#087F8C"/>
+<line x1="1085" y1="500" x2="1015" y2="500" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1015,500 1030.7964861140267,491.37034030512433 1030.7964861140267,508.62965969487567" fill="#087F8C"/>
+<line x1="565" y1="500" x2="495" y2="500" stroke="#087F8C" stroke-width="4"/>
+<polygon points="495,500 510.7964861140267,491.37034030512433 510.7964861140267,508.62965969487567" fill="#087F8C"/>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Changed hash returns to review. Local approval does not publish or connect to Zoho.</text></svg>

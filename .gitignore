@@ -1,0 +1,19 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python and editor files
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+.idea/
+
+# Local agent runs and personal review records
+/drafts/*
+/approved/*
+/archive/*
+/practice/results/*

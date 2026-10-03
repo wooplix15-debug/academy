@@ -1,0 +1,13 @@
+{
+  "mode": "website",
+  "course_id": "ZDV",
+  "source_ids": [
+    "S02",
+    "S04",
+    "S05"
+  ],
+  "input_assets": [
+    "website/ZDV_course_page.md"
+  ],
+  "instructions": "Improve the course page for existing Zoho developers. Keep advertised hours and prerequisites aligned to the catalog. Preserve placeholders for trainer expertise, price and schedule. Include benefits supported by the curriculum and do not invent experience, official credentials or outcomes."
+}

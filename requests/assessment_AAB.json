@@ -1,0 +1,13 @@
+{
+  "mode": "assessment",
+  "course_id": "AAB",
+  "module_id": "AAB-M05",
+  "source_ids": [
+    "S07",
+    "S08"
+  ],
+  "input_assets": [
+    "materials/worked_examples/AAB-M05_worked_example.md"
+  ],
+  "instructions": "Draft ten scenario questions and a practical assessment for retrieval and cited answers. Map questions to module outcomes, provide expected answers and rationales, and test missing evidence, stale versions, source conflicts, permissions and malicious source instructions. These are synthetic examples."
+}

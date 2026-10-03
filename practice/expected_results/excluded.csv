@@ -1,0 +1,4 @@
+source_id,last_name,company,email,region,migration_batch,reason
+L048,Learner048,Example Company 16,person001@example.test,West,NOVA-TRAIN-01,duplicate_normalized_email_keep_first
+L049,Learner049,Example Company 17,person002@example.test,East,NOVA-TRAIN-01,duplicate_normalized_email_keep_first
+L050,Learner050,Example Company 17,person003@example.test,,NOVA-TRAIN-01,duplicate_normalized_email_keep_first

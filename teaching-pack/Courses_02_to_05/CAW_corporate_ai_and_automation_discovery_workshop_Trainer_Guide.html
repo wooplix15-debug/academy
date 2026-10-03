@@ -1,0 +1,246 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Corporate AI and Automation Discovery Workshop | Wooplix Academy Trainer Guide</title>
+<style>
+:root{--ink:#1c303a;--muted:#526973;--blue:#096b9b;--teal:#16878a;--red:#c52c40;--line:#dbe4e7;--paper:#fff;--canvas:#f3f6f7;--pale:#eaf5f4}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.68 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.bar{position:sticky;top:0;z-index:3;background:white;border-bottom:1px solid var(--line);padding:11px 20px;display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-weight:800;letter-spacing:.08em;color:var(--blue)}.brand b{color:var(--red)}.brand-badge{height:32px;max-width:210px;object-fit:contain;vertical-align:middle;margin-right:9px}.tools{display:flex;gap:8px;align-items:center}input[type=search]{border:1px solid var(--line);border-radius:8px;padding:9px 12px;min-width:230px;font:inherit}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:9px 12px;font:inherit;cursor:pointer}.wrap{max-width:1280px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:280px minmax(0,900px);gap:24px;align-items:start}nav{position:sticky;top:67px;max-height:calc(100vh - 84px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}nav h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 9px}nav a{display:flex;gap:9px;padding:8px 9px;text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.35;border-radius:7px}nav a:hover{background:var(--pale)}nav span{color:var(--teal);font-weight:800}main{min-width:0}.cover,.overview,.module,.references{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,38px);margin-bottom:18px;box-shadow:0 8px 25px #102b3b0a}.cover{border-top:5px solid var(--teal)}.eyebrow{font-size:.74rem;letter-spacing:.12em;font-weight:800;color:var(--blue);text-transform:uppercase;margin:0 0 7px}h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;letter-spacing:-.035em;margin:4px 0 15px}h2{font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.2;margin:3px 0 8px}h3{font-size:1.14rem;line-height:1.35;margin:24px 0 8px}h4{font-size:1rem;margin:20px 0 7px}.muted,.cover p{color:var(--muted)}.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}.fact{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdfd}.fact strong{display:block;color:var(--blue);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}.fact span{display:block;margin-top:3px}.module-head{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start}.module-code{font-size:1.15rem;font-weight:800;color:var(--teal);padding-top:9px}.outcomes,.module-check{background:#f4f9f9;border:1px solid var(--line);border-radius:11px;padding:13px 17px;margin:20px 0}.outcomes ul,.module-check ul{margin:6px 0 0;padding-left:21px}ul,ol{padding-left:1.35rem}li{margin:4px 0}.lesson-content h2{font-size:1.36rem;margin-top:27px}.lesson-content h3{font-size:1.1rem}.lesson-content p{margin:9px 0 14px}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1f4f5;padding:1px 4px;border-radius:4px}pre{overflow:auto;background:#172b35;color:#f5f8f9;padding:14px;border-radius:10px}blockquote{border-left:3px solid var(--teal);padding-left:14px;color:var(--muted)}.trainer-key{border:1px solid #ead8dc;border-radius:11px;padding:0 15px;background:#fffafa;margin:20px 0}.trainer-key summary{padding:13px 0;cursor:pointer;font-weight:750;color:#9f2f45}.trainer-key[open]{padding-bottom:14px}.source-line{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}.prepared{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:.88rem}.prepared input{accent-color:var(--teal);width:17px;height:17px}.hidden{display:none!important}.references a{color:var(--blue)}.references li{padding:4px 0}.notice{border-left:4px solid var(--teal);padding:11px 15px;background:#eff8f7;margin:20px 0}footer{text-align:center;color:var(--muted);font-size:.83rem;padding:16px}@media(max-width:900px){.wrap{grid-template-columns:1fr}nav{position:static;max-height:270px;display:flex;flex-wrap:wrap;align-content:start}nav h2{width:100%}nav a{width:49%}}@media(max-width:600px){.wrap{padding:0 10px;margin:12px auto;gap:12px}.bar{padding:9px 11px}.tools{flex-wrap:wrap;justify-content:end}input[type=search]{min-width:120px;width:40vw}button{padding:7px}.summary-grid{grid-template-columns:1fr}nav a{width:100%}}@media print{body{background:#fff;font-size:10.5pt}.bar,nav,.prepared{display:none!important}.wrap{display:block;margin:0;padding:0}.cover,.overview,.module,.references{box-shadow:none;border:0;border-radius:0;margin:0;padding:12mm;break-after:page}.module{break-before:page}.trainer-key:not([open])>*:not(summary){display:block!important}.trainer-key>summary{list-style:none}a{color:inherit;text-decoration:none}}
+.chapter-head{display:grid;grid-template-columns:82px minmax(0,1fr);gap:20px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:20px}.chapter-number{font-size:4.8rem;line-height:.95;font-weight:300;letter-spacing:-.08em;color:var(--teal);font-variant-numeric:tabular-nums}.chapter-head h2{font-size:clamp(1.7rem,3.5vw,2.35rem);margin:4px 0 10px}.chapter-head p{margin:7px 0}.builds-on{font-size:.9rem}.section-label{font-size:.73rem;letter-spacing:.12em;font-weight:850;color:var(--blue);margin:0 0 9px}.teach-block,.example-block,.expected-block,.independent-block,.reflection-block{border-radius:12px;padding:17px 20px;margin:20px 0}.teach-block{background:#f4f9fa;border:1px solid var(--line)}.example-block{background:#fff8ed;border-left:4px solid #db9d43}.expected-block{background:#eff8f5;border-left:4px solid var(--teal);padding:4px 18px 14px}.independent-block{background:#f5f4fb;border-left:4px solid #7e70ad}.reflection-block{background:#f6f8f9;border:1px solid var(--line)}.teaching-sequence ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:10px 0}.teaching-sequence li{margin:0;padding:10px 13px;background:#f8fafb;border:1px solid var(--line);border-radius:8px}.flow-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0 18px}.flow-step{min-height:102px;padding:11px 12px;background:#f8fbfb;border:1px solid var(--line);border-radius:10px}.flow-step span{display:inline-block;color:var(--teal);font-weight:850;font-size:.78rem;letter-spacing:.08em}.flow-step p{font-size:.88rem;line-height:1.45;margin:5px 0}.recovery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.recovery-grid section{padding:12px 16px;border:1px solid var(--line);border-radius:11px}.recovery-grid section:first-child{background:#fff8f7;border-top:3px solid var(--red)}.recovery-grid section:last-child{background:#f1f8f6;border-top:3px solid var(--teal)}.recovery-grid h3{margin:4px 0 8px}.capstone-note,.source-notes{border:1px solid var(--line);border-radius:10px;padding:0 14px;margin:17px 0;background:#fbfcfc}.capstone-note summary,.source-notes summary{cursor:pointer;padding:11px 0;font-weight:750;color:var(--blue)}.capstone-note[open],.source-notes[open]{padding-bottom:12px}.module-check h3{margin-top:4px}.module-check>p{margin-bottom:4px}@media(max-width:700px){.chapter-head{grid-template-columns:55px 1fr;gap:12px}.chapter-number{font-size:3.4rem}.flow-strip{grid-template-columns:1fr 1fr}.recovery-grid,.teaching-sequence ul{grid-template-columns:1fr}}</style></head><body><header class="bar"><div class="brand"><img class="brand-badge" src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"> · CAW</div><div class="tools"><input id="search" type="search" placeholder="Find a module or topic"><button id="expand" type="button">Open trainer keys</button><button onclick="window.print()" type="button">Print</button></div></header>
+<div class="wrap"><nav><h2>4 modules</h2><a href="#CAW-M01"><span>M01</span>Business baseline</a><a href="#CAW-M02"><span>M02</span>AI assisted work</a><a href="#CAW-M03"><span>M03</span>Automation opportunity design</a><a href="#CAW-M04"><span>M04</span>Pilot and follow through</a></nav><main>
+<section class="cover"><p class="eyebrow">TRAINER GUIDE · DRAFT FOR TEAM REVIEW</p><h1>Corporate AI and Automation Discovery Workshop</h1><p>Produce a prioritized automation opportunity and a reviewed small pilot brief.</p><div class="summary-grid"><div class="fact"><strong>Audience</strong><span>Department leaders and employee teams with one business process to improve</span></div><div class="fact"><strong>Entry requirements</strong><span>Sponsor identifies one process, attendees, available tools and approved synthetic examples before the workshop.</span></div><div class="fact"><strong>Course outcome</strong><span>Produce a prioritized automation opportunity and a reviewed small pilot brief.</span></div><div class="fact"><strong>Class environment</strong><span>Facilitator demonstration account, process worksheet and synthetic examples; attendees do not need production admin access.</span></div><div class="fact"><strong>Duration</strong><span>2 weeks · 12 hours total</span></div><div class="fact"><strong>Time split</strong><span>8 facilitated · 4 independent practice hours</span></div></div><div class="notice"><strong>Trainer note.</strong> Course examples and test values are synthetic teaching material. Use current official documentation and the actual training organization for product steps; distinguish mock results from observed results. Do not claim vendor certification, employment or client outcomes.</div><p><strong>Capstone:</strong> Select one department process and define a small automation pilot.</p></section>
+<section class="overview"><p class="eyebrow">ASSESSMENT AND PROJECT</p><h2>What learners build</h2><p>Baseline process, opportunity scorecard, sample assisted output and pilot brief with owner and acceptance measures.</p><h3>Capstone scenarios to demonstrate</h3><ul><li>Missing input</li><li>incorrect generated answer</li><li>unsupported action</li><li>reviewer rejection.</li></ul><h3>Assessment weighting</h3><ul><li><strong>Pilot Brief:</strong> 70%</li><li><strong>Demonstration:</strong> 30%</li></ul><p class="muted">The syllabus contains proposed completion rules. Confirm current grading, attendance, resubmission and credential wording with the academic lead before enrollment.</p><h3>How to use the trainer guide</h3><p>Each module contains the authored lesson plan followed by its trainer key. Use the linked module navigation, search, and print controls. Check the stated prerequisites and time budget; retain one portfolio of evidence through the capstone.</p></section>
+<section class="overview"><p class="eyebrow">CLASS MATERIALS</p><h2>Download synthetic worksheets and datasets</h2><p>These files support the guided labs. They contain synthetic training material and should not be treated as live-system import files.</p><ul><li><a href="resources/worksheets/baseline_and_pilot.csv" download>baseline_and_pilot.csv</a></li><li><a href="resources/worksheets/requirements.csv" download>requirements.csv</a></li><li><a href="resources/worksheets/change_request.csv" download>change_request.csv</a></li><li><a href="resources/assessment_CAW.csv" download>assessment_CAW.csv</a></li><li><a href="resources/Practical_Assessment_Rubric.md" download>Practical_Assessment_Rubric.md</a></li></ul></section>
+<article class="module" id="CAW-M01" data-search="Business baseline Process walkthrough Role mapping Baseline measures Map lead follow up, support triage or employee onboarding.">
+      <header class="chapter-head"><span class="chapter-number">01</span><div><p class="eyebrow">CAW-M01 · 2 FACILITATED HOURS · 1 PRACTICE HOURS</p><h2>Business baseline</h2><ul>
+<li>Map a current departmental process</li>
+<li>Identify measurable delays</li>
+</ul><p class="muted builds-on">Builds on: Course entry module</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Map a current departmental process</li><li>Identify measurable delays</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Start the course capstone evidence folder and record the training environment.</p>
+<p>Save this module evidence in the same course portfolio: Current process and measured or explicitly estimated baseline.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Process walkthrough</li><li>Role mapping</li><li>Baseline measures</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A process baseline describes who performs each step, how long active work takes and where waiting occurs. Distinguish observed timing from estimates.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Synthetic follow-up tasks take 8, 10 and 12 active minutes: mean 10 minutes per task. At 100 tasks weekly, baseline active effort is 1000 minutes or 16.67 hours; this is a teaching example.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Baseline and recap: 10 minutes</li>
+<li>Explain and predict: 15 minutes</li>
+<li>Facilitator demonstration: 20 minutes</li>
+<li>Team exercise: 40 minutes</li>
+<li>Break: 10 minutes</li>
+<li>Review and decision: 25 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Agree the process boundary with the sponsor.</p></div><div class="flow-step"><span>02</span><p>Draw trigger, roles, handoffs and completion.</p></div><div class="flow-step"><span>03</span><p>Time three sanitized examples.</p></div><div class="flow-step"><span>04</span><p>Record active and waiting time separately.</p></div><div class="flow-step"><span>05</span><p>Note variation and exceptions.</p></div></div><div class="lesson-content"><ol>
+<li>Agree the process boundary with the sponsor.</li>
+<li>Draw trigger, roles, handoffs and completion.</li>
+<li>Time three sanitized examples.</li>
+<li>Record active and waiting time separately.</li>
+<li>Note variation and exceptions.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>A sponsor-reviewed process map and baseline sheet with units, sample size and observed or estimated labels.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>A participant claims the task always takes ten minutes from one example. Record the evidence limitation.</p></section><section><h3>Recovery to demonstrate</h3><p>Repeat timing across a different case type and revise the baseline range.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Map employee onboarding using the same timing sheet and a different role set.</p>
+<p>Budget: 60 minutes. Use 10 minutes planning, 35 practicing and 15 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Current process and measured or explicitly estimated baseline.</p>
+<ul>
+<li>Sponsor agrees the process</li>
+<li>Measures have units</li>
+<li>Estimates are labeled</li>
+</ul><ul><li>Sponsor agrees the process</li><li>Measures have units</li><li>Estimates are labeled</li></ul><p><strong>Evidence to collect:</strong> Current process and measured or explicitly estimated baseline.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why separate waiting from active time?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>A sponsor-reviewed process map and baseline sheet with units, sample size and observed or estimated labels.</p>
+<h3>Oral answer</h3>
+<p>Question: Why separate waiting from active time?</p>
+<p>Automation may reduce one without reducing the other; combining them hides where improvement occurs.</p>
+<h3>Failure diagnosis</h3>
+<p>A participant claims the task always takes ten minutes from one example. Record the evidence limitation.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Repeat timing across a different case type and revise the baseline range.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Map employee onboarding using the same timing sheet and a different role set.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S01, S08. Use approved synthetic examples; label estimates and any tool behavior that has not been verified. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> CAW-M01.md · CAW-M01.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="CAW-M01"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="CAW-M02" data-search="AI assisted work Prompt examples Output verification Sensitive data handling Use synthetic inputs to draft a follow up or support summary.">
+      <header class="chapter-head"><span class="chapter-number">02</span><div><p class="eyebrow">CAW-M02 · 2 FACILITATED HOURS · 1 PRACTICE HOURS</p><h2>AI assisted work</h2><ul>
+<li>Test an assisted task</li>
+<li>Identify where review is required</li>
+</ul><p class="muted builds-on">Builds on: CAW-M01</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Test an assisted task</li><li>Identify where review is required</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: CAW-M01</p>
+<p>Save this module evidence in the same course portfolio: Before and after task example.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Prompt examples</li><li>Output verification</li><li>Sensitive data handling</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>An assisted output is checked against its input before use. A well-written message can still invent an agreement, commitment or customer fact.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Synthetic input: customer asked for a demo next week; no date or discount agreed. A good draft proposes scheduling. A bad draft confirms Tuesday and a 20 percent discount.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Baseline and recap: 10 minutes</li>
+<li>Explain and predict: 15 minutes</li>
+<li>Facilitator demonstration: 20 minutes</li>
+<li>Team exercise: 40 minutes</li>
+<li>Break: 10 minutes</li>
+<li>Review and decision: 25 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>Write a prompt using the approved facts.</p></div><div class="flow-step"><span>02</span><p>Generate or use supplied contrasting drafts.</p></div><div class="flow-step"><span>03</span><p>Highlight every factual assertion.</p></div><div class="flow-step"><span>04</span><p>Check assertions against input.</p></div><div class="flow-step"><span>05</span><p>Correct unsupported commitments.</p></div></div><div class="lesson-content"><ol>
+<li>Write a prompt using the approved facts.</li>
+<li>Generate or use supplied contrasting drafts.</li>
+<li>Highlight every factual assertion.</li>
+<li>Check assertions against input.</li>
+<li>Correct unsupported commitments.</li>
+<li>Time generation plus review.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>Reviewed draft has no invented appointment or discount. Before-and-after timing includes correction work.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Insert a confidential customer note. Use a sanitized substitute unless the chosen tool and permissions are approved for it.</p></section><section><h3>Recovery to demonstrate</h3><p>Reject the bad draft and regenerate using explicit missing-date behavior.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Draft a support summary that distinguishes customer statements from confirmed findings.</p>
+<p>Budget: 60 minutes. Use 10 minutes planning, 35 practicing and 15 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Before and after task example.</p>
+<ul>
+<li>Output is checked against input</li>
+<li>Confidential data is excluded</li>
+<li>Reviewer ownership is clear</li>
+</ul><ul><li>Output is checked against input</li><li>Confidential data is excluded</li><li>Reviewer ownership is clear</li></ul><p><strong>Evidence to collect:</strong> Before and after task example.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>What should the draft do when a meeting date is unknown?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>Reviewed draft has no invented appointment or discount. Before-and-after timing includes correction work.</p>
+<h3>Oral answer</h3>
+<p>Question: What should the draft do when a meeting date is unknown?</p>
+<p>Ask for or propose scheduling without stating that a date has been agreed.</p>
+<h3>Failure diagnosis</h3>
+<p>Insert a confidential customer note. Use a sanitized substitute unless the chosen tool and permissions are approved for it.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Reject the bad draft and regenerate using explicit missing-date behavior.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Draft a support summary that distinguishes customer statements from confirmed findings.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S01, S08. Use approved synthetic examples; label estimates and any tool behavior that has not been verified. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> CAW-M02.md · CAW-M02.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="CAW-M02"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="CAW-M03" data-search="Automation opportunity design Value and feasibility Workflow design Tool and permission needs Rank three opportunities and diagram one small pilot.">
+      <header class="chapter-head"><span class="chapter-number">03</span><div><p class="eyebrow">CAW-M03 · 2 FACILITATED HOURS · 1 PRACTICE HOURS</p><h2>Automation opportunity design</h2><ul>
+<li>Prioritize feasible opportunities</li>
+<li>Explain exception handling</li>
+</ul><p class="muted builds-on">Builds on: CAW-M02</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Prioritize feasible opportunities</li><li>Explain exception handling</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: CAW-M02</p>
+<p>Save this module evidence in the same course portfolio: Opportunity scorecard and pilot workflow.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Value and feasibility</li><li>Workflow design</li><li>Tool and permission needs</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>Prioritization combines value, readiness and failure consequence. A score guides discussion but cannot remove a missing permission or mandatory dependency.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Proposed formula: value plus readiness minus risk, each 1 to 5. Follow-up drafting 4+5-2=7; automatic refunds 5+2-5=2; support summaries 3+4-2=5. Drafting is the first discussion candidate.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Baseline and recap: 10 minutes</li>
+<li>Explain and predict: 15 minutes</li>
+<li>Facilitator demonstration: 20 minutes</li>
+<li>Team exercise: 40 minutes</li>
+<li>Break: 10 minutes</li>
+<li>Review and decision: 25 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>List three opportunities.</p></div><div class="flow-step"><span>02</span><p>Score each dimension and justify it.</p></div><div class="flow-step"><span>03</span><p>Identify tool, data and access dependencies.</p></div><div class="flow-step"><span>04</span><p>Apply any blocking conditions.</p></div><div class="flow-step"><span>05</span><p>Draw the highest feasible pilot with exception and review paths.</p></div></div><div class="lesson-content"><ol>
+<li>List three opportunities.</li>
+<li>Score each dimension and justify it.</li>
+<li>Identify tool, data and access dependencies.</li>
+<li>Apply any blocking conditions.</li>
+<li>Draw the highest feasible pilot with exception and review paths.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>A scorecard with rationale and a bounded pilot. The highest score is not an authorization to spend, publish or access client systems.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>A high-scoring idea needs unavailable customer data. Mark it blocked until the dependency is resolved.</p></section><section><h3>Recovery to demonstrate</h3><p>Rescope to approved synthetic data and review whether the pilot still tests the intended value.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Change the risk weights and explain how the ranking changes.</p>
+<p>Budget: 60 minutes. Use 10 minutes planning, 35 practicing and 15 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Opportunity scorecard and pilot workflow.</p>
+<ul>
+<li>Dependencies are named</li>
+<li>Failure paths exist</li>
+<li>No unverified savings claim is presented</li>
+</ul><ul><li>Dependencies are named</li><li>Failure paths exist</li><li>No unverified savings claim is presented</li></ul><p><strong>Evidence to collect:</strong> Opportunity scorecard and pilot workflow.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>Why record the rationale beside a score?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>A scorecard with rationale and a bounded pilot. The highest score is not an authorization to spend, publish or access client systems.</p>
+<h3>Oral answer</h3>
+<p>Question: Why record the rationale beside a score?</p>
+<p>Numbers without evidence can disguise disagreement and cannot be reviewed later.</p>
+<h3>Failure diagnosis</h3>
+<p>A high-scoring idea needs unavailable customer data. Mark it blocked until the dependency is resolved.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Rescope to approved synthetic data and review whether the pilot still tests the intended value.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Change the risk weights and explain how the ranking changes.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S01, S08. Use approved synthetic examples; label estimates and any tool behavior that has not been verified. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> CAW-M03.md · CAW-M03.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="CAW-M03"> Mark trainer preparation complete</label>
+    </article>
+<article class="module" id="CAW-M04" data-search="Pilot and follow through Pilot scope Success measures Next decision Finalize a two week pilot brief using this module one hour of follow through and the three preceding module hours.">
+      <header class="chapter-head"><span class="chapter-number">04</span><div><p class="eyebrow">CAW-M04 · 2 FACILITATED HOURS · 1 PRACTICE HOURS</p><h2>Pilot and follow through</h2><ul>
+<li>Define pilot acceptance and ownership</li>
+<li>Prepare a discovery handoff</li>
+</ul><p class="muted builds-on">Builds on: CAW-M03</p></div></header>
+      <div class="outcomes"><strong>By the end, learners can</strong><ul><li>Define pilot acceptance and ownership</li><li>Prepare a discovery handoff</li></ul></div>
+      <details class="capstone-note"><summary>Portfolio and prerequisite</summary><p>Use the previous module evidence as input: CAW-M03</p>
+<p>Save this module evidence in the same course portfolio: Reviewed pilot brief.</p></details>
+      <h3>Topics in this chapter</h3><ul class="topics"><li>Pilot scope</li><li>Success measures</li><li>Next decision</li></ul>
+      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p><p>A pilot is a small experiment with an owner, sample, quality gate and next decision. Training attendance does not authorize a consulting implementation.</p></section>
+      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p><p>Proposed two-week pilot: 20 sanitized drafts, zero unsupported commitments after review, and a target of at least 20 percent lower median total task time. The target is a hypothesis, not promised savings.</p></section>
+      <h3>Teaching sequence</h3><div class="teaching-sequence"><ul>
+<li>Baseline and recap: 10 minutes</li>
+<li>Explain and predict: 15 minutes</li>
+<li>Facilitator demonstration: 20 minutes</li>
+<li>Team exercise: 40 minutes</li>
+<li>Break: 10 minutes</li>
+<li>Review and decision: 25 minutes</li>
+</ul></div>
+      <h3>Guided practical</h3><div class="flow-strip" role="img" aria-label="Practical sequence with 5 steps"><div class="flow-step"><span>01</span><p>State scope and exclusions.</p></div><div class="flow-step"><span>02</span><p>Name sponsor, operator and reviewer.</p></div><div class="flow-step"><span>03</span><p>Define timing and quality measurements.</p></div><div class="flow-step"><span>04</span><p>Run four failure scenarios.</p></div><div class="flow-step"><span>05</span><p>Schedule a two-week review.</p></div></div><div class="lesson-content"><ol>
+<li>State scope and exclusions.</li>
+<li>Name sponsor, operator and reviewer.</li>
+<li>Define timing and quality measurements.</li>
+<li>Run four failure scenarios.</li>
+<li>Schedule a two-week review.</li>
+<li>Prepare a separately authorized discovery handoff.</li>
+</ol></div>
+      <section class="expected-block"><h3>Expected result</h3><p>A pilot brief with measurable acceptance, stop conditions and review date. Record actual sample results before deciding to extend.</p></section>
+      <div class="recovery-grid"><section><h3>Failure to test</h3><p>Reviewer rejects an output. The workflow returns for correction and does not send it.</p></section><section><h3>Recovery to demonstrate</h3><p>Suspend the pilot if critical exposure or unauthorized action occurs and let the sponsor decide the next step.</p></section></div>
+      <section class="independent-block"><h3>Independent practice</h3><p>Define a different pilot for support summaries and choose a quality measure beyond speed.</p>
+<p>Budget: 60 minutes. Use 10 minutes planning, 35 practicing and 15 documenting.</p></section>
+      <section class="module-check"><h3>Submission and review</h3><p>Reviewed pilot brief.</p>
+<ul>
+<li>Scope is bounded</li>
+<li>Owner and review date exist</li>
+<li>Consulting discussion requires sponsor agreement</li>
+</ul><ul><li>Scope is bounded</li><li>Owner and review date exist</li><li>Consulting discussion requires sponsor agreement</li></ul><p><strong>Evidence to collect:</strong> Reviewed pilot brief.</p></section>
+      <section class="reflection-block"><h3>Ask learners to explain</h3><p>What separates training from consulting authorization?</p>
+<p>Describe one failed input, your correction and evidence that the correction worked.</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div><h3>Expected demonstration</h3>
+<p>A pilot brief with measurable acceptance, stop conditions and review date. Record actual sample results before deciding to extend.</p>
+<h3>Oral answer</h3>
+<p>Question: What separates training from consulting authorization?</p>
+<p>A separately agreed scope, owner and access decision for the business implementation.</p>
+<h3>Failure diagnosis</h3>
+<p>Reviewer rejects an output. The workflow returns for correction and does not send it.</p>
+<p>Do not accept a happy-path screenshot as evidence for this case. Require its exact input, observed result and explanation.</p>
+<h3>Recovery explanation</h3>
+<p>Suspend the pilot if critical exposure or unauthorized action occurs and let the sponsor decide the next step.</p>
+<h3>Common misconception</h3>
+<p>Ask the learner to distinguish the business rule from the feature used to implement it, and a simulated result from a connected-product result.</p>
+<h3>Independent task review</h3>
+<p>Define a different pilot for support summaries and choose a quality measure beyond speed.</p>
+<p>Check that the learner adapts the rule, preserves prior evidence and identifies affected tests. Several designs can pass; accept alternatives only with testable assumptions and evidence.</p>
+<h3>Scoring</h3>
+<p>Apply the shared practical rubric. A critical access or unauthorized-write failure requires repair and reassessment, even when total points are at least 70.</p></div></details>
+      <details class="source-notes"><summary>Source checks and trainer preparation</summary><p>Official reference IDs: S01, S08. Use approved synthetic examples; label estimates and any tool behavior that has not been verified. Examples and thresholds are proposed lab rules.</p><p>Use the separate trainer key. Rehearse the positive, negative and recovery case. Provide a mock equivalent if required product access is unavailable; label the evidence accordingly.</p><p class="source-line"><strong>Source files:</strong> CAW-M04.md · CAW-M04.md. Check the cited source and account behavior before a live demonstration.</p></details>
+      <label class="prepared"><input type="checkbox" data-module="CAW-M04"> Mark trainer preparation complete</label>
+    </article>
+<section class="references"><p class="eyebrow">SOURCE NOTES</p><h2>Official references used by these modules</h2><p>The lesson source records a reference ID for each product or AI claim. Check the cited pages again before teaching, especially where editions, API versions, event support, account access or usage limits can change.</p><ul><li><strong>User-supplied Wooplix Academy Business Automation Plan</strong> <span class="muted">(S01 · internal strategy source; not technical product evidence)</span></li><li><a href="https://developers.openai.com/api/docs/guides/agent-evals" target="_blank" rel="noopener">Agent evaluation</a> <span class="muted">(S08 · verified public reference)</span></li></ul><p class="muted">Source status and review date are recorded in the course workspace knowledge manifest. Trainer rehearsal is required before a live product demonstration.</p></section>
+<footer>Wooplix Academy · CAW trainer guide · Draft for trainer and academic review</footer></main></div><script>
+const q=document.getElementById('search'),mods=[...document.querySelectorAll('.module')],links=[...document.querySelectorAll('nav a')];q.addEventListener('input',()=>{const s=q.value.toLowerCase().trim();mods.forEach((m,i)=>{let show=!s||m.innerText.toLowerCase().includes(s);m.classList.toggle('hidden',!show);links[i].classList.toggle('hidden',!show)})});document.getElementById('expand').addEventListener('click',e=>{const ds=[...document.querySelectorAll('.trainer-key')],open=ds.some(d=>!d.open);ds.forEach(d=>d.open=open);e.currentTarget.textContent=open?'Close trainer keys':'Open trainer keys'});const marks=[...document.querySelectorAll('[data-module]')],key='wooplix_CAW_trainer_prep';try{const saved=JSON.parse(localStorage.getItem(key)||'[]');marks.forEach(x=>x.checked=saved.includes(x.dataset.module))}catch{}marks.forEach(x=>x.addEventListener('change',()=>{try{localStorage.setItem(key,JSON.stringify(marks.filter(y=>y.checked).map(y=>y.dataset.module)))}catch{}}));
+</script></body></html>

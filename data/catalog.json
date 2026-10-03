@@ -1,0 +1,1137 @@
+{
+  "schema_version": "1.0",
+  "version": "0.2",
+  "status": "draft_for_subject_matter_review",
+  "created_on": "2026-10-02",
+  "language": "English",
+  "issuer": "Wooplix Academy",
+  "assumptions": [
+    "Existing Zoho developers and corporate teams are the primary audience",
+    "Four offers with editable durations and content",
+    "Proposed policies need owner confirmation",
+    "No official Zoho credential or job placement claim",
+    "Synthetic cases until approved Wooplix cases are supplied"
+  ],
+  "programs": [
+    {
+      "id": "ZIM",
+      "title": "Zoho CRM Implementation Practitioner",
+      "audience": "Corporate CRM administrators, sales operations teams and implementation consultants",
+      "level": "Practitioner",
+      "weeks": 10,
+      "unit_live": 4,
+      "unit_practice": 2,
+      "prerequisites": "Demonstrate CRM record, workflow and spreadsheet import proficiency in the admission practical; use a bridge lesson for a small gap.",
+      "outcome": "Translate a business requirement into a tested CRM configuration and deliver a documented implementation handover.",
+      "tools": "Zoho CRM training organization with required automation features; synthetic data; API test client where permitted.",
+      "sources": [
+        "S02",
+        "S03",
+        "S06",
+        "S09",
+        "S11"
+      ],
+      "capstone": "Deliver a lead to delivery CRM implementation for fictional Nova Services.",
+      "deliverables": "Discovery brief, scope, process map, data model, permission matrix, automation register, migration reconciliation, UAT log and handover.",
+      "tests": "Qualification failure; duplicate inquiry; missing required approval; user without permission; failed integration; reopened deal; import mismatch; handover recovery.",
+      "modules": [
+        {
+          "title": "Discovery and scope",
+          "outcomes": [
+            "Write testable requirements",
+            "Separate scope assumptions and exclusions"
+          ],
+          "topics": [
+            "Discovery interviews",
+            "User stories and acceptance criteria",
+            "Scope and success measures"
+          ],
+          "lab": "Interview a simulated sales manager and write eight requirements.",
+          "evidence": "Discovery brief and scope statement.",
+          "acceptance_checks": [
+            "Every requirement has an owner",
+            "Acceptance criteria can be tested",
+            "Unanswered questions remain visible"
+          ],
+          "id": "ZIM-M01",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M01.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M01.md"
+        },
+        {
+          "title": "Solution and data design",
+          "outcomes": [
+            "Map requirements to configuration",
+            "Design field and relationship choices"
+          ],
+          "topics": [
+            "Module design",
+            "Data dictionary",
+            "Configuration versus customization"
+          ],
+          "lab": "Design the CRM data model for three departments without duplicating core records.",
+          "evidence": "Diagram and configuration decision log.",
+          "acceptance_checks": [
+            "Every entity has an identifier",
+            "Required fields have a business reason",
+            "Each requirement maps to a feature or gap"
+          ],
+          "id": "ZIM-M02",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M01"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M02.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M02.md"
+        },
+        {
+          "title": "Permissions and environment",
+          "outcomes": [
+            "Test a role based access model",
+            "Plan separated test and production work"
+          ],
+          "topics": [
+            "Roles profiles sharing",
+            "Least privilege",
+            "Environment and release planning"
+          ],
+          "lab": "Set up sales, manager and administrator personas and run access tests.",
+          "evidence": "Access matrix and test evidence.",
+          "acceptance_checks": [
+            "Sales access meets scope",
+            "Manager visibility is tested",
+            "Admin privileges are not given to all learners"
+          ],
+          "id": "ZIM-M03",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M02"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M03.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M03.md"
+        },
+        {
+          "title": "Workflow configuration",
+          "outcomes": [
+            "Build and test conditional automations",
+            "Identify duplicate execution risk"
+          ],
+          "topics": [
+            "Trigger timing",
+            "Conditions and actions",
+            "Automation register"
+          ],
+          "lab": "Implement inquiry assignment and follow up with repeat edit tests.",
+          "evidence": "Two workflows and trigger test matrix.",
+          "acceptance_checks": [
+            "Positive and negative cases pass",
+            "Repeated events are considered",
+            "Automation ownership is recorded"
+          ],
+          "id": "ZIM-M04",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M03"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M04.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M04.md"
+        },
+        {
+          "title": "Blueprint and approval design",
+          "outcomes": [
+            "Represent controlled stages and transitions",
+            "Explain approval and exception handling"
+          ],
+          "topics": [
+            "States and transitions",
+            "Required transition inputs",
+            "Approval routing"
+          ],
+          "lab": "Model quote review and deal progression with a rejected quote path.",
+          "evidence": "Blueprint diagram and transition evidence.",
+          "acceptance_checks": [
+            "Invalid progression is blocked",
+            "Rejection path is usable",
+            "Feature availability is checked in the training edition"
+          ],
+          "id": "ZIM-M05",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M04"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M05.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M05.md"
+        },
+        {
+          "title": "Data migration",
+          "outcomes": [
+            "Reconcile source and target records",
+            "Prepare a reversible migration procedure"
+          ],
+          "topics": [
+            "Mapping and cleansing",
+            "Trial import",
+            "Reconciliation and rollback"
+          ],
+          "lab": "Migrate 50 synthetic leads including duplicates and invalid values.",
+          "evidence": "Migration checklist and reconciliation report.",
+          "acceptance_checks": [
+            "Source equals imported plus rejected plus intentionally excluded",
+            "Rejected records have reasons",
+            "Rollback steps are documented"
+          ],
+          "id": "ZIM-M06",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M05"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M06.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M06.md"
+        },
+        {
+          "title": "Integration planning",
+          "outcomes": [
+            "Define a minimal integration contract",
+            "Test authentication and failure behavior"
+          ],
+          "topics": [
+            "OAuth and scopes",
+            "Payload mapping",
+            "Failures and retry design"
+          ],
+          "lab": "Design CRM to project handoff, using a mock destination if access is unavailable.",
+          "evidence": "Contract, sample payload and failure log.",
+          "acceptance_checks": [
+            "Credentials are not in artifacts",
+            "Duplicate event behavior is specified",
+            "Environment specific authorization is respected"
+          ],
+          "id": "ZIM-M07",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M06"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M07.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M07.md"
+        },
+        {
+          "title": "Reporting and adoption",
+          "outcomes": [
+            "Define business metrics correctly",
+            "Plan end user adoption"
+          ],
+          "topics": [
+            "Dashboard definitions",
+            "Role based training",
+            "Support and adoption tracking"
+          ],
+          "lab": "Build a manager report and a 20 minute end user walkthrough.",
+          "evidence": "Metric definitions and training outline.",
+          "acceptance_checks": [
+            "Filters and denominators are explicit",
+            "Users can complete core tasks",
+            "Support ownership is named"
+          ],
+          "id": "ZIM-M08",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M07"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M08.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M08.md"
+        },
+        {
+          "title": "UAT and release",
+          "outcomes": [
+            "Run acceptance tests against requirements",
+            "Write a release and recovery plan"
+          ],
+          "topics": [
+            "UAT scripts",
+            "Defect severity",
+            "Deployment and rollback"
+          ],
+          "lab": "Execute eight scenario tests and triage defects with a release recommendation.",
+          "evidence": "Signed style UAT template and release checklist.",
+          "acceptance_checks": [
+            "Each requirement has evidence",
+            "Critical defects block release",
+            "Rollback is rehearsed in the training environment"
+          ],
+          "id": "ZIM-M09",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M08"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M09.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M09.md"
+        },
+        {
+          "title": "Implementation defense",
+          "outcomes": [
+            "Demonstrate business fit and configuration",
+            "Complete a delivery handover"
+          ],
+          "topics": [
+            "Capstone review",
+            "Architecture explanation",
+            "Operations handover"
+          ],
+          "lab": "Present the full Nova Services implementation to a simulated client.",
+          "evidence": "Capstone bundle and reviewer feedback.",
+          "acceptance_checks": [
+            "Eight acceptance scenarios pass",
+            "Known limitations are disclosed",
+            "Another trainer can follow the handover"
+          ],
+          "id": "ZIM-M10",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZIM-M09"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZIM-M10.md",
+          "trainer_key_path": "materials/trainer_keys/ZIM-M10.md"
+        }
+      ],
+      "live_hours": 40,
+      "practice_hours": 20,
+      "total_hours": 60,
+      "assessment_weights": {
+        "quizzes": 15,
+        "module_labs": 35,
+        "capstone": 40,
+        "practical_defense": 10
+      },
+      "pass_rules": {
+        "overall_min": 70,
+        "practical_min": 70,
+        "attendance_min_percent": 80,
+        "critical_checks_must_pass": true,
+        "final_reviewer_required": true
+      }
+    },
+    {
+      "id": "ZDV",
+      "title": "Zoho Creator Deluge and Integration Developer",
+      "audience": "Existing Zoho developers and technically confident implementation specialists",
+      "level": "Developer",
+      "weeks": 12,
+      "unit_live": 4,
+      "unit_practice": 2,
+      "prerequisites": "Demonstrate CRM proficiency, basic variables and conditions, JSON and HTTP concepts in the programming diagnostic.",
+      "outcome": "Build a Creator application and a resilient Deluge integration using documented API contracts and tests.",
+      "tools": "Creator and CRM training organizations, enabled connections, API client, version control and synthetic datasets; verify licensing and call budgets.",
+      "sources": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S09",
+        "S10",
+        "S12",
+        "S13"
+      ],
+      "capstone": "Build a service request application with a reviewed CRM handoff and status reconciliation.",
+      "deliverables": "Requirements, forms and reports, Deluge code, connection setup guide without secrets, API contract, test log, failure queue design and deployment notes.",
+      "tests": "Missing required field; invalid lookup; unauthorized action; token or connection failure; duplicate request; retry after timeout; malformed payload; quota exhaustion simulation; conflicting update; data reconciliation.",
+      "modules": [
+        {
+          "title": "Application requirements and model",
+          "outcomes": [
+            "Design entities for a service workflow",
+            "Identify data ownership"
+          ],
+          "topics": [
+            "User stories",
+            "Entity relationships",
+            "Unique business keys"
+          ],
+          "lab": "Model customers, service requests and work items with a unique request key.",
+          "evidence": "Entity diagram and six user stories.",
+          "acceptance_checks": [
+            "Relationships match requirements",
+            "Uniqueness rule is defined",
+            "Ownership of shared fields is explicit"
+          ],
+          "id": "ZDV-M01",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M01.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M01.md"
+        },
+        {
+          "title": "Creator forms and reports",
+          "outcomes": [
+            "Build related forms",
+            "Create appropriate views for users"
+          ],
+          "topics": [
+            "Field types and lookups",
+            "Reports",
+            "Validation and navigation"
+          ],
+          "lab": "Build request and work item forms with a filtered open work report.",
+          "evidence": "App screenshots and data dictionary.",
+          "acceptance_checks": [
+            "Lookups connect intended records",
+            "Validation catches bad input",
+            "Report filters match user tasks"
+          ],
+          "id": "ZDV-M02",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M01"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M02.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M02.md"
+        },
+        {
+          "title": "Deluge language essentials",
+          "outcomes": [
+            "Use variables lists maps and conditions",
+            "Trace a script with sample values"
+          ],
+          "topics": [
+            "Data types",
+            "Collections and loops",
+            "Null handling"
+          ],
+          "lab": "Transform five synthetic request payloads into normalized maps.",
+          "evidence": "Commented script and expected outputs.",
+          "acceptance_checks": [
+            "Null values are handled",
+            "Each output matches the input rule",
+            "Learner explains the control flow"
+          ],
+          "id": "ZDV-M03",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M02"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M03.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M03.md"
+        },
+        {
+          "title": "Deluge functions and debugging",
+          "outcomes": [
+            "Write reusable functions",
+            "Diagnose failure from controlled logs"
+          ],
+          "topics": [
+            "Function inputs and outputs",
+            "Error handling",
+            "Redacted diagnostics"
+          ],
+          "lab": "Build a reusable request validation function and diagnose three seeded defects.",
+          "evidence": "Function and debugging notes.",
+          "acceptance_checks": [
+            "Inputs have a contract",
+            "Logs omit tokens and personal data",
+            "Each defect has a reproducible test"
+          ],
+          "id": "ZDV-M04",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M03"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M04.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M04.md"
+        },
+        {
+          "title": "Form events and workflow behavior",
+          "outcomes": [
+            "Choose the correct form event",
+            "Test validation before persistence"
+          ],
+          "topics": [
+            "Load input and submission events",
+            "Workflow ordering",
+            "Event specific limitations"
+          ],
+          "lab": "Implement request validation and post submission action in appropriate events.",
+          "evidence": "Event matrix and four case log.",
+          "acceptance_checks": [
+            "Invalid requests are rejected",
+            "Actions occur at the intended stage",
+            "Edition and event limitations are documented"
+          ],
+          "id": "ZDV-M05",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M04"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M05.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M05.md"
+        },
+        {
+          "title": "REST and JSON contracts",
+          "outcomes": [
+            "Read an API request and response",
+            "Map payloads to application fields"
+          ],
+          "topics": [
+            "HTTP methods and statuses",
+            "JSON",
+            "API metadata and pagination"
+          ],
+          "lab": "Map a CRM record response to the service request model using a mock response first.",
+          "evidence": "Contract and mapping table.",
+          "acceptance_checks": [
+            "Required fields are explicit",
+            "Pagination is considered",
+            "Malformed JSON has a handled failure path"
+          ],
+          "id": "ZDV-M06",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M05"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M06.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M06.md"
+        },
+        {
+          "title": "OAuth and connections",
+          "outcomes": [
+            "Explain delegated authorization",
+            "Configure minimum required access"
+          ],
+          "topics": [
+            "Authorization grant",
+            "Scopes and environments",
+            "Connections and token handling"
+          ],
+          "lab": "Document connection setup and test an allowed read and a denied operation.",
+          "evidence": "Setup guide with redacted evidence.",
+          "acceptance_checks": [
+            "No secret is submitted",
+            "Scopes match the lab",
+            "Test and production environments are distinguished"
+          ],
+          "id": "ZDV-M07",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M06"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M07.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M07.md"
+        },
+        {
+          "title": "Deluge integrations",
+          "outcomes": [
+            "Use documented integration tasks",
+            "Handle external call limits deliberately"
+          ],
+          "topics": [
+            "Integration task wrappers",
+            "invoke URL concepts",
+            "Response handling and quotas"
+          ],
+          "lab": "Create a reviewed test record through a connection or a mock equivalent.",
+          "evidence": "Integration code and response log.",
+          "acceptance_checks": [
+            "API version is recorded",
+            "Response success is checked",
+            "External call consumption is estimated"
+          ],
+          "id": "ZDV-M08",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M07"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M08.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M08.md"
+        },
+        {
+          "title": "Reliable synchronization",
+          "outcomes": [
+            "Prevent duplicate business operations",
+            "Design recoverable synchronization"
+          ],
+          "topics": [
+            "Idempotency",
+            "Timeouts retries and backoff",
+            "Reconciliation and conflict rules"
+          ],
+          "lab": "Simulate duplicate events and a timeout after the destination committed a record.",
+          "evidence": "Sync design and replay evidence.",
+          "acceptance_checks": [
+            "Replay does not create a second business record",
+            "Retry has a bound",
+            "Conflict ownership is documented"
+          ],
+          "id": "ZDV-M09",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M08"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M09.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M09.md"
+        },
+        {
+          "title": "Testing and release",
+          "outcomes": [
+            "Create meaningful positive and failure tests",
+            "Plan versioned deployment"
+          ],
+          "topics": [
+            "Test fixtures",
+            "Change records",
+            "Release and rollback"
+          ],
+          "lab": "Run the developer scenario suite and prepare a deployment checklist.",
+          "evidence": "Test log and deployment notes.",
+          "acceptance_checks": [
+            "Ten scenarios have expected outcomes",
+            "Known defects are recorded",
+            "Rollback includes data impact"
+          ],
+          "id": "ZDV-M10",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M09"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M10.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M10.md"
+        },
+        {
+          "title": "Capstone build and review",
+          "outcomes": [
+            "Assemble the service application",
+            "Improve code through review"
+          ],
+          "topics": [
+            "Build integration",
+            "Peer review",
+            "Support documentation"
+          ],
+          "lab": "Complete the service request application and resolve reviewer defects.",
+          "evidence": "Working training app and review log.",
+          "acceptance_checks": [
+            "Core journey works end to end",
+            "Failure paths are demonstrated",
+            "Another developer can inspect the code"
+          ],
+          "id": "ZDV-M11",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M10"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M11.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M11.md"
+        },
+        {
+          "title": "Developer defense and handover",
+          "outcomes": [
+            "Explain implementation tradeoffs",
+            "Transfer support knowledge"
+          ],
+          "topics": [
+            "Practical defense",
+            "Code explanation",
+            "Operations handover"
+          ],
+          "lab": "Demonstrate the capstone, answer scenario questions and repeat a repair task.",
+          "evidence": "Portfolio bundle and final practical.",
+          "acceptance_checks": [
+            "Learner explains code independently",
+            "All required tests pass",
+            "Handover includes limitations and maintenance"
+          ],
+          "id": "ZDV-M12",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "ZDV-M11"
+          ],
+          "practical_lab_path": "materials/lesson_plans/ZDV-M12.md",
+          "trainer_key_path": "materials/trainer_keys/ZDV-M12.md"
+        }
+      ],
+      "live_hours": 48,
+      "practice_hours": 24,
+      "total_hours": 72,
+      "assessment_weights": {
+        "quizzes": 15,
+        "module_labs": 35,
+        "capstone": 40,
+        "practical_defense": 10
+      },
+      "pass_rules": {
+        "overall_min": 70,
+        "practical_min": 70,
+        "attendance_min_percent": 80,
+        "critical_checks_must_pass": true,
+        "final_reviewer_required": true
+      }
+    },
+    {
+      "id": "AAB",
+      "title": "AI and Agentic Business Automation Builder",
+      "audience": "Zoho developers, automation practitioners and technical corporate teams",
+      "level": "Applied Builder",
+      "weeks": 10,
+      "unit_live": 4,
+      "unit_practice": 2,
+      "prerequisites": "Basic business process and spreadsheet skills. A Python or JavaScript bridge is required for the coded track; a supervised workflow track can use no code tools.",
+      "outcome": "Build an evaluated knowledge assistant and a bounded draft generation workflow for a business use case.",
+      "tools": "Approved model access, sanitized knowledge documents, a workflow tool or coding environment, mock business APIs and an evaluation dataset.",
+      "sources": [
+        "S07",
+        "S08"
+      ],
+      "capstone": "Build a Wooplix style Academy assistant that drafts a cited lesson or knowledge answer and proposes a reviewed change.",
+      "deliverables": "Use case brief, knowledge manifest, retrieval design, prompt and schema, draft workflow, 20 evaluation cases, cost log, permission design and demonstration.",
+      "tests": "Supported question; missing source; stale source; conflicting source; unauthorized document; malicious instruction in a document; invalid output; tool failure; duplicate action proposal; request to issue a certificate.",
+      "modules": [
+        {
+          "title": "AI use cases and limits",
+          "outcomes": [
+            "Select a measurable automation use case",
+            "Distinguish generation from deterministic execution"
+          ],
+          "topics": [
+            "Language model basics",
+            "Business task analysis",
+            "Accuracy and verification"
+          ],
+          "lab": "Compare three academy use cases and select one with an observable success measure.",
+          "evidence": "Use case scorecard and baseline.",
+          "acceptance_checks": [
+            "Task has a clear user",
+            "Failure consequence is stated",
+            "Baseline work can be measured"
+          ],
+          "id": "AAB-M01",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [],
+          "practical_lab_path": "materials/lesson_plans/AAB-M01.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M01.md"
+        },
+        {
+          "title": "Prompt design and structured output",
+          "outcomes": [
+            "Write an input and output contract",
+            "Test a prompt against examples"
+          ],
+          "topics": [
+            "Task context and examples",
+            "Schemas",
+            "Missing information behavior"
+          ],
+          "lab": "Generate a lesson outline from approved topics with required fields.",
+          "evidence": "Prompt, schema and five trial outputs.",
+          "acceptance_checks": [
+            "Required fields appear",
+            "Assumptions are labeled",
+            "Unsupported details are marked for review"
+          ],
+          "id": "AAB-M02",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M01"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M02.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M02.md"
+        },
+        {
+          "title": "Business workflows",
+          "outcomes": [
+            "Separate proposal from execution",
+            "Map exception and review paths"
+          ],
+          "topics": [
+            "Triggers and stages",
+            "Human review",
+            "Deterministic checks"
+          ],
+          "lab": "Design an assignment draft workflow with a trainer review step.",
+          "evidence": "Workflow diagram and decision rules.",
+          "acceptance_checks": [
+            "Each stage has an owner",
+            "Failures have a recovery path",
+            "Publication is a separate action"
+          ],
+          "id": "AAB-M03",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M02"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M03.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M03.md"
+        },
+        {
+          "title": "Knowledge preparation",
+          "outcomes": [
+            "Classify usable source material",
+            "Keep source and permission metadata"
+          ],
+          "topics": [
+            "Cleaning and sanitization",
+            "Chunking",
+            "Versions and access labels"
+          ],
+          "lab": "Convert three synthetic academy notes into indexed knowledge records.",
+          "evidence": "Knowledge manifest and cleaned records.",
+          "acceptance_checks": [
+            "Each record has an owner and date",
+            "Confidential content is excluded",
+            "Draft and approved sources are distinguished"
+          ],
+          "id": "AAB-M04",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M03"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M04.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M04.md"
+        },
+        {
+          "title": "Retrieval and cited answers",
+          "outcomes": [
+            "Retrieve relevant context",
+            "Explain when the assistant should abstain"
+          ],
+          "topics": [
+            "Search and embeddings concepts",
+            "RAG",
+            "Citations and relevance"
+          ],
+          "lab": "Answer five questions using only the supplied knowledge set.",
+          "evidence": "Answers with source identifiers and retrieval notes.",
+          "acceptance_checks": [
+            "Citations support the answer",
+            "Missing evidence causes abstention",
+            "Conflicting sources are surfaced"
+          ],
+          "id": "AAB-M05",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M04"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M05.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M05.md"
+        },
+        {
+          "title": "Tools and bounded agents",
+          "outcomes": [
+            "Define an allowed tool contract",
+            "Constrain action proposals"
+          ],
+          "topics": [
+            "Tool inputs and outputs",
+            "Planning and state",
+            "Allowlist and permissions"
+          ],
+          "lab": "Implement or simulate course lookup and draft lesson tools.",
+          "evidence": "Tool contracts and workflow traces.",
+          "acceptance_checks": [
+            "Inputs are validated",
+            "Unauthorized requests are denied",
+            "No unrestricted execution tool is exposed"
+          ],
+          "id": "AAB-M06",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M05"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M06.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M06.md"
+        },
+        {
+          "title": "Evaluation and adversarial cases",
+          "outcomes": [
+            "Design realistic evaluation cases",
+            "Measure task success and failure"
+          ],
+          "topics": [
+            "Golden examples",
+            "Injection attempts",
+            "Human and automated evaluation"
+          ],
+          "lab": "Build a 20 case evaluation set including five failure or adversarial cases.",
+          "evidence": "Evaluation CSV and result report.",
+          "acceptance_checks": [
+            "Cases include missing sources",
+            "Permission violations are counted separately",
+            "Scoring rules are reproducible"
+          ],
+          "id": "AAB-M07",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M06"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M07.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M07.md"
+        },
+        {
+          "title": "Operations and cost",
+          "outcomes": [
+            "Measure usage and latency",
+            "Plan bounded retries and cost limits"
+          ],
+          "topics": [
+            "Tokens and request logging",
+            "Timeouts and retry policy",
+            "Quality versus cost"
+          ],
+          "lab": "Measure a small controlled workflow and design a per run budget.",
+          "evidence": "Usage log and operating limits.",
+          "acceptance_checks": [
+            "Observed values are separated from estimates",
+            "Retries are bounded",
+            "Logs avoid sensitive content"
+          ],
+          "id": "AAB-M08",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M07"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M08.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M08.md"
+        },
+        {
+          "title": "Capstone workflow build",
+          "outcomes": [
+            "Connect approved knowledge and generation",
+            "Stage a reviewable update"
+          ],
+          "topics": [
+            "Draft generation",
+            "Validation",
+            "Version history"
+          ],
+          "lab": "Build the Academy assistant and test a curriculum update request.",
+          "evidence": "Draft artifact, change report and evaluation results.",
+          "acceptance_checks": [
+            "Update preserves existing evidence",
+            "Changed files are identified",
+            "No automatic credential or external write occurs"
+          ],
+          "id": "AAB-M09",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M08"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M09.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M09.md"
+        },
+        {
+          "title": "Builder demonstration and defense",
+          "outcomes": [
+            "Demonstrate success and safe failure",
+            "Explain limitations and maintenance"
+          ],
+          "topics": [
+            "Evaluation review",
+            "Practical defense",
+            "Support handover"
+          ],
+          "lab": "Demonstrate ten capstone scenarios and explain five remaining evaluation cases.",
+          "evidence": "Final assistant bundle and reviewer score.",
+          "acceptance_checks": [
+            "Twenty evaluation cases are recorded",
+            "Critical permission tests all pass",
+            "Human reviewer owns final acceptance"
+          ],
+          "id": "AAB-M10",
+          "live_hours": 4,
+          "practice_hours": 2,
+          "depends_on": [
+            "AAB-M09"
+          ],
+          "practical_lab_path": "materials/lesson_plans/AAB-M10.md",
+          "trainer_key_path": "materials/trainer_keys/AAB-M10.md"
+        }
+      ],
+      "live_hours": 40,
+      "practice_hours": 20,
+      "total_hours": 60,
+      "assessment_weights": {
+        "quizzes": 15,
+        "module_labs": 35,
+        "capstone": 40,
+        "practical_defense": 10
+      },
+      "pass_rules": {
+        "overall_min": 70,
+        "practical_min": 70,
+        "attendance_min_percent": 80,
+        "critical_checks_must_pass": true,
+        "final_reviewer_required": true
+      }
+    },
+    {
+      "id": "CAW",
+      "title": "Corporate AI and Automation Discovery Workshop",
+      "audience": "Department leaders and employee teams with one business process to improve",
+      "level": "Workshop",
+      "weeks": 2,
+      "unit_live": 2,
+      "unit_practice": 1,
+      "prerequisites": "Sponsor identifies one process, attendees, available tools and approved synthetic examples before the workshop.",
+      "outcome": "Produce a prioritized automation opportunity and a reviewed small pilot brief.",
+      "tools": "Facilitator demonstration account, process worksheet and synthetic examples; attendees do not need production admin access.",
+      "sources": [
+        "S01",
+        "S08"
+      ],
+      "capstone": "Select one department process and define a small automation pilot.",
+      "deliverables": "Baseline process, opportunity scorecard, sample assisted output and pilot brief with owner and acceptance measures.",
+      "tests": "Missing input; incorrect generated answer; unsupported action; reviewer rejection.",
+      "modules": [
+        {
+          "title": "Business baseline",
+          "outcomes": [
+            "Map a current departmental process",
+            "Identify measurable delays"
+          ],
+          "topics": [
+            "Process walkthrough",
+            "Role mapping",
+            "Baseline measures"
+          ],
+          "lab": "Map lead follow up, support triage or employee onboarding.",
+          "evidence": "Current process and measured or explicitly estimated baseline.",
+          "acceptance_checks": [
+            "Sponsor agrees the process",
+            "Measures have units",
+            "Estimates are labeled"
+          ],
+          "id": "CAW-M01",
+          "live_hours": 2,
+          "practice_hours": 1,
+          "depends_on": [],
+          "practical_lab_path": "materials/lesson_plans/CAW-M01.md",
+          "trainer_key_path": "materials/trainer_keys/CAW-M01.md"
+        },
+        {
+          "title": "AI assisted work",
+          "outcomes": [
+            "Test an assisted task",
+            "Identify where review is required"
+          ],
+          "topics": [
+            "Prompt examples",
+            "Output verification",
+            "Sensitive data handling"
+          ],
+          "lab": "Use synthetic inputs to draft a follow up or support summary.",
+          "evidence": "Before and after task example.",
+          "acceptance_checks": [
+            "Output is checked against input",
+            "Confidential data is excluded",
+            "Reviewer ownership is clear"
+          ],
+          "id": "CAW-M02",
+          "live_hours": 2,
+          "practice_hours": 1,
+          "depends_on": [
+            "CAW-M01"
+          ],
+          "practical_lab_path": "materials/lesson_plans/CAW-M02.md",
+          "trainer_key_path": "materials/trainer_keys/CAW-M02.md"
+        },
+        {
+          "title": "Automation opportunity design",
+          "outcomes": [
+            "Prioritize feasible opportunities",
+            "Explain exception handling"
+          ],
+          "topics": [
+            "Value and feasibility",
+            "Workflow design",
+            "Tool and permission needs"
+          ],
+          "lab": "Rank three opportunities and diagram one small pilot.",
+          "evidence": "Opportunity scorecard and pilot workflow.",
+          "acceptance_checks": [
+            "Dependencies are named",
+            "Failure paths exist",
+            "No unverified savings claim is presented"
+          ],
+          "id": "CAW-M03",
+          "live_hours": 2,
+          "practice_hours": 1,
+          "depends_on": [
+            "CAW-M02"
+          ],
+          "practical_lab_path": "materials/lesson_plans/CAW-M03.md",
+          "trainer_key_path": "materials/trainer_keys/CAW-M03.md"
+        },
+        {
+          "title": "Pilot and follow through",
+          "outcomes": [
+            "Define pilot acceptance and ownership",
+            "Prepare a discovery handoff"
+          ],
+          "topics": [
+            "Pilot scope",
+            "Success measures",
+            "Next decision"
+          ],
+          "lab": "Finalize a two week pilot brief using this module one hour of follow through and the three preceding module hours.",
+          "evidence": "Reviewed pilot brief.",
+          "acceptance_checks": [
+            "Scope is bounded",
+            "Owner and review date exist",
+            "Consulting discussion requires sponsor agreement"
+          ],
+          "id": "CAW-M04",
+          "live_hours": 2,
+          "practice_hours": 1,
+          "depends_on": [
+            "CAW-M03"
+          ],
+          "practical_lab_path": "materials/lesson_plans/CAW-M04.md",
+          "trainer_key_path": "materials/trainer_keys/CAW-M04.md"
+        }
+      ],
+      "live_hours": 8,
+      "practice_hours": 4,
+      "total_hours": 12,
+      "assessment_weights": {
+        "pilot_brief": 70,
+        "demonstration": 30
+      },
+      "pass_rules": {
+        "overall_min": 70,
+        "practical_min": 70,
+        "attendance_min_percent": 80,
+        "critical_checks_must_pass": true,
+        "final_reviewer_required": true
+      }
+    }
+  ],
+  "updated_on": "2026-10-03"
+}

@@ -1,0 +1,2 @@
+requirement_id,owner,trigger,behavior,normal_case,exception_case,assumption,design_ref,test_ref,review_status
+R01,Sales Operations,valid new lead,route by region,West to West Sales,blank to Review Queue,working-hours policy pending,,,proposed

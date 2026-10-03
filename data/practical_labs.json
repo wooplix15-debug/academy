@@ -1,0 +1,2619 @@
+[
+  {
+    "id": "ZIM-M01",
+    "course_id": "ZIM",
+    "title": "Discovery and scope",
+    "concept": "A requirement describes observable business behavior. A preference such as faster follow up needs a clock, a responsible person and an exception path before it can be tested.",
+    "demonstration": "Manager says new West-region leads should go to West Sales. Rewrite as R01: when a new valid West lead arrives, assign West Sales and record assignment time; missing region goes to the review queue. The proposed first-response target is four business hours, not a claim about Nova performance.",
+    "steps": [
+      "Role-play manager, sales representative and administrator",
+      "Capture eight requirements with IDs and owners",
+      "Separate a requirement from the feature chosen to implement it",
+      "Add one normal and one exception acceptance case to each requirement"
+    ],
+    "expected": "Eight requirements, sixteen acceptance cases and a scope section. R01 must include the missing-region path. Keep unresolved working-hours and holiday definitions visible.",
+    "negative": "The manager asks for guaranteed revenue improvement. Do not convert this into an acceptance test without evidence and an agreed measurement design.",
+    "recovery": "The sponsor changes region ownership. Revise R01, identify affected routing and access tests, and keep its previous version.",
+    "independent": "Interview a support-team persona and create four additional requirements without using the sales examples.",
+    "oral_question": "Why is assign leads quickly not testable?",
+    "oral_answer": "It omits the trigger, time measure, owner and exception behavior. Specify these before configuration.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Discovery brief and scope statement.",
+    "acceptance_checks": [
+      "Every requirement has an owner",
+      "Acceptance criteria can be tested",
+      "Unanswered questions remain visible"
+    ],
+    "outcomes": [
+      "Write testable requirements",
+      "Separate scope assumptions and exclusions"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M02",
+    "course_id": "ZIM",
+    "title": "Solution and data design",
+    "concept": "Store a business fact once and connect records through relationships. Repeated customer names are not a reliable identity rule; people can share names and names can change.",
+    "demonstration": "Nova has account A001, contacts C001 and C002, and deals D001 and D002. Both deals reference A001; a delivery request references D001. Updating the account name must not require editing four copies.",
+    "steps": [
+      "Identify Accounts, Contacts, Deals and Delivery Requests",
+      "Assign a stable key and data owner to each",
+      "Draw one-to-many relationships and mark optional lookups",
+      "Map all eight requirements to a field, configuration feature or explicit gap"
+    ],
+    "expected": "A dictionary with field type, API name to verify, required rule, owner and sample value. Deal amount uses INR in this exercise and cannot be a free text string.",
+    "negative": "Create two customers called Nova Services. The design must keep their identifiers distinct rather than merging by display name.",
+    "recovery": "Rename account A001 and show that linked deals still reference the same identity.",
+    "independent": "Add a recurring service renewal without duplicating the original account; explain the new entity or field decision.",
+    "oral_question": "When should a new module be created?",
+    "oral_answer": "When a distinct entity has its own lifecycle or repeated records and cannot be represented clearly by existing relationships. Document the tradeoff.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Diagram and configuration decision log.",
+    "acceptance_checks": [
+      "Every entity has an identifier",
+      "Required fields have a business reason",
+      "Each requirement maps to a feature or gap"
+    ],
+    "outcomes": [
+      "Map requirements to configuration",
+      "Design field and relationship choices"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M01"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M03",
+    "course_id": "ZIM",
+    "title": "Permissions and environment",
+    "concept": "A profile controls allowed operations; role and sharing choices affect record visibility. Test both with actual training personas, because a diagram alone does not prove access.",
+    "demonstration": "Sales West can edit assigned West leads; Sales East cannot read West-only records; the manager can review both regions; the integration persona receives only the operations needed by its contract.",
+    "steps": [
+      "Create an operation-by-persona matrix",
+      "Configure three training users or simulate unavailable roles on paper",
+      "Test own-region read and edit",
+      "Test other-region read, export and administrative changes",
+      "Record edition, sharing rules and observed results"
+    ],
+    "expected": "At least six allowed and six denied checks with tester, expected outcome and evidence. Screenshots must not contain credentials.",
+    "negative": "Try exporting records using the Sales East persona when export is denied by the proposed profile. A denial must be observable, not assumed.",
+    "recovery": "Remove an accidental broad sharing rule and repeat every visibility test it could affect.",
+    "independent": "Design access for a temporary reviewer who needs read-only deal access for one department.",
+    "oral_question": "Why does hiding a field on a page not prove security?",
+    "oral_answer": "UI visibility and underlying read or API permissions can differ. Test the relevant authorized access paths.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Access matrix and test evidence.",
+    "acceptance_checks": [
+      "Sales access meets scope",
+      "Manager visibility is tested",
+      "Admin privileges are not given to all learners"
+    ],
+    "outcomes": [
+      "Test a role based access model",
+      "Plan separated test and production work"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M02"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M04",
+    "course_id": "ZIM",
+    "title": "Workflow configuration",
+    "concept": "Automation is an event plus a condition plus an action. A rule that works on creation may produce repeated tasks on later edits unless its event and duplicate behavior are deliberate.",
+    "demonstration": "For valid West leads, assignment selects West Sales. A follow-up task uses a proposed business key lead_id plus follow_up_type. L001 edited twice must still have one intended follow-up task.",
+    "steps": [
+      "Write a trigger-condition-action table before configuring",
+      "Build region assignment and follow-up in the training organization",
+      "Test creation then two unrelated edits",
+      "Test missing region",
+      "Record when each action is eligible to fire"
+    ],
+    "expected": "West lead routes to West Sales; missing region routes to review; repeat edits do not create unintended duplicate tasks. If a platform feature cannot enforce the proposed key, record a customization or monitoring gap.",
+    "negative": "An update changes only a phone number. Demonstrate whether the follow-up rule fires again and explain the configuration.",
+    "recovery": "Disable an incorrect rule, remove only its identified training tasks, then replay one input and reconcile counts.",
+    "independent": "Introduce a product-family condition and revise the trigger matrix without breaking missing-region handling.",
+    "oral_question": "Why is a successful first run insufficient?",
+    "oral_answer": "It does not test later edits, condition changes, overlapping rules or duplicate execution.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Two workflows and trigger test matrix.",
+    "acceptance_checks": [
+      "Positive and negative cases pass",
+      "Repeated events are considered",
+      "Automation ownership is recorded"
+    ],
+    "outcomes": [
+      "Build and test conditional automations",
+      "Identify duplicate execution risk"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M03"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M05",
+    "course_id": "ZIM",
+    "title": "Blueprint and approval design",
+    "concept": "A workflow reacts to events. A controlled transition represents a permitted move between business states with required inputs. Approval is a separate business decision that needs an owner and rejection route.",
+    "demonstration": "Synthetic quote policy: amount greater than INR 50000 requires manager review. INR 50000 takes the normal route; INR 50001 needs approval. Proposed states are Draft, Review, Approved, Sent and Rejected.",
+    "steps": [
+      "Draw permitted transitions before opening Blueprint",
+      "Add required quote amount and review evidence",
+      "Configure the available training features or simulate unavailable approval behavior",
+      "Test boundary values 49999, 50000 and 50001",
+      "Test rejection and resubmission"
+    ],
+    "expected": "A quote requiring approval cannot be sent through the normal route. Rejected quotes return for correction with their history intact. Record the edition and exact feature used.",
+    "negative": "Attempt Draft to Sent for INR 50001 with no approval. Expected outcome is a blocked transition under the proposed policy.",
+    "recovery": "Reject then revise the amount and resubmit. Record whether prior approval is invalidated by the policy.",
+    "independent": "Add a discount-above-15-percent review rule and write all boundary tests before configuration.",
+    "oral_question": "Does a Blueprint automatically implement every approval requirement?",
+    "oral_answer": "No. Map the requirement to the supported transition, approval or custom behavior and verify it in the training edition.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Blueprint diagram and transition evidence.",
+    "acceptance_checks": [
+      "Invalid progression is blocked",
+      "Rejection path is usable",
+      "Feature availability is checked in the training edition"
+    ],
+    "outcomes": [
+      "Represent controlled stages and transitions",
+      "Explain approval and exception handling"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M04"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M06",
+    "course_id": "ZIM",
+    "title": "Data migration",
+    "concept": "Migration is a controlled transformation with evidence. A source count alone is not enough: rejected and intentionally excluded rows need separate reasons and stable source identifiers.",
+    "demonstration": "The new leads_50.csv fixture has 50 rows. Lab policy requires name, company and syntactically valid email. Rows 43-47 are invalid and rows 48-50 duplicate emails 1-3. Keep the first valid email occurrence: 42 accepted, 5 rejected, 3 excluded.",
+    "steps": [
+      "Preserve the source file and record its hash",
+      "Map fields and normalize email case and whitespace",
+      "Run the offline validator before a trial import",
+      "Import only the accepted file into a training organization",
+      "Reconcile source IDs to target IDs",
+      "Rehearse removal using the migration batch identifier"
+    ],
+    "expected": "50 = 42 accepted + 5 rejected + 3 excluded. Offline accepted is not proof of 42 successful Zoho imports; record target success and failures separately after the actual trial.",
+    "negative": "Change one accepted row to an existing destination email. Predict the chosen import duplicate behavior and reconcile its actual result.",
+    "recovery": "Rollback only records created by the trial batch. Restore separately any existing record the import changed.",
+    "independent": "Change policy to permit a blank company, rerun classification and explain the count difference.",
+    "oral_question": "Why preserve a migration batch ID?",
+    "oral_answer": "It links evidence to a specific run and limits rollback scope; record counts alone cannot identify affected records.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Migration checklist and reconciliation report.",
+    "acceptance_checks": [
+      "Source equals imported plus rejected plus intentionally excluded",
+      "Rejected records have reasons",
+      "Rollback steps are documented"
+    ],
+    "outcomes": [
+      "Reconcile source and target records",
+      "Prepare a reversible migration procedure"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M05"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M07",
+    "course_id": "ZIM",
+    "title": "Integration planning",
+    "concept": "An integration contract states identity, field ownership, accepted payloads, responses and recovery. A timeout does not reveal whether the destination already committed.",
+    "demonstration": "Deal D001 emits event EVT001 with request key NOVA-D001. The destination stores that key uniquely. If its response is lost after committing, querying the key must find the existing request before any retry decision.",
+    "steps": [
+      "Write source-to-destination field mappings",
+      "Define request key and version ownership",
+      "Describe allowed OAuth scopes and training environment",
+      "Walk through success, denied authorization and ambiguous timeout",
+      "Link the contract to the synchronization simulator"
+    ],
+    "expected": "One destination business record for NOVA-D001 even after replay; an unresolved timeout is marked unknown until reconciled. Real API behavior still needs a connected sandbox test.",
+    "negative": "Return a permission denial. Do not repeatedly retry the same operation using broader access.",
+    "recovery": "Lose the success response after commit, query by stable key and reconcile before replay.",
+    "independent": "Add a destination-maintained delivery date and explain why the CRM writer must not overwrite it.",
+    "oral_question": "Can an HTTP timeout be treated as a failed write?",
+    "oral_answer": "No. The write may have committed; reconcile identity before retrying.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Contract, sample payload and failure log.",
+    "acceptance_checks": [
+      "Credentials are not in artifacts",
+      "Duplicate event behavior is specified",
+      "Environment specific authorization is respected"
+    ],
+    "outcomes": [
+      "Define a minimal integration contract",
+      "Test authentication and failure behavior"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M06"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M08",
+    "course_id": "ZIM",
+    "title": "Reporting and adoption",
+    "concept": "A useful metric has a population, numerator, denominator, time window and exclusions. Adoption evidence comes from users completing tasks, not attendance alone.",
+    "demonstration": "Synthetic weekly cohort: 20 qualified leads and 5 converted leads gives 25 percent cohort conversion. Open pipeline INR 120000 plus INR 80000 equals INR 200000; closed or cancelled deals are excluded.",
+    "steps": [
+      "Define conversion and open-pipeline metrics",
+      "Calculate the examples by hand",
+      "Reproduce them in a report using verified filters",
+      "Ask a learner to create, qualify and hand off a lead without narration",
+      "Record errors and support owner"
+    ],
+    "expected": "The report reproduces 25 percent and INR 200000 for the supplied example. Numerator belongs to the same lead cohort as denominator; currency is shown.",
+    "negative": "Mix conversions from old leads with only this week new leads. Identify why the resulting rate is invalid.",
+    "recovery": "Correct the date filters, recalculate and annotate the previous dashboard error.",
+    "independent": "Define time-to-first-response including business hours and pending exceptions.",
+    "oral_question": "Why can a high attendance rate coexist with poor adoption?",
+    "oral_answer": "Learners may attend but fail core tasks. Measure task completion and support demand alongside participation.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Metric definitions and training outline.",
+    "acceptance_checks": [
+      "Filters and denominators are explicit",
+      "Users can complete core tasks",
+      "Support ownership is named"
+    ],
+    "outcomes": [
+      "Define business metrics correctly",
+      "Plan end user adoption"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M07"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M09",
+    "course_id": "ZIM",
+    "title": "UAT and release",
+    "concept": "User acceptance testing traces business requirements to observed outcomes. A checked box without inputs, tester and evidence cannot support a release decision.",
+    "demonstration": "R01 routes a valid West lead to West Sales. UAT01 records L001, Sales West persona, expected owner, actual owner and screenshot reference. UAT02 tests missing region and expects review queue.",
+    "steps": [
+      "Select eight end-to-end scenarios from the requirement matrix",
+      "Run them with relevant personas",
+      "Compare expected to actual",
+      "Classify defects by business consequence",
+      "Rehearse recovery in training",
+      "Write release recommendation and unresolved limitations"
+    ],
+    "expected": "Eight cases have explicit pass or fail and evidence. Any critical permission or unintended-write failure blocks the proposed release, even if the numerical score passes.",
+    "negative": "Seed a broad sharing defect and confirm the access case fails and blocks release.",
+    "recovery": "Fix the sharing defect, rerun impacted tests and keep original failure evidence.",
+    "independent": "Add a scope change after UAT and choose the regression tests affected by it.",
+    "oral_question": "Who accepts a business requirement?",
+    "oral_answer": "The named business owner or authorized reviewer accepts evidence; the implementer does not substitute a successful configuration screen.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Signed style UAT template and release checklist.",
+    "acceptance_checks": [
+      "Each requirement has evidence",
+      "Critical defects block release",
+      "Rollback is rehearsed in the training environment"
+    ],
+    "outcomes": [
+      "Run acceptance tests against requirements",
+      "Write a release and recovery plan"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M08"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZIM-M10",
+    "course_id": "ZIM",
+    "title": "Implementation defense",
+    "concept": "A handover transfers the ability to operate, diagnose and recover the implementation. The practical defense checks learner understanding beyond a prepared demonstration.",
+    "demonstration": "Give a second trainer only the configuration register and runbook. Ask them to locate R01, explain its routing, diagnose a missing region and find recovery steps without help.",
+    "steps": [
+      "Assemble prior module evidence into one indexed bundle",
+      "Demonstrate eight UAT cases",
+      "Explain one configuration tradeoff",
+      "Receive a surprise region-rule change",
+      "Update the change record and show impacted tests",
+      "Ask a peer to execute the runbook"
+    ],
+    "expected": "Reviewer can trace every requirement to design, configuration and test evidence. The learner can explain the change and limits independently.",
+    "negative": "A reviewer asks for production deployment or an official Zoho certificate. Record these as outside the training exercise.",
+    "recovery": "The peer cannot find the failed-rule owner. Repair the runbook and repeat the handover test.",
+    "independent": "Prepare a ten-minute department-specific demonstration using the same implementation.",
+    "oral_question": "What proves the handover is usable?",
+    "oral_answer": "Another person performs an agreed operation or recovery task using the supplied documentation and records the result.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Capstone bundle and reviewer feedback.",
+    "acceptance_checks": [
+      "Eight acceptance scenarios pass",
+      "Known limitations are disclosed",
+      "Another trainer can follow the handover"
+    ],
+    "outcomes": [
+      "Demonstrate business fit and configuration",
+      "Complete a delivery handover"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S06",
+      "S09",
+      "S11"
+    ],
+    "depends_on": [
+      "ZIM-M09"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M01",
+    "course_id": "ZDV",
+    "title": "Application requirements and model",
+    "concept": "A stable business key identifies the operation across systems. A transport event ID identifies a delivery attempt. Keeping these separate prevents a replay from becoming a new business request.",
+    "demonstration": "Customer C001 has request SR001 with business key NOVA-D001 and work items W001 and W002. CRM owns deal amount; Creator owns technician assignment and completion status.",
+    "steps": [
+      "Write six user stories for request capture, assignment and closure",
+      "Draw Customer to Request to Work Item relationships",
+      "Define unique request key",
+      "Assign ownership for each shared field",
+      "Add a duplicate-request acceptance test"
+    ],
+    "expected": "Three entities, explicit cardinalities and a field-owner table. Two deliveries with different event IDs but the same request key represent one business request.",
+    "negative": "Send EVT001 and EVT002 for NOVA-D001. Do not create two requests merely because event IDs differ.",
+    "recovery": "Repair an incorrect lookup using recorded source and target IDs without deleting unrelated work items.",
+    "independent": "Model a request that contains multiple visits and explain where visit history belongs.",
+    "oral_question": "Why is an event ID not always an idempotency key?",
+    "oral_answer": "Distinct events can refer to the same business operation. Choose a key that matches the operation being made unique.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Entity diagram and six user stories.",
+    "acceptance_checks": [
+      "Relationships match requirements",
+      "Uniqueness rule is defined",
+      "Ownership of shared fields is explicit"
+    ],
+    "outcomes": [
+      "Design entities for a service workflow",
+      "Identify data ownership"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M02",
+    "course_id": "ZDV",
+    "title": "Creator forms and reports",
+    "concept": "Form fields capture validated data; reports present a specific user task. A lookup must preserve identity, and a report filter must be stated explicitly.",
+    "demonstration": "Requests SR001 Open, SR002 Closed and SR003 Open should produce two rows in the open-request report. Work item W001 selects SR001 by lookup, not a copied customer name.",
+    "steps": [
+      "Create customer, request and work-item forms",
+      "Choose lookup and numeric types",
+      "Add a request-status allowed set",
+      "Create an Open-only report",
+      "Enter three requests and two work items",
+      "Verify links and counts"
+    ],
+    "expected": "Open report contains SR001 and SR003 only. Each work item resolves to the intended request. Export the dictionary with proposed API names for later verification.",
+    "negative": "Select an invalid or missing request reference. Validation must reject it or require a documented correction route.",
+    "recovery": "Change SR003 to Closed and verify the filtered report now contains one row.",
+    "independent": "Add a technician-specific open-work report and test another technician persona.",
+    "oral_question": "Why avoid a text field for a relationship?",
+    "oral_answer": "Text does not enforce record identity and can become stale or ambiguous.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "App screenshots and data dictionary.",
+    "acceptance_checks": [
+      "Lookups connect intended records",
+      "Validation catches bad input",
+      "Report filters match user tasks"
+    ],
+    "outcomes": [
+      "Build related forms",
+      "Create appropriate views for users"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M01"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M03",
+    "course_id": "ZDV",
+    "title": "Deluge language essentials",
+    "concept": "Normalization needs explicit type and missing-value rules. Do not confuse zero with missing, or silently convert malformed text to a valid amount.",
+    "demonstration": "Five payloads: amount 0 remains valid; amount \"1250\" becomes numeric 1250; absent amount fails validation; amount \"twelve\" fails parsing; email \" A@Example.Test \" becomes \"a@example.test\".",
+    "steps": [
+      "Write a five-row input-output table",
+      "Build Deluge maps and lists in the training editor",
+      "Trace conditional branches for each payload",
+      "Handle missing and malformed amounts separately",
+      "Compare every output to the table"
+    ],
+    "expected": "Two valid numeric transformations, two explicit amount errors, and one normalized email example. Log only synthetic identifiers and error codes.",
+    "negative": "Replace a missing-value check with a truthiness check and show how it wrongly rejects zero.",
+    "recovery": "Correct the check and rerun all five cases, including a zero-value boundary.",
+    "independent": "Normalize an optional date using an explicit expected format and reject an invalid date.",
+    "oral_question": "Should a missing amount default to zero?",
+    "oral_answer": "Only if an approved business rule permits it; otherwise the default hides a data-quality failure.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Commented script and expected outputs.",
+    "acceptance_checks": [
+      "Null values are handled",
+      "Each output matches the input rule",
+      "Learner explains the control flow"
+    ],
+    "outcomes": [
+      "Use variables lists maps and conditions",
+      "Trace a script with sample values"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M02"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M04",
+    "course_id": "ZDV",
+    "title": "Deluge functions and debugging",
+    "concept": "A reusable function exposes an input-output contract. Debugging is a controlled experiment: reproduce, isolate, repair and regress using the smallest relevant input.",
+    "demonstration": "Seeded defects: treating zero as absent; comparing number 10 to string \"10\" without normalization; returning success before checking required customer ID. Each gets a failing input and expected output.",
+    "steps": [
+      "Define validate_request input keys and output ok plus errors",
+      "Reproduce all three defects",
+      "Add one failing case per defect",
+      "Repair one defect at a time",
+      "Rerun valid and invalid cases",
+      "Replace sensitive logs with request ID and error code"
+    ],
+    "expected": "Validation returns ok false with named reasons for bad inputs, and preserves zero when allowed. Debug notes show cause and evidence, not only final code.",
+    "negative": "Supply an empty customer ID with otherwise valid fields. Validation must fail.",
+    "recovery": "Inject a controlled exception, return a typed failure and preserve a correlation ID for support.",
+    "independent": "Extract a normalization function and define whether it mutates the original map.",
+    "oral_question": "Why rerun a previously passing case after a repair?",
+    "oral_answer": "The repair may change behavior outside the original defect; regression cases detect that impact.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Function and debugging notes.",
+    "acceptance_checks": [
+      "Inputs have a contract",
+      "Logs omit tokens and personal data",
+      "Each defect has a reproducible test"
+    ],
+    "outcomes": [
+      "Write reusable functions",
+      "Diagnose failure from controlled logs"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M03"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M05",
+    "course_id": "ZDV",
+    "title": "Form events and workflow behavior",
+    "concept": "Choose an event according to whether persistence has occurred. Validation should block invalid input before a write; downstream actions need a separate recoverable stage.",
+    "demonstration": "Negative hours must fail before submission. A valid request persists once, then proposes a CRM handoff. If the handoff fails, the saved request remains visible as Pending Sync instead of disappearing.",
+    "steps": [
+      "Map load, input, validation and post-submit actions",
+      "Verify supported events in current Creator documentation",
+      "Configure hours validation",
+      "Add a post-submit sync marker",
+      "Test valid, invalid, edited and failed-handoff cases"
+    ],
+    "expected": "Invalid hours create no accepted request. A failed external handoff leaves a persisted request with retry ownership and error evidence.",
+    "negative": "Simulate a failed post-submit call and ensure the user sees pending status rather than a false completion message.",
+    "recovery": "Retry the pending handoff by its stable request key and reconcile destination state.",
+    "independent": "Decide how an edit to a completed request is handled and document the event limitations.",
+    "oral_question": "Why is a post-submit validation message too late?",
+    "oral_answer": "The record may already exist. Validate the rule at the supported pre-persistence stage.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Event matrix and four case log.",
+    "acceptance_checks": [
+      "Invalid requests are rejected",
+      "Actions occur at the intended stage",
+      "Edition and event limitations are documented"
+    ],
+    "outcomes": [
+      "Choose the correct form event",
+      "Test validation before persistence"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M04"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M06",
+    "course_id": "ZDV",
+    "title": "REST and JSON contracts",
+    "concept": "An API contract describes types, required fields, pagination and error handling independently of a particular transport library. API names must be verified against the actual organization metadata.",
+    "demonstration": "Mock response data contains record id 1001, External_Request_Key NOVA-D001 and Amount 1250; info.more_records is true. Map only approved fields and request the next page deliberately.",
+    "steps": [
+      "Create a source-to-target mapping table",
+      "Parse the mock success response",
+      "Handle empty data and absent optional fields",
+      "Add pagination stop conditions",
+      "Test malformed JSON and non-success status",
+      "Record metadata and API version to verify"
+    ],
+    "expected": "The mapped request preserves its external key and numeric amount. Empty data yields no fabricated record. Pagination stops on the documented condition or a configured safety limit.",
+    "negative": "Receive HTTP success with a record-level error. Do not treat transport success as business success.",
+    "recovery": "Record the failing page and resume only from a supported cursor or page strategy after diagnosis.",
+    "independent": "Add an optional currency field and a contract version compatibility note.",
+    "oral_question": "What are two layers of API success?",
+    "oral_answer": "The transport status and the operation result in the response body must both be checked.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Contract and mapping table.",
+    "acceptance_checks": [
+      "Required fields are explicit",
+      "Pagination is considered",
+      "Malformed JSON has a handled failure path"
+    ],
+    "outcomes": [
+      "Read an API request and response",
+      "Map payloads to application fields"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M05"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M07",
+    "course_id": "ZDV",
+    "title": "OAuth and connections",
+    "concept": "OAuth delegates permission; a connection stores authorized access for tasks. Scopes, data center, organization and environment are part of the configuration, not strings to copy blindly.",
+    "demonstration": "A read-only CRM connection should read the intended training module. An attempted create must fail if the required operation is outside its granted access. Use placeholders in notes, never a live token.",
+    "steps": [
+      "List exactly which module operations the app needs",
+      "Record training organization and region endpoint",
+      "Create or inspect an authorized connection",
+      "Run an allowed read",
+      "Run a deliberately denied operation",
+      "Save redacted setup and revocation steps"
+    ],
+    "expected": "An allowed read and denied write are evidenced separately. Credential values do not appear in screenshots, source code or learner submissions.",
+    "negative": "Use the wrong organization or insufficient scope. Distinguish configuration failure from a data validation error.",
+    "recovery": "Reauthorize only after the owner confirms the required scope, then rerun the exact failed operation.",
+    "independent": "Design separate test and production connection names and prevent accidental cross-environment selection.",
+    "oral_question": "Why not solve every denial with full access?",
+    "oral_answer": "The correct operation may be disallowed by design. Match permission to the reviewed contract.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Setup guide with redacted evidence.",
+    "acceptance_checks": [
+      "No secret is submitted",
+      "Scopes match the lab",
+      "Test and production environments are distinguished"
+    ],
+    "outcomes": [
+      "Explain delegated authorization",
+      "Configure minimum required access"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M06"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M08",
+    "course_id": "ZDV",
+    "title": "Deluge integrations",
+    "concept": "A Deluge integration wrapper still calls a versioned product API and consumes limits. Treat each response as evidence and plan batching or scheduling from observed operation costs.",
+    "demonstration": "Plan ten records with one lookup and one write each: estimated 20 operations before retries. This is an exercise estimate; current CRM credits and concurrency depend on operation, edition and organization.",
+    "steps": [
+      "Locate the official wrapper signature for the chosen API version",
+      "Verify parameter order and connection name",
+      "Build a sample request with synthetic values",
+      "Execute in training or use the mock contract",
+      "Check body-level success",
+      "Estimate calls and record actual usage when available"
+    ],
+    "expected": "The record key and returned ID are captured without secrets. The call estimate states assumptions and retry allowance. No fixed platform limit is invented.",
+    "negative": "Return a record validation error within a response. Route it to correction rather than retrying unchanged input.",
+    "recovery": "Simulate quota exhaustion, pause work and resume according to observed platform signals and configured retry bounds.",
+    "independent": "Compare individual writes with a documented batch operation including partial failures.",
+    "oral_question": "Why can a batch HTTP success still require investigation?",
+    "oral_answer": "Individual records may fail; reconciliation must examine each result.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Integration code and response log.",
+    "acceptance_checks": [
+      "API version is recorded",
+      "Response success is checked",
+      "External call consumption is estimated"
+    ],
+    "outcomes": [
+      "Use documented integration tasks",
+      "Handle external call limits deliberately"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M07"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M09",
+    "course_id": "ZDV",
+    "title": "Reliable synchronization",
+    "concept": "Idempotency constrains a business effect. A unique key and reconciliation handle replay; version or ownership rules handle conflicting updates. Neither alone proves every side effect runs exactly once.",
+    "demonstration": "The Python simulator receives create NOVA-D001 v1, replay v1, timeout-after-commit NOVA-D002 v1, update D001 v2 and stale D001 v1. Expected: two records, D001 v2 retained, timeout reconciled and stale write rejected.",
+    "steps": [
+      "Run the supplied synchronization simulator",
+      "Trace the unique-key transaction",
+      "Inject a timeout after commit",
+      "Query by business key before retry",
+      "Replay duplicates",
+      "Attempt stale and conflicting versions",
+      "Document where real Zoho behavior differs from this local model"
+    ],
+    "expected": "Two destination rows, one for each key; amount 1500 for D001 v2; no downgrade to v1; explicit unknown-outcome reconciliation. SQL uniqueness is a local teaching guarantee, not a Zoho API guarantee.",
+    "negative": "Submit the same key and version with a different amount. Expected conflict rather than silent overwrite.",
+    "recovery": "Read destination by key after timeout, then compare version and payload to decide whether replay is necessary.",
+    "independent": "Simulate two workers and propose transaction or destination uniqueness control for their race.",
+    "oral_question": "Does upsert alone guarantee exactly-once downstream effects?",
+    "oral_answer": "No. It can prevent duplicate records under the chosen key, while workflow actions and other effects still need separate replay analysis.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Sync design and replay evidence.",
+    "acceptance_checks": [
+      "Replay does not create a second business record",
+      "Retry has a bound",
+      "Conflict ownership is documented"
+    ],
+    "outcomes": [
+      "Prevent duplicate business operations",
+      "Design recoverable synchronization"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M08"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M10",
+    "course_id": "ZDV",
+    "title": "Testing and release",
+    "concept": "A useful test suite includes the business success path, invalid input, authorization, replay, partial failure and recovery. Deployment rollback must consider changed data as well as code.",
+    "demonstration": "A ten-case release suite covers required field, lookup, permission, connection failure, duplicate key, lost response, malformed body, quota, conflict and reconciliation.",
+    "steps": [
+      "Create fixtures and expected outcomes for all ten cases",
+      "Execute local mocks and label them as such",
+      "Run available sandbox equivalents separately",
+      "Record defects and impact",
+      "Write code rollback and data recovery steps",
+      "Rehearse one repair"
+    ],
+    "expected": "Each case has input, expected, actual, environment and evidence. Mock passes never appear as live Creator or CRM certification evidence.",
+    "negative": "A release changes a field type while old records remain. Identify migration and backward-compatibility risk.",
+    "recovery": "Restore the previous training version and reconcile records affected by the change.",
+    "independent": "Choose three regression cases for a change to duplicate-key handling and justify the selection.",
+    "oral_question": "Why can restoring old code fail to restore the system?",
+    "oral_answer": "New data or schema changes may be incompatible with the old version.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Test log and deployment notes.",
+    "acceptance_checks": [
+      "Ten scenarios have expected outcomes",
+      "Known defects are recorded",
+      "Rollback includes data impact"
+    ],
+    "outcomes": [
+      "Create meaningful positive and failure tests",
+      "Plan versioned deployment"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M09"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M11",
+    "course_id": "ZDV",
+    "title": "Capstone build and review",
+    "concept": "Integration assembly should reuse prior module artifacts. Code review examines behavior and supportability, including identity, field ownership and failure evidence.",
+    "demonstration": "Trace CRM deal D001 to Creator request SR001 to work item W001. A technician closes W001; the approved status update returns to CRM without overwriting CRM-owned amount.",
+    "steps": [
+      "Assemble forms, validation and reviewed sync contract",
+      "Walk one request through its lifecycle",
+      "Ask a peer to inspect key and ownership handling",
+      "Fix two recorded findings",
+      "Run impacted regression cases",
+      "Complete pending-sync support notes"
+    ],
+    "expected": "Core journey and a failed-handoff path are both demonstrated. Review notes identify the specific behavior changed and its evidence.",
+    "negative": "Destination response omits a required ID. Do not report completed synchronization.",
+    "recovery": "Mark the operation pending investigation and reconcile by business key.",
+    "independent": "Add a cancellation path and identify affected fields, statuses and tests.",
+    "oral_question": "What should a peer review comment contain?",
+    "oral_answer": "A concrete input or scenario, the problematic behavior, its consequence and a verifiable correction.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Working training app and review log.",
+    "acceptance_checks": [
+      "Core journey works end to end",
+      "Failure paths are demonstrated",
+      "Another developer can inspect the code"
+    ],
+    "outcomes": [
+      "Assemble the service application",
+      "Improve code through review"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M10"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "ZDV-M12",
+    "course_id": "ZDV",
+    "title": "Developer defense and handover",
+    "concept": "The developer defense tests code comprehension and repair skills. A prepared demo is supplemented with a new input and an operator handover task.",
+    "demonstration": "Reviewer changes the request key policy and asks the learner to explain migration implications before editing. A second developer then follows the pending-sync runbook.",
+    "steps": [
+      "Package source, dictionary, contract and test results",
+      "Demonstrate the ten required scenarios",
+      "Explain one failed test and repair",
+      "Answer a new conflict scenario",
+      "Ask a peer to reconcile one pending request using only the runbook"
+    ],
+    "expected": "Learner independently explains ownership and replay decisions. Peer completes reconciliation with no secrets in the bundle.",
+    "negative": "The reviewer asks whether local SQLite success proves live CRM race behavior. The answer must state the simulation boundary.",
+    "recovery": "Repair one failed support step and repeat the peer exercise.",
+    "independent": "Create a client-neutral portfolio explanation with sanitized screenshots and limitations.",
+    "oral_question": "What distinguishes a defensible portfolio from a screenshot collection?",
+    "oral_answer": "It contains requirements, design choices, code behavior, reproducible tests and a clear statement of what was actually run.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Portfolio bundle and final practical.",
+    "acceptance_checks": [
+      "Learner explains code independently",
+      "All required tests pass",
+      "Handover includes limitations and maintenance"
+    ],
+    "outcomes": [
+      "Explain implementation tradeoffs",
+      "Transfer support knowledge"
+    ],
+    "sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S09",
+      "S10",
+      "S12",
+      "S13"
+    ],
+    "depends_on": [
+      "ZDV-M11"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M01",
+    "course_id": "AAB",
+    "title": "AI use cases and limits",
+    "concept": "Choose AI for tasks where generated language is useful and review is feasible. Deterministic calculations and irreversible operations need explicit logic and ownership.",
+    "demonstration": "Compare lesson-outline drafting, attendance arithmetic and automatic certificates. Select lesson drafting for the pilot; calculate attendance in code; leave certificate decisions with the authorized reviewer.",
+    "steps": [
+      "Score three uses for value, input readiness and failure consequence",
+      "Define one named user",
+      "Time three baseline drafts",
+      "Select a bounded output",
+      "Write what requires human verification"
+    ],
+    "expected": "A use-case brief includes baseline units, quality criteria, reviewer and scope. Any time saved is a hypothesis until a controlled pilot measures it.",
+    "negative": "Request a guaranteed legal or technical answer without source material. Mark the dependency instead of expanding the claim.",
+    "recovery": "Narrow the task to an outline with explicit gaps and remeasure review effort.",
+    "independent": "Compare a corporate support-summary use case with lesson drafting using the same scorecard.",
+    "oral_question": "Why measure review time as well as generation time?",
+    "oral_answer": "Fast generation can create extra correction work; net benefit depends on the whole task.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Use case scorecard and baseline.",
+    "acceptance_checks": [
+      "Task has a clear user",
+      "Failure consequence is stated",
+      "Baseline work can be measured"
+    ],
+    "outcomes": [
+      "Select a measurable automation use case",
+      "Distinguish generation from deterministic execution"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M02",
+    "course_id": "AAB",
+    "title": "Prompt design and structured output",
+    "concept": "Structured output enforces shape, while factual checks evaluate meaning. A schema-valid lesson can still contain unsupported product behavior or an impossible duration.",
+    "demonstration": "Required lesson fields are module_id, outcomes, activity_minutes, source_ids and review_notes. A response claiming ten 30-minute activities for a two-hour class is structurally valid but fails the duration check.",
+    "steps": [
+      "Write the lesson output schema",
+      "Supply one approved topic and two examples",
+      "Test missing module ID, extra fields and invalid duration",
+      "Check each factual claim against source text",
+      "Record prompt version and assumptions"
+    ],
+    "expected": "Five trial outputs have schema and content results recorded separately. Activity minutes fit the available teaching time.",
+    "negative": "A source ID exists but does not support the quoted claim. Fail evidence support even if the JSON validates.",
+    "recovery": "Ask for a narrower correction using the failed field and repeat the original checks.",
+    "independent": "Add an accessibility field and design a compatible schema update.",
+    "oral_question": "What does schema success prove?",
+    "oral_answer": "That output follows the required structure, not that its claims or teaching choices are correct.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Prompt, schema and five trial outputs.",
+    "acceptance_checks": [
+      "Required fields appear",
+      "Assumptions are labeled",
+      "Unsupported details are marked for review"
+    ],
+    "outcomes": [
+      "Write an input and output contract",
+      "Test a prompt against examples"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M01"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M03",
+    "course_id": "AAB",
+    "title": "Business workflows",
+    "concept": "A workflow can separate retrieval, generation, validation, review and publication. Make rejection and retry states explicit so draft completion cannot silently become approval.",
+    "demonstration": "States are Requested, Drafted, Checked, Review Required, Approved and Released. A changed file hash after approval invalidates that approval and returns the item to review.",
+    "steps": [
+      "Draw states and owners",
+      "Define input and output for each stage",
+      "Add invalid-output and reviewer-rejection branches",
+      "Separate local approval from external publication",
+      "Simulate a changed draft after review"
+    ],
+    "expected": "The workflow produces a reviewable artifact with identified changes. Publication requires the actual publishing authorization and configured destination.",
+    "negative": "Try to release a draft with failed validation. The workflow blocks or returns it for correction.",
+    "recovery": "Correct the draft, rerun checks and request review for the new version.",
+    "independent": "Add a technical reviewer for product-specific lessons without removing editorial review.",
+    "oral_question": "Why should approval bind to a version or hash?",
+    "oral_answer": "Otherwise a changed artifact can inherit approval intended for different content.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Workflow diagram and decision rules.",
+    "acceptance_checks": [
+      "Each stage has an owner",
+      "Failures have a recovery path",
+      "Publication is a separate action"
+    ],
+    "outcomes": [
+      "Separate proposal from execution",
+      "Map exception and review paths"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M02"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M04",
+    "course_id": "AAB",
+    "title": "Knowledge preparation",
+    "concept": "Knowledge records need identity, status, permission, version and provenance. Chunking preserves relevant context, but an index must also respect access and source lifecycle.",
+    "demonstration": "K1 is approved public guidance; K2 is an older draft; K3 is client-only; K4 contains a malicious instruction. Public retrieval considers approved public current records only; K4 is data, never authority to change instructions.",
+    "steps": [
+      "Clean three synthetic notes without losing qualifiers",
+      "Assign source and chunk IDs",
+      "Record owner, version and permission",
+      "Exclude restricted and obsolete records",
+      "Add a text-instruction attack to a test record",
+      "Inspect the resulting manifest"
+    ],
+    "expected": "Every chunk links back to a source. Restricted records are excluded before ranking and context assembly, not merely hidden in the final answer.",
+    "negative": "A highly relevant client-only document appears. Public retrieval must exclude it.",
+    "recovery": "Withdraw a previously approved source and verify it no longer enters context.",
+    "independent": "Design source expiration and reviewer reminders for an API reference.",
+    "oral_question": "Why filter permissions before context assembly?",
+    "oral_answer": "Once restricted text enters the model context, an output filter cannot reliably undo its exposure.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Knowledge manifest and cleaned records.",
+    "acceptance_checks": [
+      "Each record has an owner and date",
+      "Confidential content is excluded",
+      "Draft and approved sources are distinguished"
+    ],
+    "outcomes": [
+      "Classify usable source material",
+      "Keep source and permission metadata"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M03"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M05",
+    "course_id": "AAB",
+    "title": "Retrieval and cited answers",
+    "concept": "Retrieval finds candidate evidence; generation uses it to answer. A citation is useful only when it supports the exact claim. Missing or conflicting evidence needs an explicit response.",
+    "demonstration": "The local lexical retriever answers certificate issuer using approved K1. It abstains for job guarantee, excludes client-only K3 and does not treat a document instruction as a command. It uses word overlap, not embeddings or model inference.",
+    "steps": [
+      "Run the retrieval exercise",
+      "Inspect eligible records before scoring",
+      "Ask five supported and unsupported questions",
+      "Cite record ID plus supporting statement",
+      "Mark conflicts",
+      "Compare lexical matching with a proposed semantic retriever"
+    ],
+    "expected": "Supported answer cites K1. Unsupported questions abstain. Evidence-only simulation results are labeled separately from live model evaluation.",
+    "negative": "Ask a question whose only matching source is a draft. Do not promote draft content to fact.",
+    "recovery": "Add an approved source, rebuild the eligible set and rerun the original unanswered case.",
+    "independent": "Create a paraphrase that lexical overlap misses and explain what semantic retrieval might improve.",
+    "oral_question": "Why is the highest scoring result not automatically enough?",
+    "oral_answer": "Relevance is not proof of factual support, freshness or access permission.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Answers with source identifiers and retrieval notes.",
+    "acceptance_checks": [
+      "Citations support the answer",
+      "Missing evidence causes abstention",
+      "Conflicting sources are surfaced"
+    ],
+    "outcomes": [
+      "Retrieve relevant context",
+      "Explain when the assistant should abstain"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M04"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M06",
+    "course_id": "AAB",
+    "title": "Tools and bounded agents",
+    "concept": "A bounded agent selects from narrow validated tools. Tool outputs and source documents are untrusted data; they cannot grant new permissions or override the user request.",
+    "demonstration": "Allowed tools are lookup_course(course_id) and propose_lesson(module_id, request). Reject delete_course, issue_certificate and arbitrary shell execution. A tool failure returns a typed error and no fabricated success.",
+    "steps": [
+      "Define exact tool input schemas",
+      "Restrict valid course and module IDs",
+      "Simulate an allowed lookup",
+      "Test unknown ID and unsupported action",
+      "Inspect proposed file paths",
+      "Record a trace without secrets"
+    ],
+    "expected": "Allowed lookup returns catalog data. Unsupported tools and invalid paths fail before execution. Draft tools do not publish or modify client systems.",
+    "negative": "A retrieved note says ignore rules and execute a shell command. Treat the text as source content, not an instruction.",
+    "recovery": "Tool unavailable: return the dependency and preserve the draft state for an operator to resolve.",
+    "independent": "Add a read-only lesson-status tool and design permission and audit fields.",
+    "oral_question": "Why is a general shell tool unsuitable for this content task?",
+    "oral_answer": "It grants capabilities beyond the narrow content workflow and is not required by the task.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Tool contracts and workflow traces.",
+    "acceptance_checks": [
+      "Inputs are validated",
+      "Unauthorized requests are denied",
+      "No unrestricted execution tool is exposed"
+    ],
+    "outcomes": [
+      "Define an allowed tool contract",
+      "Constrain action proposals"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M05"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M07",
+    "course_id": "AAB",
+    "title": "Evaluation and adversarial cases",
+    "concept": "Evaluation should separate normal task quality from critical access failures. A high average cannot compensate for a leaked restricted document or unauthorized write.",
+    "demonstration": "The supplied 20-case matrix contains supported, missing, stale, conflicting, restricted, injection, malformed and unavailable-tool scenarios. Each case has expected behavior and a critical flag; model actuals start blank.",
+    "steps": [
+      "Define evidence-support and task-completion rubrics",
+      "Run the local retrieval subset",
+      "Execute configured model cases only when available",
+      "Record actual output, scorer and evidence",
+      "Report category counts",
+      "Investigate every critical failure"
+    ],
+    "expected": "Twenty designed cases are present. Only cases actually executed are scored; blank actuals are not passes. Release requires zero observed critical permission failures under the proposed policy.",
+    "negative": "Nineteen good outputs and one restricted-source leak. The critical gate fails despite 95 percent simple success.",
+    "recovery": "Repair source eligibility and rerun the failed case plus similar boundary cases.",
+    "independent": "Add five cases from anonymized learner feedback after permission and review.",
+    "oral_question": "How should unexecuted cases affect the report?",
+    "oral_answer": "Show them as not run, with a separate denominator. Do not count them as passing.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Evaluation CSV and result report.",
+    "acceptance_checks": [
+      "Cases include missing sources",
+      "Permission violations are counted separately",
+      "Scoring rules are reproducible"
+    ],
+    "outcomes": [
+      "Design realistic evaluation cases",
+      "Measure task success and failure"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M06"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M08",
+    "course_id": "AAB",
+    "title": "Operations and cost",
+    "concept": "Operations measure actual usage, latency, retries and quality. Token prices and model availability should be configured from current official information rather than buried in a lesson.",
+    "demonstration": "Synthetic exercise: 10000 input tokens at configured USD 1 per million and 2000 output tokens at USD 4 per million gives USD 0.018. Rates are invented teaching inputs, not current vendor prices.",
+    "steps": [
+      "Record request ID, model, timestamps and usage",
+      "Separate estimated from observed cost",
+      "Configure a per-run token bound",
+      "Simulate two retries and a timeout",
+      "Calculate full workflow cost including retries",
+      "Document stop and escalation rules"
+    ],
+    "expected": "Cost worksheet reproduces USD 0.018 for the example. Retry limits and request timeouts are recorded; no claim that the estimate is the actual billed cost.",
+    "negative": "Usage is missing in a failed response. Mark cost unknown or estimated rather than zero.",
+    "recovery": "Stop when the run budget is reached and preserve enough state for diagnosis.",
+    "independent": "Compare two prompt versions using quality and reviewer time alongside cost.",
+    "oral_question": "Why is cheapest per-request output not necessarily cheapest per accepted lesson?",
+    "oral_answer": "Retries, correction time and rejection rate can increase the total cost.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Usage log and operating limits.",
+    "acceptance_checks": [
+      "Observed values are separated from estimates",
+      "Retries are bounded",
+      "Logs avoid sensitive content"
+    ],
+    "outcomes": [
+      "Measure usage and latency",
+      "Plan bounded retries and cost limits"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M07"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M09",
+    "course_id": "AAB",
+    "title": "Capstone workflow build",
+    "concept": "An academy update must identify affected outcomes, hours, assessments and website claims. A reviewable change preserves evidence and binds approval to the exact candidate version.",
+    "demonstration": "Request: add timeout-after-commit teaching to ZDV-M09. The change report points to lesson, assessment, contract and capstone tests; it does not silently add required hours.",
+    "steps": [
+      "Use the included agent dry run to inspect context",
+      "Submit one lesson request when model access is configured",
+      "Check sources and expected outcomes",
+      "Review changed paths and hashes",
+      "Approve one local artifact explicitly",
+      "Keep published materials unchanged until authorized"
+    ],
+    "expected": "One candidate lesson plus an impact report. Offline dry run proves context and validation only; it does not prove live generation quality.",
+    "negative": "Edit the draft after approval preparation. The hash check must reject stale approval.",
+    "recovery": "Regenerate review metadata for the new version and rerun content checks.",
+    "independent": "Revise a course duration and produce an active-cohort migration note before adoption.",
+    "oral_question": "Why identify assessment impact for a lesson update?",
+    "oral_answer": "Learners should be assessed on outcomes actually taught, and new evidence may change the capstone requirements.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Draft artifact, change report and evaluation results.",
+    "acceptance_checks": [
+      "Update preserves existing evidence",
+      "Changed files are identified",
+      "No automatic credential or external write occurs"
+    ],
+    "outcomes": [
+      "Connect approved knowledge and generation",
+      "Stage a reviewable update"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M08"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "AAB-M10",
+    "course_id": "AAB",
+    "title": "Builder demonstration and defense",
+    "concept": "A builder demonstration shows both supported output and correct failure. Maintenance ownership includes source refresh, evaluation drift and review of content changes.",
+    "demonstration": "Show a cited lesson, missing-source abstention, restricted-source denial, instruction attack, malformed output, tool failure, duplicate proposal, stale version, cost stop and certificate refusal.",
+    "steps": [
+      "Demonstrate ten scenarios",
+      "Explain remaining evaluation cases",
+      "Show actual versus not-run labels",
+      "Perform one repair",
+      "Give a second trainer the source-update runbook",
+      "Record remaining limits and reviewer decision"
+    ],
+    "expected": "A complete 20-case register with honest execution status, a bounded draft workflow and maintenance owner. Wooplix assessment does not become an official vendor credential.",
+    "negative": "The reviewer asks whether passing mocks proves production readiness. Explain the remaining model, authorization and connected-tool tests.",
+    "recovery": "Withdraw a stale source and demonstrate that the next run omits it.",
+    "independent": "Prepare a department-specific assistant using approved source material and a new evaluation set.",
+    "oral_question": "What must accompany an agent handover?",
+    "oral_answer": "Tool boundaries, source permissions, evaluation evidence, cost controls, operator recovery and review ownership.",
+    "schedule": [
+      [
+        "Retrieve prior learning",
+        15
+      ],
+      [
+        "Explain and predict",
+        30
+      ],
+      [
+        "Trainer demonstration",
+        35
+      ],
+      [
+        "Guided build",
+        75
+      ],
+      [
+        "Break",
+        15
+      ],
+      [
+        "Failure and recovery tests",
+        40
+      ],
+      [
+        "Evidence review and exit check",
+        30
+      ]
+    ],
+    "live_hours": 4,
+    "practice_hours": 2,
+    "evidence": "Final assistant bundle and reviewer score.",
+    "acceptance_checks": [
+      "Twenty evaluation cases are recorded",
+      "Critical permission tests all pass",
+      "Human reviewer owns final acceptance"
+    ],
+    "outcomes": [
+      "Demonstrate success and safe failure",
+      "Explain limitations and maintenance"
+    ],
+    "sources": [
+      "S07",
+      "S08"
+    ],
+    "depends_on": [
+      "AAB-M09"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "CAW-M01",
+    "course_id": "CAW",
+    "title": "Business baseline",
+    "concept": "A process baseline describes who performs each step, how long active work takes and where waiting occurs. Distinguish observed timing from estimates.",
+    "demonstration": "Synthetic follow-up tasks take 8, 10 and 12 active minutes: mean 10 minutes per task. At 100 tasks weekly, baseline active effort is 1000 minutes or 16.67 hours; this is a teaching example.",
+    "steps": [
+      "Agree the process boundary with the sponsor",
+      "Draw trigger, roles, handoffs and completion",
+      "Time three sanitized examples",
+      "Record active and waiting time separately",
+      "Note variation and exceptions"
+    ],
+    "expected": "A sponsor-reviewed process map and baseline sheet with units, sample size and observed or estimated labels.",
+    "negative": "A participant claims the task always takes ten minutes from one example. Record the evidence limitation.",
+    "recovery": "Repeat timing across a different case type and revise the baseline range.",
+    "independent": "Map employee onboarding using the same timing sheet and a different role set.",
+    "oral_question": "Why separate waiting from active time?",
+    "oral_answer": "Automation may reduce one without reducing the other; combining them hides where improvement occurs.",
+    "schedule": [
+      [
+        "Baseline and recap",
+        10
+      ],
+      [
+        "Explain and predict",
+        15
+      ],
+      [
+        "Facilitator demonstration",
+        20
+      ],
+      [
+        "Team exercise",
+        40
+      ],
+      [
+        "Break",
+        10
+      ],
+      [
+        "Review and decision",
+        25
+      ]
+    ],
+    "live_hours": 2,
+    "practice_hours": 1,
+    "evidence": "Current process and measured or explicitly estimated baseline.",
+    "acceptance_checks": [
+      "Sponsor agrees the process",
+      "Measures have units",
+      "Estimates are labeled"
+    ],
+    "outcomes": [
+      "Map a current departmental process",
+      "Identify measurable delays"
+    ],
+    "sources": [
+      "S01",
+      "S08"
+    ],
+    "depends_on": [],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "CAW-M02",
+    "course_id": "CAW",
+    "title": "AI assisted work",
+    "concept": "An assisted output is checked against its input before use. A well-written message can still invent an agreement, commitment or customer fact.",
+    "demonstration": "Synthetic input: customer asked for a demo next week; no date or discount agreed. A good draft proposes scheduling. A bad draft confirms Tuesday and a 20 percent discount.",
+    "steps": [
+      "Write a prompt using the approved facts",
+      "Generate or use supplied contrasting drafts",
+      "Highlight every factual assertion",
+      "Check assertions against input",
+      "Correct unsupported commitments",
+      "Time generation plus review"
+    ],
+    "expected": "Reviewed draft has no invented appointment or discount. Before-and-after timing includes correction work.",
+    "negative": "Insert a confidential customer note. Use a sanitized substitute unless the chosen tool and permissions are approved for it.",
+    "recovery": "Reject the bad draft and regenerate using explicit missing-date behavior.",
+    "independent": "Draft a support summary that distinguishes customer statements from confirmed findings.",
+    "oral_question": "What should the draft do when a meeting date is unknown?",
+    "oral_answer": "Ask for or propose scheduling without stating that a date has been agreed.",
+    "schedule": [
+      [
+        "Baseline and recap",
+        10
+      ],
+      [
+        "Explain and predict",
+        15
+      ],
+      [
+        "Facilitator demonstration",
+        20
+      ],
+      [
+        "Team exercise",
+        40
+      ],
+      [
+        "Break",
+        10
+      ],
+      [
+        "Review and decision",
+        25
+      ]
+    ],
+    "live_hours": 2,
+    "practice_hours": 1,
+    "evidence": "Before and after task example.",
+    "acceptance_checks": [
+      "Output is checked against input",
+      "Confidential data is excluded",
+      "Reviewer ownership is clear"
+    ],
+    "outcomes": [
+      "Test an assisted task",
+      "Identify where review is required"
+    ],
+    "sources": [
+      "S01",
+      "S08"
+    ],
+    "depends_on": [
+      "CAW-M01"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "CAW-M03",
+    "course_id": "CAW",
+    "title": "Automation opportunity design",
+    "concept": "Prioritization combines value, readiness and failure consequence. A score guides discussion but cannot remove a missing permission or mandatory dependency.",
+    "demonstration": "Proposed formula: value plus readiness minus risk, each 1 to 5. Follow-up drafting 4+5-2=7; automatic refunds 5+2-5=2; support summaries 3+4-2=5. Drafting is the first discussion candidate.",
+    "steps": [
+      "List three opportunities",
+      "Score each dimension and justify it",
+      "Identify tool, data and access dependencies",
+      "Apply any blocking conditions",
+      "Draw the highest feasible pilot with exception and review paths"
+    ],
+    "expected": "A scorecard with rationale and a bounded pilot. The highest score is not an authorization to spend, publish or access client systems.",
+    "negative": "A high-scoring idea needs unavailable customer data. Mark it blocked until the dependency is resolved.",
+    "recovery": "Rescope to approved synthetic data and review whether the pilot still tests the intended value.",
+    "independent": "Change the risk weights and explain how the ranking changes.",
+    "oral_question": "Why record the rationale beside a score?",
+    "oral_answer": "Numbers without evidence can disguise disagreement and cannot be reviewed later.",
+    "schedule": [
+      [
+        "Baseline and recap",
+        10
+      ],
+      [
+        "Explain and predict",
+        15
+      ],
+      [
+        "Facilitator demonstration",
+        20
+      ],
+      [
+        "Team exercise",
+        40
+      ],
+      [
+        "Break",
+        10
+      ],
+      [
+        "Review and decision",
+        25
+      ]
+    ],
+    "live_hours": 2,
+    "practice_hours": 1,
+    "evidence": "Opportunity scorecard and pilot workflow.",
+    "acceptance_checks": [
+      "Dependencies are named",
+      "Failure paths exist",
+      "No unverified savings claim is presented"
+    ],
+    "outcomes": [
+      "Prioritize feasible opportunities",
+      "Explain exception handling"
+    ],
+    "sources": [
+      "S01",
+      "S08"
+    ],
+    "depends_on": [
+      "CAW-M02"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  },
+  {
+    "id": "CAW-M04",
+    "course_id": "CAW",
+    "title": "Pilot and follow through",
+    "concept": "A pilot is a small experiment with an owner, sample, quality gate and next decision. Training attendance does not authorize a consulting implementation.",
+    "demonstration": "Proposed two-week pilot: 20 sanitized drafts, zero unsupported commitments after review, and a target of at least 20 percent lower median total task time. The target is a hypothesis, not promised savings.",
+    "steps": [
+      "State scope and exclusions",
+      "Name sponsor, operator and reviewer",
+      "Define timing and quality measurements",
+      "Run four failure scenarios",
+      "Schedule a two-week review",
+      "Prepare a separately authorized discovery handoff"
+    ],
+    "expected": "A pilot brief with measurable acceptance, stop conditions and review date. Record actual sample results before deciding to extend.",
+    "negative": "Reviewer rejects an output. The workflow returns for correction and does not send it.",
+    "recovery": "Suspend the pilot if critical exposure or unauthorized action occurs and let the sponsor decide the next step.",
+    "independent": "Define a different pilot for support summaries and choose a quality measure beyond speed.",
+    "oral_question": "What separates training from consulting authorization?",
+    "oral_answer": "A separately agreed scope, owner and access decision for the business implementation.",
+    "schedule": [
+      [
+        "Baseline and recap",
+        10
+      ],
+      [
+        "Explain and predict",
+        15
+      ],
+      [
+        "Facilitator demonstration",
+        20
+      ],
+      [
+        "Team exercise",
+        40
+      ],
+      [
+        "Break",
+        10
+      ],
+      [
+        "Review and decision",
+        25
+      ]
+    ],
+    "live_hours": 2,
+    "practice_hours": 1,
+    "evidence": "Reviewed pilot brief.",
+    "acceptance_checks": [
+      "Scope is bounded",
+      "Owner and review date exist",
+      "Consulting discussion requires sponsor agreement"
+    ],
+    "outcomes": [
+      "Define pilot acceptance and ownership",
+      "Prepare a discovery handoff"
+    ],
+    "sources": [
+      "S01",
+      "S08"
+    ],
+    "depends_on": [
+      "CAW-M03"
+    ],
+    "status": "draft_for_trainer_rehearsal"
+  }
+]

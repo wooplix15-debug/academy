@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">CRM entities and stable identity</text>
+<rect x="55" y="270" width="310" height="175" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="73" y="318" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Account A001</text>
+<text x="73" y="363" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">One company record</text>
+<text x="73" y="401" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Stable account ID</text>
+<rect x="530" y="110" width="310" height="175" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="548" y="158" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Contacts</text>
+<text x="548" y="203" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">C001 and C002</text>
+<text x="548" y="241" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Many per account</text>
+<rect x="530" y="370" width="310" height="175" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="548" y="418" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Deals</text>
+<text x="548" y="463" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">D001 and D002</text>
+<text x="548" y="501" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Many per account</text>
+<rect x="1080" y="370" width="425" height="175" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1098" y="418" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Delivery requests</text>
+<text x="1098" y="463" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">NOVA-D001 unique key</text>
+<text x="1098" y="501" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Work items link to request</text>
+<line x1="365" y1="330" x2="530" y2="220" stroke="#087F8C" stroke-width="4"/>
+<polygon points="530,220 521.643403005425,235.94262483627642 512.069655153216,221.58200305796302" fill="#087F8C"/>
+<text x="365" y="201" font-family="Arial, sans-serif" font-size="26" font-weight="normal" fill="#152E42">1 to many</text>
+<line x1="365" y1="400" x2="530" y2="455" stroke="#087F8C" stroke-width="4"/>
+<polygon points="530,455 512.2851994489399,458.19152650563353 517.743075462532,441.8178984648571" fill="#087F8C"/>
+<text x="380" y="531" font-family="Arial, sans-serif" font-size="26" font-weight="normal" fill="#152E42">1 to many</text>
+<line x1="840" y1="455" x2="1080" y2="455" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1080,455 1064.2035138859733,463.62965969487567 1064.2035138859733,446.37034030512433" fill="#087F8C"/>
+<text x="865" y="366" font-family="Arial, sans-serif" font-size="26" font-weight="normal" fill="#152E42">0 or 1 per</text>
+<text x="865" y="402" font-family="Arial, sans-serif" font-size="26" font-weight="normal" fill="#152E42">won deal</text>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Names can change or repeat. Relationships use record identity, not copied display names.</text></svg>

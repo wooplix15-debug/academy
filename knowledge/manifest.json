@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "id": "S02",
+      "title": "Zoho CRM API reference",
+      "path": "knowledge/S02_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S03",
+      "title": "Zoho CRM authorization",
+      "path": "knowledge/S03_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S04",
+      "title": "Deluge integration tasks",
+      "path": "knowledge/S04_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S05",
+      "title": "Creator form workflow events",
+      "path": "knowledge/S05_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S06",
+      "title": "CRM Blueprint overview",
+      "path": "knowledge/S06_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S07",
+      "title": "Structured model outputs",
+      "path": "knowledge/S07_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S08",
+      "title": "Agent evaluation",
+      "path": "knowledge/S08_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S09",
+      "title": "CRM upsert",
+      "path": "knowledge/S09_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S10",
+      "title": "CRM API limits",
+      "path": "knowledge/S10_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S11",
+      "title": "Planned mandatory-field change",
+      "path": "knowledge/S11_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S12",
+      "title": "Deluge connections",
+      "path": "knowledge/S12_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-02",
+      "owner": "public_source",
+      "review_date": "2026-10-02"
+    },
+    {
+      "id": "S13",
+      "title": "Deluge lab references",
+      "path": "knowledge/S13_reference.md",
+      "status": "verified_public_reference",
+      "permission": "public",
+      "version": "2026-10-03",
+      "owner": "public_source",
+      "review_date": "2026-10-03"
+    }
+  ]
+}

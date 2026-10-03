@@ -1,0 +1,13 @@
+{
+  "mode": "corporate",
+  "course_id": "ZIM",
+  "source_ids": [
+    "S02",
+    "S03",
+    "S06"
+  ],
+  "input_assets": [
+    "curriculum/ZIM_syllabus.md"
+  ],
+  "instructions": "Propose an eight week adaptation for corporate sales operations specialists. Retain the current 60 hour competency scope, explicitly show the higher weekly commitment of 7.5 hours, and give an alternative if weekly availability remains six hours. Do not claim the unchanged scope fits 48 hours. List changed modules, assessments, dependencies and active cohort considerations."
+}

@@ -1,0 +1,46 @@
+// ZDV-M03 teaching example. Rehearse in the selected Zoho training editor.
+// No external writes. Do not submit real customer data in info logs.
+payloads = List();
+payloads.add({"request_id":"T01","amount":0,"email":"zero@example.test"});
+payloads.add({"request_id":"T02","amount":"1250","email":"text@example.test"});
+payloads.add({"request_id":"T03","email":"missing@example.test"});
+payloads.add({"request_id":"T04","amount":"twelve","email":"bad@example.test"});
+payloads.add({"request_id":"T05","amount":800,"email":" A@Example.Test "});
+results = List();
+for each item in payloads
+{
+    output = Map();
+    output.put("request_id",item.get("request_id"));
+    raw_amount = item.get("amount");
+    if(isNull(raw_amount))
+    {
+        output.put("status","missing_amount");
+    }
+    else
+    {
+        try
+        {
+            amount = raw_amount.toDecimal();
+            if(amount < 0)
+            {
+                output.put("status","negative_amount");
+            }
+            else
+            {
+                output.put("amount",amount);
+                output.put("status","valid");
+            }
+        }
+        catch(e)
+        {
+            output.put("status","invalid_amount_format");
+        }
+    }
+    raw_email = item.get("email");
+    if(!isNull(raw_email))
+    {
+        output.put("email",raw_email.trim().toLowerCase());
+    }
+    results.add(output);
+}
+info results;

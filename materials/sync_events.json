@@ -1,0 +1,35 @@
+[
+  {
+    "event_id": "E1",
+    "request_key": "SR-104",
+    "customer": "C-12",
+    "mock_result": "created",
+    "destination_id": "D-900"
+  },
+  {
+    "event_id": "E2",
+    "request_key": "SR-104",
+    "customer": "C-12",
+    "mock_result": "duplicate_replay",
+    "destination_id": "D-900"
+  },
+  {
+    "event_id": "E3",
+    "request_key": "SR-104",
+    "customer": "C-12",
+    "mock_result": "timeout_after_commit",
+    "destination_id": "D-900"
+  },
+  {
+    "event_id": "E4",
+    "request_key": null,
+    "customer": "C-12",
+    "mock_result": "validation_failure"
+  },
+  {
+    "event_id": "E5",
+    "request_key": "SR-104",
+    "customer": "C-12",
+    "mock_result": "conflicting_newer_status"
+  }
+]

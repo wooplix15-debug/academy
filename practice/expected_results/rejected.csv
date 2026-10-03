@@ -1,0 +1,6 @@
+source_id,last_name,company,email,region,migration_batch,reason
+L043,,Example Company 15,person043@example.test,East,NOVA-TRAIN-01,missing_lab_required_name
+L044,Learner044,,person044@example.test,,NOVA-TRAIN-01,missing_lab_required_company
+L045,Learner045,Example Company 15,not-an-email,West,NOVA-TRAIN-01,invalid_lab_email_format
+L046,Learner046,Example Company 16,,East,NOVA-TRAIN-01,invalid_lab_email_format
+L047,,Example Company 16,person047@example.test,,NOVA-TRAIN-01,missing_lab_required_name

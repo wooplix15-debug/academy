@@ -1,0 +1,14 @@
+{
+  "mode": "feedback",
+  "course_id": "ZDV",
+  "module_id": "ZDV-M09",
+  "source_ids": [
+    "S02",
+    "S04"
+  ],
+  "input_assets": [
+    "materials/lesson_plans/ZDV-M09.md",
+    "materials/worked_examples/ZDV-M09_worked_example.md"
+  ],
+  "instructions": "This is sample feedback, not actual learner evidence: three of five trial learners did not understand timeout after commit. Propose a clearer worked example and practical check while keeping the six hour budget. Mark the sample status, explain what should be measured in a real pilot, and identify affected assessments."
+}

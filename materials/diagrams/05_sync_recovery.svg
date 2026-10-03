@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">A lost response creates an unknown outcome</text>
+<rect x="65" y="105" width="350" height="85" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="83" y="153" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Source worker</text>
+<rect x="620" y="105" width="350" height="85" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="638" y="153" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Destination</text>
+<rect x="1180" y="105" width="350" height="85" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1198" y="153" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Reconciler</text>
+<line x1="240" y1="200" x2="240" y2="585" stroke="#A0B5C0" stroke-width="4"/>
+<line x1="795" y1="200" x2="795" y2="585" stroke="#A0B5C0" stroke-width="4"/>
+<line x1="1355" y1="200" x2="1355" y2="585" stroke="#A0B5C0" stroke-width="4"/>
+<line x1="240" y1="260" x2="795" y2="260" stroke="#087F8C" stroke-width="4"/>
+<polygon points="795,260 779.2035138859733,268.62965969487567 779.2035138859733,251.37034030512436" fill="#087F8C"/>
+<text x="275" y="238" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Write NOVA-D002 v1</text>
+<text x="805" y="316" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#152E42">Commit unique key</text>
+<line x1="795" y1="370" x2="240" y2="370" stroke="#B94A3B" stroke-width="4"/>
+<polygon points="240,370 255.79648611402672,361.37034030512433 255.79648611402672,378.62965969487567" fill="#B94A3B"/>
+<text x="280" y="350" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#B94A3B">Response lost after commit</text>
+<line x1="1355" y1="450" x2="795" y2="450" stroke="#087F8C" stroke-width="4"/>
+<polygon points="795,450 810.7964861140267,441.37034030512433 810.7964861140267,458.62965969487567" fill="#087F8C"/>
+<text x="865" y="428" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Read by business key</text>
+<line x1="795" y1="550" x2="1355" y2="550" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1355,550 1339.2035138859733,558.6296596948756 1339.2035138859733,541.3703403051244" fill="#087F8C"/>
+<text x="830" y="523" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Existing v1 found; reconcile</text>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Do not assume timeout means no write. Replay and side effects require separate tests.</text></svg>

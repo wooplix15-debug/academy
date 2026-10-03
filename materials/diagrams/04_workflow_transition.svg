@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720"><rect width="1600" height="720" fill="white"/>
+<text x="45" y="73" font-family="Arial, sans-serif" font-size="43" font-weight="bold" fill="#152E42">Event automation and controlled transitions</text>
+<text x="45" y="157" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Workflow responds to an event</text>
+<rect x="45" y="185" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="233" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Lead created</text>
+<text x="63" y="278" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Event</text>
+<rect x="560" y="185" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="578" y="233" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Region is West</text>
+<text x="578" y="278" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Condition</text>
+<rect x="1080" y="185" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1098" y="233" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Assign West Sales</text>
+<text x="1098" y="278" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Action</text>
+<line x1="495" y1="260" x2="560" y2="260" stroke="#087F8C" stroke-width="4"/>
+<polygon points="560,260 544.2035138859733,268.62965969487567 544.2035138859733,251.37034030512436" fill="#087F8C"/>
+<line x1="1010" y1="260" x2="1080" y2="260" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1080,260 1064.2035138859733,268.62965969487567 1064.2035138859733,251.37034030512436" fill="#087F8C"/>
+<text x="45" y="407" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Transition controls a permitted state change</text>
+<rect x="45" y="435" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="63" y="483" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Draft quote</text>
+<text x="63" y="528" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Amount &gt; INR 50000</text>
+<rect x="560" y="435" width="450" height="150" rx="15" fill="#FFEBBC" stroke="#087F8C" stroke-width="3"/>
+<text x="578" y="483" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Manager review</text>
+<text x="578" y="528" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Required decision</text>
+<rect x="1080" y="435" width="450" height="150" rx="15" fill="#E8F3F7" stroke="#087F8C" stroke-width="3"/>
+<text x="1098" y="483" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#152E42">Approved to send</text>
+<text x="1098" y="528" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#152E42">Evidence recorded</text>
+<line x1="495" y1="510" x2="560" y2="510" stroke="#087F8C" stroke-width="4"/>
+<polygon points="560,510 544.2035138859733,518.6296596948756 544.2035138859733,501.37034030512433" fill="#087F8C"/>
+<line x1="1010" y1="510" x2="1080" y2="510" stroke="#087F8C" stroke-width="4"/>
+<polygon points="1080,510 1064.2035138859733,518.6296596948756 1064.2035138859733,501.37034030512433" fill="#087F8C"/>
+<text x="45" y="672" font-family="Arial, sans-serif" font-size="27" font-weight="normal" fill="#152E42">Synthetic threshold. Rejection returns for correction; verify available approval features.</text></svg>

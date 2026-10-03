@@ -1,0 +1,15 @@
+task_id,role,task,acceptance,assignee,due_date,status
+L01,Academic lead,Confirm four offers and target roles,Reviewed audience prerequisites outcomes and hours,,,not_started
+L02,Trainer,Verify editions and rehearse labs,All advertised lab capabilities available or a disclosed mock alternative,,,not_started
+L03,Content manager,Review website copy and verified experience,All public placeholders resolved and claims substantiated,,,not_started
+L04,Trainers,Expand and rehearse teaching assets,Guides examples questions and answer keys reviewed for each scheduled module,,,not_started
+L05,Academic lead,Approve assessment policy,Weights thresholds critical checks retake and appeal terms recorded,,,not_started
+L06,Owner,Set commercial terms,Prices account inclusions refunds and rescheduling approved,,,not_started
+L07,Operations owner,Confirm cohort dates and roster,Trainer and learner conflicts checked with timezone,,,not_started
+L08,Website owner,Publish approved content and inquiry routing,Forms links privacy notice and syllabus downloads tested,,,not_started
+L09,Content manager,Assign authors and reviewers,Module owners and review due dates visible in team register,,,not_started
+L10,Technical owner,Select agent usage mode,Codex workspace or configured API runner with reviewed data inputs,,,not_started
+L11,Trainer,Pilot first practitioner lesson,Practical evidence and feedback recorded before wider delivery,,,not_started
+L12,Academic lead,Review pilot and revise,Changes versioned with hour and assessment impact,,,not_started
+L13,Owner,Enable credential verification if offered,Unique identifiers evidence approval and revocation procedure implemented,,,not_started
+L14,Content manager,Add permission cleared Wooplix cases,Sanitization source ownership and publication permission recorded,,,not_started

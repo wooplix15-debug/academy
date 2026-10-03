@@ -1,0 +1,9 @@
+lead_id,company,region,email,service,qualification,notes
+L001,Nova Demo A,West,a@example.invalid,CRM,Qualified,Valid example
+L002,Nova Demo B,,b@example.invalid,Creator,Pending,Missing region
+L003,Nova Demo C,East,,CRM,Pending,Missing email
+L004,Nova Demo A,West,a@example.invalid,CRM,Qualified,Potential duplicate
+L005,Nova Demo D,South,d@example.invalid,AI,Unqualified,No suitable project
+L006,Nova Demo E,North,e@example.invalid,CRM,Qualified,Restricted visibility test
+L007,Nova Demo F,West,f@example.invalid,Creator,Pending,Needs discovery
+L008,Nova Demo G,Unknown,g@example.invalid,AI,Pending,Unrecognized region

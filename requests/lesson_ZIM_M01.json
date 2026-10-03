@@ -1,0 +1,15 @@
+{
+  "mode": "lesson",
+  "course_id": "ZIM",
+  "module_id": "ZIM-M01",
+  "source_ids": [
+    "S02",
+    "S03",
+    "S06"
+  ],
+  "input_assets": [
+    "materials/lesson_plans/ZIM-M01.md",
+    "materials/worked_examples/ZIM-M01_worked_example.md"
+  ],
+  "instructions": "Expand ZIM module one into a trainer guide and learner assignment. Preserve four live and two independent hours. Use the Nova Services synthetic example. Include exact time totals, eight requirements, answer guidance and positive and negative acceptance cases. Mark missing product specifics for trainer verification."
+}

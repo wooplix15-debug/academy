@@ -1,0 +1,2 @@
+case_id,persona,operation,expected,actual,evidence_ref,environment,tester,result
+ACCESS01,Sales East,read West-only lead,denied under proposed sharing policy,,,,,not_run
