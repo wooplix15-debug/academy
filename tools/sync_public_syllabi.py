@@ -35,7 +35,7 @@ def syllabus(course):
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
 <div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p></div></details>''')
     return f'''<section class="course-syllabus" id="syllabus">
-<div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2><p>All chapters, topics and practice tasks are shown below. You can collapse chapters as you read.</p><p>Duration: {escape(course['duration'])}</p><a class="text-link" href="{escape(course['source'])}" target="_blank" rel="noopener">Open syllabus in Google Docs ↗</a><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
+<div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2><p>Read the topics and practice task for each chapter. Expand or collapse chapters as you read.</p><p>Ask us about the course duration, schedule and delivery format.</p><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
 <div><div class="chapter-controls"><button type="button" data-chapters="open">Expand all chapters</button><button type="button" data-chapters="close">Collapse all</button></div><div class="module-list">{''.join(blocks)}</div></div></section>'''
 
 
@@ -60,6 +60,10 @@ for course, slug in zip(DATA['courses'], SLUGS):
     page = replace_section(page, 'course-facts', facts)
     page = re.sub(r'<p class="course-summary">.*?</p>', lambda _: '<p class="course-summary">'+escape(course['summary'])+'</p>', page)
     page = re.sub(r'<h1>.*?</h1>', lambda _: '<h1>'+escape(course['title'])+'</h1>', page)
+    page = re.sub(r'<title>.*?</title>', lambda _: '<title>'+escape(course['title'])+' | Wooplix Academy</title>', page)
+    page = re.sub(r'<meta name="description" content="[^"]*">', lambda _: '<meta name="description" content="'+escape(course['summary'], quote=True)+'">', page)
+    page = re.sub(r'(<div class="course-breadcrumb">.*?<span>›</span><span>)(.*?)(</span></div>)', lambda m: m[1]+escape(course['title'])+m[3], page)
+    page = re.sub(r'<div class="course-hero-aside">.*?</div>', lambda _: f'<div class="course-hero-aside"><span>PROGRAMME {course["id"]:02}</span><b>{len(course["chapters"])} chapters.<br>Practice tasks.<br>Final project.</b><small>WOOPLIX ACADEMY</small></div>', page)
     if 'href="/syllabus.html">Curriculum' not in page:
         page = page.replace('<a href="/#programmes">Programmes</a>', '<a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a>', 1)
     path.write_text(page)
@@ -73,7 +77,7 @@ cards = []
 for course, slug in zip(DATA['courses'], SLUGS):
     chapters = ''.join(f'<li><a href="/courses/{slug}.html#{chapter_id(n)}"><span>{n:02}</span>{escape(ch["title"])}</a></li>' for n, ch in enumerate(course['chapters'], 1))
     cards.append(f'''<article class="curriculum-course" id="course-{course['id']}"><p class="eyebrow">COURSE {course['id']:02} · {len(course['chapters'])} CHAPTERS</p><h2><a href="/courses/{slug}.html">{escape(course['title'])}</a></h2><p>{escape(course['summary'])}</p><p><b>For:</b> {escape(course['audience'])}</p><ol class="chapter-index">{chapters}</ol><a class="button button-dark" href="/courses/{slug}.html#syllabus">Topics and practice tasks →</a></article>''')
-main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav><a class="text-link" href="https://docs.google.com/document/d/1I_E3SRYQvkkK7hAbIq0AMDtWTE-zg4AYlKslBWVGp-g/edit" target="_blank" rel="noopener">Open the master curriculum in Google Docs ↗</a></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
+main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
 (PUBLIC / 'syllabus.html').write_text(head + main + footer)
 
 # Keep the home page chapter directory in sync with exactly the same source.
@@ -98,4 +102,9 @@ for course, slug in zip(DATA['courses'], SLUGS):
 home = home.replace('AI &amp; Agentic AI Builder</h3>', 'AI &amp; Agentic AI Builder for Business Systems</h3>')
 home = home.replace('Corporate AI &amp; Automation Workshop</h3>', 'Corporate AI &amp; Automation Opportunity Workshop</h3>')
 home_path.write_text(re.sub(r'^ +$', '', home, flags=re.M))
+for asset in PUBLIC.rglob('*'):
+    if asset.suffix in {'.html', '.js', '.json', '.css'}:
+        content = asset.read_text()
+        if any(host in content for host in ('docs.google.com', 'drive.google.com')):
+            raise ValueError(f'Internal document link found in public asset: {asset}')
 print('Updated home page, five course pages and curriculum directory: 86 chapters.')
