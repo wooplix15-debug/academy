@@ -1,0 +1,6 @@
+source_row,customer_ref,business_name,contact_email
+C01,EVG-CUST-0101,North Depot Ltd,customer0101@evergreen.example.com
+C02,EVG-CUST-0102,South Yard Ltd,customer0102@evergreen.example.com
+C03,EVG-CUST-0101,North Depot Limited,customer0101@evergreen.example.com
+C04,,Unidentified caller,
+C05,EVG-CUST-0103,Greenway Services,customer0103@evergreen.example.com

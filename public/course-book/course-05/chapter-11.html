@@ -1,0 +1,1412 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 11</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 11</p><h1>Integration and Quality Management</h1><p>Produce integration specifications and test evidence.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-11-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: uncertain delivery</a><a href="#section-4">4. Worked case: specify and reproduce the interface defect</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/evergreen_interface.py">Download evergreen_interface.py ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>An integration connects responsibilities as well as applications. You need to know who owns the source information, what the receiving system promises, how failures are handled and what evidence shows the interface behaves correctly.</p>
+<p>A successful request is not necessarily a completed business outcome. A receiver may accept a completion handoff while Finance review remains pending. A timeout may occur after the receiver has already committed the work.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Define interface ownership and a bounded integration specification.</li>
+<li>Map fields without confusing business names with product API names.</li>
+<li>Specify duplicate, retry and conflict behaviour.</li>
+<li>Build a test strategy covering normal, invalid, permission and failure cases.</li>
+<li>Record defects with reproducible evidence.</li>
+<li>Distinguish severity from priority.</li>
+<li>Explain root cause rather than restating the symptom.</li>
+<li>Retest a correction and run relevant regression checks.</li>
+<li>Produce an integration specification, test pack and defect record.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the requirements, access plan, migration controls and reference prototype from Chapters 4–10.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance rule</td>
+<td>Service completion does not release an invoice</td>
+</tr>
+<tr>
+<td>Existing boundary</td>
+<td>EVG-BOUNDARY-001 is a proposed manual Finance-review demonstration</td>
+</tr>
+<tr>
+<td>Live integration</td>
+<td>Outside the proposed pilot scope</td>
+</tr>
+<tr>
+<td>Local prototype</td>
+<td>Exercises business rules; does not prove Zoho behaviour</td>
+</tr>
+<tr>
+<td>Native design</td>
+<td>Conditional; entry-path and related-record proof pending</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-004</td>
+<td>Automatic customer notification requested, not approved</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Reserved before this chapter; no prior observed product failure</td>
+</tr>
+<tr>
+<td>Product authority</td>
+<td>No Zoho configuration, tokens, API calls or tenant inspection authorised</td>
+</tr>
+<tr>
+<td>Migration exceptions</td>
+<td>C04 unresolved; cancellation group held</td>
+</tr>
+<tr>
+<td>Estimates</td>
+<td>Conditional proposals; not an approved delivery baseline</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-097 authorises a local interface simulator and quality artifacts. EVG-SRC-104 requests assessment of an automated handoff as EVG-CHANGE-005. Neither authorises a live interface.</p>
+<p>Your project contribution</p>
+<p>You will add:</p>
+<ol>
+<li>A logical interface specification.</li>
+<li>A mapping and ownership table.</li>
+<li>A retry and reconciliation policy.</li>
+<li>A test strategy and evidence register.</li>
+<li>A reproduced reference-model defect and correction.</li>
+<li>A release-boundary recommendation.</li>
+</ol>
+<p>All business facts and messages are synthetic. Local reference execution is distinct from Zoho execution, client UAT and acceptance. The worked defect in this chapter concerns the supplied local receiver, not a Zoho product defect.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Define the interface promise and its owners</h3>
+<p>Skill: state what crosses the boundary and what the receiver guarantees.</p>
+<p>An interface contract defines the information, behaviour and responsibilities at a boundary.</p>
+<p>It should answer:</p>
+<ul>
+<li>What business event causes a message?</li>
+<li>Which system owns each value?</li>
+<li>Who may send and receive it?</li>
+<li>What makes the message valid?</li>
+<li>What does acknowledgement mean?</li>
+<li>How are duplicates, conflicts and failures handled?</li>
+<li>Who investigates unresolved delivery?</li>
+</ul>
+<p>For Evergreen, the proposed event is:</p>
+<p>A qualified service-completion handoff is available for Finance.</p>
+<p>The receiver’s promise is narrower:</p>
+<p>Record the handoff and make one review item available for that event.</p>
+<p>It does not promise:</p>
+<p>Finance has approved the job or released an invoice.</p>
+<p>Separate transport acknowledgement, receipt and business completion:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request accepted for processing</td>
+<td>The receiving service has accepted the request, possibly asynchronously</td>
+</tr>
+<tr>
+<td>Handoff recorded</td>
+<td>Receipt evidence exists for the business event</td>
+</tr>
+<tr>
+<td>Finance review complete</td>
+<td>Finance has made the review decision</td>
+</tr>
+<tr>
+<td>Invoice release</td>
+<td>Separate Finance action outside this simulator</td>
+</tr>
+</tbody>
+</table></div>
+<p>Zoho’s common status documentation describes HTTP 202 as accepted while processing may take time.2 Do not interpret it as a completed business review.</p>
+<p>Ownership should include both business and technical roles. Operations owns the source job/customer relationship; Technician Lead owns completion facts; Finance owns review decisions. The Developer owns the local adapter implementation, while the Implementation Lead coordinates interface issues.</p>
+<p>Lesson check LC1: Why should a handoff receipt not be displayed as “Finance approved”?</p>
+<h3>2.2 Map meaning, identifiers and allowed information</h3>
+<p>Skill: specify an interface payload that preserves business meaning.</p>
+<p>A message should contain the information the receiver needs, not an unrestricted copy of the source record.</p>
+<p>For Evergreen, that includes job/customer references, completion information and an event identifier. It excludes cost, margin and private Finance reasons.</p>
+<p>A message identifier identifies one immutable business event. A job identifier identifies the job. One job can produce multiple events, such as an initial completion handoff and a later correction.</p>
+<p>A source revision orders the relevant source changes. It is not automatically a Zoho record version or Modified_Time.</p>
+<p>Keep these distinctions explicit:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-2001</td>
+<td>Business job</td>
+</tr>
+<tr>
+<td>EVG-EVENT-001</td>
+<td>One interface event</td>
+</tr>
+<tr>
+<td>Source revision 1</td>
+<td>Business revision represented by the event</td>
+</tr>
+<tr>
+<td>SIM-RECEIPT-001</td>
+<td>Local simulator receipt</td>
+</tr>
+<tr>
+<td>Product record ID</td>
+<td>Actual product identifier; unallocated here</td>
+</tr>
+</tbody>
+</table></div>
+<p>The interface fields below are logical contract names. They are not invented Zoho API field names.</p>
+<p>If a future adapter uses CRM upsert, it must use actual module/field API names and verified duplicate-check fields.1 Upsert matching can update a record, but it does not by itself define the complete business duplicate policy.</p>
+<p>Lesson check LC2: Why should a corrected handoff have a new event identity rather than reuse an accepted event with changed content?</p>
+<h3>2.3 Specify duplicate and retry behaviour</h3>
+<p>Skill: distinguish repeated delivery from repeated business work.</p>
+<p>A duplicate delivery repeats the same event and payload. An idempotent operation produces the same intended effect when repeated.</p>
+<p>For this contract:</p>
+<ul>
+<li>Same event ID and same payload: acknowledge the existing receipt.</li>
+<li>Same event ID and different payload: collision; do not overwrite.</li>
+<li>New event with an older or equal source revision: hold as stale.</li>
+<li>New valid event with a later revision: record it and create its review item.</li>
+</ul>
+<p>A unique receipt record is not enough. If a duplicate request creates another review item, the integration still repeats business work.</p>
+<p>A timeout introduces uncertainty:</p>
+<ul>
+<li>The receiver may not have committed.</li>
+<li>It may have committed but lost the acknowledgement.</li>
+<li>The sender may not know which occurred.</li>
+</ul>
+<p>Use receipt lookup where available. If lookup is unavailable and retry is permitted, resend the same immutable event—not a new event ID and not a payload with a refreshed event timestamp.</p>
+<p>In a production design, durable event tracking and coordinated side effects must survive process restarts and concurrency. The in-memory simulator does not establish those guarantees.</p>
+<p>Lesson check LC3: Why is “one stored record” insufficient evidence that duplicate handling is correct?</p>
+<h3>2.4 Treat errors and partial results by category</h3>
+<p>Skill: choose correction, retry or escalation from the actual outcome.</p>
+<p>Do not retry every error automatically.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Appropriate treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing or invalid business data</td>
+<td>Hold; obtain authorised correction</td>
+</tr>
+<tr>
+<td>Permission or scope problem</td>
+<td>Block; route to the identity owner</td>
+</tr>
+<tr>
+<td>Same ID with different payload</td>
+<td>Hold collision; inspect immutable-event handling</td>
+</tr>
+<tr>
+<td>Stale revision</td>
+<td>Preserve current data; obtain an owner decision if needed</td>
+</tr>
+<tr>
+<td>Timeout or uncertain server outcome</td>
+<td>Investigate receipt; use bounded immutable retry</td>
+</tr>
+<tr>
+<td>Exhausted retry budget</td>
+<td>Manual hold and escalation</td>
+</tr>
+<tr>
+<td>Partial batch success</td>
+<td>Account for each row; do not resend the accepted subset blindly</td>
+</tr>
+</tbody>
+</table></div>
+<p>Zoho CRM upsert documents per-record results and HTTP 207 for partial success. Results retain input order, allowing correlation to submitted records.1 A batch-level status does not replace row-level accounting.</p>
+<p>The same documentation distinguishes scope, permission, validation and modified-record errors. Use the endpoint’s actual response, not a generic assumption that every 4xx or 5xx means the same thing.</p>
+<p>For authorised readback, CRM Get Records supports retrieving a specific record by actual module API name and product record ID.3 The simulator’s event lookup is a separate logical operation, not a claimed Zoho endpoint.</p>
+<p>Lesson check LC4: What should happen when two of three batch rows succeed?</p>
+<h3>2.5 Build a layered quality strategy</h3>
+<p>Skill: link tests to risks and requirements.</p>
+<p>A test strategy explains what will be tested, at which level, with which data and evidence.</p>
+<p>Evergreen needs several layers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Main question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapping/contract checks</td>
+<td>Are required values, identities and relationships valid?</td>
+</tr>
+<tr>
+<td>Receiver component checks</td>
+<td>Are duplicate, collision and revision rules enforced?</td>
+</tr>
+<tr>
+<td>Adapter integration checks</td>
+<td>Are requests/results translated and correlated correctly?</td>
+</tr>
+<tr>
+<td>End-to-end checks</td>
+<td>Does qualified completion reach review without invoice release?</td>
+</tr>
+<tr>
+<td>Access and information checks</td>
+<td>Are permitted identities and projections respected?</td>
+</tr>
+<tr>
+<td>Recovery checks</td>
+<td>What happens before commit, after commit and after retry exhaustion?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use requirement links. A test should explain which condition it demonstrates.</p>
+<p>Test evidence needs the build/version, input, expected result, observed result and relevant environment. Label paper-derived results separately.</p>
+<p>Business-led UAT comes in Chapter 13. Supplier checks should make that activity possible, not pretend to replace it.</p>
+<p>Lesson check LC5: Which checks would a happy-path handoff test miss?</p>
+<h3>2.6 Record defects, root cause and retest</h3>
+<p>Skill: make a failure reproducible and its correction accountable.</p>
+<p>A defect is observed nonconformance against the applicable requirement or contract.</p>
+<p>Record:</p>
+<ul>
+<li>Stable defect ID.</li>
+<li>Requirement and test links.</li>
+<li>Version/environment.</li>
+<li>Reproduction steps and input.</li>
+<li>Expected and observed behaviour.</li>
+<li>Impact, severity and priority.</li>
+<li>Owner.</li>
+<li>Root cause and correction.</li>
+<li>Retest/regression evidence.</li>
+</ul>
+<p>Severity describes impact. Priority describes when the issue should be addressed.</p>
+<p>Use this synthetic classification for the exercises:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Exercise meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 Critical</td>
+<td>Protected-information exposure or unintended live financial action</td>
+</tr>
+<tr>
+<td>S2 High</td>
+<td>Essential workflow blocked or duplicated business work</td>
+</tr>
+<tr>
+<td>S3 Moderate</td>
+<td>Nonessential behaviour impaired with a controlled workaround</td>
+</tr>
+<tr>
+<td>S4 Low</td>
+<td>Presentation issue without workflow/control impact</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are educational definitions, not a Wooplix incident policy.</p>
+<p>“Timeout caused a duplicate” is a symptom description. A root cause explains why the implementation repeated the effect.</p>
+<p>Retesting reruns the original failing case against the correction. Regression testing checks related behaviours that the change could affect.</p>
+<p>Do not close a defect merely because code changed.</p>
+<p>Lesson check LC6: Why are retest and regression both needed after changing the duplicate branch?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: uncertain delivery</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>From</th>
+<th>To</th>
+<th>Information</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sender</td>
+<td>Receiver</td>
+<td>Immutable event</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Receiver</td>
+<td>Event journal</td>
+<td>Record event and payload fingerprint</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Receiver</td>
+<td>Review work</td>
+<td>Create one review item</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Receiver</td>
+<td>Sender</td>
+<td>Acknowledgement lost</td>
+<td>Lost acknowledgement</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sender</td>
+<td>Receiver</td>
+<td>Same event, same payload</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Receiver</td>
+<td>Event journal</td>
+<td>Find existing event</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Receiver</td>
+<td>Sender</td>
+<td>Existing receipt; no new review item</td>
+<td>Message</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lost acknowledgement does not undo the receiver’s work.</p>
+<p>The retry must find the existing event and suppress another review item. A production implementation needs durable coordination between event recording and side effects. The local example tests only the supplied in-memory behaviour.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: specify and reproduce the interface defect</h2>
+<h3>4.1 Completed ownership and boundary</h3>
+<p>EVG-SRC-098 supplies these responsibilities.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Responsibility</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source job/customer relationship</td>
+<td>Operations Manager</td>
+</tr>
+<tr>
+<td>Completion facts</td>
+<td>Technician Lead</td>
+</tr>
+<tr>
+<td>Receiving review process</td>
+<td>Finance Lead</td>
+</tr>
+<tr>
+<td>Local adapter/receiver</td>
+<td>Developer, Riley Park</td>
+</tr>
+<tr>
+<td>Test evidence and retest</td>
+<td>Quality Lead, Sam Torres</td>
+</tr>
+<tr>
+<td>Coordination and escalation</td>
+<td>Implementation Lead, Jordan Ellis</td>
+</tr>
+<tr>
+<td>Future connection authority</td>
+<td>Client Administrator</td>
+</tr>
+<tr>
+<td>Scope decision</td>
+<td>Client Sponsor</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-IF-001 v0.1 — proposed logical interface</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Specification field</th>
+<th>Completed definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Record qualified completion events for Finance review</td>
+</tr>
+<tr>
+<td>Current transport</td>
+<td>Local Receiver.receive() call</td>
+</tr>
+<tr>
+<td>Future endpoint</td>
+<td>Not selected; live Finance system remains unidentified</td>
+</tr>
+<tr>
+<td>Sender identity</td>
+<td>Local label handoff_writer; not real authentication</td>
+</tr>
+<tr>
+<td>Business acknowledgement</td>
+<td>Received, not reviewed or invoice-approved</td>
+</tr>
+<tr>
+<td>Allowed content</td>
+<td>Eight contract fields listed below</td>
+</tr>
+<tr>
+<td>Restricted content</td>
+<td>Cost, margin and private Finance reason</td>
+</tr>
+<tr>
+<td>Event handling</td>
+<td>Immutable key plus payload comparison</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>New accepted source revision must exceed the current revision</td>
+</tr>
+<tr>
+<td>Retry budget</td>
+<td>Initial attempt plus at most two retries</td>
+</tr>
+<tr>
+<td>Retry delays</td>
+<td>30 seconds, then 120 seconds, measured after failed-attempt completion</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>Five seconds per attempt in the supplied timing exercise</td>
+</tr>
+<tr>
+<td>Exhaustion</td>
+<td>Manual hold; Implementation Lead coordinates escalation</td>
+</tr>
+<tr>
+<td>Retention</td>
+<td>Lifetime of the local fixture; production retention unresolved</td>
+</tr>
+<tr>
+<td>Scope status</td>
+<td>Assessment only, EVG-CHANGE-005 not approved</td>
+</tr>
+</tbody>
+</table></div>
+<p>These retry values are synthetic contract inputs, not Zoho limits.</p>
+<h3>4.2 Complete mapping and message</h3>
+<p>EVG-SRC-099 supplies the schema and recognised relationships:</p>
+<ul>
+<li>EVG-JOB-2001 → EVG-CUST-0101.</li>
+<li>EVG-JOB-2002 → EVG-CUST-0102.</li>
+<li>EVG-JOB-2003 → EVG-CUST-0103.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contract field</th>
+<th>Meaning/validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema_version</td>
+<td>Exactly "1.0"</td>
+</tr>
+<tr>
+<td>event_id</td>
+<td>Nonblank immutable event reference</td>
+</tr>
+<tr>
+<td>job_ref</td>
+<td>Recognised business job reference</td>
+</tr>
+<tr>
+<td>customer_ref</td>
+<td>Must agree with the job relationship</td>
+</tr>
+<tr>
+<td>source_revision</td>
+<td>Positive integer; not a product version</td>
+</tr>
+<tr>
+<td>completed_on</td>
+<td>ISO date, not after event date</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>Nonblank completion summary</td>
+</tr>
+<tr>
+<td>occurred_at</td>
+<td>UTC business-event timestamp; unchanged on retry</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unexpected fields are rejected rather than silently copied.</p>
+<p>Message A:</p>
+<p>{</p>
+<p>"schema_version": "1.0",
+  "event_id": "EVG-EVENT-001",
+  "job_ref": "EVG-JOB-2001",
+  "customer_ref": "EVG-CUST-0101",
+  "source_revision": 1,
+  "completed_on": "2027-01-28",
+  "summary": "Replaced filter",
+  "occurred_at": "2027-01-28T09:00:00Z"
+}</p>
+<h3>4.3 Runnable local receiver</h3>
+<p>EVG-SRC-100 supplies two reference versions. V1 deliberately contains a duplicate-side-effect defect. V2 corrects it.</p>
+<p>Save as evergreen_interface.py and run with Python 3.7 or later:</p>
+<pre><code class="language-bash">python3 evergreen_interface.py
+</code></pre>
+<p>No packages, credentials, network calls or files beyond the script are required.</p>
+<pre><code class="language-python">from copy import deepcopy
+from datetime import date, datetime
+import hashlib
+import json
+
+FIELDS = {
+    &quot;schema_version&quot;, &quot;event_id&quot;, &quot;job_ref&quot;, &quot;customer_ref&quot;,
+    &quot;source_revision&quot;, &quot;completed_on&quot;, &quot;summary&quot;, &quot;occurred_at&quot;
+}
+JOBS = {
+    &quot;EVG-JOB-2001&quot;: &quot;EVG-CUST-0101&quot;,
+    &quot;EVG-JOB-2002&quot;: &quot;EVG-CUST-0102&quot;,
+    &quot;EVG-JOB-2003&quot;: &quot;EVG-CUST-0103&quot;
+}
+A = {
+    &quot;schema_version&quot;: &quot;1.0&quot;, &quot;event_id&quot;: &quot;EVG-EVENT-001&quot;,
+    &quot;job_ref&quot;: &quot;EVG-JOB-2001&quot;, &quot;customer_ref&quot;: &quot;EVG-CUST-0101&quot;,
+    &quot;source_revision&quot;: 1, &quot;completed_on&quot;: &quot;2027-01-28&quot;,
+    &quot;summary&quot;: &quot;Replaced filter&quot;, &quot;occurred_at&quot;: &quot;2027-01-28T09:00:00Z&quot;
+}
+
+
+def fingerprint(message):
+    text = json.dumps(message, sort_keys=True, separators=(&quot;,&quot;, &quot;:&quot;))
+    return hashlib.sha256(text.encode(&quot;utf-8&quot;)).hexdigest()
+
+
+class Receiver:
+    def __init__(self, version=&quot;V2&quot;):
+        self.version = version
+        self.receipts, self.latest, self.review_items = {}, {}, []
+        self.invoice_releases = 0
+
+    def receive(self, message, identity=&quot;handoff_writer&quot;, fault=None):
+        if identity != &quot;handoff_writer&quot;:
+            return {&quot;outcome&quot;: &quot;DENIED&quot;}
+        if not isinstance(message, dict) or set(message) != FIELDS:
+            return {&quot;outcome&quot;: &quot;INVALID&quot;}
+
+        strings = FIELDS - {&quot;source_revision&quot;}
+        if any(not isinstance(message[k], str) or not message[k].strip()
+               for k in strings):
+            return {&quot;outcome&quot;: &quot;INVALID&quot;}
+        if (message[&quot;schema_version&quot;] != &quot;1.0&quot;
+                or type(message[&quot;source_revision&quot;]) is not int
+                or message[&quot;source_revision&quot;] &lt; 1):
+            return {&quot;outcome&quot;: &quot;INVALID&quot;}
+        if JOBS.get(message[&quot;job_ref&quot;]) != message[&quot;customer_ref&quot;]:
+            return {&quot;outcome&quot;: &quot;INVALID&quot;}
+
+        try:
+            occurred = datetime.fromisoformat(
+                message[&quot;occurred_at&quot;].replace(&quot;Z&quot;, &quot;+00:00&quot;)
+            )
+            if (occurred.utcoffset() is None
+                    or occurred.utcoffset().total_seconds() != 0
+                    or date.fromisoformat(message[&quot;completed_on&quot;])
+                    &gt; occurred.date()):
+                return {&quot;outcome&quot;: &quot;INVALID&quot;}
+        except (TypeError, ValueError):
+            return {&quot;outcome&quot;: &quot;INVALID&quot;}
+
+        key, digest = message[&quot;event_id&quot;], fingerprint(message)
+        existing = self.receipts.get(key)
+        if existing:
+            if existing[&quot;fingerprint&quot;] != digest:
+                return {&quot;outcome&quot;: &quot;COLLISION&quot;}
+            if self.version == &quot;V1&quot;:
+                self.review_items.append(key)  # Deliberate model defect
+            return {
+                &quot;outcome&quot;: &quot;DUPLICATE&quot;,
+                &quot;receipt_ref&quot;: existing[&quot;receipt_ref&quot;],
+                &quot;finance_status&quot;: &quot;Received&quot;
+            }
+
+        current = self.latest.get(
+            message[&quot;job_ref&quot;], {}
+        ).get(&quot;source_revision&quot;, 0)
+        if message[&quot;source_revision&quot;] &lt;= current:
+            return {&quot;outcome&quot;: &quot;STALE&quot;}
+        if fault == &quot;before_commit&quot;:
+            raise TimeoutError(&quot;Simulated timeout before commit&quot;)
+
+        receipt = &quot;SIM-RECEIPT-{:03d}&quot;.format(len(self.receipts) + 1)
+        self.receipts[key] = {
+            &quot;fingerprint&quot;: digest, &quot;receipt_ref&quot;: receipt,
+            &quot;job_ref&quot;: message[&quot;job_ref&quot;]
+        }
+        self.latest[message[&quot;job_ref&quot;]] = {
+            &quot;source_revision&quot;: message[&quot;source_revision&quot;],
+            &quot;summary&quot;: message[&quot;summary&quot;]
+        }
+        self.review_items.append(key)
+
+        if fault == &quot;after_commit&quot;:
+            raise TimeoutError(&quot;Simulated acknowledgement loss after commit&quot;)
+        return {
+            &quot;outcome&quot;: &quot;ACCEPTED&quot;,
+            &quot;receipt_ref&quot;: receipt, &quot;finance_status&quot;: &quot;Received&quot;
+        }
+
+    def lookup(self, event_id):
+        receipt = self.receipts.get(event_id)
+        return deepcopy(receipt) if receipt else None
+
+    def public(self, event_id):
+        receipt = self.receipts[event_id]
+        return {
+            &quot;job_ref&quot;: receipt[&quot;job_ref&quot;],
+            &quot;handoff_status&quot;: &quot;Received&quot;,
+            &quot;finance_contact&quot;: &quot;finance@evergreen.example.com&quot;
+        }
+
+
+def replay_probe(version):
+    receiver = Receiver(version)
+    try:
+        receiver.receive(A, fault=&quot;after_commit&quot;)
+    except TimeoutError:
+        pass
+    # The fixture assumes receipt lookup is unavailable to the sender.
+    retry = receiver.receive(A)
+    return {
+        &quot;version&quot;: version, &quot;retry&quot;: retry[&quot;outcome&quot;],
+        &quot;stored_events&quot;: len(receiver.receipts),
+        &quot;review_items&quot;: len(receiver.review_items),
+        &quot;invoice_releases&quot;: receiver.invoice_releases
+    }
+
+
+if __name__ == &quot;__main__&quot;:
+    for version in (&quot;V1&quot;, &quot;V2&quot;):
+        print(json.dumps(replay_probe(version), sort_keys=True))
+</code></pre>
+<p>The fingerprint compares payload content. It is not a signature, credential or authentication mechanism.</p>
+<p>The local identity string and in-memory journal also do not provide real authentication, durability or concurrency guarantees.</p>
+<h3>4.4 Reproduced reference result</h3>
+<p>The supplied reference fixture produces:</p>
+<p>{"invoice_releases": 0, "retry": "DUPLICATE", "review_items": 2, "stored_events": 1, "version": "V1"}</p>
+<p>{"invoice_releases": 0, "retry": "DUPLICATE", "review_items": 1, "stored_events": 1, "version": "V2"}</p>
+<p>These outcomes were reproduced in a local Python reference check. They are not tenant, client or financial-system observations.</p>
+<p>For each version:</p>
+<blockquote>
+<p>2 deliveries=1 initial attempt+1 retry</p>
+</blockquote>
+<p>V1 records one event but creates two review items. V2 records one event and creates one review item.</p>
+<p>The receipt count alone would conceal V1’s defect.</p>
+<h3>4.5 Completed defect record</h3>
+<p>EVG-DEFECT-001 — duplicate review work in reference receiver V1</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement</td>
+<td>Candidate EVG-REQ-016: reliable event handoff without repeated work or uncontrolled overwrite</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>EVG-TEST-029</td>
+</tr>
+<tr>
+<td>Environment/version</td>
+<td>Local in-memory receiver V1</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>Message A; timeout after commit; immutable retry</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>One receipt and one review item</td>
+</tr>
+<tr>
+<td>Observed reference result</td>
+<td>One receipt and two review items</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>S2 High: duplicated essential review work</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Correct before treating the reference duplicate path as valid</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Developer</td>
+</tr>
+<tr>
+<td>Root cause</td>
+<td>V1 appends review work in the existing-event branch</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>Return existing receipt without appending another review item</td>
+</tr>
+<tr>
+<td>Retest</td>
+<td>Original after-commit timeout/retry fixture in V2</td>
+</tr>
+<tr>
+<td>Retest result</td>
+<td>One receipt and one review item</td>
+</tr>
+<tr>
+<td>Product status</td>
+<td>No Zoho defect or product retest claimed</td>
+</tr>
+</tbody>
+</table></div>
+<p>The timeout is the trigger, not the root cause. The duplicate branch causes the repeated work.</p>
+<p>The local correction is not enough to claim a production guarantee. Durable journal and side-effect coordination still need design and verification.</p>
+<p>Record EVG-DEC-031: acknowledgement means Received only; Finance review remains separate.</p>
+<p>Record EVG-DEC-032: use immutable event identity and verify both receipt and side-effect counts.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “Upsert prevents duplicate records, so retries are safe.”</p>
+<p>Correction: “Record matching is one part of the design. Verify repeated requests, side effects, changed payloads, revision order and configured automation.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Complete the interface test pack and assess partial results.</p>
+<p>Use the code, an editor and Python. Without a runtime, label outcomes paper-derived. No Zoho access is required.</p>
+<p>Complete test inputs</p>
+<p>Use a fresh Receiver("V2") for each isolated case.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Input and action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-TEST-026</td>
+<td>Submit A normally</td>
+</tr>
+<tr>
+<td>EVG-TEST-027</td>
+<td>Submit dict(A, summary="")</td>
+</tr>
+<tr>
+<td>EVG-TEST-028</td>
+<td>Submit A with identity metadata_reader</td>
+</tr>
+<tr>
+<td>EVG-TEST-029</td>
+<td>Submit A with after_commit, catch timeout, resend unchanged A</td>
+</tr>
+<tr>
+<td>EVG-TEST-030</td>
+<td>Accept A, then resend same ID with summary “Different summary”</td>
+</tr>
+<tr>
+<td>EVG-TEST-031</td>
+<td>Accept event 003 for job 2001, revision 2, summary “Replaced filter and checked airflow”; then submit event 004 with A’s revision 1 values</td>
+</tr>
+<tr>
+<td>EVG-TEST-032</td>
+<td>Submit A with before_commit, catch timeout, resend A</td>
+</tr>
+<tr>
+<td>EVG-TEST-033</td>
+<td>Submit dict(A, finance_reason="Private")</td>
+</tr>
+</tbody>
+</table></div>
+<p>For events 003 and 004, all fields not specified above are copied from A.</p>
+<p>A separate valid Message B is supplied:</p>
+<p>{</p>
+<p>"schema_version": "1.0",
+  "event_id": "EVG-EVENT-005",
+  "job_ref": "EVG-JOB-2002",
+  "customer_ref": "EVG-CUST-0102",
+  "source_revision": 1,
+  "completed_on": "2027-01-28",
+  "summary": "Reset controller",
+  "occurred_at": "2027-01-28T09:05:00Z"
+}</p>
+<p>EVG-SRC-101 supplies a synthetic future-adapter response-correlation exercise. It is not a captured API result.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Input position</th>
+<th>Business event</th>
+<th>Submitted summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>EVG-EVENT-011, job 2001/customer 0101, revision 1</td>
+<td>Replaced filter</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EVG-EVENT-012, job 2002/customer 0102, revision 1</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td>3</td>
+<td>EVG-EVENT-013, job 2003/customer 0103, revision 1</td>
+<td>Checked pump</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three have schema 1.0, completion date 28 January and event time 09:10 UTC. The illustrative batch status is HTTP 207. The exercise assumes the future adapter’s approved validation requires the summary.</p>
+<p>Guided steps</p>
+<ol>
+<li>Run and record the eight local cases.  </li>
+</ol>
+<p>Capture version, input, outcome and both counts.</p>
+<ol start="2">
+<li>Inspect public output.  </li>
+</ol>
+<p>Confirm that public() returns only the allowed projection.</p>
+<ol start="3">
+<li>Retest the original defect.  </li>
+</ol>
+<p>Compare V1 and V2 with the same fault placement and payload.</p>
+<ol start="4">
+<li>Assess regression.  </li>
+</ol>
+<p>Ensure the correction did not weaken invalid, permission, collision or stale handling.</p>
+<ol start="5">
+<li>Correlate the batch rows.  </li>
+</ol>
+<p>Expected: two accepted rows and one correction hold, not a whole-batch retry.</p>
+<ol start="6">
+<li>Complete the evidence and recommendation.  </li>
+</ol>
+<p>Distinguish local execution from the paper adapter exercise and unperformed product tests.</p>
+<p>Blank test-evidence worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Requirement</th>
+<th>Version/environment</th>
+<th>Input</th>
+<th>Expected</th>
+<th>Observed or paper result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank defect worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID and requirement/test links</td>
+<td></td>
+<td>Stable records</td>
+</tr>
+<tr>
+<td>Version and reproduction</td>
+<td></td>
+<td>Exact input, identity and fault</td>
+</tr>
+<tr>
+<td>Expected/observed</td>
+<td></td>
+<td>Separate the two</td>
+</tr>
+<tr>
+<td>Impact/severity/priority</td>
+<td></td>
+<td>Explain business consequence</td>
+</tr>
+<tr>
+<td>Root cause/correction</td>
+<td></td>
+<td>Mechanism, not symptom</td>
+</tr>
+<tr>
+<td>Retest/regression</td>
+<td></td>
+<td>Same failing case and relevant neighbours</td>
+</tr>
+<tr>
+<td>Closure boundary</td>
+<td></td>
+<td>Local, product or client evidence</td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: EVG-IF-001 v0.2, a test pack and EVG-DEFECT-001’s reference retest record.</p>
+<p>Cleanup: new receiver instances reset all state. Retain code and evidence versions. No external record cleanup is needed.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed sender behaviour</p>
+<p>EVG-SRC-102 supplies Message K:</p>
+<p>{</p>
+<p>"schema_version": "1.0",
+  "event_id": "EVG-EVENT-007",
+  "job_ref": "EVG-JOB-2003",
+  "customer_ref": "EVG-CUST-0103",
+  "source_revision": 1,
+  "completed_on": "2027-01-28",
+  "summary": "Inspected valve",
+  "occurred_at": "2027-01-28T09:20:00Z"
+}</p>
+<p>Use a fresh V2 receiver.</p>
+<ul>
+<li>Initial attempt starts at 09:20:00 and times out at 09:20:05 after commit.</li>
+<li>Receipt lookup is unavailable at that point.</li>
+<li>
+<p>The sender wrapper incorrectly creates its retry with:
+retry_payload = dict(K, occurred_at="2027-01-28T09:20:35Z")</p>
+</li>
+<li>
+<p>No other value changes.</p>
+</li>
+<li>At 09:20:40, authorised lookup becomes available and returns the original event’s receipt and fingerprint.</li>
+<li>No business correction to K is authorised.</li>
+</ul>
+<p>Retry-exhaustion inputs</p>
+<p>A separate fresh receiver is used for event 008:</p>
+<ul>
+<li>Job EVG-JOB-2002, customer EVG-CUST-0102, revision 1.</li>
+<li>Schema 1.0; completed date 28 January.</li>
+<li>Summary “Checked pump.”</li>
+<li>occurred_at remains 2027-01-28T09:30:00Z.</li>
+<li>Initial attempt starts 09:30:00.</li>
+<li>Every attempt lasts five seconds and fails before commit.</li>
+<li>All receipt lookups remain unavailable.</li>
+<li>Apply the specified 30-second and 120-second delays after failed-attempt completion.</li>
+<li>No further retries are permitted.</li>
+</ul>
+<p>EVG-SRC-103 confirms that Received is not Finance review complete. No live financial action or new support service is authorised.</p>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Expected outcome and counts for K’s altered retry.</li>
+<li>Sender diagnosis and safe correction.</li>
+<li>A proposed EVG-DEFECT-002 entry for the sender wrapper, marked pending recorded reproduction if you do not run it.</li>
+<li>Exact retry start/finish times for event 008.</li>
+<li>Final sender/receiver states and ownership.</li>
+<li>A release recommendation.</li>
+</ol>
+<p>Success criteria</p>
+<p>Do not classify correct collision rejection as a receiver defect. Preserve the original event content and do not create another review item.</p>
+<p>Stop after the stated retry budget. Do not call an unresolved delivery Finance-approved or invent a recovery result.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One receipt but two review tasks</td>
+<td>Side effect not deduplicated</td>
+<td>Suppress work for an existing identical event</td>
+</tr>
+<tr>
+<td>Retry becomes a collision</td>
+<td>Sender changed immutable content</td>
+<td>Preserve original payload; inspect wrapper</td>
+</tr>
+<tr>
+<td>Validation error retried repeatedly</td>
+<td>Error category ignored</td>
+<td>Hold for business correction</td>
+</tr>
+<tr>
+<td>Permission failure treated as outage</td>
+<td>Identity issue misclassified</td>
+<td>Route to Administrator/connection owner</td>
+</tr>
+<tr>
+<td>Older revision overwrites current</td>
+<td>Ordering rule absent</td>
+<td>Hold stale event</td>
+</tr>
+<tr>
+<td>Whole batch resent after 207</td>
+<td>Per-row evidence ignored</td>
+<td>Correlate results and recover only affected rows</td>
+</tr>
+<tr>
+<td>Defect closed after code change</td>
+<td>Retest missing</td>
+<td>Repeat original fixture and relevant regression</td>
+</tr>
+<tr>
+<td>Retry budget exhausted silently</td>
+<td>Ownership incomplete</td>
+<td>Manual hold and escalation</td>
+</tr>
+<tr>
+<td>Received displayed as approved</td>
+<td>Transport/business states conflated</td>
+<td>Separate receipt and Finance outcome</td>
+</tr>
+</tbody>
+</table></div>
+<p>A source correction creates an authorised new event or revision according to the contract. It is not a reason to mutate an accepted event.</p>
+<p>Local reset recreates a simulator. It does not reverse a financial transaction, recover a persistent journal or recall an external notification.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What must an interface specification say about acknowledgement?</li>
+<li>Why is event identity different from job identity?</li>
+<li>What is the difference between a duplicate and a collision?</li>
+<li>Why can a timeout be consistent with successful receipt?</li>
+<li>What makes a defect record reproducible?</li>
+<li>How do severity and priority differ?</li>
+<li>Why is “network timeout” not the root cause of V1’s duplicated work?</li>
+<li>Which evidence is still needed before a live Evergreen handoff can be approved?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: Receipt shows that handoff information was recorded. Finance has not necessarily reviewed it or made an invoice decision.</p>
+<p>LC2: An accepted event represents immutable content. A correction is a different business event; changing accepted content under the same ID causes ambiguity.</p>
+<p>LC3: Side effects such as review tasks can repeat even when a unique receipt prevents duplicate records.</p>
+<p>LC4: Preserve the two accepted results, hold/correct the failed row and correlate its recovery separately.</p>
+<p>LC5: Missing data, wrong identity, repeated delivery, altered payload, revision order, partial outcome and recovery.</p>
+<p>LC6: Retest proves the original failure is corrected. Regression checks whether the changed branch damaged related controls.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>The eight V2 receiver cases were reproduced in a local reference verification. Their result categories are:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+<th>Receipt/work state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>026</td>
+<td>ACCEPTED</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>027</td>
+<td>INVALID</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>028</td>
+<td>DENIED</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>029</td>
+<td>DUPLICATE after lost acknowledgement</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>030</td>
+<td>COLLISION</td>
+<td>Original 1 / 1 unchanged</td>
+</tr>
+<tr>
+<td>031</td>
+<td>STALE</td>
+<td>Revision 2 retained; 1 / 1</td>
+</tr>
+<tr>
+<td>032</td>
+<td>Timeout before commit, then ACCEPTED</td>
+<td>0 / 0 before retry; 1 / 1 after</td>
+</tr>
+<tr>
+<td>033</td>
+<td>INVALID</td>
+<td>0 / 0</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are local component results. Product and client checks remain unperformed.</p>
+<p>The public projection for A is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job reference</th>
+<th>Handoff status</th>
+<th>Finance contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-2001</td>
+<td>Received</td>
+<td>finance@evergreen.example.com</td>
+</tr>
+</tbody>
+</table></div>
+<p>Batch correlation</p>
+<blockquote>
+<p>3 rows=2 accepted+1 rejected</p>
+<p>Accepted-row proportion=(2) ÷ (3)×100≈66.67%</p>
+</blockquote>
+<p>This describes the supplied batch only, not overall quality or release readiness.</p>
+<p>Positions 1 and 3 remain accepted. Position 2 requires an authorised summary correction and appropriate new-event treatment. Do not replay the complete batch blindly.</p>
+<p>Retest conclusion</p>
+<p>EVG-DEFECT-001 is corrected and retested within the local reference receiver. The V2 duplicate branch preserves one review item.</p>
+<p>Record EVG-DEC-033: retain per-row and side-effect evidence; local regression does not close product-readiness gaps.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Altered retry</p>
+<p>K’s initial attempt records one event and review item before acknowledgement loss.</p>
+<p>Changing occurred_at changes the payload fingerprint. V2 returns COLLISION. Counts remain one receipt and one review item.</p>
+<p>The receiver is enforcing the contract correctly. The sender wrapper is defective because it replaces business-event time with retry-attempt time.</p>
+<p>Use separate fields in the sender’s attempt log for attempt timestamps. Keep K unchanged.</p>
+<p>When lookup becomes available, compare its original receipt/fingerprint with the original K. If they agree, record Received and stop delivery retries. No new event or review item is required.</p>
+<p>Proposed EVG-DEFECT-002</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component</td>
+<td>Local sender retry wrapper</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td>Immutable event payload</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Altered-timestamp retry of K</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>Retry uses original occurred_at; existing receipt recognised</td>
+</tr>
+<tr>
+<td>Supplied behaviour</td>
+<td>Wrapper changes timestamp, causing collision</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>S2 High: recovery path blocked</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Developer</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>Preserve original message; record attempt time separately</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Proposed pending recorded reproduction, or opened as a local defect after reproduction</td>
+</tr>
+<tr>
+<td>Boundary</td>
+<td>Not a Zoho or receiver defect</td>
+</tr>
+</tbody>
+</table></div>
+<p>Exhaustion schedule</p>
+<p>Initial attempt:</p>
+<blockquote>
+<p>09{:}30{:}00+5 seconds=09{:}30{:}05</p>
+</blockquote>
+<p>First retry:</p>
+<blockquote>
+<p>09{:}30{:}05+30 seconds=09{:}30{:}35</p>
+</blockquote>
+<p>It finishes at 09:30:40.</p>
+<p>Second retry:</p>
+<blockquote>
+<p>09{:}30{:}40+120 seconds=09{:}32{:}40</p>
+</blockquote>
+<p>It finishes at 09:32:45.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Attempt</th>
+<th>Start</th>
+<th>Finish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial</td>
+<td>09:30:00</td>
+<td>09:30:05</td>
+</tr>
+<tr>
+<td>Retry 1</td>
+<td>09:30:35</td>
+<td>09:30:40</td>
+</tr>
+<tr>
+<td>Retry 2</td>
+<td>09:32:40</td>
+<td>09:32:45</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three attempts exhaust the budget. The receiver has zero receipts and zero review items in the supplied fixture.</p>
+<p>The sender enters Manual hold. The Implementation Lead coordinates technical investigation with the Developer and relevant client support owner. Finance review has not begun.</p>
+<p>A suitable recommendation is:</p>
+<p>The local receiver correction passes its reference checks, but the sender retry wrapper needs correction and reproduction evidence. Exhausted delivery remains visible as Manual hold. A live interface still requires scope approval, identified systems, authorised identities, durable recovery and actual end-to-end evidence.</p>
+<p>Record EVG-DEC-034: stop at retry exhaustion and preserve unresolved work under named ownership.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Whether acknowledgement means request acceptance, recorded receipt or completed business action.</li>
+<li>One job can produce several immutable events.</li>
+<li>A duplicate has the same ID/content. A collision has the same ID but different content.</li>
+<li>The receiver may commit before its acknowledgement is lost.</li>
+<li>Exact version, environment, identity, inputs, steps, expected and observed results.</li>
+<li>Severity measures impact; priority determines treatment order.</li>
+<li>Timeout exposes the path. V1’s duplicate branch creates the second review item.</li>
+<li>Approved scope, actual mappings/endpoints, identities, permissions, durable duplicate/recovery design, product checks and appropriate business acceptance.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Integration quality depends on a clear promise and evidence that survives exceptions.</p>
+<p>You should be able to explain what an acknowledgement means, how one event is recognised across retries, who owns correction and how unresolved work remains visible.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can define interface ownership and allowed information.</li>
+<li>I can distinguish event, job and product identifiers.</li>
+<li>I can specify duplicate, collision and stale behaviour.</li>
+<li>I can handle partial and uncertain results.</li>
+<li>I can produce traceable test evidence.</li>
+<li>I can distinguish severity, priority and root cause.</li>
+<li>I can retest a defect and check related behaviour.</li>
+<li>I can state local verification and production limits honestly.</li>
+</ul>
+<p>Your project pack now contains an interface specification, test pack and reference defect evidence.</p>
+<p>Chapter 12, Scope Change and Communication, uses the notification, reporting, multi-site and proposed integration requests to practise impact analysis, approvals, risk/issue communication and steering decisions.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collision</td>
+<td>Same event ID received with different content</td>
+</tr>
+<tr>
+<td>Contract test</td>
+<td>Check of agreed interface structure and behaviour</td>
+</tr>
+<tr>
+<td>Duplicate delivery</td>
+<td>Repetition of an identical event</td>
+</tr>
+<tr>
+<td>Fingerprint</td>
+<td>Derived value used to compare payload content</td>
+</tr>
+<tr>
+<td>Idempotency</td>
+<td>Repetition without additional unintended effect</td>
+</tr>
+<tr>
+<td>Interface contract</td>
+<td>Defined information, behaviour and responsibilities at a boundary</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>Checking related behaviour after a change</td>
+</tr>
+<tr>
+<td>Retest</td>
+<td>Repeating the original failing case after correction</td>
+</tr>
+<tr>
+<td>Root cause</td>
+<td>Mechanism that explains the failure</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>Impact classification</td>
+</tr>
+<tr>
+<td>Stale event</td>
+<td>Event representing a revision that should not replace current data</td>
+</tr>
+<tr>
+<td>Unresolved outcome</td>
+<td>Delivery whose effect is not yet known</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Upsert Records<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/upsert-records.html">Open official reference</a></li>
+</ol>
+<p>Matching, validation/feature conditions, per-record results and partial success.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Common Status Codes<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/status-codes.html">Open official reference</a></li>
+</ol>
+<p>Accepted processing, multi-status and error categories.</p>
+<ol start="3">
+<li>Zoho CRM API v8 — Get Records<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-records.html">Open official reference</a></li>
+</ol>
+<p>Authorised readback using actual module and product record identifiers.</p>
+<p>Consult the official references above for current product details. Confirm the applicable edition, permissions and environment before using product-specific procedures. The local reference checks do not establish Evergreen’s Zoho adapter, actual financial endpoint, authentication or production behaviour. No Zoho execution or client acceptance is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Produce integration specifications and test evidence.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-10">← Previous chapter</a><a href="/course-book/course-05/chapter-12">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

@@ -1,0 +1,5 @@
+source_row,appointment_ref,job_ref,technician_ref,scheduled_start,scheduled_end,appointment_state,customer_confirmed_at,technician_ack_at,actual_started_at
+A01,EVG-APPT-7001,EVG-JOB-1801,T1,2027-01-25T09:00:00Z,2027-01-25T10:00:00Z,Confirmed,2027-01-24T09:00:00Z,2027-01-24T09:05:00Z,
+A02,EVG-APPT-7002,EVG-JOB-1804,T2,2027-01-25T11:00:00Z,2027-01-25T12:00:00Z,Pending acknowledgement,2027-01-24T10:00:00Z,,
+A03,EVG-APPT-7003,EVG-JOB-1802,T2,2027-01-24T10:00:00Z,2027-01-24T11:00:00Z,Completed,2027-01-24T09:00:00Z,2027-01-24T09:05:00Z,2027-01-24T10:00:00Z
+Blank fields are intentional exception inputs, not omitted chapter content.

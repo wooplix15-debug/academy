@@ -1,0 +1,8 @@
+job_ref,customer_ref,finance_review_state,returned_for_missing_info,return_reason
+EVG-JOB-1001,EVG-CUST-0101,review_complete,no,none
+EVG-JOB-1002,EVG-CUST-0102,review_complete,yes,missing_completion_summary
+EVG-JOB-1003,EVG-CUST-0101,review_complete,no,none
+EVG-JOB-1004,EVG-CUST-0103,review_complete,no,none
+EVG-JOB-1005,EVG-CUST-0104,review_complete,yes,missing_completion_date
+EVG-JOB-1006,EVG-CUST-0105,awaiting_review,,
+EVG-JOB-* and EVG-CUST-* are synthetic business identifiers. They are distinct from Zoho-generated record IDs. Requirement and test IDs identify project evidence, not customer or job records.

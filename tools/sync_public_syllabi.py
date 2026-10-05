@@ -31,10 +31,12 @@ def chapter_id(number):
 def syllabus(course):
     blocks = []
     for number, chapter in enumerate(course['chapters'], 1):
+        has_book = course['id'] in {4, 5} or (course['id'] == 1 and number == 1)
+        chapter_book = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}/chapter-{number:02d}">Read this chapter in the Course Book →</a></p>' if has_book else ''
         blocks.append(f'''<details class="module" id="{chapter_id(number)}" open>
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
-<div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p></div></details>''')
-    book_link = '<p><a class="text-link" href="/course-book/course-01/">Course Book · read Chapter 1 →</a></p>' if course['id'] == 1 else ''
+<div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p>{chapter_book}</div></details>''')
+    book_link = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Open the Course Book →</a></p>' if course['id'] in {1, 4, 5} else ''
     return f'''<section class="course-syllabus" id="syllabus">
 <div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2>{book_link}<p>Read the topics and practice task for each chapter. Expand or collapse chapters as you read.</p><p>Ask us about the course duration, schedule and delivery format.</p><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
 <div><div class="chapter-controls"><button type="button" data-chapters="open">Expand all chapters</button><button type="button" data-chapters="close">Collapse all</button></div><div class="module-list">{''.join(blocks)}</div></div></section>'''
@@ -77,7 +79,7 @@ footer = template[template.index('<footer'):]
 cards = []
 for course, slug in zip(DATA['courses'], SLUGS):
     chapters = ''.join(f'<li><a href="/courses/{slug}.html#{chapter_id(n)}"><span>{n:02}</span>{escape(ch["title"])}</a></li>' for n, ch in enumerate(course['chapters'], 1))
-    book_action = '<p><a class="text-link" href="/course-book/course-01/">Course Book · start learning →</a></p>' if course['id'] == 1 else ''
+    book_action = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Course Book · start learning →</a></p>' if course['id'] in {1, 4, 5} else ''
     cards.append(f'''<article class="curriculum-course" id="course-{course['id']}"><p class="eyebrow">COURSE {course['id']:02} · {len(course['chapters'])} CHAPTERS</p><h2><a href="/courses/{slug}.html">{escape(course['title'])}</a></h2><p>{escape(course['summary'])}</p><p><b>For:</b> {escape(course['audience'])}</p><ol class="chapter-index">{chapters}</ol><a class="button button-dark" href="/courses/{slug}.html#syllabus">Topics and practice tasks →</a>{book_action}</article>''')
 main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
 (PUBLIC / 'syllabus.html').write_text(head + main + footer)

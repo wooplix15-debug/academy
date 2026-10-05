@@ -1,0 +1,1510 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 9</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 09</p><h1>Delivery Planning and Estimation</h1><p>Defend a delivery plan and estimate.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-09-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: parallel work and convergence</a><a href="#section-4">4. Worked case: refine the original pilot estimate</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A delivery estimate is a reasoned forecast of the work required under stated conditions. A delivery plan explains how that work can be performed with the available people, dependencies and decision points.</p>
+<p>Neither is simply a number of hours or a preferred completion date.</p>
+<p>You need to explain:</p>
+<ul>
+<li>What work the estimate covers.</li>
+<li>Who performs it.</li>
+<li>How much staff effort it requires.</li>
+<li>Which activities can overlap.</li>
+<li>Which inputs and decisions must arrive first.</li>
+<li>What uncertainty remains.</li>
+<li>What would cause the estimate to change.</li>
+</ul>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Build a work breakdown linked to deliverables and requirements.</li>
+<li>Separate configuration, development, testing, data preparation, training and handover effort.</li>
+<li>Calculate supplier and client participation separately.</li>
+<li>Derive an elapsed schedule from dependencies and capacity.</li>
+<li>Explain contingency and its limits.</li>
+<li>Refine an estimate when design evidence or availability changes.</li>
+<li>Defend a delivery plan without inventing approval or observed results.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the proposed SOW, architecture, access plan and migration workbook from Chapters 5–8.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposed pilot</td>
+<td>One non-production intake-to-Finance workflow</td>
+</tr>
+<tr>
+<td>Original supplier estimate</td>
+<td>68–78.2 person-hours, including a supplied 15% reserve</td>
+</tr>
+<tr>
+<td>Latest original schedule</td>
+<td>21–24 working days under Chapter 5’s revised dependencies</td>
+</tr>
+<tr>
+<td>Reporting addition</td>
+<td>EVG-CHANGE-002 pending; earlier full-reserve proposal was 87.4 hours against an 80-hour request</td>
+</tr>
+<tr>
+<td>Portal/routing</td>
+<td>EVG-CHANGE-001 deferred</td>
+</tr>
+<tr>
+<td>Multi-site/multi-visit</td>
+<td>EVG-CHANGE-003 under analysis only</td>
+</tr>
+<tr>
+<td>Migration paper target</td>
+<td>Four customers, seven jobs and three appointments after the reviewed delta treatment</td>
+</tr>
+<tr>
+<td>Outstanding migration matters</td>
+<td>C04 unresolved; two conflicting cancellation updates held</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Documents and paper exercises only</td>
+</tr>
+<tr>
+<td>Product evidence</td>
+<td>No configured behaviour, actual import, test execution or acceptance</td>
+</tr>
+</tbody>
+</table></div>
+<p>The migration paper target contains fourteen entities. That count does not prove that every source row or latest change has been transferred.</p>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>A refined work breakdown.</li>
+<li>A role-capacity and dependency plan.</li>
+<li>An initial schedule with explicit uncertainty.</li>
+<li>An estimate comparison and refinement record.</li>
+<li>A short client recommendation.</li>
+</ol>
+<p>All Evergreen people, effort values, availability and rules are synthetic. Estimates are planned work, not timesheets. Working-day numbers are relative planning positions, not promised calendar dates or course duration.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Estimate the scope you have actually defined</h3>
+<p>Skill: establish the estimate boundary before calculating effort.</p>
+<p>An estimate needs a reference scope. Without it, two people can quote different numbers while apparently discussing the same project.</p>
+<p>For Evergreen, “the implementation” could mean:</p>
+<ul>
+<li>A bounded pilot.</li>
+<li>The pilot plus weekly reporting.</li>
+<li>A multi-site operating solution.</li>
+<li>Production migration and release.</li>
+<li>Ongoing support.</li>
+</ul>
+<p>Those are different estimates.</p>
+<p>A work breakdown structure divides the selected scope into manageable activities. The breakdown should cover the work needed to produce and verify the deliverables, rather than just the visible configuration.</p>
+<p>For example:</p>
+<p>“Configure completion fields” is not the whole Finance-handoff task.</p>
+<p>The work may include confirming field meaning, implementing readiness checks, restricting edits, preparing test inputs, checking invalid data, correcting failures and documenting ownership.</p>
+<p>Use the existing deliverable and requirement IDs as anchors. Preserve earlier estimate versions so that a reviewer can explain why the new figure differs.</p>
+<p>A useful estimate boundary states:</p>
+<ul>
+<li>Included deliverables and requirement groups.</li>
+<li>Dataset and user-role limits.</li>
+<li>Environment.</li>
+<li>Excluded work.</li>
+<li>Planning origin.</li>
+<li>Evidence maturity.</li>
+<li>Required client inputs.</li>
+</ul>
+<p>Do not extend the pilot estimate to historical migration because a migration workbook now exists. Chapter 8 developed planning and paper evidence; production migration remains outside the proposed pilot.</p>
+<p>Lesson check LC1: Why is “configuration: 40 hours” insufficient as a delivery estimate?</p>
+<h3>2.2 Separate effort, participation and capacity</h3>
+<p>Skill: use units that make the estimate interpretable.</p>
+<p>Staff effort is the time people spend working. This chapter uses person-hours.</p>
+<p>A two-hour review attended by two supplier staff requires:</p>
+<blockquote>
+<p>2 hours×2 people=4 supplier person-hours</p>
+</blockquote>
+<p>The meeting still occupies two elapsed hours.</p>
+<p>Client participation is separate. If Operations and Finance also attend for two hours each, that adds four client person-hours, not four supplier hours.</p>
+<p>Capacity is the amount of time a person can allocate to this engagement. A person may have an eight-hour working day but only four hours of project capacity because of other responsibilities.</p>
+<p>For optional reporting in person-days, this chapter defines one person-day as eight person-hours. Thus:</p>
+<blockquote>
+<p>88÷8=11 supplier person-days</p>
+</blockquote>
+<p>That does not mean the project finishes in eleven working days.</p>
+<p>Estimates also depend on capability. Assigning a development activity to someone with spare time does not establish that they can perform it. Name the role and relevant responsibility.</p>
+<p>Distinguish:</p>
+<ul>
+<li>Forecast effort: planned work.</li>
+<li>Actual effort: recorded work already performed.</li>
+<li>Estimate to complete: forecast remaining work.</li>
+<li>Forecast at completion: actual effort plus estimate to complete.</li>
+</ul>
+<p>No actual effort is supplied for Evergreen. Therefore, this chapter compares future planning estimates rather than claiming project expenditure.</p>
+<p>Lesson check LC2: How much supplier effort is used by a two-hour review with an Implementation Lead and Quality Lead? Does that determine its elapsed duration?</p>
+<h3>2.3 Sequence dependencies and respect resource capacity</h3>
+<p>Skill: build a schedule that people can actually perform.</p>
+<p>A dependency defines what must happen before an activity can proceed. Dependencies may involve work, people, evidence or decisions.</p>
+<p>A schedule must respect both:</p>
+<ul>
+<li>Logical dependencies: Finance-handoff work follows the agreed exception design.</li>
+<li>Resource dependencies: one Implementation Lead cannot perform two four-hour activities on the same day with four hours of capacity.</li>
+</ul>
+<p>Some work can overlap. A Developer can investigate a consistency extension while the Implementation Lead configures exception behaviour, provided both have their required inputs.</p>
+<p>A critical path is the dependency chain that determines the earliest finish under the scheduling model. Resource limits and fixed client meetings can also determine completion.</p>
+<p>Do not assume that adding staff shortens every task. A review awaiting Finance cannot be accelerated by adding another Developer.</p>
+<p>For the exercises, successors start on the next working day after predecessors finish. This simple rule makes the schedule reproducible. Real plans may allow same-day handoffs, but they need more detailed availability.</p>
+<p>For a task requiring six hours at four hours per day:</p>
+<blockquote>
+<p>Required workdays=⌈(6) ÷ (4)⌉=2</p>
+</blockquote>
+<p>The ceiling brackets mean round up to the next whole number. Two hours of unused capacity on the second day do not automatically make a dependent activity ready under the exercise’s next-day rule.</p>
+<p>Lesson check LC3: Why might removing development effort fail to bring the final handover date forward?</p>
+<h3>2.4 Include quality, data, training and handover</h3>
+<p>Skill: plan the work that makes a pilot usable and reviewable.</p>
+<p>Configuration and development are only part of delivery.</p>
+<p>Testing needs preparation, representative identities, normal and invalid inputs, evidence and a correction/retest process. It should cover access restrictions and operational exceptions, not only the happy path.</p>
+<p>Data work includes:</p>
+<ul>
+<li>Preparing the permitted manifest.</li>
+<li>Applying authorised corrections.</li>
+<li>Resolving target identifiers and relationships.</li>
+<li>Loading the bounded dataset through an authorised method.</li>
+<li>Reconciling keys, counts and important values.</li>
+</ul>
+<p>The current paper migration evidence helps size those tasks, but it does not prove actual lookup resolution or permission enforcement.</p>
+<p>Official CRM documentation describes upsert matching and per-record results.1 Field metadata helps identify actual API names and types, while leaving some layout-specific evidence unresolved.2 These are concrete investigation tasks that need time in the plan.</p>
+<p>Training also needs preparation. A one-hour orientation is not one hour of total delivery effort. Materials must explain the actual pilot, role responsibilities and known limitations.</p>
+<p>Handover needs named business and technical owners, administrator notes, outstanding issues and support boundaries. A pilot handover does not establish a production incident-response service.</p>
+<p>Avoid hiding all these tasks in an unexplained percentage. Estimate them as work, then apply contingency separately.</p>
+<p>Lesson check LC4: Which data and quality tasks remain after a paper migration has reconciled correctly?</p>
+<h3>2.5 Use contingency and refine estimates honestly</h3>
+<p>Skill: explain uncertainty without treating it as unlimited extra scope.</p>
+<p>Contingency, called reserve in the Evergreen case, is an explicit allowance for identified uncertainty within a stated boundary.</p>
+<p>The supplied planning convention remains 15% of base supplier effort. It is not a universal consulting rule.</p>
+<p>A reserve should state:</p>
+<ul>
+<li>What uncertainty it covers.</li>
+<li>How it is allocated.</li>
+<li>What approvals govern its use.</li>
+<li>How it affects schedule.</li>
+<li>Which conditions require re-estimation instead.</li>
+</ul>
+<p>A product-fit failure that introduces another application or integration can exceed the estimate boundary. It should trigger a revised estimate rather than be concealed inside reserve.</p>
+<p>Separate ordinary planned correction from contingency. Evergreen’s base plan includes one bounded correction/retest cycle. Reserve covers additional bounded corrections and evidence updates, not an unlimited number of cycles.</p>
+<p>Refine the estimate when information changes. Explain the cause:</p>
+<ul>
+<li>Additional work increases effort.</li>
+<li>Lower availability increases elapsed time.</li>
+<li>A simpler design may reduce effort.</li>
+<li>A new dependency can delay completion.</li>
+<li>Removed uncertainty may justify a revised reserve, but only through the stated decision process.</li>
+</ul>
+<p>Do not reduce reserve silently to meet a requested ceiling.</p>
+<p>Sponsor: “Can you make the estimate fit one hundred hours?”  </p>
+<p>Implementation Lead: “We can compare scope and design options. The current full-reserve forecast is 101.2 hours. Changing the reserve or removing work requires an explicit decision about the consequences.”</p>
+<p>Lesson check LC5: What is the difference between refining an estimate from new evidence and changing a number to satisfy a budget request?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: parallel work and convergence</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>E01 Design and fit confirmation</td>
+<td>Continue</td>
+<td>E02 Environment and access</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E02 Environment and access</td>
+<td>Continue</td>
+<td>E03C Intake and dispatch configuration</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E03C Intake and dispatch configuration</td>
+<td>Continue</td>
+<td>E03D Candidate consistency extension</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E03C Intake and dispatch configuration</td>
+<td>Continue</td>
+<td>E04 Exception configuration</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E03D Candidate consistency extension</td>
+<td>Continue</td>
+<td>E05 Finance handoff</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E04 Exception configuration</td>
+<td>Continue</td>
+<td>E05 Finance handoff</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E05 Finance handoff</td>
+<td>Continue</td>
+<td>E06 Bounded data preparation and load</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E06 Bounded data preparation and load</td>
+<td>Continue</td>
+<td>E07Q Supplier checks</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E07Q Supplier checks</td>
+<td>Continue</td>
+<td>E07F Planned correction cycle</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E07F Planned correction cycle</td>
+<td>Continue</td>
+<td>E07R Retest</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E07R Retest</td>
+<td>Continue</td>
+<td>E08P Review preparation</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E08P Review preparation</td>
+<td>Continue</td>
+<td>E08B Business review</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E08B Business review</td>
+<td>Continue</td>
+<td>E08T Orientation</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E08T Orientation</td>
+<td>Continue</td>
+<td>E08H Pilot handover pack</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two branches after E03C can overlap because they use different supplier roles. They converge before E05.</p>
+<p>The diagram does not show client availability. A meeting can therefore remain the finish driver even when all its predecessor work is ready.</p>
+<p>The candidate extension is an estimate assumption. Its inclusion is not proof that custom code is required.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: refine the original pilot estimate</h2>
+<h3>4.1 New synthetic planning inputs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-081</td>
+<td>Sponsor authorises a revised delivery-plan proposal only. The new requested supplier ceiling is 100 person-hours including reserve. This replaces the earlier 80-hour request for this proposal comparison, without approving implementation.</td>
+</tr>
+<tr>
+<td>EVG-SRC-082</td>
+<td>Supplier supplies the detailed work breakdown below. It covers the original single-current-visit pilot; reporting, multi-site work and production migration remain excluded.</td>
+</tr>
+<tr>
+<td>EVG-SRC-083</td>
+<td>Each supplier has four project hours per working day. Successors start on the next working day. Reserve is 15%; its upper-envelope sequence is Developer, Quality Lead, then Implementation Lead.</td>
+</tr>
+<tr>
+<td>EVG-SRC-084</td>
+<td>Proposed data work uses the paper-reconciled set of four customers, seven jobs and three appointments, retaining C04 and the held cancellation group as exceptions. The approved target manifest is still required before E06.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three supplier roles are proposed:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Synthetic person/contact</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation Lead</td>
+<td>Jordan Ellis; implementation@partner.example.com</td>
+<td>Configuration, coordination, training and pack</td>
+</tr>
+<tr>
+<td>Developer</td>
+<td>Riley Park; developer@partner.example.com</td>
+<td>Candidate extension and technical corrections</td>
+</tr>
+<tr>
+<td>Quality Lead</td>
+<td>Sam Torres; quality@partner.example.com</td>
+<td>Checks, evidence, retest and review participation</td>
+</tr>
+</tbody>
+</table></div>
+<p>These staffing facts are new scenario inputs. They are not evidence that staff have been assigned.</p>
+<h3>4.2 Step 1: completed work breakdown</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Work ID</th>
+<th>Activity</th>
+<th>Supplier role</th>
+<th>Person-hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01</td>
+<td>Refine design and confirm product fit</td>
+<td>Implementation Lead</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E02</td>
+<td>Establish environment/access readiness</td>
+<td>Implementation Lead</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E03C</td>
+<td>Intake/dispatch configuration</td>
+<td>Implementation Lead</td>
+<td>10</td>
+</tr>
+<tr>
+<td>E03D</td>
+<td>Candidate reference/consistency extension</td>
+<td>Developer</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E04</td>
+<td>Reschedule, cancellation and change-review configuration</td>
+<td>Implementation Lead</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E05</td>
+<td>Finance handoff and visibility controls</td>
+<td>Implementation Lead</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E06</td>
+<td>Prepare, load and reconcile bounded synthetic dataset/history</td>
+<td>Implementation Lead</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E07Q</td>
+<td>Supplier checks and evidence</td>
+<td>Quality Lead</td>
+<td>12</td>
+</tr>
+<tr>
+<td>E07F</td>
+<td>One planned technical correction allowance</td>
+<td>Developer</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E07R</td>
+<td>Retest and evidence update</td>
+<td>Quality Lead</td>
+<td>4</td>
+</tr>
+<tr>
+<td>E08P</td>
+<td>Business-review preparation</td>
+<td>Implementation Lead</td>
+<td>4</td>
+</tr>
+<tr>
+<td>E08B</td>
+<td>Business review</td>
+<td>Implementation Lead and Quality Lead</td>
+<td>2 each</td>
+</tr>
+<tr>
+<td>E08T</td>
+<td>One-hour orientation</td>
+<td>Implementation Lead</td>
+<td>1</td>
+</tr>
+<tr>
+<td>E08H</td>
+<td>Pilot handover pack</td>
+<td>Implementation Lead</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>E07F is forecast capacity for a bounded correction cycle, not an observed defect. Its actual use will be reassessed after testing.</p>
+<p>The core coverage includes the original pilot checks plus the technician, identity, audit and bounded-data checks developed in Chapters 7–8. Reporting check EVG-TEST-009, multi-site check EVG-TEST-014 and temporary-grant check EVG-TEST-018 remain outside this core proposal.</p>
+<h3>4.3 Step 2: calculate supplier and client effort</h3>
+<p>Implementation Lead:</p>
+<blockquote>
+<p>8+6+10+8+8+6+4+2+1+3=56 person-hours</p>
+</blockquote>
+<p>Developer:</p>
+<blockquote>
+<p>8+6=14 person-hours</p>
+</blockquote>
+<p>Quality Lead:</p>
+<blockquote>
+<p>12+4+2=18 person-hours</p>
+</blockquote>
+<p>Total base:</p>
+<blockquote>
+<p>56+14+18=88 supplier person-hours</p>
+</blockquote>
+<p>Reserve:</p>
+<blockquote>
+<p>88×0.15=13.2 person-hours</p>
+</blockquote>
+<p>Full-reserve upper bound:</p>
+<blockquote>
+<p>88+13.2=101.2 person-hours</p>
+</blockquote>
+<p>Proposed reserve allocation:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Base</th>
+<th>Reserve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation Lead</td>
+<td>56</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Developer</td>
+<td>14</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Quality Lead</td>
+<td>18</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>88</td>
+<td>13.2</td>
+</tr>
+</tbody>
+</table></div>
+<p>Client participation is separate:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Client activity</th>
+<th>Person-hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administrator readiness support</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Operations dataset-manifest review</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Operations and Finance business review: two hours each</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Six participants attending one-hour orientation</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Sponsor scope and acceptance decision slots: half-hour each</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>13</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Sponsor slots are planning allowances. No decision outcome is supplied.</p>
+<h3>4.4 Step 3: explain the refinement from Chapter 5</h3>
+<p>Keep the old estimate as a historical proposal.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Parent work</th>
+<th>Earlier base</th>
+<th>Refined base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01 design/fit</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E02 readiness</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E03 intake/dispatch and extension</td>
+<td>12</td>
+<td>18</td>
+</tr>
+<tr>
+<td>E04 exceptions</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E05 Finance controls</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E06 data/history</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E07 checks, correction and retest</td>
+<td>10</td>
+<td>22</td>
+</tr>
+<tr>
+<td>E08 review, orientation and pack</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>68</td>
+<td>88</td>
+</tr>
+</tbody>
+</table></div>
+<p>The new proposal makes the candidate extension, correction/retest cycle and second supplier’s review participation explicit. It also revises the Finance configuration estimate.</p>
+<p>This is a scope-and-method refinement, not a claim that twenty extra hours have been spent.</p>
+<h3>4.5 Step 4: construct the base schedule</h3>
+<p>Working day 1 begins only after implementation authority and prerequisite evidence are available. Those conditions have not been met.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working days</th>
+<th>Activity</th>
+<th>Capacity reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>E01</td>
+<td>8 ÷ 4 = 2 days</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>E02</td>
+<td>6 hours requires 2 days</td>
+</tr>
+<tr>
+<td>5–7</td>
+<td>E03C</td>
+<td>10 hours requires 3 days</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>E03D and E04 in parallel</td>
+<td>Different roles; each needs 2 days</td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>E05</td>
+<td>Both branches complete</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>E06</td>
+<td>6 hours requires 2 days</td>
+</tr>
+<tr>
+<td>14–16</td>
+<td>E07Q</td>
+<td>12 hours requires 3 days</td>
+</tr>
+<tr>
+<td>17–18</td>
+<td>E07F</td>
+<td>6 hours requires 2 days</td>
+</tr>
+<tr>
+<td>19</td>
+<td>E07R</td>
+<td>4 hours</td>
+</tr>
+<tr>
+<td>20</td>
+<td>E08P</td>
+<td>4 hours</td>
+</tr>
+<tr>
+<td>21</td>
+<td>E08B</td>
+<td>Fixed business-review slot</td>
+</tr>
+<tr>
+<td>22</td>
+<td>E08T</td>
+<td>Fixed orientation slot</td>
+</tr>
+<tr>
+<td>23</td>
+<td>E08H</td>
+<td>3 hours</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base completion is day 23.</p>
+<p>For the upper envelope, the full reserve follows the base handover pack:</p>
+<ul>
+<li>Developer: four hours on day 24.</li>
+<li>Quality Lead: 3.2 hours on day 25.</li>
+<li>Implementation Lead: six hours across days 26–27.</li>
+</ul>
+<p>The conditional range is 23–27 working days.</p>
+<p>The reserve assumes bounded desk correction, rechecking and pack updates. Additional client meetings, a repeat orientation or an architecture change require schedule review.</p>
+<h3>4.6 Completed plan summary</h3>
+<p>Artifact: Evergreen Delivery Plan v0.1 — proposed</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Original bounded single-current-visit pilot</td>
+</tr>
+<tr>
+<td>Supplier base/reserve</td>
+<td>88 + 13.2 = 101.2 hours</td>
+</tr>
+<tr>
+<td>Client participation</td>
+<td>13 person-hours</td>
+</tr>
+<tr>
+<td>Elapsed range</td>
+<td>23–27 working days from an authorised start</td>
+</tr>
+<tr>
+<td>Requested ceiling</td>
+<td>100 supplier hours</td>
+</tr>
+<tr>
+<td>Difference</td>
+<td>Upper bound exceeds ceiling by 1.2 hours</td>
+</tr>
+<tr>
+<td>Gates</td>
+<td>Scope authority, product fit, readiness, approved manifest and business review</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Reporting, multi-site expansion, production migration/release and new support</td>
+</tr>
+<tr>
+<td>Evidence status</td>
+<td>Planning assumptions; no actual work or test results</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Review design/scope options; preserve essential controls and stated reserve</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-024: estimate all supplier roles and client participation separately, then derive schedule from dependencies.</p>
+<p>Record EVG-DEC-025: retain the supplied 15% reserve and disclose the ceiling conflict.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “Three people provide twelve hours daily, so 101.2 hours takes about nine days.”</p>
+<p>Correction: “Aggregate capacity does not remove dependencies or role constraints. The supplied plan needs 23–27 working days because configuration, testing, correction and client meetings are sequenced.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Revise the schedule when availability changes but the work remains the same.</p>
+<p>Use the worked case, an editor and calculator. No product access is needed.</p>
+<p>Changed inputs</p>
+<p>EVG-SRC-085 replaces these availability conditions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>New input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E03D Developer availability</td>
+<td>Cannot start before day 10</td>
+</tr>
+<tr>
+<td>E07Q Quality Lead availability</td>
+<td>Cannot start before day 17</td>
+</tr>
+<tr>
+<td>Business review</td>
+<td>Day 25</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Day 26</td>
+</tr>
+</tbody>
+</table></div>
+<p>All effort, dependencies, capacity and reserve rules remain unchanged.</p>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Classify the change.  </li>
+</ol>
+<p>Expected result: availability changes the schedule; it does not add work.</p>
+<ol start="2">
+<li>Schedule both branches after E03C.  </li>
+</ol>
+<p>Expected result: E04 can proceed before E03D; E05 waits for both.</p>
+<ol start="3">
+<li>Apply Quality Lead availability.  </li>
+</ol>
+<p>Expected result: testing starts only after data readiness and the supplied availability date.</p>
+<ol start="4">
+<li>Place review, orientation and handover.  </li>
+</ol>
+<p>Expected result: no meeting occurs before its preparation is complete.</p>
+<ol start="5">
+<li>Apply the reserve sequence.  </li>
+</ol>
+<p>Expected result: role-specific reserve is sequenced after the base pack.</p>
+<ol start="6">
+<li>Produce Delivery Plan v0.2.  </li>
+</ol>
+<p>Expected result: effort and ceiling comparison remain unchanged, with a revised elapsed range.</p>
+<p>Blank work and schedule worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Work ID</th>
+<th>Role</th>
+<th>Effort</th>
+<th>Predecessors</th>
+<th>Availability constraint</th>
+<th>Start day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank estimate-refinement worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Previous value</th>
+<th>Revised value</th>
+<th>Cause</th>
+<th>Effort impact</th>
+<th>Schedule impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifact: Delivery Plan v0.2 with a feasible schedule and client dependency statement.</p>
+<p>Cleanup: retain the earlier estimate and revised version. Remove redundant scratch schedules. No application cleanup applies.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Continue from the guided availability.</p>
+<p>New design and scope inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-086</td>
+<td>Design analysis supplies a native-only candidate for the original single-current-visit pilot. E03D becomes zero hours; E07F reduces from six to four hours. E05 now depends on E04 only. All checks and remaining work stay in place. This is planning evidence, not observed product fit.</td>
+</tr>
+<tr>
+<td>EVG-SRC-087</td>
+<td>Sponsor requests two options: core pilot and core plus weekly reporting. Reporting remains EVG-CHANGE-002 pending. E09 adds eight hours: Implementation Lead definitions/configuration 5, Quality Lead checks 2, Implementation Lead documentation 1.</td>
+</tr>
+<tr>
+<td>EVG-SRC-088</td>
+<td>E09 starts after E07R. Its three parts are sequential using the next-day rule. E08P follows E09 documentation for the reporting option. Core review/orientation remain days 25/26; reporting-option review/orientation are days 28/29.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further rules:</p>
+<ul>
+<li>Supplier capacity remains four hours each per working day.</li>
+<li>Quality Lead testing availability remains no earlier than day 17.</li>
+<li>Reserve remains 15%.</li>
+<li>Core reserve allocation: Implementation Lead 5 hours, Developer 3, Quality Lead 3.7.</li>
+<li>Reporting-option reserve allocation: Implementation Lead 6 hours, Developer 3, Quality Lead 3.9.</li>
+<li>Reserve sequence remains Developer, Quality Lead, Implementation Lead after the base pack.</li>
+<li>The requested ceiling remains 100 supplier hours.</li>
+<li>Client participation remains 13 hours for this exercise; no extra client meeting is supplied.</li>
+<li>Native fit must still be demonstrated during later authorised checks.</li>
+<li>No implementation or reporting addition is approved.</li>
+</ul>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Revised core and reporting-option estimates.</li>
+<li>Role totals and reserve reconciliation.</li>
+<li>Feasible schedules for both options.</li>
+<li>A revised EVG-CHANGE-002 impact record.</li>
+<li>A recommendation explaining whether the ceiling is met.</li>
+<li>Conditions that would reopen the estimate.</li>
+</ol>
+<p>Success criteria</p>
+<p>Preserve essential controls and all remaining checks. Do not remove testing because custom code is removed.</p>
+<p>Distinguish reduced effort from reduced elapsed time. Keep the native-only design conditional and the reporting addition unapproved.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estimate covers only configuration</td>
+<td>Quality/data/handover omitted</td>
+<td>Add explicit work packages</td>
+</tr>
+<tr>
+<td>Two activities use the same person simultaneously</td>
+<td>Resource capacity ignored</td>
+<td>Resequence or assign a qualified additional person</td>
+</tr>
+<tr>
+<td>Client meeting occurs before evidence is ready</td>
+<td>Dependency ignored</td>
+<td>Move meeting or revise availability</td>
+</tr>
+<tr>
+<td>Migration allowance assumes every source row is clean</td>
+<td>Cleansing uncertainty hidden</td>
+<td>Bound dataset and name exception owners</td>
+</tr>
+<tr>
+<td>Reserve is called extra scope</td>
+<td>Uncertainty and change confused</td>
+<td>State reserve purpose and change mechanism</td>
+</tr>
+<tr>
+<td>Estimate is lowered by dropping retest</td>
+<td>Quality work traded silently</td>
+<td>Preserve retest or record an explicit changed acceptance decision</td>
+</tr>
+<tr>
+<td>“Native” means zero investigation</td>
+<td>Product-fit proof omitted</td>
+<td>Keep design and representative checks</td>
+</tr>
+<tr>
+<td>Old estimate is overwritten</td>
+<td>Refinement history lost</td>
+<td>Version and explain differences</td>
+</tr>
+<tr>
+<td>Delay is described as extra staff effort</td>
+<td>Waiting and work confused</td>
+<td>State schedule effect separately</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery limits</p>
+<p>If a plan proves infeasible, revise the dependency and capacity model rather than continuing to report the old date.</p>
+<p>If a product-fit assumption fails, preserve the evidence and pause affected work for an architecture/scope decision. Reserve does not authorise another application, integration or production migration.</p>
+<p>If client evidence is unavailable, keep the activity blocked. Do not mark an unperformed review complete.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What is the difference between staff effort and elapsed schedule?</li>
+<li>Why must a work breakdown include testing and handover?</li>
+<li>What makes a client dependency actionable?</li>
+<li>When should uncertainty trigger re-estimation rather than reserve use?</li>
+<li>Why does removing eight development hours not necessarily reduce the final date?</li>
+<li>Which current migration exceptions remain outside an unlimited cleansing commitment?</li>
+<li>What would be needed to report actual effort or forecast at completion?</li>
+<li>Why should the revised pilot proposal not be called an approved delivery baseline?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: The number does not identify scope, tasks, roles, dependencies, quality work, client participation or uncertainty. It also does not explain elapsed time.</p>
+<p>LC2: Four supplier person-hours. The meeting occupies two elapsed hours, assuming both people attend together.</p>
+<p>LC3: Fixed meetings, another critical dependency or role availability can still determine completion. Removing noncritical work can reduce effort without changing the date.</p>
+<p>LC4: Actual target mappings, IDs, authorised loading, relationship checks, automation isolation, role-based verification and evidence remain. Paper reconciliation does not prove those behaviours.</p>
+<p>LC5: Evidence-based refinement explains which work or condition changed. Budget-fitting changes a number without a defensible change to scope, method, capacity or uncertainty.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Revised schedule</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working days</th>
+<th>Activity</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>E01</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>E02</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td>5–7</td>
+<td>E03C</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>E04</td>
+<td>Implementation Lead available</td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>E03D</td>
+<td>Developer’s earliest start is day 10</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>E05</td>
+<td>Both branches complete</td>
+</tr>
+<tr>
+<td>14–15</td>
+<td>E06</td>
+<td>Follows E05</td>
+</tr>
+<tr>
+<td>17–19</td>
+<td>E07Q</td>
+<td>Quality Lead unavailable before day 17</td>
+</tr>
+<tr>
+<td>20–21</td>
+<td>E07F</td>
+<td>Six hours requires two days</td>
+</tr>
+<tr>
+<td>22</td>
+<td>E07R</td>
+<td>Four hours</td>
+</tr>
+<tr>
+<td>23</td>
+<td>E08P</td>
+<td>Four hours</td>
+</tr>
+<tr>
+<td>25</td>
+<td>E08B</td>
+<td>New business-review slot</td>
+</tr>
+<tr>
+<td>26</td>
+<td>E08T</td>
+<td>New orientation slot</td>
+</tr>
+<tr>
+<td>27</td>
+<td>E08H</td>
+<td>Next day after orientation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reserve uses:</p>
+<ul>
+<li>Developer day 28.</li>
+<li>Quality Lead day 29.</li>
+<li>Implementation Lead days 30–31.</li>
+</ul>
+<p>The revised conditional range is 27–31 working days.</p>
+<p>Supplier effort remains:</p>
+<blockquote>
+<p>88+13.2=101.2 hours at the upper bound</p>
+</blockquote>
+<p>Client participation remains 13 hours.</p>
+<p>Completed refinement record</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Previous</th>
+<th>Revised</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Developer branch</td>
+<td>Days 8–9</td>
+<td>Days 10–11</td>
+<td>Availability</td>
+</tr>
+<tr>
+<td>Supplier checks</td>
+<td>Days 14–16</td>
+<td>Days 17–19</td>
+<td>Upstream delay and QA availability</td>
+</tr>
+<tr>
+<td>Base pack</td>
+<td>Day 23</td>
+<td>Day 27</td>
+<td>New dependency/meeting sequence</td>
+</tr>
+<tr>
+<td>Full-reserve pack</td>
+<td>Day 27</td>
+<td>Day 31</td>
+<td>Reserve follows revised base</td>
+</tr>
+<tr>
+<td>Supplier hours</td>
+<td>88–101.2</td>
+<td>88–101.2</td>
+<td>No work added</td>
+</tr>
+</tbody>
+</table></div>
+<p>A suitable client statement is:</p>
+<p>The work estimate is unchanged, but the revised availability moves the conditional completion range to 27–31 working days. The full-reserve estimate remains 1.2 hours above the requested ceiling, so the scope/design decision is still open.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Core effort</p>
+<p>Remove eight extension hours and two correction-allowance hours:</p>
+<blockquote>
+<p>88-8-2=78 supplier base hours</p>
+</blockquote>
+<p>Reserve:</p>
+<blockquote>
+<p>78×0.15=11.7 hours</p>
+</blockquote>
+<p>Upper bound:</p>
+<blockquote>
+<p>78+11.7=89.7 hours</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Base</th>
+<th>Reserve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation Lead</td>
+<td>56</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Developer</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Quality Lead</td>
+<td>18</td>
+<td>3.7</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>78</td>
+<td>11.7</td>
+</tr>
+</tbody>
+</table></div>
+<p>Headroom against the requested ceiling:</p>
+<blockquote>
+<p>100-89.7=10.3 hours</p>
+</blockquote>
+<p>This is planning headroom, not approved extra scope.</p>
+<p>Core schedule</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working days</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>E01</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>E02</td>
+</tr>
+<tr>
+<td>5–7</td>
+<td>E03C</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>E04</td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>E05</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>E06</td>
+</tr>
+<tr>
+<td>17–19</td>
+<td>E07Q</td>
+</tr>
+<tr>
+<td>20</td>
+<td>E07F: four hours</td>
+</tr>
+<tr>
+<td>21</td>
+<td>E07R</td>
+</tr>
+<tr>
+<td>22</td>
+<td>E08P</td>
+</tr>
+<tr>
+<td>25</td>
+<td>E08B</td>
+</tr>
+<tr>
+<td>26</td>
+<td>E08T</td>
+</tr>
+<tr>
+<td>27</td>
+<td>E08H</td>
+</tr>
+</tbody>
+</table></div>
+<p>The base still finishes on day 27. Earlier data readiness cannot overcome the day 17 QA availability and day 25 review slot.</p>
+<p>Reserve uses Developer day 28, Quality Lead day 29 and Implementation Lead days 30–31.</p>
+<p>Core range: 27–31 working days.</p>
+<p>Core plus reporting effort</p>
+<blockquote>
+<p>78+8=86 supplier base hours</p>
+<p>86×0.15=12.9 reserve hours</p>
+<p>86+12.9=98.9 hours</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Base</th>
+<th>Reserve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation Lead</td>
+<td>62</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Developer</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Quality Lead</td>
+<td>20</td>
+<td>3.9</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>86</td>
+<td>12.9</td>
+</tr>
+</tbody>
+</table></div>
+<p>Headroom:</p>
+<blockquote>
+<p>100-98.9=1.1 hours</p>
+</blockquote>
+<p>The reporting option fits the requested ceiling under the supplied assumptions.</p>
+<p>Reporting-option schedule</p>
+<p>Work through E07R remains as in the revised core plan.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working days</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22–23</td>
+<td>E09 definitions/configuration: five Implementation Lead hours</td>
+</tr>
+<tr>
+<td>24</td>
+<td>E09 report checks: two Quality Lead hours</td>
+</tr>
+<tr>
+<td>25</td>
+<td>E09 documentation: one Implementation Lead hour</td>
+</tr>
+<tr>
+<td>26</td>
+<td>E08P</td>
+</tr>
+<tr>
+<td>28</td>
+<td>E08B</td>
+</tr>
+<tr>
+<td>29</td>
+<td>E08T</td>
+</tr>
+<tr>
+<td>30</td>
+<td>E08H</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reserve uses Developer day 31, Quality Lead day 32 and Implementation Lead days 33–34.</p>
+<p>Reporting-option range: 30–34 working days.</p>
+<p>Revised EVG-CHANGE-002 record</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Add weekly reporting to the pilot</td>
+</tr>
+<tr>
+<td>Requirement/test</td>
+<td>EVG-REQ-004 / EVG-TEST-009</td>
+</tr>
+<tr>
+<td>Proposed deliverable</td>
+<td>EVG-DEL-007: one report with the agreed UTC definitions and evidence</td>
+</tr>
+<tr>
+<td>Added base effort</td>
+<td>Eight hours</td>
+</tr>
+<tr>
+<td>Added full-reserve effort</td>
+<td>98.9 − 89.7 = 9.2 hours</td>
+</tr>
+<tr>
+<td>Schedule effect</td>
+<td>Core 27–31; reporting option 30–34 working days</td>
+</tr>
+<tr>
+<td>Ceiling</td>
+<td>Both options fit 100 hours under the native-only estimate</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Proposed; no reporting or implementation approval</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>Native-only approach and remaining readiness assumptions must be demonstrated</td>
+</tr>
+</tbody>
+</table></div>
+<p>The report’s earlier corrected example remains two open and one completed. The counting rule and expected result are not changed to fit the plan.</p>
+<p>Record EVG-DEC-026: present conditional native-only core and reporting options while retaining checks, reserve and approval boundaries.</p>
+<p>Recommendation</p>
+<p>The native-only candidate reduces the core forecast to 78–89.7 supplier hours. Adding reporting gives 86–98.9 hours, within the requested ceiling, with a later 30–34-day range. Both remain conditional proposals. Confirm product fit, readiness, the bounded data manifest and the selected scope before authorising delivery.</p>
+<p>Reopen the estimate if:</p>
+<ul>
+<li>Native-only design fails an essential behaviour.</li>
+<li>Another application or integration is required.</li>
+<li>Data scope exceeds the curated manifest.</li>
+<li>Client availability changes.</li>
+<li>Additional training or review cycles are needed.</li>
+<li>Multi-site or production work is added.</li>
+</ul>
+<p>A valid alternative is to recommend the core pilot first because its headroom is larger. That is a business trade-off, not a mathematical requirement.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Effort counts working time. Elapsed schedule includes sequencing, capacity and waiting.</li>
+<li>The deliverable must be verified and transferred to usable ownership, not merely configured.</li>
+<li>It names the owner, required input, needed date and affected activity.</li>
+<li>When the changed condition exceeds the defined design, work or uncertainty boundary.</li>
+<li>Other constraints can determine the finish, as QA and review availability do here.</li>
+<li>C04’s unresolved identity and the held cancellation group remain explicit exceptions. No unlimited source cleansing is included.</li>
+<li>Reliable actual-work records and a current estimate of remaining work.</li>
+<li>No authorised approval of the version or implementation scope is supplied.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A defensible plan connects scope, work, people, evidence and decisions.</p>
+<p>Its strength is not an exact-looking completion date. It is the ability to explain how the date follows from capacity and dependencies, why uncertainty exists and which changed conditions require a new decision.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can build a work breakdown covering the whole deliverable.</li>
+<li>I can separate supplier effort and client participation.</li>
+<li>I can respect role capacity and dependencies.</li>
+<li>I can include testing, data work, training and handover.</li>
+<li>I can calculate and explain reserve.</li>
+<li>I can distinguish lower effort from earlier completion.</li>
+<li>I can refine estimates without erasing previous versions.</li>
+<li>I can defend a conditional proposal without inventing approval.</li>
+</ul>
+<p>Your project pack now contains a delivery plan, refined estimates and a reporting-option impact record.</p>
+<p>Chapter 10, Prototyping and Design Validation, tests difficult assumptions through small end-to-end prototypes, demonstrations and feedback. The native-only candidate and access/history controls are important proof points.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base effort</td>
+<td>Planned work before contingency</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>Time a person or role can allocate to the engagement</td>
+</tr>
+<tr>
+<td>Contingency</td>
+<td>Explicit allowance for identified uncertainty within a defined boundary</td>
+</tr>
+<tr>
+<td>Critical path</td>
+<td>Dependency chain determining earliest completion under the model</td>
+</tr>
+<tr>
+<td>Estimate to complete</td>
+<td>Forecast effort remaining</td>
+</tr>
+<tr>
+<td>Forecast at completion</td>
+<td>Actual effort plus forecast remaining effort</td>
+</tr>
+<tr>
+<td>Person-hour</td>
+<td>One person working for one hour</td>
+</tr>
+<tr>
+<td>Refinement</td>
+<td>Evidence-based revision of an estimate or plan</td>
+</tr>
+<tr>
+<td>Resource constraint</td>
+<td>Limit caused by available people or their capacity</td>
+</tr>
+<tr>
+<td>Work breakdown</td>
+<td>Division of scope into estimable activities</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Upsert Records<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/upsert-records.html">Open official reference</a></li>
+</ol>
+<p>Relevant to estimating key matching, result handling and replay verification.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Fields Metadata<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/field-meta.html">Open official reference</a></li>
+</ol>
+<p>Relevant to estimating schema discovery and unresolved layout-specific evidence.</p>
+<p>These official sources were accessed on 5 October 2026 during the preceding product research. They support the investigation dependencies described here. Research remains partially verified because Evergreen’s implementation behaviour and actual delivery effort are unobserved. No product execution is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Defend a delivery plan and estimate.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-08">← Previous chapter</a><a href="/course-book/course-05/chapter-10">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

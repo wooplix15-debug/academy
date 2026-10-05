@@ -1,0 +1,1437 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 6</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 06</p><h1>Solution Architecture and Product Fit</h1><p>Prepare an architecture and fit-gap pack.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-06-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: the proposed pilot boundary</a><a href="#section-4">4. Worked case: prepare the architecture and fit-gap pack</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A product can contain relevant features without being a good fit for the complete engagement. It may support individual records but not the required ownership model. It may provide process transitions while leaving a cross-record exception unresolved. It may also introduce dependencies that exceed the approved work boundary.</p>
+<p>Solution architecture describes the major components of a solution, their responsibilities, their data and their boundaries. Product fit evaluates whether a proposed application and design can meet the requirements under the client’s actual conditions.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Compare application choices against the intended business process.</li>
+<li>Distinguish native configuration from custom code and integration.</li>
+<li>Define authoritative records and business ownership.</li>
+<li>Keep business identifiers distinct from product-generated identifiers.</li>
+<li>Describe integration boundaries without inventing a live interface.</li>
+<li>Identify edition, permission, environment and region dependencies.</li>
+<li>Record architecture decisions with alternatives and reopening conditions.</li>
+<li>Produce an architecture and fit-gap pack linked to requirements and tests.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the requirements register from Chapter 4 and the proposed pilot scope from Chapter 5.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposed pilot</td>
+<td>One non-production intake-to-Finance workflow through Evergreen’s dispatch desk</td>
+</tr>
+<tr>
+<td>Dataset boundary</td>
+<td>At most ten synthetic customers and twenty synthetic jobs</td>
+</tr>
+<tr>
+<td>Included business requirements</td>
+<td>EVG-REQ-001–003 and EVG-REQ-007–011</td>
+</tr>
+<tr>
+<td>Restricted information</td>
+<td>Cost, margin and sensitive Finance return reasons must not be visible to Dispatch</td>
+</tr>
+<tr>
+<td>Operational history</td>
+<td>A bounded demonstration is proposed; long-term retention remains unresolved</td>
+</tr>
+<tr>
+<td>Weekly reporting</td>
+<td>EVG-REQ-004 remains Should; addition requested through EVG-CHANGE-002, not approved</td>
+</tr>
+<tr>
+<td>Portal and routing</td>
+<td>EVG-REQ-005–006 deferred through EVG-CHANGE-001</td>
+</tr>
+<tr>
+<td>Pilot estimate</td>
+<td>68–78.2 supplier person-hours; latest dependency-based range 21–24 working days</td>
+</tr>
+<tr>
+<td>Reporting option</td>
+<td>Full-reserve upper bound 87.4 hours, above the requested 80-hour ceiling</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Scope and design documents only; no implementation, migration, release or new support service</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Tests planned; no product results, approved baseline or client acceptance</td>
+</tr>
+</tbody>
+</table></div>
+<p>The corrected Chapter 4 reporting sample contains two open jobs and one completed job for its stated week. That correction remains part of the case.</p>
+<p>Your contribution to the project</p>
+<p>You will add:</p>
+<ol>
+<li>An application comparison.</li>
+<li>A logical architecture diagram.</li>
+<li>A record and ownership model.</li>
+<li>An interface-boundary register.</li>
+<li>Architecture decision records.</li>
+<li>A requirement-to-design fit-gap matrix.</li>
+</ol>
+<p>All Evergreen facts, documents, quantities and dialogues are synthetic. A completed architecture artifact is a student model draft, not an approved client design. Documentation support and paper reasoning do not demonstrate configured product behaviour.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Select applications for the process and the engagement</h3>
+<p>Skill: compare products without choosing solely from familiarity.</p>
+<p>Application selection starts with the business process and the proposed work boundary.</p>
+<p>Evergreen needs intake, internal customer visibility, dispatch coordination, completion information and Finance review. These needs overlap several product categories:</p>
+<ul>
+<li>Customer relationship management.</li>
+<li>Field-service management.</li>
+<li>Custom business applications.</li>
+<li>Financial systems.</li>
+</ul>
+<p>That does not mean Evergreen needs all four in the pilot.</p>
+<p>Zoho CRM documentation describes standard and custom modules and an API for discovering the modules available in an organisation.1 This supports investigating CRM as a record-and-process platform.</p>
+<p>Zoho FSM documentation describes work orders and service appointments as product records. Its work-order API includes service and address inputs; its appointment API uses work-order service-line identifiers and scheduled times.5 Those concepts are relevant to Evergreen’s field-service work.</p>
+<p>However, relevance is not complete fit. A switch to FSM would require investigation of customer, address, service-catalogue and resource mappings, as well as subscriptions, access and financial boundaries. Existing CRM use does not establish FSM entitlement.</p>
+<p>Consider this dialogue:</p>
+<p>Operations Manager: “We are a field-service company, so should we use FSM?”  </p>
+<p>Implementation Lead: “FSM is a relevant candidate. We must compare its service model with your requirements and the pilot boundary. We also need to distinguish the best pilot choice from the longer-term operating platform.”</p>
+<p>A short pilot may reasonably reuse an existing application to investigate business behaviour. A production architecture may later select a different application after broader evidence is available.</p>
+<p>Use explicit criteria. Useful criteria include:</p>
+<ul>
+<li>Coverage of the required workflow and exceptions.</li>
+<li>Compatibility with current authority and scope.</li>
+<li>Clear data ownership.</li>
+<li>Administration and support burden.</li>
+<li>Unresolved product dependencies.</li>
+</ul>
+<p>Avoid unsupported claims such as “CRM cannot do dispatch” or “FSM automatically solves rescheduling.” Define the required behaviour and inspect the relevant capability.</p>
+<p>Lesson check LC1: Why might the preferred application for a bounded pilot differ from the preferred long-term operating platform?</p>
+<h3>2.2 Choose native configuration, custom code or integration deliberately</h3>
+<p>Skill: identify the smallest supportable design that meets the requirement.</p>
+<p>Native configuration uses capabilities provided by the application: available records, fields, relationships, views, permissions and process controls.</p>
+<p>A configured custom module can still be native configuration. “Custom” in a module label does not necessarily mean custom code.</p>
+<p>Custom code adds behaviour through scripts, functions or another programmed component. An integration exchanges information across an application or service boundary.</p>
+<p>These approaches differ in what you must maintain and verify:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Appropriate when</th>
+<th>Additional questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native configuration</td>
+<td>Available capabilities meet the business behaviour</td>
+<td>Does the actual edition, module and permission model support it?</td>
+</tr>
+<tr>
+<td>Custom code</td>
+<td>A specific rule is not adequately supported by configuration</td>
+<td>Who maintains it, how does it fail, and how is it tested?</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>Another system must exchange authoritative information</td>
+<td>Who owns each field, identity, mapping, retry and reconciliation?</td>
+</tr>
+<tr>
+<td>Manual controlled handoff</td>
+<td>The current phase needs a bounded demonstration or human decision</td>
+<td>What is transferred, who records receipt, and what remains outside the application?</td>
+</tr>
+</tbody>
+</table></div>
+<p>“Native first” is a useful investigation order, not proof that native configuration will meet every requirement.</p>
+<p>For example, a process transition may collect a completion summary. It does not automatically prove that the same design can preserve appointment history, coordinate acknowledgements and handle partial changes across several records.</p>
+<p>Zoho CRM’s Blueprint API describes transitions, associated fields and validation for a record in a process.4 This supports investigating transition-based controls. It does not prove that a selected design enforces all Evergreen rules.</p>
+<p>Before adding code, write the precise gap:</p>
+<p>“The proposed design needs to preserve the old appointment and create a pending replacement without allowing an incomplete change to appear confirmed.”</p>
+<p>That is more useful than “write a rescheduling function.”</p>
+<p>Chapter 10 will validate difficult assumptions through prototypes. Chapter 11 will develop integration and failure behaviour in detail.</p>
+<p>Lesson check LC2: Why is “use Blueprint” a design candidate rather than a complete answer to Evergreen’s exception requirements?</p>
+<h3>2.3 Define record ownership at three levels</h3>
+<p>Skill: identify the authoritative source and the people allowed to change information.</p>
+<p>“Record owner” can refer to three different things:</p>
+<ol>
+<li>Business owner: the role accountable for the meaning and quality of the information.</li>
+<li>Authoritative system: the place treated as the source of truth for that information.</li>
+<li>Product record owner: an application’s assigned owner, which may affect access or routing.</li>
+</ol>
+<p>These are related but not interchangeable.</p>
+<p>For Evergreen, Operations may own customer-reference quality. A CRM account record could hold the pilot’s customer information. The product record might be assigned to a particular administrator or user. That assignment does not make the administrator the business authority for invoice release.</p>
+<p>Ownership may also differ by field:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Information</th>
+<th>Business authority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer reference and intake facts</td>
+<td>Operations</td>
+</tr>
+<tr>
+<td>Appointment and assigned technician</td>
+<td>Dispatch</td>
+</tr>
+<tr>
+<td>Customer confirmation</td>
+<td>Operations supplies the evidence</td>
+</tr>
+<tr>
+<td>Technician acknowledgement</td>
+<td>Technician supplies the evidence; Dispatch records coordination</td>
+</tr>
+<tr>
+<td>Completion date and summary</td>
+<td>Technician Lead supplies the facts</td>
+</tr>
+<tr>
+<td>Finance review status</td>
+<td>Finance</td>
+</tr>
+<tr>
+<td>Invoice release</td>
+<td>Finance, outside the pilot’s live-transaction boundary</td>
+</tr>
+</tbody>
+</table></div>
+<p>Define a logical entity before mapping it to a product module. A logical entity is a business object in your design, such as Job or Appointment.</p>
+<p>The logical model should preserve:</p>
+<ul>
+<li>One customer’s relationship to multiple jobs.</li>
+<li>One job’s relationship to appointment history.</li>
+<li>One job’s relationship to multiple handoff events.</li>
+<li>Distinct job, appointment and Finance-review states.</li>
+</ul>
+<p>Do not overwrite an appointment merely because a job is rescheduled. Do not use one field called “Status” to represent all three objects.</p>
+<p>Business identifiers and product identifiers</p>
+<p>EVG-JOB-1601 is a business job reference. A Zoho-generated record ID identifies a particular record in a particular product environment.</p>
+<p>You may need both. A business reference supports communication and cross-system reconciliation. A product ID supports an application operation.</p>
+<p>The CRM Blueprint endpoint requires a module API name and product record ID.4 Substituting an Evergreen business reference does not turn it into a valid product record ID.</p>
+<p>Do not assume production and sandbox records share IDs. Record mappings explicitly when later migration or promotion work requires them.</p>
+<p>Lesson check LC3: Who owns the meaning of a Finance review status? Does assigning the job record to a Dispatcher transfer that authority?</p>
+<h3>2.4 Draw integration boundaries before specifying an interface</h3>
+<p>Skill: show what crosses a boundary and what remains under its owner.</p>
+<p>An integration boundary is a responsibility boundary, not merely a line between application logos.</p>
+<p>For each proposed exchange, ask:</p>
+<ul>
+<li>Which system owns the source information?</li>
+<li>Which fields may cross?</li>
+<li>Which fields must remain restricted?</li>
+<li>Who owns the destination update?</li>
+<li>What identifies the business event?</li>
+<li>How is incomplete or conflicting information handled?</li>
+</ul>
+<p>The pilot can demonstrate a Finance handoff without creating a live financial integration.</p>
+<p>For example:</p>
+<p>A qualified completion record becomes ready for Finance review. A Finance participant records a simulated review outcome in the pilot. No invoice is created or released in a financial system.</p>
+<p>That is a controlled manual demonstration. It must not be described as “CRM integrated with Finance.”</p>
+<p>A particularly important boundary concerns sensitive return reasons. Dispatch needs status and a Finance contact, not the full explanation.</p>
+<p>Use an allowlist: an explicit list of information permitted in the public handoff view. Do not copy everything and try to hide it later.</p>
+<p>A candidate public projection could contain:</p>
+<ul>
+<li>Business job reference.</li>
+<li>Nonfinancial handoff status.</li>
+<li>Responsible Finance contact.</li>
+</ul>
+<p>A projection is a selected representation of information for a particular purpose. It can help minimise disclosure, but its design alone does not prove technical access control. Views, APIs, exports and other permitted channels need later verification.</p>
+<p>Lesson check LC4: Why is a permitted status projection safer than copying the complete Finance return note into a shared job record?</p>
+<h3>2.5 Treat edition and metadata evidence as conditions, not guarantees</h3>
+<p>Skill: distinguish documented capability, tenant evidence and executed proof.</p>
+<p>Three kinds of evidence matter:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Evidence type</th>
+<th>What it establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Official documentation</td>
+<td>Described capability and documented conditions</td>
+</tr>
+<tr>
+<td>Client inventory or configuration evidence</td>
+<td>Facts about the supplied tenant or environment</td>
+</tr>
+<tr>
+<td>Executed check</td>
+<td>Observed behaviour under a stated user, environment and dataset</td>
+</tr>
+</tbody>
+</table></div>
+<p>None replaces the others.</p>
+<p>Zoho CRM’s organisation API describes environment type and licence details.2 Its module metadata describes available module API names and attributes, including Blueprint support.1 Its field metadata describes fields, API names, types and permission-related information.3</p>
+<p>Important limits follow from the documentation:</p>
+<ul>
+<li>Use actual module and field API names, not assumed labels.1</li>
+<li>Field metadata is not a complete source of layout-specific requiredness.3</li>
+<li>A field with “Don’t Show” permissions can still appear in the field metadata response. That is metadata visibility, not proof that record values are readable.3</li>
+<li>The APIs have scope and permission requirements.</li>
+<li>The client’s hosting region must be established through relevant tenant evidence; a business address is not enough.</li>
+</ul>
+<p>A read-only evidence request can therefore be planned as follows:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Evidence requested</th>
+<th>Documented API v8 route</th>
+<th>Example read scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organisation inventory</td>
+<td>GET /org</td>
+<td>ZohoCRM.org.READ</td>
+</tr>
+<tr>
+<td>Available modules</td>
+<td>GET /settings/modules</td>
+<td>ZohoCRM.settings.modules.READ</td>
+</tr>
+<tr>
+<td>Module fields</td>
+<td>GET /settings/fields?module={module_API_name}</td>
+<td>ZohoCRM.settings.fields.READ</td>
+</tr>
+<tr>
+<td>Record process transitions</td>
+<td>GET /{module_API_name}/{record_ID}/actions/blueprint</td>
+<td>Relevant module READ scope</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are documented route patterns, not requests executed for Evergreen. An authorised administrator must establish the correct regional API domain, identity and permissions before any retrieval.</p>
+<p>Lesson check LC5: If field metadata reports system_mandatory: false, can you conclude that the field is optional in every layout and transition?</p>
+<h3>2.6 Record decisions and their reopening conditions</h3>
+<p>Skill: make the architecture explainable to a future delivery team.</p>
+<p>An architecture decision record states a significant choice, the alternatives considered, the reasoning, consequences and conditions that would require reconsideration.</p>
+<p>A useful decision record contains:</p>
+<ul>
+<li>Stable decision ID.</li>
+<li>Requirement and scope links.</li>
+<li>Context.</li>
+<li>Options.</li>
+<li>Recommended choice.</li>
+<li>Evidence and uncertainty.</li>
+<li>Consequences.</li>
+<li>Owner and status.</li>
+<li>Reopening trigger.
+“Use CRM” is not enough. A future reader needs to know whether CRM was selected for the pilot, the full programme or one component.</li>
+</ul>
+<p>Similarly, a decision to avoid live integration in the pilot must not later become an assumption that Finance never needs integration.</p>
+<p>Architecture is allowed to change. Good records make that change controlled and explainable.</p>
+<p>Lesson check LC6: What new information could justify reopening a conditional CRM pilot recommendation?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: the proposed pilot boundary</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposed CRM non-production pilot</td>
+<td>Customer reference</td>
+<td>Continue</td>
+<td>Service job</td>
+</tr>
+<tr>
+<td>Proposed CRM non-production pilot</td>
+<td>Service job</td>
+<td>Continue</td>
+<td>Appointment history</td>
+</tr>
+<tr>
+<td>Proposed CRM non-production pilot</td>
+<td>Service job</td>
+<td>Continue</td>
+<td>Nonfinancial handoff events</td>
+</tr>
+<tr>
+<td>Proposed CRM non-production pilot</td>
+<td>Nonfinancial handoff events</td>
+<td>Continue</td>
+<td>Permitted Dispatch projection</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Operations, Dispatch and Technician participants</td>
+<td>Continue</td>
+<td>Service job</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Operations, Dispatch and Technician participants</td>
+<td>Continue</td>
+<td>Appointment history</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Finance participant</td>
+<td>Manual simulated review outcome</td>
+<td>Nonfinancial handoff events</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Private Finance worksheet</td>
+<td>Reference retained; sensitive reason not copied</td>
+<td>Nonfinancial handoff events</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Finance participant</td>
+<td>Continue</td>
+<td>Private Finance worksheet</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram shows logical responsibilities, not a deployed configuration.</p>
+<p>CRM is the proposed pilot boundary. Customer, job, appointment and handoff records are separate logical objects. Their final mapping to available standard or custom modules remains to be verified.</p>
+<p>Finance manually supplies a simulated outcome. Sensitive reason text remains in a restricted worksheet for the paper exercise. The financial system is outside the pilot and has no live interface.</p>
+<p>The absence of an arrow to the financial system is intentional: the pilot does not create or release live invoices.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: prepare the architecture and fit-gap pack</h2>
+<h3>4.1 New synthetic inputs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-057</td>
+<td>Sponsor authorises an architecture and fit-gap document pack. The proposed SOW remains unapproved; no tenant changes or API calls are authorised.</td>
+</tr>
+<tr>
+<td>EVG-SRC-058</td>
+<td>Administrator inventory states Zoho CRM Enterprise, EU hosting region, and production and sandbox organisations. Exact module configuration, field permissions, available capacity and process configuration are not supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-059</td>
+<td>Operations confirms that each pilot customer reference identifies a business customer rather than an individual person. The supplied pilot examples have one current visit per job; broader multi-visit behaviour is not established.</td>
+</tr>
+<tr>
+<td>EVG-SRC-060</td>
+<td>Finance permits public job reference, nonfinancial handoff status and Finance contact. Sensitive return reasons remain outside the shared operational pilot. A private synthetic worksheet may retain the original reason, actor and time for the demonstration.</td>
+</tr>
+<tr>
+<td>EVG-SRC-061</td>
+<td>The team supplies comparison weights and provisional ratings below. Ratings are scenario judgements, not measured product performance or verified fit.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Enterprise and EU details are new supplied inventory evidence. They resolve those earlier inventory gaps for the scenario. Feature-level and permission evidence remain missing.</p>
+<h3>4.2 Step 1: compare applications</h3>
+<p>Use ratings from 1, weak, to 5, strong.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>CRM pilot</th>
+<th>FSM-based pilot</th>
+<th>Separate application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expected business-process coverage</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Compatibility with current scope and inventory</td>
+<td>3</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Simplicity of ownership boundaries</td>
+<td>2</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Expected supportability</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<p>Weighted score:</p>
+<blockquote>
+<p>Score=Σ(weight×rating)</p>
+</blockquote>
+<p>CRM:</p>
+<blockquote>
+<p>(4×4)+(3×5)+(2×5)+(1×4)=45</p>
+</blockquote>
+<p>FSM:</p>
+<blockquote>
+<p>(4×5)+(3×2)+(2×3)+(1×4)=36</p>
+</blockquote>
+<p>Separate application:</p>
+<blockquote>
+<p>(4×4)+(3×2)+(2×4)+(1×2)=32</p>
+</blockquote>
+<p>Maximum possible score:</p>
+<blockquote>
+<p>(4+3+2+1)×5=50</p>
+</blockquote>
+<p>The relative scores are 90%, 72% and 64% of the scoring maximum. They are not percentages of requirements proven to work.</p>
+<p>Expected intermediate result: CRM ranks first under the supplied pilot assumptions.</p>
+<p>Mandatory controls remain gates. A high score cannot compensate for a failed restricted-information control or an inability to preserve required history.</p>
+<h3>4.3 Step 2: define the logical records and writers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Logical record</th>
+<th>Proposed mapping</th>
+<th>Authoritative business information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business customer</td>
+<td>Investigate CRM Accounts</td>
+<td>Customer reference and identity</td>
+</tr>
+<tr>
+<td>Service job</td>
+<td>Evaluate available suitable records, then a custom-module candidate if needed</td>
+<td>Intake facts and job lifecycle</td>
+</tr>
+<tr>
+<td>Appointment</td>
+<td>Evaluate native appointment suitability before selecting a separate configured object</td>
+<td>Visit time, assigned technician and acknowledgements</td>
+</tr>
+<tr>
+<td>Handoff event</td>
+<td>Separate operational event record candidate</td>
+<td>Receipt, review status and correction event</td>
+</tr>
+<tr>
+<td>Private Finance note</td>
+<td>Restricted synthetic worksheet for this pilot demonstration</td>
+<td>Original sensitive reason, Finance actor and time</td>
+</tr>
+<tr>
+<td>Public projection</td>
+<td>Selected information derived from handoff state</td>
+<td>Job reference, nonfinancial status and Finance contact</td>
+</tr>
+</tbody>
+</table></div>
+<p>Accounts is an investigation candidate because the pilot customers are businesses. It is not a declaration that all future Evergreen customer data belongs there.</p>
+<p>All new object labels are logical design labels. Their API names and product-generated IDs are unallocated. Do not invent them.</p>
+<p>Record EVG-ASM-005: the bounded pilot assumes one current visit per job. This assumption must be reopened if multi-visit requirements appear.</p>
+<h3>4.4 Step 3: define the interface boundary</h3>
+<p>Boundary EVG-BOUNDARY-001 — manual Finance review demonstration</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Qualified pilot completion information</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>Finance participant’s simulated review</td>
+</tr>
+<tr>
+<td>Business key</td>
+<td>Evergreen business job reference</td>
+</tr>
+<tr>
+<td>Outbound information</td>
+<td>Job reference, customer reference, completion date and operational summary</td>
+</tr>
+<tr>
+<td>Returned operational information</td>
+<td>Nonfinancial status, Finance contact and event actor/time</td>
+</tr>
+<tr>
+<td>Restricted information</td>
+<td>Cost, margin and sensitive return reason</td>
+</tr>
+<tr>
+<td>Sensitive reason location</td>
+<td>Private synthetic Finance worksheet, referenced by a note identifier</td>
+</tr>
+<tr>
+<td>Transaction boundary</td>
+<td>No live invoice creation or release</td>
+</tr>
+<tr>
+<td>Failure or missing-data treatment</td>
+<td>Keep handoff pending/correction; do not invent a review outcome</td>
+</tr>
+<tr>
+<td>Technical interface</td>
+<td>None implemented or authorised</td>
+</tr>
+<tr>
+<td>Future dependency</td>
+<td>Identify the financial system and approved interface owner before specifying integration</td>
+</tr>
+</tbody>
+</table></div>
+<p>A private note identifier is a business reference to evidence. It is not an authentication mechanism and does not prove that the referenced location is technically protected.</p>
+<h3>4.5 Step 4: completed architecture decisions</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision ID</th>
+<th>Recommendation</th>
+<th>Reason and consequences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-DEC-013</td>
+<td>Recommend CRM for the bounded pilot</td>
+<td>Existing inventory and scope compatibility; avoids adding an unassessed application boundary</td>
+</tr>
+<tr>
+<td>EVG-DEC-014</td>
+<td>Separate jobs, appointments and handoff events</td>
+<td>Preserves independent lifecycles and history</td>
+</tr>
+<tr>
+<td>EVG-DEC-015</td>
+<td>Assign business authority by information type</td>
+<td>Prevents record assignment from transferring Finance authority</td>
+</tr>
+<tr>
+<td>EVG-DEC-016</td>
+<td>Use an allowlisted public projection and manual Finance bridge</td>
+<td>Meets coordination need without copying financial detail or adding live integration</td>
+</tr>
+<tr>
+<td>EVG-DEC-017</td>
+<td>Require tenant and prototype evidence before declaring fit</td>
+<td>Documentation and inventory do not prove configured behaviour</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.6 Step 5: completed fit-gap and traceability matrix</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirements</th>
+<th>Candidate design</th>
+<th>Evidence available</th>
+<th>Remaining proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001–002</td>
+<td>Customer/job relationship and internal view</td>
+<td>Business requirements; CRM metadata documentation</td>
+<td>Uniqueness, search, relationship and permitted role behaviour</td>
+</tr>
+<tr>
+<td>EVG-REQ-003 and 007</td>
+<td>Qualified handoff and Finance-review transition</td>
+<td>Confirmed business rule; transition documentation</td>
+<td>Missing-data hold, reference consistency and no automatic invoice release</td>
+</tr>
+<tr>
+<td>EVG-REQ-008 / EVG-NFR-001</td>
+<td>Allowlisted view and restricted Finance details</td>
+<td>Finance disclosure rule</td>
+<td>Role, field, API and other applicable access paths</td>
+</tr>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Separate appointment history and acknowledgements</td>
+<td>Confirmed exception rule</td>
+<td>Technician-change and urgent-reschedule behaviour</td>
+</tr>
+<tr>
+<td>EVG-REQ-010–011</td>
+<td>Retained cancellation/change events</td>
+<td>Confirmed business rules</td>
+<td>Pre-start/post-start routing and evidence retention</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>Retained handoff events plus private reason reference</td>
+<td>Bounded pilot proposal</td>
+<td>Actor/time, original return evidence and permitted retrieval</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Reporting candidate</td>
+<td>Defined UTC counting rule</td>
+<td>Scope approval and report execution</td>
+</tr>
+<tr>
+<td>EVG-REQ-005–006</td>
+<td>No selected design</td>
+<td>Deferred requests</td>
+<td>Future scope and business definitions</td>
+</tr>
+</tbody>
+</table></div>
+<p>The included rows are conditional design candidates, not evidenced tenant fits.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: Put appointment time, technician and Finance status directly on the job and overwrite them after every change.</p>
+<p>This loses appointment history and mixes operational and Finance lifecycles.</p>
+<p>Correction: Retain related appointment and handoff events. Present current information through a controlled view while preserving historical records and business authority.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Refine the architecture pack using complete synthetic records and a permission boundary.</p>
+<p>This is document-based work. You need an editor and calculator. No account, credential or tenant access is required.</p>
+<p>Supplied records</p>
+<p>EVG-SRC-062 supplies this paper dataset. No product record IDs have been allocated.</p>
+<p>Customers and jobs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Business job reference</th>
+<th>Customer reference</th>
+<th>Job state</th>
+<th>Completion information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1601</td>
+<td>EVG-CUST-0101, business customer</td>
+<td>Scheduled</td>
+<td>None; work not started</td>
+</tr>
+<tr>
+<td>EVG-JOB-1602</td>
+<td>Missing</td>
+<td>Intake hold</td>
+<td>None</td>
+</tr>
+<tr>
+<td>EVG-JOB-1603</td>
+<td>EVG-CUST-0102, business customer</td>
+<td>Service completed</td>
+<td>22 January 2027; “Reset controller and tested startup.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>Appointment history for EVG-JOB-1601</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Appointment reference</th>
+<th>Slot: UTC</th>
+<th>Technician</th>
+<th>State</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-APPT-6001</td>
+<td>22 January, 09:00–10:00</td>
+<td>T1</td>
+<td>Superseded</td>
+<td>Withdrawal acknowledged at 08:20</td>
+</tr>
+<tr>
+<td>EVG-APPT-6002</td>
+<td>22 January, 13:00–14:00</td>
+<td>T2</td>
+<td>Pending acknowledgement</td>
+<td>Customer confirmed at 08:15; T2 acknowledgement missing</td>
+</tr>
+</tbody>
+</table></div>
+<p>Finance evidence for EVG-JOB-1603</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Evidence record</th>
+<th>Supplied content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-HANDOFF-6001</td>
+<td>Received at 10:00 UTC; returned at 10:20; Finance actor Luis Chen</td>
+</tr>
+<tr>
+<td>EVG-FIN-NOTE-001</td>
+<td>Private synthetic reason: “Customer billing arrangement requires clarification.”</td>
+</tr>
+<tr>
+<td>Permitted public status</td>
+<td>Returned</td>
+</tr>
+<tr>
+<td>Permitted Finance contact</td>
+<td>finance@evergreen.example.com</td>
+</tr>
+</tbody>
+</table></div>
+<p>The private reason is visible to you as exercise input. That does not mean it is permitted in the Dispatch projection.</p>
+<p>EVG-SRC-063 confirms that the Implementation Lead has document access only. No module metadata retrieval, record inspection or configuration is authorised.</p>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Map the logical relationships.  </li>
+</ol>
+<p>Expected result: EVG-JOB-1601 retains both appointments; EVG-JOB-1603 retains the handoff event and a reference to private evidence.</p>
+<ol start="2">
+<li>Handle missing customer data.  </li>
+</ol>
+<p>Expected result: EVG-JOB-1602 remains on Operations hold. Do not create or select a customer by guesswork.</p>
+<ol start="3">
+<li>Construct the public projection.  </li>
+</ol>
+<p>Expected result: job reference, Returned status and Finance contact are included; private reason, cost and margin are excluded.</p>
+<ol start="4">
+<li>Identify unresolved product proof.  </li>
+</ol>
+<p>Expected result: edition inventory is available, but actual object mapping, requiredness and access behaviour remain unverified.</p>
+<ol start="5">
+<li>Recalculate the supplied application scores.  </li>
+</ol>
+<p>Expected result: the ranking is reproduced without describing it as measured fit.</p>
+<ol start="6">
+<li>Complete Architecture Pack v0.2.  </li>
+</ol>
+<p>Expected result: diagram, ownership table, decisions and fit-gap rows agree.</p>
+<p>Blank architecture worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component/entity</th>
+<th>Business responsibility</th>
+<th>Proposed application/object</th>
+<th>Authoritative writer</th>
+<th>Relationship/key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank decision worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision ID</th>
+<th>Context and requirement links</th>
+<th>Options</th>
+<th>Recommendation</th>
+<th>Evidence/uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank fit-gap worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Candidate design</th>
+<th>Documentation evidence</th>
+<th>Tenant evidence</th>
+<th>Fit status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifact: Architecture Pack v0.2 with a sanitised public projection.</p>
+<p>Cleanup: retain the private exercise input separately from the public-projection artifact. Remove accidental copies of the private reason from public draft tables. No product-state cleanup applies.</p>
+<p>This paper exercise demonstrates modelling and information selection. It cannot demonstrate actual permission enforcement or runtime recovery.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed requirements</p>
+<p>EVG-SRC-064 supplies a new Operations request:</p>
+<p>“Some jobs cover two sites with concurrent visits. A reschedule of one visit must not supersede the other site’s visit. Keep one business job reference.”</p>
+<p>Use EVG-REQ-012 as a candidate requirement and EVG-CHANGE-003 for its scope impact.</p>
+<p>At 08:15 UTC on 23 January 2027, the supplied case is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Facts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Job</td>
+<td>EVG-JOB-1604; customer EVG-CUST-0101</td>
+</tr>
+<tr>
+<td>Visit 1</td>
+<td>EVG-VISIT-0101; North Depot, EVG-SITE-01; appointment EVG-APPT-6011, 09:00–10:00, T1</td>
+</tr>
+<tr>
+<td>Visit 2</td>
+<td>EVG-VISIT-0102; South Yard, EVG-SITE-02; appointment EVG-APPT-6012, 09:00–10:00, T2</td>
+</tr>
+<tr>
+<td>Initial evidence</td>
+<td>Both original appointments have customer and technician acknowledgements</td>
+</tr>
+<tr>
+<td>Visit 1 change</td>
+<td>Before work starts, move to 14:00–15:00 with T3; replacement EVG-APPT-6021</td>
+</tr>
+<tr>
+<td>Change evidence</td>
+<td>Customer confirmed 08:10; T1 withdrawal acknowledged 08:12; T3 has not acknowledged</td>
+</tr>
+<tr>
+<td>Visit 2</td>
+<td>No change requested; work not started</td>
+</tr>
+</tbody>
+</table></div>
+<p>Additional product-assessment input</p>
+<p>EVG-SRC-065 asks you to reconsider FSM. The supplied assessment manifest contains:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>FSM-related input</th>
+<th>Current evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work-order summary/type</td>
+<td>“Multi-site maintenance”; Service</td>
+</tr>
+<tr>
+<td>Contact/company mapping</td>
+<td>Unresolved</td>
+</tr>
+<tr>
+<td>Service and billing address identifiers</td>
+<td>Missing</td>
+</tr>
+<tr>
+<td>Service catalogue and line-item identifiers</td>
+<td>Missing</td>
+</tr>
+<tr>
+<td>Service-resource identifiers</td>
+<td>Missing</td>
+</tr>
+<tr>
+<td>Subscription, region and API permissions</td>
+<td>Not supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>The official work-order and appointment documents describe relevant inputs and conditional requirements.5 Do not invent missing product IDs or assume every conditional field is universally mandatory.</p>
+<p>EVG-SRC-066 authorises analysis of the request only. No amended scope, new application or implementation is approved. EVG-CHANGE-002 remains pending.</p>
+<p>Deliverables</p>
+<ol>
+<li>A revised logical relationship model.</li>
+<li>A change-impact record for EVG-CHANGE-003.</li>
+<li>An updated architecture decision explaining whether CRM remains a pilot recommendation.</li>
+<li>An FSM fit-gap assessment using the manifest.</li>
+<li>A planned EVG-TEST-014 with inputs and expected results.</li>
+<li>A recommendation identifying the next decision.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your work must preserve the business job reference, distinguish visits from appointment history, leave Visit 2 unchanged, keep Visit 1’s replacement pending and treat missing FSM data as a dependency.</p>
+<p>Do not describe the new request as an observed defect or an approved scope change.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product chosen because the team knows it</td>
+<td>Familiarity substituted for fit</td>
+<td>Compare workflow, boundaries and ownership</td>
+</tr>
+<tr>
+<td>A custom module is called custom code</td>
+<td>Configuration and programming confused</td>
+<td>Identify the actual mechanism</td>
+</tr>
+<tr>
+<td>One status field drives all objects</td>
+<td>Independent lifecycles collapsed</td>
+<td>Separate job, appointment and handoff states</td>
+</tr>
+<tr>
+<td>Business reference used as API record ID</td>
+<td>Identifier types confused</td>
+<td>Obtain the actual record mapping through authorised evidence</td>
+</tr>
+<tr>
+<td>Field metadata treated as full permission proof</td>
+<td>Schema evidence confused with runtime access</td>
+<td>Verify actual roles and applicable access paths later</td>
+</tr>
+<tr>
+<td>Sensitive reason copied to a shared record</td>
+<td>Boundary defined too broadly</td>
+<td>Use the permitted projection and restricted source reference</td>
+</tr>
+<tr>
+<td>New FSM inputs guessed</td>
+<td>Missing dependencies hidden</td>
+<td>Record missing addresses, catalogue and resource mappings</td>
+</tr>
+<tr>
+<td>Partial appointment change appears confirmed</td>
+<td>Multi-record consistency not addressed</td>
+<td>Keep the change pending and reconcile records under the business owner</td>
+</tr>
+<tr>
+<td>Architecture change treated as free rework</td>
+<td>New requirement confused with design defect</td>
+<td>Record scope impact and request a decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>A proposed pending state is a recovery design, not proof of automated rollback. No atomic cross-record update or restoration capability has been demonstrated.</p>
+<p>If a circulated diagram contains an incorrect ownership boundary, issue a versioned correction naming the affected records and decisions. Existing client support retains operational incidents.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What does the supplied Enterprise inventory establish, and what does it leave unresolved?</li>
+<li>Why should native appointment suitability be investigated before creating another appointment object?</li>
+<li>What is the difference between business ownership and product record ownership?</li>
+<li>Why can the pilot’s manual Finance bridge meet a demonstration need without meeting a live integration requirement?</li>
+<li>What does a 90% weighted comparison score mean in this chapter?</li>
+<li>Why does field metadata containing a hidden field not prove its record values are readable?</li>
+<li>How does the multi-site request affect the single-current-visit assumption?</li>
+<li>When should EVG-DEFECT-001 be opened?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: The pilot has a narrow scope, existing application inventory and limited data. The long-term platform must support broader operating requirements, scale, integration and support. A pilot recommendation should state those limits.</p>
+<p>LC2: Blueprint documentation describes record transitions and associated fields. Evergreen also needs related appointment history, acknowledgements, restricted information and exception consistency. Those require design and evidence beyond a feature name.</p>
+<p>LC3: Finance owns the meaning of the review status. Assigning a job to Dispatch does not transfer Finance’s decision authority.</p>
+<p>LC4: An allowlist limits the information intended to cross the boundary. Copying the complete note introduces restricted content into another location and expands the access problem.</p>
+<p>LC5: No. system_mandatory concerns system-level metadata. Layout-specific and transition conditions require additional evidence.</p>
+<p>LC6: Examples include inability to meet essential controls, a broader multi-visit requirement, unacceptable maintenance burden, an approved FSM assessment or a financial integration that changes the application boundary.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Completed relationship and state summary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Correct model treatment</th>
+<th>Owner/next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1601</td>
+<td>Customer EVG-CUST-0101; old appointment retained as Superseded; replacement Pending acknowledgement</td>
+<td>Dispatch obtains T2 acknowledgement; no start inferred</td>
+</tr>
+<tr>
+<td>EVG-JOB-1602</td>
+<td>Customer unresolved; job remains Intake hold</td>
+<td>Operations obtains verified customer evidence</td>
+</tr>
+<tr>
+<td>EVG-JOB-1603</td>
+<td>Completed job with Returned handoff event and private-note reference</td>
+<td>Finance owns review clarification; Operations coordinates required correction</td>
+</tr>
+</tbody>
+</table></div>
+<p>Completed public projection</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job reference</th>
+<th>Handoff status</th>
+<th>Finance contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1603</td>
+<td>Returned</td>
+<td>finance@evergreen.example.com</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reason text is excluded. The public projection is a paper artifact, not a permission test.</p>
+<p>Completed pack status</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Artifact element</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application comparison</td>
+<td>CRM 45/50; FSM 36/50; separate application 32/50</td>
+</tr>
+<tr>
+<td>Logical model</td>
+<td>Customers, jobs, appointments and handoff events separated</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>Operations, Dispatch, Technician Lead and Finance retain their information authorities</td>
+</tr>
+<tr>
+<td>Interface</td>
+<td>Manual Finance demonstration; no live financial transaction</td>
+</tr>
+<tr>
+<td>Product fit</td>
+<td>Conditional design candidates</td>
+</tr>
+<tr>
+<td>Outstanding proof</td>
+<td>Object mapping, requiredness, process behaviour, role permissions and history mechanism</td>
+</tr>
+<tr>
+<td>Approval/execution</td>
+<td>None supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>The chapter’s architecture decisions remain conditional. Neither the edition inventory nor the weighted score closes the outstanding proof.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Revised relationship model</p>
+<p>Business customer</p>
+<pre><code>└── Service job
+      ├── Visit 1
+      │     ├── Original appointment: superseded
+      │     └── Replacement: pending acknowledgement
+      └── Visit 2
+            └── Original appointment: confirmed and unchanged
+</code></pre>
+<p>The plain-text diagram introduces Visit as the stable scheduled-work segment. Appointment history belongs to a visit. A job can now have multiple visits.</p>
+<p>An alternative can use an appointment-series identifier rather than a separate Visit record, provided it preserves stable grouping, history and independent change behaviour. Its product fit must still be assessed.</p>
+<p>The single-current-visit assumption no longer describes the requested broader behaviour. Do not silently apply the expanded model to the proposed baseline.</p>
+<p>Completed change-impact entry</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-003</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Multiple concurrent site visits under one business job</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>EVG-REQ-012</td>
+</tr>
+<tr>
+<td>Current assumption affected</td>
+<td>EVG-ASM-005: one current visit per pilot job</td>
+</tr>
+<tr>
+<td>Design impact</td>
+<td>Visit grouping, site relationship and per-visit appointment history</td>
+</tr>
+<tr>
+<td>Test impact</td>
+<td>New EVG-TEST-014; revise relevant reschedule cases</td>
+</tr>
+<tr>
+<td>Ownership impact</td>
+<td>Dispatch manages each visit; Operations confirms site/customer relationships</td>
+</tr>
+<tr>
+<td>Estimate impact</td>
+<td>Requires assessment; no revised hours supplied</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Analysis authorised; scope and implementation not approved</td>
+</tr>
+</tbody>
+</table></div>
+<p>Planned EVG-TEST-014</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Planned content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inputs</td>
+<td>EVG-JOB-1604, two supplied visits and original appointments, Visit 1 replacement and acknowledgement evidence</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Evaluate the Visit 1 pre-start reschedule</td>
+</tr>
+<tr>
+<td>Expected result</td>
+<td>Job reference unchanged; Visit 1 old appointment superseded; replacement pending T3 acknowledgement</td>
+</tr>
+<tr>
+<td>Unaffected result</td>
+<td>Visit 2’s appointment remains confirmed and unchanged</td>
+</tr>
+<tr>
+<td>Negative condition</td>
+<td>T3 acknowledgement missing must not be treated as confirmation</td>
+</tr>
+<tr>
+<td>Evidence status</td>
+<td>Planned/paper-derived; product execution not performed</td>
+</tr>
+</tbody>
+</table></div>
+<p>FSM fit-gap assessment</p>
+<p>FSM remains a relevant candidate because its documented model includes work orders and service appointments.5 The supplied manifest is insufficient to conclude fit.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field-service concepts</td>
+<td>Documentation-supported candidate</td>
+</tr>
+<tr>
+<td>Customer/address mapping</td>
+<td>Unresolved</td>
+</tr>
+<tr>
+<td>Service and resource mapping</td>
+<td>Unresolved</td>
+</tr>
+<tr>
+<td>Multi-site grouping and independent reschedule</td>
+<td>Requires specific design and proof</td>
+</tr>
+<tr>
+<td>Finance control and disclosure</td>
+<td>Requires assessment against Evergreen’s rules</td>
+</tr>
+<tr>
+<td>Entitlement, region and permissions</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>Overall result</td>
+<td>Conditional candidate; not evidenced fit</td>
+</tr>
+</tbody>
+</table></div>
+<p>The documentation’s address and line-item inputs create concrete discovery questions. They do not justify fabricated IDs or a claim that FSM cannot support the requested process.</p>
+<p>A suitable recommendation is:</p>
+<p>Retain CRM as a conditional recommendation for the original bounded pilot. Treat multi-site work as a separate scope-impact decision and compare a revised CRM design with an FSM design using the missing address, service and resource evidence. Do not approve implementation until ownership, controls and representative behaviour are demonstrated.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>It establishes the edition and region stated in the synthetic inventory. It leaves feature-level configuration, permissions, available capacity and actual behaviour unresolved.</li>
+<li>Reusing a suitable native object may reduce duplicate structures and maintenance. Suitability must be checked rather than assumed.</li>
+<li>Business ownership concerns meaning and decision authority. Product ownership is an application assignment with configuration-dependent effects.</li>
+<li>The bridge demonstrates transfer and review decisions through a participant. It does not implement automated exchange, retries, identity or live financial transactions.</li>
+<li>It is 45 out of 50 under supplied weights and provisional ratings. It is not a verified requirement-coverage percentage.</li>
+<li>Field metadata describes schema. Documentation explicitly allows hidden fields to appear in that metadata response; record-value access is a separate question.</li>
+<li>The broader request requires multiple stable visits under one job. The original assumption remains a limit of the earlier pilot proposal until scope is changed.</li>
+<li>After an executed check observes nonconformance against the applicable requirement. A new request, missing evidence or paper design concern is not an observed product defect.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Architecture connects business needs to application boundaries, records, writers and evidence.</p>
+<p>A defensible recommendation explains why a product is suitable for the stated phase, what remains conditional and which new facts would change the decision. It preserves identifiers and ownership while making the integration and recovery limits visible.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can compare application choices against a bounded engagement.</li>
+<li>I can distinguish configuration, code, integration and manual controls.</li>
+<li>I can separate logical entities from product modules.</li>
+<li>I can identify business and system ownership.</li>
+<li>I can keep business references distinct from product IDs.</li>
+<li>I can define an allowlisted information boundary.</li>
+<li>I can explain edition and permission dependencies.</li>
+<li>I can record conditional architecture decisions.</li>
+<li>I can link design assumptions to planned tests without claiming success.</li>
+</ul>
+<p>Your project pack now contains an architecture and fit-gap pack.</p>
+<p>Chapter 7, Access, Identity and Environments, develops roles, profiles, sharing, connection identities, sensitive-data controls, audit needs and environment readiness from this ownership model.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allowlist</td>
+<td>Explicit list of permitted information or actions</td>
+</tr>
+<tr>
+<td>Architecture decision record</td>
+<td>Record of a significant choice, reasoning, consequences and reopening conditions</td>
+</tr>
+<tr>
+<td>Authoritative system</td>
+<td>System treated as the source of truth for defined information</td>
+</tr>
+<tr>
+<td>Business owner</td>
+<td>Role accountable for the meaning and quality of information</td>
+</tr>
+<tr>
+<td>Integration boundary</td>
+<td>Limit defining information exchange and responsibility between components</td>
+</tr>
+<tr>
+<td>Logical entity</td>
+<td>Business object defined before product mapping</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Information describing modules, fields or other product structures</td>
+</tr>
+<tr>
+<td>Native configuration</td>
+<td>Use of capabilities provided by the application without added custom code</td>
+</tr>
+<tr>
+<td>Product fit</td>
+<td>Suitability of a product and design under stated requirements and conditions</td>
+</tr>
+<tr>
+<td>Projection</td>
+<td>Selected representation of information for a particular purpose</td>
+</tr>
+<tr>
+<td>Record ID</td>
+<td>Product-generated identifier for a record</td>
+</tr>
+<tr>
+<td>Visit</td>
+<td>Stable segment of service work that can have its own appointment history</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Modules<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/modules-api.html">Open official reference</a></li>
+</ol>
+<p>Module discovery, actual API names, permission-related attributes and Blueprint-support metadata.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Environment and licence metadata, subject to authorisation.</p>
+<ol start="3">
+<li>Zoho CRM API v8 — Fields Metadata<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/field-meta.html">Open official reference</a></li>
+</ol>
+<p>Field API names, types, metadata visibility and limits of layout-specific evidence.</p>
+<ol start="4">
+<li>Zoho CRM API v8 — Get Blueprint Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/blueprint-details.html">Open official reference</a></li>
+</ol>
+<p>Available transitions and associated fields for a record in a process.</p>
+<ol start="5">
+<li>Zoho FSM API v1 — Create a Work Order<br />
+<a href="https://www.zoho.com/fsm/developer/help/api/create-work-order.html">Open official reference</a></li>
+</ol>
+<p>Work-order inputs, address and service references, and conditional customer requirements.</p>
+<ol start="6">
+<li>Zoho FSM API v1 — Create a Service Appointment<br />
+<a href="https://www.zoho.com/fsm/developer/help/api/create-service-appointment.html">Open official reference</a></li>
+</ol>
+<p>Appointment inputs, work-order service-line references and resource-related conditions.</p>
+<p>Consult the official references above for current product details. Research is partially verified: the cited product statements are documentation-based. Evergreen’s configured controls, detailed product fit and runtime behaviour remain unverified. No API or product execution is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Prepare an architecture and fit-gap pack.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-05">← Previous chapter</a><a href="/course-book/course-05/chapter-07">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

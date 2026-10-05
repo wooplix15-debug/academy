@@ -1,0 +1,1707 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 4</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 04</p><h1>Requirements and Traceability</h1><p>Build a traceable requirements register.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-04-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: requirements lifecycle and traceability</a><a href="#section-4">4. Worked case: build Evergreen’s traceable register</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-04-dataset-01.csv">Practice dataset (CSV) ↓</a><a download href="/course-book/course-05/chapter-04-dataset-02.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A process model explains how work happens. A requirement states what the delivered process must enable, prevent or demonstrate.</p>
+<p>Requirements are the bridge between client needs and delivery evidence. They help you decide what belongs in scope, how a solution should be assessed, what users should be able to do and how testing will show whether the intended behaviour exists.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Convert process findings into clear, traceable requirements.</li>
+<li>Distinguish a requirement from a stakeholder statement, design choice, assumption or test.</li>
+<li>Write useful user stories without treating them as complete specifications.</li>
+<li>Define functional and non-functional requirements.</li>
+<li>Write acceptance criteria that are observable and answerable.</li>
+<li>Prioritise requirements using business value, risk and dependency reasoning.</li>
+<li>Perform an initial fit-gap analysis without inventing product capability.</li>
+<li>Link requirements to acceptance criteria, tests, changes and defects.</li>
+<li>Build and review a requirements register.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the engagement brief from Chapter 1, the discovery notes and charter from Chapter 2, and the current/future process models from Chapter 3.</p>
+<p>The following records continue into this chapter:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record</th>
+<th>State entering this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001</td>
+<td>Unique business job reference, customer reference and received timestamp for each new request</td>
+</tr>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Internal staff can find a customer’s open jobs, status and assigned technician</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Completion does not release an invoice; Finance reviews before release</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Weekly open/completed reporting; definitions were previously unresolved</td>
+</tr>
+<tr>
+<td>EVG-REQ-005</td>
+<td>Customer portal request; deferred and not approved for delivery</td>
+</tr>
+<tr>
+<td>EVG-REQ-006</td>
+<td>Automated route optimisation request; deferred and not approved for delivery</td>
+</tr>
+<tr>
+<td>EVG-REQ-007</td>
+<td>Completion handoff includes job reference, customer reference, completion date and completion summary</td>
+</tr>
+<tr>
+<td>EVG-REQ-008</td>
+<td>Dispatch can see nonfinancial handoff status and responsible Finance contact, without cost or margin</td>
+</tr>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Proposed preservation of appointment history and required acknowledgements during rescheduling</td>
+</tr>
+<tr>
+<td>EVG-REQ-010</td>
+<td>Proposed retention of pre-start cancellation evidence and outstanding actions</td>
+</tr>
+<tr>
+<td>EVG-REQ-011</td>
+<td>Proposed treatment of post-start changes through Change review</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-001</td>
+<td>Portal/routing request deferred for a separate later assessment</td>
+</tr>
+<tr>
+<td>EVG-TEST-001–008</td>
+<td>Proposed checks; none executed in the product</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Reserved; no observed defect opened</td>
+</tr>
+<tr>
+<td>EVG-DEC-007–009</td>
+<td>Draft process recommendations; not client acceptance</td>
+</tr>
+</tbody>
+</table></div>
+<p>The process work is authorised for paper analysis and requirements development. Configuration, migration, release and new support services remain outside the supplied authorisation.</p>
+<p>Your project contribution</p>
+<p>This chapter adds:</p>
+<ul>
+<li>A structured requirements register.</li>
+<li>User stories and acceptance criteria.</li>
+<li>Non-functional requirement records.</li>
+<li>An initial fit-gap analysis.</li>
+<li>A requirement-to-test traceability matrix.</li>
+<li>A prioritised requirements backlog.</li>
+</ul>
+<p>All Evergreen facts, dialogue, identifiers and numbers are synthetic. A requirement marked verified business requirement confirms a business need; it does not prove that the need has been configured, tested or accepted. A proposed test describes expected evidence; it is not an observed result.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Turn business evidence into requirements</h3>
+<p>Skill: state the need precisely enough for later design and testing.</p>
+<p>A requirement is a statement of a needed capability, condition or quality that can be evaluated. It should explain what the business needs and the conditions under which the need applies.</p>
+<p>A requirement is not the same as:</p>
+<ul>
+<li>A stakeholder’s first wording.</li>
+<li>A preferred screen or application.</li>
+<li>A design decision.</li>
+<li>A project activity.</li>
+<li>A test result.</li>
+<li>A technical field name.</li>
+</ul>
+<p>Consider the statement:</p>
+<p>“We need a dashboard that shows everything.”</p>
+<p>This is a client statement. It does not identify the audience, decisions, records, timing or meaning of “everything.”</p>
+<p>A more useful requirement is:</p>
+<p>EVG-REQ-002: An authorised internal user can find a customer’s open jobs, current status and assigned technician.</p>
+<p>This requirement does not yet specify whether the result is a dashboard, list view, report or another design. That choice belongs in solution design after product fit and access needs are investigated.</p>
+<p>A good requirement normally answers:</p>
+<ol>
+<li>Who or what needs the capability?</li>
+<li>What must happen?</li>
+<li>Under what conditions?</li>
+<li>What information or control is important?</li>
+<li>What evidence could demonstrate it?</li>
+</ol>
+<p>Do not put every condition into one long sentence. Separate independent needs so they can be prioritised and tested separately.</p>
+<p>For example, these are different needs:</p>
+<ul>
+<li>A job has a business reference.</li>
+<li>A customer reference is required before assignment.</li>
+<li>A Finance handoff contains a completion summary.</li>
+<li>Finance controls invoice release.</li>
+</ul>
+<p>They may be related, but a failure in one should not make it impossible to identify the others.</p>
+<p>A requirement also needs a status. Useful statuses include:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Candidate</td>
+<td>A plausible need that still needs confirmation or definition</td>
+</tr>
+<tr>
+<td>Verified business requirement</td>
+<td>The relevant business owner confirmed the need</td>
+</tr>
+<tr>
+<td>Proposed</td>
+<td>A delivery or design recommendation, not yet approved</td>
+</tr>
+<tr>
+<td>Deferred</td>
+<td>Recorded but intentionally held for later assessment</td>
+</tr>
+<tr>
+<td>Rejected</td>
+<td>Considered and not accepted, with a reason recorded</td>
+</tr>
+<tr>
+<td>Implemented</td>
+<td>Configuration or development evidence exists; not necessarily accepted</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>The authorised acceptance process supplied evidence of agreement</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not label a requirement accepted because it appears in a well-formatted document.</p>
+<p>Lesson check LC1: Why is “Use Zoho CRM for dispatch” not yet a complete requirement?</p>
+<h3>2.2 Use user stories to describe value and actor</h3>
+<p>Skill: write a concise user-centred expression of a requirement.</p>
+<p>A user story describes a capability from the perspective of the person or role that needs it.</p>
+<p>A common format is:</p>
+<p>As a role, I want capability, so that business reason.</p>
+<p>For Evergreen:</p>
+<p>As a Dispatcher, I want to see the current status and assigned technician for a customer’s open job, so that I can coordinate the next action without contacting several people.</p>
+<p>This story identifies:</p>
+<ul>
+<li>The actor: Dispatcher.</li>
+<li>The desired capability: see status and assigned technician.</li>
+<li>The value: coordinate the next action.</li>
+</ul>
+<p>A story is not a replacement for acceptance criteria. It is a compact statement of intent. It should be supported by context, rules, conditions and evidence.</p>
+<p>Avoid stories that describe a product component:</p>
+<p>As a user, I want a custom module with five fields.</p>
+<p>That may be a design proposal. It does not explain the business result or why five fields are needed.</p>
+<p>Avoid stories that contain multiple unrelated outcomes:</p>
+<p>As Finance, I want to review jobs, release invoices, manage technician schedules and view margin.</p>
+<p>Split these into separate stories because different permissions, owners and tests may apply.</p>
+<p>A role is not automatically a person. “Finance” may mean a team, while the permission to release an invoice may belong to a defined Finance Lead or authorised Finance user. Requirements should identify the business role first; access design later identifies actual users and permissions.</p>
+<p>Lesson check LC2: Improve this story: “As a user, I want a dashboard with all job data so everything is easier.”</p>
+<h3>2.3 Write acceptance criteria that can be checked</h3>
+<p>Skill: define the conditions for a meaningful test.</p>
+<p>Acceptance criteria state the conditions a requirement must meet. They should be specific enough that two reasonable people can reach the same pass/fail decision.</p>
+<p>A useful scenario form is:</p>
+<p>Given the starting condition,  </p>
+<p>when the action occurs,  </p>
+<p>then the expected result is visible.</p>
+<p>For EVG-REQ-003:</p>
+<ul>
+<li>Given a job has a completion date and completion summary,</li>
+<li>when the job is marked complete,</li>
+<li>then the job enters Finance review or an equivalent controlled handoff state,</li>
+<li>and invoice release does not occur automatically,</li>
+<li>and the authorised Finance role can make the release decision.</li>
+</ul>
+<p>This criterion includes a negative condition. A system that releases an invoice automatically would fail even if it correctly records the completion date.</p>
+<p>Good acceptance criteria cover the normal case and the relevant exception. They do not attempt to describe every possible future scenario in one requirement.</p>
+<p>For EVG-REQ-007:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Criterion ID</th>
+<th>Acceptance criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-AC-007A</td>
+<td>Given a completed job, when the handoff is prepared, then job reference, customer reference, completion date and completion summary are present.</td>
+</tr>
+<tr>
+<td>EVG-AC-007B</td>
+<td>Given one required item is missing, when the handoff is checked, then it is held or routed for correction and is not represented as ready.</td>
+</tr>
+<tr>
+<td>EVG-AC-007C</td>
+<td>Given the customer reference does not agree with the permitted intake evidence, when the handoff is checked, then it is held for correction.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The criteria do not prescribe whether a validation rule, workflow, Blueprint transition, function or manual control will be used. That choice belongs to design.</p>
+<p>Acceptance criteria should also identify data boundaries:</p>
+<ul>
+<li>Which role performs the action?</li>
+<li>Which records count?</li>
+<li>What happens when data is missing?</li>
+<li>What evidence is visible?</li>
+<li>What is explicitly not demonstrated?</li>
+</ul>
+<p>A target is not automatically an acceptance criterion. The 80% first-pass target is still a discussion preference. It cannot be converted into a pass condition without an approved definition, measurement period, cohort and decision owner.</p>
+<p>Lesson check LC3: What negative case must be included when testing the Finance handoff?</p>
+<h3>2.4 Define non-functional requirements</h3>
+<p>Skill: state quality, control and operating conditions in measurable terms.</p>
+<p>A functional requirement describes what the process or solution must do. A non-functional requirement describes a quality, constraint or operating condition.</p>
+<p>Examples of non-functional concerns include:</p>
+<ul>
+<li>Access restriction.</li>
+<li>Auditability and history.</li>
+<li>Response or completion time.</li>
+<li>Usability.</li>
+<li>Availability.</li>
+<li>Data retention.</li>
+<li>Regional or regulatory constraints.</li>
+<li>Maintainability and supportability.
+“Make it secure” is not a useful non-functional requirement because it does not define the protected information, users, action or evidence.</li>
+</ul>
+<p>A stronger Evergreen requirement is:</p>
+<p>EVG-NFR-001: Cost and margin information must not be visible to Dispatch or Technician roles, while Dispatch may see nonfinancial handoff status and the responsible Finance contact.</p>
+<p>This requirement includes a permitted visibility and a prohibited visibility. It can be tested using a role-and-field matrix.</p>
+<p>A second example is:</p>
+<p>EVG-NFR-002: Job, appointment and Finance-handoff history must retain the previous state and the actor or source of each correction needed for operational review.</p>
+<p>This is still a candidate until the client confirms the required retention period, permitted audit evidence and any applicable policy.</p>
+<p>Do not invent legal or accounting requirements. If a client says “we need to keep this for seven years,” record the statement and ask who owns the policy. A consultant may capture it without presenting it as a legal obligation.</p>
+<p>Non-functional requirements can constrain design choices. For example, field visibility may require permissions or separate views. Auditability may require a history mechanism. These are fit-gap questions, not proven implementation features.</p>
+<p>Zoho’s official CRM feature comparison lists security, customization and edition-dependent capabilities, but it does not verify Evergreen’s purchased edition or configuration.1 The CRM Blueprint API documentation describes transitions and fields available for a record in a process, subject to supported modules, scope and permissions.2 These references support product investigation; they do not prove that Evergreen can use a particular feature.</p>
+<p>Lesson check LC4: Why is “the process must be secure” weaker than EVG-NFR-001?</p>
+<h3>2.5 Prioritise requirements without hiding trade-offs</h3>
+<p>Skill: make ordering decisions visible and defensible.</p>
+<p>Prioritisation determines the relative importance of requirements. It does not automatically approve scope or promise a release date.</p>
+<p>A simple MoSCoW classification is:</p>
+<ul>
+<li>Must: Required for the intended minimum business outcome or control.</li>
+<li>Should: Important, but a safe first release could proceed without it if the decision owner accepts the consequence.</li>
+<li>Could: Useful if capacity and fit permit.</li>
+<li>Won’t this release: Explicitly deferred from the current release or assessment.</li>
+</ul>
+<p>Use the classification with reasons. “Must” should not mean “someone mentioned it loudly.”</p>
+<p>Evergreen’s current priorities are influenced by:</p>
+<ul>
+<li>Sponsor direction.</li>
+<li>Finance control.</li>
+<li>Operational risk.</li>
+<li>Dependencies.</li>
+<li>The current proposal boundary.</li>
+<li>Whether the requirement is sufficiently defined.</li>
+</ul>
+<p>A requirement can be high value but not ready for implementation because its definition is incomplete. Record both dimensions.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement condition</th>
+<th>Priority</th>
+<th>Definition state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance review before release</td>
+<td>Must</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>Internal open-job visibility</td>
+<td>Must</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>Automated route optimisation</td>
+<td>Won’t this release</td>
+<td>Candidate and deferred</td>
+</tr>
+<tr>
+<td>Customer portal</td>
+<td>Won’t this release</td>
+<td>Candidate and deferred</td>
+</tr>
+<tr>
+<td>Weekly reporting</td>
+<td>Should</td>
+<td>Definitions newly clarified but acceptance not approved</td>
+</tr>
+<tr>
+<td>Appointment history during reschedule</td>
+<td>Should</td>
+<td>Proposed process rule pending confirmation</td>
+</tr>
+</tbody>
+</table></div>
+<p>A deferred item remains visible. Hiding it creates future expectation problems.</p>
+<p>Dependencies also affect ordering. You may not finalise a customer portal requirement without knowing the intended customer audience and identity rules. You may not finalise a Finance access requirement without the permitted field list and role boundaries.</p>
+<p>Lesson check LC5: Can a requirement be a “Must” and still be unready for implementation? Explain.</p>
+<h3>2.6 Perform an initial fit-gap analysis</h3>
+<p>Skill: compare a business requirement with available product evidence without overstating certainty.</p>
+<p>A fit-gap analysis compares a requirement with a proposed product or design and records what is known, missing or needing change.</p>
+<p>Use fit-gap categories carefully:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fit evidenced</td>
+<td>Available evidence supports the requirement under stated conditions</td>
+</tr>
+<tr>
+<td>Configuration candidate</td>
+<td>Likely to be addressed through configuration, but the actual tenant and design are not verified</td>
+</tr>
+<tr>
+<td>Extension or integration candidate</td>
+<td>May require development, integration or another approved component</td>
+</tr>
+<tr>
+<td>Process change candidate</td>
+<td>The business process may need to change rather than the product alone</td>
+</tr>
+<tr>
+<td>Gap</td>
+<td>Available evidence shows the proposed approach does not meet the requirement</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>Evidence is insufficient to classify the requirement responsibly</td>
+</tr>
+<tr>
+<td>Deferred</td>
+<td>The requirement is intentionally outside the current assessment</td>
+</tr>
+</tbody>
+</table></div>
+<p>“Unknown” is often the most accurate early result. Do not convert missing evidence into either fit or gap.</p>
+<p>For each row, record:</p>
+<ol>
+<li>Requirement ID.</li>
+<li>Proposed product or design boundary.</li>
+<li>Evidence inspected.</li>
+<li>Fit category.</li>
+<li>Conditions and dependencies.</li>
+<li>Next action and owner.</li>
+<li>Impact if the assumption is false.</li>
+</ol>
+<p>The product comparison page is useful for edition-dependent investigation. The Blueprint API documentation is useful when considering process transitions and transition fields. Neither source establishes that Evergreen’s edition, module, permissions or configuration meet the requirement.</p>
+<p>Do not write:</p>
+<p>“Zoho cannot support route optimisation.”</p>
+<p>The case has not established the required routing behaviour, selected product boundary or edition. Write:</p>
+<p>“Automated route optimisation is deferred. Required routing objectives, inputs, constraints and product boundary are not defined.”</p>
+<p>Likewise, do not write:</p>
+<p>“Blueprint will solve Finance review.”</p>
+<p>Write:</p>
+<p>“A process-transition design may be investigated. Tenant support, edition, permissions, field configuration and acceptance evidence are unverified.”</p>
+<p>Lesson check LC6: What is the correct fit-gap classification when the requirement is clear but the client’s edition and tenant configuration are unknown?</p>
+<h3>2.7 Build traceability from need to evidence</h3>
+<p>Skill: allow a reviewer to follow a requirement through delivery.</p>
+<p>Traceability is the explicit connection between an originating need and the records that explain, implement or test it.</p>
+<p>A useful chain is:</p>
+<p>Source statement</p>
+<pre><code>↓
+</code></pre>
+<p>Requirement</p>
+<pre><code>↓
+</code></pre>
+<p>User story or business rule</p>
+<pre><code>↓
+</code></pre>
+<p>Acceptance criterion</p>
+<pre><code>↓
+</code></pre>
+<p>Test</p>
+<pre><code>↓
+</code></pre>
+<p>Defect or change, if applicable</p>
+<pre><code>↓
+</code></pre>
+<p>Acceptance evidence</p>
+<p>Each link answers a different question:</p>
+<ul>
+<li>Source: Where did the need come from?</li>
+<li>Requirement: What is needed?</li>
+<li>Story: Who needs it and why?</li>
+<li>Acceptance criterion: What condition must be true?</li>
+<li>Test: How will the condition be checked?</li>
+<li>Defect: What failed, where and under what data?</li>
+<li>Change: What changed the agreed need or boundary?</li>
+<li>Evidence: What was actually observed or accepted?</li>
+</ul>
+<p>Use stable IDs. Do not recycle an ID after changing its meaning. If a requirement is split, retain the original record and create new linked IDs with an explanation.</p>
+<p>Business identifiers such as EVG-JOB-1401 identify synthetic jobs. They are not product-generated record IDs. Requirement IDs such as EVG-REQ-012 identify project evidence. Test IDs identify planned or executed checks. Keep those namespaces distinct.</p>
+<p>A traceability link does not prove success. It proves that the path is recorded.</p>
+<p>Lesson check LC7: What does a test link prove, and what does it not prove?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: requirements lifecycle and traceability</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Stakeholder statement or process evidence</td>
+<td>Continue</td>
+<td>Classify source and authority</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Classify source and authority</td>
+<td>Continue</td>
+<td>Draft requirement</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draft requirement</td>
+<td>Continue</td>
+<td>Confirm owner, scope and priority</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Confirm owner, scope and priority</td>
+<td>Continue</td>
+<td>Write user story and acceptance criteria</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Write user story and acceptance criteria</td>
+<td>Continue</td>
+<td>Assess product/design fit</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Assess product/design fit</td>
+<td>Continue</td>
+<td>Create test conditions</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Create test conditions</td>
+<td>Continue</td>
+<td>Execute later when authorised</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Execute later when authorised</td>
+<td>Continue</td>
+<td>Observed result</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Observed result</td>
+<td>Pass</td>
+<td>Acceptance evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Observed result</td>
+<td>Fail</td>
+<td>Defect record</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draft requirement</td>
+<td>Continue</td>
+<td>Scope change or clarification</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Scope change or clarification</td>
+<td>Continue</td>
+<td>Confirm owner, scope and priority</td>
+</tr>
+</tbody>
+</table></div>
+<p>The flow shows that requirements are refined before testing. Fit-gap analysis informs design and may reveal that the requirement, product boundary or process needs further clarification.</p>
+<p>A requirement can return to clarification when new evidence appears. A failed test does not automatically mean the requirement is wrong; it may indicate a defect, incomplete design, invalid test data or a changed need.</p>
+<p>In plain language: traceability is an evidence path, not a promise that every linked artifact has already been completed.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: build Evergreen’s traceable register</h2>
+<h3>4.1 New synthetic source packet</h3>
+<p>The following sources are supplied for this worked case.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-031</td>
+<td>Sponsor: “The first priority is internal open-job visibility and a controlled Finance handoff. The portal and route optimisation remain deferred. Weekly reporting should show open jobs at the end of the reporting week and jobs completed during the reporting week.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-032</td>
+<td>Operations Manager: “An authorised internal user needs to find a customer, see open jobs, status and assigned technician, and know whether the Finance handoff is waiting, returned or under review.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-033</td>
+<td>Finance Lead: “The handoff must include job reference, customer reference, completion date and completion summary. Completion must not release an invoice. Dispatch may see nonfinancial status and the Finance contact, but not cost or margin.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-034</td>
+<td>Technician Lead: “A technician must be able to provide the completion date and summary for a completed service. Missing summary information must be corrected before Finance review.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-035</td>
+<td>Client Administrator: “Zoho CRM is in use. I can provide tenant inventory, edition and environment details through the authorised inventory process. No credentials or record exports are approved for requirements work.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-036</td>
+<td>Sponsor and Operations clarification: “For a weekly report, open means not cancelled and not completed at the reporting cutoff. Completed means service completion date falls within the reporting week. The reporting timezone is UTC for this exercise.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-037</td>
+<td>Implementation Lead: “The current record of the proposed process is a design recommendation. No requirement in this packet has product execution or client acceptance evidence.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>The phrase “for this exercise” is important. The reporting timezone is synthetic case data, not a general Evergreen policy or legal requirement.</p>
+<h3>4.2 Step 1: classify and refine the evidence</h3>
+<p>The first refinement produces these conclusions:</p>
+<ul>
+<li>EVG-REQ-001, 002, 003, 007 and 008 remain verified business requirements.</li>
+<li>EVG-REQ-004 can now be refined as a candidate or verified business requirement depending on the learner’s treatment of the Sponsor and Operations clarification. In this worked case it becomes a verified business requirement with acceptance still pending, because the relevant business owners supplied a definition.</li>
+<li>EVG-REQ-009, 010 and 011 remain proposed process requirements pending explicit business confirmation.</li>
+<li>EVG-REQ-005 and 006 remain deferred candidates.</li>
+<li>EVG-NFR-001 and EVG-NFR-002 are drafted from Finance’s control and the future-state model. Their approval status remains proposed until the appropriate owner confirms the exact evidence and retention conditions.</li>
+</ul>
+<p>Record EVG-DEC-010:</p>
+<p>Preserve the previous requirement IDs and refine their wording and status only where the supplied source provides new evidence. Keep proposed process recommendations distinct from verified client requirements.</p>
+<h3>4.3 Step 2: completed user story catalog</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Story ID</th>
+<th>Requirement link</th>
+<th>User story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-US-001</td>
+<td>EVG-REQ-001</td>
+<td>As Operations, I want each new service request to receive a unique business job reference with customer reference and received timestamp, so that the request can be followed across dispatch and Finance.</td>
+</tr>
+<tr>
+<td>EVG-US-002</td>
+<td>EVG-REQ-002</td>
+<td>As an authorised internal user, I want to find a customer’s open jobs with status and assigned technician, so that I can coordinate the next action.</td>
+</tr>
+<tr>
+<td>EVG-US-003</td>
+<td>EVG-REQ-003</td>
+<td>As Finance, I want completed jobs to enter a controlled review before invoice release, so that completion does not bypass financial review.</td>
+</tr>
+<tr>
+<td>EVG-US-004</td>
+<td>EVG-REQ-007</td>
+<td>As a Technician Lead or Operations user, I want the completion handoff to contain the required references, date and summary, so that Finance receives usable completion information.</td>
+</tr>
+<tr>
+<td>EVG-US-005</td>
+<td>EVG-REQ-008</td>
+<td>As a Dispatcher, I want to see nonfinancial handoff status and the responsible Finance contact, so that I can coordinate without seeing cost or margin.</td>
+</tr>
+<tr>
+<td>EVG-US-006</td>
+<td>EVG-REQ-004</td>
+<td>As a Sponsor, I want weekly open and completed counts using the stated UTC definitions, so that management reporting uses a repeatable basis.</td>
+</tr>
+<tr>
+<td>EVG-US-007</td>
+<td>EVG-REQ-009</td>
+<td>As a Dispatcher, I want rescheduled appointments to preserve the old appointment and record the replacement acknowledgements, so that staff act on the current arrangement without losing history.</td>
+</tr>
+<tr>
+<td>EVG-US-008</td>
+<td>EVG-REQ-010</td>
+<td>As Operations, I want a verified cancellation to retain requester, reason, time and outstanding notification actions, so that a cancellation does not erase operational evidence.</td>
+</tr>
+<tr>
+<td>EVG-US-009</td>
+<td>EVG-REQ-011</td>
+<td>As Operations and Finance, I want a post-start change to enter review with performed-work facts retained, so that remaining work and financial implications can be decided responsibly.</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-US-007 through EVG-US-009 describe proposed future behaviour. Their existence does not turn EVG-REQ-009 through EVG-REQ-011 into approved scope.</p>
+<h3>4.4 Step 3: completed acceptance criteria</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Acceptance ID</th>
+<th>Requirement</th>
+<th>Acceptance criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-AC-001A</td>
+<td>EVG-REQ-001</td>
+<td>Given two valid new requests, when they are recorded, then each receives a different business job reference and preserves its customer reference and received timestamp.</td>
+</tr>
+<tr>
+<td>EVG-AC-001B</td>
+<td>EVG-REQ-001</td>
+<td>Given a request has no verified customer reference, when assignment readiness is checked, then it remains on hold and is not assigned by guesswork.</td>
+</tr>
+<tr>
+<td>EVG-AC-002A</td>
+<td>EVG-REQ-002</td>
+<td>Given an authorised internal user and an open customer job, when the user searches for the customer, then the open job, status and assigned technician are available.</td>
+</tr>
+<tr>
+<td>EVG-AC-003A</td>
+<td>EVG-REQ-003</td>
+<td>Given a completed job, when completion is recorded, then the job enters Finance review or an equivalent controlled handoff state.</td>
+</tr>
+<tr>
+<td>EVG-AC-003B</td>
+<td>EVG-REQ-003</td>
+<td>Given a completed job awaiting Finance review, when completion is recorded, then invoice release does not occur automatically.</td>
+</tr>
+<tr>
+<td>EVG-AC-004A</td>
+<td>EVG-REQ-007</td>
+<td>Given a completed job ready for handoff, then job reference, customer reference, completion date and completion summary are present.</td>
+</tr>
+<tr>
+<td>EVG-AC-004B</td>
+<td>EVG-REQ-007</td>
+<td>Given a required field is missing or a reference disagrees with permitted intake evidence, then the handoff is held for correction and is not marked ready.</td>
+</tr>
+<tr>
+<td>EVG-AC-005A</td>
+<td>EVG-REQ-008</td>
+<td>Given an authorised Dispatcher view, nonfinancial handoff status and the responsible Finance contact are visible.</td>
+</tr>
+<tr>
+<td>EVG-AC-005B</td>
+<td>EVG-REQ-008</td>
+<td>Given the same view, cost and margin are not visible.</td>
+</tr>
+<tr>
+<td>EVG-AC-006A</td>
+<td>EVG-REQ-004</td>
+<td>Given the UTC reporting cutoff, open count includes jobs that are not cancelled and not completed at the cutoff.</td>
+</tr>
+<tr>
+<td>EVG-AC-006B</td>
+<td>EVG-REQ-004</td>
+<td>Given a reporting week, completed count includes jobs whose service completion date falls within that UTC reporting week.</td>
+</tr>
+<tr>
+<td>EVG-AC-007A</td>
+<td>EVG-REQ-009</td>
+<td>Given a pre-start reschedule, the original job reference remains unchanged, the old appointment is retained as superseded and the replacement remains pending until required acknowledgements exist.</td>
+</tr>
+<tr>
+<td>EVG-AC-008A</td>
+<td>EVG-REQ-010</td>
+<td>Given a verified pre-start cancellation, requester, reason and time are retained, the active appointment is cancelled and outstanding notification action remains visible.</td>
+</tr>
+<tr>
+<td>EVG-AC-009A</td>
+<td>EVG-REQ-011</td>
+<td>Given work has started and a customer requests a change, performed-work facts remain retained and the case enters Change review rather than the pre-start cancellation path.</td>
+</tr>
+<tr>
+<td>EVG-AC-NFR-001A</td>
+<td>EVG-NFR-001</td>
+<td>Given a Dispatch or Technician role, cost and margin fields are not visible; Dispatch can see only the permitted nonfinancial status and Finance contact.</td>
+</tr>
+<tr>
+<td>EVG-AC-NFR-002A</td>
+<td>EVG-NFR-002</td>
+<td>Given a correction to a returned Finance handoff, the prior return and the correcting action remain identifiable in the permitted history evidence.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The criteria use “equivalent controlled handoff state” because the design has not selected a product mechanism. Later chapters can replace that phrase with a confirmed design term.</p>
+<h3>4.5 Step 4: completed requirements register</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Requirement statement</th>
+<th>Source</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001</td>
+<td>Each new request has a unique business job reference, customer reference and received timestamp</td>
+<td>EVG-SRC-001, 031, 034</td>
+<td>Verified business requirement</td>
+<td>Must</td>
+<td>EVG-US-001</td>
+</tr>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Authorised internal users can find a customer’s open jobs, status and assigned technician</td>
+<td>EVG-SRC-001, 032</td>
+<td>Verified business requirement</td>
+<td>Must</td>
+<td>EVG-US-002</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Completion does not release an invoice; Finance reviews before release</td>
+<td>EVG-SRC-005, 033</td>
+<td>Verified business requirement</td>
+<td>Must</td>
+<td>EVG-US-003</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Weekly open/completed reporting uses the stated UTC definitions</td>
+<td>EVG-SRC-006, 031, 036</td>
+<td>Verified business requirement; acceptance pending</td>
+<td>Should</td>
+<td>EVG-US-006</td>
+</tr>
+<tr>
+<td>EVG-REQ-005</td>
+<td>Customer-facing portal access</td>
+<td>EVG-SRC-013, 031</td>
+<td>Candidate and deferred</td>
+<td>Won’t this release</td>
+<td>Not assigned</td>
+</tr>
+<tr>
+<td>EVG-REQ-006</td>
+<td>Automated route optimisation</td>
+<td>EVG-SRC-013, 031</td>
+<td>Candidate and deferred</td>
+<td>Won’t this release</td>
+<td>Not assigned</td>
+</tr>
+<tr>
+<td>EVG-REQ-007</td>
+<td>Completion handoff contains job reference, customer reference, completion date and summary</td>
+<td>EVG-SRC-017, 033, 034</td>
+<td>Verified business requirement</td>
+<td>Must</td>
+<td>EVG-US-004</td>
+</tr>
+<tr>
+<td>EVG-REQ-008</td>
+<td>Dispatch sees nonfinancial handoff status and Finance contact, not cost or margin</td>
+<td>EVG-SRC-017, 032, 033</td>
+<td>Verified business requirement</td>
+<td>Must</td>
+<td>EVG-US-005</td>
+</tr>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Rescheduling preserves appointment history and required acknowledgements</td>
+<td>EVG-SRC-027, 029, 030</td>
+<td>Proposed process requirement</td>
+<td>Should</td>
+<td>EVG-US-007</td>
+</tr>
+<tr>
+<td>EVG-REQ-010</td>
+<td>Pre-start cancellation retains evidence and outstanding actions</td>
+<td>EVG-SRC-027, 029</td>
+<td>Proposed process requirement</td>
+<td>Should</td>
+<td>EVG-US-008</td>
+</tr>
+<tr>
+<td>EVG-REQ-011</td>
+<td>Post-start changes retain work facts and enter Change review</td>
+<td>EVG-SRC-027, 030</td>
+<td>Proposed process requirement</td>
+<td>Should</td>
+<td>EVG-US-009</td>
+</tr>
+<tr>
+<td>EVG-NFR-001</td>
+<td>Dispatch and Technician roles cannot see cost or margin; Dispatch can see permitted nonfinancial status/contact</td>
+<td>EVG-SRC-033</td>
+<td>Proposed non-functional requirement</td>
+<td>Must</td>
+<td>—</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>Corrections retain prior Finance-return and correction history</td>
+<td>EVG-SRC-027, 033</td>
+<td>Proposed non-functional requirement</td>
+<td>Should</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>The register preserves the difference between verified requirements and proposed process recommendations.</p>
+<h3>4.6 Step 5: completed fit-gap analysis</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Proposed boundary</th>
+<th>Evidence reviewed</th>
+<th>Fit-gap result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001</td>
+<td>CRM/service-request process</td>
+<td>Process model and business statements; no tenant configuration</td>
+<td>Configuration candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Internal customer/job visibility</td>
+<td>Discovery notes and process model; edition and access unverified</td>
+<td>Configuration candidate, conditional</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Controlled Finance review</td>
+<td>Future-state process and official Blueprint API concept documentation</td>
+<td>Unknown-to-configuration candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Weekly reporting</td>
+<td>Source definition; no report design or product execution</td>
+<td>Configuration candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-007</td>
+<td>Completion handoff</td>
+<td>Confirmed business fields; no configured form/process</td>
+<td>Configuration or extension candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-008 / EVG-NFR-001</td>
+<td>Role-based nonfinancial visibility</td>
+<td>Finance rules; actual profiles and field permissions unknown</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Reschedule history and acknowledgements</td>
+<td>Proposed process rule; no product design</td>
+<td>Process and configuration candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-010</td>
+<td>Cancellation evidence</td>
+<td>Proposed process rule</td>
+<td>Process and configuration candidate</td>
+</tr>
+<tr>
+<td>EVG-REQ-005</td>
+<td>Customer portal</td>
+<td>Deferred request; audience and identity undefined</td>
+<td>Deferred</td>
+</tr>
+<tr>
+<td>EVG-REQ-006</td>
+<td>Route optimisation</td>
+<td>Deferred request; inputs and constraints undefined</td>
+<td>Deferred</td>
+</tr>
+</tbody>
+</table></div>
+<p>The most important result is not the number of “fits.” It is the list of conditions that must be resolved before a fit claim is responsible.</p>
+<h3>4.7 Step 6: completed traceability matrix</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Requirement</th>
+<th>Story</th>
+<th>Acceptance</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-033</td>
+<td>EVG-REQ-007</td>
+<td>EVG-US-004</td>
+<td>EVG-AC-004A–B</td>
+<td>EVG-TEST-004</td>
+</tr>
+<tr>
+<td>EVG-SRC-033</td>
+<td>EVG-REQ-003</td>
+<td>EVG-US-003</td>
+<td>EVG-AC-003A–B</td>
+<td>EVG-TEST-003</td>
+</tr>
+<tr>
+<td>EVG-SRC-033</td>
+<td>EVG-REQ-008</td>
+<td>EVG-US-005</td>
+<td>EVG-AC-005A–B</td>
+<td>EVG-TEST-005</td>
+</tr>
+<tr>
+<td>EVG-SRC-031 and 036</td>
+<td>EVG-REQ-004</td>
+<td>EVG-US-006</td>
+<td>EVG-AC-006A–B</td>
+<td>EVG-TEST-009</td>
+</tr>
+<tr>
+<td>EVG-SRC-027 and 030</td>
+<td>EVG-REQ-009</td>
+<td>EVG-US-007</td>
+<td>EVG-AC-007A</td>
+<td>EVG-TEST-006</td>
+</tr>
+<tr>
+<td>EVG-SRC-033</td>
+<td>EVG-NFR-001</td>
+<td>—</td>
+<td>EVG-AC-NFR-001A</td>
+<td>EVG-TEST-010</td>
+</tr>
+<tr>
+<td>EVG-SRC-027</td>
+<td>EVG-REQ-011</td>
+<td>EVG-US-009</td>
+<td>EVG-AC-009A</td>
+<td>EVG-TEST-008</td>
+</tr>
+</tbody>
+</table></div>
+<p>No row claims a pass, failure or client acceptance.</p>
+<h3>4.8 Worked dataset and expected test reasoning</h3>
+<p>Use this synthetic dataset for EVG-TEST-001 and EVG-TEST-004.</p>
+<pre><code class="language-csv">row_id,job_ref,customer_ref,received_at,completion_date,completion_summary,expected_condition
+R1,EVG-JOB-1401,EVG-CUST-0101,2027-01-20T08:00:00Z,2027-01-20,Replaced filter,valid complete handoff
+R2,EVG-JOB-1402,EVG-CUST-0102,2027-01-20T08:10:00Z,2027-01-20,Reset controller,valid complete handoff
+R3,EVG-JOB-1403,EVG-CUST-0103,2027-01-20T08:15:00Z,2027-01-20,Checked operation,job reference duplicates R2 in invalid variant
+R4,EVG-JOB-1404,,2027-01-20T08:20:00Z,2027-01-20,Repaired valve,missing customer reference
+R5,EVG-JOB-1405,EVG-CUST-0105,2027-01-20T08:25:00Z,,,missing completion date and summary
+For the invalid variant of R3, the job reference is changed to EVG-JOB-1402. The expected result is rejection or correction because business references must be unique.
+For R4, the permitted result is an Operations hold. The test does not permit the tester to select a customer.
+For R5, the handoff is not ready because both completion date and summary are missing.
+</code></pre>
+<p>The dataset demonstrates the difference between:</p>
+<ul>
+<li>A valid record.</li>
+<li>A duplicate identifier.</li>
+<li>Missing intake information.</li>
+<li>Missing completion information.</li>
+</ul>
+<p>It does not demonstrate an actual Zoho validation rule, because no product execution has occurred.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “EVG-REQ-008 is satisfied because the product has profiles.”</p>
+<p>This confuses the existence of a product concept with the client’s configured permissions and the requirement’s specific field-visibility conditions.</p>
+<p>Correction: “EVG-REQ-008 requires an authorised Dispatch view showing permitted status/contact fields and hiding cost/margin. The actual tenant configuration, roles, field permissions and evidence are still required.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Build a traceable register for one new requirement and revise two existing entries.</p>
+<p>Use a document editor and the supplied inputs. No Zoho account or tenant access is needed.</p>
+<p>Additional supplied inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-038</td>
+<td>Operations Manager: “The weekly report should list jobs open at Sunday 23:59 UTC and jobs with a service completion date during Monday–Sunday UTC. Cancelled jobs should not count as open.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-039</td>
+<td>Finance Lead: “A returned handoff must retain the original return reason. A correction must identify who supplied it and when. Dispatch may see only Returned or Under Finance Review, not the return reason if it contains financial detail.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-040</td>
+<td>Dispatcher: “I need the status and Finance contact. I do not need cost, margin or the detailed reason for a Finance return.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-041</td>
+<td>Implementation Lead: “The portal and routing requests remain outside the current requirements baseline. Do not create acceptance criteria for them yet.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>Required work</p>
+<ol>
+<li>Refine EVG-REQ-004 using EVG-SRC-038.</li>
+<li>Refine EVG-REQ-008 and EVG-NFR-002 using EVG-SRC-039 and EVG-SRC-040.</li>
+<li>Write one user story and at least two acceptance criteria for each refined requirement.</li>
+<li>Assign priorities and explain each choice.</li>
+<li>Add the requirements to a traceability matrix.</li>
+<li>Identify whether each item is fit, configuration candidate, unknown or deferred.</li>
+<li>Create a test input set using the supplied data below.</li>
+</ol>
+<pre><code class="language-csv">job_ref,status,completed_at,cancelled,finance_status,finance_contact
+EVG-JOB-1501,open,,no,not_sent,finance@evergreen.example.com
+EVG-JOB-1502,completed,2027-01-21T10:00:00Z,no,under_review,finance@evergreen.example.com
+EVG-JOB-1503,cancelled,,yes,not_sent,finance@evergreen.example.com
+EVG-JOB-1504,completed,2027-01-26T15:00:00Z,no,returned,finance@evergreen.example.com
+EVG-JOB-1505,open,,no,returned,finance@evergreen.example.com
+For this exercise, the reporting week is Monday 25 January through Sunday 31 January 2027, and the reporting cutoff is Sunday 31 January 2027 at 23:59 UTC. No later records are supplied.
+</code></pre>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Classify each input.  </li>
+</ol>
+<p>Expected result: reporting definitions are business evidence; portal/routing remain deferred; Finance visibility is a control boundary.</p>
+<ol start="2">
+<li>Write requirement statements before stories.  </li>
+</ol>
+<p>Expected result: the statements do not name a dashboard, module or field API name.</p>
+<ol start="3">
+<li>Write acceptance criteria including a negative case.  </li>
+</ol>
+<p>Expected result: cancelled jobs are excluded from open count; restricted fields are not visible.</p>
+<ol start="4">
+<li>Calculate the report counts.  </li>
+</ol>
+<p>Using the supplied reporting rule:</p>
+<ul>
+<li>Open means not cancelled and not completed at the cutoff.</li>
+<li>Completed means completion date falls within the reporting week.</li>
+</ul>
+<p>Expected result: open count is 2; completed count is 2. EVG-JOB-1503 is cancelled and excluded from open count. EVG-JOB-1502 is outside the reporting week and does not count as completed for this report.</p>
+<ol start="5">
+<li>Build traceability.  </li>
+</ol>
+<p>Expected result: every refined requirement has a source, acceptance criterion and planned test. No test is labelled executed.</p>
+<ol start="6">
+<li>Assess fit-gap status.  </li>
+</ol>
+<p>Expected result: without tenant configuration and permission evidence, access-related fit remains unknown or a conditional configuration candidate.</p>
+<p>Blank requirements register worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Requirement statement</th>
+<th>Source</th>
+<th>Status</th>
+<th>Priority and rationale</th>
+<th>Story ID</th>
+<th>Acceptance IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank acceptance criteria worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Acceptance ID</th>
+<th>Requirement</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Negative or boundary case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank traceability worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Requirement ID</th>
+<th>Story ID</th>
+<th>Acceptance ID</th>
+<th>Test ID</th>
+<th>Change/defect link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifact: a requirements register with traceability and a small report-test dataset.</p>
+<p>Cleanup: retain the supplied CSV and versioned worksheets. No product-state cleanup is required.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Continue from the guided practice, then apply these changed synthetic inputs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Changed input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-042</td>
+<td>Finance: “Dispatch may see Under Finance Review and Returned, plus the Finance contact. Dispatch must not see the return reason because some reasons contain sensitive financial detail.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-043</td>
+<td>Sponsor: “Weekly reporting remains a Should for the first delivery scope. Internal visibility and the controlled Finance handoff remain Must items. Portal and automated routing remain Won’t this release.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-044</td>
+<td>Client Administrator: “Tenant inventory confirms a production organisation and a sandbox organisation. The edition and exact configured permissions are not included in this inventory extract.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-045</td>
+<td>Operations Manager: “For an urgent same-day reschedule, customer confirmation and new technician acknowledgement are still required. The old technician withdrawal must be recorded before the replacement is confirmed.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>Deliverables</p>
+<ol>
+<li>Update the requirements register.</li>
+<li>Update acceptance criteria for Finance visibility and rescheduling.</li>
+<li>Reclassify the fit-gap results using the limited tenant evidence.</li>
+<li>Produce a priority decision note.</li>
+<li>Add tests for the urgent reschedule and restricted return reason.</li>
+<li>State whether the new information opens EVG-DEFECT-001.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your work must:</p>
+<ul>
+<li>Preserve the original requirement IDs.</li>
+<li>Distinguish production/sandbox inventory from edition and permission evidence.</li>
+<li>Keep sensitive return reasons hidden from Dispatch.</li>
+<li>Keep reporting as Should and portal/routing as Won’t this release.</li>
+<li>Preserve the technician-withdrawal condition.</li>
+<li>Avoid opening a defect without an observed product failure.</li>
+</ul>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement says “build a dashboard”</td>
+<td>Solution prescribed before need is defined</td>
+<td>State actor, information and business decision first</td>
+</tr>
+<tr>
+<td>One requirement contains four unrelated outcomes</td>
+<td>Requirement is not atomic</td>
+<td>Split it and preserve parent/source links</td>
+</tr>
+<tr>
+<td>Acceptance criterion says “works correctly”</td>
+<td>Result is not observable</td>
+<td>Specify data, role, action and expected outcome</td>
+</tr>
+<tr>
+<td>A blank field is treated as valid because it exists</td>
+<td>Presence confused with validity</td>
+<td>Define requiredness and relationship checks</td>
+</tr>
+<tr>
+<td>A product page is treated as tenant proof</td>
+<td>General documentation confused with client evidence</td>
+<td>Record product fact as conditional and request tenant inventory</td>
+</tr>
+<tr>
+<td>A test ID is marked passed before execution</td>
+<td>Planned and observed evidence confused</td>
+<td>Mark it planned or paper-derived</td>
+</tr>
+<tr>
+<td>Deferred portal work disappears from the register</td>
+<td>Deferred scope was mistaken for rejected scope</td>
+<td>Retain the requirement with deferred status and reason</td>
+</tr>
+<tr>
+<td>A changed requirement receives the old ID without history</td>
+<td>Traceability was overwritten</td>
+<td>Version the wording and record the source/change</td>
+</tr>
+<tr>
+<td>A permission concern opens a defect</td>
+<td>Requirement gap confused with product failure</td>
+<td>Record an access design question or risk</td>
+</tr>
+<tr>
+<td>A client statement is labelled accepted</td>
+<td>Attendance or silence treated as approval</td>
+<td>Record owner, status and missing approval</td>
+</tr>
+</tbody>
+</table></div>
+<p>Safe recovery limits</p>
+<p>If a requirement is found to be ambiguous after testing begins, do not rewrite the requirement to make the result pass. Record the clarification, preserve the original wording, assess whether the test remains valid and obtain the appropriate decision.</p>
+<p>If a test exposes a real configured failure, open a defect with the requirement, test, input, expected result, observed result, severity and owner. The current chapter has no observed product failure, so EVG-DEFECT-001 remains reserved.</p>
+<p>If a product permission is unavailable, do not work around it by sharing credentials or exporting restricted data. Record the permission dependency and use an authorised alternative evidence path.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What is the difference between a verified business requirement and an accepted requirement?</li>
+<li>Why should a user story not prescribe a particular Zoho module?</li>
+<li>Write one negative acceptance criterion for EVG-REQ-003.</li>
+<li>Which Evergreen requirements are currently deferred rather than rejected?</li>
+<li>What makes a non-functional requirement testable?</li>
+<li>Why is “unknown” a legitimate fit-gap result?</li>
+<li>What is the difference between a planned test and an executed test?</li>
+<li>A test fails because the requirement changed after the test was designed. Should you automatically open a defect? Explain.</li>
+<li>Why should the old requirement ID be preserved when wording is refined?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: “Use Zoho CRM for dispatch” names a product choice but does not state the business need, users, information or success condition. A requirement might state that an authorised internal user can find a customer’s open jobs, status and assigned technician.</p>
+<p>LC2: One acceptable revision is:</p>
+<p>As a Dispatcher, I want to see the status and assigned technician for a customer’s open jobs, so that I can coordinate the next action without contacting several people.</p>
+<p>The story is better because it identifies the actor, capability and value. A separate reporting story may be needed for management counts.</p>
+<p>LC3: The negative case is that completion does not automatically release an invoice. The job must enter Finance review, and Finance retains the release decision.</p>
+<p>LC4: EVG-NFR-001 identifies the protected information, restricted roles, permitted information and required visibility. “Secure” does not identify a test boundary or expected evidence.</p>
+<p>LC5: Yes. A Must describes business importance, not readiness. A requirement can be essential but remain undefined, dependent on missing evidence or outside the current authorisation.</p>
+<p>LC6: Classify it as unknown, or as a conditional configuration candidate if the requirement and likely design path are clear. Request edition, tenant configuration and permission evidence before making a stronger claim.</p>
+<p>LC7: A test link proves that a planned evidence path exists. It does not prove execution, a pass result, product support or client acceptance.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Refined requirements</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Requirement statement</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Story</th>
+<th>Acceptance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Produce weekly open and completed counts using the UTC cutoff and definitions supplied by the Sponsor and Operations Manager</td>
+<td>Verified business requirement; acceptance pending</td>
+<td>Should</td>
+<td>EVG-US-006</td>
+<td>EVG-AC-006A–B</td>
+</tr>
+<tr>
+<td>EVG-REQ-008</td>
+<td>Dispatch can see permitted nonfinancial handoff status and Finance contact, but not cost, margin or restricted return reason</td>
+<td>Verified business requirement, refined</td>
+<td>Must</td>
+<td>EVG-US-005</td>
+<td>EVG-AC-005A–C</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>A returned Finance handoff retains the return event and correction actor/time while restricting sensitive return detail from Dispatch</td>
+<td>Proposed non-functional requirement</td>
+<td>Should</td>
+<td>—</td>
+<td>EVG-AC-NFR-002A–B</td>
+</tr>
+</tbody>
+</table></div>
+<p>A valid alternative is to create a new requirement for sensitive return-reason restriction, provided the original EVG-REQ-008 link is preserved.</p>
+<p>Acceptance criteria</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Acceptance ID</th>
+<th>Requirement</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Boundary case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-AC-006A</td>
+<td>EVG-REQ-004</td>
+<td>The cutoff is 31 January 2027 23:59 UTC</td>
+<td>The weekly open report is produced</td>
+<td>It includes jobs not cancelled and not completed at the cutoff</td>
+<td>A cancelled job is excluded even if it has no completion date</td>
+</tr>
+<tr>
+<td>EVG-AC-006B</td>
+<td>EVG-REQ-004</td>
+<td>The reporting week is 25–31 January UTC</td>
+<td>The weekly completed report is produced</td>
+<td>It includes jobs with a service completion date in that week</td>
+<td>A job completed on 21 January is excluded</td>
+</tr>
+<tr>
+<td>EVG-AC-005C</td>
+<td>EVG-REQ-008</td>
+<td>The user is in the Dispatch role</td>
+<td>The user views a returned Finance handoff</td>
+<td>Status and Finance contact are visible</td>
+<td>Sensitive return reason is not visible</td>
+</tr>
+<tr>
+<td>EVG-AC-NFR-002B</td>
+<td>EVG-NFR-002</td>
+<td>A handoff was returned and corrected</td>
+<td>An authorised reviewer examines history</td>
+<td>Original return and correction actor/time remain identifiable</td>
+<td>Sensitive reason detail remains restricted from Dispatch</td>
+</tr>
+</tbody>
+</table></div>
+<p>Report calculation</p>
+<p>The reporting week is 25–31 January 2027.</p>
+<ul>
+<li>EVG-JOB-1501 is open at the cutoff and counts as open.</li>
+<li>EVG-JOB-1502 completed on 21 January, outside the reporting week; it does not count as completed in this report.</li>
+<li>EVG-JOB-1503 is cancelled and does not count as open.</li>
+<li>EVG-JOB-1504 completed on 26 January and counts as completed.</li>
+<li>EVG-JOB-1505 is open at the cutoff and counts as open.</li>
+</ul>
+<p>Therefore:</p>
+<blockquote>
+<p>Open count=2</p>
+<p>Completed count=2</p>
+</blockquote>
+<p>The two completed records in the report are not the same as all records whose status is completed; the date rule controls inclusion.</p>
+<p>Guided traceability</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Requirement</th>
+<th>Story</th>
+<th>Acceptance</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-038</td>
+<td>EVG-REQ-004</td>
+<td>EVG-US-006</td>
+<td>EVG-AC-006A–B</td>
+<td>EVG-TEST-009</td>
+</tr>
+<tr>
+<td>EVG-SRC-039–040</td>
+<td>EVG-REQ-008</td>
+<td>EVG-US-005</td>
+<td>EVG-AC-005A–C</td>
+<td>EVG-TEST-005, EVG-TEST-010</td>
+</tr>
+<tr>
+<td>EVG-SRC-039</td>
+<td>EVG-NFR-002</td>
+<td>—</td>
+<td>EVG-AC-NFR-002A–B</td>
+<td>EVG-TEST-011</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-REQ-005 and EVG-REQ-006 remain deferred and have no acceptance criteria or test assigned in this baseline.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Updated priority note</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Priority decision</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001, 002, 003, 007, 008</td>
+<td>Must</td>
+<td>Directly support internal coordination and the Finance control</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Should</td>
+<td>Valuable and now defined, but Sponsor does not require it as a minimum first-delivery capability</td>
+</tr>
+<tr>
+<td>EVG-REQ-005</td>
+<td>Won’t this release</td>
+<td>Portal remains outside the current baseline; identity and audience unresolved</td>
+</tr>
+<tr>
+<td>EVG-REQ-006</td>
+<td>Won’t this release</td>
+<td>Routing objectives and constraints remain unresolved</td>
+</tr>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Should</td>
+<td>Important operational control, subject to confirmation and design</td>
+</tr>
+<tr>
+<td>EVG-NFR-001</td>
+<td>Must</td>
+<td>Protects cost and margin and preserves the Finance boundary</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>Should</td>
+<td>Supports history and review; retention mechanism still requires definition</td>
+</tr>
+</tbody>
+</table></div>
+<p>Updated fit-gap result</p>
+<p>The tenant inventory confirms that production and sandbox organisations exist. It does not confirm edition or configured permissions.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Updated result</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Configuration candidate, conditional</td>
+<td>Organisation environments are known, but access design and permission evidence are missing</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Unknown-to-configuration candidate</td>
+<td>Process transition may be investigated, but edition and permissions remain unverified</td>
+</tr>
+<tr>
+<td>EVG-REQ-008 / EVG-NFR-001</td>
+<td>Unknown</td>
+<td>The inventory does not show field-level or role visibility</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Configuration candidate, conditional</td>
+<td>Reporting definition exists; actual report capability and configuration remain unverified</td>
+</tr>
+<tr>
+<td>EVG-REQ-005 and EVG-REQ-006</td>
+<td>Deferred</td>
+<td>Inventory does not resolve their scope or business definition</td>
+</tr>
+</tbody>
+</table></div>
+<p>The production/sandbox fact supports environment planning. It does not prove that configuration has been promoted or that the environments are ready.</p>
+<p>Additional checks</p>
+<p>EVG-TEST-012 — restricted return reason</p>
+<ul>
+<li>Given a returned handoff with status Returned, Finance contact and a sensitive return reason,</li>
+<li>when a Dispatch user views the handoff,</li>
+<li>then the status and Finance contact are visible,</li>
+<li>and the sensitive reason is hidden.</li>
+</ul>
+<p>EVG-TEST-013 — urgent technician-change reschedule</p>
+<ul>
+<li>Given an unstarted appointment with an old technician,</li>
+<li>when a same-day reschedule changes the appointment time and technician,</li>
+<li>then customer confirmation, old technician withdrawal and new technician acknowledgement are required,</li>
+<li>and the replacement remains pending until the new technician acknowledges.</li>
+</ul>
+<p>These are planned tests. No product result is supplied.</p>
+<p>EVG-DEFECT-001 decision</p>
+<p>Do not open EVG-DEFECT-001. The new inputs expose a requirement and access-design condition, but no observed product behaviour has failed.</p>
+<p>A defect would be appropriate only if, for example, an executed access test showed that a Dispatch user could actually see a sensitive return reason despite the approved requirement. The current evidence does not show that.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>A verified business requirement has been confirmed as a business need. An accepted requirement has completed the authorised acceptance process with appropriate evidence.</li>
+<li>The need may be met by different designs, applications or configurations. Prescribing a module too early makes the requirement unnecessarily dependent on an unverified design.</li>
+<li>“Given a completed job awaiting Finance review, when completion is recorded, then invoice release does not occur automatically and Finance remains the release decision owner.”</li>
+<li>EVG-REQ-005 and EVG-REQ-006 are deferred. They remain recorded, not rejected.</li>
+<li>It must identify the role, protected information, allowed action or visibility, restricted action and evidence used to check the condition.</li>
+<li>Missing evidence is not evidence of failure or success. “Unknown” prevents an unsupported product claim and identifies the next investigation.</li>
+<li>A planned test contains inputs and expected results. An executed test also contains actual observations, date, actor/environment and a result.</li>
+<li>No. First determine whether the test became invalid, whether the requirement changed through an authorised process or whether a real implementation failed. Open a defect only for an observed nonconformance against the applicable requirement.</li>
+<li>Preserving the ID maintains the historical evidence path. If the meaning materially changes, create a new linked requirement rather than silently rewriting the old one.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Requirements make implementation work reviewable. They connect a client need to a measurable condition, a product investigation and later evidence.</p>
+<p>A strong requirements register does not pretend uncertainty has disappeared. It shows what is verified, what is proposed, what is deferred, what must be tested and what product evidence is still missing.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can distinguish a business requirement from a proposed solution.</li>
+<li>I can write an actor-and-value user story.</li>
+<li>I can create positive and negative acceptance criteria.</li>
+<li>I can define measurable non-functional conditions.</li>
+<li>I can prioritise requirements with reasons and dependencies.</li>
+<li>I can record unknown fit-gap results without inventing product limitations.</li>
+<li>I can link sources, requirements, stories, acceptance criteria and tests.</li>
+<li>I can distinguish planned evidence from observed results.</li>
+<li>I can preserve IDs when requirements are clarified or changed.</li>
+</ul>
+<p>Your project pack now contains a traceable requirements register and an initial fit-gap assessment.</p>
+<p>Chapter 5, Scope and Statement of Work, uses this register to define deliverables, assumptions, exclusions, responsibilities, dependencies, acceptance terms, initial estimates and change mechanisms. Requirements marked deferred or proposed will need clear treatment in the scope baseline.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acceptance criterion</td>
+<td>Observable condition used to determine whether a requirement is met</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>A possible need that still requires confirmation or definition</td>
+</tr>
+<tr>
+<td>Fit-gap analysis</td>
+<td>Comparison of a requirement with available product or design evidence</td>
+</tr>
+<tr>
+<td>Functional requirement</td>
+<td>Requirement describing behaviour or capability</td>
+</tr>
+<tr>
+<td>Non-functional requirement</td>
+<td>Requirement describing quality, constraint or operating condition</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Relative importance of a requirement for a defined delivery context</td>
+</tr>
+<tr>
+<td>Requirement</td>
+<td>Evaluatable statement of a needed capability, condition or quality</td>
+</tr>
+<tr>
+<td>Requirements register</td>
+<td>Structured record of requirements, status, ownership, priority and traceability</td>
+</tr>
+<tr>
+<td>Traceability</td>
+<td>Explicit links between sources, requirements and delivery evidence</td>
+</tr>
+<tr>
+<td>User story</td>
+<td>Concise statement of a role’s desired capability and business value</td>
+</tr>
+<tr>
+<td>Verified business requirement</td>
+<td>Business need confirmed by an appropriate stakeholder</td>
+</tr>
+<tr>
+<td>Unknown fit</td>
+<td>Fit status used when available evidence is insufficient for a responsible conclusion</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM — Feature-wise comparison of editions<br />
+<a href="https://www.zoho.com/crm/complete-feature-list.html">Open official reference</a></li>
+</ol>
+<p>Useful when assessing edition-dependent product capability and limits. It does not verify Evergreen’s entitlement or tenant configuration.</p>
+<ol start="2">
+<li>Zoho CRM Developer Documentation — API v8: Get Blueprint Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/blueprint-details.html">Open official reference</a></li>
+</ol>
+<p>Describes process transitions, fields and validation information available through the API under specified module, scope and permission conditions. It does not prove that Evergreen has a suitable edition, configured process or approved API access.</p>
+<ol start="3">
+<li>Zoho CRM Developer Documentation — API v8: Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Describes organisation metadata, including environment type and licence details, subject to authorization and scope. Use it only as part of an authorised inventory process.</p>
+<p>Consult the official references above for current product details. Research is partially verified: the cited product statements are documentation-based, while Evergreen’s purchased edition, permissions, configuration and execution evidence remain unverified.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Build a traceable requirements register.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-03">← Previous chapter</a><a href="/course-book/course-05/chapter-05">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

@@ -78,3 +78,7 @@ See [`VERIFICATION_V2.md`](VERIFICATION_V2.md) for the checks documented for thi
 ## Student Course Book
 
 Course 1 has a public student reader at `/course-book/course-01/`. Course 4, Corporate AI & Automation Opportunity Workshop, has a public reader at `/course-book/course-04/` with all ten chapters. Course 4 source chapters are in `materials/student_books/course_04/`; rebuild them with `python3 tools/build_student_coursebook_04.py`. Only student-facing chapter text is rendered; source metadata is excluded. Both readers include section menus, explained solutions and print/save as PDF.
+
+### Course 5 student book
+
+All 16 chapters are available at `/course-book/course-05`. Edit the separate files in `materials/student_books/course_05/`, then run `python3 tools/sync_public_syllabi.py` and `python3 tools/build_student_coursebook_05.py`. Student downloads and the three local Python reference programs are generated with the reader. The book preserves fictional Evergreen inputs and separates paper/local examples from actual Zoho execution.

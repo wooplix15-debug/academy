@@ -1,0 +1,7 @@
+job_ref,finance_review_state,returned_for_missing_info
+EVG-JOB-1001,review_complete,no
+EVG-JOB-1002,review_complete,yes
+EVG-JOB-1003,review_complete,no
+EVG-JOB-1004,review_complete,no
+EVG-JOB-1005,review_complete,yes
+EVG-JOB-1006,awaiting_review,

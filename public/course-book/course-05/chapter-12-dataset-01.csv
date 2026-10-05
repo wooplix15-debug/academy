@@ -1,0 +1,11 @@
+job_ref,site_count,site_register_ready,dispatcher_named,customer_confirmations_recorded,technician_acknowledgements_recorded
+EVG-JOB-2101,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2102,2,yes,yes,yes,yes
+EVG-JOB-2103,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2104,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2105,2,yes,yes,yes,yes
+EVG-JOB-2106,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2107,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2108,2,yes,yes,yes,yes
+EVG-JOB-2109,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2110,1,not_applicable,not_applicable,not_applicable,not_applicable

@@ -1,0 +1,1185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 15</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 15</p><h1>Training, Adoption and Support Handover</h1><p>Deliver training and support handover packs.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-15-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: support routing</a><a href="#section-4">4. Worked case: assemble Evergreen’s training and handover pack</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-15-dataset-01.csv">Practice dataset (CSV) ↓</a><a download href="/course-book/course-05/evergreen_prototype.py">Chapter 10 reference prototype ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A solution is not ready for ownership transfer merely because its configuration is documented. Users need to perform their work, administrators need to understand its operating boundaries, and support owners need to know how to recognise and route problems.</p>
+<p>Training develops the ability to perform tasks. Adoption is the sustained use of the intended process. Support handover transfers the information, responsibilities and access needed to operate and support the agreed service.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Prepare useful training materials for each business role.</li>
+<li>Explain the difference between attendance, demonstrated ability and adoption.</li>
+<li>Write an administrator guide with actionable verification steps.</li>
+<li>Document operational and exception procedures.</li>
+<li>Define business, technical and supplier support ownership.</li>
+<li>Triage incidents, data problems, access requests and enhancements.</li>
+<li>Set escalation and support boundaries without inventing service commitments.</li>
+<li>Produce a training and support handover pack.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the access matrix, reference prototype, UAT pack and cutover runbook from Chapters 7–14.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning scope</td>
+<td>SB-02 v1.1 includes one weekly report</td>
+</tr>
+<tr>
+<td>Original orientation allowance</td>
+<td>One sixty-minute session, at most six client participants</td>
+</tr>
+<tr>
+<td>Actual product release</td>
+<td>No-go; no execution or release authority</td>
+</tr>
+<tr>
+<td>Local/reference work</td>
+<td>Available for practice, with evidence limits</td>
+</tr>
+<tr>
+<td>Conditional cutover</td>
+<td>Tabletop only; not a live deployment</td>
+</tr>
+<tr>
+<td>Support ownership</td>
+<td>Existing client arrangements remain</td>
+</tr>
+<tr>
+<td>Supplier support service</td>
+<td>No new service or response-time commitment established</td>
+</tr>
+<tr>
+<td>Open matters</td>
+<td>Native fit, product access, acceptance, recovery and several business exceptions remain unresolved</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-138 authorises training documents, local role practice and a support-handover tabletop. It does not authorise tenant changes or operational takeover.</p>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>Role-based quick guides and practice cards.</li>
+<li>An administrator operating guide.</li>
+<li>A triage and escalation procedure.</li>
+<li>A support ownership and boundary matrix.</li>
+<li>A handover inventory and readiness recommendation.</li>
+</ol>
+<p>All Evergreen contacts, practice records, tickets, dates and estimates are synthetic. A planned session is not observed attendance. A completed document does not establish live-service ownership or acceptance.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Train people for decisions and exceptions</h3>
+<p>Skill: prepare materials that support real work.</p>
+<p>Role-based training starts from what the person must accomplish, not from a tour of every screen.</p>
+<p>For Evergreen:</p>
+<ul>
+<li>Operations needs reliable intake and correction ownership.</li>
+<li>Dispatch needs current assignments, rescheduling history and acknowledgements.</li>
+<li>Technicians need assigned-work completion.</li>
+<li>Finance needs qualified handoffs and review authority.</li>
+<li>Administrators need environment, identity and evidence control.</li>
+<li>The Sponsor needs to interpret readiness and acceptance.</li>
+</ul>
+<p>A useful quick guide contains:</p>
+<ol>
+<li>Purpose.</li>
+<li>Required access and information.</li>
+<li>Steps.</li>
+<li>Expected result.</li>
+<li>Exception treatment.</li>
+<li>Help owner.</li>
+</ol>
+<p>Explain why important controls exist. A technician should understand that a required summary gives Finance usable information, not merely that the system refuses a blank field.</p>
+<p>Use normal and exception examples. “What should I do when I cannot see a job?” is often more useful than another screenshot of a successful action.</p>
+<p>Avoid writing a guide that teaches users to work around the access model. “Borrow a colleague’s account” is not a valid recovery procedure.</p>
+<p>Lesson check LC1: Why should the Dispatch guide teach acknowledgement exceptions as well as ordinary scheduling?</p>
+<h3>2.2 Measure ability separately from adoption</h3>
+<p>Skill: interpret evidence without overstating readiness.</p>
+<p>Attendance shows that someone was present. It does not prove that they can perform the task.</p>
+<p>Useful training evidence includes:</p>
+<ul>
+<li>Task completed with the supplied inputs.</li>
+<li>Correct result.</li>
+<li>Exceptions identified.</li>
+<li>Required help or repeat attempt.</li>
+<li>Remaining access or knowledge gaps.</li>
+</ul>
+<p>A repeat can demonstrate eventual ability without turning the first attempt into a first-pass success.</p>
+<p>Adoption needs different evidence: people use the intended process during real work, maintain its data and follow its controls over time.</p>
+<p>Do not infer adoption from a local practice exercise. Likewise, a high completed-attempt rate can hide an unfinished administrator task.</p>
+<p>Define the measure before calculating it. State the denominator, unfinished records and exclusions.</p>
+<p>Lesson check LC2: What can a successful repeat attempt demonstrate, and what can it not demonstrate?</p>
+<h3>2.3 Write an administrator guide for operation and diagnosis</h3>
+<p>Skill: give the technical owner a usable decision sequence.</p>
+<p>An administrator guide should explain:</p>
+<ul>
+<li>Identified environment and build.</li>
+<li>Configuration and relationship inventory.</li>
+<li>User, role, profile and sharing design.</li>
+<li>Connection purpose, owner and permissions.</li>
+<li>Data and reconciliation controls.</li>
+<li>Known defects and limitations.</li>
+<li>Verification, correction and escalation.</li>
+<li>Recovery and support boundaries.</li>
+</ul>
+<p>A collection of screenshots is insufficient. Screens can change; the business and technical decisions still need explanation.</p>
+<p>Zoho CRM profiles determine user permissions. Detailed module permission data is returned when retrieving a specific profile, not merely the profile list.1 The guide should therefore identify the evidence needed to diagnose an access issue.</p>
+<p>OAuth scopes limit delegated resources and operations.2 They do not replace the underlying identity or business authority.</p>
+<p>Document connection ownership without storing tokens or client secrets in the handover pack. Also verify the organisation binding: Zoho authorisation is organisation-specific.3</p>
+<p>The exact tenant UI navigation and configured field names remain unverified for Evergreen. The sample guide below uses business actions and documented read-only inspection routes.</p>
+<p>Lesson check LC3: Why should a connection register include purpose and organisation as well as a technical owner?</p>
+<h3>2.4 Transfer ownership through evidence</h3>
+<p>Skill: distinguish nomination, receipt and operational acceptance.</p>
+<p>Ownership transfer has several stages:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner nominated</td>
+<td>A role/person is identified</td>
+</tr>
+<tr>
+<td>Pack delivered</td>
+<td>Materials are made available</td>
+</tr>
+<tr>
+<td>Recipient review</td>
+<td>Owner checks completeness and usability</td>
+</tr>
+<tr>
+<td>Access and capability verified</td>
+<td>Owner can perform the authorised responsibilities</td>
+</tr>
+<tr>
+<td>Operational acceptance</td>
+<td>Appropriate decision records the transferred boundary</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not collapse these stages into “handover complete.”</p>
+<p>For example, a Sponsor can nominate a backup administrator. That does not grant the person product access or authorise them to use the previous administrator’s credentials.</p>
+<p>A handover record should name:</p>
+<ul>
+<li>What is transferred.</li>
+<li>To whom.</li>
+<li>Which evidence has been reviewed.</li>
+<li>Which gaps remain.</li>
+<li>What support is included.</li>
+<li>Which decision is still required.</li>
+</ul>
+<p>Evergreen can transfer document-review responsibility while actual operational handover remains blocked.</p>
+<p>Lesson check LC4: Why is naming a support owner insufficient to establish support readiness?</p>
+<h3>2.5 Triage the request before choosing the route</h3>
+<p>Skill: identify the type of help needed.</p>
+<p>Triage is the initial assessment that determines classification, impact, owner and next action.</p>
+<p>Different requests need different routes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Evergreen route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How-to question</td>
+<td>Intended behaviour is unclear</td>
+<td>Business process owner/quick guide</td>
+</tr>
+<tr>
+<td>Data problem</td>
+<td>Information is missing or wrong</td>
+<td>Authorised data owner</td>
+</tr>
+<tr>
+<td>Access request</td>
+<td>New or changed authority is requested</td>
+<td>Process owner and Administrator</td>
+</tr>
+<tr>
+<td>Incident</td>
+<td>Intended service is disrupted or unsafe</td>
+<td>Existing technical/business support</td>
+</tr>
+<tr>
+<td>Defect</td>
+<td>Observed failure against the applicable requirement</td>
+<td>Quality/technical owner</td>
+</tr>
+<tr>
+<td>Enhancement</td>
+<td>New capability or scope</td>
+<td>Change mechanism and Sponsor</td>
+</tr>
+</tbody>
+</table></div>
+<p>Correct denial is not automatically an incident. A technician unable to open another technician’s job may be experiencing intended access.</p>
+<p>A defect can contribute to an incident, but the records serve different purposes. A defect tracks nonconformance and correction; an incident tracks service impact and restoration.</p>
+<p>Collect enough evidence to route the request:</p>
+<ul>
+<li>Environment/build.</li>
+<li>Actor and permitted role.</li>
+<li>Business reference.</li>
+<li>Action.</li>
+<li>Expected and observed result.</li>
+<li>Time.</li>
+<li>Scope of impact.</li>
+<li>Existing workaround.</li>
+<li>Relevant evidence.</li>
+</ul>
+<p>Avoid copying private Finance reasons or credentials into a general ticket.</p>
+<p>Lesson check LC5: Why should support classify “I cannot open this job” before changing permissions?</p>
+<h3>2.6 Define support boundaries and escalation</h3>
+<p>Skill: explain who acts and what has actually been committed.</p>
+<p>A support boundary identifies the service, owner, authority and included work.</p>
+<p>Do not invent:</p>
+<ul>
+<li>Twenty-four-hour coverage.</li>
+<li>Response or restoration targets.</li>
+<li>Unlimited changes.</li>
+<li>Supplier responsibility for every product issue.</li>
+<li>Production recovery guarantees.</li>
+</ul>
+<p>An optimistic sales message is not enough to establish those commitments.</p>
+<p>Escalation should state why and to whom:</p>
+<ul>
+<li>Business rule or data ownership → relevant process owner.</li>
+<li>Restricted information → Finance and technical owner.</li>
+<li>Environment/identity → Administrator.</li>
+<li>Reproducible configuration/code failure → technical owner and Quality Lead.</li>
+<li>Product service issue → Administrator through the client’s existing vendor-support arrangement.</li>
+<li>New scope → Sponsor and Implementation Lead.</li>
+</ul>
+<p>Chapter 14’s recovery limits remain relevant. A support owner must not promise that configuration restore recalls a delivered email.</p>
+<p>Lesson check LC6: Why should an after-hours support promise be recorded as an unresolved commercial matter when no service agreement is supplied?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: support routing</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Request received</td>
+<td>Continue</td>
+<td>Capture identity, environment, record and impact</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Capture identity, environment, record and impact</td>
+<td>Continue</td>
+<td>Expected behaviour?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Expected behaviour?</td>
+<td>Yes, but unclear</td>
+<td>How-to or access-request route</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Expected behaviour?</td>
+<td>No or unknown</td>
+<td>Data, incident or defect assessment</td>
+</tr>
+<tr>
+<td>—</td>
+<td>How-to or access-request route</td>
+<td>Continue</td>
+<td>Business owner or Administrator</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Data, incident or defect assessment</td>
+<td>Continue</td>
+<td>Contain if needed; preserve evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Contain if needed; preserve evidence</td>
+<td>Continue</td>
+<td>Technical and affected business owner</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Business owner or Administrator</td>
+<td>Continue</td>
+<td>New capability or service commitment?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Technical and affected business owner</td>
+<td>Continue</td>
+<td>New capability or service commitment?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>New capability or service commitment?</td>
+<td>Yes</td>
+<td>Change/commercial decision</td>
+</tr>
+<tr>
+<td>—</td>
+<td>New capability or service commitment?</td>
+<td>No</td>
+<td>Verify resolution and update knowledge</td>
+</tr>
+</tbody>
+</table></div>
+<p>The flow starts with evidence. It avoids granting access or changing scope before the request is understood.</p>
+<p>Containment and investigation can proceed through existing authority, while new service commitments require their own decision.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: assemble Evergreen’s training and handover pack</h2>
+<h3>4.1 Supplied ownership and support rules</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Synthetic input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-139</td>
+<td>Sponsor nominates Operations as business-guide owner, Technician Lead as technician-guide owner, Finance as Finance-guide owner and Client Administrator as technical-guide recipient. No operational acceptance is supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-140</td>
+<td>Support classification below applies to the tabletop. Existing client support owns real operational incidents; no new supplier response-time service exists.</td>
+</tr>
+<tr>
+<td>EVG-SRC-141</td>
+<td>Role-practice inputs and business rules below</td>
+</tr>
+<tr>
+<td>EVG-SRC-144</td>
+<td>Inventory still lacks actual organisation IDs, effective permissions and live connection evidence. EVG-CONN-001 remains proposed metadata READ only.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tabletop priority definitions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Exercise meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Essential control failure requiring immediate containment decision</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Essential work blocked; named owner and controlled continuation needed</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Routine clarification, data or access request</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Planned enhancement or service change</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are routing categories, not response-time promises.</p>
+<h3>4.2 Completed Operations quick guide</h3>
+<p>Purpose: record a request without inventing identity or losing its history.</p>
+<ol>
+<li>Confirm the business customer reference and received time.</li>
+<li>Record a unique business job reference.</li>
+<li>If customer identity is missing, keep the request on Intake hold.</li>
+<li>Ask Operations’ authorised data owner for the correction.</li>
+<li>Preserve the original value and correction source.</li>
+<li>Release assignment readiness only when the required intake facts exist.</li>
+</ol>
+<p>Expected result: one accountable request with known identity, or an explicit hold.</p>
+<p>Worked input: EVG-JOB-2402 arrives at 08:10 UTC on 7 February with no customer reference. It remains on hold. At 08:20, Operations confirms EVG-CUST-0102. The same job is corrected; no replacement job is created.</p>
+<p>Common mistake: creating a new customer because the caller’s name looks similar.</p>
+<p>Help owner: Operations Manager, operations@evergreen.example.com.</p>
+<h3>4.3 Completed Dispatch quick guide</h3>
+<p>Purpose: coordinate the current appointment while retaining earlier arrangements.</p>
+<ol>
+<li>Identify the job, current appointment and assigned technician.</li>
+<li>For a pre-start reschedule, retain the job reference.</li>
+<li>Obtain customer confirmation.</li>
+<li>If the technician changes, record withdrawal acknowledgement from the old technician.</li>
+<li>Create the replacement appointment and retain the old one as Superseded.</li>
+<li>Keep the replacement pending until the new technician acknowledges.</li>
+<li>Do not treat the scheduled time as evidence of actual start.</li>
+</ol>
+<p>Worked input: EVG-JOB-2403 has EVG-APPT-9403 with T2 at 11:00–12:00. The replacement is EVG-APPT-9413 with T1 at 14:00–15:00. Customer confirmation is 09:00; T2 withdrawal is 09:05. Dispatch plans the replacement at 09:10. Until T1 acknowledges, it is Pending acknowledgement.</p>
+<p>Expected result: one job, retained appointment history and clear current responsibility.</p>
+<p>Help owner: Dispatcher/Operations. Finance questions follow the Finance contact, not unrestricted invoice access.</p>
+<h3>4.4 Completed technician quick guide</h3>
+<p>Purpose: supply usable completion facts for assigned work.</p>
+<ol>
+<li>Confirm that the job is currently assigned to you.</li>
+<li>Acknowledge the intended appointment.</li>
+<li>Record actual start under the agreed process.</li>
+<li>Supply completion date and a meaningful operational summary.</li>
+<li>If required information is missing, correct it before handoff readiness.</li>
+<li>Do not change customer identity, assignment or Finance outcome.</li>
+<li>If access is denied, confirm assignment through Dispatch; do not use another account.</li>
+</ol>
+<p>Worked input: T1 starts EVG-JOB-2401 at 09:00. A blank summary at 09:30 is rejected. At 10:00, T1 supplies date 7 February and summary “Replaced filter and checked operation.”</p>
+<p>Expected result: Service completed and Ready for Finance, with no automatic invoice release.</p>
+<p>Help owner: Technician Lead, technicians@evergreen.example.com.</p>
+<h3>4.5 Completed Finance quick guide</h3>
+<p>Purpose: review qualified information while preserving disclosure boundaries.</p>
+<ol>
+<li>Confirm job/customer references, completion date and summary.</li>
+<li>Record the review outcome under the Finance identity.</li>
+<li>If returned, retain the reason in the permitted private evidence location.</li>
+<li>Expose only nonfinancial status and Finance contact to Dispatch.</li>
+<li>Preserve the return when corrected information arrives.</li>
+<li>Record later review separately.</li>
+<li>Keep invoice release under Finance authority and outside the local prototype.</li>
+</ol>
+<p>Worked input: EVG-JOB-2401 is returned at 10:10 with private reason “Finance reference review required.” The technician supplies corrected operational detail at 10:15. Finance’s supplied practice decision at 10:20 is Review complete. That does not demonstrate a live invoice action.</p>
+<p>Expected result: original return and correction history retained; public projection remains restricted.</p>
+<p>Help owner: Finance Lead, finance@evergreen.example.com.</p>
+<h3>4.6 Completed Sponsor decision guide</h3>
+<p>Purpose: distinguish progress evidence from authority and acceptance.</p>
+<p>Before deciding:</p>
+<ol>
+<li>Identify scope and version.</li>
+<li>Separate local evidence from actual product evidence.</li>
+<li>Read open defects, issues and readiness gaps.</li>
+<li>Compare forecast with the agreed constraint.</li>
+<li>Identify the requested decision: planning, execution, exception or acceptance.</li>
+<li>Record its boundaries and source.</li>
+</ol>
+<p>Worked example: five local cases pass after a report correction, but actual product UAT has not started. The appropriate conclusion is that local evidence improved; product acceptance is still unsupported.</p>
+<p>Expected result: an explicit decision without an invented launch or support commitment.</p>
+<h3>4.7 Completed administrator guide</h3>
+<p>Artifact: Evergreen Administrator Guide v0.1 — document/local boundary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Procedure</th>
+<th>Steps</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identify environment</td>
+<td>Compare intended organisation, environment and region with authorised inventory</td>
+<td>Actual organisation identity and intended target agree</td>
+</tr>
+<tr>
+<td>Review profiles</td>
+<td>Obtain profile list, then inspect each relevant specific profile</td>
+<td>View/create/edit/delete permissions and intended tool access identified</td>
+</tr>
+<tr>
+<td>Verify business access</td>
+<td>Compare permissions, record scope and fields with Chapter 7 matrix</td>
+<td>Intended roles can perform allowed tasks and are denied others</td>
+</tr>
+<tr>
+<td>Review connections</td>
+<td>Record purpose, owner, organisation, scopes and secret reference</td>
+<td>Justified authority and environment binding</td>
+</tr>
+<tr>
+<td>Check data</td>
+<td>Compare business keys, parents, holds and delta ledger</td>
+<td>Counts and relationships reconcile</td>
+</tr>
+<tr>
+<td>Check operating state</td>
+<td>Identify build, admission decision, outbound state and known defects</td>
+<td>Applicable version and support route known</td>
+</tr>
+<tr>
+<td>Investigate failure</td>
+<td>Capture actor, reference, action, result and scope; classify before changing</td>
+<td>Reproducible evidence with owner</td>
+</tr>
+<tr>
+<td>Recover</td>
+<td>Follow the approved runbook and preserve post-checkpoint work</td>
+<td>Safe state plus accounted journal</td>
+</tr>
+</tbody>
+</table></div>
+<p>Documented inspection routes, subject to authority:</p>
+<p>GET /crm/v8/org</p>
+<p>GET /crm/v8/settings/profiles</p>
+<p>GET /crm/v8/settings/profiles/{profile_ID}</p>
+<p>These are route patterns. Use the verified regional API domain, actual product ID and appropriate permissions. Do not substitute EVG-ENV-S01 for an organisation ID.</p>
+<p>A specific-profile review can use ZohoCRM.settings.profiles.READ.1 The proposed metadata connection has READ purposes; it is not a migration or correction writer.</p>
+<p>Common mistake: receiving a profile list and declaring the access design verified.</p>
+<h3>4.8 Completed handover inventory</h3>
+<p>EVG-HO-001 — ready for document review, not live operational acceptance</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pack item</th>
+<th>Recipient/owner</th>
+<th>Evidence/status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Role quick guides</td>
+<td>Operations, Dispatch, Technician Lead, Finance, Sponsor</td>
+<td>Included in this chapter; practice required</td>
+</tr>
+<tr>
+<td>Administrator guide</td>
+<td>Client Administrator</td>
+<td>Included; actual environment details pending</td>
+</tr>
+<tr>
+<td>Access/identity pack</td>
+<td>Administrator and process owners</td>
+<td>Desired design, not configured proof</td>
+</tr>
+<tr>
+<td>Requirements/scope</td>
+<td>Sponsor/Implementation Lead</td>
+<td>SB-02 v1.1 planning boundary</td>
+</tr>
+<tr>
+<td>Migration workbook</td>
+<td>Operations/Administrator</td>
+<td>Paper reconciliation; exceptions retained</td>
+</tr>
+<tr>
+<td>UAT/quality pack</td>
+<td>Business owners/Quality Lead</td>
+<td>Local results distinguished from product evidence</td>
+</tr>
+<tr>
+<td>Cutover/recovery pack</td>
+<td>Administrator/Operations</td>
+<td>Tabletop only; actual No-go</td>
+</tr>
+<tr>
+<td>Known-defect sheet</td>
+<td>Administrator/Developer/Quality Lead</td>
+<td>Local closure boundaries recorded</td>
+</tr>
+<tr>
+<td>Connection register</td>
+<td>Administrator</td>
+<td>EVG-CONN-001 proposed; no secrets</td>
+</tr>
+<tr>
+<td>Support route</td>
+<td>Operations/Administrator</td>
+<td>Existing client ownership; no new SLA</td>
+</tr>
+<tr>
+<td>Recipient acknowledgement</td>
+<td>Each recipient</td>
+<td>Not supplied</td>
+</tr>
+<tr>
+<td>Operational takeover</td>
+<td>Sponsor and relevant owners</td>
+<td>Not accepted; prerequisites unmet</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-047: transfer documents and responsibilities through explicit evidence, without claiming live takeover.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and complete inputs</p>
+<p>Deliver the role materials as a local exercise, interpret practice evidence and triage requests.</p>
+<p>For runtime practice, use Chapter 10’s complete Prototype class. Method:</p>
+<pre><code class="language-python">p.request(action, actor, timestamp, job_reference, **fields)
+</code></pre>
+<p>All practice times use 7 February 2027 UTC.</p>
+<p>Complete setup for EVG-JOB-2401:</p>
+<ul>
+<li>Intake OPS 08:00, customer 0101.</li>
+<li>Plan DSP 08:20, appointment 9401, T1, 09:00–10:00, customer confirmed 08:10.</li>
+<li>Acknowledge T1 08:25; start T1 09:00.</li>
+<li>Complete attempts and Finance sequence follow the quick guides above.</li>
+<li>Correction summary at 10:15: “Replaced filter and confirmed service details.”</li>
+</ul>
+<p>For job 2403, intake OPS 08:00, customer 0103; original planning DSP 08:20 with customer confirmed 08:10; T2 acknowledges at 08:25. Use the supplied replacement values, then T1 acknowledges at 09:20.</p>
+<p>Practice evidence</p>
+<p>EVG-SRC-142 supplies synthetic practice records. They are not observed client attendance or performance.</p>
+<p>A first-pass success requires a completed, correct first attempt with no repeat. Incomplete attempts are excluded from that rate and disclosed separately.</p>
+<pre><code class="language-csv">participant,role,first_attempt_complete,first_attempt_correct,repeat_required,final_attempt_complete,final_attempt_correct
+P01,Operations,yes,yes,no,yes,yes
+P02,Dispatch,yes,no,yes,yes,yes
+P03,Technician Lead,yes,no,yes,yes,yes
+P04,Finance,yes,yes,no,yes,yes
+P05,Sponsor,yes,yes,no,yes,yes
+P06,Administrator,no,unknown,unknown,no,unknown
+</code></pre>
+<p>Support cases</p>
+<p>EVG-SRC-143 supplies six tabletop requests.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Complete relevant facts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SUPPORT-001</td>
+<td>T1 cannot open EVG-JOB-2404. Assignment is T2. No access change approved.</td>
+</tr>
+<tr>
+<td>EVG-SUPPORT-002</td>
+<td>Job 2405 has completion date 7 February but no summary. Handoff is held. Technician Lead owns the missing fact.</td>
+</tr>
+<tr>
+<td>EVG-SUPPORT-003</td>
+<td>Local display V3 includes a private Finance reason in Dispatch output. Link EVG-DEFECT-004; no real tenant incident supplied.</td>
+</tr>
+<tr>
+<td>EVG-SUPPORT-004</td>
+<td>Local event 008 exhausted three attempts before commit; receiver has zero receipts; sender Manual hold. Live integration is unapproved.</td>
+</tr>
+<tr>
+<td>EVG-SUPPORT-005</td>
+<td>Sponsor asks again for the technician dashboard. Existing EVG-CHANGE-006 is pending and exceeds the ceiling.</td>
+</tr>
+<tr>
+<td>EVG-SUPPORT-006</td>
+<td>Supplier asks to use EVG-CONN-001 metadata READ authority for writes. The connection is not created; current work is document-only.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Use the role guides.  </li>
+</ol>
+<p>Expected: hold, pending acknowledgement, completion and Finance boundaries can be explained with the supplied records.</p>
+<ol start="2">
+<li>Calculate practice measures.  </li>
+</ol>
+<p>Expected: first-pass and eventual practice success use stated denominators; P06 remains visible.</p>
+<ol start="3">
+<li>Classify all six tickets.  </li>
+</ol>
+<p>Expected: distinguish correct denial, missing data, local defect, delivery hold, enhancement and access-authority request.</p>
+<ol start="4">
+<li>Assign owners and next actions.  </li>
+</ol>
+<p>Expected: no credential sharing, invented invoice action or automatic scope approval.</p>
+<ol start="5">
+<li>Complete the handover recommendation.  </li>
+</ol>
+<p>EVG-SRC-145 states that recipient acknowledgements and actual product evidence are still absent.  </p>
+<p>Expected: document review can proceed; live handover cannot be declared complete.</p>
+<p>Blank role-material worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role/task</th>
+<th>Required inputs/access</th>
+<th>Steps</th>
+<th>Expected result</th>
+<th>Exception</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank triage worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Type</th>
+<th>Impact/priority</th>
+<th>Evidence to retain</th>
+<th>Owner/route</th>
+<th>Permitted next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: role materials, practice interpretation, triage sheet and Handover Pack v0.2.</p>
+<p>Cleanup: reset local fixtures and retain results. Keep restricted evidence separate from general tickets. Do not store credentials in the pack.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed ownership and support inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-146</td>
+<td>Current Administrator leaves the assignment on 14 February. They are available for document review on 11 February.</td>
+</tr>
+<tr>
+<td>EVG-SRC-147</td>
+<td>Sponsor nominates Alex Rivera, backup.admin@evergreen.example.com, for technical-document review. Alex is available 12 February. No product access or connection authorisation is supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-148</td>
+<td>Sales Lead Casey Vale writes, “We can cover after-hours support.” No scope, coverage period, owner or service terms are approved.</td>
+</tr>
+<tr>
+<td>EVG-SRC-149</td>
+<td>Operations requests one additional sixty-minute clinic for Operations, Dispatch, Technician Lead and Administrator. Supplier work is two hours preparation, one delivery, one follow-up/document update.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record the clinic as EVG-CHANGE-007, linked to candidate EVG-REQ-018.</p>
+<p>Estimate rules:</p>
+<ul>
+<li>Current baseline base is 86 supplier hours.</li>
+<li>Reserve remains 15%.</li>
+<li>Ceiling remains 100 supplier hours.</li>
+<li>The clinic is additional to the original orientation.</li>
+<li>Client attendance adds four person-hours to the existing thirteen.</li>
+<li>Implementation Lead capacity is four hours per working day.</li>
+<li>Clinic preparation may start on relative day 1.</li>
+<li>Participants are available on day 3.</li>
+<li>Successor activities start the next working day.</li>
+<li>No clinic or after-hours service approval is supplied.</li>
+</ul>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Revised ownership and handover record.</li>
+<li>A connection/identity transfer plan.</li>
+<li>A response to the after-hours statement.</li>
+<li>Clinic effort, reserve, ceiling and conditional schedule.</li>
+<li>A revised support-readiness recommendation.</li>
+</ol>
+<p>Success criteria</p>
+<p>Do not copy the departing Administrator’s credentials or call nomination operational acceptance.</p>
+<p>Keep after-hours coverage unresolved and the clinic outside the baseline until approved. Separate clinic effort from elapsed time and do not add its duration mechanically to the whole project schedule.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users attended but cannot perform the task</td>
+<td>Attendance substituted for ability</td>
+<td>Use representative task checks and repeats</td>
+</tr>
+<tr>
+<td>Users bypass missing-data holds</td>
+<td>Purpose not understood</td>
+<td>Explain receiving-team need and correction owner</td>
+</tr>
+<tr>
+<td>Support grants broad access for a how-to issue</td>
+<td>Triage skipped</td>
+<td>Compare assignment and matrix first</td>
+</tr>
+<tr>
+<td>Administrator guide contains secrets</td>
+<td>Ownership confused with credential distribution</td>
+<td>Use controlled secret references</td>
+</tr>
+<tr>
+<td>Recipient nominated but unavailable</td>
+<td>Ownership readiness incomplete</td>
+<td>Confirm review, capability and backup route</td>
+</tr>
+<tr>
+<td>Local defect marked production-fixed</td>
+<td>Evidence boundary lost</td>
+<td>State component/version and remaining proof</td>
+</tr>
+<tr>
+<td>Supplier becomes default support owner</td>
+<td>Commercial boundary omitted</td>
+<td>Name existing owners and approved supplier tasks</td>
+</tr>
+<tr>
+<td>Additional training absorbed into reserve</td>
+<td>New scope hidden</td>
+<td>Estimate and record the change</td>
+</tr>
+<tr>
+<td>Recovery promised to undo an email</td>
+<td>External effects misunderstood</td>
+<td>Use Chapter 14 limits</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery should correct the guide, routing or ownership gap. It should not erase the original request or invent a support commitment.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What should a role quick guide contain besides ordinary steps?</li>
+<li>How do attendance, ability and adoption differ?</li>
+<li>Why should repeat attempts remain distinguishable?</li>
+<li>Which evidence makes an administrator guide actionable?</li>
+<li>Why does correct access denial not necessarily indicate a defect?</li>
+<li>What makes an escalation request useful?</li>
+<li>Which ownership evidence is missing when a backup is merely nominated?</li>
+<li>Why must additional training be assessed against the baseline?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: Dispatch must understand pending, superseded and withdrawn assignments. Missing acknowledgement can leave people acting on different arrangements.</p>
+<p>LC2: It can show eventual ability on the practice task. It does not change first-pass history or establish sustained adoption.</p>
+<p>LC3: The owner needs to know what authority is appropriate and where it acts. A technical contact alone cannot establish the connection boundary.</p>
+<p>LC4: The owner may lack access, information, capability or an accepted service boundary.</p>
+<p>LC5: The denial may be intended, a data/assignment problem or an actual fault. Broadening access before classification can violate the design.</p>
+<p>LC6: The statement lacks defined authority and service terms. Preserve it as an expectation requiring clarification.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Practice calculations</p>
+<p>Five first attempts are complete. Three are correct without repeat.</p>
+<blockquote>
+<p>First-pass rate=(3) ÷ (5)×100=60%</p>
+</blockquote>
+<p>Five of six supplied participants have a completed correct final practice attempt:</p>
+<blockquote>
+<p>(5) ÷ (6)×100≈83.33%</p>
+</blockquote>
+<p>One administrator attempt remains unfinished. These are synthetic practice measures, not client adoption or course passing results.</p>
+<p>Do not report “all six trained.”</p>
+<p>Completed triage</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Classification/priority</th>
+<th>Owner and next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Expected denial/how-to, P3</td>
+<td>Dispatch/Technician Lead confirms assignment; no access grant</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Data correction, P2</td>
+<td>Technician Lead supplies summary; Operations coordinates; retain hold</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Local control defect, P1</td>
+<td>Developer/Quality Lead and Finance review restricted evidence; link defect 004</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Local delivery hold, P2</td>
+<td>Implementation Lead/Developer investigate; preserve event and attempts; no live endpoint retry</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Enhancement, P4</td>
+<td>Link existing change 006; Sponsor decision required</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Authority/access request, P3</td>
+<td>Administrator/Sponsor assess purpose; no write through metadata plan</td>
+</tr>
+</tbody>
+</table></div>
+<p>The general record for ticket 003 should say that restricted content is exposed and identify a controlled evidence reference. It should not reproduce the private reason for every reader.</p>
+<p>Completed support boundary matrix</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Primary owner</th>
+<th>Supplier involvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business how-to</td>
+<td>Process owner</td>
+<td>Clarification within authorised document/local work</td>
+</tr>
+<tr>
+<td>Customer/intake data</td>
+<td>Operations</td>
+<td>Diagnose mapping/evidence questions</td>
+</tr>
+<tr>
+<td>Completion facts</td>
+<td>Technician Lead</td>
+<td>Explain validation</td>
+</tr>
+<tr>
+<td>Finance review/disclosure</td>
+<td>Finance</td>
+<td>Technical investigation support when authorised</td>
+</tr>
+<tr>
+<td>Environment/access</td>
+<td>Client Administrator</td>
+<td>Approved design/local checks</td>
+</tr>
+<tr>
+<td>Product service issue</td>
+<td>Administrator via existing client arrangement</td>
+<td>Supplied evidence if authorised</td>
+</tr>
+<tr>
+<td>Enhancements</td>
+<td>Sponsor/Implementation Lead</td>
+<td>Impact analysis</td>
+</tr>
+<tr>
+<td>Actual incident</td>
+<td>Existing client support</td>
+<td>Only expressly authorised assistance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-048: classify and route support through business, technical and scope authority.</p>
+<p>Handover recommendation</p>
+<p>The document pack and local practice materials are available for recipient review. Administrator practice, acknowledgements and actual product evidence remain incomplete. Do not declare operational handover or adoption established. Continue the documented owner-confirmation and readiness work.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Ownership transfer</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Revised treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current Administrator</td>
+<td>Review documents on 11 February; preserve outstanding inventory/access gaps</td>
+</tr>
+<tr>
+<td>Alex Rivera</td>
+<td>Nominated document recipient; review available 12 February</td>
+</tr>
+<tr>
+<td>Technical ownership</td>
+<td>Client Administrator role remains; effective replacement authority needs evidence</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>Purpose, organisation, scopes and authorising identity reviewed</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Not copied into the pack or shared from departing owner</td>
+</tr>
+<tr>
+<td>Acceptance</td>
+<td>Document receipt/capability and operational acceptance remain pending</td>
+</tr>
+</tbody>
+</table></div>
+<p>A suitable transfer plan is:</p>
+<ol>
+<li>Review the inventory, known issues and dormant connections with the current owner.</li>
+<li>Have Alex identify missing evidence and explain the operating/recovery boundaries.</li>
+<li>Obtain appropriate identity/access authority through the client’s process.</li>
+<li>Establish organisation-specific connection authorisation if later required.</li>
+<li>Verify intended actions and record withdrawal of obsolete authority when authorised.</li>
+<li>Record ownership acceptance at its actual boundary.</li>
+</ol>
+<p>Do not claim any step has happened merely because it is planned.</p>
+<p>Record EVG-DEC-049: transfer technical responsibility through review and verified authority, not copied credentials.</p>
+<p>After-hours response</p>
+<p>We have recorded the after-hours statement as an expectation requiring a commercial decision. Coverage, responsible owner, included work, escalation and service targets are not supplied. Existing client support remains the operational route; no new supplier coverage is established.</p>
+<p>Clinic estimate</p>
+<p>Additional supplier base:</p>
+<blockquote>
+<p>2+1+1=4 person-hours</p>
+</blockquote>
+<p>Revised base:</p>
+<blockquote>
+<p>86+4=90</p>
+</blockquote>
+<p>Reserve:</p>
+<blockquote>
+<p>90×0.15=13.5</p>
+</blockquote>
+<p>Upper bound:</p>
+<blockquote>
+<p>90+13.5=103.5 hours</p>
+</blockquote>
+<p>Ceiling excess:</p>
+<blockquote>
+<p>103.5-100=3.5 hours</p>
+</blockquote>
+<p>Client participation:</p>
+<blockquote>
+<p>13+4=17 person-hours</p>
+</blockquote>
+<p>Conditional clinic schedule:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Relative day</th>
+<th>Work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Two-hour preparation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>One-hour clinic at participant availability</td>
+</tr>
+<tr>
+<td>4</td>
+<td>One-hour follow-up/document update</td>
+</tr>
+</tbody>
+</table></div>
+<p>Four supplier hours therefore span four working days under the supplied conditions. This does not automatically add four days to the complete pilot; its integrated dependency effect has not been supplied.</p>
+<p>EVG-CHANGE-007 remains requested, not approved.</p>
+<p>Options are to retain the existing orientation, request a revised ceiling or assess an explicit scope trade. Do not reduce reserve silently.</p>
+<p>Record EVG-DEC-050: keep the extra clinic and proposed coverage outside the baseline until decided.</p>
+<p>Revised readiness recommendation</p>
+<p>Complete the scheduled document reviews and confirm replacement ownership before the current Administrator leaves. Actual access and operational acceptance remain pending. The extra clinic exceeds the ceiling with the supplied reserve and needs a scope decision. Live release and support takeover remain unsupported by the current evidence.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Purpose, inputs/access, expected result, exceptions, help owner and evidence boundary.</li>
+<li>Attendance is presence; ability is demonstrated task performance; adoption is sustained intended use.</li>
+<li>They show rework and eventual improvement without rewriting the original result.</li>
+<li>Identified configuration, authority, verification steps, known limits, owners and evidence.</li>
+<li>The actor may be outside the permitted record scope.</li>
+<li>Clear impact, identity/environment, records, expected/observed result, attempted action and decision needed.</li>
+<li>Receipt, review, access, capability and accepted responsibility.</li>
+<li>It adds work and participation beyond the existing allowance.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Training and handover make delivery usable and accountable.</p>
+<p>Your materials should help each role perform ordinary work, recognise exceptions and find the correct owner. Your handover should explain what is transferred, what remains pending and what support has actually been established.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can create role-specific task and exception guides.</li>
+<li>I can distinguish practice ability from adoption.</li>
+<li>I can interpret incomplete and repeat attempts.</li>
+<li>I can write an actionable administrator guide.</li>
+<li>I can triage before changing access or scope.</li>
+<li>I can define escalation and support boundaries.</li>
+<li>I can transfer ownership without inventing authority.</li>
+<li>I can assess additional training as a change.</li>
+</ul>
+<p>Your project pack now contains training materials and a support handover pack.</p>
+<p>Chapter 16, Value Review, Closure and Client Presentation, uses the full pack to compare outcomes with baseline, explain evidence limits, prioritise improvements and present your individual contribution.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adoption</td>
+<td>Sustained use of the intended process</td>
+</tr>
+<tr>
+<td>Administrator guide</td>
+<td>Operating, verification and diagnosis instructions for the technical owner</td>
+</tr>
+<tr>
+<td>Escalation</td>
+<td>Routing a matter to the owner with appropriate authority</td>
+</tr>
+<tr>
+<td>How-to request</td>
+<td>Question about intended use</td>
+</tr>
+<tr>
+<td>Knowledge article</td>
+<td>Reusable explanation of a task or resolved problem</td>
+</tr>
+<tr>
+<td>Operational acceptance</td>
+<td>Explicit acceptance of a defined operating responsibility</td>
+</tr>
+<tr>
+<td>Quick guide</td>
+<td>Concise task, result and exception instructions</td>
+</tr>
+<tr>
+<td>Support boundary</td>
+<td>Defined service, responsibility and authority limit</td>
+</tr>
+<tr>
+<td>Triage</td>
+<td>Initial classification and routing of a request</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Profiles<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-profiles.html">Open official reference</a></li>
+</ol>
+<p>Profile inventory and specific-profile permission details.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Scopes<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/scopes.html">Open official reference</a></li>
+</ol>
+<p>Delegated resource and operation boundaries.</p>
+<ol start="3">
+<li>Zoho CRM API v8 — Authorization Request<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/auth-request.html">Open official reference</a></li>
+</ol>
+<p>Organisation-specific authorisation relevant to connection ownership.</p>
+<p>Consult the official references above for current product details. Confirm the applicable edition, permissions and environment before using product-specific procedures. Evergreen’s actual UI, permissions, identities and support operation remain unverified. No client attendance, operational takeover or service-level approval is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Deliver training and support handover packs.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-14">← Previous chapter</a><a href="/course-book/course-05/chapter-16">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

@@ -1,0 +1,8 @@
+source_row,job_ref,customer_ref,received_at,job_state,completion_date,completion_summary
+J01,EVG-JOB-1801,EVG-CUST-0101,2027-01-24T08:00:00Z,Scheduled,,
+J02,EVG-JOB-1802,EVG-CUST-0102,2027-01-24T08:10:00Z,Completed,2027-01-24,Reset controller and tested startup
+J03,EVG-JOB-1803,EVG-CUST-0103,2027-01-24T08:20:00Z,Completed,2027-01-24,
+J04,EVG-JOB-1804,EVG-CUST-0999,2027-01-24T08:30:00Z,Scheduled,,
+J05,EVG-JOB-1805,EVG-CUST-0101,,Scheduled,,
+J06,EVG-JOB-1806,EVG-CUST-0103,2027-01-24T08:40:00Z,Cancelled,,
+J06 has verified pre-start cancellation evidence: requester customer0103@evergreen.example.com, reason “Customer unavailable,” time 24 January at 09:00 UTC. No appointment existed and no financial record is supplied.

@@ -1,0 +1,1492 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 10</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 10</p><h1>Prototyping and Design Validation</h1><p>Present a working prototype and reviewed decisions.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-10-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: separate service and Finance outcomes</a><a href="#section-4">4. Worked case: run the end-to-end reference model</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/evergreen_prototype.py">Download evergreen_prototype.py ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A prototype helps you investigate a design before committing to the full delivery. Its value comes from the questions it answers, the assumptions it exposes and the decisions it improves.</p>
+<p>A convincing demonstration is not automatically convincing evidence. You must distinguish what the prototype actually exercises from what remains an assumption.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Build a small prototype covering the full business process.</li>
+<li>Select representative normal and exception scenarios.</li>
+<li>Demonstrate behaviour using complete inputs and expected results.</li>
+<li>Collect feedback and classify it correctly.</li>
+<li>Refine requirements without silently changing scope.</li>
+<li>Review architecture decisions against evidence.</li>
+<li>Explain which difficult assumptions still need product verification.</li>
+<li>Present a working prototype and an updated decision record.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the process models, requirements, access design and conditional delivery plan from Chapters 3–9.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core pilot</td>
+<td>Single-current-visit, non-production intake-to-Finance workflow</td>
+</tr>
+<tr>
+<td>Native-only design</td>
+<td>Planning candidate; not observed product fit</td>
+</tr>
+<tr>
+<td>Core estimate</td>
+<td>78–89.7 supplier hours; conditional 27–31 working days</td>
+</tr>
+<tr>
+<td>Reporting option</td>
+<td>86–98.9 hours; conditional 30–34 working days</td>
+</tr>
+<tr>
+<td>Scope approval</td>
+<td>None supplied</td>
+</tr>
+<tr>
+<td>Product readiness</td>
+<td>Organisation IDs, exact mappings and effective permissions remain unverified</td>
+</tr>
+<tr>
+<td>Migration</td>
+<td>Paper target has fourteen entities; C04 and the cancellation conflict remain unresolved</td>
+</tr>
+<tr>
+<td>Changes</td>
+<td>Portal/routing deferred; reporting pending; multi-site assessment only</td>
+</tr>
+<tr>
+<td>Product tests</td>
+<td>None executed</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Reserved; no observed product failure</td>
+</tr>
+</tbody>
+</table></div>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>A working local reference prototype.</li>
+<li>A demonstration and evidence card.</li>
+<li>A feedback classification record.</li>
+<li>Refined acceptance criteria.</li>
+<li>Architecture decisions reviewed against the supplied evidence.</li>
+</ol>
+<p>EVG-SRC-089 explicitly authorises a locally runnable model and document-based design review using synthetic data. It does not authorise Zoho configuration, tokens, API calls or tenant inspection.</p>
+<p>The local model is the usable alternative while tenant authority and readiness are missing. It demonstrates business-rule logic and expected states. It cannot demonstrate Zoho configuration, authentication, field security, API enforcement or production recovery.</p>
+<p>All Evergreen inputs, dialogue and numbers remain synthetic. Supplied feedback is a fictional review exercise, not client acceptance.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Give the prototype a question</h3>
+<p>Skill: choose the uncertainty you need to reduce.</p>
+<p>A prototype is a deliberately limited implementation used to investigate an idea. Its purpose should be narrower than “show the client something.”</p>
+<p>Useful Evergreen questions include:</p>
+<ul>
+<li>Can a completed service reach Finance without releasing an invoice?</li>
+<li>Can Dispatch obtain useful status without reading a private Finance reason?</li>
+<li>Can a reschedule preserve the original appointment and remain pending until acknowledged?</li>
+<li>What happens if the proposed change is interrupted before completion?</li>
+<li>Does the proposed native design enforce these behaviours through every relevant access path?</li>
+</ul>
+<p>Write each question with an expected result and a boundary.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prototype objective</th>
+<th>Expected evidence</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>End-to-end coordination</td>
+<td>Intake, assignment, work, completion and Finance review are represented</td>
+<td>Local model only</td>
+</tr>
+<tr>
+<td>Missing-data control</td>
+<td>Blank completion summary prevents handoff readiness</td>
+<td>Does not prove a Zoho validation rule</td>
+</tr>
+<tr>
+<td>Information separation</td>
+<td>Dispatch projection excludes private reason</td>
+<td>Does not prove authenticated access</td>
+</tr>
+<tr>
+<td>Reschedule history</td>
+<td>Original retained; replacement pending until acknowledgement</td>
+<td>Does not prove cross-record product consistency</td>
+</tr>
+</tbody>
+</table></div>
+<p>A prototype can answer one question while leaving another open. That is useful if the evidence boundary is explicit.</p>
+<p>A common mistake is to add attractive screens while avoiding the difficult assumption. If the uncertainty concerns related-record consistency, a polished dashboard does not resolve it.</p>
+<p>Lesson check LC1: Which prototype would better investigate rescheduling: a dashboard showing appointment counts, or a controlled technician-change scenario? Explain.</p>
+<h3>2.2 Build a vertical slice across the process</h3>
+<p>Skill: demonstrate connected behaviour rather than disconnected features.</p>
+<p>A vertical slice is a small implementation that follows one meaningful path through the process.</p>
+<p>Evergreen’s slice is:</p>
+<ol>
+<li>Record intake.</li>
+<li>Plan and acknowledge an appointment.</li>
+<li>Record actual work start.</li>
+<li>Supply completion information.</li>
+<li>Qualify the Finance handoff.</li>
+<li>Record Finance review.</li>
+<li>Preserve correction history.</li>
+<li>Show the permitted operational projection.</li>
+</ol>
+<p>This is stronger than demonstrating eight unrelated fields.</p>
+<p>Choose the prototype form according to the question:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Useful for</th>
+<th>Evidence limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clickable mock-up</td>
+<td>Language, layout and navigation</td>
+<td>Does not execute business controls</td>
+</tr>
+<tr>
+<td>Runnable reference model</td>
+<td>States, decisions and exception logic</td>
+<td>Does not establish product fit</td>
+</tr>
+<tr>
+<td>Configured product prototype</td>
+<td>Actual configuration and role behaviour</td>
+<td>Needs authorised environment and representative evidence</td>
+</tr>
+<tr>
+<td>Integration prototype</td>
+<td>Interface, identity and failure behaviour</td>
+<td>Needs defined boundaries and controlled endpoints</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reference code in this chapter implements the business model for learning. Its use of Python does not establish that the Zoho solution needs custom code.</p>
+<p>Keep the prototype small enough to understand. Use representative records instead of a large dataset whose outcomes are difficult to inspect.</p>
+<p>Lesson check LC2: What does a runnable reference model demonstrate that a clickable mock-up does not?</p>
+<h3>2.3 Demonstrate the controls as well as the happy path</h3>
+<p>Skill: make the important decisions visible.</p>
+<p>A demonstration should show why a transition is permitted.</p>
+<p>For example:</p>
+<p>“The appointment is confirmed because customer confirmation and technician acknowledgement are present.”</p>
+<p>This is better than:</p>
+<p>“The status changed successfully.”</p>
+<p>Then challenge the control:</p>
+<ul>
+<li>Try completion with no summary.</li>
+<li>Try an acknowledgement from the wrong technician.</li>
+<li>Try Finance review through Dispatch.</li>
+<li>Interrupt a reschedule before committing the change.</li>
+</ul>
+<p>Use a demonstration card with inputs, actor, action, expected result and evidence type.</p>
+<p>Do not convert expected output into observed output. After you run the local model, you may record your actual local result. That still does not become a Zoho test result.</p>
+<p>Likewise, a model’s successful execution does not prove adoption. A stakeholder may still find the sequence confusing or operationally impractical.</p>
+<p>Lesson check LC3: Why should a demonstration include an action that is expected to be denied?</p>
+<h3>2.4 Turn feedback into the right kind of record</h3>
+<p>Skill: distinguish clarification, defect, design improvement and scope change.</p>
+<p>Feedback can mean different things:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feedback type</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clarification of an existing need</td>
+<td>Refine wording or acceptance criteria; preserve the requirement ID</td>
+</tr>
+<tr>
+<td>Design improvement within the need</td>
+<td>Update the decision and assess effort</td>
+</tr>
+<tr>
+<td>New capability</td>
+<td>Record a change request and impact</td>
+</tr>
+<tr>
+<td>Observed failure against the applicable requirement</td>
+<td>Record a defect with evidence</td>
+</tr>
+<tr>
+<td>Concern without observed behaviour</td>
+<td>Record an assumption, risk or proof requirement</td>
+</tr>
+</tbody>
+</table></div>
+<p>Consider the comment:</p>
+<p>“The label ‘Service completed’ looks as though Finance has approved everything.”</p>
+<p>The underlying rule already exists: completion must not release an invoice. The response may be clearer labels and separate Finance status, not a new invoicing feature.</p>
+<p>By contrast:</p>
+<p>“Automatically email the customer when the job is complete.”</p>
+<p>This introduces an outbound action. It affects scope, wording, trigger timing, recipients and environment isolation.</p>
+<p>Do not label a designed denial as a defect. “Wrong technician acknowledgement denied” is expected behaviour.</p>
+<p>Lesson check LC4: How should you classify a request for automatic customer notification when the current pilot excludes outbound delivery?</p>
+<h3>2.5 Validate difficult assumptions in the actual product</h3>
+<p>Skill: use the model to plan product proof without claiming it already exists.</p>
+<p>Three Evergreen assumptions need particular attention.</p>
+<p>Native cross-record consistency</p>
+<p>The local model can prepare changes and commit them together in memory. That does not prove that the selected Zoho design updates the old appointment, replacement appointment and job consistently.</p>
+<p>Investigate normal completion and interrupted or partial operations. State the permitted recovery behaviour before testing.</p>
+<p>Effective access</p>
+<p>A model can select permitted fields. It does not authenticate the actor or prevent someone from bypassing the model.</p>
+<p>Zoho’s Profiles API supplies detailed module permissions for a specific profile.2 A profile list alone is insufficient. Actual roles, sharing, field controls and enabled access paths still need verification.</p>
+<p>Control coverage across entry paths</p>
+<p>A UI check may differ from an API or import path. CRM’s Upsert documentation describes validation and feature-execution conditions.3 The design must establish which paths are relevant and how the required rule is enforced.</p>
+<p>An authorised product-proof sequence would be:</p>
+<ol>
+<li>Establish the intended organisation and identities.</li>
+<li>Inspect actual modules, fields, layouts and profile permissions.</li>
+<li>Configure the smallest approved slice.</li>
+<li>Run the same representative business cases through relevant entry paths.</li>
+<li>Record actual results, gaps and recovery evidence.</li>
+<li>Update the architecture decision and estimate.</li>
+</ol>
+<p>For a record already in a process, the Blueprint API can describe available transitions and associated fields/validation.1 This is useful inspection evidence, not proof that every Evergreen control works.</p>
+<p>Lesson check LC5: Why does a successful Python reschedule not justify removing the native-fit condition from the delivery estimate?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: separate service and Finance outcomes</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Ready to assign</td>
+<td>Continue</td>
+<td>Scheduled</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Scheduled</td>
+<td>Continue</td>
+<td>Work in progress</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Work in progress</td>
+<td>Continue</td>
+<td>Service completed</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Service completed</td>
+<td>Continue</td>
+<td>Ready for Finance</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Ready for Finance</td>
+<td>Continue</td>
+<td>Returned</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Returned</td>
+<td>Continue</td>
+<td>Corrected handoff</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Corrected handoff</td>
+<td>Continue</td>
+<td>Ready for Finance</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Ready for Finance</td>
+<td>Continue</td>
+<td>Finance review complete</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Finance review complete</td>
+<td>Reference / boundary</td>
+<td>Invoice release remains outside prototype</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram shows linked but distinct outcomes.</p>
+<p>Service completion describes work performed. Finance review describes a separate decision. Neither the reference model nor the current pilot performs a live invoice release.</p>
+<p>The return loop preserves the original return and records the correction. A current clean handoff must not erase its earlier history.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: run the end-to-end reference model</h2>
+<h3>4.1 Inputs and rules</h3>
+<p>EVG-SRC-090 supplies these model rules:</p>
+<ul>
+<li>OPS represents Operations, DSP Dispatch, FIN Finance, and T1/T2 delegated technicians.</li>
+<li>Customer references 0101–0103 are recognised.</li>
+<li>Missing customer information creates Intake hold.</li>
+<li>Only the assigned technician can acknowledge, start or complete work.</li>
+<li>For this synthetic fixture, actual start cannot precede the scheduled start.</li>
+<li>Completion needs a date and nonblank summary.</li>
+<li>Finance alone records review outcomes.</li>
+<li>Private reasons are omitted from the public projection.</li>
+<li>A failed change before commit leaves the prior in-memory state intact.</li>
+<li>No live invoice or outbound notification exists.</li>
+</ul>
+<p>These are model rules, not universal Zoho behaviour.</p>
+<p>EVG-SRC-091 supplies the normal fixture:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>UTC time on 26 January 2027</th>
+<th>Actor/input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake</td>
+<td>08:00</td>
+<td>OPS; EVG-JOB-1901; EVG-CUST-0101</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>08:30</td>
+<td>DSP; EVG-APPT-8001; T1; slot 09:00–10:00; customer confirmed 08:20</td>
+</tr>
+<tr>
+<td>Acknowledge</td>
+<td>08:35</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>09:00</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>Invalid completion</td>
+<td>09:30</td>
+<td>T1; date 26 January; blank summary</td>
+</tr>
+<tr>
+<td>Valid completion</td>
+<td>10:00</td>
+<td>T1; summary “Replaced filter”</td>
+</tr>
+<tr>
+<td>Finance return</td>
+<td>10:10</td>
+<td>FIN; private reason “Contract-rate clarification required”</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>10:15</td>
+<td>T1; summary “Replaced filter and confirmed service details”</td>
+</tr>
+<tr>
+<td>Finance review</td>
+<td>10:20</td>
+<td>FIN; Review complete</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is a separate prototype fixture. It does not alter Chapter 8’s migration ledger.</p>
+<h3>4.2 Complete runnable prototype</h3>
+<p>You need Python 3.7 or later and no additional packages. Save the following as evergreen_prototype.py, then run:</p>
+<pre><code class="language-bash">python3 evergreen_prototype.py
+</code></pre>
+<p>The program uses memory only. It makes no network calls and writes no data files.</p>
+<pre><code class="language-python">from copy import deepcopy
+from datetime import datetime, date
+import json
+
+ACTORS = {
+    &quot;OPS&quot;: &quot;Operations&quot;, &quot;DSP&quot;: &quot;Dispatch&quot;,
+    &quot;T1&quot;: &quot;Technician&quot;, &quot;T2&quot;: &quot;Technician&quot;, &quot;FIN&quot;: &quot;Finance&quot;
+}
+CUSTOMERS = {&quot;EVG-CUST-0101&quot;, &quot;EVG-CUST-0102&quot;, &quot;EVG-CUST-0103&quot;}
+
+
+def need(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def instant(text):
+    value = datetime.fromisoformat(text.replace(&quot;Z&quot;, &quot;+00:00&quot;))
+    need(
+        value.utcoffset() is not None
+        and value.utcoffset().total_seconds() == 0,
+        &quot;UTC timestamp required&quot;
+    )
+    return value
+
+
+class Prototype:
+    def __init__(self):
+        self.jobs, self.private, self.events = {}, {}, []
+
+    def request(self, action, actor, at, ref, **data):
+        need(actor in ACTORS, &quot;Unknown actor&quot;)
+        now, role = instant(at), ACTORS[actor]
+        before = self.jobs.get(ref, {})
+        before_state = before.get(&quot;state&quot;)
+        before_handoff = before.get(&quot;handoff&quot;)
+        jobs, private = deepcopy(self.jobs), deepcopy(self.private)
+
+        if action == &quot;intake&quot;:
+            need(role == &quot;Operations&quot;, &quot;Operations required&quot;)
+            need(ref not in jobs, &quot;Duplicate job reference&quot;)
+            customer = data.get(&quot;customer_ref&quot;, &quot;&quot;)
+            need(not customer or customer in CUSTOMERS, &quot;Unknown customer&quot;)
+            jobs[ref] = {
+                &quot;customer_ref&quot;: customer, &quot;received_at&quot;: at,
+                &quot;state&quot;: &quot;Ready to assign&quot; if customer else &quot;Intake hold&quot;,
+                &quot;appointments&quot;: [], &quot;current&quot;: None, &quot;started_at&quot;: None,
+                &quot;completion&quot;: {}, &quot;handoff&quot;: &quot;Not ready&quot;,
+                &quot;invoice_released&quot;: False
+            }
+        else:
+            need(ref in jobs, &quot;Unknown job&quot;)
+            j = jobs[ref]
+            ap = (
+                j[&quot;appointments&quot;][j[&quot;current&quot;]]
+                if j[&quot;current&quot;] is not None else None
+            )
+
+            if action in {&quot;ack&quot;, &quot;start&quot;, &quot;complete&quot;, &quot;correct&quot;, &quot;cancel_ack&quot;}:
+                need(
+                    role == &quot;Technician&quot; and ap is not None
+                    and ap[&quot;technician&quot;] == actor,
+                    &quot;Assigned technician required&quot;
+                )
+
+            if action == &quot;repair&quot;:
+                need(role == &quot;Operations&quot;, &quot;Operations required&quot;)
+                need(j[&quot;state&quot;] == &quot;Intake hold&quot;, &quot;Intake hold required&quot;)
+                need(data[&quot;customer_ref&quot;] in CUSTOMERS,
+                     &quot;Verified customer required&quot;)
+                j[&quot;customer_ref&quot;] = data[&quot;customer_ref&quot;]
+                j[&quot;state&quot;] = &quot;Ready to assign&quot;
+
+            elif action == &quot;plan&quot;:
+                need(role == &quot;Dispatch&quot;, &quot;Dispatch required&quot;)
+                need(j[&quot;state&quot;] in {&quot;Ready to assign&quot;, &quot;Scheduled&quot;},
+                     &quot;Job not ready for scheduling&quot;)
+                need(data[&quot;technician&quot;] in {&quot;T1&quot;, &quot;T2&quot;},
+                     &quot;Recognised technician required&quot;)
+                need(instant(data[&quot;start&quot;]) &lt; instant(data[&quot;end&quot;]),
+                     &quot;Invalid appointment interval&quot;)
+                need(
+                    all(a[&quot;ref&quot;] != data[&quot;appointment_ref&quot;]
+                        for job in jobs.values()
+                        for a in job[&quot;appointments&quot;]),
+                    &quot;Duplicate appointment reference&quot;
+                )
+                confirmation = data.get(&quot;customer_confirmed_at&quot;)
+                if confirmation:
+                    need(instant(confirmation) &lt;= now,
+                         &quot;Future confirmation evidence&quot;)
+                if ap is not None and ap[&quot;technician&quot;] != data[&quot;technician&quot;]:
+                    need(data.get(&quot;withdrawal_at&quot;),
+                         &quot;Withdrawal evidence required&quot;)
+                    need(instant(data[&quot;withdrawal_at&quot;]) &lt;= now,
+                         &quot;Future withdrawal evidence&quot;)
+                if ap is not None:
+                    ap[&quot;state&quot;] = &quot;Superseded&quot;
+                    ap[&quot;withdrawal_at&quot;] = data.get(&quot;withdrawal_at&quot;)
+                j[&quot;appointments&quot;].append({
+                    &quot;ref&quot;: data[&quot;appointment_ref&quot;],
+                    &quot;technician&quot;: data[&quot;technician&quot;],
+                    &quot;start&quot;: data[&quot;start&quot;], &quot;end&quot;: data[&quot;end&quot;],
+                    &quot;state&quot;: &quot;Pending acknowledgement&quot;,
+                    &quot;customer_confirmed_at&quot;: confirmation,
+                    &quot;technician_ack_at&quot;: None, &quot;cancel_ack_at&quot;: None
+                })
+                j[&quot;current&quot;] = len(j[&quot;appointments&quot;]) - 1
+                j[&quot;state&quot;] = &quot;Scheduled&quot;
+                need(not data.get(&quot;fail_before_commit&quot;),
+                     &quot;Simulated interruption&quot;)
+
+            elif action == &quot;confirm&quot;:
+                need(
+                    role == &quot;Operations&quot; and ap is not None
+                    and ap[&quot;state&quot;] == &quot;Pending acknowledgement&quot;,
+                    &quot;Pending appointment and Operations required&quot;
+                )
+                ap[&quot;customer_confirmed_at&quot;] = at
+                if ap[&quot;technician_ack_at&quot;]:
+                    ap[&quot;state&quot;] = &quot;Confirmed&quot;
+
+            elif action == &quot;ack&quot;:
+                need(ap[&quot;state&quot;] == &quot;Pending acknowledgement&quot;,
+                     &quot;Pending appointment required&quot;)
+                ap[&quot;technician_ack_at&quot;] = at
+                if ap[&quot;customer_confirmed_at&quot;]:
+                    ap[&quot;state&quot;] = &quot;Confirmed&quot;
+
+            elif action == &quot;start&quot;:
+                need(j[&quot;state&quot;] == &quot;Scheduled&quot;
+                     and ap[&quot;state&quot;] == &quot;Confirmed&quot;,
+                     &quot;Confirmed appointment required&quot;)
+                need(now &gt;= instant(ap[&quot;start&quot;]),
+                     &quot;Scheduled start not reached&quot;)
+                j[&quot;state&quot;], j[&quot;started_at&quot;] = &quot;Work in progress&quot;, at
+
+            elif action in {&quot;complete&quot;, &quot;correct&quot;}:
+                if action == &quot;complete&quot;:
+                    need(j[&quot;state&quot;] == &quot;Work in progress&quot;,
+                         &quot;Work in progress required&quot;)
+                else:
+                    need(j[&quot;state&quot;] == &quot;Service completed&quot;
+                         and j[&quot;handoff&quot;] == &quot;Returned&quot;,
+                         &quot;Returned handoff required&quot;)
+                need(data.get(&quot;summary&quot;, &quot;&quot;).strip(),
+                     &quot;Completion summary required&quot;)
+                completed = date.fromisoformat(data[&quot;completion_date&quot;])
+                need(
+                    instant(j[&quot;started_at&quot;]).date() &lt;= completed &lt;= now.date(),
+                    &quot;Invalid completion date&quot;
+                )
+                j[&quot;completion&quot;] = {
+                    &quot;date&quot;: data[&quot;completion_date&quot;],
+                    &quot;summary&quot;: data[&quot;summary&quot;]
+                }
+                j[&quot;state&quot;] = &quot;Service completed&quot;
+                j[&quot;handoff&quot;], ap[&quot;state&quot;] = &quot;Ready for Finance&quot;, &quot;Completed&quot;
+
+            elif action == &quot;review&quot;:
+                need(role == &quot;Finance&quot;, &quot;Finance required&quot;)
+                need(j[&quot;handoff&quot;] == &quot;Ready for Finance&quot;,
+                     &quot;Qualified handoff required&quot;)
+                need(data[&quot;outcome&quot;] in {&quot;Returned&quot;, &quot;Review complete&quot;},
+                     &quot;Invalid Finance outcome&quot;)
+                if data[&quot;outcome&quot;] == &quot;Returned&quot;:
+                    need(data.get(&quot;reason&quot;, &quot;&quot;).strip(),
+                         &quot;Private return reason required&quot;)
+                    private.setdefault(ref, []).append({
+                        &quot;actor&quot;: actor, &quot;at&quot;: at, &quot;reason&quot;: data[&quot;reason&quot;]
+                    })
+                j[&quot;handoff&quot;] = data[&quot;outcome&quot;]
+
+            elif action == &quot;cancel&quot;:
+                need(role == &quot;Operations&quot;, &quot;Operations required&quot;)
+                need(
+                    data.get(&quot;verified&quot;) is True
+                    and data.get(&quot;requester&quot;) and data.get(&quot;reason&quot;),
+                    &quot;Verified cancellation evidence required&quot;
+                )
+                need(
+                    j[&quot;state&quot;] in {
+                        &quot;Ready to assign&quot;, &quot;Scheduled&quot;,
+                        &quot;Work in progress&quot;, &quot;Service completed&quot;
+                    },
+                    &quot;Cancellation/change not available&quot;
+                )
+                j[&quot;change_request&quot;] = {
+                    &quot;requester&quot;: data[&quot;requester&quot;],
+                    &quot;reason&quot;: data[&quot;reason&quot;], &quot;at&quot;: at
+                }
+                if j[&quot;started_at&quot;]:
+                    j[&quot;state&quot;] = &quot;Change review&quot;
+                else:
+                    j[&quot;state&quot;] = &quot;Cancelled&quot;
+                    if ap:
+                        ap[&quot;state&quot;] = &quot;Cancelled&quot;
+
+            elif action == &quot;cancel_ack&quot;:
+                need(j[&quot;state&quot;] == &quot;Cancelled&quot;
+                     and ap[&quot;state&quot;] == &quot;Cancelled&quot;,
+                     &quot;Cancelled appointment required&quot;)
+                ap[&quot;cancel_ack_at&quot;] = at
+
+            else:
+                raise ValueError(&quot;Action not implemented&quot;)
+
+        j = jobs[ref]
+        self.jobs, self.private = jobs, private
+        self.events.append({
+            &quot;job_ref&quot;: ref, &quot;action&quot;: action, &quot;actor&quot;: actor, &quot;at&quot;: at,
+            &quot;before_state&quot;: before_state, &quot;after_state&quot;: j[&quot;state&quot;],
+            &quot;before_handoff&quot;: before_handoff, &quot;after_handoff&quot;: j[&quot;handoff&quot;]
+        })
+        return self.view(actor, ref)
+
+    def view(self, actor, ref):
+        need(actor in ACTORS and ref in self.jobs,
+             &quot;Known actor and job required&quot;)
+        j, role = self.jobs[ref], ACTORS[actor]
+        ap = (
+            j[&quot;appointments&quot;][j[&quot;current&quot;]]
+            if j[&quot;current&quot;] is not None else None
+        )
+        if role == &quot;Technician&quot;:
+            need(ap is not None and ap[&quot;technician&quot;] == actor,
+                 &quot;Assigned technician required&quot;)
+        result = {
+            &quot;job_ref&quot;: ref, &quot;customer_ref&quot;: j[&quot;customer_ref&quot;],
+            &quot;job_state&quot;: j[&quot;state&quot;],
+            &quot;technician&quot;: ap[&quot;technician&quot;] if ap else None,
+            &quot;appointment_state&quot;: ap[&quot;state&quot;] if ap else None
+        }
+        if role != &quot;Technician&quot;:
+            result.update(
+                handoff_status=j[&quot;handoff&quot;],
+                finance_contact=&quot;finance@evergreen.example.com&quot;
+            )
+        if role == &quot;Finance&quot;:
+            result.update(
+                private_notes=deepcopy(self.private.get(ref, [])),
+                model_invoice_released=j[&quot;invoice_released&quot;]
+            )
+        return result
+
+
+if __name__ == &quot;__main__&quot;:
+    p = Prototype()
+    r = &quot;EVG-JOB-1901&quot;
+    p.request(&quot;intake&quot;, &quot;OPS&quot;, &quot;2027-01-26T08:00:00Z&quot;, r,
+              customer_ref=&quot;EVG-CUST-0101&quot;)
+    p.request(
+        &quot;plan&quot;, &quot;DSP&quot;, &quot;2027-01-26T08:30:00Z&quot;, r,
+        appointment_ref=&quot;EVG-APPT-8001&quot;, technician=&quot;T1&quot;,
+        start=&quot;2027-01-26T09:00:00Z&quot;, end=&quot;2027-01-26T10:00:00Z&quot;,
+        customer_confirmed_at=&quot;2027-01-26T08:20:00Z&quot;
+    )
+    p.request(&quot;ack&quot;, &quot;T1&quot;, &quot;2027-01-26T08:35:00Z&quot;, r)
+    p.request(&quot;start&quot;, &quot;T1&quot;, &quot;2027-01-26T09:00:00Z&quot;, r)
+    try:
+        p.request(&quot;complete&quot;, &quot;T1&quot;, &quot;2027-01-26T09:30:00Z&quot;, r,
+                  completion_date=&quot;2027-01-26&quot;, summary=&quot;&quot;)
+    except ValueError as error:
+        print(&quot;Blocked:&quot;, error)
+    p.request(&quot;complete&quot;, &quot;T1&quot;, &quot;2027-01-26T10:00:00Z&quot;, r,
+              completion_date=&quot;2027-01-26&quot;, summary=&quot;Replaced filter&quot;)
+    p.request(&quot;review&quot;, &quot;FIN&quot;, &quot;2027-01-26T10:10:00Z&quot;, r,
+              outcome=&quot;Returned&quot;, reason=&quot;Contract-rate clarification required&quot;)
+    p.request(&quot;correct&quot;, &quot;T1&quot;, &quot;2027-01-26T10:15:00Z&quot;, r,
+              completion_date=&quot;2027-01-26&quot;,
+              summary=&quot;Replaced filter and confirmed service details&quot;)
+    p.request(&quot;review&quot;, &quot;FIN&quot;, &quot;2027-01-26T10:20:00Z&quot;, r,
+              outcome=&quot;Review complete&quot;)
+    print(json.dumps(p.view(&quot;DSP&quot;, r), sort_keys=True))
+    print(&quot;Prior returns:&quot;, len(p.private[r]))
+    print(&quot;Committed events:&quot;, len(p.events))
+    print(&quot;Model invoice released:&quot;, p.jobs[r][&quot;invoice_released&quot;])
+</code></pre>
+<h3>4.3 Reason through the intermediate states</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Expected state</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake</td>
+<td>Ready to assign</td>
+<td>Recognised customer and received time exist</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Scheduled; appointment pending</td>
+<td>Technician has not acknowledged</td>
+</tr>
+<tr>
+<td>Acknowledgement</td>
+<td>Appointment Confirmed</td>
+<td>Customer confirmation and assigned technician acknowledgement exist</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>Work in progress</td>
+<td>Confirmed appointment and actual start</td>
+</tr>
+<tr>
+<td>Blank summary</td>
+<td>State unchanged</td>
+<td>Required completion information absent</td>
+</tr>
+<tr>
+<td>Valid completion</td>
+<td>Service completed; Ready for Finance</td>
+<td>Handoff information supplied</td>
+</tr>
+<tr>
+<td>Finance return</td>
+<td>Returned</td>
+<td>Finance owns the outcome</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>Ready for Finance</td>
+<td>Assigned technician supplies corrected completion facts</td>
+</tr>
+<tr>
+<td>Final review</td>
+<td>Review complete</td>
+<td>Finance records the decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>The model validates a proposed change on a copy before committing it. An exception leaves stored state unchanged.</p>
+<p>This is a property of this local implementation. It is not evidence of Zoho transaction or rollback behaviour.</p>
+<h3>4.4 Expected reference output</h3>
+<p>Blocked: Completion summary required</p>
+<p>{"appointment_state": "Completed", "customer_ref": "EVG-CUST-0101", "finance_contact": "finance@evergreen.example.com", "handoff_status": "Review complete", "job_ref": "EVG-JOB-1901", "job_state": "Service completed", "technician": "T1"}</p>
+<p>Prior returns: 1</p>
+<p>Committed events: 8</p>
+<p>Model invoice released: False</p>
+<p>Nine actions were attempted. Eight committed; the invalid completion did not.</p>
+<p>The retained return remains visible in private history after correction. Dispatch’s projection contains no private reason.</p>
+<p>The invoice_released flag is a model marker. It is always false because the prototype has no invoice-release action.</p>
+<h3>4.5 Completed prototype card</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact</td>
+<td>Evergreen Reference Prototype v0.1</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Exercise the connected business flow and representative controls</td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td>Separate local fixture using recognised synthetic customer references</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Expected reference output; learner records actual local execution</td>
+</tr>
+<tr>
+<td>Requirement links</td>
+<td>EVG-REQ-001–003, 007–011 and 013</td>
+</tr>
+<tr>
+<td>Remaining proof</td>
+<td>Actual Zoho mappings, authenticated roles, enabled access paths, cross-record consistency and audit coverage</td>
+</tr>
+<tr>
+<td>Release recommendation</td>
+<td>No product or release readiness established</td>
+</tr>
+</tbody>
+</table></div>
+<p>The actor labels are supplied by the caller. The program therefore models permission decisions but is not an authentication or security boundary.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “The program runs, so the native-only architecture is verified.”</p>
+<p>Correction: “The program demonstrates the business model. Native fit remains conditional until the selected Zoho configuration meets the same cases under authorised identities and relevant entry paths.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and requirements</p>
+<p>Run exception cases, present the results and review the design decisions.</p>
+<p>Use the supplied code and Python, or reason through the exact cases if a runtime is unavailable. Without execution, label your evidence paper-derived, not locally observed.</p>
+<p>For each fixture, create a fresh Prototype().</p>
+<p>Method pattern:</p>
+<pre><code class="language-python">p.request(action, actor, timestamp, job_reference, **input_fields)
+</code></pre>
+<p>Catch expected denials:</p>
+<pre><code class="language-python">try:
+    p.request(&quot;ack&quot;, &quot;T1&quot;, &quot;2027-01-26T08:20:00Z&quot;, &quot;EVG-JOB-1903&quot;)
+except ValueError as error:
+    print(error)
+</code></pre>
+<p>Complete exception inputs</p>
+<p>EVG-SRC-093 supplies these fixtures.</p>
+<p>Fixture A: missing intake and pre-start cancellation</p>
+<p>Use EVG-JOB-1902.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Actor/time on 26 January UTC</th>
+<th>Inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intake</td>
+<td>OPS 08:10</td>
+<td>No customer reference</td>
+</tr>
+<tr>
+<td>plan attempt</td>
+<td>DSP 08:15</td>
+<td>Appointment 8002; T1; slot 14:00–15:00</td>
+</tr>
+<tr>
+<td>repair</td>
+<td>OPS 08:20</td>
+<td>EVG-CUST-0102, confirmed by Operations</td>
+</tr>
+<tr>
+<td>plan</td>
+<td>DSP 08:30</td>
+<td>Appointment 8002; T1; slot 14:00–15:00; customer confirmed 08:25</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T1 08:35</td>
+<td>No additional fields</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>OPS 09:00</td>
+<td>verified=True; requester customer0102@evergreen.example.com; reason “Customer unavailable”</td>
+</tr>
+<tr>
+<td>cancel_ack</td>
+<td>T1 09:05</td>
+<td>No additional fields</td>
+</tr>
+</tbody>
+</table></div>
+<p>Appointment reference is EVG-APPT-8002. All times use the date 2027-01-26.</p>
+<p>Fixture B: permission, interruption and post-start change</p>
+<p>Use EVG-JOB-1903.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Actor/time</th>
+<th>Inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intake</td>
+<td>OPS 08:00</td>
+<td>EVG-CUST-0103</td>
+</tr>
+<tr>
+<td>plan</td>
+<td>DSP 08:10</td>
+<td>EVG-APPT-8003; T2; 11:00–12:00; customer confirmed 08:05</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T2 08:15</td>
+<td>No additional fields</td>
+</tr>
+<tr>
+<td>view attempt</td>
+<td>T1</td>
+<td>Attempt to view EVG-JOB-1903</td>
+</tr>
+<tr>
+<td>interrupted plan</td>
+<td>DSP 09:00</td>
+<td>Replacement EVG-APPT-8013; T1; 13:00–14:00; customer confirmed 08:50; T2 withdrawal 08:55; fail_before_commit=True</td>
+</tr>
+<tr>
+<td>retry plan</td>
+<td>DSP 09:05</td>
+<td>Same replacement inputs, without failure flag</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T1 09:10</td>
+<td>No additional fields</td>
+</tr>
+<tr>
+<td>start</td>
+<td>T1 13:00</td>
+<td>No additional fields</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>OPS 13:20</td>
+<td>verified=True; requester customer0103@evergreen.example.com; reason “Customer cannot wait”</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use the view(actor, ref) method for the view attempt.</p>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Run the missing-customer case.  </li>
+</ol>
+<p>Expected: Intake hold; scheduling denied; no appointment created.</p>
+<ol start="2">
+<li>Apply the supplied correction and cancellation.  </li>
+</ol>
+<p>Expected: same job reference retained; cancellation recorded; notification acknowledgement is separate.</p>
+<ol start="3">
+<li>Run the wrong-technician view.  </li>
+</ol>
+<p>Expected: denied while T2 is assigned.</p>
+<ol start="4">
+<li>Capture state before the interrupted reschedule.  </li>
+</ol>
+<p>Use deepcopy(p.jobs[ref]).  </p>
+<p>Expected: failure leaves the original appointment unchanged.</p>
+<ol start="5">
+<li>Retry the replacement.  </li>
+</ol>
+<p>Expected: old appointment Superseded; replacement pending until T1 acknowledges.</p>
+<ol start="6">
+<li>Apply the post-start request.  </li>
+</ol>
+<p>Expected: Change review, with actual-start facts retained.</p>
+<ol start="7">
+<li>Present the prototype.  </li>
+</ol>
+<p>Explain one normal flow, one denial and one recovery. State the evidence boundary and next product proof.</p>
+<p>Blank demonstration and feedback worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Scenario/test</th>
+<th>Actor/input</th>
+<th>Expected result</th>
+<th>Actual local result or paper reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank decision-review worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision ID</th>
+<th>Original assumption</th>
+<th>Evidence considered</th>
+<th>Keep/change/reopen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifact: a presented prototype, evidence card and decision record reviewed against the supplied inputs.</p>
+<p>Cleanup: restarting the program discards its in-memory fixture. Keep your evidence and code version. Remove duplicate scratch files you created if unnecessary. No Zoho or external-system cleanup is involved.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed inputs and feedback</p>
+<p>EVG-SRC-094 supplies a new fixture:</p>
+<ul>
+<li>EVG-JOB-1904, customer EVG-CUST-0101.</li>
+<li>Intake OPS at 08:00 UTC on 27 January.</li>
+<li>Plan DSP at 08:20: EVG-APPT-8004, T1, 09:00–10:00, customer confirmation 08:10.</li>
+<li>T1 acknowledges at 08:25 and starts at 09:00.</li>
+<li>T1 completes at 10:00, date 27 January, summary “Reset controller.”</li>
+<li>Finance has not reviewed.</li>
+</ul>
+<p>EVG-SRC-092 supplies fictional review comments:</p>
+<p>Finance: “Service completed must not look like Finance approval.”  </p>
+<p>Dispatcher: “I need the original and replacement appointment in the demonstration, not just the current slot.”  </p>
+<p>Operations: “Does this mean we can now commit to the launch date?”</p>
+<p>EVG-SRC-095 supplies limited product evidence:</p>
+<p>The Administrator provides a profile list containing names and IDs. No specific-profile permission details, role-based observations or related-record recovery evidence are supplied.</p>
+<p>EVG-SRC-096 supplies two further comments:</p>
+<p>Sponsor: “Add an automatic customer completion email. We have not decided whether it should happen at service completion or after Finance review.”  </p>
+<p>Supplier teammate: “A UI-only required-field check should be enough; we do not need to examine API or import entry.”</p>
+<p>Record the notification request as EVG-CHANGE-004 and its undefined business need as candidate EVG-REQ-015.</p>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Expected service and Finance states for EVG-JOB-1904.</li>
+<li>A feedback classification table.</li>
+<li>A clearer display/acceptance criterion linked to EVG-REQ-003.</li>
+<li>A notification change entry with unresolved timing and wording.</li>
+<li>A decision on whether native fit is verified.</li>
+<li>A product-proof plan and client recommendation.</li>
+</ol>
+<p>Success criteria</p>
+<p>Preserve Finance authority, keep notification delivery outside current authority and distinguish a profile list from effective-access evidence.</p>
+<p>Do not claim that the local prototype supports a launch commitment or that UI checks cover every entry path.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demo contains disconnected features</td>
+<td>No vertical slice</td>
+<td>Follow one job through every handoff</td>
+</tr>
+<tr>
+<td>Only successful inputs are shown</td>
+<td>Controls unchallenged</td>
+<td>Add missing-data and denied-action cases</td>
+</tr>
+<tr>
+<td>Private reason appears in public output</td>
+<td>Projection too broad</td>
+<td>Remove restricted information from the projection</td>
+</tr>
+<tr>
+<td>Interrupted replacement loses old appointment</td>
+<td>Change applied before validation/commit</td>
+<td>Preserve prior state and verify recovery design</td>
+</tr>
+<tr>
+<td>“Service completed” implies approval</td>
+<td>Lifecycle labels conflated</td>
+<td>Show separate service and Finance states</td>
+</tr>
+<tr>
+<td>New notification treated as cosmetic</td>
+<td>Outbound scope hidden</td>
+<td>Record trigger, recipient, wording and isolation needs</td>
+</tr>
+<tr>
+<td>Local result called UAT acceptance</td>
+<td>Evidence maturity confused</td>
+<td>Label model/local/product evidence precisely</td>
+</tr>
+<tr>
+<td>Native-only estimate treated as proven</td>
+<td>Model evidence substituted for product evidence</td>
+<td>Retain proof conditions</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reference model’s recovery is limited to its in-memory commit boundary. It does not recover an external email, transaction, concurrent update or product outage.</p>
+<p>If an actual configured prototype later fails, capture actor, environment, inputs, expected result and observed result before opening a defect. Designed denials and simulated interruptions are not observed product defects.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What makes a prototype question useful?</li>
+<li>Why is end-to-end coverage more informative than showing separate screens?</li>
+<li>What distinguishes expected model output from product evidence?</li>
+<li>Why must a corrected Finance return remain in history?</li>
+<li>What should happen when feedback introduces an outbound action?</li>
+<li>Which evidence is missing from the supplied profile list?</li>
+<li>Why can a UI-only validation assumption be risky?</li>
+<li>What can this reference model establish about the launch date?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: The technician-change scenario exercises identity, history, acknowledgement and replacement behaviour. Counts do not demonstrate those controls.</p>
+<p>LC2: It executes rules and produces states from inputs. A clickable mock-up can show navigation without enforcing behaviour.</p>
+<p>LC3: A denial demonstrates a boundary. It can reveal whether an invalid action changes data or whether the intended role control exists.</p>
+<p>LC4: It is a new capability and scope-impact request. Record it with trigger, recipient, content and isolation questions.</p>
+<p>LC5: The model’s in-memory implementation is different from the product design. Actual mappings, permissions and cross-record behaviour remain unverified.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Fixture A</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake</td>
+<td>Intake hold</td>
+</tr>
+<tr>
+<td>Plan attempt</td>
+<td>“Job not ready for scheduling”; no appointment</td>
+</tr>
+<tr>
+<td>Repair</td>
+<td>Ready to assign; original job reference unchanged</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Scheduled; appointment Pending acknowledgement</td>
+</tr>
+<tr>
+<td>T1 acknowledgement</td>
+<td>Confirmed</td>
+</tr>
+<tr>
+<td>Cancellation</td>
+<td>Job and appointment Cancelled; requester/reason/time retained</td>
+</tr>
+<tr>
+<td>Cancellation acknowledgement</td>
+<td>cancel_ack_at records 09:05 UTC</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cancellation does not create a financial reversal. No financial record exists in the fixture.</p>
+<p>Fixture B</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1 view before reassignment</td>
+<td>“Assigned technician required”</td>
+</tr>
+<tr>
+<td>Interrupted replacement</td>
+<td>“Simulated interruption”; old appointment still current and Confirmed</td>
+</tr>
+<tr>
+<td>Retry</td>
+<td>Old 8003 Superseded; replacement 8013 Pending acknowledgement</td>
+</tr>
+<tr>
+<td>T1 acknowledgement</td>
+<td>Replacement Confirmed</td>
+</tr>
+<tr>
+<td>Actual start</td>
+<td>Work in progress; start time retained</td>
+</tr>
+<tr>
+<td>Post-start request</td>
+<td>Change review; no deletion or pre-start cancellation shortcut</td>
+</tr>
+</tbody>
+</table></div>
+<p>The appointment can remain Confirmed while the job enters Change review. Its booking state and the job’s operational decision are different facts.</p>
+<p>A useful local recovery comparison is:</p>
+<pre><code class="language-python">before = deepcopy(p.jobs[&quot;EVG-JOB-1903&quot;])
+
+# Run the supplied interrupted plan and catch ValueError.
+
+print(before == p.jobs[&quot;EVG-JOB-1903&quot;])
+</code></pre>
+<p>Expected result: True.</p>
+<p>Reviewed decision record</p>
+<p>Review type: self-study review against supplied scenario evidence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision ID</th>
+<th>Reviewed conclusion</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-DEC-027</td>
+<td>Use the reference model to investigate business rules and exceptions</td>
+<td>Local prototype decision</td>
+</tr>
+<tr>
+<td>EVG-DEC-028</td>
+<td>Retain native-fit conditions from EVG-DEC-013 and the estimate</td>
+<td>Product proof pending</td>
+</tr>
+<tr>
+<td>EVG-DEC-029</td>
+<td>Separate service completion and Finance status visibly</td>
+<td>Proposed design clarification</td>
+</tr>
+<tr>
+<td>EVG-DEC-030</td>
+<td>Require preserved prior state and explicit recovery for related-record changes</td>
+<td>Local behaviour demonstrated by reasoning; product behaviour pending</td>
+</tr>
+</tbody>
+</table></div>
+<p>Traceability</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Requirement links</th>
+<th>Evidence boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-TEST-023: connected prototype flow</td>
+<td>EVG-REQ-001–003, 007–008 and 013</td>
+<td>Local model; not Zoho/UAT</td>
+</tr>
+<tr>
+<td>EVG-TEST-024: interrupted reschedule</td>
+<td>EVG-REQ-009 and EVG-NFR-002</td>
+<td>Local commit boundary</td>
+</tr>
+<tr>
+<td>Existing EVG-TEST-007–008</td>
+<td>EVG-REQ-010–011</td>
+<td>Cancellation/change model cases</td>
+</tr>
+<tr>
+<td>EVG-TEST-025: entry-path proof</td>
+<td>EVG-REQ-003 and 007</td>
+<td>Planned actual-product investigation</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-DEFECT-001 remains reserved.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Expected fixture state</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Job</td>
+<td>Service completed</td>
+</tr>
+<tr>
+<td>Appointment</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>Ready for Finance</td>
+</tr>
+<tr>
+<td>Finance review</td>
+<td>Not performed</td>
+</tr>
+<tr>
+<td>Model invoice release</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Customer notification</td>
+<td>Not implemented or authorised</td>
+</tr>
+</tbody>
+</table></div>
+<p>Feedback classification</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Comment</th>
+<th>Classification</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance approval ambiguity</td>
+<td>Existing-rule clarification</td>
+<td>Separate service and Finance display</td>
+</tr>
+<tr>
+<td>Show old/replacement appointments</td>
+<td>Design/evidence improvement</td>
+<td>Include appointment history in demo evidence</td>
+</tr>
+<tr>
+<td>Commit launch date</td>
+<td>Unsupported readiness inference</td>
+<td>Explain remaining product, acceptance and release gates</td>
+</tr>
+<tr>
+<td>Automatic email</td>
+<td>New scope request</td>
+<td>EVG-CHANGE-004; candidate EVG-REQ-015</td>
+</tr>
+<tr>
+<td>UI-only validation</td>
+<td>Unverified technical assumption</td>
+<td>Add entry-path proof</td>
+</tr>
+</tbody>
+</table></div>
+<p>Refined acceptance criterion</p>
+<p>EVG-AC-003C, proposed:</p>
+<p>Given a service-completed job awaiting Finance review, when an authorised internal user views the job, the display distinguishes service completion from Finance review and does not state or imply invoice approval.</p>
+<p>This refines EVG-REQ-003 without replacing its original ID or release-control criteria.</p>
+<p>Completed notification change entry</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-004</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requested capability</td>
+<td>Automatic customer completion notification</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>EVG-REQ-015</td>
+</tr>
+<tr>
+<td>Unresolved timing</td>
+<td>Service completion or Finance review</td>
+</tr>
+<tr>
+<td>Unresolved content</td>
+<td>Must not imply unperformed Finance approval</td>
+</tr>
+<tr>
+<td>Recipient rule</td>
+<td>Not defined beyond the supplied synthetic customer contact</td>
+</tr>
+<tr>
+<td>Boundary affected</td>
+<td>Current pilot has no outbound delivery</td>
+</tr>
+<tr>
+<td>Permitted next step</td>
+<td>Analyse and prepare a non-delivering message preview</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Requested; not approved</td>
+</tr>
+</tbody>
+</table></div>
+<p>A reasonable preview is:</p>
+<p>“Service work for EVG-JOB-1904 has been recorded as completed. Finance review is pending.”</p>
+<p>This is preview wording, not a sent message or an approved communication policy.</p>
+<p>Native-fit decision</p>
+<p>Native fit is not verified.</p>
+<p>The profile list establishes names and IDs only. Specific-profile permissions, field controls, record scope, representative role results and related-record recovery evidence are missing.</p>
+<p>The product-proof plan should include:</p>
+<ol>
+<li>Appropriate authority and verified sandbox organisation.</li>
+<li>Actual profile, role, sharing and field evidence.</li>
+<li>Normal, missing-summary and denied-role cases.</li>
+<li>Relevant UI, API and import paths.</li>
+<li>Reschedule interruption/consistency checks.</li>
+<li>History and restricted-information checks.</li>
+<li>Recorded actual outcomes and updated decisions.</li>
+</ol>
+<p>A suitable client response is:</p>
+<p>The working model supports the business-rule discussion and exposes important controls. It does not yet verify the native Zoho design or release readiness. Keep the launch date conditional, resolve the notification request separately and complete the authorised product proof before updating delivery commitments.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>It identifies an uncertainty, representative inputs, expected evidence and a boundary.</li>
+<li>Handoff and ownership problems appear between activities, not only within screens.</li>
+<li>Expected output follows supplied rules. Product evidence records actual behaviour in an identified product environment and identity.</li>
+<li>Correction does not turn the original returned handoff into a first-pass success or erase responsibility.</li>
+<li>Record a change and assess timing, recipients, wording, isolation, ownership and effort.</li>
+<li>Specific permissions and actual role/field/record behaviour.</li>
+<li>Other enabled entry paths may not exercise the same checks. Their behaviour must be verified.</li>
+<li>It establishes no supported launch date. Product fit, acceptance, release, recovery and support decisions remain.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A useful prototype connects the whole process while keeping its evidence boundary clear.</p>
+<p>You should leave the demonstration with better questions, refined criteria and explainable decisions. A successful model can justify further investigation; it cannot replace product proof or client acceptance.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can define a prototype objective.</li>
+<li>I can build and present a connected working slice.</li>
+<li>I can exercise missing-data, permission and recovery cases.</li>
+<li>I can preserve history through correction and rescheduling.</li>
+<li>I can classify feedback and protect scope boundaries.</li>
+<li>I can refine acceptance criteria while preserving IDs.</li>
+<li>I can explain the remaining native-fit assumptions.</li>
+<li>I can distinguish local evidence from product/UAT evidence.</li>
+</ul>
+<p>Your project pack now contains a working reference prototype and decisions reviewed against supplied feedback.</p>
+<p>Chapter 11, Integration and Quality Management, develops interface ownership, mappings, duplicate/retry behaviour, test strategy, defects, root cause and retesting. The entry-path and recovery questions identified here become important quality inputs.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demonstration card</td>
+<td>Record of inputs, actions, expected outcomes and evidence</td>
+</tr>
+<tr>
+<td>Design validation</td>
+<td>Evaluation of whether a proposed design meets its intended business use</td>
+</tr>
+<tr>
+<td>Evidence boundary</td>
+<td>Limit on what an observation or artifact demonstrates</td>
+</tr>
+<tr>
+<td>Mock-up</td>
+<td>Representation of appearance or interaction without necessarily executing rules</td>
+</tr>
+<tr>
+<td>Native-fit proof</td>
+<td>Evidence that the selected product configuration meets the required behaviour</td>
+</tr>
+<tr>
+<td>Prototype</td>
+<td>Limited working implementation used to investigate a design</td>
+</tr>
+<tr>
+<td>Reference model</td>
+<td>Executable expression of business rules for comparison and learning</td>
+</tr>
+<tr>
+<td>Vertical slice</td>
+<td>Small connected path through the full process</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Blueprint Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/blueprint-details.html">Open official reference</a></li>
+</ol>
+<p>Available transitions and associated fields/validation for a record in a process.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Get Profiles<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-profiles.html">Open official reference</a></li>
+</ol>
+<p>Specific-profile permission evidence, distinct from a profile list.</p>
+<ol start="3">
+<li>Zoho CRM API v8 — Upsert Records<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/upsert-records.html">Open official reference</a></li>
+</ol>
+<p>Matching, validation/feature conditions and per-record outcomes relevant to entry-path checks.</p>
+<p>Consult the official references above for current product details. Research is partially verified: the cited product statements are documentation-based. The reference model does not establish Evergreen’s configured Zoho behaviour. No Zoho execution or client acceptance is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Present a working prototype and reviewed decisions.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-09">← Previous chapter</a><a href="/course-book/course-05/chapter-11">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

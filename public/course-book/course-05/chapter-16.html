@@ -1,0 +1,1122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 16</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 16</p><h1>Value Review, Closure and Client Presentation</h1><p>Present the final client pack and defend individual work.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-16-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: evidence to closure decision</a><a href="#section-4">4. Worked case: review Evergreen’s value and closure position</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and final project presentation</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-16-dataset-01.csv">Practice dataset (CSV) ↓</a><a download href="/course-book/course-05/chapter-16-dataset-02.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>The final client presentation should explain what the engagement has established, what evidence supports that conclusion and which decisions remain.</p>
+<p>A value review is not a celebration of completed configuration. It compares intended outcomes with a baseline and current evidence. Closure checks commitments, responsibilities and unresolved work. Your presentation connects those findings to the client’s next decision.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Compare outcome measures with their stated baseline.</li>
+<li>Distinguish synthetic rehearsal results from observed client outcomes.</li>
+<li>Assess adoption evidence without treating attendance as adoption.</li>
+<li>Reconcile commitments and identify closure gaps.</li>
+<li>Produce a useful retrospective and improvement backlog.</li>
+<li>Present the Evergreen project pack in client language.</li>
+<li>Explain your individual contribution with evidence.</li>
+<li>Respond to a client-style change, migration or incident scenario.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the complete Evergreen pack developed through Chapters 1–15.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning baseline</td>
+<td>SB-02 v1.1 includes the core pilot and one weekly report</td>
+</tr>
+<tr>
+<td>Supplier forecast</td>
+<td>86–98.9 person-hours; no actual effort supplied</td>
+</tr>
+<tr>
+<td>Product implementation</td>
+<td>Not executed or accepted</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>No-go</td>
+</tr>
+<tr>
+<td>Product UAT</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>Local/reference evidence</td>
+<td>Available, with component-specific limits</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Materials and synthetic practice records; no actual attendance/adoption</td>
+</tr>
+<tr>
+<td>Handover</td>
+<td>Document review proposed; operational acceptance pending</td>
+</tr>
+<tr>
+<td>Additional clinic</td>
+<td>EVG-CHANGE-007 requested; full-reserve option 103.5 hours</td>
+</tr>
+<tr>
+<td>Support coverage</td>
+<td>No new after-hours service or service levels approved</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-150 authorises the value review, retrospective and presentation pack. It does not authorise implementation closure, release or financial settlement.</p>
+<p>Your contribution to the course project</p>
+<p>You will present the client project pack and explain your own work. Your explanation should connect discovery, product fit, requirement-to-test links, delivery decisions, scope and client communication.</p>
+<p>The pack demonstrates consulting judgement and reference behaviour. The actual fictional implementation remains incomplete and unreleased.</p>
+<p>All new datasets, statements and decisions are synthetic. No client outcome, attendance, signature, commercial settlement or course passing result is invented.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Review value through a defined comparison</h3>
+<p>Skill: explain what changed and what the evidence can support.</p>
+<p>An outcome review compares intended business improvements with a defined starting point.</p>
+<p>For Evergreen, the desired improvements include:</p>
+<ul>
+<li>Reliable service intake.</li>
+<li>Internal visibility of customers and open jobs.</li>
+<li>Coordinated dispatch and appointment changes.</li>
+<li>Complete, controlled Finance handoffs.</li>
+<li>Repeatable management reporting.</li>
+</ul>
+<p>Configuration is a means to these outcomes. A working local completion rule does not show that Finance returns decreased in normal operations.</p>
+<p>A useful comparison identifies:</p>
+<ol>
+<li>Measure and business meaning.</li>
+<li>Baseline dataset and period.</li>
+<li>Current dataset and period.</li>
+<li>Inclusion and exclusion rules.</li>
+<li>Unfinished work.</li>
+<li>Target status.</li>
+<li>Evidence type.</li>
+<li>Interpretation and limits.</li>
+</ol>
+<p>Compare like measures. A completed-review first-pass rate is not the same as the proportion of all supplied handoffs that have already passed.</p>
+<p>Also distinguish percentage points from relative percentage change. A rate rising from 60% to 80% rises by twenty percentage points. That does not mean it rose by 20% relative to its baseline.</p>
+<p>Do not attribute improvement to the implementation when no implementation has occurred. A synthetic rehearsal can demonstrate a calculation or a plausible measurement method, not a realised client benefit.</p>
+<p>Lesson check LC1: Why would “Evergreen’s first-pass performance improved to 80%” be unsupported by a synthetic rehearsal?</p>
+<h3>2.2 Evaluate adoption separately from capability</h3>
+<p>Skill: identify whether people are using the intended process.</p>
+<p>Training evidence asks whether people can perform a task. Adoption evidence asks whether the intended process is being used during eligible business work.</p>
+<p>Examples of adoption evidence include:</p>
+<ul>
+<li>Requests recorded with required identifiers.</li>
+<li>Appointment changes retaining history.</li>
+<li>Acknowledgements recorded before work starts.</li>
+<li>Qualified handoffs using the agreed route.</li>
+<li>Finance review remaining under Finance ownership.</li>
+<li>Users seeking help through the intended support route.</li>
+</ul>
+<p>A successful outcome does not prove process adherence. Finance may receive complete information through an uncontrolled email. Conversely, a correctly routed handoff may still be awaiting review.</p>
+<p>Keep those dimensions separate.</p>
+<p>If evidence is missing, record Unknown. Do not convert Unknown to either success or failure merely to simplify the rate.</p>
+<p>Chapter 15’s three first-pass successes among five completed practice attempts describe synthetic training performance. They do not demonstrate client adoption.</p>
+<p>Lesson check LC2: Can a handoff pass Finance review while failing the process-adherence check? Explain.</p>
+<h3>2.3 Reconcile commitments before recommending closure</h3>
+<p>Skill: distinguish finished artifacts from fulfilled engagement obligations.</p>
+<p>Closure checks whether the applicable responsibilities and commitments have been completed, accepted or explicitly transferred.</p>
+<p>Consider:</p>
+<ul>
+<li>Agreed scope and deliverables.</li>
+<li>Acceptance evidence.</li>
+<li>Changes and exclusions.</li>
+<li>Data and migration exceptions.</li>
+<li>Training and support ownership.</li>
+<li>Known defects.</li>
+<li>Commercial records and applicable terms.</li>
+<li>Remaining obligations.</li>
+</ul>
+<p>A document pack can be ready for presentation while the implemented service is not ready for closure.</p>
+<p>Commercial closure requires the applicable agreement and financial records. Evergreen supplies no fees, invoices, payment evidence or settlement terms. You therefore cannot conclude that the commercial position is settled.</p>
+<p>Do not invent a rule that every invoice depends on UAT. The applicable commercial terms would need to be inspected.</p>
+<p>Similarly:</p>
+<ul>
+<li>Planning approval is not product acceptance.</li>
+<li>Forecast hours are not actual hours spent.</li>
+<li>A nominated backup is not verified operational ownership.</li>
+<li>A local defect correction is not a confirmed product fix.</li>
+<li>A preferred date is not a supported release commitment.</li>
+</ul>
+<p>Lesson check LC3: What is wrong with “The engagement is closed because the project pack is complete”?</p>
+<h3>2.4 Turn the retrospective into actions</h3>
+<p>Skill: explain what caused difficulty and what should change.</p>
+<p>A retrospective examines the work and decisions to identify useful improvements.</p>
+<p>Avoid statements such as “communication could be better.” Explain the mechanism:</p>
+<p>“The original sales wording combined a preferred date, historical migration and reduced re-entry without a supported implementation scope. Source classification exposed those expectations before they became delivery commitments.”</p>
+<p>Then identify the reusable action:</p>
+<p>“Future handoffs should link each material promise to its authority, assumptions and unresolved evidence.”</p>
+<p>A useful retrospective includes:</p>
+<ul>
+<li>Event or evidence.</li>
+<li>Effect.</li>
+<li>Cause or contributing condition.</li>
+<li>What worked.</li>
+<li>Action and owner.</li>
+<li>Verification of the action.</li>
+</ul>
+<p>Do not blame a person when the problem is an unclear process or missing evidence. Equally, do not hide a concrete decision behind generic lessons.</p>
+<p>An improvement backlog should distinguish:</p>
+<ul>
+<li>Baseline completion.</li>
+<li>Business-data decisions.</li>
+<li>Operational exceptions.</li>
+<li>Reference-model investigation.</li>
+<li>New scope requests.</li>
+</ul>
+<p>Unfinished baseline work should not be relabelled as an optional enhancement.</p>
+<p>Lesson check LC4: How does a useful retrospective differ from a list of general advice?</p>
+<h3>2.5 Present the evidence and your contribution</h3>
+<p>Skill: make the client decision clear and defend your own work.</p>
+<p>An executive presentation should explain:</p>
+<ol>
+<li>The business problem.</li>
+<li>The scope and authority.</li>
+<li>What evidence exists.</li>
+<li>What it demonstrates.</li>
+<li>What remains unresolved.</li>
+<li>The decision or next action required.</li>
+</ol>
+<p>Lead with the main conclusion. For Evergreen:</p>
+<p>“The planning and reference pack is available for review. Actual product acceptance, release and operational closure remain unsupported.”</p>
+<p>Then explain why.</p>
+<p>Use requirement-to-test links to defend decisions. For example:</p>
+<p>“EVG-REQ-003 requires Finance review before invoice release. EVG-TEST-003 and EVG-UAT-003 check that boundary. Local evidence supports the model, while actual product evidence is still missing.”</p>
+<p>Your contribution statement should distinguish:</p>
+<ul>
+<li>Work you authored.</li>
+<li>Work you reviewed.</li>
+<li>Exercises you executed.</li>
+<li>Calculations you performed.</li>
+<li>Supplied code or shared artifacts you used.</li>
+<li>Decisions you recommended.</li>
+<li>Decisions another role owned.</li>
+</ul>
+<p>Do not claim authorship of supplied code simply because you ran it. Do not claim a client approval because your recommendation was reasonable.</p>
+<p>Lesson check LC5: Why should your contribution statement identify supplied foundations as well as your own actions?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: evidence to closure decision</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Client context and commitments</td>
+<td>Continue</td>
+<td>Baseline and agreed measures</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Baseline and agreed measures</td>
+<td>Continue</td>
+<td>Classify current evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Classify current evidence</td>
+<td>Continue</td>
+<td>Calculate outcomes and adoption measures</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Calculate outcomes and adoption measures</td>
+<td>Continue</td>
+<td>Assess gaps, defects and ownership</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Assess gaps, defects and ownership</td>
+<td>Continue</td>
+<td>Retrospective and improvement backlog</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Retrospective and improvement backlog</td>
+<td>Continue</td>
+<td>Client presentation</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Client presentation</td>
+<td>Continue</td>
+<td>Closure supported?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Closure supported?</td>
+<td>Yes, within stated boundary</td>
+<td>Record authorised closure</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Closure supported?</td>
+<td>No</td>
+<td>Keep obligations visible and request next decisions</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram does not assume that the final presentation produces closure.</p>
+<p>The decision depends on evidence and the applicable boundary. A completed learning artifact does not automatically close the client implementation.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: review Evergreen’s value and closure position</h2>
+<h3>4.1 Baseline and rehearsal datasets</h3>
+<p>EVG-SRC-151 preserves Chapter 1’s original synthetic handoff sample.</p>
+<pre><code class="language-csv">job_ref,finance_review_state,returned_for_missing_info
+EVG-JOB-1001,review_complete,no
+EVG-JOB-1002,review_complete,yes
+EVG-JOB-1003,review_complete,no
+EVG-JOB-1004,review_complete,no
+EVG-JOB-1005,review_complete,yes
+EVG-JOB-1006,awaiting_review,
+</code></pre>
+<p>EVG-SRC-152 supplies a separate synthetic outcome-rehearsal cohort. It is not a production observation or a later state of the original six jobs.</p>
+<pre><code class="language-csv">job_ref,finance_review_state,returned_for_missing_info,process_followed,adherence_exception
+EVG-JOB-2501,review_complete,no,yes,none
+EVG-JOB-2502,review_complete,no,yes,none
+EVG-JOB-2503,review_complete,no,no,bypassed_handoff_queue
+EVG-JOB-2504,review_complete,no,yes,none
+EVG-JOB-2505,review_complete,yes,no,missing_completion_summary
+EVG-JOB-2506,awaiting_review,,yes,none
+EVG-JOB-2507,awaiting_review,,no,bypassed_handoff_queue
+EVG-JOB-2508,awaiting_review,,unknown,evidence_missing
+</code></pre>
+<p>Rules:</p>
+<ul>
+<li>First-pass success means a completed Finance review with no return for missing information.</li>
+<li>Awaiting reviews are excluded from that completed-review rate and disclosed separately.</li>
+<li>All eight rehearsal handoffs are eligible for process-adherence assessment.</li>
+<li>process_followed=yes means the required workflow steps applicable so far are evidenced.</li>
+<li>It does not require an unfinished Finance review to be complete.</li>
+<li>Unknown adherence remains an evidence gap.</li>
+</ul>
+<h3>4.2 Calculate the outcome comparison</h3>
+<p>Baseline:</p>
+<blockquote>
+<p>First-pass rate=(3) ÷ (5)×100=60%</p>
+</blockquote>
+<p>One of six handoffs remains unreviewed.</p>
+<p>Rehearsal:</p>
+<blockquote>
+<p>First-pass rate=(4) ÷ (5)×100=80%</p>
+</blockquote>
+<p>Three of eight remain unreviewed.</p>
+<p>Difference:</p>
+<blockquote>
+<p>80%-60%=20 percentage points</p>
+</blockquote>
+<p>Relative change:</p>
+<blockquote>
+<p>(80-60) ÷ (60)×100≈33.33%</p>
+</blockquote>
+<p>These are two ways to describe the same mathematical comparison. Neither proves an actual client improvement.</p>
+<p>The pending count rose from one in the baseline sample to three in the rehearsal cohort. The cohorts differ in size, so do not infer a business backlog trend without a defined period and selection method.</p>
+<h3>4.3 Explain the unfinished-record effect</h3>
+<p>If all three pending rehearsal reviews later return:</p>
+<blockquote>
+<p>(4) ÷ (8)×100=50%</p>
+</blockquote>
+<p>If all three pass first time:</p>
+<blockquote>
+<p>(4+3) ÷ (8)×100=87.5%</p>
+</blockquote>
+<p>These are conditional bounds, not predictions.</p>
+<p>The current 80% describes five completed reviews only. It cannot be presented as the eventual result of all eight handoffs.</p>
+<p>The original 80% target remains a discussion preference, not an approved contractual outcome threshold.</p>
+<h3>4.4 Calculate process adherence</h3>
+<p>Known adherence records:</p>
+<blockquote>
+<p>4 yes+3 no=7</p>
+</blockquote>
+<p>Known-record adherence:</p>
+<blockquote>
+<p>(4) ÷ (7)×100≈57.14%</p>
+</blockquote>
+<p>Verified adherence coverage across all eligible records:</p>
+<blockquote>
+<p>(4) ÷ (8)×100=50%</p>
+</blockquote>
+<p>One record is Unknown.</p>
+<p>The first measure describes known records. The second describes the proportion of all eligible records with positive evidence. Unknown is not silently labelled noncompliant.</p>
+<p>EVG-JOB-2503 passed Finance review but bypassed the handoff queue. Outcome and adoption therefore tell different stories.</p>
+<h3>4.5 Completed value-review brief</h3>
+<p>Evergreen Value Review v0.1 — synthetic/reference evidence</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Outcome area</th>
+<th>Evidence available</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake reliability</td>
+<td>Local unique-reference and hold cases</td>
+<td>Business rule demonstrated locally; operating performance unobserved</td>
+</tr>
+<tr>
+<td>Internal visibility</td>
+<td>Defined requirement and local projections</td>
+<td>Actual customer-search and role evidence incomplete</td>
+</tr>
+<tr>
+<td>Dispatch coordination</td>
+<td>Reference reschedule history and tabletop readiness</td>
+<td>Native behaviour unverified; job 2105 acknowledgement issue remains</td>
+</tr>
+<tr>
+<td>Finance handoff</td>
+<td>Baseline 60%; separate rehearsal 80%; local review boundary</td>
+<td>Measurement method demonstrated; no realised client improvement claim</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>Local V1 defect corrected to V2</td>
+<td>Correct counting logic locally; actual report acceptance absent</td>
+</tr>
+<tr>
+<td>Adoption</td>
+<td>Rehearsal adherence 4/7 known, one Unknown</td>
+<td>Synthetic process evidence; no client adoption observation</td>
+</tr>
+<tr>
+<td>Support ownership</td>
+<td>Guides, nominated owners and pending reviews</td>
+<td>Operational takeover not accepted</td>
+</tr>
+</tbody>
+</table></div>
+<p>Technical inventory can support later verification. Official organisation metadata identifies environment details, while specific-profile metadata describes permissions.1 Those records would support evidence collection, not prove business outcomes by themselves.</p>
+<h3>4.6 Reconcile commitments</h3>
+<p>EVG-SRC-153 supplies the current commitment snapshot.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Commitment or expectation</th>
+<th>Applicable evidence</th>
+<th>Closure position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core plus one weekly report</td>
+<td>SB-02 v1.1 planning approval</td>
+<td>Planning scope established; product delivery/acceptance incomplete</td>
+</tr>
+<tr>
+<td>Supplier effort</td>
+<td>86–98.9 forecast</td>
+<td>Actual effort not supplied</td>
+</tr>
+<tr>
+<td>Preferred launch date</td>
+<td>Earlier sales expectation corrected</td>
+<td>No supported release commitment</td>
+</tr>
+<tr>
+<td>All historical jobs</td>
+<td>Earlier expectation corrected; production migration excluded</td>
+<td>No complete-history delivery commitment established</td>
+</tr>
+<tr>
+<td>Original orientation</td>
+<td>One hour, at most six participants</td>
+<td>Planned; actual attendance not observed</td>
+</tr>
+<tr>
+<td>Extra clinic</td>
+<td>EVG-CHANGE-007</td>
+<td>Requested, not approved</td>
+</tr>
+<tr>
+<td>After-hours support</td>
+<td>Sales statement without terms</td>
+<td>Not established</td>
+</tr>
+<tr>
+<td>Product UAT/release</td>
+<td>Readiness unmet</td>
+<td>Not completed</td>
+</tr>
+<tr>
+<td>Commercial settlement</td>
+<td>No applicable financial records supplied</td>
+<td>Cannot assess</td>
+</tr>
+<tr>
+<td>Operational handover</td>
+<td>Recipient/access/acceptance gaps</td>
+<td>Not complete</td>
+</tr>
+</tbody>
+</table></div>
+<p>Closure recommendation: do not close the implemented engagement or claim realised value. Present the pack and request the next evidence and scope decisions.</p>
+<p>Record EVG-DEC-051: distinguish synthetic value analysis from actual client outcomes.</p>
+<p>Record EVG-DEC-052: preserve unfulfilled or unverified commitments instead of declaring engagement closure.</p>
+<h3>4.7 Completed retrospective</h3>
+<p>EVG-SRC-155 identifies these case events.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event/evidence</th>
+<th>Useful lesson</th>
+<th>Action and owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales wording exceeded supported scope</td>
+<td>Expectations need source and authority classification</td>
+<td>Implementation Lead uses the engagement-brief classification at every handoff</td>
+</tr>
+<tr>
+<td>J04 customer mismatch</td>
+<td>Similar labels cannot determine ownership</td>
+<td>Operations confirms relationships; original/correction retained</td>
+</tr>
+<tr>
+<td>One receipt but two review items in receiver V1</td>
+<td>Count records and side effects</td>
+<td>Developer/Quality Lead verify both in duplicate tests</td>
+</tr>
+<tr>
+<td>Report V1 counted an older completion</td>
+<td>Measure definitions belong in executable checks</td>
+<td>Quality Lead retains date-boundary tests</td>
+</tr>
+<tr>
+<td>Cutover forecast missed recovery deadline</td>
+<td>Recovery time must shape the decision point</td>
+<td>Administrator/Implementation Lead rehearse timing updates</td>
+</tr>
+<tr>
+<td>Backup nominated without access proof</td>
+<td>Nomination differs from accepted responsibility</td>
+<td>Sponsor/Administrator confirm review and authority</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each action has a mechanism and owner. “Communicate better” would not explain how these failures are prevented.</p>
+<h3>4.8 Completion and improvement backlog</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Backlog ID</th>
+<th>Type</th>
+<th>Item</th>
+<th>Owner/decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-IMPROVE-001</td>
+<td>Baseline completion</td>
+<td>Actual native fit, access, UAT and acceptance evidence</td>
+<td>Implementation Lead/Administrator/business owners</td>
+</tr>
+<tr>
+<td>EVG-IMPROVE-002</td>
+<td>Data decisions</td>
+<td>Resolve C04 and the held cancellation group</td>
+<td>Operations/Finance</td>
+</tr>
+<tr>
+<td>EVG-IMPROVE-003</td>
+<td>Operational exception</td>
+<td>Obtain job 2105’s required acknowledgement</td>
+<td>Operations/Dispatch</td>
+</tr>
+<tr>
+<td>EVG-IMPROVE-004</td>
+<td>Reference investigation</td>
+<td>Reproduce sender-wrapper defect 002 and verify correction</td>
+<td>Developer/Quality Lead</td>
+</tr>
+<tr>
+<td>EVG-IMPROVE-005</td>
+<td>Ownership completion</td>
+<td>Backup review, authority and handover acceptance</td>
+<td>Sponsor/Administrator</td>
+</tr>
+<tr>
+<td>EVG-IMPROVE-006</td>
+<td>Scope requests</td>
+<td>Assess changes 003–007 through their existing records</td>
+<td>Sponsor/Implementation Lead</td>
+</tr>
+</tbody>
+</table></div>
+<p>Portal/routing change 001 remains deferred. Reporting change 002 remains planning-approved only. Do not recast unresolved requests as included work.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal</p>
+<p>Prepare the final project pack and a client-facing explanation that survives evidence questions.</p>
+<p>Complete inputs</p>
+<p>Use the worked datasets and commitment snapshot.</p>
+<p>EVG-SRC-156 supplies these draft presentation claims:</p>
+<ol>
+<li>“Evergreen’s first-pass performance improved to 80%.”</li>
+<li>“The client accepted the weekly report.”</li>
+<li>“Delivery consumed 98.9 hours.”</li>
+<li>“Administrator handover is complete.”</li>
+<li>“The reference pack is available for presentation review.”</li>
+<li>“All integration defects are closed.”</li>
+</ol>
+<p>No additional outcome, timesheet, acceptance or handover evidence is supplied.</p>
+<p>Project-pack index</p>
+<p>Check each chapter’s contribution.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>Main artifact</th>
+<th>Evidence/status to explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C05-CH01</td>
+<td>Engagement brief</td>
+<td>Sources, expectations and authorised boundary</td>
+</tr>
+<tr>
+<td>C05-CH02</td>
+<td>Discovery notes/charter</td>
+<td>Business facts, owners and unresolved questions</td>
+</tr>
+<tr>
+<td>C05-CH03</td>
+<td>Process models</td>
+<td>Current evidence and proposed/confirmed rules</td>
+</tr>
+<tr>
+<td>C05-CH04</td>
+<td>Requirements/traceability</td>
+<td>Stable needs, criteria and planned checks</td>
+</tr>
+<tr>
+<td>C05-CH05</td>
+<td>SOW/proposed scope</td>
+<td>Boundaries and historical estimates</td>
+</tr>
+<tr>
+<td>C05-CH06</td>
+<td>Architecture/fit-gap</td>
+<td>Conditional product choice</td>
+</tr>
+<tr>
+<td>C05-CH07</td>
+<td>Access/environment plan</td>
+<td>Desired authority; actual proof missing</td>
+</tr>
+<tr>
+<td>C05-CH08</td>
+<td>Migration workbook</td>
+<td>Paper reconciliation and held changes</td>
+</tr>
+<tr>
+<td>C05-CH09</td>
+<td>Delivery plan</td>
+<td>Forecast, capacity and dependencies</td>
+</tr>
+<tr>
+<td>C05-CH10</td>
+<td>Reference prototype</td>
+<td>Local rules, not native fit</td>
+</tr>
+<tr>
+<td>C05-CH11</td>
+<td>Interface/quality pack</td>
+<td>Reference defect and retry evidence</td>
+</tr>
+<tr>
+<td>C05-CH12</td>
+<td>Change/status pack</td>
+<td>Explicit planning decisions</td>
+</tr>
+<tr>
+<td>C05-CH13</td>
+<td>UAT pack</td>
+<td>Local rehearsal versus unstarted product UAT</td>
+</tr>
+<tr>
+<td>C05-CH14</td>
+<td>Cutover/recovery pack</td>
+<td>Conditional simulation; actual No-go</td>
+</tr>
+<tr>
+<td>C05-CH15</td>
+<td>Training/handover pack</td>
+<td>Materials and proposed ownership</td>
+</tr>
+<tr>
+<td>C05-CH16</td>
+<td>Value/closure/presentation</td>
+<td>Evidence-based conclusions and next decisions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Classify each claim.  </li>
+</ol>
+<p>Expected: retain, qualify or remove it based on supplied evidence.</p>
+<ol start="2">
+<li>Calculate the measures.  </li>
+</ol>
+<p>Expected: 60% baseline, 80% rehearsal, unfinished records and adherence gaps disclosed.</p>
+<ol start="3">
+<li>Prepare the presentation.  </li>
+</ol>
+<p>Expected: state the main conclusion early and distinguish planning from delivery.</p>
+<ol start="4">
+<li>Write your contribution statement.  </li>
+</ol>
+<p>EVG-SRC-154 supplies an illustrative learner role: Implementation Lead simulation. The supplied code is a foundation; the learner’s contribution is analysis, execution where performed, interpretation and decision documentation.  </p>
+<p>Expected: claim only your own actions and identify the supporting artifacts.</p>
+<ol start="5">
+<li>Answer the client’s question.  </li>
+</ol>
+<p>EVG-SRC-160 asks:</p>
+<p>“Can we present 80% as achieved and close the implementation?”</p>
+<p>Expected: explain the evidence boundary and closure gaps.</p>
+<p>Blank value-review worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Baseline/input</th>
+<th>Current evidence</th>
+<th>Formula/result</th>
+<th>Unfinished/excluded records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank contribution worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Artifact/decision</th>
+<th>Your action</th>
+<th>Supplied/team foundation</th>
+<th>Evidence</th>
+<th>Business reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: Value Review v0.2, closure assessment, improvement backlog, client presentation and individual contribution statement.</p>
+<p>Cleanup: retain source data, corrected calculations and evidence versions. Do not replace historical forecasts or failed tests with the latest result.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Choose one client-style scenario. All required inputs are supplied below.</p>
+<p>Option A: scope change</p>
+<p>EVG-SRC-157</p>
+<p>The Sponsor asks for the extra role clinic while retaining the 100-hour supplier ceiling.</p>
+<ul>
+<li>Current base: 86 hours.</li>
+<li>Extra work: preparation 2, delivery 1, follow-up/document update 1.</li>
+<li>Reserve: 15% of revised base.</li>
+<li>Original client participation: 13 hours.</li>
+<li>Four clinic participants attend for one hour each.</li>
+<li>No clinic approval or reserve reduction is supplied.</li>
+<li>After-hours support remains an undefined request.</li>
+</ul>
+<p>Deliver an impact calculation, options and a client response.</p>
+<p>Option B: migration/recovery</p>
+<p>EVG-SRC-158</p>
+<p>Use a disposable simulation, not the actual project.</p>
+<p>The checkpoint target has four customers, seven jobs and three appointments: fourteen entities.</p>
+<p>Proposed replay rows:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>Create EVG-JOB-2301, customer 0104, received 6 February 08:58, Ready to assign</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>Create EVG-JOB-2302, customer 0101, received 10:08, Ready to assign</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>Create EVG-JOB-2303, customer 0102, received 10:10, Ready to assign</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Update job 1803 summary from “Replaced sensor and checked operation.” to “Replaced sensor and checked operation. Verification recorded.”</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Exact duplicate of R2</td>
+</tr>
+</tbody>
+</table></div>
+<p>All parents exist. Simulator replay is approved; outbound actions must remain off. One notification concerning job 2302 was already delivered and cannot be recalled by this procedure.</p>
+<p>C04 and the older cancellation conflict remain unresolved and are not part of this replay.</p>
+<p>Deliver reconciliation, replay treatment, recovery limits and a client response.</p>
+<p>Option C: incident/support</p>
+<p>EVG-SRC-159</p>
+<p>In the support tabletop:</p>
+<ul>
+<li>A local export marked Dispatch contains a private_reason field.</li>
+<li>Finance says that content must remain restricted.</li>
+<li>The reference record-page projection was corrected, but export-path proof is absent.</li>
+<li>No real tenant incident is supplied.</li>
+<li>Administrator is the technical owner; Finance owns restricted-information handling.</li>
+<li>Existing client support applies; no after-hours service is approved.</li>
+<li>Actual project release remains No-go.</li>
+</ul>
+<p>Deliver triage, evidence preservation, escalation, correction/verification plan and a client response.</p>
+<p>Success criteria</p>
+<p>Your response must:</p>
+<ul>
+<li>Use the applicable requirement, change, defect or decision links.</li>
+<li>Separate calculations from approval.</li>
+<li>Preserve business identifiers and evidence.</li>
+<li>Name the responsible owner.</li>
+<li>Avoid unsupported outcome, recovery or service claims.</li>
+<li>Explain your own reasoning.</li>
+</ul>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synthetic improvement presented as realised value</td>
+<td>Evidence type omitted</td>
+<td>State cohort, measure and simulation status</td>
+</tr>
+<tr>
+<td>Unfinished cases disappear</td>
+<td>Completed-case rate overextended</td>
+<td>Disclose pending records and conditional limits</td>
+</tr>
+<tr>
+<td>Forecast called actual cost</td>
+<td>Estimate/expenditure confused</td>
+<td>Keep forecast and actual records separate</td>
+</tr>
+<tr>
+<td>Project declared closed after presentation</td>
+<td>Artifacts confused with fulfilment</td>
+<td>Review acceptance, obligations and ownership</td>
+</tr>
+<tr>
+<td>Local fix called native product fix</td>
+<td>Component evidence broadened</td>
+<td>Name build/environment and remaining checks</td>
+</tr>
+<tr>
+<td>Improvement backlog hides baseline gaps</td>
+<td>Required work relabelled optional</td>
+<td>Classify completion versus new scope</td>
+</tr>
+<tr>
+<td>Learner claims supplied code authorship</td>
+<td>Contribution attribution unclear</td>
+<td>State source and personal analysis/execution</td>
+</tr>
+<tr>
+<td>Recovery resets external-effect history</td>
+<td>Restore confused with reversal</td>
+<td>Preserve delivery/journal evidence</td>
+</tr>
+</tbody>
+</table></div>
+<p>Correct inaccurate claims before presentation. If already circulated, issue a clear correction identifying the affected statement and evidence.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What makes an outcome comparison reproducible?</li>
+<li>Why does 80% among completed reviews not describe all eight handoffs?</li>
+<li>How does process adherence differ from first-pass success?</li>
+<li>What is needed to assess commercial closure?</li>
+<li>Why should a retrospective action have an owner and verification?</li>
+<li>Which statements distinguish planning approval from acceptance?</li>
+<li>How can you explain contribution without claiming team or supplied work?</li>
+<li>What should the final client presentation request when closure is unsupported?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: The dataset is synthetic and separate from production. It demonstrates a measurement, not a realised implementation outcome.</p>
+<p>LC2: Yes. Job 2503 had complete information for Finance but bypassed the agreed handoff queue.</p>
+<p>LC3: Artifact availability does not establish product delivery, acceptance, commercial settlement or operating ownership.</p>
+<p>LC4: It connects a specific event and cause to an actionable change, owner and evidence of improvement.</p>
+<p>LC5: Attribution makes the contribution credible and prevents running or reviewing supplied work from being mistaken for authorship.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Claim corrections</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Draft claim</th>
+<th>Treatment</th>
+<th>Supported wording</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-pass improved to 80%</td>
+<td>Qualify</td>
+<td>Separate synthetic rehearsal: 4/5 completed reviews, 80%; three pending</td>
+</tr>
+<tr>
+<td>Client accepted report</td>
+<td>Correct</td>
+<td>Reporting is in SB-02 v1.1 planning scope; actual report acceptance absent</td>
+</tr>
+<tr>
+<td>98.9 hours consumed</td>
+<td>Correct</td>
+<td>98.9 is the full-reserve forecast; actual effort not supplied</td>
+</tr>
+<tr>
+<td>Administrator handover complete</td>
+<td>Correct</td>
+<td>Document recipient nominated; authority/acknowledgement/acceptance pending</td>
+</tr>
+<tr>
+<td>Reference pack available</td>
+<td>Retain within boundary</td>
+<td>Available for student/client-style presentation review</td>
+</tr>
+<tr>
+<td>All integration defects closed</td>
+<td>Remove</td>
+<td>Defect 001 locally retested; sender defect 002 reproduction pending</td>
+</tr>
+</tbody>
+</table></div>
+<p>Completed client presentation</p>
+<ol>
+<li>Main conclusion</li>
+</ol>
+<p>The planning and reference pack is available for review. Actual implementation acceptance, release and operational closure are not supported by the current evidence.</p>
+<ol start="2">
+<li>Business context</li>
+</ol>
+<p>Evergreen needs reliable intake, internal job visibility, dispatch coordination, controlled Finance handoffs and repeatable reporting. The pack preserves those needs and separates them from deferred portal, routing and other requests.</p>
+<ol start="3">
+<li>Evidence and value</li>
+</ol>
+<p>The original synthetic handoff sample has a 60% completed-review first-pass rate. A separate rehearsal has 80%, with three reviews unfinished. These numbers demonstrate the measurement method, not realised benefit.</p>
+<p>Local prototypes exercise key business controls. Actual native fit and product UAT remain unverified.</p>
+<ol start="4">
+<li>Scope and forecast</li>
+</ol>
+<p>SB-02 v1.1 includes the core pilot and one weekly report for planning. Its supplier forecast is 86–98.9 hours, conditional on stated assumptions. The additional clinic is a separate request and would exceed the ceiling with the supplied reserve.</p>
+<ol start="5">
+<li>Open obligations</li>
+</ol>
+<p>Product readiness, acceptance, migration exceptions, job-2105 acknowledgement, sender reproduction and ownership verification remain open. Support terms and commercial settlement are not established.</p>
+<ol start="6">
+<li>Requested decisions</li>
+</ol>
+<p>Confirm the next authorised readiness work, retain explicit scope treatment for pending changes and identify owners for closure evidence. Do not present the rehearsal as achieved client value or approve release from the pack alone.</p>
+<p>Example contribution statement</p>
+<p>Use this as a model only where it matches your actual work:</p>
+<p>My contribution was the evidence-based delivery review. I classified sales expectations, refined the requirements and scope comparisons, calculated effort and outcome measures, and documented decision boundaries. I used the supplied prototype code as a foundation and recorded the local cases I personally executed. I connected EVG-REQ-003 to EVG-TEST-003 and EVG-UAT-003 to explain the Finance boundary. I recommended preserving No-go because actual product and acceptance evidence was missing.</p>
+<p>If you reasoned through cases without execution, replace the execution claim with “paper analysis.”</p>
+<p>A suitable answer to the Sponsor is:</p>
+<p>The 80% result belongs to a synthetic rehearsal and five completed reviews, with three pending. It cannot be presented as an achieved client outcome. The pack supports the next delivery decisions, but product acceptance, ownership and commercial evidence do not support implementation closure.</p>
+<h3>9.3 Independent challenge solutions</h3>
+<p>Option A: change</p>
+<blockquote>
+<p>Added base=2+1+1=4</p>
+<p>Revised base=86+4=90</p>
+<p>Reserve=90×0.15=13.5</p>
+<p>Upper bound=103.5</p>
+<p>Ceiling excess=103.5-100=3.5</p>
+</blockquote>
+<p>Client participation becomes:</p>
+<blockquote>
+<p>13+(4×1)=17 person-hours</p>
+</blockquote>
+<p>Link EVG-CHANGE-007 and EVG-REQ-018. Options include retaining the original orientation, revising the ceiling or assessing an explicit scope trade. After-hours service still needs a separate definition and decision.</p>
+<p>Option B: recovery</p>
+<p>Five replay rows represent:</p>
+<blockquote>
+<p>3 creates+1 update+1 duplicate skip=5</p>
+</blockquote>
+<p>Closing target:</p>
+<blockquote>
+<p>14+3=17</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Closing count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customers</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Appointments</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>17</td>
+</tr>
+</tbody>
+</table></div>
+<p>Update 1803 once. Skip the identical R5. Keep outbound actions off and retain the delivered-notification record.</p>
+<p>Neither checkpoint restore nor replay recalls the message. C04 and the older conflict remain outside this approved simulation.</p>
+<p>A suitable response is:</p>
+<p>The simulator replay accounts for three new jobs, one summary update and one duplicate skip, returning seventeen entities. The delivered notification remains an external effect. This reconciles the permitted simulation rows; it does not resolve the excluded source exceptions or authorise actual migration.</p>
+<p>Option C: incident/support</p>
+<p>Treat the supplied local export disclosure as a control failure, linked to EVG-REQ-008, EVG-NFR-001 and the display/entry-path evidence.</p>
+<ul>
+<li>Pause use of the affected local export artifact.</li>
+<li>Preserve a restricted reproduction record.</li>
+<li>Route technical investigation to Administrator/Developer and handling to Finance.</li>
+<li>Keep the general ticket free of the private reason.</li>
+<li>Correct the output source, not merely the visible column.</li>
+<li>Verify the export, public projections and Finance’s permitted view.</li>
+<li>Record any actual product checks separately when authorised.</li>
+</ul>
+<p>Do not promise an after-hours response or claim a real tenant exposure.</p>
+<p>Record EVG-DEC-053: retain ownership, scope and evidence limits in final recommendations.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Defined dataset, period, inclusion rules, formula, unfinished records and evidence type.</li>
+<li>Three have no review outcome; their later results could change the whole-cohort rate.</li>
+<li>Adherence assesses intended process use; first-pass assesses the receiving team’s return outcome.</li>
+<li>Applicable agreement, deliverable/change decisions and financial records.</li>
+<li>Otherwise the lesson cannot be acted on or evaluated.</li>
+<li>“Included in planning scope” differs from “implemented, tested and accepted.”</li>
+<li>Identify your artifact/action, supplied foundation, evidence and decision ownership.</li>
+<li>Specific next evidence, owners and decisions—not an unsupported success declaration.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and final project presentation</h2>
+<p>Value review is strongest when the limits of the evidence are clear.</p>
+<p>You have developed a connected Evergreen pack covering discovery, scope, architecture, access, migration, prototypes, quality, changes, UAT, cutover, training and support. The final presentation should show how those artifacts support decisions and where delivery remains incomplete.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can reproduce the outcome calculations.</li>
+<li>I can explain unfinished records and adoption gaps.</li>
+<li>I can reconcile commitments without inventing settlement.</li>
+<li>I can produce an actionable retrospective and backlog.</li>
+<li>I can present requirement-to-test links.</li>
+<li>I can explain my personal contribution accurately.</li>
+<li>I can respond to a change, migration or incident scenario.</li>
+<li>I can distinguish a completed learning pack from a closed implementation.</li>
+</ul>
+<p>This is the final chapter of Course 5. Present the client project pack, defend your contribution and preserve the evidence boundaries in your recommendations.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commercial closure</td>
+<td>Reconciliation of applicable commercial obligations and records</td>
+</tr>
+<tr>
+<td>Contribution statement</td>
+<td>Evidence-based explanation of personal work and decisions</td>
+</tr>
+<tr>
+<td>Improvement backlog</td>
+<td>Prioritised completion and improvement actions</td>
+</tr>
+<tr>
+<td>Outcome review</td>
+<td>Comparison of intended business improvements with available evidence</td>
+</tr>
+<tr>
+<td>Percentage point</td>
+<td>Absolute difference between percentage rates</td>
+</tr>
+<tr>
+<td>Process adherence</td>
+<td>Use of the intended workflow and controls</td>
+</tr>
+<tr>
+<td>Realised value</td>
+<td>Business benefit supported by actual operating evidence</td>
+</tr>
+<tr>
+<td>Retrospective</td>
+<td>Examination of events and causes to improve future work</td>
+</tr>
+<tr>
+<td>Synthetic rehearsal</td>
+<td>Constructed exercise used to test reasoning or behaviour</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Organisation/environment metadata useful when identifying actual technical evidence.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Get Profiles<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-profiles.html">Open official reference</a></li>
+</ol>
+<p>Specific-profile permission information relevant to unresolved access proof.</p>
+<p>These official sources were accessed on 5 October 2026 during the course research. They support technical evidence collection, not business-value or acceptance claims. Research remains partially verified; Evergreen’s actual implementation and operating outcomes remain unobserved.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Present the final client pack and defend individual work.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-15">← Previous chapter</a><a href="/course-book/course-05">Back to Course Book →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

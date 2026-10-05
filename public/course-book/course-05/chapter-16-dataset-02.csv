@@ -1,0 +1,9 @@
+job_ref,finance_review_state,returned_for_missing_info,process_followed,adherence_exception
+EVG-JOB-2501,review_complete,no,yes,none
+EVG-JOB-2502,review_complete,no,yes,none
+EVG-JOB-2503,review_complete,no,no,bypassed_handoff_queue
+EVG-JOB-2504,review_complete,no,yes,none
+EVG-JOB-2505,review_complete,yes,no,missing_completion_summary
+EVG-JOB-2506,awaiting_review,,yes,none
+EVG-JOB-2507,awaiting_review,,no,bypassed_handoff_queue
+EVG-JOB-2508,awaiting_review,,unknown,evidence_missing

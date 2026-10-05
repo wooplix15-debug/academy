@@ -1,0 +1,1261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 14</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 14</p><h1>Cutover, Release and Recovery</h1><p>Run a go-live simulation with a cutover runbook.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-14-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: two recovery boundaries</a><a href="#section-4">4. Worked case: prepare and run the conditional cutover</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A release changes how people perform their work. It can introduce new configuration, data, access and operating procedures at the same time.</p>
+<p>Cutover is the controlled transition to the intended operating state. A release makes an identified version available for use. Recovery restores a defined safe operating position when the transition or released service does not behave as required.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Evaluate release readiness using evidence.</li>
+<li>Define a configuration-promotion manifest.</li>
+<li>Plan final data changes and reconcile their effects.</li>
+<li>Sequence a cutover with owners, checkpoints and stop conditions.</li>
+<li>Communicate normal progress, delay and recovery.</li>
+<li>Make a defensible go/no-go recommendation.</li>
+<li>Design representative smoke tests.</li>
+<li>Calculate recovery deadlines and explain recovery limits.</li>
+<li>Run a complete tabletop go-live simulation.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the scope baseline, migration workbook, access plan and UAT evidence from Chapters 5–13.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>Current state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SB-02 v1.1</td>
+<td>Approved for fictional planning only</td>
+</tr>
+<tr>
+<td>Actual product UAT</td>
+<td>Not started; prerequisites unmet</td>
+</tr>
+<tr>
+<td>Product acceptance</td>
+<td>Not recommended</td>
+</tr>
+<tr>
+<td>Native fit and permissions</td>
+<td>Unverified</td>
+</tr>
+<tr>
+<td>Local defects</td>
+<td>Receiver/report corrections are reference results; display V4 has limited local evidence</td>
+</tr>
+<tr>
+<td>Migration paper target</td>
+<td>Four customers, seven jobs and three appointments</td>
+</tr>
+<tr>
+<td>Unresolved source matters</td>
+<td>C04 and the cancellation conflict remain open</td>
+</tr>
+<tr>
+<td>EVG-JOB-2105</td>
+<td>Operational acknowledgement issue remains unresolved unless later evidence is supplied</td>
+</tr>
+<tr>
+<td>Actual release authority</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Support service</td>
+<td>Existing client ownership; no new supplier service established</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-129 authorises a cutover runbook and offline simulation only.</p>
+<p>This chapter has two clearly identified states:</p>
+<ul>
+<li>Current case: the actual fictional project evidence still supports No-go.</li>
+<li>Conditional exercise: a separate tabletop overlay supplies assumptions and event cards so that you can practise cutover and recovery.</li>
+</ul>
+<p>The overlay does not close earlier issues, supply actual UAT results or authorise tenant changes.</p>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>A readiness sheet.</li>
+<li>A configuration and data manifest.</li>
+<li>A cutover/recovery runbook.</li>
+<li>Smoke-test and decision records.</li>
+<li>A communication pack.</li>
+<li>A post-release ownership checkpoint.</li>
+</ol>
+<p>All times, records, durations and observations in the tabletop are synthetic inputs or expected simulated outcomes. No Zoho deployment, restore, client signature or release approval is claimed.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Readiness is an evidence decision</h3>
+<p>Skill: distinguish a planned release from a ready release.</p>
+<p>A release plan can be complete while the release itself remains unready.</p>
+<p>Readiness should cover:</p>
+<ul>
+<li>Scope and release authority.</li>
+<li>Identified target environment and version.</li>
+<li>Acceptance and unresolved defects.</li>
+<li>Data and final-change reconciliation.</li>
+<li>Effective access and connection identities.</li>
+<li>Configuration-promotion method.</li>
+<li>Recovery capability.</li>
+<li>Communications, business procedures and support ownership.</li>
+</ul>
+<p>A green estimate is not release evidence. Neither is a locally corrected prototype.</p>
+<p>For Evergreen, actual product UAT remains unperformed. That is enough to prevent a supported live-release recommendation under the supplied acceptance rules.</p>
+<p>Readiness gaps need owners and closure evidence:</p>
+<p>“Client Administrator must provide the identified target organisation and verified access configuration.”</p>
+<p>This is more useful than:</p>
+<p>“Technical readiness pending.”</p>
+<p>A gate cannot be marked passed because the team expects the evidence to arrive.</p>
+<p>Lesson check LC1: Why can a complete cutover runbook coexist with a No-go decision?</p>
+<h3>2.2 Promote identified configuration, not an undefined environment</h3>
+<p>Skill: specify what changes and how dependencies are checked.</p>
+<p>Configuration promotion transfers selected, tested configuration into the target environment. It may use a product-supported mechanism or an approved manual recreation procedure.</p>
+<p>The manifest should identify:</p>
+<ul>
+<li>Artifact and version.</li>
+<li>Source and target.</li>
+<li>Dependencies.</li>
+<li>Environment-specific values.</li>
+<li>Verification.</li>
+<li>Recovery treatment.</li>
+</ul>
+<p>Do not assume that a promotion transfers every role, field, relationship, connection or data record correctly.</p>
+<p>Zoho CRM’s Modules API describes available modules and their API names.2 This supports inventory and comparison; it is not a deployment API or proof that all artifacts are promotable.</p>
+<p>The exact Zoho promotion navigation, supported artifact coverage and reversal procedure remain unverified for Evergreen. The runbook therefore specifies a logical manifest and requires an authorised, rehearsed tenant-specific method before actual execution.</p>
+<p>Connection bindings require particular care. Zoho documents organisation-specific authorisation: a production organisation’s token cannot be reused for sandbox organisations.1 Record the intended organisation, identity and regional domain rather than copying a credential because it worked elsewhere.</p>
+<p>Do not copy source-environment product IDs into target lookups without verified mappings.</p>
+<p>Lesson check LC2: Why should connections and access be verified after configuration promotion?</p>
+<h3>2.3 Control the final data interval</h3>
+<p>Skill: explain what happens between the last rehearsal and admission of users.</p>
+<p>A freeze stops specified changes during a controlled interval. It must state which writes stop, where new requests go and who owns them.</p>
+<p>A freeze does not mean customers stop contacting the business. Operations may need a source worksheet or intake queue.</p>
+<p>A final delta contains approved changes after the earlier dataset or rehearsal. It needs:</p>
+<ul>
+<li>Source cutoff.</li>
+<li>Stable keys.</li>
+<li>Create/update treatment.</li>
+<li>Conflict handling.</li>
+<li>Result accounting.</li>
+<li>Preservation for recovery.</li>
+</ul>
+<p>Count creates and updates separately:</p>
+<blockquote>
+<p>Closing record count = opening count + creates - deletions</p>
+</blockquote>
+<p>Updates change values, not entity count.</p>
+<p>Do not automatically apply the older held cancellation group. It remains unresolved. The final delta must identify its own authorised changes.</p>
+<p>A checkpoint also needs clear meaning. A data copy alone is not necessarily a configuration restore, access restore or complete recovery method.</p>
+<p>Lesson check LC3: If a final delta creates one job and updates another, how many records does it add?</p>
+<h3>2.4 Sequence gates and communications</h3>
+<p>Skill: make each transition accountable.</p>
+<p>A runbook is an executable sequence of actions, conditions, owners and verification.</p>
+<p>Each step should state:</p>
+<ul>
+<li>Entry condition.</li>
+<li>Action.</li>
+<li>Owner.</li>
+<li>Expected result.</li>
+<li>Time or duration.</li>
+<li>Failure/stop behaviour.</li>
+<li>Evidence to retain.</li>
+</ul>
+<p>Separate:</p>
+<ul>
+<li>Readiness decision before starting.</li>
+<li>Go/no-go after promotion and smoke checks.</li>
+<li>Admission of business users.</li>
+<li>Monitoring and handover.</li>
+</ul>
+<p>A gate can require an immediate decision. If recovery needs thirty minutes and the window ends at 10:30, waiting until 10:05 to decide is already too late for that recovery path.</p>
+<p>Communications should tell people what to do:</p>
+<p>“Continue intake in the source worksheet. Do not enter the same request in both systems.”</p>
+<p>Avoid vague messages such as “technical work ongoing.”</p>
+<p>Use separate notices for planned start, delay/no-go, admission and fallback. Identify sender, audience and decision source.</p>
+<p>Lesson check LC4: Why should a “release complete” message wait until the admission decision and verification are recorded?</p>
+<h3>2.5 Use smoke tests to check essential target behaviour</h3>
+<p>Skill: confirm a small set of high-value conditions after change.</p>
+<p>A smoke test is a short check of essential behaviour after deployment or transition. It does not replace full supplier testing or UAT.</p>
+<p>Evergreen’s smoke checks should include:</p>
+<ul>
+<li>Intake and customer relationship.</li>
+<li>Intended role restrictions.</li>
+<li>Finance handoff visibility and invoice boundary.</li>
+<li>Report availability and agreed counting logic.</li>
+<li>Retained correction/history evidence.</li>
+</ul>
+<p>Use known inputs and expected results. “Check CRM works” is not a test.</p>
+<p>Readiness evidence must identify the target. CRM’s organisation API describes organisation ID and environment type.3 An environment label in a document is not equivalent to a verified product organisation.</p>
+<p>A critical smoke failure requires the stated stop action. Four passing checks do not cancel one confidential-information failure.</p>
+<p>Lesson check LC5: Why can four of five smoke checks passing still require No-go?</p>
+<h3>2.6 Define recovery limits before the failure</h3>
+<p>Skill: distinguish restore, containment, fallback and irreversible effects.</p>
+<p>Different recovery actions solve different problems:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stop/isolate</td>
+<td>Prevent further unsafe access or writes</td>
+</tr>
+<tr>
+<td>Restore checkpoint</td>
+<td>Return covered configuration/data to a known state</td>
+</tr>
+<tr>
+<td>Forward correction</td>
+<td>Apply a known correction under approved conditions</td>
+</tr>
+<tr>
+<td>Business fallback</td>
+<td>Continue work through a controlled alternative</td>
+</tr>
+<tr>
+<td>Reconcile/replay</td>
+<td>Account for work created after the checkpoint</td>
+</tr>
+</tbody>
+</table></div>
+<p>A restore can remove post-checkpoint records. Preserve acknowledged work before restoring and verify where it will be processed.</p>
+<p>Restoring configuration does not recall an email, reverse an external transaction or make a disclosed value unread.</p>
+<p>A recovery time objective is a target time to restore a defined service. A recovery point objective is the permitted loss of acknowledged information. State the service and conditions; do not present either as a vendor guarantee.</p>
+<p>For this exercise:</p>
+<ul>
+<li>Manual fallback target: within fifteen minutes after post-admission failure.</li>
+<li>Acknowledged intake-loss target: zero, provided the supplied journal is captured and reconciled.</li>
+<li>Full checkpoint recovery: thirty minutes under the tabletop assumptions.</li>
+</ul>
+<p>Those targets apply to the simulation. Actual recovery remains unproven.</p>
+<p>Lesson check LC6: Why can manual fallback meet its target even when full application restoration cannot finish within the window?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: two recovery boundaries</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Readiness gate</td>
+<td>Continue</td>
+<td>Ready and authorised?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Ready and authorised?</td>
+<td>No</td>
+<td>No-go; existing operations continue</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Ready and authorised?</td>
+<td>Yes</td>
+<td>Freeze, checkpoint and promote</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Freeze, checkpoint and promote</td>
+<td>Continue</td>
+<td>Final delta and smoke checks</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Final delta and smoke checks</td>
+<td>Continue</td>
+<td>Go by recovery deadline?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Go by recovery deadline?</td>
+<td>No</td>
+<td>Pre-admission recovery</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Go by recovery deadline?</td>
+<td>Yes</td>
+<td>Admit users</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Admit users</td>
+<td>Continue</td>
+<td>Essential failure?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Essential failure?</td>
+<td>No</td>
+<td>Monitor and hand over</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Essential failure?</td>
+<td>Yes</td>
+<td>Isolate, preserve new work and use fallback</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Isolate, preserve new work and use fallback</td>
+<td>Continue</td>
+<td>Separately controlled restore/reconciliation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Before admission, the recovery set is relatively small and known.</p>
+<p>After admission, users may have created new work or external effects. The recovery plan must preserve those facts before resetting the target.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: prepare and run the conditional cutover</h2>
+<h3>4.1 Current-case readiness</h3>
+<p>EVG-SRC-130 restates the actual case evidence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Current evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execution authority</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Actual product acceptance</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Target/build identity</td>
+<td>Not fully evidenced</td>
+</tr>
+<tr>
+<td>Role/access proof</td>
+<td>Local model only</td>
+</tr>
+<tr>
+<td>Promotion/restore method</td>
+<td>Not demonstrated in tenant</td>
+</tr>
+<tr>
+<td>Final data approval</td>
+<td>Earlier exceptions remain</td>
+</tr>
+<tr>
+<td>Support/adoption readiness</td>
+<td>Proposed ownership only</td>
+</tr>
+</tbody>
+</table></div>
+<p>Current-case recommendation: No-go.</p>
+<p>Record EVG-DEC-043: do not convert planning or local-reference evidence into live-release readiness.</p>
+<h3>4.2 Conditional tabletop overlay</h3>
+<p>EVG-SRC-131 creates a separate exercise, EVG-SIM-RELEASE-001.</p>
+<p>For this exercise only, assume:</p>
+<ul>
+<li>Required authority, target identity, business acceptance and representative access checks have been supplied as simulation cards.</li>
+<li>The target is a disposable simulator, not a Zoho organisation.</li>
+<li>Checkpoint restore is available with the durations below.</li>
+<li>Outbound notifications and live financial actions must remain disabled.</li>
+<li>The Sponsor can decide Go; the Implementation Lead or Administrator can stop on a mandatory failure.</li>
+<li>No exception is allowed for restricted-information exposure.</li>
+<li>Final Go must be decided by 10:00 UTC inclusive.</li>
+<li>Window: 6 February 2027, 09:00–10:30 UTC.</li>
+</ul>
+<p>These assumptions do not update the current project’s readiness.</p>
+<p>Record EVG-DEC-044: keep conditional simulation evidence separate from actual case records.</p>
+<h3>4.3 Configuration manifest</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Candidate content</th>
+<th>Dependency</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-CFG-001</td>
+<td>Customer/job relationship and stable references</td>
+<td>Approved logical schema</td>
+<td>Known keys and parent mappings</td>
+</tr>
+<tr>
+<td>EVG-CFG-002</td>
+<td>Appointment history and acknowledgement rules</td>
+<td>CFG-001</td>
+<td>Reschedule/identity checks</td>
+</tr>
+<tr>
+<td>EVG-CFG-003</td>
+<td>Completion qualification and Finance authority</td>
+<td>CFG-001–002</td>
+<td>Missing-data and no-release checks</td>
+</tr>
+<tr>
+<td>EVG-CFG-004</td>
+<td>Public projection based on local V4 design</td>
+<td>Access model and CFG-003</td>
+<td>No private reason in operational output</td>
+</tr>
+<tr>
+<td>EVG-CFG-005</td>
+<td>Weekly report based on local V2 logic</td>
+<td>Date/status fields</td>
+<td>Known five-row fixture</td>
+</tr>
+</tbody>
+</table></div>
+<p>Package C1 is a logical candidate. B0 is the simulator’s known safe pre-change checkpoint, with business admission off. Neither is a Zoho release version.</p>
+<p>Promotion order is relationships, process/history controls, access/projections, then reports and target-specific bindings.</p>
+<h3>4.4 Data checkpoint and final delta</h3>
+<p>EVG-SRC-132 supplies the deployment ledger. It reproduces the accepted paper keys, not an actual production load.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Checkpoint keys/count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customers</td>
+<td>EVG-CUST-0101–0104: 4</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td>EVG-JOB-1801–1807: 7</td>
+</tr>
+<tr>
+<td>Appointments</td>
+<td>EVG-APPT-7001–7003: 3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>14</td>
+</tr>
+</tbody>
+</table></div>
+<p>Important checkpoint facts:</p>
+<ul>
+<li>EVG-JOB-1801 remains Scheduled for EVG-CUST-0103 after the earlier local correction.</li>
+<li>EVG-APPT-7001 remains Confirmed.</li>
+<li>The conflicting cancellation group is not applied.</li>
+<li>EVG-JOB-1803’s summary is “Replaced sensor and checked operation.”</li>
+<li>C04 remains outside the selected set.</li>
+</ul>
+<p>Two new, explicitly supplied simulation changes are permitted:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Delta ID</th>
+<th>Action</th>
+<th>Complete relevant values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-DELTA-001</td>
+<td>Create job</td>
+<td>EVG-JOB-2301; EVG-CUST-0104; received 6 February 08:58 UTC; Ready to assign; no appointment/completion</td>
+</tr>
+<tr>
+<td>EVG-DELTA-002</td>
+<td>Update summary</td>
+<td>EVG-JOB-1803; new summary “Replaced sensor and checked operation. Verification recorded.”; Technician Lead supplies correction</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both remain in the source worksheet regardless of target recovery.</p>
+<p>Expected candidate ledger:</p>
+<blockquote>
+<p>14+1 create=15 entities</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Before</th>
+<th>Creates</th>
+<th>Updates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customers</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td>7</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Appointments</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>14</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<p>The update does not add another entity.</p>
+<h3>4.5 Complete cutover runbook</h3>
+<p>EVG-SRC-133 supplies elapsed durations. These are window minutes, not supplier person-minute estimates.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Planned UTC interval</th>
+<th>Owner</th>
+<th>Action and expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C01</td>
+<td>09:00–09:05</td>
+<td>Implementation Lead/Sponsor</td>
+<td>Confirm simulation readiness, roles and scope</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>09:05–09:10</td>
+<td>Administrator/Operations</td>
+<td>Pause target writes; route intake to source worksheet; outbound off</td>
+</tr>
+<tr>
+<td>C03</td>
+<td>09:10–09:15</td>
+<td>Administrator</td>
+<td>Capture B0 checkpoint and fourteen-key manifest</td>
+</tr>
+<tr>
+<td>C04</td>
+<td>09:15–09:30</td>
+<td>Administrator</td>
+<td>Apply logical C1 manifest in dependency order</td>
+</tr>
+<tr>
+<td>C05</td>
+<td>09:30–09:35</td>
+<td>Administrator/Quality Lead</td>
+<td>Verify target bindings and access</td>
+</tr>
+<tr>
+<td>C06</td>
+<td>09:35–09:45</td>
+<td>Implementation Lead/Operations</td>
+<td>Apply two approved delta actions; reconcile fifteen entities</td>
+</tr>
+<tr>
+<td>C07</td>
+<td>09:45–10:00</td>
+<td>Quality Lead/business roles</td>
+<td>Execute five smoke groups</td>
+</tr>
+<tr>
+<td>G1</td>
+<td>By 10:00</td>
+<td>Sponsor, with Finance/Quality input</td>
+<td>Decide Go or start recovery</td>
+</tr>
+<tr>
+<td>C08</td>
+<td>10:00–10:05</td>
+<td>Implementation Lead/Administrator</td>
+<td>Record Go and prepare admission</td>
+</tr>
+<tr>
+<td>C09</td>
+<td>10:05–10:10</td>
+<td>Operations/Administrator</td>
+<td>Admit users; source/target routing explicit</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>10:10–10:20</td>
+<td>Administrator/Operations</td>
+<td>Monitor and transfer checkpoint to owners</td>
+</tr>
+<tr>
+<td>Reserve</td>
+<td>10:20–10:30</td>
+<td>Named owners</td>
+<td>Bounded observation/communication allowance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Normal sequence:</p>
+<blockquote>
+<p>5+5+5+15+5+10+15+5+5+10=80 elapsed minutes</p>
+</blockquote>
+<p>The ninety-minute window leaves ten minutes. That does not mean a thirty-minute recovery can begin at 10:20.</p>
+<h3>4.6 Smoke inputs and failure card</h3>
+<p>EVG-SRC-134 supplies five checks. The report fixture is a separate immutable validation fixture, not additional deployment-ledger records.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Smoke ID</th>
+<th>Inputs</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SMOKE-001</td>
+<td>Operations reads EVG-JOB-2301 and customer 0104</td>
+<td>Correct key, relationship and 08:58 received time</td>
+</tr>
+<tr>
+<td>EVG-SMOKE-002</td>
+<td>T1 attempts completion edit on job 1804, assigned to T2</td>
+<td>Denied; no record change</td>
+</tr>
+<tr>
+<td>EVG-SMOKE-003</td>
+<td>Dispatch sees job 1803; Finance has a private note “Rate clarification required”</td>
+<td>Dispatch sees nonfinancial status/contact, not reason; Finance retains permitted access</td>
+</tr>
+<tr>
+<td>EVG-SMOKE-004</td>
+<td>Five-row reporting fixture from Chapter 13</td>
+<td>Open 2; completed 1</td>
+</tr>
+<tr>
+<td>EVG-SMOKE-005</td>
+<td>Inspect summary correction/history and external-action counters</td>
+<td>Old/new summary retained; invoices 0; outbound messages 0</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the worked failure branch:</p>
+<ul>
+<li>Checks 001, 002, 004 and 005 meet their expected conditions on the simulation cards.</li>
+<li>At 09:50, check 003 reveals a private-reason field in Dispatch output.</li>
+<li>Business users have not been admitted.</li>
+<li>Candidate ledger has fifteen entities.</li>
+<li>No external message or invoice has occurred.</li>
+</ul>
+<p>The correct response is immediate stop and pre-admission recovery, not “four of five passed.”</p>
+<p>Record EVG-DEC-045: enforce mandatory smoke conditions and the recovery deadline.</p>
+<h3>4.7 Recovery procedure and expected record</h3>
+<p>The supplied recovery path requires thirty minutes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Duration</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>5 minutes</td>
+<td>Isolate target access/writes; preserve failure evidence</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>5 minutes</td>
+<td>Capture delta/change ledger and source references</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>10 minutes</td>
+<td>Restore simulator B0 configuration/data</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>5 minutes</td>
+<td>Verify fourteen keys, baseline values and safe access</td>
+</tr>
+<tr>
+<td>R05</td>
+<td>5 minutes</td>
+<td>Confirm source-worksheet operations and ownership</td>
+</tr>
+</tbody>
+</table></div>
+<p>Latest start:</p>
+<blockquote>
+<p>10{:}30-30 minutes=10{:}00</p>
+</blockquote>
+<p>At the 09:50 failure:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expected interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>09:50–09:55</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>09:55–10:00</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>10:00–10:10</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>10:10–10:15</td>
+</tr>
+<tr>
+<td>R05</td>
+<td>10:15–10:20</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery finishes ten minutes before the window ends.</p>
+<p>Expected final state:</p>
+<ul>
+<li>Target B0: fourteen entities.</li>
+<li>Target job 1803 has its checkpoint summary.</li>
+<li>Source worksheet retains job 2301 and the approved summary correction.</li>
+<li>Two target delta actions remain pending reconciliation.</li>
+<li>Target business admission stays off.</li>
+<li>Existing source-based operations continue.</li>
+<li>No disclosure recall, transaction reversal or production restore is claimed.</li>
+</ul>
+<p>The source changes must not be forgotten merely because the target returned to fourteen records.</p>
+<h3>4.8 Communication examples</h3>
+<p>Current-case No-go</p>
+<p>No live release is authorised. Product acceptance and readiness evidence remain incomplete. Continue the existing intake and dispatch process. The cutover pack is a planning artifact; the next decision requires verified product, access and recovery evidence.</p>
+<p>Conditional exercise recovery notice</p>
+<p>Exercise only: candidate C1 is stopped after the restricted-information smoke failure. Target admission remains off. Use the source worksheet for intake. B0 recovery is expected by 10:20; Operations owns intake reconciliation and the Administrator owns target verification.</p>
+<p>The notices communicate actions without copying the private reason into a general message.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and changed input</p>
+<p>Update the runbook when a step finishes late, even though smoke cards would pass.</p>
+<p>EVG-SRC-135 supplies this timing update:</p>
+<ul>
+<li>C01–C03 finish as planned.</li>
+<li>C04 finishes at 09:38, taking twenty-three minutes.</li>
+<li>At 09:38 the team knows C05 still needs five minutes, C06 ten and C07 fifteen.</li>
+<li>All five smoke cards would satisfy their expected conditions if reached.</li>
+<li>Recovery still needs thirty minutes.</li>
+<li>The 10:00 Go deadline and 10:30 window end are unchanged.</li>
+<li>Final delta has not yet been applied.</li>
+<li>No business users or external actions are admitted.</li>
+</ul>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Reforecast G1 at 09:38.  </li>
+</ol>
+<p>Expected: account for all remaining work, not only promotion completion.</p>
+<ol start="2">
+<li>Compare forecast with the deadline.  </li>
+</ol>
+<p>Expected: passing smoke expectations do not override timing.</p>
+<ol start="3">
+<li>Select the stop/recovery point.  </li>
+</ol>
+<p>Expected: avoid continuing into a known infeasible sequence.</p>
+<ol start="4">
+<li>Reconcile target and source.  </li>
+</ol>
+<p>Expected: checkpoint target remains fourteen; source delta remains pending.</p>
+<ol start="5">
+<li>Complete the exercise decision and notice.  </li>
+</ol>
+<p>Expected: state timing reason, ownership and expected recovery completion.</p>
+<p>Blank runbook worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Entry condition</th>
+<th>Owner</th>
+<th>Action</th>
+<th>Duration/start/finish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank recovery ledger</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Business key/change</th>
+<th>Checkpoint value</th>
+<th>Later value/event</th>
+<th>Evidence location</th>
+<th>Preserve/replay treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank decision record</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Gate/time</th>
+<th>Conditions assessed</th>
+<th>Decision</th>
+<th>Decision owner/source</th>
+<th>Actions and limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: Runbook v0.2, timing decision, recovery ledger and communication.</p>
+<p>Cleanup: retain both branches and the source delta. No tenant actions or restoration are permitted.</p>
+<p>The tabletop demonstrates sequencing and judgement. It cannot verify promotion, permission isolation or restore duration in Zoho.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Post-admission failure</p>
+<p>Use a separate simulation branch.</p>
+<p>EVG-SRC-136 supplies:</p>
+<ul>
+<li>Normal C01–C09 completed.</li>
+<li>Two jobs were admitted:</li>
+<li>EVG-JOB-2302, customer 0101, received 10:08, Ready to assign.</li>
+<li>EVG-JOB-2303, customer 0102, received 10:10, Ready to assign.</li>
+<li>At 10:12, a simulation export path exposes the private reason to Dispatch.</li>
+<li>One unexpected notification was already delivered at 10:09 to customer0101@evergreen.example.com: “Service request EVG-JOB-2302 recorded.”</li>
+<li>No invoice was created.</li>
+<li>The admission journal contains both new jobs and their complete supplied fields.</li>
+<li>Source delta 001/002 remains available.</li>
+<li>The normal gate had relied on record-page evidence; the export path was not actually checked.</li>
+</ul>
+<p>Available actions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolate ordinary target access/writes and outbound actions</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>Capture admission journal and delta evidence</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>Activate source fallback and confirm ownership</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>Full checkpoint recovery path</td>
+<td>30 minutes from failure</td>
+</tr>
+<tr>
+<td>Recall delivered notification</td>
+<td>Not available</td>
+</tr>
+<tr>
+<td>Reapply post-checkpoint data</td>
+<td>Requires separate approval and reconciliation</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-137 assigns Administrator as technical owner, Operations as business fallback owner and Finance as owner of restricted-information handling. Existing support arrangements apply; no response-time service is created.</p>
+<p>Additional permission question</p>
+<p>A separate binding check shows that a proposed connection is authorised for a sandbox organisation while the planned target is a different organisation. No replacement authority is supplied.</p>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Target-count and post-checkpoint-change reconciliation.</li>
+<li>A containment/fallback timeline.</li>
+<li>A comparison with full restoration time.</li>
+<li>A preservation/replay ledger.</li>
+<li>A communication and escalation record.</li>
+<li>The connection-binding decision.</li>
+</ol>
+<p>Success criteria</p>
+<p>Preserve all acknowledged jobs, recognise the delivered notification as irreversible by configuration restore and keep the affected target isolated.</p>
+<p>Do not claim full recovery by 10:30 or automatically replay data. Do not reuse the wrong organisation’s authorisation.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“UAT passed” means local model results</td>
+<td>Evidence boundary exceeded</td>
+<td>Restore the actual readiness status</td>
+</tr>
+<tr>
+<td>Promotion includes unknown artifacts</td>
+<td>Manifest incomplete</td>
+<td>Identify versions/dependencies before execution</td>
+</tr>
+<tr>
+<td>Wrong connection target</td>
+<td>Environment binding unverified</td>
+<td>Stop and obtain appropriate authorisation</td>
+</tr>
+<tr>
+<td>Record count rises by update count</td>
+<td>Creates/updates confused</td>
+<td>Reconcile entity changes separately</td>
+</tr>
+<tr>
+<td>Go delayed beyond recovery deadline</td>
+<td>Window arithmetic ignored</td>
+<td>Stop while recovery remains feasible</td>
+</tr>
+<tr>
+<td>Restore loses admitted jobs</td>
+<td>Post-checkpoint work omitted</td>
+<td>Preserve journal before restore</td>
+</tr>
+<tr>
+<td>Private reason removed from one screen only</td>
+<td>Relevant path untested</td>
+<td>Isolate and examine affected paths</td>
+</tr>
+<tr>
+<td>Email assumed undone by rollback</td>
+<td>External effect ignored</td>
+<td>Retain delivery evidence and business-owner handling</td>
+</tr>
+<tr>
+<td>Fallback creates duplicate intake</td>
+<td>Dual-entry routing unclear</td>
+<td>Name authoritative intake location and deduplicate by business key</td>
+</tr>
+</tbody>
+</table></div>
+<p>A forward correction can be appropriate when its cause, method, time and verification are known and approved. This exercise does not permit a forward fix to bypass a restricted-information stop condition.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What evidence is needed before calling a target ready?</li>
+<li>Why must a promotion manifest include environment-specific values?</li>
+<li>What belongs in a final delta?</li>
+<li>Why is unused window time different from available recovery time?</li>
+<li>What does a smoke test demonstrate?</li>
+<li>Why does the post-admission recovery boundary differ from the pre-admission one?</li>
+<li>Which effects cannot be undone by restoring configuration?</li>
+<li>What must be verified before resuming ordinary operations?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: A runbook describes actions. Readiness requires authority, acceptance, environment and recovery evidence that may still be missing.</p>
+<p>LC2: Permissions, identities, organisation bindings and target-specific mappings can differ from the source environment.</p>
+<p>LC3: One entity. The update changes a value without creating another record.</p>
+<p>LC4: People could begin using a target that has not met its gate. The message must follow the decision, not anticipate it.</p>
+<p>LC5: Restricted-information exposure is a mandatory failure. A majority of passes does not remove it.</p>
+<p>LC6: Fallback is a defined alternative business service. It can be activated without completing every target-restoration activity.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>At 09:38:</p>
+<blockquote>
+<p>5+10+15=30 remaining minutes</p>
+</blockquote>
+<p>Forecast gate:</p>
+<blockquote>
+<p>09{:}38+30=10{:}08</p>
+</blockquote>
+<p>That is eight minutes after the 10:00 deadline.</p>
+<p>Stop at 09:38. Do not continue merely because smoke results are expected to pass.</p>
+<p>Recovery:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolate</td>
+<td>09:38–09:43</td>
+</tr>
+<tr>
+<td>Preserve ledger</td>
+<td>09:43–09:48</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td>09:48–09:58</td>
+</tr>
+<tr>
+<td>Verify</td>
+<td>09:58–10:03</td>
+</tr>
+<tr>
+<td>Confirm fallback/notice</td>
+<td>10:03–10:08</td>
+</tr>
+</tbody>
+</table></div>
+<p>Target returns to B0 with fourteen records. Delta was not applied, so no target-created job needs removal. Both source delta actions remain pending.</p>
+<p>A suitable notice is:</p>
+<p>Exercise only: promotion completed later than planned. Remaining checks would miss the recovery decision deadline. Candidate admission is stopped; B0 and source-based operations are expected to be verified by 10:08. No final delta or business admission occurred.</p>
+<p>This is an expected tabletop record, not observed deployment evidence.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Counts and journal</p>
+<p>Before admission, candidate target has fifteen entities. Two admitted jobs add two:</p>
+<blockquote>
+<p>15+2=17</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Count at failure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customers</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Appointments</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>17</td>
+</tr>
+</tbody>
+</table></div>
+<p>Post-checkpoint changes requiring preservation:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Job 2301 create</td>
+<td>Source delta retained</td>
+</tr>
+<tr>
+<td>Job 1803 summary update</td>
+<td>Old/new/source evidence retained</td>
+</tr>
+<tr>
+<td>Job 2302 create</td>
+<td>Admission journal retained</td>
+</tr>
+<tr>
+<td>Job 2303 create</td>
+<td>Admission journal retained</td>
+</tr>
+<tr>
+<td>Delivered notification</td>
+<td>Delivery record retained; not replayed automatically</td>
+</tr>
+</tbody>
+</table></div>
+<p>There are three new jobs and one update after B0. A later authorised restore would return target count to fourteen; approved replay of the three creates would return it to seventeen. Neither action has yet occurred.</p>
+<p>Fallback timeline</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolate target/outbound</td>
+<td>10:12–10:17</td>
+</tr>
+<tr>
+<td>Capture journal/delta</td>
+<td>10:17–10:22</td>
+</tr>
+<tr>
+<td>Activate source fallback</td>
+<td>10:22–10:27</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>10{:}27-10{:}12=15 minutes</p>
+</blockquote>
+<p>The supplied manual-fallback target is met in the expected simulation sequence.</p>
+<p>Full recovery would finish:</p>
+<blockquote>
+<p>10{:}12+30=10{:}42</p>
+</blockquote>
+<p>That exceeds the window by twelve minutes.</p>
+<p>Therefore, preserve and contain first. Do not promise full target restoration by 10:30. Target data remains isolated pending a separately controlled recovery decision.</p>
+<p>The acknowledged-job loss target depends on capturing and reconciling both journal entries. Do not treat the existence of a journal as proof that every entry has been reviewed.</p>
+<p>Irreversible effect and notice</p>
+<p>The delivered notification cannot be recalled by this procedure. Configuration restore does not undo delivery.</p>
+<p>A suitable notice is:</p>
+<p>Exercise only: ordinary target access and outbound actions are being isolated after a restricted-information export failure. Use the source intake process; Operations will reconcile the two admitted jobs from the journal. Manual fallback is expected by 10:27. Full target restoration cannot complete within the current window. Finance owns restricted-information handling; the delivered notification remains recorded.</p>
+<p>Do not include the private reason in the general notice.</p>
+<p>Record EVG-DEC-046: preserve acknowledged work, use bounded fallback and retain external-effect evidence.</p>
+<p>Connection decision</p>
+<p>Stop the affected connection activity. Obtain authorisation for the intended organisation under the appropriate owner and permissions.</p>
+<p>Zoho documents organisation-specific grants.1 A sandbox grant cannot be treated as authority for another organisation. No credentials or replacement token should be invented.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Scope authority, acceptance, target/build identity, data, access, promotion, recovery and ownership evidence.</li>
+<li>IDs, connections, users and other bindings may differ between environments.</li>
+<li>Approved additions/changes since a stated cutoff, with stable keys and conflict treatment.</li>
+<li>Recovery has its own required duration and latest start, including verification.</li>
+<li>A limited set of essential post-change behaviours, not complete acceptance.</li>
+<li>Users may have created acknowledged work or external effects that must be preserved.</li>
+<li>Delivered messages, disclosed information and external transactions are not automatically undone.</li>
+<li>Safe access, correct data, routing, ownership and the applicable admission decision.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Cutover quality depends on evidence, sequencing and explicit recovery boundaries.</p>
+<p>A credible runbook explains when to stop, who decides, what information must survive and which effects cannot be reversed. It also distinguishes returning a target to a checkpoint from restoring the business’s ability to work.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can assess readiness without inventing acceptance.</li>
+<li>I can define configuration and final-data manifests.</li>
+<li>I can sequence gates, smoke checks and admission.</li>
+<li>I can calculate the latest recovery start.</li>
+<li>I can reconcile creates, updates and post-checkpoint work.</li>
+<li>I can separate containment, fallback and full restore.</li>
+<li>I can communicate actions and limits clearly.</li>
+<li>I can preserve external-effect evidence.</li>
+</ul>
+<p>Your project pack now contains a cutover/recovery runbook and two handled simulation branches.</p>
+<p>Chapter 15, Training, Adoption and Support Handover, develops role-based training, administrator guides, procedures, ownership transfer, triage and escalation from these operating and recovery boundaries.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Admission</td>
+<td>Allowing intended users to begin operating in the released target</td>
+</tr>
+<tr>
+<td>Checkpoint</td>
+<td>Defined preserved state used for comparison or recovery</td>
+</tr>
+<tr>
+<td>Configuration promotion</td>
+<td>Transfer of selected configuration to a target environment</td>
+</tr>
+<tr>
+<td>Cutover</td>
+<td>Controlled transition to the intended operating state</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>Alternative business operating method</td>
+</tr>
+<tr>
+<td>Final delta</td>
+<td>Approved changes since the prior snapshot/cutoff</td>
+</tr>
+<tr>
+<td>Freeze</td>
+<td>Controlled pause of specified changes</td>
+</tr>
+<tr>
+<td>Go/no-go</td>
+<td>Decision to proceed or stop at a defined gate</td>
+</tr>
+<tr>
+<td>Recovery point objective</td>
+<td>Target permitted loss of acknowledged information</td>
+</tr>
+<tr>
+<td>Recovery time objective</td>
+<td>Target time to restore a defined service</td>
+</tr>
+<tr>
+<td>Smoke test</td>
+<td>Short verification of essential post-change behaviour</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Authorization Request<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/auth-request.html">Open official reference</a></li>
+</ol>
+<p>Organisation-specific authorisation across production, sandbox and developer environments.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Get Modules<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/modules-api.html">Open official reference</a></li>
+</ol>
+<p>Actual module inventory and API names; not a configuration-deployment procedure.</p>
+<ol start="3">
+<li>Zoho CRM API v8 — Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Organisation identity and environment metadata.</p>
+<p>Consult the official references above for current product details. Confirm the applicable edition, permissions and environment before using product-specific procedures. Evergreen’s actual promotion coverage, restore method, permissions and deployment behaviour remain unverified. No tenant deployment or restoration is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Run a go-live simulation with a cutover runbook.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-13">← Previous chapter</a><a href="/course-book/course-05/chapter-15">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

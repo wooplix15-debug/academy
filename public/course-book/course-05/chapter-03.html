@@ -1,0 +1,1308 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 3</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 03</p><h1>Process Analysis and Redesign</h1><p>Validate current-state and future-state models.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-03-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: current-state swimlanes</a><a href="#section-4">4. Worked case: propose and evaluate a future model</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-03-dataset-01.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>An implementation can reproduce an inefficient process very accurately. It can also automate a process that nobody has fully understood.</p>
+<p>Process analysis helps you avoid both outcomes. You describe how work happens now, identify where it waits or breaks down, and propose a future process that preserves necessary controls while improving coordination.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Build a process model with clear responsibilities and handoffs.</li>
+<li>Use swimlanes to distinguish who performs each activity.</li>
+<li>Model normal work, missing information and operational exceptions.</li>
+<li>Preserve job and appointment history during cancellation and rescheduling.</li>
+<li>Identify possible bottlenecks from reproducible measurements.</li>
+<li>Define operational controls and explain their purpose.</li>
+<li>Validate current-state and future-state models using representative cases.</li>
+<li>Distinguish expected benefits from observed improvement.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the Chapter 1 evidence classifications and the Chapter 2 discovery notes, decision rights and dependencies.</p>
+<p>Evergreen’s carried-forward case state is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record or fact</th>
+<th>State entering this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client context</td>
+<td>Two service teams, twelve technicians and two dispatchers through one dispatch desk</td>
+</tr>
+<tr>
+<td>Current tools</td>
+<td>Phone/email intake and spreadsheet coordination; CRM reported in use, but edition, region and environments remain unverified</td>
+</tr>
+<tr>
+<td>EVG-REQ-001–003</td>
+<td>Verified business needs for intake identifiers, internal job visibility and Finance review before invoice release</td>
+</tr>
+<tr>
+<td>EVG-REQ-007</td>
+<td>Verified business need for job reference, customer reference, completion date and completion summary in the Finance handoff</td>
+</tr>
+<tr>
+<td>EVG-REQ-008</td>
+<td>Verified business need for nonfinancial handoff status and responsible Finance contact to be visible to Dispatch</td>
+</tr>
+<tr>
+<td>EVG-REQ-004–006</td>
+<td>Candidate reporting, portal and routing needs</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-001</td>
+<td>Portal/routing assessment deferred by the Sponsor</td>
+</tr>
+<tr>
+<td>EVG-TEST-001–005</td>
+<td>Proposed checks; no product execution evidence</td>
+</tr>
+<tr>
+<td>EVG-Q-009</td>
+<td>Cancellation, rescheduling ownership and notifications unresolved</td>
+</tr>
+<tr>
+<td>Latest charter</td>
+<td>Draft v0.3; no final review result or client acceptance supplied</td>
+</tr>
+<tr>
+<td>Previous estimate</td>
+<td>Discovery planning only; not an implementation estimate</td>
+</tr>
+</tbody>
+</table></div>
+<p>The original six-case sample had a 60% first-pass rate among five completed reviews, with one unfinished handoff. Its representativeness remains unconfirmed. The 80% target and 15 February date remain discussion preferences.</p>
+<p>New authorisation and project contribution</p>
+<p>EVG-SRC-025 is an explicit new synthetic Sponsor instruction:</p>
+<p>“Prepare current-state and proposed future-state models, investigate operational exceptions, and perform paper walkthroughs using the supplied examples. Record unresolved rules and recommendations. This does not authorise configuration, migration, release or a new support service.”</p>
+<p>Your chapter artifacts are:</p>
+<ol>
+<li>A current-state model with evidence limitations.</li>
+<li>A proposed future-state model and exception rules.</li>
+<li>A measurement sheet.</li>
+<li>A model-validation record.</li>
+</ol>
+<p>These artifacts help the next chapter turn process needs into traceable requirements.</p>
+<p>All case facts, dialogue, records, timestamps and rules are synthetic. Completed models are student drafts. Paper reasoning does not demonstrate product behaviour, client acceptance or production enforcement.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Model work across responsibility boundaries</h3>
+<p>Skill: show who does what and what passes between them.</p>
+<p>A process model describes activities, decisions, information and movement of work. A swimlane groups activities by the role or team responsible for performing them.</p>
+<p>Swimlanes are useful because many implementation problems occur between people rather than inside one screen. “Send completion information” is incomplete unless the model also explains who receives it and what happens next.</p>
+<p>A process activity should use a clear verb:</p>
+<ul>
+<li>Record the request.</li>
+<li>Confirm the customer reference.</li>
+<li>Assign the technician.</li>
+<li>Review the completion handoff.</li>
+</ul>
+<p>Avoid boxes such as “CRM,” “Dispatch” or “Finance data.” Those are systems, roles or information, not activities.</p>
+<p>A handoff transfers responsibility for work or information. Define it through five questions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Evergreen example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who sends?</td>
+<td>Technician supplies completion information</td>
+</tr>
+<tr>
+<td>Who receives?</td>
+<td>Finance receives a qualified handoff</td>
+</tr>
+<tr>
+<td>What is transferred?</td>
+<td>Job/customer references, completion date and summary</td>
+</tr>
+<tr>
+<td>What makes it ready?</td>
+<td>Required information is present and agrees with the job</td>
+</tr>
+<tr>
+<td>Who owns an exception?</td>
+<td>Operations coordinates correction; Technician Lead supplies missing completion details</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not assume responsibility transfers merely because an email was sent. The receiving activity needs a clear entry condition and an owner.</p>
+<p>Your current-state model should describe the reported process, including its weaknesses. Your future-state model should describe proposed behaviour. Mixing them hides the change being recommended.</p>
+<p>For example, “Dispatcher records technician acknowledgement” must not appear as a current fact when discovery only established that the Dispatcher sends an email.</p>
+<p>Lesson check LC1: What is missing from the process step “Operations emails Finance”? Name at least three details needed to make the handoff usable.</p>
+<h3>2.2 Distinguish a job, an appointment and a financial handoff</h3>
+<p>Skill: preserve the meaning and history of work during exceptions.</p>
+<p>A job is the business request. An appointment is a scheduled visit associated with that request. A financial handoff transfers completion information for review.</p>
+<p>They may move through different states at the same time.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Business object</th>
+<th>Example states used in this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Job</td>
+<td>Intake hold, Ready to assign, Scheduled, Work in progress, Service completed, Change review, Cancelled</td>
+</tr>
+<tr>
+<td>Appointment</td>
+<td>Pending acknowledgement, Confirmed, Superseded, Cancelled, Completed</td>
+</tr>
+<tr>
+<td>Finance handoff</td>
+<td>Not ready, Completion correction, Ready for Finance review, Returned for correction, Review complete</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are modelling labels, not supplied Zoho field names.</p>
+<p>A rescheduled job usually remains the same business request. Creating a new job can split its history, duplicate reporting and disconnect later completion information from the original request.</p>
+<p>Instead, retain the job reference, preserve the old appointment and create the replacement appointment.</p>
+<p>Cancellation also needs careful interpretation. A valid pre-start cancellation can cancel the job while technician notification remains outstanding. The job’s cancellation status does not prove that every participant has received the message.</p>
+<p>Once work has started, the exception is different. Deleting the job or marking it as if nothing happened erases facts that may matter to Operations and Finance.</p>
+<p>Consider this dialogue:</p>
+<p>Operations Manager: “The customer cancelled, so can we remove the row?”  </p>
+<p>Implementation Lead: “Has work started, and does Finance already have information?”  </p>
+<p>Operations Manager: “The technician has completed an initial diagnostic.”  </p>
+<p>Implementation Lead: “Then the model must retain that work and route the remaining decision through change review.”</p>
+<p>The correct response depends on the event’s timing and permitted correction choices. It is not simply a different status label.</p>
+<p>Lesson check LC2: Why should a reschedule preserve the job reference? Why might a cancelled job still have an outstanding action?</p>
+<h3>2.3 Use controls to prevent unsafe or ambiguous transitions</h3>
+<p>Skill: state the condition that allows work to move forward.</p>
+<p>An operational control is a rule or activity that reduces the chance of an incorrect action or makes it detectable.</p>
+<p>Controls can be:</p>
+<ul>
+<li>Preventive: block a Finance handoff with missing required information.</li>
+<li>Detective: identify a mismatch between the handoff customer reference and the approved intake record.</li>
+<li>Corrective: route missing completion information to the responsible person and retain the correction history.</li>
+</ul>
+<p>A control needs more than “validate the record.” Explain:</p>
+<ol>
+<li>What is checked.</li>
+<li>Who checks it.</li>
+<li>What happens if it fails.</li>
+<li>What evidence confirms correction.</li>
+</ol>
+<p>For Evergreen, a nonblank customer reference is not enough. It must identify the customer associated with that job in the permitted intake evidence.</p>
+<p>Likewise, appointment time arriving does not prove that work started. The model requires a confirmed appointment and a reported actual start.</p>
+<p>Controls should not remove legitimate decision rights. A complete handoff allows Finance review; it does not release an invoice automatically. Finance remains the release owner.</p>
+<p>Zoho CRM’s Blueprint developer documentation describes transitions and their associated fields and validation.1 That vocabulary may help later technical mapping. It does not establish that Evergreen has the required edition, permissions or configuration, or that Blueprint is the chosen solution. Product fit comes later.</p>
+<p>Lesson check LC3: A handoff has all four required fields, but its customer reference differs from the confirmed intake record. Should it qualify for Finance review? Explain the control needed.</p>
+<h3>2.4 Find bottlenecks without guessing their cause</h3>
+<p>Skill: distinguish active work from elapsed time and identify where to investigate.</p>
+<p>A bottleneck is a constraint that limits the flow of work. A large delay is a reason to investigate; it is not automatically proof of inadequate staffing or a need for automation.</p>
+<p>Useful time measures include:</p>
+<ul>
+<li>Handoff delay: time between service completion and Finance receipt.</li>
+<li>Finance elapsed time: time between Finance receipt and completion of the first review.</li>
+<li>Active handling time: supplied time spent actively performing that review.</li>
+<li>Non-active elapsed time: Finance elapsed time minus active handling time.</li>
+</ul>
+<p>Non-active time can include queueing, interruptions or waiting for information. Without more detailed evidence, do not call all of it queue time.</p>
+<p>Use a consistent cohort: the set of records included in a measure. If you compare averages for five completed reviews, use those same five records unless you explicitly state a different denominator.</p>
+<p>Unfinished work also matters. Excluding it makes a completed-case measure possible, but does not mean it has disappeared. Report its current age separately.</p>
+<p>Lesson check LC4: Why does a large non-active interval suggest investigation rather than prove that Finance needs more staff?</p>
+<h3>2.5 Redesign the whole flow and measure the trade-offs</h3>
+<p>Skill: avoid improving one measure by moving the problem elsewhere.</p>
+<p>Moving a completeness check before Finance may reduce Finance returns. It may also create a correction queue in Operations.</p>
+<p>That can still be an improvement: errors are identified earlier and Finance receives better information. But a first-pass rate alone cannot prove it.</p>
+<p>Measure the wider flow:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>What it helps you understand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance first-pass rate</td>
+<td>How often reviewed handoffs avoid return</td>
+</tr>
+<tr>
+<td>Pre-handoff correction count</td>
+<td>Work caught before Finance receipt</td>
+</tr>
+<tr>
+<td>Completion-to-review elapsed time</td>
+<td>Total coordination delay to first review</td>
+</tr>
+<tr>
+<td>Pending handoff age</td>
+<td>Unfinished work excluded from completed-case averages</td>
+</tr>
+<tr>
+<td>Appointment acknowledgement exceptions</td>
+<td>Risk of people acting on superseded information</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not invent an improvement result from a proposed control. You may say, “The model is expected to reduce incomplete Finance handoffs.” You cannot say, “The implementation increased first-pass performance to 95%,” without supplied observations.</p>
+<p>Validate a model using normal, missing-data, permission and exception cases. Ask whether every case has an owner and a permitted next action.</p>
+<p>Lesson check LC5: How could the Finance first-pass rate improve while the overall completion-to-review time becomes worse?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: current-state swimlanes</h2>
+<p>EVG-SRC-026 supplies these additional walkthrough statements:</p>
+<p>Operations: “I record references when available. Missing customer information goes on a hold list and is not assigned.”  </p>
+<p>Dispatcher: “I assign by email. For a reschedule I overwrite the slot; some staff keep the earlier details and others do not. I do not consistently record receipt.”  </p>
+<p>Technician Lead: “Completion date and summary are emailed. Finance sometimes discovers missing information.”  </p>
+<p>Finance: “I review received handoffs. Incomplete ones go back through Operations. I decide invoice release after review.”  </p>
+<p>Operations: “Cancellation handling differs. Some rows disappear; others receive a note.”</p>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operations</td>
+<td>Record intake facts</td>
+<td>Continue</td>
+<td>Customer identified?</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Customer identified?</td>
+<td>No</td>
+<td>Hold and obtain customer information</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Hold and obtain customer information</td>
+<td>Continue</td>
+<td>Customer identified?</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Customer identified?</td>
+<td>Yes</td>
+<td>Make request available for assignment</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Make request available for assignment</td>
+<td>Continue</td>
+<td>Assign visit and send email</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Assign visit and send email</td>
+<td>Continue</td>
+<td>Perform service</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Perform service</td>
+<td>Continue</td>
+<td>Email completion information</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Email completion information</td>
+<td>Continue</td>
+<td>Review received handoff</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Review received handoff</td>
+<td>Continue</td>
+<td>Information sufficient?</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Information sufficient?</td>
+<td>No</td>
+<td>Coordinate returned handoff</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Coordinate returned handoff</td>
+<td>Continue</td>
+<td>Supply correction</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Supply correction</td>
+<td>Continue</td>
+<td>Email completion information</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Information sufficient?</td>
+<td>Yes</td>
+<td>Make Finance release decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>The swimlanes show reported ownership and the return loop.</p>
+<p>The model does not claim that technician acknowledgement is recorded. It also does not invent one consistent current cancellation or rescheduling policy.</p>
+<p>The inconsistent exception treatment belongs in the model’s evidence notes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Current evidence</th>
+<th>Model limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing customer information</td>
+<td>Held before assignment</td>
+<td>Correction timing not supplied</td>
+</tr>
+<tr>
+<td>Missing completion information</td>
+<td>Finance may return it through Operations</td>
+<td>No consistent pre-handoff check evidenced</td>
+</tr>
+<tr>
+<td>Rescheduling</td>
+<td>Slot overwritten; history and acknowledgement inconsistent</td>
+<td>Notification completion cannot be assumed</td>
+</tr>
+<tr>
+<td>Cancellation</td>
+<td>Deletion or note reported</td>
+<td>Retention, notification and financial treatment not consistently defined</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: propose and evaluate a future model</h2>
+<h3>4.1 Supplied design basis</h3>
+<p>EVG-SRC-027 is a synthetic draft design brief for paper evaluation. Its rules are proposed operating rules, not accepted production policy.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule ID</th>
+<th>Rule to use in this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-RULE-001</td>
+<td>Retain the business job reference. Assignment requires a customer reference and received timestamp. Missing intake data remains on hold, owned by Operations.</td>
+</tr>
+<tr>
+<td>EVG-RULE-002</td>
+<td>Dispatch records technician and appointment details. Work start requires a confirmed appointment and reported actual start; time passing alone does not start work.</td>
+</tr>
+<tr>
+<td>EVG-RULE-003</td>
+<td>Before work starts, reschedule the existing job by superseding the old appointment and creating a replacement. Operations obtains customer confirmation. Dispatch obtains acknowledgement from the new assigned technician and, if different, acknowledgement that the old technician’s assignment is withdrawn.</td>
+</tr>
+<tr>
+<td>EVG-RULE-004</td>
+<td>A verified pre-start cancellation retains the job and appointment, records requester/reason/time, and cancels the active appointment. Dispatch owns technician notification and acknowledgement. Any existing financial information goes to Finance for assessment; no automatic deletion or reversal.</td>
+</tr>
+<tr>
+<td>EVG-RULE-005</td>
+<td>A change request after work starts enters Change review. Retain performed-work facts. Operations and Finance assess the remaining work and financial implications before deciding the next state.</td>
+</tr>
+<tr>
+<td>EVG-RULE-006</td>
+<td>The Finance handoff needs job reference, customer reference, completion date and completion summary. References must agree with permitted intake evidence. Missing or inconsistent data enters correction, coordinated by Operations. Technician Lead supplies missing completion details.</td>
+</tr>
+<tr>
+<td>EVG-RULE-007</td>
+<td>A qualified handoff has a named Finance owner and receipt evidence. Finance review remains required before invoice release.</td>
+</tr>
+<tr>
+<td>EVG-RULE-008</td>
+<td>Dispatch sees nonfinancial handoff status and Finance contact, not cost/margin. Corrections preserve the history of any prior Finance return.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The replacement appointment becomes Confirmed only after required confirmations and acknowledgements are recorded. Before that, it is Pending acknowledgement.</p>
+<h3>4.2 Proposed future-state swimlanes</h3>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operations</td>
+<td>Record and check intake</td>
+<td>Continue</td>
+<td>Required intake present?</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Required intake present?</td>
+<td>No</td>
+<td>Intake hold and correction</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Intake hold and correction</td>
+<td>Continue</td>
+<td>Record and check intake</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Required intake present?</td>
+<td>Yes</td>
+<td>Plan appointment and technician</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Plan appointment and technician</td>
+<td>Continue</td>
+<td>Record required confirmations</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Record required confirmations</td>
+<td>Continue</td>
+<td>Appointment confirmed?</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Appointment confirmed?</td>
+<td>No</td>
+<td>Keep appointment pending</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Keep appointment pending</td>
+<td>Continue</td>
+<td>Record required confirmations</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Appointment confirmed?</td>
+<td>Yes</td>
+<td>Report actual start and perform service</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Report actual start and perform service</td>
+<td>Continue</td>
+<td>Supply completion details</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Supply completion details</td>
+<td>Continue</td>
+<td>Complete and consistent handoff?</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Complete and consistent handoff?</td>
+<td>No</td>
+<td>Coordinate completion correction</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Coordinate completion correction</td>
+<td>Continue</td>
+<td>Supply completion details</td>
+</tr>
+<tr>
+<td>Technician</td>
+<td>Complete and consistent handoff?</td>
+<td>Yes</td>
+<td>Receive qualified handoff with owner</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Receive qualified handoff with owner</td>
+<td>Continue</td>
+<td>Review and decide release</td>
+</tr>
+</tbody>
+</table></div>
+<p>This diagram shows the ordinary path and two correction loops. The exception rules in the design-basis table are part of the model; they are not optional annotations.</p>
+<p>The completion gate is a proposed operational check. It does not demonstrate that a Zoho validation rule exists.</p>
+<p>Record these model recommendations:</p>
+<ul>
+<li>EVG-DEC-007: preserve job identity and appointment history through rescheduling and cancellation.</li>
+<li>EVG-DEC-008: qualify completion handoffs before Finance receipt without removing Finance review.</li>
+<li>EVG-DEC-009: keep job, appointment and Finance-handoff states distinct.</li>
+</ul>
+<p>These are Implementation Lead recommendations represented in the draft, not client acceptance.</p>
+<h3>4.3 Measure the current timing sample</h3>
+<p>EVG-SRC-028 supplies a separate synthetic timing sample. Do not merge it with the original Chapter 1 sample.</p>
+<p>All timestamps use UTC. The snapshot is 18 January 2027 at 16:00 UTC. Active minutes are supplied totals within the first-review interval.</p>
+<pre><code class="language-csv">job_ref,customer_ref,service_completed_at,finance_received_at,finance_review_finished_at,finance_active_minutes,returned_for_missing_info,finance_review_state
+EVG-JOB-1101,EVG-CUST-0101,2027-01-18T09:00:00Z,2027-01-18T09:20:00Z,2027-01-18T10:10:00Z,10,no,review_complete
+EVG-JOB-1102,EVG-CUST-0102,2027-01-18T09:00:00Z,2027-01-18T09:40:00Z,2027-01-18T11:00:00Z,20,yes,review_complete
+EVG-JOB-1103,EVG-CUST-0101,2027-01-18T10:00:00Z,2027-01-18T10:15:00Z,2027-01-18T10:45:00Z,15,no,review_complete
+EVG-JOB-1104,EVG-CUST-0103,2027-01-18T11:00:00Z,2027-01-18T12:00:00Z,2027-01-18T14:00:00Z,15,no,review_complete
+EVG-JOB-1105,EVG-CUST-0104,2027-01-18T12:00:00Z,2027-01-18T12:30:00Z,2027-01-18T14:00:00Z,20,yes,review_complete
+EVG-JOB-1106,EVG-CUST-0105,2027-01-18T14:00:00Z,2027-01-18T15:00:00Z,,,,awaiting_review
+</code></pre>
+<p>The blank result fields in EVG-JOB-1106 are intentional: its review is unfinished.</p>
+<p>For the worked comparisons, use the five completed reviews.</p>
+<p>Step 1: calculate intervals</p>
+<blockquote>
+<p>Handoff delay = Finance received time-service completed time</p>
+<p>Finance elapsed = first review finished time-Finance received time</p>
+<p>Finance non-active elapsed = Finance elapsed-active minutes</p>
+</blockquote>
+<p>For EVG-JOB-1101:</p>
+<ul>
+<li>Handoff delay: 09:20 − 09:00 = 20 minutes.</li>
+<li>Finance elapsed: 10:10 − 09:20 = 50 minutes.</li>
+<li>Non-active elapsed: 50 − 10 = 40 minutes.</li>
+</ul>
+<p>Expected intermediate result:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Handoff delay: minutes</th>
+<th>Finance elapsed: minutes</th>
+<th>Active: minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1101</td>
+<td>20</td>
+<td>50</td>
+<td>10</td>
+</tr>
+<tr>
+<td>EVG-JOB-1102</td>
+<td>40</td>
+<td>80</td>
+<td>20</td>
+</tr>
+<tr>
+<td>EVG-JOB-1103</td>
+<td>15</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr>
+<td>EVG-JOB-1104</td>
+<td>60</td>
+<td>120</td>
+<td>15</td>
+</tr>
+<tr>
+<td>EVG-JOB-1105</td>
+<td>30</td>
+<td>90</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>165</td>
+<td>370</td>
+<td>80</td>
+</tr>
+</tbody>
+</table></div>
+<p>Step 2: calculate means</p>
+<blockquote>
+<p>Mean handoff delay=(165) ÷ (5)=33 minutes</p>
+<p>Mean Finance elapsed=(370) ÷ (5)=74 minutes</p>
+<p>Mean active time=(80) ÷ (5)=16 minutes</p>
+<p>Mean non-active elapsed=(290) ÷ (5)=58 minutes</p>
+</blockquote>
+<p>Mean service-completion-to-first-review time:</p>
+<blockquote>
+<p>(165+370) ÷ (5)=107 minutes</p>
+</blockquote>
+<p>This is not time to invoice release or final resolution. Those timestamps are not supplied.</p>
+<p>Step 3: disclose unfinished work</p>
+<p>EVG-JOB-1106 has waited in Finance’s received state for:</p>
+<blockquote>
+<p>16{:}00-15{:}00=60 minutes</p>
+</blockquote>
+<p>Its handoff delay is also known: 60 minutes. It is excluded from the completed-review comparison, not treated as zero.</p>
+<p>If you deliberately measure handoff delay for all six received records, the result differs:</p>
+<blockquote>
+<p>(165+60) ÷ (6)=37.5 minutes</p>
+</blockquote>
+<p>Both calculations are valid for their stated cohorts.</p>
+<p>Step 4: interpret the evidence</p>
+<p>Finance non-active elapsed is the largest mean component in the completed-review sample. Investigate review batching, interruptions, prioritisation and information waits.</p>
+<p>Do not conclude that Finance is understaffed or that automation will remove all 58 minutes.</p>
+<p>The sample first-pass rate is:</p>
+<blockquote>
+<p>(3) ÷ (5)×100=60%</p>
+</blockquote>
+<p>A proposed completeness gate may improve this measure, but no improvement has been observed.</p>
+<h3>4.4 Completed measurement and validation summary</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Evidence</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incomplete handoffs reach Finance</td>
+<td>Current walkthrough and two returned sample rows</td>
+<td>Check completeness and consistency before receipt</td>
+</tr>
+<tr>
+<td>Finance non-active time merits investigation</td>
+<td>Mean 58 minutes in completed cohort</td>
+<td>Examine queue and interruption causes</td>
+</tr>
+<tr>
+<td>Rescheduling history is inconsistent</td>
+<td>EVG-SRC-026</td>
+<td>Preserve old appointment and acknowledgements</td>
+</tr>
+<tr>
+<td>Cancellation treatment is inconsistent</td>
+<td>EVG-SRC-026</td>
+<td>Retain records and distinguish pre/post-start cases</td>
+</tr>
+<tr>
+<td>Performance evidence is incomplete</td>
+<td>One unfinished review</td>
+<td>Report pending age with completed-case measures</td>
+</tr>
+</tbody>
+</table></div>
+<p>A mistake and its correction</p>
+<p>Mistake: “The future process removes Finance review because the handoff is complete.”</p>
+<p>Correction: “Completeness permits the handoff to enter Finance review. It does not replace Finance’s release decision.”</p>
+<p>A control that improves information quality must not silently remove a confirmed business responsibility.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Validate the proposed model against ordinary work, missing data, rescheduling, cancellation and a permission request.</p>
+<p>Use a document editor, the supplied rules and the cases below. No Zoho access is needed.</p>
+<p>Complete case inputs</p>
+<p>EVG-SRC-029 supplies the following cases at a snapshot of 19 January 2027, 10:30 UTC.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Supplied facts</th>
+<th>Permitted correction or next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: normal completion</td>
+<td>EVG-JOB-1201; customer EVG-CUST-0101; received 08:00. Appointment EVG-APPT-4001 confirmed for 09:00; customer and technician acknowledgements recorded at 08:30. Actual start 09:00. Completion date 19 January; summary “Replaced filter and checked operation.” Finance has not reviewed.</td>
+<td>Qualify the handoff if the supplied references agree with intake. Do not infer invoice release.</td>
+</tr>
+<tr>
+<td>B: missing customer</td>
+<td>EVG-JOB-1202; received 08:15; customer reference missing. No appointment. No identifying customer information is supplied.</td>
+<td>Operations must obtain a verified customer reference. Do not choose a customer or create an appointment by guesswork.</td>
+</tr>
+<tr>
+<td>C: reschedule</td>
+<td>EVG-JOB-1203; customer EVG-CUST-0102. Existing EVG-APPT-4003 at 11:00 with Technician T2; work not started. Verified request at 10:00 changes the visit to 14:00 with T2. Customer confirms at 10:05; technician acknowledgement absent.</td>
+<td>Create replacement EVG-APPT-4013. Retain the old appointment as superseded. Dispatch obtains acknowledgement of the new arrangement.</td>
+</tr>
+<tr>
+<td>D: pre-start cancellation</td>
+<td>EVG-JOB-1204; customer EVG-CUST-0103. EVG-APPT-4004 at 15:00; work not started. Verified requester customer0103@evergreen.example.com cancels at 10:10, reason “Customer unavailable.” Technician notice sent at 10:15, acknowledgement absent. No financial record supplied.</td>
+<td>Retain cancellation evidence. Dispatch follows up on acknowledgement. Do not invent a financial record or reversal.</td>
+</tr>
+<tr>
+<td>E: incomplete completion</td>
+<td>EVG-JOB-1205; customer EVG-CUST-0103. Appointment completed; service completion date 19 January; summary initially missing. Finance has not received the handoff. At 10:25 Technician Lead supplies “Reset controller and tested startup.” References agree with intake.</td>
+<td>Record initial correction state, then use the supplied summary to recheck readiness.</td>
+</tr>
+<tr>
+<td>F: permission request</td>
+<td>Dispatcher asks for EVG-JOB-1201 cost and margin. Permitted information is nonfinancial handoff status and finance@evergreen.example.com.</td>
+<td>Show only permitted information and route any disclosure change to Finance. No additional permission is supplied.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Classify the event.  </li>
+</ol>
+<p>Identify ordinary completion, intake exception, pre-start reschedule, pre-start cancellation, completion correction and permission boundary.  </p>
+<p>Expected result: six distinct cases, not one generic “exception” branch.</p>
+<ol start="2">
+<li>Apply the object states.  </li>
+</ol>
+<p>Record job, appointment and Finance-handoff states separately.  </p>
+<p>Expected result: rescheduling does not create a new job, and cancellation can coexist with outstanding notification.</p>
+<ol start="3">
+<li>Identify the owner and next evidence.  </li>
+</ol>
+<p>Apply the rule table rather than inventing authority.  </p>
+<p>Expected result: every unfinished case has a named role and a closure condition.</p>
+<ol start="4">
+<li>Complete a model-validation record.  </li>
+</ol>
+<p>Link cases to existing or new planned checks.  </p>
+<p>Expected result: paper-derived expected outcomes, clearly separated from product test results.</p>
+<ol start="5">
+<li>Record any model changes.  </li>
+</ol>
+<p>If your diagram cannot represent a case, correct the model and identify the missing condition.  </p>
+<p>Expected result: the final diagram and exception table agree.</p>
+<p>Blank process-step worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step ID</th>
+<th>Lane/owner</th>
+<th>Trigger/input</th>
+<th>Activity or decision</th>
+<th>Output/next state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank case-state worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Job state</th>
+<th>Appointment state</th>
+<th>Finance-handoff state</th>
+<th>Outstanding action and owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>D</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank model-validation worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check ID</th>
+<th>Requirement/rule link</th>
+<th>Input case</th>
+<th>Expected result</th>
+<th>Reasoning or model issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: validated draft model, case-state sheet and paper-validation record.</p>
+<p>Cleanup: retain the supplied evidence and versioned model. Remove redundant scratch diagrams if no longer needed. Do not change product records to demonstrate this exercise.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>EVG-SRC-030 supplies three new cases and a later snapshot of the timing sample.</p>
+<p>Changed operational inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Supplied facts</th>
+<th>Permitted decision or correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G: cancellation after start</td>
+<td>EVG-JOB-1301; customer EVG-CUST-0104; confirmed EVG-APPT-5001 for 09:00. Actual start 09:00. Initial diagnostic performed. Verified customer requests cancellation at 09:20 because they cannot wait. Remaining work is incomplete; Finance has not reviewed.</td>
+<td>Retain performed-work facts and enter Change review. Operations and Finance assess remaining work and financial implications. No pre-start cancellation shortcut or automatic financial reversal.</td>
+</tr>
+<tr>
+<td>H: reschedule with technician change</td>
+<td>EVG-JOB-1302; customer EVG-CUST-0105; old EVG-APPT-5002 at 13:00 with T3; work not started. At 10:05, change to 16:00 with T4. Customer confirms at 10:10; T3 acknowledges withdrawal at 10:20; T4 has not acknowledged by 16:00.</td>
+<td>Create EVG-APPT-5012 and retain the old appointment. Dispatch must obtain T4 acknowledgement before the replacement becomes confirmed.</td>
+</tr>
+<tr>
+<td>I: wrong customer in handoff</td>
+<td>EVG-JOB-1303 approved intake customer is EVG-CUST-0101. Handoff incorrectly says EVG-CUST-0102; date and summary are present. Finance returned it at 10:30 for mismatch. Operations confirms intake remains correct.</td>
+<td>Correct handoff customer to EVG-CUST-0101 and log the change. Retain the Finance-return history; do not change the job reference.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Later timing snapshot</p>
+<p>At 18 January 2027, 17:00 UTC, EVG-JOB-1106 has completed its first review:</p>
+<ul>
+<li>Review finished: 16:20 UTC.</li>
+<li>Active handling: 20 minutes.</li>
+<li>Returned for missing information: yes.</li>
+<li>Review state: review_complete.</li>
+</ul>
+<p>All other EVG-SRC-028 rows remain unchanged.</p>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>States, owners and next actions for G–I.</li>
+<li>A revised exception table showing the technician-change condition.</li>
+<li>Requirement-to-check links for these cases.</li>
+<li>The six-case first-pass rate and mean Finance non-active elapsed time.</li>
+<li>A comparison with the earlier snapshot.</li>
+<li>A short recommendation explaining what the evidence supports and what remains unproven.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your model must preserve identifiers and history, distinguish pre-start from post-start changes, prevent unacknowledged appointment confirmation, detect identity mismatch and retain prior return evidence.</p>
+<p>Your measures must use the later six-record completed cohort without rewriting the earlier five-record snapshot.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A reschedule creates a second job</td>
+<td>Appointment change confused with new business request</td>
+<td>Keep the job reference; supersede the appointment and link its replacement</td>
+</tr>
+<tr>
+<td>Cancelled records disappear</td>
+<td>Deletion used as a process state</td>
+<td>Retain cancellation evidence and route financial implications to Finance</td>
+</tr>
+<tr>
+<td>Technician continues with an old slot</td>
+<td>Notification treated as acknowledgement</td>
+<td>Track acknowledgement and keep the replacement pending</td>
+</tr>
+<tr>
+<td>Complete-looking handoff has wrong customer</td>
+<td>Only presence was checked</td>
+<td>Compare references with permitted intake evidence</td>
+</tr>
+<tr>
+<td>Corrected Finance return is erased</td>
+<td>Current completeness overwrote outcome history</td>
+<td>Preserve the original return and correction</td>
+</tr>
+<tr>
+<td>Finance first-pass rises but backlog grows</td>
+<td>Work moved to an earlier queue</td>
+<td>Measure pre-handoff corrections and pending age</td>
+</tr>
+<tr>
+<td>A diagram cannot place a missing-data case</td>
+<td>Only the happy path was modelled</td>
+<td>Add a hold/correction branch with an owner</td>
+</tr>
+<tr>
+<td>Paper checks are labelled “UAT passed”</td>
+<td>Evidence types confused</td>
+<td>Label them paper-derived model checks</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery here repairs the process record and recommendation. It does not restore a database or authorise invoice reversal.</p>
+<p>If an incorrect diagram has been circulated, issue a versioned correction identifying the changed branch and affected decision. Operational incidents remain with the existing support owner.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>Why must the current-state model preserve inconsistent exception evidence rather than replace it with the preferred future rule?</li>
+<li>What information is needed to distinguish cancellation before work starts from a change after work starts?</li>
+<li>Which confirmations are required when a reschedule changes the technician?</li>
+<li>Why is “all required fields are nonblank” insufficient for a Finance handoff?</li>
+<li>Using the original timing sample, explain why the unfinished record cannot be counted as a first-pass failure.</li>
+<li>What additional evidence would help investigate the 58-minute mean non-active Finance interval?</li>
+<li>Why does a paper model that handles all supplied cases still require later product testing?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: The sender, receiver, required information, readiness condition, receipt evidence and exception owner are all relevant. “Email Finance” identifies a channel but not a reliable responsibility transfer.</p>
+<p>LC2: Rescheduling changes the appointment, not necessarily the business request. Retaining the job reference preserves continuity. A cancelled job can still require notification acknowledgement or Finance assessment.</p>
+<p>LC3: No. Compare the handoff reference with the confirmed intake relationship. Hold or return inconsistent information for correction by Operations; do not release it merely because a value exists.</p>
+<p>LC4: Non-active time can include batching, interruptions, prioritisation or information waits. Staffing is only one possible cause. More detailed event evidence is needed.</p>
+<p>LC5: Incomplete work may wait longer in Operations before reaching Finance. Finance sees cleaner submissions, but total elapsed time can increase. Measure both stages and pending work.</p>
+<h3>9.2 Guided practice: completed states</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Job state</th>
+<th>Appointment state</th>
+<th>Finance-handoff state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Service completed</td>
+<td>Completed</td>
+<td>Ready for Finance review</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Intake hold</td>
+<td>None</td>
+<td>Not ready</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Scheduled</td>
+<td>EVG-APPT-4003 Superseded; EVG-APPT-4013 Pending acknowledgement</td>
+<td>Not ready</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Cancelled</td>
+<td>Cancelled</td>
+<td>Not ready; no financial record supplied</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Service completed</td>
+<td>Completed</td>
+<td>Initially Completion correction; after supplied summary, Ready for Finance review</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Service completed, as in A</td>
+<td>Completed</td>
+<td>Ready for Finance review</td>
+</tr>
+</tbody>
+</table></div>
+<p>Case C must not become Work in progress because no actual start or required technician acknowledgement is supplied.</p>
+<p>Case D demonstrates that cancellation state and notification completion are separate. The verified cancellation can be recorded while the communication exception remains open.</p>
+<p>Case E was corrected before Finance receipt. It is not a demonstrated Finance return and must not be invented as one.</p>
+<p>Completed early traceability and validation record</p>
+<p>New candidate requirements are derived from the proposed design basis:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Candidate business need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-009</td>
+<td>Preserve appointment history and required acknowledgements during rescheduling</td>
+</tr>
+<tr>
+<td>EVG-REQ-010</td>
+<td>Retain pre-start cancellation evidence and outstanding notification/Finance actions</td>
+</tr>
+<tr>
+<td>EVG-REQ-011</td>
+<td>Retain performed work and route post-start changes through review</td>
+</tr>
+</tbody>
+</table></div>
+<p>They remain candidates pending business confirmation and scope treatment in later chapters.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check ID</th>
+<th>Links</th>
+<th>Case</th>
+<th>Paper-derived expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-TEST-004</td>
+<td>EVG-REQ-007; EVG-RULE-006</td>
+<td>A and E</td>
+<td>Complete handoff qualifies; missing summary enters correction; supplied correction permits recheck</td>
+</tr>
+<tr>
+<td>EVG-TEST-001</td>
+<td>EVG-REQ-001; EVG-RULE-001</td>
+<td>B</td>
+<td>Missing customer information remains on hold</td>
+</tr>
+<tr>
+<td>EVG-TEST-006</td>
+<td>EVG-REQ-009; EVG-RULE-003</td>
+<td>C</td>
+<td>Same job retained; old appointment superseded; replacement pending acknowledgement</td>
+</tr>
+<tr>
+<td>EVG-TEST-007</td>
+<td>EVG-REQ-010; EVG-RULE-004</td>
+<td>D</td>
+<td>Cancellation retained with technician acknowledgement outstanding</td>
+</tr>
+<tr>
+<td>EVG-TEST-005</td>
+<td>EVG-REQ-008; EVG-RULE-008</td>
+<td>F</td>
+<td>Only nonfinancial status/contact disclosed</td>
+</tr>
+</tbody>
+</table></div>
+<p>This table extends planned traceability without replacing the earlier test definitions or claiming full execution.</p>
+<p>A valid alternative can use an explicitly named “Cancellation notification pending” substate. It must still retain the cancellation and identify the remaining owner and evidence.</p>
+<h3>9.3 Independent challenge solution</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Correct state and treatment</th>
+<th>Required next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>Job enters Change review; performed diagnostic and actual start remain recorded</td>
+<td>Operations and Finance assess remaining work and financial implications; no invented reversal</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Old appointment Superseded; replacement Pending acknowledgement; job remains Scheduled, not started</td>
+<td>Dispatch obtains T4 acknowledgement; T3 withdrawal and customer confirmation are already supplied</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Handoff Returned for correction, then eligible for recheck after logged customer correction</td>
+<td>Operations changes handoff customer to EVG-CUST-0101; retains return history and job identity</td>
+</tr>
+</tbody>
+</table></div>
+<p>Links are:</p>
+<ul>
+<li>G → EVG-REQ-011 → EVG-TEST-008.</li>
+<li>H → EVG-REQ-009 → EVG-TEST-006.</li>
+<li>I → EVG-REQ-007 and EVG-RULE-006 → an expanded EVG-TEST-004 consistency case.</li>
+</ul>
+<p>Do not allocate a different business job reference to H or I.</p>
+<p>Revised exception entry</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Required evidence</th>
+<th>Blocked transition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reschedule with technician change</td>
+<td>Customer confirmation, old technician withdrawal acknowledgement and new technician acknowledgement</td>
+<td>Replacement cannot become Confirmed until all required evidence exists</td>
+</tr>
+</tbody>
+</table></div>
+<p>The model must distinguish “old technician no longer assigned” from “new technician accepts the assignment.”</p>
+<p>Later snapshot calculations</p>
+<p>EVG-JOB-1106 Finance elapsed:</p>
+<blockquote>
+<p>16{:}20-15{:}00=80 minutes</p>
+</blockquote>
+<p>Its non-active elapsed:</p>
+<blockquote>
+<p>80-20=60 minutes</p>
+</blockquote>
+<p>All six reviews are now complete. Three were not returned.</p>
+<blockquote>
+<p>First-pass rate=(3) ÷ (6)×100=50%</p>
+</blockquote>
+<p>Updated mean non-active Finance elapsed:</p>
+<blockquote>
+<p>(290+60) ÷ (6)=58.33 minutes</p>
+</blockquote>
+<p>The first-pass rate changed from 60% to 50%:</p>
+<blockquote>
+<p>50%-60%=-10 percentage points</p>
+</blockquote>
+<p>The earlier result remains correct for its snapshot and cohort. The later result includes the formerly unfinished case.</p>
+<p>This is not evidence that the proposed future process failed. Both calculations describe supplied synthetic timing records; no redesigned process execution has been observed.</p>
+<p>A suitable recommendation is:</p>
+<p>Investigate Finance’s non-active intervals and test an earlier completeness/consistency check while preserving Finance review. Measure pre-handoff corrections, pending age and total completion-to-review time alongside first-pass performance so that delay is not merely transferred to Operations.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Current-state analysis must represent available evidence, including disagreement. Replacing it with a preferred rule hides the gap and prevents a fair explanation of the proposed change.</li>
+<li>Actual work-start evidence, performed-work facts, cancellation/change time, requester authority and any existing Finance information.</li>
+<li>Customer confirmation, withdrawal acknowledgement from the old technician and acknowledgement from the new technician.</li>
+<li>Values can be present but inconsistent. The job/customer relationship and other agreed validity conditions must be checked.</li>
+<li>Its return outcome is unknown. It may later pass or return, so neither result is justified at the earlier snapshot.</li>
+<li>Review-start events, interruptions, batching practices, information-wait reasons, priorities and workload context would help distinguish causes.</li>
+<li>Paper reasoning checks model logic. It does not demonstrate configuration, permissions, integrations, timing or actual user behaviour.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Process redesign starts by making work and responsibility visible. It improves delivery judgement when it preserves evidence, models exceptions and measures the whole flow.</p>
+<p>The important distinction is between a process that looks clean and a process that gives every representative case a responsible next action.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can distinguish current facts from proposed future rules.</li>
+<li>I can use swimlanes to show responsibility and handoffs.</li>
+<li>I can separate job, appointment and Finance-handoff states.</li>
+<li>I can handle cancellation and rescheduling without erasing history.</li>
+<li>I can define readiness controls and correction ownership.</li>
+<li>I can calculate elapsed, active and non-active time with stated cohorts.</li>
+<li>I can explain unfinished records and changing snapshots.</li>
+<li>I can validate a draft model without claiming product execution.</li>
+</ul>
+<p>Your project pack now contains current/future process models, exception rules, measurements and paper-validation evidence.</p>
+<p>Chapter 4, Requirements and Traceability, converts these process needs into a structured requirements register with acceptance criteria, priorities, fit-gap analysis and requirement-to-test links.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active handling time</td>
+<td>Time spent actively performing the measured work</td>
+</tr>
+<tr>
+<td>Bottleneck</td>
+<td>A constraint that limits the flow of work</td>
+</tr>
+<tr>
+<td>Cohort</td>
+<td>The defined set of records included in a measure</td>
+</tr>
+<tr>
+<td>Current-state model</td>
+<td>Description of work as supported by available current evidence</td>
+</tr>
+<tr>
+<td>Future-state model</td>
+<td>Proposed description of how work should operate</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>Transfer of work or information between responsible parties</td>
+</tr>
+<tr>
+<td>Non-active elapsed time</td>
+<td>Elapsed time minus supplied active handling time</td>
+</tr>
+<tr>
+<td>Operational control</td>
+<td>Rule or activity that prevents, detects or corrects an undesirable action</td>
+</tr>
+<tr>
+<td>Paper validation</td>
+<td>Reasoning through a model using supplied scenarios, without executing the product</td>
+</tr>
+<tr>
+<td>State</td>
+<td>A defined condition of a business object at a point in its lifecycle</td>
+</tr>
+<tr>
+<td>Swimlane</td>
+<td>Diagram grouping activities by responsible role or team</td>
+</tr>
+<tr>
+<td>Transition</td>
+<td>Movement from one state to another under defined conditions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM Developer Documentation — API v8: Get Blueprint Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/blueprint-details.html">Open official reference</a></li>
+</ol>
+<p>Describes available transitions, associated fields and validation for a record in a process, including scope and permission conditions. It supports later technical investigation, not a claim that Evergreen’s proposed model is implemented.</p>
+<ol start="2">
+<li>Zoho CRM — Feature-wise comparison of editions<br />
+<a href="https://www.zoho.com/crm/complete-feature-list.html">Open official reference</a></li>
+</ol>
+<p>Use during later product-fit assessment to check edition dependencies. A process diagram does not establish the client’s entitlement.</p>
+<p>Consult the official references above for current product details. Research is partially verified: the cited product concepts are documentation-based, while Evergreen’s edition, permissions, configuration and process execution remain unverified.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Validate current-state and future-state models.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-02">← Previous chapter</a><a href="/course-book/course-05/chapter-04">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

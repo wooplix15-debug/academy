@@ -1,0 +1,7 @@
+job_ref,customer_ref,service_completed_at,finance_received_at,finance_review_finished_at,finance_active_minutes,returned_for_missing_info,finance_review_state
+EVG-JOB-1101,EVG-CUST-0101,2027-01-18T09:00:00Z,2027-01-18T09:20:00Z,2027-01-18T10:10:00Z,10,no,review_complete
+EVG-JOB-1102,EVG-CUST-0102,2027-01-18T09:00:00Z,2027-01-18T09:40:00Z,2027-01-18T11:00:00Z,20,yes,review_complete
+EVG-JOB-1103,EVG-CUST-0101,2027-01-18T10:00:00Z,2027-01-18T10:15:00Z,2027-01-18T10:45:00Z,15,no,review_complete
+EVG-JOB-1104,EVG-CUST-0103,2027-01-18T11:00:00Z,2027-01-18T12:00:00Z,2027-01-18T14:00:00Z,15,no,review_complete
+EVG-JOB-1105,EVG-CUST-0104,2027-01-18T12:00:00Z,2027-01-18T12:30:00Z,2027-01-18T14:00:00Z,20,yes,review_complete
+EVG-JOB-1106,EVG-CUST-0105,2027-01-18T14:00:00Z,2027-01-18T15:00:00Z,,,,awaiting_review

@@ -1,0 +1,1329 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 13</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 13</p><h1>User Acceptance Testing</h1><p>Facilitate UAT and record acceptance decisions.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-13-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: evidence and decision flow</a><a href="#section-4">4. Worked case: build and rehearse Evergreen’s UAT pack</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/evergreen_reporting.py">Download evergreen_reporting.py ↓</a><a download href="/course-book/course-05/evergreen_prototype.py">Chapter 10 reference prototype ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>Supplier testing asks whether the solution behaves as specified. User acceptance testing, or UAT, asks whether authorised business representatives can use the delivered solution to perform the agreed work under representative conditions.</p>
+<p>UAT is more than a demonstration. Participants need scenarios, suitable data, their intended access, expected results and a way to record what actually happened.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Build business-led acceptance scenarios.</li>
+<li>Select representative roles and records.</li>
+<li>Define observable expected results.</li>
+<li>Link scenarios to requirements, acceptance criteria and supplier tests.</li>
+<li>Record pass, fail, blocked and not-run results accurately.</li>
+<li>Handle defects, retesting and proposed exceptions.</li>
+<li>Produce acceptance evidence without inventing participation or signatures.</li>
+<li>Explain whether the evidence supports acceptance or further investigation.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the requirements register, Chapter 10 reference prototype, Chapter 11 quality records and Chapter 12 planning baseline.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>State entering this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning baseline</td>
+<td>SB-02 v1.1 includes one weekly report</td>
+</tr>
+<tr>
+<td>Supplier forecast</td>
+<td>86–98.9 person-hours</td>
+</tr>
+<tr>
+<td>Planning authority</td>
+<td>Supplied as a fictional case decision; execution remains unauthorised</td>
+</tr>
+<tr>
+<td>Native fit and permissions</td>
+<td>Unverified</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-006</td>
+<td>Additional technician dashboard pending</td>
+</tr>
+<tr>
+<td>EVG-JOB-2105</td>
+<td>Missing second technician acknowledgement; operational hold recommended, not observed</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Local receiver defect corrected/retested</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-002</td>
+<td>Sender-wrapper reproduction pending</td>
+</tr>
+<tr>
+<td>Actual product UAT</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>Release acceptance</td>
+<td>None supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-119 authorises a local UAT rehearsal and acceptance-plan documents. It does not authorise Zoho execution.</p>
+<p>This chapter therefore gives you a complete rehearsal using the Chapter 10 model and a reporting adapter. The rehearsal supports scenario design and evidence handling. It does not substitute for business-led testing of the actual product.</p>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>A UAT plan and scenario pack.</li>
+<li>A role and readiness sheet.</li>
+<li>A traceable evidence ledger.</li>
+<li>Defect and retest records.</li>
+<li>An acceptance recommendation with explicit limits.</li>
+</ol>
+<p>All Evergreen facts, records, rules and dialogue are synthetic. Local reference observations are identified separately from product observations and client decisions.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Start from business work, not screens</h3>
+<p>Skill: define what a participant must accomplish.</p>
+<p>A UAT scenario should describe a business task.</p>
+<p>Weak scenario:</p>
+<p>“Open the job screen and click Complete.”</p>
+<p>Better scenario:</p>
+<p>“As the assigned technician, record a completed service. Confirm that incomplete information does not enter Finance review and that completion does not release an invoice.”</p>
+<p>The second scenario explains the purpose and control.</p>
+<p>A scenario needs:</p>
+<ul>
+<li>Business objective.</li>
+<li>Requirement and acceptance links.</li>
+<li>Intended participant.</li>
+<li>Starting state.</li>
+<li>Complete input records.</li>
+<li>Actions.</li>
+<li>Expected intermediate and final results.</li>
+<li>Evidence to capture.</li>
+<li>Cleanup or reset conditions.</li>
+</ul>
+<p>Use ordinary business language. Technical checks can support the scenario, but they should not obscure the work.</p>
+<p>A participant should be able to explain why a result is correct. If Finance sees “Received,” ask whether that represents receipt, review or release. The expected interpretation matters as much as the visible label.</p>
+<p>A happy-path scenario alone is insufficient. Include exceptions that materially affect the agreed process: incomplete completion data, wrong-role access, rescheduling and cancellation.</p>
+<p>Lesson check LC1: Why is “the Complete button works” insufficient evidence for EVG-REQ-003?</p>
+<h3>2.2 Use representative people, roles and data</h3>
+<p>Skill: make the acceptance exercise resemble intended use.</p>
+<p>Representative users are not simply the people available first.</p>
+<p>Evergreen needs Operations, Dispatch, assigned technicians and Finance because they perform different work and hold different authority.</p>
+<p>A consultant using an administrator account cannot prove a Dispatcher’s field visibility. A Technician Lead may explain the process, but actual technician access still needs representative evidence.</p>
+<p>Plan participant coverage:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Business role</th>
+<th>Intended representative</th>
+<th>Responsibility in UAT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sponsor</td>
+<td>Morgan Shaw</td>
+<td>Acceptance decision using owner input</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Priya Rao</td>
+<td>Intake, corrections and operational exceptions</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Tessa Reed</td>
+<td>Visibility, scheduling and acknowledgements</td>
+</tr>
+<tr>
+<td>Technicians</td>
+<td>T1/T2, selected through Daniel Okafor</td>
+<td>Assigned-work completion and reschedule participation</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Luis Chen</td>
+<td>Handoff review and disclosure controls</td>
+</tr>
+<tr>
+<td>Supplier support</td>
+<td>Jordan Ellis and Sam Torres</td>
+<td>Clarify, record evidence and investigate; do not impersonate client acceptance</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are planned synthetic participants, not evidence of attendance.</p>
+<p>Data should include ordinary records and relevant exceptions. Preserve stable business references so that evidence can be traced.</p>
+<p>Use a known snapshot and build. If configuration changes during testing, record which cases used each version. Do not attach results from an earlier build to a later one without assessing their validity.</p>
+<p>Lesson check LC2: Why should an administrator’s view not be recorded as a successful Dispatch access test?</p>
+<h3>2.3 Establish entry conditions before recording product results</h3>
+<p>Skill: identify whether the test can legitimately begin.</p>
+<p>Entry conditions are prerequisites for the intended UAT activity.</p>
+<p>For actual product UAT, Evergreen needs:</p>
+<ul>
+<li>Applicable scope and acceptance criteria.</li>
+<li>Execution authority.</li>
+<li>Identified environment and build.</li>
+<li>Representative user identities and effective permissions.</li>
+<li>Approved, loaded test data.</li>
+<li>Supplier checks and known-defect information.</li>
+<li>Evidence-capture and correction arrangements.</li>
+</ul>
+<p>The organisation API can supply environment type and organisation identity under appropriate permission.2 The Profiles API gives detailed permissions when retrieving a specific profile.1 Neither route has been executed for this chapter.</p>
+<p>A known edition or profile name is not enough.</p>
+<p>When prerequisites are missing, record Blocked or Not started, with an owner and required evidence. Do not fill the observation column with the expected result.</p>
+<p>A local rehearsal can still proceed under its own authority. Its environment is the local reference model, its identities are model labels and its evidence is limited accordingly.</p>
+<p>Lesson check LC3: What should you record when a confidential-field scenario cannot be executed with an actual Dispatch identity?</p>
+<h3>2.4 Separate expected results from observations</h3>
+<p>Skill: create evidence another reviewer can interpret.</p>
+<p>An expected result comes from the requirement and scenario rules. An observation records what happened during execution.</p>
+<p>A useful evidence record contains:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario and test IDs</td>
+<td>Link the observation to the intended check</td>
+</tr>
+<tr>
+<td>Build/environment</td>
+<td>Identify what was exercised</td>
+</tr>
+<tr>
+<td>Participant/identity</td>
+<td>Identify who acted</td>
+</tr>
+<tr>
+<td>Input records</td>
+<td>Make the case reproducible</td>
+</tr>
+<tr>
+<td>Expected result</td>
+<td>State the acceptance condition</td>
+</tr>
+<tr>
+<td>Actual observation</td>
+<td>Describe the result without interpretation being hidden</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Pass, fail, blocked or not run</td>
+</tr>
+<tr>
+<td>Defect/change link</td>
+<td>Route exceptions</td>
+</tr>
+<tr>
+<td>Evidence location</td>
+<td>Identify the capture or record</td>
+</tr>
+<tr>
+<td>Business decision</td>
+<td>Record the authorised interpretation separately</td>
+</tr>
+</tbody>
+</table></div>
+<p>A screenshot without identity, build or scenario context may be insufficient. A typed “Pass” is not evidence of the action.</p>
+<p>Use statuses consistently:</p>
+<ul>
+<li>Pass: the stated case was executed and its expected conditions met.</li>
+<li>Fail: execution produced nonconformance.</li>
+<li>Blocked: a prerequisite prevented execution.</li>
+<li>Not run: the case was not attempted.</li>
+</ul>
+<p>A correct denial is a pass for a negative-access scenario. A blocked scenario is not a failure of the solution.</p>
+<p>Lesson check LC4: Why must blocked cases remain visible when calculating executed-case pass rate?</p>
+<h3>2.5 Handle defects and exceptions through business decisions</h3>
+<p>Skill: avoid accepting a failure by changing the expected result.</p>
+<p>When a result differs, first classify it:</p>
+<ul>
+<li>Defect against the applicable criterion.</li>
+<li>Invalid test data.</li>
+<li>Incorrect execution.</li>
+<li>Ambiguous requirement.</li>
+<li>New request.</li>
+<li>Missing prerequisite.</li>
+</ul>
+<p>Do not rewrite the expected result to match the screen.</p>
+<p>A requirement marked Should can still be included in the agreed scope. Evergreen’s weekly report is now included in SB-02 v1.1. Its incorrect count requires correction or an explicit scope/acceptance decision.</p>
+<p>An acceptance exception records a proposed deviation, impact, workaround, owner and treatment. It is not automatically acceptable.</p>
+<p>For this exercise, EVG-SRC-120 supplies these rules:</p>
+<ul>
+<li>Actual product UAT must cover all eight agreed scenario groups.</li>
+<li>No unresolved S1 or S2 failure may be accepted.</li>
+<li>S3/S4 deviations require an explicit Sponsor decision with the affected business owner.</li>
+<li>A workaround must be demonstrated, owned and bounded.</li>
+<li>Local rehearsal results cannot accept the actual product.</li>
+<li>There is no percentage-pass threshold that overrides these conditions.</li>
+</ul>
+<p>These are synthetic case rules, not course passing rules.</p>
+<p>Lesson check LC5: Why is “reporting is only a Should” insufficient justification for ignoring a wrong report?</p>
+<h3>2.6 Retest changes and record acceptance precisely</h3>
+<p>Skill: connect the decision to the applicable evidence.</p>
+<p>Retest the original failure after correction. Then check related behaviour affected by the change.</p>
+<p>For a report filter correction, test:</p>
+<ul>
+<li>The original weekly dataset.</li>
+<li>Week-start and week-end boundaries.</li>
+<li>Cancelled/open treatment.</li>
+<li>Older completions.</li>
+</ul>
+<p>For a public projection correction, test:</p>
+<ul>
+<li>Dispatch output.</li>
+<li>Other permitted operational views.</li>
+<li>Finance’s permitted private view.</li>
+<li>Relevant enabled product access paths.</li>
+</ul>
+<p>Do not rerun unrelated work merely to make the evidence pack larger. Choose regression from the changed component and risk.</p>
+<p>An acceptance record should identify scope, version, evidence, open exceptions, owners and decision source. Do not invent a signature, participant or approval.</p>
+<p>Acceptance also differs from release. Even accepted functionality may lack migration, cutover, recovery or support readiness. Chapter 14 addresses those conditions.</p>
+<p>Lesson check LC6: Why does a corrected local reporting result not establish product acceptance?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: evidence and decision flow</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Agreed scope and scenarios</td>
+<td>Continue</td>
+<td>Entry conditions satisfied?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Entry conditions satisfied?</td>
+<td>No</td>
+<td>Blocked with owner and closure evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Entry conditions satisfied?</td>
+<td>Yes</td>
+<td>Representative role executes</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Representative role executes</td>
+<td>Continue</td>
+<td>Record actual observation</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Record actual observation</td>
+<td>Continue</td>
+<td>Expected conditions met?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Expected conditions met?</td>
+<td>Yes</td>
+<td>Pass evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Expected conditions met?</td>
+<td>No</td>
+<td>Classify defect, data issue or change</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Classify defect, data issue or change</td>
+<td>Continue</td>
+<td>Correction or authorised decision</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Correction or authorised decision</td>
+<td>Continue</td>
+<td>Retest and relevant regression</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Pass evidence</td>
+<td>Continue</td>
+<td>Business acceptance review</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Retest and relevant regression</td>
+<td>Continue</td>
+<td>Business acceptance review</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Business acceptance review</td>
+<td>Continue</td>
+<td>Accept, accept bounded exceptions, or do not accept</td>
+</tr>
+</tbody>
+</table></div>
+<p>The flow begins with readiness. Expected behaviour cannot fill a missing observation.</p>
+<p>The final decision belongs to the authorised business process. Supplier support provides evidence and recommendations.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: build and rehearse Evergreen’s UAT pack</h2>
+<h3>4.1 Scope and readiness</h3>
+<p>EVG-SRC-120 approves the scenario-plan boundary for the exercise, not the implemented product.</p>
+<p>EVG-SRC-124 supplies the current readiness manifest:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entry condition</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning scope</td>
+<td>SB-02 v1.1 supplied</td>
+</tr>
+<tr>
+<td>Product execution authority</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Actual environment/build</td>
+<td>Organisation types known; IDs/build not supplied</td>
+</tr>
+<tr>
+<td>Representative identities</td>
+<td>Intended roles known; effective accounts not evidenced</td>
+</tr>
+<tr>
+<td>Loaded test data</td>
+<td>Local fixtures only</td>
+</tr>
+<tr>
+<td>Supplier product checks</td>
+<td>Local reference checks only</td>
+</tr>
+<tr>
+<td>Defect information</td>
+<td>Local defects distinguished from product issues</td>
+</tr>
+<tr>
+<td>Evidence/correction plan</td>
+<td>Designed in this chapter</td>
+</tr>
+</tbody>
+</table></div>
+<p>The local rehearsal can proceed. Actual product UAT cannot.</p>
+<p>Record EVG-DEC-039: maintain separate local-rehearsal and product-UAT evidence.</p>
+<h3>4.2 Completed scenario and traceability pack</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>UAT ID</th>
+<th>Business scenario</th>
+<th>Requirements</th>
+<th>Acceptance/test links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-UAT-001</td>
+<td>Record two requests and prevent duplicate business reference</td>
+<td>EVG-REQ-001</td>
+<td>EVG-AC-001A–B; EVG-TEST-001</td>
+</tr>
+<tr>
+<td>EVG-UAT-002</td>
+<td>Find a customer’s open jobs, status and technician</td>
+<td>EVG-REQ-002</td>
+<td>EVG-AC-002A; EVG-TEST-002</td>
+</tr>
+<tr>
+<td>EVG-UAT-003</td>
+<td>Complete service, reject missing summary and preserve Finance review</td>
+<td>EVG-REQ-003, 007, 013</td>
+<td>EVG-AC-003A–C, 004A–B; EVG-TEST-003–004, 015</td>
+</tr>
+<tr>
+<td>EVG-UAT-004</td>
+<td>Permit nonfinancial visibility and deny restricted Finance content</td>
+<td>EVG-REQ-008, EVG-NFR-001</td>
+<td>EVG-AC-005A–C; EVG-TEST-005, 010, 012</td>
+</tr>
+<tr>
+<td>EVG-UAT-005</td>
+<td>Reschedule with technician change and retain history</td>
+<td>EVG-REQ-009</td>
+<td>EVG-AC-007A; EVG-TEST-006, 013</td>
+</tr>
+<tr>
+<td>EVG-UAT-006</td>
+<td>Produce the agreed weekly counts</td>
+<td>EVG-REQ-004</td>
+<td>EVG-AC-006A–B; EVG-TEST-009</td>
+</tr>
+<tr>
+<td>EVG-UAT-007</td>
+<td>Distinguish pre-start cancellation from post-start change</td>
+<td>EVG-REQ-010–011</td>
+<td>EVG-AC-008A, 009A; EVG-TEST-007–008</td>
+</tr>
+<tr>
+<td>EVG-UAT-008</td>
+<td>Retain return and correction evidence</td>
+<td>EVG-REQ-007, EVG-NFR-002</td>
+<td>EVG-AC-NFR-002A–B; EVG-TEST-011</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other access, identity, migration and supplier checks remain readiness/supporting evidence. These eight groups do not erase their requirements.</p>
+<h3>4.3 Complete workflow inputs</h3>
+<p>Use the complete Prototype class from Chapter 10 as an explicitly supplied prerequisite. Its actor labels are OPS, DSP, T1, T2 and FIN.</p>
+<p>EVG-SRC-121 supplies these fixtures. All workflow times are UTC on 4 February 2027.</p>
+<p>Intake and Finance fixture</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Actor/time</th>
+<th>Inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intake</td>
+<td>OPS 08:00</td>
+<td>EVG-JOB-2201, EVG-CUST-0101</td>
+</tr>
+<tr>
+<td>intake</td>
+<td>OPS 08:05</td>
+<td>EVG-JOB-2202, EVG-CUST-0101</td>
+</tr>
+<tr>
+<td>duplicate intake attempt</td>
+<td>OPS 08:06</td>
+<td>EVG-JOB-2201 again</td>
+</tr>
+<tr>
+<td>plan job 2201</td>
+<td>DSP 08:20</td>
+<td>EVG-APPT-9001, T1, slot 09:00–10:00, customer confirmed 08:10</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T1 08:25</td>
+<td>Job 2201</td>
+</tr>
+<tr>
+<td>start</td>
+<td>T1 09:00</td>
+<td>Job 2201</td>
+</tr>
+<tr>
+<td>invalid complete</td>
+<td>T1 09:30</td>
+<td>Date 4 February; blank summary</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>T1 10:00</td>
+<td>Summary “Replaced filter”</td>
+</tr>
+<tr>
+<td>review</td>
+<td>FIN 10:10</td>
+<td>Returned; private reason “Rate clarification required”</td>
+</tr>
+<tr>
+<td>correct</td>
+<td>T1 10:15</td>
+<td>Summary “Replaced filter and confirmed service details”</td>
+</tr>
+<tr>
+<td>review</td>
+<td>FIN 10:20</td>
+<td>Review complete</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reschedule fixture</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Actor/time</th>
+<th>Inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intake</td>
+<td>OPS 08:00</td>
+<td>EVG-JOB-2203, EVG-CUST-0102</td>
+</tr>
+<tr>
+<td>plan</td>
+<td>DSP 08:20</td>
+<td>EVG-APPT-9003, T2, 11:00–12:00, customer confirmed 08:10</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T2 08:25</td>
+<td>Job 2203</td>
+</tr>
+<tr>
+<td>replacement plan</td>
+<td>DSP 08:30</td>
+<td>EVG-APPT-9013, T1, 13:00–14:00, customer confirmed 08:26, T2 withdrawal 08:28</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>T1 08:35</td>
+<td>Job 2203</td>
+</tr>
+</tbody>
+</table></div>
+<p>Designed cancellation cases</p>
+<p>These inputs are complete, but the worked reference session stops before executing them:</p>
+<ul>
+<li>Pre-start: EVG-JOB-2204, customer 0103; appointment 9004 with T1 at 14:00–15:00; customer confirmed 08:10 and technician acknowledged 08:25; work not started. Verified request at 09:00 from customer0103@evergreen.example.com, reason “Customer unavailable.”</li>
+<li>Post-start: EVG-JOB-2205, customer 0102; appointment 9005 with T2 at 11:00–12:00; customer confirmed 08:10 and technician acknowledged 08:25; actual start 11:00. Verified request at 11:20 from customer0102@evergreen.example.com, reason “Customer cannot wait.”</li>
+</ul>
+<p>Use ordinary intake at 08:00 and planning at 08:20 for each cancellation fixture.</p>
+<h3>4.4 Complete reporting data and faulty adapter</h3>
+<p>The reporting week is 25–31 January 2027 UTC. Completed count uses:</p>
+<blockquote>
+<p>2027-01-25\ 00{:}00 ≤ completion time &lt;2027-02-01\ 00{:}00</p>
+</blockquote>
+<p>Open count uses the supplied state at 31 January 23:59 UTC.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>State at cutoff</th>
+<th>Completion timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1501</td>
+<td>open</td>
+<td>None</td>
+</tr>
+<tr>
+<td>EVG-JOB-1502</td>
+<td>completed</td>
+<td>21 January 10:00 UTC</td>
+</tr>
+<tr>
+<td>EVG-JOB-1503</td>
+<td>cancelled</td>
+<td>None</td>
+</tr>
+<tr>
+<td>EVG-JOB-1504</td>
+<td>completed</td>
+<td>26 January 15:00 UTC</td>
+</tr>
+<tr>
+<td>EVG-JOB-1505</td>
+<td>open</td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-SRC-123 supplies the local reporting adapter:</p>
+<pre><code class="language-python">from datetime import datetime
+
+ROWS = [
+    (&quot;EVG-JOB-1501&quot;, &quot;open&quot;, None, False),
+    (&quot;EVG-JOB-1502&quot;, &quot;completed&quot;, &quot;2027-01-21T10:00:00Z&quot;, False),
+    (&quot;EVG-JOB-1503&quot;, &quot;cancelled&quot;, None, True),
+    (&quot;EVG-JOB-1504&quot;, &quot;completed&quot;, &quot;2027-01-26T15:00:00Z&quot;, False),
+    (&quot;EVG-JOB-1505&quot;, &quot;open&quot;, None, False),
+]
+
+
+def utc(text):
+    return datetime.fromisoformat(text.replace(&quot;Z&quot;, &quot;+00:00&quot;))
+
+
+def weekly_report(rows, version):
+    opened = sum(
+        not cancelled and state != &quot;completed&quot;
+        for _, state, _, cancelled in rows
+    )
+    if version == &quot;V1&quot;:
+        completed = sum(state == &quot;completed&quot;
+                        for _, state, _, _ in rows)
+    else:
+        start = utc(&quot;2027-01-25T00:00:00Z&quot;)
+        end = utc(&quot;2027-02-01T00:00:00Z&quot;)
+        completed = sum(
+            timestamp is not None and start &lt;= utc(timestamp) &lt; end
+            for _, _, timestamp, _ in rows
+        )
+    return {&quot;open&quot;: opened, &quot;completed&quot;: completed}
+
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;V1:&quot;, weekly_report(ROWS, &quot;V1&quot;))
+    print(&quot;V2:&quot;, weekly_report(ROWS, &quot;V2&quot;))
+</code></pre>
+<p>V1 counts all completed statuses, regardless of week. V2 applies the agreed date window.</p>
+<h3>4.5 Reference observations and defect</h3>
+<p>The workflow, reschedule, history and report conditions above were checked in a local reference verification. No business participant or Zoho identity is claimed.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Local observation or limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Two distinct jobs; duplicate rejected; timestamps retained</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Model has no customer-search implementation</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Blank summary rejected; valid handoff enters review; model invoice marker stays false</td>
+</tr>
+<tr>
+<td>004</td>
+<td>No authenticated product roles or effective-permission evidence</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Original retained as Superseded; replacement pending, then Confirmed after T1 acknowledgement</td>
+</tr>
+<tr>
+<td>006</td>
+<td>V1 returns open 2, completed 2; expected completed count is 1</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Complete inputs supplied, but case not attempted</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Original private return retained; correction actor/time and eight job-2201 events retained</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reporting reference output is:</p>
+<p>V1: {'open': 2, 'completed': 2}</p>
+<p>V2: {'open': 2, 'completed': 1}</p>
+<p>EVG-DEFECT-003 — local weekly report includes out-of-week completion</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement/test</td>
+<td>EVG-REQ-004 / EVG-TEST-009 / EVG-UAT-006</td>
+</tr>
+<tr>
+<td>Component</td>
+<td>Local report adapter V1</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>Open 2; completed 1</td>
+</tr>
+<tr>
+<td>Observed reference result</td>
+<td>Open 2; completed 2</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>S3 Moderate under the supplied exercise scale</td>
+</tr>
+<tr>
+<td>Root cause</td>
+<td>Completed count checks status but omits the reporting window</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>V2 applies inclusive start/exclusive end</td>
+</tr>
+<tr>
+<td>Retest</td>
+<td>Same five records</td>
+</tr>
+<tr>
+<td>Reference retest</td>
+<td>Open 2; completed 1</td>
+</tr>
+<tr>
+<td>Remaining proof</td>
+<td>Actual report configuration and business UAT</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is separate from the earlier correction to Chapter 4’s answer. The expected count remains one; V1 is a newly supplied faulty adapter.</p>
+<p>Record EVG-DEC-040: preserve the agreed date criterion and correct the adapter rather than changing the expected count.</p>
+<h3>4.6 Interpret the measures</h3>
+<p>Initial local session:</p>
+<blockquote>
+<p>8=4 pass+1 fail+2 blocked+1 not run</p>
+</blockquote>
+<p>Executed cases:</p>
+<blockquote>
+<p>4+1=5</p>
+</blockquote>
+<p>Executed-case pass rate:</p>
+<blockquote>
+<p>(4) ÷ (5)×100=80%</p>
+</blockquote>
+<p>Execution coverage:</p>
+<blockquote>
+<p>(5) ÷ (8)×100=62.5%</p>
+</blockquote>
+<p>After the report retest, five executed local cases pass. Coverage remains 62.5%.</p>
+<p>A 100% pass rate among five local cases does not mean all eight cases ran, or that product UAT occurred.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Facilitate a local rehearsal, complete evidence and prepare a business acceptance recommendation.</p>
+<p>You need:</p>
+<ul>
+<li>The complete Chapter 10 evergreen_prototype.py.</li>
+<li>The reporting adapter above.</li>
+<li>Python 3.7 or later, or a paper-reasoning alternative.</li>
+<li>The supplied fixtures and rules.</li>
+</ul>
+<p>If you use paper reasoning, record that evidence type. You cannot create your own execution observations without running the model.</p>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Confirm the scope and entry conditions.  </li>
+</ol>
+<p>Expected: reporting included; actual product UAT not ready.</p>
+<ol start="2">
+<li>Assign intended business roles.  </li>
+</ol>
+<p>Expected: named business responsibilities, with model labels distinguished from actual participants.</p>
+<ol start="3">
+<li>Execute the intake and Finance fixture.  </li>
+</ol>
+<p>Use the Chapter 10 method:</p>
+<pre><code class="language-python">p.request(action, actor, timestamp, job_reference, **fields)
+</code></pre>
+<p>Expected: duplicate and missing-summary attempts denied without advancing the handoff.</p>
+<ol start="4">
+<li>Execute the reschedule fixture.  </li>
+</ol>
+<p>Expected: one business job with two appointment records and required acknowledgement.</p>
+<ol start="5">
+<li>Run V1 and V2 reporting.  </li>
+</ol>
+<p>Expected: the incorrect out-of-week inclusion is reproduced, then removed.</p>
+<ol start="6">
+<li>Complete the evidence ledger.  </li>
+</ol>
+<p>Expected: build, input, expected, actual and status remain distinct.</p>
+<ol start="7">
+<li>Handle review feedback.  </li>
+</ol>
+<p>EVG-SRC-125 supplies:</p>
+<p>Finance requires the original return to remain identifiable. The Sponsor asks whether “five passes” is enough to accept the product. No acceptance decision is supplied.</p>
+<p>Expected: explain retained history and reject the inference from local pass count to product acceptance.</p>
+<p>Blank scenario worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>UAT ID</th>
+<th>Business goal</th>
+<th>Role/participant</th>
+<th>Preconditions and records</th>
+<th>Actions</th>
+<th>Expected results</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank evidence worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>UAT ID</th>
+<th>Build/environment</th>
+<th>Actor/witness</th>
+<th>Inputs</th>
+<th>Expected</th>
+<th>Actual observation or reason blocked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank decision worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Scope/version</th>
+<th>Evidence reviewed</th>
+<th>Open failures/gaps</th>
+<th>Proposed exception</th>
+<th>Owner and treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: UAT Pack v0.2, local evidence ledger and product-UAT readiness/acceptance recommendation.</p>
+<p>Cleanup: reset in-memory fixtures between runs. Retain original results and retest records. Do not delete the failed result or overwrite it with the retest.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed reporting inputs</p>
+<p>Add these two rows to the reporting dataset:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>State at 31 January cutoff</th>
+<th>Completion timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-JOB-1506</td>
+<td>open</td>
+<td>1 February 00:00 UTC</td>
+</tr>
+<tr>
+<td>EVG-JOB-1507</td>
+<td>completed</td>
+<td>25 January 00:00 UTC</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is retrospective input: state at cutoff and later completion timestamps are supplied separately. All original rows remain unchanged.</p>
+<p>Changed display adapter</p>
+<p>EVG-SRC-126 supplies a faulty local display wrapper V3. Use the completed EVG-JOB-2201 fixture, whose private reason is “Rate clarification required.”</p>
+<pre><code class="language-python">def dispatch_display_v3(prototype, job_ref):
+
+    result = prototype.view(&quot;DSP&quot;, job_ref)
+    result[&quot;private_reason&quot;] = prototype.private[job_ref][0][&quot;reason&quot;]
+    return result
+</code></pre>
+<p>EVG-SRC-127 supplies candidate correction V4:</p>
+<pre><code class="language-python">def dispatch_display_v4(prototype, job_ref):
+
+    return prototype.view(&quot;DSP&quot;, job_ref)
+</code></pre>
+<p>Finance must still be able to obtain its permitted private note through view("FIN", job_ref).</p>
+<p>EVG-SRC-128 supplies the review conditions:</p>
+<ul>
+<li>Use the Chapter 11 severity scale.</li>
+<li>No exception to the restricted-reason condition is approved.</li>
+<li>Hiding a column while retaining its value in the Dispatch result is not an acceptable correction.</li>
+<li>The Sponsor asks about a manually prepared report but supplies no exception approval.</li>
+<li>Product authority and readiness gaps remain.</li>
+</ul>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Correct report counts for the seven-row dataset.</li>
+<li>Reporting boundary-check evidence linked to EVG-TEST-035.</li>
+<li>EVG-DEFECT-004 for the local V3 disclosure.</li>
+<li>A retest plan for V4 and permitted Finance access.</li>
+<li>An exception/acceptance recommendation.</li>
+<li>Updated coverage statements distinguishing local and product evidence.</li>
+</ol>
+<p>Success criteria</p>
+<p>Include the week-start completion and exclude the 1 February completion. Use the supplied state-at-cutoff values for open count.</p>
+<p>Do not waive the private-reason failure, invent a workaround approval or claim that V4 proves actual product security.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administrator executes every case</td>
+<td>Intended roles not represented</td>
+<td>Use authorised representative identities</td>
+</tr>
+<tr>
+<td>Expected text copied into observations</td>
+<td>Evidence fabricated</td>
+<td>Record actual behaviour or blocked reason</td>
+</tr>
+<tr>
+<td>Blocked cases omitted from summary</td>
+<td>Coverage overstated</td>
+<td>Retain all planned cases</td>
+</tr>
+<tr>
+<td>Should requirement ignored</td>
+<td>Priority confused with included scope</td>
+<td>Correct or obtain explicit treatment</td>
+</tr>
+<tr>
+<td>Retest overwrites original fail</td>
+<td>History lost</td>
+<td>Keep linked original/retest records</td>
+</tr>
+<tr>
+<td>Private field hidden only visually</td>
+<td>Disclosure path remains</td>
+<td>Correct the projection/access source</td>
+</tr>
+<tr>
+<td>New dashboard added during UAT</td>
+<td>Change bypasses baseline</td>
+<td>Link to EVG-CHANGE-006</td>
+</tr>
+<tr>
+<td>All local tests pass, so release recommended</td>
+<td>Evidence boundary exceeded</td>
+<td>Separate model, product and release decisions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery means restoring a controlled test state and preserving evidence. It does not mean deleting a failed observation or changing the acceptance rule after seeing the result.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>How does UAT differ from a supplier demonstration?</li>
+<li>What must be known before an actual product observation is meaningful?</li>
+<li>When is a negative-access scenario a pass?</li>
+<li>Why is blocked different from failed?</li>
+<li>What does 100% executed-case pass rate conceal in this worked session?</li>
+<li>Why can a report defect remain relevant even though reporting is a Should?</li>
+<li>What evidence would support a bounded acceptance exception?</li>
+<li>Why is acceptance distinct from release readiness?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: EVG-REQ-003 includes the Finance boundary. Completion must enter controlled review and must not release an invoice automatically.</p>
+<p>LC2: Administrator authority can exceed Dispatch authority. It does not establish the intended role’s behaviour.</p>
+<p>LC3: Blocked, with the missing identity/permission evidence and closure owner. A model projection can be supporting evidence, not the product result.</p>
+<p>LC4: Pass rate covers only executed cases. Blocked and not-run cases expose incomplete coverage.</p>
+<p>LC5: Reporting is included in the current planning scope. Priority does not remove its acceptance criterion.</p>
+<p>LC6: The correction proves a local adapter condition. Actual configuration, role execution, business interpretation and decision evidence remain missing.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>A complete local evidence entry for the Finance case could be:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario</td>
+<td>EVG-UAT-003</td>
+</tr>
+<tr>
+<td>Environment/build</td>
+<td>Local Chapter 10 reference model</td>
+</tr>
+<tr>
+<td>Actors</td>
+<td>OPS, DSP, T1, FIN labels; no actual client witness claimed</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>EVG-JOB-2201 / EVG-APPT-9001 and supplied timestamps</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>Missing summary blocked; completion qualifies handoff; Finance review separate</td>
+</tr>
+<tr>
+<td>Local observation</td>
+<td>Blank attempt leaves Work in progress/Not ready; valid completion gives Ready for Finance; model release flag false</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Local case Pass</td>
+</tr>
+<tr>
+<td>Product result</td>
+<td>Not executed; readiness unmet</td>
+</tr>
+</tbody>
+</table></div>
+<p>For EVG-UAT-008, retain:</p>
+<ul>
+<li>Original return at 10:10 by FIN.</li>
+<li>Correction at 10:15 by T1.</li>
+<li>Later review at 10:20 by FIN.</li>
+<li>Original private reason.</li>
+<li>Eight committed job-2201 events with actor/time.</li>
+</ul>
+<p>This is return-history evidence, not complete proof of every administrative audit need.</p>
+<p>Completed recommendation</p>
+<p>Evergreen Acceptance Review Note — local rehearsal</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Scenario pack for SB-02 v1.1</td>
+</tr>
+<tr>
+<td>Local evidence</td>
+<td>Five executed case groups; report corrected in V2</td>
+</tr>
+<tr>
+<td>Remaining local coverage</td>
+<td>Customer search and authenticated access blocked; cancellation group not run</td>
+</tr>
+<tr>
+<td>Actual product UAT</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>Product acceptance</td>
+<td>Not recommended</td>
+</tr>
+<tr>
+<td>Required next action</td>
+<td>Resolve authority, environment, identities, loaded data and supplier product evidence</td>
+</tr>
+<tr>
+<td>Decision status</td>
+<td>Recommendation only; no client acceptance supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-041: retain Not ready for product UAT and no product acceptance, regardless of local pass rate.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Reporting counts</p>
+<p>Open at cutoff:</p>
+<ul>
+<li>EVG-JOB-1501.</li>
+<li>EVG-JOB-1505.</li>
+<li>EVG-JOB-1506.</li>
+</ul>
+<p>Completed within the week:</p>
+<ul>
+<li>EVG-JOB-1504, 26 January.</li>
+<li>EVG-JOB-1507, exactly 25 January 00:00.</li>
+</ul>
+<p>Therefore:</p>
+<blockquote>
+<p>Open=3, Completed=2</p>
+</blockquote>
+<p>EVG-JOB-1506’s completion is exactly at the exclusive end and is excluded.</p>
+<p>Add EVG-TEST-035 to EVG-REQ-004 / EVG-AC-006A–B for the boundary regression. Record your actual run or paper reasoning; do not assume observation.</p>
+<p>Display defect</p>
+<p>The V3 wrapper copies the private reason into the Dispatch output. That local disclosure was reproduced in a reference check.</p>
+<p>EVG-DEFECT-004</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component</td>
+<td>Local Dispatch display wrapper V3</td>
+</tr>
+<tr>
+<td>Requirement</td>
+<td>EVG-REQ-008 / EVG-NFR-001</td>
+</tr>
+<tr>
+<td>UAT/test</td>
+<td>EVG-UAT-004 / EVG-TEST-036</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>Nonfinancial status/contact; no private reason</td>
+</tr>
+<tr>
+<td>Reference observation</td>
+<td>Output includes private_reason</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>S1 under the supplied exercise scale</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Developer</td>
+</tr>
+<tr>
+<td>Root cause</td>
+<td>Wrapper copies restricted data after obtaining the permitted projection</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>Remove that copy at the output source</td>
+</tr>
+<tr>
+<td>Reference V4 check</td>
+<td>Restricted field absent</td>
+</tr>
+<tr>
+<td>Remaining evidence</td>
+<td>Relevant regression and actual authenticated product paths</td>
+</tr>
+</tbody>
+</table></div>
+<p>S1 is the model’s impact classification. No real client-data exposure is claimed.</p>
+<p>Retest plan</p>
+<p>Check:</p>
+<ol>
+<li>V4 Dispatch output excludes the reason.</li>
+<li>Public state/contact remain correct.</li>
+<li>Finance’s permitted view retains the original reason.</li>
+<li>Other intended operational projections do not introduce it.</li>
+<li>Actual enabled product paths are tested after readiness.</li>
+</ol>
+<p>A hidden column is insufficient because the value still crosses the boundary.</p>
+<p>Record EVG-DEC-042: no restricted-reason exception; correct the disclosure source and verify intended paths.</p>
+<p>The manual report request remains a proposed exception. It needs a demonstrated correct process, named owner, duration and explicit decision. None is supplied.</p>
+<p>The final recommendation remains:</p>
+<p>Continue controlled local correction and evidence work. Do not recommend product acceptance or release. The reference disclosure must be addressed, incomplete scenario coverage remains visible, and actual product UAT prerequisites are unmet.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>UAT is business-led execution against agreed work and acceptance conditions. A demonstration may show selected behaviour without representative execution or a decision.</li>
+<li>Scope, criterion, build/environment, identity, inputs and evidence source.</li>
+<li>When the intended unauthorised action is denied under the appropriate identity and conditions.</li>
+<li>Blocked means execution could not occur. Failed means execution contradicted the expectation.</li>
+<li>Only five of eight groups executed locally; no actual product UAT occurred.</li>
+<li>It is included in SB-02 v1.1.</li>
+<li>Impact, demonstrated workaround, owner, duration, residual risk and explicit authorised approval.</li>
+<li>Release also needs migration, cutover, recovery, communications and support readiness.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>UAT makes business acceptance evidence explicit. It requires representative work, complete inputs, observable outcomes and accountable decisions.</p>
+<p>Keep scope, evidence type and status separate. A corrected model is useful evidence, but it cannot become an unobserved product pass or an invented client approval.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can write business-led scenarios.</li>
+<li>I can identify representative roles and readiness gaps.</li>
+<li>I can separate expected results from observations.</li>
+<li>I can reconcile pass, fail, blocked and not-run counts.</li>
+<li>I can preserve defect and retest history.</li>
+<li>I can assess proposed exceptions without inventing approval.</li>
+<li>I can distinguish local rehearsal, product UAT and release readiness.</li>
+</ul>
+<p>Your project pack now contains a UAT plan, local rehearsal evidence, defect decisions and an acceptance recommendation.</p>
+<p>Chapter 14, Cutover, Release and Recovery, uses acceptance and unresolved readiness evidence to plan sequencing, communications, go/no-go decisions, smoke tests and bounded recovery.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acceptance exception</td>
+<td>Explicitly proposed or approved treatment of a deviation</td>
+</tr>
+<tr>
+<td>Blocked</td>
+<td>Test prevented by an unmet prerequisite</td>
+</tr>
+<tr>
+<td>Business-led scenario</td>
+<td>Test organised around work and decisions users perform</td>
+</tr>
+<tr>
+<td>Entry condition</td>
+<td>Prerequisite for the intended test activity</td>
+</tr>
+<tr>
+<td>Execution coverage</td>
+<td>Executed cases divided by planned cases</td>
+</tr>
+<tr>
+<td>Exit condition</td>
+<td>Evidence and conditions needed for the acceptance decision</td>
+</tr>
+<tr>
+<td>Not run</td>
+<td>Planned case not attempted</td>
+</tr>
+<tr>
+<td>Representative role</td>
+<td>Intended business role with appropriate identity and access</td>
+</tr>
+<tr>
+<td>UAT</td>
+<td>Business-led evaluation of delivered behaviour against agreed conditions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Profiles<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-profiles.html">Open official reference</a></li>
+</ol>
+<p>Specific-profile permissions relevant to representative-role readiness.</p>
+<ol start="2">
+<li>Zoho CRM API v8 — Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Organisation identity and environment metadata, subject to authority and permissions.</p>
+<p>Consult the official references above for current product details. Confirm the applicable edition, permissions and environment before using product-specific procedures. Local reference checks do not establish Evergreen’s actual Zoho permissions, product UAT or acceptance. No client signature or release approval is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Facilitate UAT and record acceptance decisions.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-12">← Previous chapter</a><a href="/course-book/course-05/chapter-14">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

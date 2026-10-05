@@ -1,0 +1,6 @@
+job_ref,status,completed_at,cancelled
+EVG-JOB-1501,open,,no
+EVG-JOB-1502,completed,2027-01-21T10:00:00Z,no
+EVG-JOB-1503,cancelled,,yes
+EVG-JOB-1504,completed,2027-01-26T15:00:00Z,no
+EVG-JOB-1505,open,,no

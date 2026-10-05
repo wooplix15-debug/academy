@@ -1,0 +1,1269 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 1</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 01</p><h1>Consulting Role and Sales-to-Delivery Handoff</h1><p>Review the handoff and produce an engagement brief.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-01-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: from sales evidence to delivery readiness</a><a href="#section-4">4. Worked case: review Evergreen’s handoff</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-01-dataset-01.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A client buys an improvement to its business, but a delivery team often receives a proposal, sales messages and an incomplete description of the problem. Your first consulting task is to turn that material into a reliable starting point.</p>
+<p>A sales-to-delivery handoff transfers the business context, proposed work, commitments and unresolved matters from the people who developed the opportunity to the people who will deliver the engagement. A useful handoff explains what the client needs and what you are authorised to do. It also makes uncertainty visible.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Explain the client’s operating context and desired outcomes.</li>
+<li>Distinguish a proposal, an authorised commitment and an informal expectation.</li>
+<li>Separate client statements, verified business requirements, assumptions, exclusions and unanswered questions.</li>
+<li>Identify discovery gaps that prevent a responsible delivery promise.</li>
+<li>Describe commercial boundaries without treating them as product limitations.</li>
+<li>Review a handoff and produce a usable engagement brief.</li>
+</ul>
+<p>You need practical experience administering, developing or delivering Zoho applications equivalent to Course 1 or Course 2. You should already understand records, fields, users, permissions and basic automation. Here, you will use that experience to ask better questions rather than immediately configure a solution.</p>
+<p>Your contribution to the course project</p>
+<p>You will work with Evergreen Field Services, a fictional business needing service intake, customer visibility, dispatch coordination, financial handoffs and management reporting.</p>
+<p>Your chapter artifact is an engagement brief: a short, evidence-based account of the client situation, intended outcomes, current authorisation, known requirements and unresolved matters. Later chapters will build discovery notes, a charter, requirements, scope, architecture and delivery evidence from this starting point.</p>
+<p>All Evergreen people, documents, dates, business rules, records and numbers in this chapter are synthetic. They are exercise inputs, not observations from a real client or a Zoho execution. Completed artifacts are student model drafts, not client-reviewed documents. Educational scope wording is not approved legal language or Wooplix policy.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Understand the client before proposing the solution</h3>
+<p>Skill: explain the business situation without reducing it to a list of applications.</p>
+<p>As an experienced administrator or developer, you may recognise configuration patterns quickly. An intake form suggests record creation; a dispatch board suggests assignment and status; a finance handoff suggests an integration.</p>
+<p>Those associations are useful hypotheses. They are not yet a solution.</p>
+<p>A consultant must understand the work behind the requested feature. Who receives a service request? Who decides whether it is ready for dispatch? What information must reach Finance? Who owns a decision when Operations and Finance disagree?</p>
+<p>Evergreen performs scheduled maintenance and repairs. Its synthetic context includes two service teams, twelve technicians and two dispatchers working through one dispatch desk. Requests arrive by phone and email. Staff use spreadsheets to coordinate jobs and look up customer information.</p>
+<p>These facts describe operations, not a licence count. They do not establish how many people need which applications or permissions.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Synthetic contact</th>
+<th>Main concern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client Sponsor — Morgan Shaw</td>
+<td>sponsor@evergreen.example.com</td>
+<td>Business outcomes and spending boundaries</td>
+</tr>
+<tr>
+<td>Operations Manager — Priya Rao</td>
+<td>operations@evergreen.example.com</td>
+<td>Reliable intake and fewer incomplete handoffs</td>
+</tr>
+<tr>
+<td>Finance Lead — Luis Chen</td>
+<td>finance@evergreen.example.com</td>
+<td>Invoice control and financial information</td>
+</tr>
+<tr>
+<td>Dispatcher — Tessa Reed</td>
+<td>dispatch@evergreen.example.com</td>
+<td>Current job status and technician assignment</td>
+</tr>
+<tr>
+<td>Technician Lead — Daniel Okafor</td>
+<td>technicians@evergreen.example.com</td>
+<td>Usable completion reporting</td>
+</tr>
+<tr>
+<td>Implementation Lead — Jordan Ellis</td>
+<td>implementation@partner.example.com</td>
+<td>Evidence, feasibility and delivery boundaries</td>
+</tr>
+<tr>
+<td>Supplier Sales Lead — Casey Vale</td>
+<td>sales@partner.example.com</td>
+<td>Expectations established during sales</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Implementation Lead does not inherit the Sponsor’s commercial authority. The Dispatcher can explain dispatch work but cannot approve additional supplier work under the supplied authority model.</p>
+<p>Consider this exchange:</p>
+<p>Dispatcher: “We need one place to see what is happening.”  </p>
+<p>Implementation Lead: “Who needs to see it, and what decision should they be able to make?”  </p>
+<p>Dispatcher: “Internal staff need to find the customer’s open jobs, see their status and identify the assigned technician.”  </p>
+<p>Implementation Lead: “I will record that internal visibility need. I still need to establish whether other references to ‘customer visibility’ mean a customer-facing service.”</p>
+<p>The consultant converts vague language into a business question without prematurely selecting an application.</p>
+<p>A common mistake is to write “Deploy Zoho CRM” as the client outcome. An application is a possible means. The outcome might be that a dispatcher can identify the owner and status of an open job without contacting several colleagues.</p>
+<p>Lesson check LC1: A dispatcher asks for “one dashboard for everything.” What two questions would help you understand the need before proposing a dashboard?</p>
+<h3>2.2 Separate outcomes, deliverables and acceptance</h3>
+<p>Skill: explain what should improve and what evidence could demonstrate that improvement.</p>
+<p>An outcome is a change in business performance or capability. A deliverable is something you produce. Acceptance evidence shows whether an agreed deliverable or behaviour meets its agreed conditions.</p>
+<p>For example:</p>
+<ul>
+<li>Outcome: fewer completed jobs return to Operations because Finance lacks information.</li>
+<li>Deliverable: a defined completion-to-Finance handoff.</li>
+<li>Possible acceptance evidence: representative cases demonstrate that required information reaches Finance and that invoice release remains under Finance control.</li>
+</ul>
+<p>These are connected, but they are not interchangeable. A functioning form does not prove that the business outcome improved. Equally, a proposed improvement target is not automatically a contractual acceptance condition.</p>
+<p>Evergreen’s Sponsor suggests an 80% first-pass finance handoff rate as a discussion target. That number is not yet an approved acceptance threshold. You must first agree what “first pass” means, which cases count and how the measurement period will work.</p>
+<p>In this chapter, the supplied sample rule is:</p>
+<p>A reviewed handoff passes first time when Finance did not return it for missing information. A handoff awaiting review is excluded from this completed-review measure.</p>
+<p>The exclusion matters. An unfinished record is neither a demonstrated pass nor a demonstrated failure. Excluding it makes the calculation reproducible, but you must still disclose that unfinished work exists.</p>
+<p>Your experience can also help distinguish two superficially similar requests:</p>
+<p>Operations: “Finance should not have to re-enter job information.”  </p>
+<p>Finance: “I still need to review the completed job before releasing an invoice.”</p>
+<p>Reducing re-entry may involve transferring agreed information. It does not imply automatic invoice release. The correct consulting response preserves both needs and investigates how they can coexist.</p>
+<p>Avoid promising a quantified improvement merely because the client wants it. A target needs a baseline, a definition and later evidence. Chapter 16 will revisit outcomes against actual project evidence; this chapter establishes a defensible starting description.</p>
+<p>Lesson check LC2: Why does “build a completion form” fail to describe the whole business outcome? Why must an unreviewed handoff be disclosed even when it is excluded from the first-pass calculation?</p>
+<h3>2.3 Read proposals as evidence, not as automatic authority</h3>
+<p>Skill: classify statements and establish which commitments apply.</p>
+<p>A proposal describes offered work and its proposed terms. A commitment is a responsibility or promise established through the applicable authorisation process. A sales email may reveal an important expectation without creating the same authority as an accepted scope document.</p>
+<p>For this exercise, the supplied engagement note is the authority for current work. In a real engagement, establish the applicable agreement and approval process with the people responsible for commercial decisions.</p>
+<p>Use these distinctions consistently:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+<th>Evergreen example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client statement</td>
+<td>Something a stakeholder said; its meaning or authority may need checking</td>
+<td>“We need customer visibility.”</td>
+</tr>
+<tr>
+<td>Verified business requirement</td>
+<td>A sufficiently specific business need confirmed by the relevant stakeholder in the supplied case</td>
+<td>Finance reviews a completed job before invoice release</td>
+</tr>
+<tr>
+<td>Assumption</td>
+<td>A condition used for planning that has not been confirmed</td>
+<td>Process owners will be available at the dates requested for later discovery</td>
+</tr>
+<tr>
+<td>Exclusion</td>
+<td>Work outside a particular stated boundary</td>
+<td>Customer self-service is excluded from the current discussion proposal</td>
+</tr>
+<tr>
+<td>Unresolved question</td>
+<td>Information or a decision still needed</td>
+<td>Does “customer visibility” include external customer access?</td>
+</tr>
+<tr>
+<td>Authorised commitment</td>
+<td>Work permitted by the supplied authorisation</td>
+<td>Review the sales handoff and produce an engagement brief</td>
+</tr>
+</tbody>
+</table></div>
+<p>“Verified business requirement” does not mean “implemented and tested.” You can confirm a business need before confirming whether a particular product and edition can meet it.</p>
+<p>Similarly, an exclusion is attached to a scope boundary. It does not mean that Zoho universally cannot perform the work. Customer self-service could be investigated later through an authorised scope change.</p>
+<p>A useful response to an optimistic promise is specific:</p>
+<p>Sales Lead: “I said all historical jobs could come over.”  </p>
+<p>Implementation Lead: “I will preserve that expectation in the handoff. We do not yet have a source inventory, record counts or quality evidence, so I cannot present complete historical migration as an agreed delivery commitment.”</p>
+<p>You are correcting the interpretation of the promise, not deleting evidence that the client may have relied on.</p>
+<p>Product names also need qualification. Zoho’s official CRM comparison presents capabilities and limits by edition; it does not establish Evergreen’s entitlement.1 The CRM API v8 documentation describes organisation metadata that includes environment type and licence details, subject to scope and permission requirements.2 An appropriately authorised client administrator could supply relevant inventory evidence. You do not need unrestricted credentials to ask for it.</p>
+<p>Evergreen’s edition, subscribed applications, hosting region and administrator authority are not supplied. Product fit and tenant-specific steps remain unverified.</p>
+<p>Lesson check LC3: A proposal excludes customer self-service, but a sales email says “customers will have visibility.” How should you record this disagreement?</p>
+<h3>2.4 Transfer uncertainty and commercial boundaries clearly</h3>
+<p>Skill: produce a brief that supports the next decision without concealing gaps.</p>
+<p>A discovery gap is missing information that could change the understanding of the problem, scope, solution, effort or delivery risk.</p>
+<p>Not every gap blocks the current activity. Unknown migration volumes do not prevent you from reviewing documents. They do prevent a responsible promise to migrate all historical records.</p>
+<p>For each gap, record:</p>
+<ol>
+<li>What is unknown.</li>
+<li>Why it matters.</li>
+<li>Who can supply or decide it.</li>
+<li>What evidence would close it.</li>
+<li>Which decision remains blocked.</li>
+</ol>
+<p>This is more useful than writing “awaiting clarification.” It gives the next person an actionable question.</p>
+<p>Commercial boundaries also describe responsibilities. In the current Evergreen stage:</p>
+<ul>
+<li>The Implementation Lead owns the brief and clarification tracking.</li>
+<li>Client process owners confirm business needs.</li>
+<li>Finance controls the disclosure of finance information.</li>
+<li>The Sponsor authorises additional engagement work.</li>
+<li>No implementation, release or operational support service is authorised.</li>
+</ul>
+<p>If a production incident is mentioned during handoff, record it and route it to the client’s existing support owner. Producing an engagement brief does not establish an incident-response service or a restoration capability.</p>
+<p>A bounded effort example</p>
+<p>The following estimate covers only the handoff review and brief. It is a synthetic planning estimate, not a quotation.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Work item</th>
+<th>Supplier role</th>
+<th>Staff effort</th>
+<th>Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read and index supplied records</td>
+<td>Implementation Lead</td>
+<td>2 person-hours</td>
+<td>Source packet available on working day 1</td>
+</tr>
+<tr>
+<td>Classify claims and check contradictions</td>
+<td>Implementation Lead</td>
+<td>2 person-hours</td>
+<td>Sales clarification available on working day 2</td>
+</tr>
+<tr>
+<td>Draft and check the engagement brief</td>
+<td>Implementation Lead</td>
+<td>2 person-hours</td>
+<td>Classification complete</td>
+</tr>
+<tr>
+<td>Correction reserve</td>
+<td>Implementation Lead</td>
+<td>0–2 person-hours</td>
+<td>Used only if a correction requires rework</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base supplier effort:</p>
+<blockquote>
+<p>2 + 2 + 2 = 6 person-hours</p>
+</blockquote>
+<p>Planning range:</p>
+<blockquote>
+<p>6 + (0 to 2) = 6–8 person-hours</p>
+</blockquote>
+<p>For this example, the Implementation Lead has two hours of capacity per working day. The dependencies permit the base work on days 1, 2 and 3. If the full correction reserve is needed after drafting, it uses day 4.</p>
+<p>Thus, 6–8 person-hours of staff effort corresponds to 3–4 elapsed working days under these stated conditions. It is not a six-to-eight-hour implementation schedule. Changed availability or additional work requires a revised estimate.</p>
+<p>Detailed estimating comes in Chapter 9. Here, your responsibility is to identify the work being estimated, its units and the conditions behind the schedule.</p>
+<p>Lesson check LC4: Why can a task requiring six person-hours still take three working days? Which parts of this estimate would change if the sales clarification arrived late?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: from sales evidence to delivery readiness</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Sales and client records</td>
+<td>Continue</td>
+<td>Identify sources and authority</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Identify sources and authority</td>
+<td>Continue</td>
+<td>Classify statements and commitments</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Classify statements and commitments</td>
+<td>Continue</td>
+<td>Known needs and authorised work</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Classify statements and commitments</td>
+<td>Continue</td>
+<td>Assumptions, contradictions and gaps</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Known needs and authorised work</td>
+<td>Continue</td>
+<td>Draft engagement brief</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Assumptions, contradictions and gaps</td>
+<td>Continue</td>
+<td>Draft engagement brief</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draft engagement brief</td>
+<td>Continue</td>
+<td>Client clarification and next-work authorisation</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Client clarification and next-work authorisation</td>
+<td>Continue</td>
+<td>Authorised next activity</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram shows an evidence flow, not an automatic approval sequence.</p>
+<p>You first identify where a claim came from and who had authority to make it. You then classify it. Known needs and unresolved matters both belong in the engagement brief.</p>
+<p>The brief supports clarification and the authorisation of the next activity. Its existence does not authorise discovery, configuration or release by itself. A cleanly formatted document cannot repair missing authority.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: review Evergreen’s handoff</h2>
+<h3>4.1 Supplied source packet</h3>
+<p>The following synthetic documents contain all facts needed for the worked review.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Artifact and supplied status</th>
+<th>Relevant content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-001</td>
+<td>Operations questionnaire, 8 January 2027; business statements confirmed in the scenario</td>
+<td>Two teams, twelve technicians, two dispatchers and one dispatch desk. Phone/email intake and spreadsheet coordination. New requests need a unique business job reference, customer reference and received timestamp. Internal staff need the customer’s open-job status and assigned technician.</td>
+</tr>
+<tr>
+<td>EVG-SRC-002</td>
+<td>Proposal P-03, 9 January; discussion draft, not accepted</td>
+<td>Proposes evaluating intake, customer visibility, dispatch, completion information for Finance and weekly reporting. Customer self-service and automated route optimisation are excluded from this proposal.</td>
+</tr>
+<tr>
+<td>EVG-SRC-003</td>
+<td>Engagement note EL-01, 11 January; current authorisation supplied as a scenario fact</td>
+<td>“Authorised work is review of the sales handoff and preparation of an engagement brief. Discovery, configuration, migration, launch and support require separate authorisation.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-004</td>
+<td>Sales email, 10 January; expectation evidence</td>
+<td>“We should be live by 15 February; all old jobs can come over and Finance will not re-key anything.” No supporting implementation scope or estimate is supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-005</td>
+<td>Finance clarification, 11 January; business rule confirmed in the scenario</td>
+<td>Job completion does not authorise invoice release. Finance reviews and releases invoices. Finance data access has not been granted. Required handoff fields still need detailed discovery.</td>
+</tr>
+<tr>
+<td>EVG-SRC-006</td>
+<td>Synthetic six-case handoff sample and Sponsor’s outcome note</td>
+<td>Sample shown below. Sponsor suggests 80% first-pass handoffs for discussion and wants weekly open/completed reporting. Reporting definitions and the target’s acceptance status are unresolved.</td>
+</tr>
+<tr>
+<td>EVG-SRC-007</td>
+<td>Environment and access note</td>
+<td>Zoho is in use. Applications, edition, hosting region, environments and client administrator are unconfirmed. The Implementation Lead may use the briefing documents and synthetic sample only; no tenant access, data export or credentials are authorised.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The six-case sample is not a migration inventory. It establishes no historical record count.</p>
+<h3>4.2 Sample inputs and measurement rule</h3>
+<p>A completed finance review is marked review_complete. A first-pass success has returned_for_missing_info=no. An awaiting_review row has no return result and is excluded from the completed-review rate.</p>
+<pre><code class="language-csv">job_ref,customer_ref,finance_review_state,returned_for_missing_info,return_reason
+EVG-JOB-1001,EVG-CUST-0101,review_complete,no,none
+EVG-JOB-1002,EVG-CUST-0102,review_complete,yes,missing_completion_summary
+EVG-JOB-1003,EVG-CUST-0101,review_complete,no,none
+EVG-JOB-1004,EVG-CUST-0103,review_complete,no,none
+EVG-JOB-1005,EVG-CUST-0104,review_complete,yes,missing_completion_date
+EVG-JOB-1006,EVG-CUST-0105,awaiting_review,,
+EVG-JOB-* and EVG-CUST-* are synthetic business identifiers. They are distinct from Zoho-generated record IDs. Requirement and test IDs identify project evidence, not customer or job records.
+</code></pre>
+<h3>4.3 Step-by-step review</h3>
+<p>Step 1: establish the mandate</p>
+<p>EL-01 authorises the handoff review and engagement brief.</p>
+<p>Expected intermediate result: one current authorised activity boundary. The proposal and sales email do not expand it.</p>
+<p>Record EVG-DEC-001: use EL-01 as the authority for current work. This is the Implementation Lead’s treatment of supplied evidence, not a new client approval.</p>
+<p>Step 2: separate confirmed needs from candidates</p>
+<p>The supplied Operations and Finance statements support three verified business requirements. Weekly reporting remains a candidate because its counting rules are unresolved.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Business need and status</th>
+<th>Evidence and business owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001</td>
+<td>Verified: each new service request has a unique business job reference, customer reference and received timestamp</td>
+<td>EVG-SRC-001; Operations Manager</td>
+</tr>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Verified: internal staff can find a customer’s open jobs, current status and assigned technician</td>
+<td>EVG-SRC-001; Operations Manager and Dispatcher</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Verified: completing a job does not release an invoice; Finance reviews before release</td>
+<td>EVG-SRC-005; Finance Lead</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Candidate: weekly open/completed management reporting</td>
+<td>EVG-SRC-006; Sponsor</td>
+</tr>
+</tbody>
+</table></div>
+<p>Expected intermediate result: three verified business needs and one candidate, with product feasibility still unverified.</p>
+<p>These early test links preserve the intended business checks:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Draft inputs and expected business result</th>
+<th>Evidence status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-TEST-001</td>
+<td>Two new requests for EVG-CUST-0101, received on 12 January 2027 at 09:00 and 09:05 UTC. Expect different business job references and preservation of the customer and received time.</td>
+<td>Proposed; not executed</td>
+</tr>
+<tr>
+<td>EVG-TEST-002</td>
+<td>A synthetic open job, EVG-JOB-2001, for EVG-CUST-0101, assigned to Technician A. Expect an authorised internal user to find its customer, status and assignment.</td>
+<td>Proposed; role and product setup unresolved; not executed</td>
+</tr>
+<tr>
+<td>EVG-TEST-003</td>
+<td>A synthetic completed job awaiting Finance review. Expect completion alone not to release an invoice; release follows the authorised Finance review.</td>
+<td>Proposed; implementation and permissions unresolved; not executed</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are draft business checks, not complete UAT scripts. Chapters 4 and 13 will develop the traceability and acceptance evidence.</p>
+<p>Step 3: calculate the descriptive baseline</p>
+<p>Five rows have completed reviews. Three of those were not returned.</p>
+<blockquote>
+<p>First-pass rate = (completed reviews not returned) ÷ (all completed reviews) × 100</p>
+<p>(3) ÷ (5)×100=60%</p>
+</blockquote>
+<p>The sample return rate is:</p>
+<blockquote>
+<p>(2) ÷ (5)×100=40%</p>
+</blockquote>
+<p>One of six supplied handoffs remains unreviewed. Its result is unknown.</p>
+<p>The difference between the sample first-pass rate and the discussion target is:</p>
+<blockquote>
+<p>80%-60%=20 percentage points</p>
+</blockquote>
+<p>Expected intermediate result: a 60% descriptive sample baseline, a provisional 80% target and explicit disclosure of one unfinished case.</p>
+<p>Six synthetic cases are not enough to establish normal business performance or prove the cause of returns.</p>
+<p>Step 4: assign the discovery gaps</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question ID</th>
+<th>Unresolved matter</th>
+<th>Owner or requested source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-Q-001</td>
+<td>Does customer visibility include external access?</td>
+<td>Sponsor and Operations Manager</td>
+</tr>
+<tr>
+<td>EVG-Q-002</td>
+<td>Which applications, edition, region and environments are available, and who administers them?</td>
+<td>Sponsor to nominate client administrator</td>
+</tr>
+<tr>
+<td>EVG-Q-003</td>
+<td>What information must pass to Finance, and what may each role see?</td>
+<td>Finance Lead</td>
+</tr>
+<tr>
+<td>EVG-Q-004</td>
+<td>What makes a launch ready, and what supports 15 February?</td>
+<td>Sponsor and Implementation Lead</td>
+</tr>
+<tr>
+<td>EVG-Q-005</td>
+<td>How are weekly counts and the 80% target defined and approved?</td>
+<td>Sponsor and Operations Manager</td>
+</tr>
+<tr>
+<td>EVG-Q-006</td>
+<td>Which historical records exist and might be migrated?</td>
+<td>Operations Manager and Finance Lead</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-002: retain the sales date, complete-history claim and zero-re-entry claim as expectations requiring clarification; do not baseline them as delivery commitments.</p>
+<h3>4.4 Completed engagement brief</h3>
+<p>Artifact: Evergreen Engagement Brief v0.1 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Brief field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner and purpose</td>
+<td>Jordan Ellis, Implementation Lead. Establish a reliable starting point from EVG-SRC-001 through EVG-SRC-007. Not client-reviewed.</td>
+</tr>
+<tr>
+<td>Client context</td>
+<td>Two service teams use phone/email intake and spreadsheets through one dispatch desk. Coordination and incomplete finance handoffs are the immediate concerns.</td>
+</tr>
+<tr>
+<td>Intended outcomes</td>
+<td>Reliable intake identifiers; internal visibility of open jobs and assignments; controlled transfer to Finance; useful management reporting.</td>
+</tr>
+<tr>
+<td>Baseline and target</td>
+<td>Synthetic sample: 3 first-pass successes from 5 completed reviews = 60%; one unreviewed handoff excluded and disclosed. Sponsor’s 80% target is for discussion, not approved acceptance.</td>
+</tr>
+<tr>
+<td>Current authorised work</td>
+<td>Review sales handoff and produce this brief under EL-01.</td>
+</tr>
+<tr>
+<td>Proposal boundary</td>
+<td>P-03 proposes evaluation of five business areas. Customer self-service and automated route optimisation are excluded from that discussion proposal.</td>
+</tr>
+<tr>
+<td>Current exclusions</td>
+<td>No discovery, configuration, migration, launch or support is authorised. No tenant access, export or credentials are permitted.</td>
+</tr>
+<tr>
+<td>Verified requirements</td>
+<td>EVG-REQ-001–003, linked to proposed EVG-TEST-001–003. Business confirmation only; no execution evidence.</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>EVG-REQ-004: weekly reporting, pending definitions.</td>
+</tr>
+<tr>
+<td>Sales expectations</td>
+<td>15 February launch, all historical jobs and no finance re-entry remain unvalidated expectations from EVG-SRC-004.</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td>EVG-ASM-001: process owners will be available when later discovery is requested; unconfirmed. EVG-ASM-002: the sample is useful for illustrating handoff measurement, but its representativeness is unconfirmed.</td>
+</tr>
+<tr>
+<td>Open questions</td>
+<td>EVG-Q-001–006, with owners and closure evidence in the gap table.</td>
+</tr>
+<tr>
+<td>Effort and elapsed schedule</td>
+<td>Handoff-only estimate: 6–8 supplier person-hours; 3–4 working days under the stated capacity and dependency assumptions. No implementation estimate.</td>
+</tr>
+<tr>
+<td>Responsibilities and support</td>
+<td>Implementation Lead maintains the brief; client owners confirm their needs; Sponsor authorises further work. Existing client support retains operational incidents. No new support commitment is established.</td>
+</tr>
+<tr>
+<td>Readiness and next action</td>
+<td>Ready to share as a draft handoff summary. Request client clarification and authorisation for the next activity. Implementation readiness cannot yet be assessed.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.5 A mistake and its correction</h3>
+<p>Mistake: “Scope: launch on 15 February, migrate all historical jobs and automate invoicing.”</p>
+<p>This converts a sales expectation into an authorised scope, invents migration completeness and contradicts Finance’s rule.</p>
+<p>Correction: “The sales email establishes expectations about date, history and re-entry. Current authority covers only the handoff review and brief. Finance review remains required. Implementation scope, migration coverage and release planning require further evidence and authorisation.”</p>
+<p>The correction preserves the original expectation while making its status clear.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Produce Evergreen Engagement Brief v0.2 after receiving clarification. Use the worked packet, a text editor and a calculator. This is a document-based activity; no Zoho account or tenant access is needed.</p>
+<p>Additional inputs</p>
+<p>These synthetic clarifications continue the case.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied clarification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-008</td>
+<td>Sales Lead, 12 January: “The launch date was indicative. Historical migration and zero re-entry were not agreed deliverables; my email overstated their status.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-009</td>
+<td>Sponsor, 12 January: “Customer visibility in the current proposal means internal staff finding customers and their open jobs. We are not asking for a customer portal in that proposal. 15 February remains a planning preference. No additional work is authorised.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-010</td>
+<td>Finance Lead, 12 January: “No invoice export or shared administrator credentials are approved for this handoff. I can provide a redacted field-name list during discovery once that work is authorised.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>No redacted field list has yet been supplied.</p>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Reconcile the sales email with the correction.  </li>
+</ol>
+<p>Preserve EVG-SRC-004 and link EVG-SRC-008 to it.  </p>
+<p>Expected result: the expectation history remains visible, with corrected commitment status.</p>
+<ol start="2">
+<li>Update the question register.  </li>
+</ol>
+<p>Decide which question is closed and what remains unresolved.  </p>
+<p>Expected result: one audience question is resolved; product inventory, finance detail, release readiness, measures and migration questions remain open.</p>
+<ol start="3">
+<li>Check the outcome statement.  </li>
+</ol>
+<p>Recalculate the first-pass rate from the CSV.  </p>
+<p>Expected result: a denominator of five, exclusion of the unfinished row and an explicit distinction between baseline and target.</p>
+<ol start="4">
+<li>Update authorisation, access and readiness.  </li>
+</ol>
+<p>Do not treat the offered future field list as a delivered artifact.  </p>
+<p>Expected result: a brief that can be circulated for clarification while accurately describing the current limited mandate.</p>
+<ol start="5">
+<li>Produce the final artifact.  </li>
+</ol>
+<p>Complete the worksheets below and label the brief v0.2, draft, not client-reviewed.</p>
+<p>Blank engagement brief worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Your entry</th>
+<th>Column guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact identity and owner</td>
+<td></td>
+<td>Name, version, status and accountable author</td>
+</tr>
+<tr>
+<td>Client context</td>
+<td></td>
+<td>Operational facts, with source IDs</td>
+</tr>
+<tr>
+<td>Outcomes</td>
+<td></td>
+<td>Business improvements, not application names</td>
+</tr>
+<tr>
+<td>Baseline and target</td>
+<td></td>
+<td>Formula, counts, exclusions and target status</td>
+</tr>
+<tr>
+<td>Authorised work</td>
+<td></td>
+<td>Current mandate and its source</td>
+</tr>
+<tr>
+<td>Proposal and exclusions</td>
+<td></td>
+<td>Distinguish proposed evaluation from current authority</td>
+</tr>
+<tr>
+<td>Verified requirements and test links</td>
+<td></td>
+<td>Preserve existing IDs and evidence status</td>
+</tr>
+<tr>
+<td>Candidate requirements</td>
+<td></td>
+<td>Needs not yet sufficiently defined or confirmed</td>
+</tr>
+<tr>
+<td>Corrected expectations</td>
+<td></td>
+<td>Original source, correction and remaining expectation</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td></td>
+<td>Condition, impact and confirmation owner</td>
+</tr>
+<tr>
+<td>Questions and dependencies</td>
+<td></td>
+<td>Status, owner and closure evidence</td>
+</tr>
+<tr>
+<td>Effort and schedule</td>
+<td></td>
+<td>Work boundary, person-hours, capacity and dependencies</td>
+</tr>
+<tr>
+<td>Responsibilities and support</td>
+<td></td>
+<td>Who clarifies, approves and owns operational support</td>
+</tr>
+<tr>
+<td>Readiness and next action</td>
+<td></td>
+<td>What may proceed and what decision is requested</td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank evidence classification worksheet</p>
+<p>Use one row per material statement. Add rows as needed.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID and statement</th>
+<th>Category</th>
+<th>Linked requirement, decision or question</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifact: a completed v0.2 brief and evidence worksheet.</p>
+<p>Cleanup: retain the original source packet and your versioned brief. Remove duplicate scratch copies you created if they are no longer useful. This exercise requires no application-state cleanup.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Continue from the guided clarification state.</p>
+<p>Changed inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>New synthetic input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-011</td>
+<td>Sponsor: “I authorise one additional discovery session about customer visibility and the necessary preparation, finance field-list review and brief update. No build, migration or release is authorised. Tessa is available on working day 4; Finance will provide the redacted field list at the start of working day 7.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-012</td>
+<td>Finance Lead: “Some invoice descriptions contain sensitive notes. Only a redacted field-name list is approved initially. Finance still controls invoice release.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-013</td>
+<td>Dispatcher: “Please add a customer-facing portal and automated route optimisation for the first launch. We have not identified which customers may log in. Portal users must not see financial information.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record the Dispatcher’s request as EVG-CHANGE-001. The request has not been commercially approved. Detailed routing discovery is not included in the Sponsor’s additional authorisation.</p>
+<p>The supplied estimate inputs for the authorised addition are:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Added work</th>
+<th>Role</th>
+<th>Effort</th>
+<th>Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prepare visibility interview</td>
+<td>Implementation Lead</td>
+<td>1–2 person-hours</td>
+<td>May start on working day 1</td>
+</tr>
+<tr>
+<td>Conduct visibility session</td>
+<td>Implementation Lead</td>
+<td>1 person-hour</td>
+<td>Preparation complete; meeting on day 4</td>
+</tr>
+<tr>
+<td>Attend visibility session</td>
+<td>Dispatcher</td>
+<td>1 person-hour</td>
+<td>Meeting on day 4</td>
+</tr>
+<tr>
+<td>Prepare redacted field list</td>
+<td>Finance Lead</td>
+<td>0.5 person-hours</td>
+<td>Supplied at start of day 7</td>
+</tr>
+<tr>
+<td>Review redacted field list</td>
+<td>Implementation Lead</td>
+<td>1–2 person-hours</td>
+<td>Session complete and list received</td>
+</tr>
+<tr>
+<td>Update brief</td>
+<td>Implementation Lead</td>
+<td>1 person-hour</td>
+<td>Field-list review complete</td>
+</tr>
+</tbody>
+</table></div>
+<p>For this exercise:</p>
+<ul>
+<li>Day 1 starts the authorised addition after the original handoff brief is complete.</li>
+<li>The Implementation Lead has two hours of capacity each working day.</li>
+<li>Work may finish and its dependent task may start on the same day if capacity remains.</li>
+<li>There are no other dependencies.</li>
+<li>No actual calendar dates, holidays or portal/routing delivery estimates are supplied.</li>
+</ul>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>A revised draft engagement brief, v0.3.</li>
+<li>A change entry for EVG-CHANGE-001 distinguishing the request from authorised work.</li>
+<li>Candidate requirement entries for the portal and routing request.</li>
+<li>An added-work estimate separating supplier and client effort.</li>
+<li>An elapsed working-day range for completing the added brief update.</li>
+<li>A short client response explaining the next decision required.</li>
+</ol>
+<p>Observable success criteria</p>
+<p>Your work must:</p>
+<ul>
+<li>Preserve existing requirement IDs and Finance’s release rule.</li>
+<li>Describe the Sponsor’s narrow additional authorisation accurately.</li>
+<li>Keep the new portal and routing requests separate from an approved delivery scope.</li>
+<li>Respect the finance disclosure restriction.</li>
+<li>Show effort units, substitutions, dependencies and capacity.</li>
+<li>Avoid presenting a preferred launch date as a supported commitment.</li>
+<li>Record unresolved customer identity and routing questions.</li>
+<li>Describe artifacts as drafts and tests as unexecuted.</li>
+</ul>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<p>Recovery in this chapter means repairing evidence and communication. It does not mean restoring a database or undoing a release.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Everything in the proposal is in scope.”</td>
+<td>Offered work has been treated as authorised work</td>
+<td>Identify the applicable authority and separate proposed, authorised and excluded work</td>
+</tr>
+<tr>
+<td>“All six handoffs passed or failed.”</td>
+<td>The unfinished case has been forced into a completed-case measure</td>
+<td>Exclude its unknown result and disclose it separately</td>
+</tr>
+<tr>
+<td>A missing target definition is filled with an invented SLA</td>
+<td>A discovery gap has been hidden</td>
+<td>Record the missing definition and its decision owner</td>
+</tr>
+<tr>
+<td>Finance refuses an export</td>
+<td>Access was requested beyond the current permission boundary</td>
+<td>Continue with authorised documents; record the gap and request permitted evidence</td>
+</tr>
+<tr>
+<td>A correction overwrites the original sales message</td>
+<td>Expectation history is lost</td>
+<td>Retain both sources and explain the correction in the latest brief</td>
+</tr>
+<tr>
+<td>A portal request is called a product impossibility</td>
+<td>A scope exclusion has been mistaken for a technical prohibition</td>
+<td>Explain its scope status and defer product-fit assessment</td>
+</tr>
+<tr>
+<td>A client asks the implementation team to fix an operational incident</td>
+<td>Support ownership is unclear</td>
+<td>Route the incident to the existing support owner and record any separate support request</td>
+</tr>
+</tbody>
+</table></div>
+<p>If you have already circulated an inaccurate brief, issue a clearly versioned correction to its recipients. Identify the changed statement, supporting source and affected decision. You cannot assume that editing your local copy corrects everyone’s understanding.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>An administrator can create fields in Evergreen’s tenant. Does that permission establish authority to build the proposed solution? Explain.</li>
+<li>Using the CSV, calculate the first-pass rate and state the treatment of EVG-JOB-1006.</li>
+<li>Why is “customer visibility” insufficient to promise a customer-facing portal? Identify the relevant clarification owner.</li>
+<li>Write a two-sentence response to the original 15 February sales expectation.</li>
+<li>Trace the Finance release rule from source to requirement to planned test. What can that chain demonstrate now, and what can it not demonstrate?</li>
+</ol>
+<p>Attempt these questions and the exercises before reading the solutions.</p>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: Ask who will use the dashboard and what decision or action it must support. Questions about the information, timing and exceptions are also valid. “Which chart type do you want?” is premature because it does not establish the business need.</p>
+<p>LC2: A form is a deliverable. The broader outcome concerns complete information reaching Finance with less avoidable return and re-entry. The unfinished record must be disclosed because the completed-review rate does not describe all supplied work or its eventual result.</p>
+<p>LC3: Preserve both sources. Record customer self-service as excluded from P-03 and external visibility as unresolved. Ask the Sponsor and Operations Manager to confirm the intended audience. Do not silently broaden the proposal or describe the feature as technically impossible.</p>
+<p>LC4: Effort counts working time; elapsed schedule also reflects capacity and waiting. Late sales clarification delays classification and dependent drafting. It may leave staff effort unchanged if no rework occurs, but the elapsed range must be revised.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>The first-pass calculation remains:</p>
+<blockquote>
+<p>(3) ÷ (5)×100=60%</p>
+</blockquote>
+<p>EVG-JOB-1006 remains unfinished and excluded. The target remains provisional.</p>
+<p>Completed artifact: Evergreen Engagement Brief v0.2 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner and sources</td>
+<td>Jordan Ellis. EVG-SRC-001–010. Draft; not client-reviewed.</td>
+</tr>
+<tr>
+<td>Context and outcomes</td>
+<td>Phone/email intake and spreadsheet coordination through one dispatch desk. Improve intake reliability, internal open-job visibility and controlled finance handoffs; clarify weekly reporting.</td>
+</tr>
+<tr>
+<td>Baseline and target</td>
+<td>60% first-pass in five completed synthetic reviews; one unfinished record disclosed. Proposed 80% target is not approved acceptance.</td>
+</tr>
+<tr>
+<td>Authorised work</td>
+<td>Handoff review and engagement brief only, under EL-01. EVG-SRC-009 grants no additional work.</td>
+</tr>
+<tr>
+<td>Proposal boundary</td>
+<td>Internal customer visibility is confirmed for P-03. Customer portal and automated routing remain excluded from that proposal.</td>
+</tr>
+<tr>
+<td>Verified requirements</td>
+<td>EVG-REQ-001–003 remain unchanged, linked to EVG-TEST-001–003; tests proposed and not executed.</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>EVG-REQ-004 remains pending reporting definitions.</td>
+</tr>
+<tr>
+<td>Corrected expectations</td>
+<td>EVG-SRC-008 corrects EVG-SRC-004: historical migration and zero re-entry were not agreed deliverables. The date remains a preference, not a supported launch commitment.</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td>EVG-ASM-001 and EVG-ASM-002 remain unconfirmed.</td>
+</tr>
+<tr>
+<td>Question status</td>
+<td>EVG-Q-001 closed by EVG-SRC-009 for the current proposal’s audience. EVG-Q-002–006 remain open.</td>
+</tr>
+<tr>
+<td>Access and dependency</td>
+<td>No invoice export or shared credentials. A future redacted field list is offered, not supplied, and depends on discovery authorisation.</td>
+</tr>
+<tr>
+<td>Estimate</td>
+<td>Handoff-only estimate remains 6–8 supplier person-hours and 3–4 working days under the original stated conditions.</td>
+</tr>
+<tr>
+<td>Ownership and support</td>
+<td>Implementation Lead owns brief corrections; Finance controls finance disclosure; Sponsor authorises additional work; existing client support owns operational incidents.</td>
+</tr>
+<tr>
+<td>Readiness and next action</td>
+<td>Share the draft and request the next-work decision. No implementation readiness claim and no discovery start.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A completed evidence worksheet could include:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source and statement</th>
+<th>Category</th>
+<th>Linked record</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-008 corrects historical migration and re-entry wording</td>
+<td>Expectation correction</td>
+<td>EVG-DEC-002; EVG-Q-006</td>
+<td>Original email retained; no migration commitment</td>
+</tr>
+<tr>
+<td>EVG-SRC-009 confirms internal visibility</td>
+<td>Business clarification</td>
+<td>EVG-REQ-002; EVG-Q-001</td>
+<td>Audience question closed for current proposal</td>
+</tr>
+<tr>
+<td>EVG-SRC-009 says no additional work is authorised</td>
+<td>Authorisation boundary</td>
+<td>EVG-DEC-001</td>
+<td>Current mandate unchanged</td>
+</tr>
+<tr>
+<td>EVG-SRC-010 refuses export and offers a future redacted list</td>
+<td>Permission boundary and dependency</td>
+<td>EVG-Q-003</td>
+<td>Fields still unknown; no access granted</td>
+</tr>
+</tbody>
+</table></div>
+<p>An acceptable alternative is to attach the classifications as an appendix rather than a separate worksheet. The source, authority and status distinctions must remain visible.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Added-work estimate</p>
+<p>Supplier effort is Implementation Lead effort:</p>
+<blockquote>
+<p>(1–2)+1+(1–2)+1=4–6 person-hours</p>
+</blockquote>
+<p>Client effort is separate:</p>
+<blockquote>
+<p>1+0.5=1.5 person-hours</p>
+</blockquote>
+<p>The combined supplier planning range for the original handoff and authorised addition is:</p>
+<blockquote>
+<p>(6–8)+(4–6)=10–14 person-hours</p>
+</blockquote>
+<p>This is still not an implementation estimate.</p>
+<p>For the addition’s elapsed schedule:</p>
+<ul>
+<li>Preparation can finish before day 4.</li>
+<li>The session occurs on day 4.</li>
+<li>Field-list review cannot begin before day 7.</li>
+<li>At the low effort value, one hour of review plus one hour of updating fits within day 7’s two-hour capacity.</li>
+<li>At the high effort value, two hours of review use day 7’s capacity; the one-hour update finishes on day 8.</li>
+</ul>
+<p>The added brief update therefore finishes on working day 7–8, conditional on the supplied availability and capacity. Do not add this range mechanically to the original handoff schedule: the challenge explicitly starts after that brief is complete.</p>
+<p>New candidate requirements</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Candidate need</th>
+<th>Source</th>
+<th>Unresolved matter and test status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-005</td>
+<td>Customer-facing portal with no financial information exposed</td>
+<td>EVG-SRC-013</td>
+<td>Customer eligibility, identity and access rules unresolved; no test assigned</td>
+</tr>
+<tr>
+<td>EVG-REQ-006</td>
+<td>Automated route optimisation for first launch</td>
+<td>EVG-SRC-013</td>
+<td>Routing objectives, inputs and constraints unresolved; no test assigned</td>
+</tr>
+</tbody>
+</table></div>
+<p>Candidate status is appropriate because the requests lack sufficient definition and delivery approval. Product feasibility is also unverified.</p>
+<p>Completed change entry</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-001 entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requester and source</td>
+<td>Dispatcher; EVG-SRC-013</td>
+</tr>
+<tr>
+<td>Requested change</td>
+<td>Add customer-facing portal and automated route optimisation to the first launch</td>
+</tr>
+<tr>
+<td>Current boundary affected</td>
+<td>Both are excluded from P-03; no implementation is authorised</td>
+</tr>
+<tr>
+<td>Business implications</td>
+<td>External access creates identity and visibility questions; routing requires new operational definitions</td>
+</tr>
+<tr>
+<td>Authorisation status</td>
+<td>Customer-visibility discovery addition authorised by EVG-SRC-011. Portal/routing delivery not approved. Detailed routing discovery not authorised.</td>
+</tr>
+<tr>
+<td>Estimate status</td>
+<td>Authorised addition: 4–6 supplier person-hours plus 1.5 client person-hours. No portal/routing delivery estimate available.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Complete authorised visibility discovery; seek definitions and a separate decision on any wider assessment or delivery</td>
+</tr>
+<tr>
+<td>Decision owner</td>
+<td>Sponsor, using input from Operations, Finance and the Implementation Lead</td>
+</tr>
+</tbody>
+</table></div>
+<p>Completed revised brief</p>
+<p>Artifact: Evergreen Engagement Brief v0.3 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner and evidence</td>
+<td>Jordan Ellis; EVG-SRC-001–013. Student model draft, not client-reviewed.</td>
+</tr>
+<tr>
+<td>Context and outcomes</td>
+<td>Original operational context unchanged. Internal visibility remains the current proposal need; external portal and routing are new requests, not established delivery outcomes.</td>
+</tr>
+<tr>
+<td>Baseline and target</td>
+<td>60% first-pass in five completed synthetic reviews; one unfinished case. The 80% target remains provisional.</td>
+</tr>
+<tr>
+<td>Current authority</td>
+<td>EL-01 handoff work plus the narrow visibility discovery addition in EVG-SRC-011. No build, migration, release or support authorisation.</td>
+</tr>
+<tr>
+<td>Requirements and traceability</td>
+<td>EVG-REQ-001–003 remain verified business needs linked to proposed, unexecuted EVG-TEST-001–003. EVG-REQ-004–006 are candidates.</td>
+</tr>
+<tr>
+<td>Proposal and change</td>
+<td>P-03 exclusions remain recorded. EVG-CHANGE-001 requests portal and routing; delivery approval is pending.</td>
+</tr>
+<tr>
+<td>Finance boundary</td>
+<td>Finance retains invoice release. Only a redacted field-name list is permitted initially; sensitive invoice descriptions must not be assumed available.</td>
+</tr>
+<tr>
+<td>Assumptions and questions</td>
+<td>EVG-ASM-001–002 remain open for later work. EVG-Q-001 remains closed for P-03’s original audience. EVG-Q-002–006 remain open. Add EVG-Q-007 for external customer identity/access and EVG-Q-008 for routing objectives and constraints.</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>Authorised addition: 4–6 supplier person-hours; 1.5 client person-hours. Original plus added supplier effort: 10–14 person-hours.</td>
+</tr>
+<tr>
+<td>Elapsed schedule</td>
+<td>Added brief update finishes on working day 7–8 under supplied availability and two-hour daily supplier capacity. No supported implementation date.</td>
+</tr>
+<tr>
+<td>Responsibility and support</td>
+<td>Implementation Lead owns the draft and authorised investigation; Sponsor owns further approval; Finance owns disclosure and invoice rules; existing support ownership remains unchanged.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Proceed with the authorised visibility session and field-list review. Request a separate scope decision before wider assessment or delivery.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-003: plan only the additional work authorised by EVG-SRC-011; keep portal/routing delivery outside the approved work. This is the Implementation Lead’s planning decision, not a fabricated client delivery approval.</p>
+<p>A suitable client response is:</p>
+<p>We can proceed with the authorised customer-visibility session and brief update, using the permitted redacted finance field list. The portal and routing request remains open: customer identity rules, routing needs, product fit and delivery impact must be established before you can decide on a revised scope or supported launch date.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>No. Product permission allows an action within a system; commercial authority establishes whether it is part of the engagement. Both must be appropriate.</li>
+<li>60%: three non-returned handoffs divided by five completed reviews. EVG-JOB-1006 has an unknown result, so it is excluded and disclosed.</li>
+<li>Audience and use case are missing. Internal staff visibility differs from external customer access. The Sponsor and Operations Manager provide the relevant clarification.</li>
+<li>Example: “We have recorded 15 February as the sales planning expectation, but current authority covers only the handoff brief. We need agreed scope, dependencies and readiness conditions before presenting a supported release commitment.”</li>
+<li>EVG-SRC-005 → EVG-REQ-003 → EVG-TEST-003. The chain demonstrates where the business rule came from and how it is intended to be checked. It does not demonstrate configured permissions, a passing test, UAT acceptance or an observed release result.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A strong handoff is reliable because it preserves evidence and explains uncertainty.</p>
+<p>Your engagement brief should tell a reader what the client does, what should improve, what is currently authorised and what prevents the next promise. It should preserve disagreements rather than hide them, and distinguish business confirmation from product verification.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can explain Evergreen’s context without treating an application name as an outcome.</li>
+<li>I can distinguish a proposal, an expectation and an authorised commitment.</li>
+<li>I can classify assumptions, exclusions and discovery gaps.</li>
+<li>I can calculate the sample rate and explain its unfinished-case exclusion.</li>
+<li>I can maintain requirement-to-test links without inventing test results.</li>
+<li>I can separate staff effort from elapsed schedule.</li>
+<li>I can produce a draft brief with clear ownership and next decisions.</li>
+</ul>
+<p>Your project artifact is the engagement brief with its source classifications, questions and early traceability.</p>
+<p>Chapter 2, Stakeholder Discovery and Kickoff, builds on it through interviews, conflicting needs, decision rights, discovery notes, a charter and initial estimate assumptions. Obtain authority for any discovery beyond the narrow work already supplied in this case.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acceptance evidence</td>
+<td>Recorded information showing whether agreed conditions were met</td>
+</tr>
+<tr>
+<td>Assumption</td>
+<td>An unconfirmed condition used for planning</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>A stated starting point used for comparison or control</td>
+</tr>
+<tr>
+<td>Commercial boundary</td>
+<td>The authorised limit of work, responsibility or commitment</td>
+</tr>
+<tr>
+<td>Discovery gap</td>
+<td>Missing information that could affect an engagement decision</td>
+</tr>
+<tr>
+<td>Elapsed schedule</td>
+<td>Time from start to finish, including capacity limits and waiting</td>
+</tr>
+<tr>
+<td>Engagement brief</td>
+<td>Evidence-based summary of context, outcomes, authority and uncertainty</td>
+</tr>
+<tr>
+<td>Exclusion</td>
+<td>Work outside a particular stated scope</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Desired improvement in business performance or capability</td>
+</tr>
+<tr>
+<td>Person-hour</td>
+<td>One person working for one hour</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>Offered work and terms that require the applicable acceptance process</td>
+</tr>
+<tr>
+<td>Traceability</td>
+<td>An explicit link between a need and related evidence, decisions or tests</td>
+</tr>
+<tr>
+<td>Verified business requirement</td>
+<td>A specific need confirmed by the relevant business stakeholder; not necessarily implemented or tested</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM — Feature-wise comparison of editions<br />
+<a href="https://www.zoho.com/crm/complete-feature-list.html">Open official reference</a></li>
+</ol>
+<p>Supports the need to check edition-specific capability and limit dependencies. It does not establish Evergreen’s purchased entitlement.</p>
+<ol start="2">
+<li>Zoho CRM Developer Documentation — API v8: Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Describes organisation metadata, including environment type and licence details, and the applicable scope and permission conditions. Use it when planning an authorised inventory request; this chapter does not require an API call.</p>
+<p>These official references were accessed on 5 October 2026. Research is partially verified: the cited product statements are documentation-based, while Evergreen’s actual applications, edition, region, permissions and product fit remain unknown. No UI procedure, API execution or product test result is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Review the handoff and produce an engagement brief.</p><div class="reader-actions"><a href="/courses/zoho-implementation-consulting-practicum">Course 5 overview</a><a href="/course-book/course-05/chapter-02">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

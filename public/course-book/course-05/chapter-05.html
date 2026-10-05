@@ -1,0 +1,1316 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 5</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 05</p><h1>Scope and Statement of Work</h1><p>Draft a statement of work and scope baseline.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-05-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: from requirements to controlled scope</a><a href="#section-4">4. Worked case: draft Evergreen’s pilot SOW</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-05-dataset-01.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A requirements register describes business needs. It does not establish that every recorded need is included in the supplier’s work.</p>
+<p>A statement of work, often shortened to SOW, connects selected needs to deliverables, responsibilities, dependencies, acceptance arrangements and change control. A scope baseline is the approved reference used to determine whether later work is included or represents a change.</p>
+<p>Your task is to make the proposed engagement understandable enough that the client and supplier can make an informed decision.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Translate requirements into bounded deliverables.</li>
+<li>State assumptions, exclusions and responsibilities clearly.</li>
+<li>Identify dependencies that affect effort or schedule.</li>
+<li>Describe acceptance evidence and decision ownership.</li>
+<li>Build an initial estimate using a work breakdown.</li>
+<li>Separate staff effort from elapsed schedule.</li>
+<li>Explain how changes affect scope, effort, timing and acceptance.</li>
+<li>Draft an SOW and proposed scope baseline without inventing approval.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the engagement brief, discovery findings, process models and requirements register from Chapters 1–4.</p>
+<p>Evergreen’s current case state includes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record or fact</th>
+<th>State entering this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001, 002, 003, 007 and 008</td>
+<td>Verified business needs for intake, internal visibility and controlled Finance handoff</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Weekly reporting defined as a business need; priority is Should</td>
+</tr>
+<tr>
+<td>EVG-REQ-005 and 006</td>
+<td>Customer portal and automated routing remain deferred</td>
+</tr>
+<tr>
+<td>EVG-REQ-009–011</td>
+<td>Proposed rescheduling, cancellation and post-start change rules</td>
+</tr>
+<tr>
+<td>EVG-NFR-001</td>
+<td>Proposed restrictions on cost, margin and sensitive Finance information</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>Proposed operational history; retention period and evidence mechanism unresolved</td>
+</tr>
+<tr>
+<td>EVG-TEST-001–013</td>
+<td>Planned checks, not executed product tests</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-001</td>
+<td>Portal/routing request deferred for separate assessment</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Reserved; no observed product failure recorded</td>
+</tr>
+<tr>
+<td>Environment evidence</td>
+<td>Production and sandbox organisations identified in a synthetic inventory; edition and configured permissions remain unverified</td>
+</tr>
+<tr>
+<td>Delivery authority</td>
+<td>No configuration, migration, release or new support service authorised</td>
+</tr>
+</tbody>
+</table></div>
+<p>A requirement marked Must is important to the intended outcome. That priority does not itself authorise implementation.</p>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>An educational draft SOW for a bounded non-production pilot.</li>
+<li>A proposed scope baseline linked to requirements and tests.</li>
+<li>An initial work breakdown and estimate.</li>
+<li>An assumption and dependency register.</li>
+<li>A change-impact record.</li>
+</ol>
+<p>The pilot is an intermediate part of the Evergreen project. Later chapters address architecture, migration, integration, release and operational handover. The proposed pilot does not replace those activities.</p>
+<p>All client facts, rules, quantities, dialogue and estimates are synthetic. Sample SOW language is educational, not approved legal language or Wooplix policy. No client signature, acceptance or observed delivery result is supplied.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Define deliverables through observable boundaries</h3>
+<p>Skill: explain what the supplier will produce and how far the work extends.</p>
+<p>A deliverable is an output the engagement will produce. It may be a working configuration, document, test pack, training session or handover artifact.</p>
+<p>A deliverable needs boundaries. “Implement service management” is too broad because it leaves the applications, users, workflows, environments and evidence undefined.</p>
+<p>A better description is:</p>
+<p>Produce a non-production pilot covering one intake-to-Finance workflow for Evergreen’s dispatch desk, using a bounded synthetic dataset and the listed exception scenarios.</p>
+<p>This is more useful, but it still needs detail:</p>
+<ul>
+<li>Which requirements are included?</li>
+<li>Which business roles are represented?</li>
+<li>What data is used?</li>
+<li>What evidence is delivered?</li>
+<li>What is excluded?</li>
+<li>What decisions must happen before work begins?</li>
+</ul>
+<p>Distinguish three things:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Evergreen example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business outcome</td>
+<td>More reliable coordination and fewer incomplete Finance handoffs</td>
+</tr>
+<tr>
+<td>Deliverable</td>
+<td>A pilot of intake, dispatch, completion and Finance review</td>
+</tr>
+<tr>
+<td>Acceptance evidence</td>
+<td>Recorded checks showing that the included behaviours and controls meet their criteria</td>
+</tr>
+</tbody>
+</table></div>
+<p>A pilot can demonstrate a capability without proving a business improvement. The earlier 80% first-pass discussion target is not a pilot acceptance threshold.</p>
+<p>A common mistake is to define deliverables only by document names:</p>
+<p>“Requirements document, test document and training document.”</p>
+<p>Those names do not describe the content or completeness conditions. Instead, state that the test pack covers the included requirements, contains expected and actual results, identifies unresolved failures and supports an acceptance decision.</p>
+<p>Lesson check LC1: What is missing from “Deliver a dispatch solution”? Give four boundaries that would make the deliverable clearer.</p>
+<h3>2.2 Make assumptions, exclusions and responsibilities actionable</h3>
+<p>Skill: expose the conditions behind the proposed scope.</p>
+<p>An assumption is an unconfirmed condition used for planning. An exclusion identifies work outside the stated boundary. A responsibility identifies who performs an activity or supplies an input.</p>
+<p>These categories solve different problems.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Example</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assumption</td>
+<td>Required controls can be implemented within the selected product design without an additional integration</td>
+<td>If false, effort and architecture may change</td>
+</tr>
+<tr>
+<td>Exclusion</td>
+<td>No production data migration is included in the pilot</td>
+<td>Prevents a demonstration dataset from becoming an unlimited migration commitment</td>
+</tr>
+<tr>
+<td>Responsibility</td>
+<td>Finance confirms permitted handoff fields and disclosure boundaries</td>
+<td>Names the owner of the business evidence</td>
+</tr>
+<tr>
+<td>Dependency</td>
+<td>Configuration starts only after the approved environment and appropriate access are available</td>
+<td>Connects the input to affected work</td>
+</tr>
+</tbody>
+</table></div>
+<p>Avoid using assumptions to conceal essential decisions. “Assume security is acceptable” does not explain which controls are required or who evaluates them.</p>
+<p>An actionable assumption states:</p>
+<ol>
+<li>The planning condition.</li>
+<li>The evidence still needed.</li>
+<li>The impact if it is false.</li>
+<li>The owner and response.</li>
+</ol>
+<p>Exclusions should also be precise. “Integrations excluded” is useful only if the reader understands how the pilot will demonstrate the Finance handoff without live financial transactions.</p>
+<p>For this chapter, the pilot represents Finance review within the demonstration process. It does not create or release live invoices in another system.</p>
+<p>Responsibilities do not transfer unrestricted access. The Client Administrator may supply authorised inventory evidence while Finance remains the owner of finance-data disclosure.</p>
+<p>Zoho CRM’s API v8 organisation documentation describes environment type and licence information, subject to scope and permission conditions.1 Such evidence can support inventory. It does not prove that the selected workflow or access design meets Evergreen’s requirements.</p>
+<p>Lesson check LC2: Why is “the client will provide everything needed” weaker than a named dependency with a required date and affected activity?</p>
+<h3>2.3 Define acceptance without manufacturing approval</h3>
+<p>Skill: describe how completion will be evaluated.</p>
+<p>Acceptance terms explain how deliverables will be reviewed, what evidence is required and who makes the decision.</p>
+<p>They should distinguish:</p>
+<ul>
+<li>Delivery of an artifact.</li>
+<li>Review of that artifact.</li>
+<li>Correction of a defect.</li>
+<li>Acceptance of a deliverable.</li>
+<li>Authorisation of further work.</li>
+</ul>
+<p>A submitted test pack is not accepted merely because the client received it.</p>
+<p>For Evergreen’s proposed pilot, useful acceptance conditions include:</p>
+<ul>
+<li>All listed deliverables are present.</li>
+<li>Every included requirement has a linked check.</li>
+<li>Checks contain inputs, expected results and actual observations.</li>
+<li>No unresolved failure prevents an included essential workflow or control.</li>
+<li>Other deviations have an explicit owner and agreed treatment.</li>
+<li>The Sponsor records the acceptance decision using Operations and Finance input.</li>
+</ul>
+<p>An unresolved control failure cannot be hidden behind a high overall pass rate. If eleven checks pass but Dispatch can see restricted margin information, the control still requires attention.</p>
+<p>A review interval can be proposed for scheduling, but silence is not evidence of acceptance. If reviewers are unavailable, record the dependency and revise the plan.</p>
+<p>Defects and changes also need different treatment:</p>
+<p>A defect is an observed failure against the applicable agreed requirement. A change adds, removes or materially alters that requirement or its delivery boundary.</p>
+<p>Correcting a baseline defect is not automatically extra scope. Equally, a request for a new customer portal is not defect correction simply because the client calls it “a small fix.”</p>
+<p>Lesson check LC3: Why should a pilot not be accepted solely because most tests pass?</p>
+<h3>2.4 Estimate the work you have actually bounded</h3>
+<p>Skill: build an initial estimate whose units and dependencies are visible.</p>
+<p>A work breakdown divides the scope into activities that can be estimated and sequenced.</p>
+<p>The estimate should identify:</p>
+<ul>
+<li>Work included.</li>
+<li>Role performing it.</li>
+<li>Effort unit.</li>
+<li>Dependencies.</li>
+<li>Capacity.</li>
+<li>Uncertainty.</li>
+<li>Client participation.</li>
+<li>Conditions that require re-estimation.</li>
+</ul>
+<p>Staff effort measures work, commonly in person-hours. Elapsed schedule includes waiting, availability and sequencing.</p>
+<p>For example, four hours of configuration can take one working day at four hours of available capacity. If access arrives three days late, those four hours have not become sixteen hours of work; the schedule has changed.</p>
+<p>Uncertainty needs explicit treatment. In this chapter, a 15% reserve is a supplied planning convention for bounded correction and rechecking. It is not a universal consulting rule.</p>
+<p>A reserve should not cover undefined new scope. Additional reports, integrations or interviews need an impact assessment.</p>
+<p>Detailed delivery estimation comes in Chapter 9. Here, you need a credible first model that makes its limitations understandable.</p>
+<p>Lesson check LC4: What information must accompany a statement that a pilot needs “68 hours”?</p>
+<h3>2.5 Control change through comparison and decision</h3>
+<p>Skill: evaluate a request against the proposed or approved reference.</p>
+<p>A change mechanism should answer:</p>
+<ol>
+<li>What is being requested?</li>
+<li>Which baseline item is affected?</li>
+<li>What business value does it add?</li>
+<li>What changes in effort, timing, dependencies, tests or support?</li>
+<li>What options exist?</li>
+<li>Who can approve the change?</li>
+<li>What happens while the decision is pending?</li>
+</ol>
+<p>A client can ask for a change without approving its delivery.</p>
+<p>Consider this exchange:</p>
+<p>Sponsor: “The weekly report is already in the requirements register. Why is adding it a change?”  </p>
+<p>Implementation Lead: “It is a verified business need, but the pilot proposal excludes it. Adding it changes the pilot deliverables, estimate and acceptance evidence. We can assess that addition without changing its requirement ID.”</p>
+<p>Keep the requirement ID stable. Use a separate change ID for the scope decision.</p>
+<p>Possible responses include approving the addition, deferring it, trading out another item or requesting further analysis. Removing an essential control to make an estimate fit is not a neutral trade. It requires an explicit business and delivery decision about the changed outcome.</p>
+<p>Lesson check LC5: Can a verified requirement still be outside the proposed scope? Explain how it should be recorded.</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: from requirements to controlled scope</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Requirements and priorities</td>
+<td>Continue</td>
+<td>Select bounded deliverables</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Select bounded deliverables</td>
+<td>Continue</td>
+<td>Add assumptions, exclusions and responsibilities</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Add assumptions, exclusions and responsibilities</td>
+<td>Continue</td>
+<td>Estimate work and dependencies</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Estimate work and dependencies</td>
+<td>Continue</td>
+<td>Define acceptance evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Define acceptance evidence</td>
+<td>Continue</td>
+<td>Draft SOW and proposed baseline</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draft SOW and proposed baseline</td>
+<td>Continue</td>
+<td>Authorised review and decision</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Authorised review and decision</td>
+<td>Approved</td>
+<td>Scope baseline</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Authorised review and decision</td>
+<td>Clarification needed</td>
+<td>Select bounded deliverables</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Scope baseline</td>
+<td>Continue</td>
+<td>Delivery against baseline</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Delivery against baseline</td>
+<td>Continue</td>
+<td>New request or changed condition</td>
+</tr>
+<tr>
+<td>—</td>
+<td>New request or changed condition</td>
+<td>Continue</td>
+<td>Impact assessment</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Impact assessment</td>
+<td>Continue</td>
+<td>Authorised review and decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram separates a proposal from an approved baseline.</p>
+<p>Requirements inform the proposal, but selection, estimation and acceptance terms still need review. After approval, the baseline becomes the reference for delivery and change decisions.</p>
+<p>A document labelled “baseline” does not become approved simply because its filename says so.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: draft Evergreen’s pilot SOW</h2>
+<h3>4.1 Supplied inputs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Synthetic input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-046</td>
+<td>Sponsor authorises drafting an SOW, proposed scope baseline and initial estimate. This is document work only; pilot implementation is not authorised.</td>
+</tr>
+<tr>
+<td>EVG-SRC-047</td>
+<td>Operations and Finance confirm the Chapter 3 business rules for rescheduling, pre-start cancellation and post-start Change review. Finance confirms the cost/margin and sensitive return-reason restrictions. Long-term history retention remains unresolved.</td>
+</tr>
+<tr>
+<td>EVG-SRC-048</td>
+<td>Sponsor requests a proposal for one non-production intake-to-Finance pilot through the existing dispatch desk. Use at most ten synthetic customer records and twenty synthetic jobs. Include one orientation session of sixty minutes for at most six client participants. No production migration, live financial transactions or launch.</td>
+</tr>
+<tr>
+<td>EVG-SRC-049</td>
+<td>Supplier supplies the work breakdown below. One Implementation Lead performs the supplier work at four hours of capacity per working day. Reserve is 15% of base effort.</td>
+</tr>
+<tr>
+<td>EVG-SRC-050</td>
+<td>Planning availability: inventory needed before day 1; administrator support for environment readiness on day 3; business review on day 18; orientation on day 19. Working day 1 begins only after scope authority and prerequisite evidence are available.</td>
+</tr>
+<tr>
+<td>EVG-SRC-051</td>
+<td>Proposed acceptance approach: require complete deliverables and traceable evidence; no unresolved failure of an essential workflow, access control or retained operational history. Sponsor decides acceptance after Operations and Finance review. No review outcome is supplied.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The newly supplied confirmations support updating EVG-REQ-009–011 to verified business requirements. They do not approve implementation.</p>
+<p>EVG-NFR-001’s visibility boundary is confirmed. EVG-NFR-002 remains proposed because long-term retention and the history mechanism are unresolved. The pilot can still propose a narrow operational-history demonstration.</p>
+<h3>4.2 Check evidence before reusing it</h3>
+<p>The Chapter 4 reporting exercise contained a counting error. For its supplied week of 25–31 January:</p>
+<ul>
+<li>EVG-JOB-1501 and EVG-JOB-1505 were open.</li>
+<li>EVG-JOB-1504 completed on 26 January and counted as completed.</li>
+<li>EVG-JOB-1502 completed on 21 January, outside the week.</li>
+</ul>
+<p>The correct counts were two open and one completed, not two completed.</p>
+<p>Record EVG-DEC-011: correct the report sample’s expected completed count to one while preserving the supplied records and requirement IDs.</p>
+<p>This is an expected-answer correction, not an observed product defect. It illustrates why acceptance data must be checked before it becomes part of a contract or test pack.</p>
+<h3>4.3 Select the proposed pilot boundary</h3>
+<p>Proposed Scope Baseline SB-01 v0.1 — not approved</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement group</th>
+<th>Proposed treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-001–003</td>
+<td>Include intake, internal visibility and controlled Finance review</td>
+</tr>
+<tr>
+<td>EVG-REQ-007–008</td>
+<td>Include qualified handoff and permitted nonfinancial visibility</td>
+</tr>
+<tr>
+<td>EVG-REQ-009–011</td>
+<td>Include confirmed exception rules in the pilot</td>
+</tr>
+<tr>
+<td>EVG-NFR-001</td>
+<td>Include role-based visibility controls</td>
+</tr>
+<tr>
+<td>EVG-NFR-002</td>
+<td>Include demonstration of prior return and correction actor/time; exclude unresolved long-term retention implementation</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Exclude from this pilot proposal; retain Should priority in the wider register</td>
+</tr>
+<tr>
+<td>EVG-REQ-005–006</td>
+<td>Deferred; outside this proposal</td>
+</tr>
+</tbody>
+</table></div>
+<p>Twelve checks are proposed for the pilot: EVG-TEST-001–008 and EVG-TEST-010–013. The reporting check, EVG-TEST-009, is excluded.</p>
+<p>Record EVG-DEC-012: use SB-01 as the proposed pilot boundary, subject to approval and product-fit confirmation.</p>
+<h3>4.4 Completed educational SOW</h3>
+<p>Artifact: Evergreen Pilot SOW v0.1 — draft for review</p>
+<p>Purpose and scope</p>
+<p>The proposed engagement will produce a non-production pilot demonstrating Evergreen’s selected intake, dispatch, completion, Finance-review and exception behaviours.</p>
+<p>The pilot covers one dispatch-desk workflow with representative Operations, Dispatch, Technician, Finance and Administrator roles. It uses no more than ten synthetic customers and twenty synthetic jobs. These are dataset limits, not migration commitments or licence counts.</p>
+<p>Deliverables</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Deliverable ID</th>
+<th>Output and boundary</th>
+<th>Completion evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-DEL-001</td>
+<td>Pilot design and access plan for included requirements</td>
+<td>Requirement coverage, role boundaries, product-fit conditions and environment plan</td>
+</tr>
+<tr>
+<td>EVG-DEL-002</td>
+<td>Intake, assignment, completion and exception workflow</td>
+<td>Demonstration of intake hold, rescheduling, cancellation and post-start review</td>
+</tr>
+<tr>
+<td>EVG-DEL-003</td>
+<td>Controlled Finance handoff and permitted Dispatch visibility</td>
+<td>Qualified handoff, Finance review boundary and restricted-information checks</td>
+</tr>
+<tr>
+<td>EVG-DEL-004</td>
+<td>Bounded synthetic dataset and operational-history example</td>
+<td>Identified records; prior return and correction actor/time retained in the demonstration</td>
+</tr>
+<tr>
+<td>EVG-DEL-005</td>
+<td>Traceable test and issue pack</td>
+<td>Twelve included checks, inputs, expected/actual results and unresolved-item treatment</td>
+</tr>
+<tr>
+<td>EVG-DEL-006</td>
+<td>One orientation session and pilot handover pack</td>
+<td>Session materials, administrator notes, known limitations and named support ownership</td>
+</tr>
+</tbody>
+</table></div>
+<p>Responsibilities</p>
+<p>The Implementation Lead owns supplier design recommendations, configuration work if later authorised, supplier checks, documentation and issue communication.</p>
+<p>The Client Administrator provides authorised environment and access evidence. Operations confirms process facts and coordinates missing operational information. Finance confirms disclosure rules and reviews the Finance control. The Sponsor approves scope and records the acceptance decision.</p>
+<p>Client responsibilities do not require shared credentials or unrestricted exports.</p>
+<p>Assumptions and dependencies</p>
+<p>The estimate assumes the selected product design can meet the included behaviours without an additional live integration. This remains unverified.</p>
+<p>Scope approval, product/edition evidence and appropriate permissions are prerequisites for implementation. If the initial design assessment disproves the assumption, affected work pauses for re-estimation and a scope decision.</p>
+<p>Business review and orientation depend on the supplied participant availability.</p>
+<p>Exclusions</p>
+<p>The proposal excludes:</p>
+<ul>
+<li>Production data migration and historical-record cleansing.</li>
+<li>Live invoice creation, release or financial-system integration.</li>
+<li>Production launch and cutover.</li>
+<li>Customer portal and automated routing.</li>
+<li>Weekly management reporting.</li>
+<li>Long-term retention or archival implementation.</li>
+<li>Additional training sessions and ongoing operational support.</li>
+</ul>
+<p>Acceptance approach</p>
+<p>Deliverables will be evaluated using the listed requirement links and recorded checks. Essential workflow, access-control and operational-history failures must be resolved before acceptance.</p>
+<p>Other deviations require an explicit treatment agreed by the Sponsor with relevant owner input. Submission, attendance and silence do not constitute acceptance.</p>
+<p>The estimate includes bounded correction/rechecking effort. A defect against the agreed scope is not automatically a new chargeable requirement. New scope requires the change mechanism.</p>
+<p>Handover and support boundary</p>
+<p>The pilot pack identifies the Client Administrator for environment administration and the Operations Manager for business-process questions. Product issues follow the client’s existing support arrangements.</p>
+<p>No production recovery capability is promised. Before pilot changes, the Administrator and Implementation Lead must establish an authorised method for preserving or recreating the permitted pilot configuration and synthetic data. Chapters 14 and 15 develop release recovery and operational support handover.</p>
+<p>Commercial status</p>
+<p>This is a proposed work boundary and planning estimate. Fees, payment terms and other commercial terms are not supplied. No implementation authority or client acceptance is recorded.</p>
+<h3>4.5 Initial work breakdown</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Work ID</th>
+<th>Supplier activity</th>
+<th>Person-hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01</td>
+<td>Design and product-fit confirmation</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E02</td>
+<td>Environment and access readiness</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E03</td>
+<td>Intake and dispatch workflow</td>
+<td>12</td>
+</tr>
+<tr>
+<td>E04</td>
+<td>Reschedule, cancellation and post-start exceptions</td>
+<td>8</td>
+</tr>
+<tr>
+<td>E05</td>
+<td>Finance handoff and visibility controls</td>
+<td>10</td>
+</tr>
+<tr>
+<td>E06</td>
+<td>Synthetic dataset and operational history</td>
+<td>6</td>
+</tr>
+<tr>
+<td>E07</td>
+<td>Supplier checks and evidence preparation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>E08</td>
+<td>Business review, orientation and final pack</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<p>E08 consists of four hours of preparation, two hours of business review, one hour of orientation and one hour of final-pack completion.</p>
+<p>All supplier work is performed by one Implementation Lead in this estimate.</p>
+<blockquote>
+<p>Base effort=8+6+12+8+10+6+10+8=68 person-hours</p>
+<p>Reserve=68×0.15=10.2 person-hours</p>
+<p>Planning range=68–78.2 supplier person-hours</p>
+</blockquote>
+<p>Client participation is separate:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Client activity</th>
+<th>Person-hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administrator readiness support</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Operations and Finance business review: two hours each</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Six participants attending one-hour orientation</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Sponsor scope and acceptance decisions: half-hour each</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>12</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are planned participation allowances, not observed attendance.</p>
+<h3>4.6 Derive the elapsed schedule</h3>
+<p>Desk work may be split across days. Dependent work may start on the same day if capacity remains.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working days</th>
+<th>Planned supplier activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>E01: 8 hours</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>E02: 6 hours; E03 starts with day 4’s remaining 2 hours</td>
+</tr>
+<tr>
+<td>5–7</td>
+<td>E03 finishes; E04 starts on day 7</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>E04 finishes; E05 starts on day 9</td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>E05 finishes</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>E06; E07 starts on day 13</td>
+</tr>
+<tr>
+<td>14–15</td>
+<td>E07 finishes</td>
+</tr>
+<tr>
+<td>16</td>
+<td>E08 preparation: 4 hours</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Business review: 2 hours</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Orientation and final pack: 2 hours</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base completion is day 19.</p>
+<p>If the full reserve is needed after the final pack, day 19 has two hours remaining. Days 20 and 21 provide eight more hours, and the remaining 0.2 hours use day 22.</p>
+<p>The conditional elapsed range is therefore 19–22 working days.</p>
+<p>The capacity calculation alone gives:</p>
+<blockquote>
+<p>68÷4=17 capacity-days</p>
+</blockquote>
+<p>That is not the elapsed schedule because participant availability introduces waiting.</p>
+<p>The reserve assumes desk corrections and supplier rechecking. A further client review or new approval dependency requires a revised schedule.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “The 78.2-hour estimate guarantees completion before 15 February.”</p>
+<p>Correction: “The estimate is 68–78.2 supplier person-hours. Its conditional schedule is 19–22 working days from an authorised start with the stated inputs and availability. No calendar start or supported 15 February commitment is supplied.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Revise the draft SOW and proposed baseline when dependencies change without adding scope.</p>
+<p>Use the worked case, a document editor and calculator. No tenant access is needed.</p>
+<p>Changed inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-052</td>
+<td>Administrator readiness support moves from day 3 to day 5. E01’s inventory is still available before day 1. E02 cannot start before day 5.</td>
+</tr>
+<tr>
+<td>EVG-SRC-053</td>
+<td>Business review moves to day 20 and orientation to day 21. All effort values and scope boundaries remain unchanged.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Keep these rules:</p>
+<ul>
+<li>One Implementation Lead has four hours daily capacity.</li>
+<li>E01–E07 retain their sequential dependencies.</li>
+<li>E08 preparation follows E07.</li>
+<li>Reserve follows final-pack completion.</li>
+<li>No work or attendance has been observed.</li>
+</ul>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Separate dependency change from scope change.  </li>
+</ol>
+<p>Expected result: deliverables and requirement coverage remain unchanged.</p>
+<ol start="2">
+<li>Update the dependency register.  </li>
+</ol>
+<p>Expected result: E02’s earliest start becomes day 5; downstream work is resequenced.</p>
+<ol start="3">
+<li>Recalculate effort.  </li>
+</ol>
+<p>Expected result: base and reserve remain 68 and 10.2 person-hours.</p>
+<ol start="4">
+<li>Build a feasible schedule.  </li>
+</ol>
+<p>Expected result: all activities respect four-hour capacity and the new review/orientation slots.</p>
+<ol start="5">
+<li>Revise the SOW and proposed baseline status.  </li>
+</ol>
+<p>Expected result: v0.2 remains a draft for review, with no invented approval.</p>
+<p>Blank scope worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact identity/status</td>
+<td></td>
+<td>Name, version, owner and approval state</td>
+</tr>
+<tr>
+<td>Purpose and phase</td>
+<td></td>
+<td>Explain the outcome and current work boundary</td>
+</tr>
+<tr>
+<td>Included deliverables</td>
+<td></td>
+<td>List IDs, contents and quantitative limits</td>
+</tr>
+<tr>
+<td>Requirements/tests</td>
+<td></td>
+<td>State included and excluded IDs</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td></td>
+<td>Condition, evidence and impact if false</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td></td>
+<td>Identify work outside this phase</td>
+</tr>
+<tr>
+<td>Responsibilities</td>
+<td></td>
+<td>Name supplier and client owners</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td></td>
+<td>Required input, date and affected activity</td>
+</tr>
+<tr>
+<td>Acceptance</td>
+<td></td>
+<td>Evidence, decision owner and unresolved-failure treatment</td>
+</tr>
+<tr>
+<td>Effort/schedule</td>
+<td></td>
+<td>Units, roles, reserve, capacity and elapsed range</td>
+</tr>
+<tr>
+<td>Support/change</td>
+<td></td>
+<td>Ownership and approval mechanism</td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank dependency and estimate worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record ID</th>
+<th>Condition or activity</th>
+<th>Owner/role</th>
+<th>Effort or required date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: Pilot SOW v0.2, proposed SB-01 v0.2 and a revised dependency/estimate sheet.</p>
+<p>Cleanup: preserve the original draft and supplied evidence. Remove duplicate scratch schedules if no longer needed. No product-state cleanup applies.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Continue from the guided schedule.</p>
+<p>New request and constraints</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-054</td>
+<td>Sponsor requests adding one weekly open/completed report, EVG-REQ-004, to the proposed pilot. The requested supplier effort ceiling is 80 hours. This is a request for a revised proposal, not implementation approval.</td>
+</tr>
+<tr>
+<td>EVG-SRC-055</td>
+<td>Supplier estimates the report at eight additional hours: definitions/mapping 2, report preparation 3, checks 2, documentation 1. E09 follows E07 and precedes E08 preparation. If reporting is added, business review is available on day 22 and orientation on day 23.</td>
+</tr>
+<tr>
+<td>EVG-SRC-056</td>
+<td>The 15% reserve remains the planning rule unless the Sponsor and Implementation Lead explicitly agree a reduction after impact review. No reduction is currently authorised.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use EVG-CHANGE-002 for the reporting addition. Preserve EVG-REQ-004 and EVG-TEST-009.</p>
+<p>Complete reporting inputs</p>
+<p>The week is Monday 25 January through Sunday 31 January 2027 UTC. The cutoff is 31 January at 23:59 UTC.</p>
+<p>Open means not cancelled and not completed at the cutoff. Completed means service completion occurred within the reporting week.</p>
+<pre><code class="language-csv">job_ref,status,completed_at,cancelled
+EVG-JOB-1501,open,,no
+EVG-JOB-1502,completed,2027-01-21T10:00:00Z,no
+EVG-JOB-1503,cancelled,,yes
+EVG-JOB-1504,completed,2027-01-26T15:00:00Z,no
+EVG-JOB-1505,open,,no
+</code></pre>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>A change-impact record.</li>
+<li>A proposed SOW amendment.</li>
+<li>A revised base effort, reserve and total.</li>
+<li>A feasible elapsed range using the full 15% reserve.</li>
+<li>Options addressing the 80-hour ceiling.</li>
+<li>Correct expected report counts and traceability.</li>
+<li>A short recommendation to the Sponsor.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your proposal must preserve essential controls, identify the ceiling conflict, retain the correct report counts and distinguish a requested addition from approved scope.</p>
+<p>Do not reduce reserve or remove controls silently to make the numbers fit.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every requirement is described as included</td>
+<td>Register confused with scope</td>
+<td>Explicitly select included requirements and retain exclusions</td>
+</tr>
+<tr>
+<td>“Migration included” has no limits</td>
+<td>Unbounded data responsibility</td>
+<td>State sources, volume boundaries and cleansing ownership, or exclude migration from this phase</td>
+</tr>
+<tr>
+<td>Acceptance depends on “client satisfaction”</td>
+<td>Evidence is not reproducible</td>
+<td>Define deliverable completeness, criteria and decision owner</td>
+</tr>
+<tr>
+<td>A missed meeting is treated as approval</td>
+<td>Silence confused with acceptance</td>
+<td>Record the unavailable review and revise dependency dates</td>
+</tr>
+<tr>
+<td>Estimate omits client availability</td>
+<td>Effort confused with schedule</td>
+<td>Sequence work against actual planning slots</td>
+</tr>
+<tr>
+<td>Reserve absorbs a new report</td>
+<td>New scope hidden in uncertainty</td>
+<td>Estimate the addition and reassess reserve</td>
+</tr>
+<tr>
+<td>Permission is missing</td>
+<td>Environment dependency unresolved</td>
+<td>Pause affected work and request authorised evidence/access</td>
+</tr>
+<tr>
+<td>A scope error has already been circulated</td>
+<td>Recipients hold inconsistent references</td>
+<td>Issue a versioned correction identifying affected items</td>
+</tr>
+<tr>
+<td>A pilot is called production-ready</td>
+<td>Demonstration boundary exceeded</td>
+<td>State the remaining architecture, migration, UAT and release work</td>
+</tr>
+<tr>
+<td>Support owner is absent from handover</td>
+<td>Deliverable ends without ownership</td>
+<td>Name business and technical owners and escalation boundaries</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery in this chapter repairs the scope record and delivery plan. It does not restore data or establish a production recovery service.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>Why can EVG-REQ-004 remain a Should while being excluded from the initial pilot?</li>
+<li>What makes an assumption different from an exclusion?</li>
+<li>Why does identifying a sandbox not prove environment readiness?</li>
+<li>What evidence is needed before calling SB-01 an approved baseline?</li>
+<li>Which parts of the estimate change when a client meeting moves but the work remains the same?</li>
+<li>Why is an access-control failure not offset by other passing tests?</li>
+<li>When is correcting a failed handoff a defect correction, and when is it a scope change?</li>
+<li>Why should acceptance of the pilot not be described as approval to launch?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: Useful boundaries include workflow, represented roles, environment, data limits, exception cases, deliverables and acceptance evidence. Application names alone do not define these.</p>
+<p>LC2: A named dependency identifies who supplies what, when it is needed and which activity is affected. “Everything needed” cannot be tracked or assessed.</p>
+<p>LC3: An essential failure can remain despite a high pass rate. A restricted-information exposure or automatic invoice release violates a control that cannot be averaged away.</p>
+<p>LC4: Identify the work boundary, supplier role, person-hour unit, client participation, reserve, capacity, dependencies and conditions requiring re-estimation.</p>
+<p>LC5: Yes. Business confirmation establishes the need; scope selection establishes whether the current engagement will deliver it. Keep the requirement visible and state its treatment.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Effort is unchanged:</p>
+<blockquote>
+<p>68+(68×0.15)=78.2 supplier person-hours at the upper planning bound</p>
+</blockquote>
+<p>Client participation remains 12 person-hours. Availability changed, not the planned duration of the activities.</p>
+<p>Revised feasible schedule</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working day</th>
+<th>Supplier work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>E01</td>
+</tr>
+<tr>
+<td>5</td>
+<td>E02</td>
+</tr>
+<tr>
+<td>6</td>
+<td>E02 remaining 2; E03 starts 2</td>
+</tr>
+<tr>
+<td>7–8</td>
+<td>E03</td>
+</tr>
+<tr>
+<td>9</td>
+<td>E03 remaining 2; E04 starts 2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>E04</td>
+</tr>
+<tr>
+<td>11</td>
+<td>E04 remaining 2; E05 starts 2</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>E05</td>
+</tr>
+<tr>
+<td>14</td>
+<td>E06</td>
+</tr>
+<tr>
+<td>15</td>
+<td>E06 remaining 2; E07 starts 2</td>
+</tr>
+<tr>
+<td>16–17</td>
+<td>E07</td>
+</tr>
+<tr>
+<td>18</td>
+<td>E08 preparation</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Business review</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Orientation and final pack</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base completion is day 21.</p>
+<p>The full 10.2-hour reserve uses:</p>
+<ul>
+<li>Day 21: 2 hours remaining.</li>
+<li>Day 22: 4 hours.</li>
+<li>Day 23: 4 hours.</li>
+<li>Day 24: 0.2 hours.</li>
+</ul>
+<p>The revised elapsed range is 21–24 working days.</p>
+<p>Completed scope amendment</p>
+<p>Pilot SOW v0.2 / Proposed SB-01 v0.2</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Revised content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Unchanged from v0.1</td>
+</tr>
+<tr>
+<td>Requirement/test coverage</td>
+<td>Unchanged; reporting remains excluded</td>
+</tr>
+<tr>
+<td>Administrator dependency</td>
+<td>E02 earliest start is day 5</td>
+</tr>
+<tr>
+<td>Review dependency</td>
+<td>Business review day 20</td>
+</tr>
+<tr>
+<td>Orientation dependency</td>
+<td>Orientation day 21</td>
+</tr>
+<tr>
+<td>Supplier effort</td>
+<td>68–78.2 person-hours</td>
+</tr>
+<tr>
+<td>Client participation</td>
+<td>12 person-hours</td>
+</tr>
+<tr>
+<td>Elapsed schedule</td>
+<td>21–24 working days under supplied conditions</td>
+</tr>
+<tr>
+<td>Approval status</td>
+<td>Draft; no implementation authorisation or baseline approval</td>
+</tr>
+<tr>
+<td>Next action</td>
+<td>Submit revised dependency and schedule implications for decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>A valid alternative schedule may arrange preparatory desk work differently only if it respects the supplied dependencies. The exercise does not permit starting E02 early.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Revised effort</p>
+<p>Additional report effort:</p>
+<blockquote>
+<p>2+3+2+1=8 person-hours</p>
+</blockquote>
+<p>Revised base:</p>
+<blockquote>
+<p>68+8=76 person-hours</p>
+</blockquote>
+<p>Revised reserve:</p>
+<blockquote>
+<p>76×0.15=11.4 person-hours</p>
+</blockquote>
+<p>Upper planning bound:</p>
+<blockquote>
+<p>76+11.4=87.4 person-hours</p>
+</blockquote>
+<p>Ceiling difference:</p>
+<blockquote>
+<p>87.4-80=7.4 person-hours</p>
+</blockquote>
+<p>The full-reserve proposal does not fit the requested ceiling.</p>
+<p>Revised schedule</p>
+<p>E07 still finishes on day 17.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working day</th>
+<th>Added or remaining work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18–19</td>
+<td>E09 reporting</td>
+</tr>
+<tr>
+<td>20</td>
+<td>E08 preparation</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Business review</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Orientation and final pack</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base completion is day 23.</p>
+<p>The 11.4-hour reserve uses two remaining hours on day 23, four hours each on days 24 and 25, and 1.4 hours on day 26.</p>
+<p>The full-reserve elapsed range is 23–26 working days, conditional on the supplied availability.</p>
+<p>Completed change-impact record</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-002</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Add one weekly report to the proposed pilot</td>
+</tr>
+<tr>
+<td>Requirement/test</td>
+<td>EVG-REQ-004 / EVG-TEST-009</td>
+</tr>
+<tr>
+<td>Current treatment</td>
+<td>Excluded from SB-01 v0.2</td>
+</tr>
+<tr>
+<td>Added deliverable</td>
+<td>One report with stated UTC open/completed definitions and test evidence</td>
+</tr>
+<tr>
+<td>Effort impact</td>
+<td>Base increases by 8 hours; reserve rises from 10.2 to 11.4 hours</td>
+</tr>
+<tr>
+<td>Total impact</td>
+<td>Upper bound increases from 78.2 to 87.4 hours</td>
+</tr>
+<tr>
+<td>Schedule impact</td>
+<td>Guided range 21–24 becomes 23–26 working days</td>
+</tr>
+<tr>
+<td>Ceiling conflict</td>
+<td>Full-reserve proposal exceeds 80 hours by 7.4</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Revised proposal requested; addition not approved</td>
+</tr>
+<tr>
+<td>Decision owners</td>
+<td>Sponsor for scope/ceiling; Implementation Lead for supplier estimate and reserve recommendation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Options</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Supplier effort</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retain original pilot; defer reporting</td>
+<td>68–78.2 hours</td>
+<td>Fits the 80-hour ceiling; retains 21–24-day guided range</td>
+</tr>
+<tr>
+<td>Add reporting and revise ceiling</td>
+<td>76–87.4 hours</td>
+<td>Preserves full reserve; uses 23–26-day range</td>
+</tr>
+<tr>
+<td>Add reporting with explicitly approved reduced reserve</td>
+<td>76–80 hours</td>
+<td>Only 4 reserve hours remain; uncertainty is less covered and requires both decision owners’ agreement</td>
+</tr>
+<tr>
+<td>Remove another bounded item</td>
+<td>Requires a new estimate</td>
+<td>Must assess lost outcome, test coverage and controls before proposing approval</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reduced reserve percentage would be:</p>
+<blockquote>
+<p>(4) ÷ (76)×100≈5.26%</p>
+</blockquote>
+<p>That is not the supplied 15% rule. It is a proposed exception, not an authorised adjustment.</p>
+<p>If explicitly approved, four reserve hours would finish by day 24 using two hours on day 23 and two on day 24. This conditional schedule does not apply to the current unapproved proposal.</p>
+<p>Correct reporting evidence</p>
+<ul>
+<li>Open: EVG-JOB-1501 and EVG-JOB-1505.</li>
+<li>Completed within the week: EVG-JOB-1504.</li>
+<li>Cancelled: EVG-JOB-1503 excluded from open.</li>
+<li>Completed before the week: EVG-JOB-1502 excluded from the week’s completed count.</li>
+</ul>
+<blockquote>
+<p>Open=2, Completed=1</p>
+</blockquote>
+<p>The trace is:</p>
+<p>EVG-SRC-038 → EVG-REQ-004 → EVG-AC-006A–B → EVG-TEST-009 → proposed reporting deliverable → EVG-CHANGE-002.</p>
+<p>No report execution or client acceptance is claimed.</p>
+<p>A suitable recommendation is:</p>
+<p>The reporting addition is eight base hours and changes the full-reserve estimate to 87.4 hours, above the requested 80-hour ceiling. Retaining the original pilot fits the ceiling; adding reporting requires a higher ceiling or an explicit decision about reduced reserve or changed scope. I recommend preserving essential controls and the full reserve until that decision is recorded.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Priority expresses business importance. Scope expresses what this engagement will deliver. A Should may be deferred from a bounded pilot without being rejected.</li>
+<li>An assumption is an unconfirmed planning condition. An exclusion is a deliberate work boundary.</li>
+<li>Environment existence does not prove edition capability, access, configuration, permitted data or an authorised recovery method.</li>
+<li>An explicit approval from the authorised decision owner identifying the version and applicable terms.</li>
+<li>Elapsed schedule and dependency dates change. Staff effort changes only if the delay creates additional work.</li>
+<li>The access control is an independent acceptance condition. Other successes do not remove the exposure.</li>
+<li>It is defect correction when observed behaviour fails the applicable agreed requirement. It is a change when the requested behaviour adds or alters the agreed need or boundary.</li>
+<li>Pilot acceptance concerns the stated non-production deliverables. Launch needs separate readiness, migration, release, recovery and support decisions.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A useful SOW makes the engagement’s boundaries understandable before delivery starts.</p>
+<p>It identifies what will be produced, what is excluded, who supplies inputs, how completion will be evaluated and what happens when the request changes. Its estimate is credible because the work, units, uncertainty and schedule conditions are visible.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can translate selected requirements into bounded deliverables.</li>
+<li>I can distinguish assumptions, exclusions and dependencies.</li>
+<li>I can assign supplier and client responsibilities.</li>
+<li>I can describe acceptance without inventing approval.</li>
+<li>I can build a work breakdown with person-hour estimates.</li>
+<li>I can separate client participation from supplier effort.</li>
+<li>I can derive a feasible elapsed schedule.</li>
+<li>I can assess a change against scope, reserve, timing and evidence.</li>
+<li>I can keep a proposed baseline distinct from an approved one.</li>
+</ul>
+<p>Your project pack now includes a draft SOW, proposed scope baseline, estimate and change-impact record.</p>
+<p>Chapter 6, Solution Architecture and Product Fit, investigates application selection, native versus custom design, record ownership, integration boundaries, edition constraints and architecture decisions. It will test the assumptions behind this proposed scope.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acceptance terms</td>
+<td>Arrangements defining review, evidence and decision ownership</td>
+</tr>
+<tr>
+<td>Change mechanism</td>
+<td>Process for evaluating and deciding changes to the work boundary</td>
+</tr>
+<tr>
+<td>Deliverable</td>
+<td>Output the engagement will produce</td>
+</tr>
+<tr>
+<td>Dependency</td>
+<td>Required input or condition affecting another activity</td>
+</tr>
+<tr>
+<td>Exclusion</td>
+<td>Work deliberately outside the stated scope</td>
+</tr>
+<tr>
+<td>Proposed baseline</td>
+<td>Draft reference awaiting the appropriate approval</td>
+</tr>
+<tr>
+<td>Reserve</td>
+<td>Explicit effort allowance for identified uncertainty</td>
+</tr>
+<tr>
+<td>Scope baseline</td>
+<td>Approved reference for included work and later change comparison</td>
+</tr>
+<tr>
+<td>Statement of work</td>
+<td>Description of deliverables, boundaries, responsibilities and completion arrangements</td>
+</tr>
+<tr>
+<td>Work breakdown</td>
+<td>Division of scope into estimable activities</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM Developer Documentation — API v8: Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Describes organisation metadata, including environment type and licence details, and the scope and permission conditions for retrieval. Useful when identifying authorised inventory evidence needed before making product-fit commitments.</p>
+<p>The official reference was accessed on 5 October 2026. Research is partially verified: the cited inventory claim is documentation-based. Evergreen’s edition, permissions, selected architecture and implementation behaviour remain unverified. No product execution is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Draft a statement of work and scope baseline.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-04">← Previous chapter</a><a href="/course-book/course-05/chapter-06">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

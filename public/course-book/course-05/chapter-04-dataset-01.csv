@@ -1,0 +1,9 @@
+row_id,job_ref,customer_ref,received_at,completion_date,completion_summary,expected_condition
+R1,EVG-JOB-1401,EVG-CUST-0101,2027-01-20T08:00:00Z,2027-01-20,Replaced filter,valid complete handoff
+R2,EVG-JOB-1402,EVG-CUST-0102,2027-01-20T08:10:00Z,2027-01-20,Reset controller,valid complete handoff
+R3,EVG-JOB-1403,EVG-CUST-0103,2027-01-20T08:15:00Z,2027-01-20,Checked operation,job reference duplicates R2 in invalid variant
+R4,EVG-JOB-1404,,2027-01-20T08:20:00Z,2027-01-20,Repaired valve,missing customer reference
+R5,EVG-JOB-1405,EVG-CUST-0105,2027-01-20T08:25:00Z,,,missing completion date and summary
+For the invalid variant of R3, the job reference is changed to EVG-JOB-1402. The expected result is rejection or correction because business references must be unique.
+For R4, the permitted result is an Operations hold. The test does not permit the tester to select a customer.
+For R5, the handoff is not ready because both completion date and summary are missing.

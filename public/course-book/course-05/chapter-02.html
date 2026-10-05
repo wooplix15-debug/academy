@@ -1,0 +1,1510 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 2</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 02</p><h1>Stakeholder Discovery and Kickoff</h1><p>Produce discovery notes, charter and initial estimate assumptions.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-02-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: discovery and decision flow</a><a href="#section-4">4. Worked case: begin structured discovery</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A sales handoff gives you a starting account of the client’s situation. Discovery helps you establish whether that account is complete enough to support delivery decisions.</p>
+<p>Stakeholder discovery is structured investigation of the people, work, rules and dependencies that shape an implementation. Kickoff aligns participants on the engagement’s purpose, boundaries, responsibilities and next actions. A kickoff meeting does not replace discovery, approve every requirement or demonstrate implementation readiness.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Plan and conduct interviews that reveal business needs and exceptions.</li>
+<li>Facilitate discussion without allowing the loudest participant to define the solution.</li>
+<li>Separate conflicting requests from the underlying needs.</li>
+<li>Identify who supplies facts, recommends options and approves decisions.</li>
+<li>Record dependencies and distinguish missing information from confirmed conditions.</li>
+<li>Write useful discovery objectives.</li>
+<li>Produce discovery notes, a draft charter and initial estimate assumptions.</li>
+<li>Explain early effort and schedule estimates without presenting them as implementation commitments.</li>
+</ul>
+<p>Prerequisites and previous continuity</p>
+<p>You need practical Zoho experience and the Chapter 1 distinction between a client statement, verified business requirement, assumption, exclusion and unresolved question.</p>
+<p>Chapter 1 established the following synthetic Evergreen facts:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record or fact</th>
+<th>State carried into this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operating context</td>
+<td>Two service teams, twelve technicians and two dispatchers through one dispatch desk; phone/email intake and spreadsheet coordination</td>
+</tr>
+<tr>
+<td>EVG-REQ-001</td>
+<td>Verified business need: unique job reference, customer reference and received timestamp for each new request</td>
+</tr>
+<tr>
+<td>EVG-REQ-002</td>
+<td>Verified business need: internal visibility of a customer’s open jobs, status and assigned technician</td>
+</tr>
+<tr>
+<td>EVG-REQ-003</td>
+<td>Verified business rule: completion alone does not release an invoice; Finance reviews before release</td>
+</tr>
+<tr>
+<td>EVG-REQ-004</td>
+<td>Candidate: weekly management reporting, with definitions unresolved</td>
+</tr>
+<tr>
+<td>EVG-REQ-005 and EVG-REQ-006</td>
+<td>Candidates: customer portal and automated routing</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-001</td>
+<td>Portal/routing request recorded; delivery not approved</td>
+</tr>
+<tr>
+<td>EVG-TEST-001–003</td>
+<td>Proposed business checks; not executed</td>
+</tr>
+<tr>
+<td>Measurement</td>
+<td>Three first-pass handoffs from five completed synthetic reviews: 60%; one unfinished case excluded and disclosed</td>
+</tr>
+<tr>
+<td>Discussion target</td>
+<td>80% first-pass handoffs; not approved acceptance</td>
+</tr>
+<tr>
+<td>Authorisation</td>
+<td>Handoff brief plus a narrow customer-visibility discovery addition; no build, migration, release or new support service</td>
+</tr>
+<tr>
+<td>Artifact status</td>
+<td>Student model drafts, not client-reviewed documents</td>
+</tr>
+</tbody>
+</table></div>
+<p>The portal and routing requests did not change the meaning of the original proposal’s internal visibility need. They were additional requests.</p>
+<p>This chapter supplies an explicit new authorisation for a broader discovery package. It does not infer permission from the earlier draft.</p>
+<p>Your project contribution</p>
+<p>Your project pack gains:</p>
+<ol>
+<li>A stakeholder map and interview plan.</li>
+<li>Discovery notes with sources, decisions and unanswered questions.</li>
+<li>A draft project charter.</li>
+<li>A bounded discovery-phase estimate and assumption record.</li>
+</ol>
+<p>All Evergreen documents, dialogue, dates, numbers and business rules remain synthetic. Supplied dialogue is simulation evidence, not proof that a real meeting occurred. Estimates are planned effort, not timesheet observations. Scope wording is educational, not approved legal language or Wooplix policy.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Interview people about work, decisions and exceptions</h3>
+<p>Skill: obtain usable evidence rather than a feature wish list.</p>
+<p>An interview should help you understand how work happens and why people make particular decisions. Asking only “What features do you want?” encourages stakeholders to prescribe screens before explaining their needs.</p>
+<p>Start with a concrete event:</p>
+<p>“Take me through the last ordinary service request, from arrival to Finance review.”</p>
+<p>Then investigate the important transitions:</p>
+<ul>
+<li>What information was available?</li>
+<li>Who decided the request was ready?</li>
+<li>What happened next?</li>
+<li>How did the receiving person know work was waiting?</li>
+<li>What happened when something was missing?</li>
+</ul>
+<p>Use open questions to invite explanation: “How do you decide which technician to assign?” Use focused questions to establish a specific fact: “Who can authorise invoice release?”</p>
+<p>Neither question type is sufficient alone. Open questions reveal context; focused questions make a record precise.</p>
+<p>An interview should also examine an exception. A normal job can hide the controls that matter most:</p>
+<p>Implementation Lead: “What happens when the customer reschedules after assignment?”  </p>
+<p>Dispatcher: “We change the spreadsheet.”  </p>
+<p>Implementation Lead: “What happens to the original appointment, and who tells the technician?”  </p>
+<p>Dispatcher: “That depends on who answers the phone. We do not have one agreed rule.”</p>
+<p>The useful result is not a guessed rescheduling workflow. It is a documented discovery gap.</p>
+<p>Avoid leading questions such as “Would automatic invoicing solve this?” They introduce a solution and may encourage agreement. A better question is “Which information must Finance receive, and which decision must remain with Finance?”</p>
+<p>Also distinguish:</p>
+<ul>
+<li>Reported fact: a stakeholder describes what normally happens.</li>
+<li>Document evidence: a permitted artifact supports the description.</li>
+<li>Unconfirmed claim: the statement still needs another owner or source.</li>
+<li>Proposed future behaviour: the stakeholder wants a change.</li>
+</ul>
+<p>A walkthrough is stronger when you can follow an authorised sample record. It is not permission to inspect unrelated customer or financial information.</p>
+<p>Lesson check LC1: Rewrite “Would a mobile app fix your completion problems?” as two neutral questions that reveal the work and its difficulties.</p>
+<h3>2.2 Facilitate conflicting needs without forcing premature agreement</h3>
+<p>Skill: help stakeholders reach a decision that respects their different responsibilities.</p>
+<p>Facilitation means guiding a discussion so that participants can understand the problem, contribute evidence and reach appropriate decisions.</p>
+<p>You do not need to make every person agree with every request. You need to make the disagreement understandable and route the decision correctly.</p>
+<p>A practical sequence is:</p>
+<ol>
+<li>Restate each person’s need neutrally.</li>
+<li>Separate the need from the requested solution.</li>
+<li>Identify constraints that must be preserved.</li>
+<li>Compare options against the needs.</li>
+<li>Record the decision or unresolved trade-off.</li>
+</ol>
+<p>For example:</p>
+<p>Dispatcher: “Show us the whole invoice so we stop chasing Finance.”  </p>
+<p>Finance Lead: “Dispatch does not need cost and margin fields.”  </p>
+<p>Implementation Lead: “Dispatch needs to know whether the handoff reached Finance and who owns it. Finance needs to restrict financial details. Could a nonfinancial handoff status and responsible contact meet the coordination need?”</p>
+<p>The proposed option is narrower than “show the whole invoice.” It should still be confirmed by the relevant owners.</p>
+<p>A common mistake is to settle a conflict by majority vote. A vote cannot override a supplied Finance control or authorise new commercial work. Another mistake is to record “agreed” when participants merely stopped objecting.</p>
+<p>Use precise outcomes:</p>
+<ul>
+<li>“Finance confirmed that a nonfinancial handoff status may be shared.”</li>
+<li>“Dispatcher confirmed that status and a contact address meet the coordination need.”</li>
+<li>“Portal identity rules remain unresolved.”</li>
+<li>“Sponsor deferred the portal/routing request from the current package.”</li>
+</ul>
+<p>For quieter participants, ask a direct but neutral question: “Technician Lead, what would make this completion record difficult to enter in the field?” Summarise the answer before returning to the wider group.</p>
+<p>Record dissent when it affects delivery. A documented unresolved issue is more useful than false consensus.</p>
+<p>Lesson check LC2: What is the underlying need behind the request to show the whole invoice? Which Finance boundary must the proposed alternative preserve?</p>
+<h3>2.3 Establish decision rights and dependencies</h3>
+<p>Skill: know who can close a question and what must happen before dependent work proceeds.</p>
+<p>A decision right identifies who has authority to make a particular decision. Expertise, participation and approval authority are different.</p>
+<p>Evergreen uses the following synthetic decision model:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision type</th>
+<th>Decision owner</th>
+<th>Contributors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engagement scope and additional supplier work</td>
+<td>Client Sponsor</td>
+<td>Implementation Lead and affected process owners</td>
+</tr>
+<tr>
+<td>Operational process facts and operational priorities</td>
+<td>Operations Manager</td>
+<td>Dispatcher and Technician Lead</td>
+</tr>
+<tr>
+<td>Invoice release and finance-data disclosure</td>
+<td>Finance Lead</td>
+<td>Operations and Implementation Lead</td>
+</tr>
+<tr>
+<td>Product feasibility and supplier effort recommendation</td>
+<td>Implementation Lead</td>
+<td>Client Administrator and business owners</td>
+</tr>
+<tr>
+<td>Cross-functional priority trade-off</td>
+<td>Client Sponsor</td>
+<td>Operations and Finance; their supplied control boundaries remain explicit</td>
+</tr>
+<tr>
+<td>Product access grant</td>
+<td>Authorised client administrator, within client authority</td>
+<td>Sponsor and relevant data owner</td>
+</tr>
+<tr>
+<td>Draft charter acceptance</td>
+<td>Client Sponsor after review</td>
+<td>Process owners and Implementation Lead</td>
+</tr>
+</tbody>
+</table></div>
+<p>A stakeholder can confirm a process fact without accepting a contract. An administrator can provide authorised environment evidence without approving the business scope.</p>
+<p>A dependency is a condition that must be satisfied before another activity can proceed. It should name the receiving activity and the consequence of delay.</p>
+<p>Weak entry:</p>
+<p>“Waiting for Finance.”</p>
+<p>Useful entry:</p>
+<p>“The field-list review cannot start until Finance supplies the approved redacted list. A delay affects requirement consolidation and the charter update.”</p>
+<p>Dependencies can concern people, evidence or decisions. “Portal customer eligibility is undefined” is a dependency for a responsible external-access design, even if nobody is waiting for a software installation.</p>
+<p>Product inventory is another example. Zoho’s CRM comparison distinguishes edition-dependent capabilities and limits.1 The CRM API v8 documentation describes organisation information including environment type and licence details, with scope and permission conditions.2 These sources help you specify the evidence needed. They do not establish Evergreen’s actual entitlement or permit an API call.</p>
+<p>Do not turn the organisation’s business address into proof of hosting region. Ask the authorised administrator for the relevant tenant information.</p>
+<p>Lesson check LC3: The Dispatcher confirms an assignment rule and asks the team to add automated routing. Which part can the Dispatcher confirm, and which decision requires the Sponsor?</p>
+<h3>2.4 Define objectives and use kickoff to align the work</h3>
+<p>Skill: write objectives that can guide discovery without inventing business guarantees.</p>
+<p>An objective describes the result an activity should achieve. A discovery objective should be observable and achievable within the authorised investigation.</p>
+<p>Weak objective:</p>
+<p>“Understand Evergreen.”</p>
+<p>Useful objective:</p>
+<p>“By the end of the discovery pack, identify the owner and required information at each major intake-to-Finance handoff, and mark any disputed or missing rule.”</p>
+<p>The second objective gives you something to inspect. It does not claim the business process has already improved.</p>
+<p>Distinguish three levels:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Evergreen example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business outcome</td>
+<td>Reduce avoidable returns from Finance</td>
+</tr>
+<tr>
+<td>Discovery objective</td>
+<td>Establish required handoff fields, owners and current exceptions</td>
+</tr>
+<tr>
+<td>Discovery deliverable</td>
+<td>Notes, open-question register and draft charter</td>
+</tr>
+</tbody>
+</table></div>
+<p>A project charter is a concise record of purpose, boundaries, stakeholders, decision rights, major dependencies and intended measures. It is not a detailed statement of work, architecture or release plan.</p>
+<p>A useful kickoff conversation confirms:</p>
+<ul>
+<li>Why the engagement exists.</li>
+<li>What work is authorised now.</li>
+<li>Who supplies information and makes decisions.</li>
+<li>What outputs will be produced.</li>
+<li>What remains unknown.</li>
+<li>How changes and unresolved matters will be handled.</li>
+</ul>
+<p>You should state the maturity of the information. “Draft charter for review” means something different from “accepted scope baseline.”</p>
+<p>If a key stakeholder is absent, the kickoff may still align known facts. It cannot manufacture that person’s confirmation. Record the missing contribution and the decision it blocks.</p>
+<p>Lesson check LC4: Why is “hold a kickoff meeting” a deliverable rather than a sufficient discovery objective?</p>
+<h3>2.5 Size the investigation before sizing the implementation</h3>
+<p>Skill: estimate bounded work using effort, dependencies and uncertainty.</p>
+<p>Early sizing is a first structured estimate made before all delivery details are known. Its usefulness comes from making the reasoning visible, not from appearing precise.</p>
+<p>For this chapter, estimate the discovery package. You do not yet have enough evidence to estimate the complete implementation.</p>
+<p>Break the package into activities. Assign staff effort in person-hours. Identify client participation separately. Then use availability and capacity to derive an elapsed schedule.</p>
+<p>For a Sponsor interview:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Implementation Lead effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preparation</td>
+<td>0.25 person-hours</td>
+</tr>
+<tr>
+<td>Interview</td>
+<td>0.50 person-hours</td>
+</tr>
+<tr>
+<td>Notes and question updates</td>
+<td>0.25 person-hours</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1.00 person-hours</td>
+</tr>
+</tbody>
+</table></div>
+<p>If the Sponsor is only available on working day 2, the activity cannot finish on day 1 simply because it requires one supplier hour.</p>
+<p>A reserve is explicitly allocated effort for identified uncertainty. It should not conceal undefined additional scope. Four hours for corrections within the agreed packet is different from an unbounded promise to conduct as many interviews as necessary.</p>
+<p>Record estimate assumptions such as:</p>
+<ul>
+<li>One interview per listed stakeholder group.</li>
+<li>Permitted evidence arrives at the supplied dates.</li>
+<li>No solution design, migration execution or configuration is included.</li>
+<li>Desk activities may be split across working days.</li>
+<li>New interviews or new discovery domains require a revised plan.</li>
+</ul>
+<p>Chapter 9 develops implementation estimation in depth. Here, your task is to avoid confusing a bounded discovery estimate with a project delivery commitment.</p>
+<p>Lesson check LC5: Why should client interview time be recorded separately from supplier effort? What makes a reserve different from an undefined allowance for extra scope?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: discovery and decision flow</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Authorised discovery objectives</td>
+<td>Continue</td>
+<td>Stakeholder interviews and permitted evidence</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Stakeholder interviews and permitted evidence</td>
+<td>Continue</td>
+<td>Source-linked discovery notes</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Source-linked discovery notes</td>
+<td>Continue</td>
+<td>Confirmed needs</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Source-linked discovery notes</td>
+<td>Continue</td>
+<td>Conflicts, gaps and dependencies</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Confirmed needs</td>
+<td>Continue</td>
+<td>Draft charter and early estimate</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Conflicts, gaps and dependencies</td>
+<td>Continue</td>
+<td>Draft charter and early estimate</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draft charter and early estimate</td>
+<td>Continue</td>
+<td>Kickoff alignment</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Kickoff alignment</td>
+<td>Continue</td>
+<td>Owner validation and next decision</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Owner validation and next decision</td>
+<td>Continue</td>
+<td>Authorised next-stage work</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram separates investigation, documentation and approval.</p>
+<p>Interviews produce evidence and questions, not automatic agreement. Both confirmed needs and unresolved matters feed the charter and estimate. Kickoff aligns the participants, after which the appropriate owners validate facts and decide the next activity.</p>
+<p>The final arrow depends on authorisation. It does not mean that finishing the discovery documents automatically permits configuration.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: begin structured discovery</h2>
+<h3>4.1 New authorisation and interview inputs</h3>
+<p>These are explicit new synthetic inputs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-014</td>
+<td>Sponsor authorisation, 14 January 2027: structured stakeholder interviews, permitted document inventory, one kickoff alignment meeting, discovery notes, draft charter and a discovery-phase effort plan are authorised. The package includes the previously authorised but unperformed visibility session and field-list review. Supplier effort ceiling: 22 person-hours. No configuration, migration, release or new support service.</td>
+</tr>
+<tr>
+<td>EVG-SRC-015</td>
+<td>Sponsor interview simulation: “Prioritise internal job visibility and a reliable Finance handoff. Keep the portal and routing requests separate for now. I want weekly open and completed counts, but we have not agreed the reporting cutoff or business timezone. The 80% target and 15 February date remain discussion preferences.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-016</td>
+<td>Operations/Dispatcher walkthrough simulation: requests arrive by phone/email; Operations records customer and job references; Dispatcher assigns a technician; completed jobs are sent to Finance. Returned handoffs are corrected by Operations. Dispatcher asks for invoice visibility to stop chasing Finance. Cancellation and rescheduling treatment varies; no agreed rule is supplied.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The broader authorisation replaces the unused narrow-session plan with one integrated discovery package. Do not add the previous 4–6 supplier hours to the integrated package estimate.</p>
+<p>Record EVG-DEC-004: plan one integrated discovery package under EVG-SRC-014, without double-counting the unperformed narrow activities.</p>
+<h3>4.2 Step 1: turn statements into interview findings</h3>
+<p>Do not record every sentence as a requirement. First identify its meaning and status.</p>
+<p>Completed discovery note: EVG-NOTE-001</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sources</td>
+<td>EVG-SRC-015 and EVG-SRC-016</td>
+</tr>
+<tr>
+<td>Participants represented</td>
+<td>Sponsor, Operations Manager and Dispatcher</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Clarify current flow, priorities and coordination problems</td>
+</tr>
+<tr>
+<td>Confirmed business facts</td>
+<td>Phone/email intake; Operations records references; Dispatcher assigns; Finance receives completion handoff; Operations corrects returns</td>
+</tr>
+<tr>
+<td>Confirmed priority</td>
+<td>Internal visibility and reliable Finance handoff are the current discovery focus</td>
+</tr>
+<tr>
+<td>Requested behaviour</td>
+<td>Dispatcher wants invoice visibility to reduce chasing</td>
+</tr>
+<tr>
+<td>Interpretation requiring confirmation</td>
+<td>The underlying dispatch need may be handoff status and ownership rather than full invoice access</td>
+</tr>
+<tr>
+<td>Unresolved matters</td>
+<td>Reporting cutoff/timezone; cancellation and rescheduling rules; permissible finance visibility</td>
+</tr>
+<tr>
+<td>Existing record links</td>
+<td>EVG-REQ-001–004; EVG-Q-003 and EVG-Q-005</td>
+</tr>
+<tr>
+<td>New question</td>
+<td>EVG-Q-009: who owns cancellation/rescheduling decisions and notifications? Operations Manager to confirm</td>
+</tr>
+<tr>
+<td>Decision status</td>
+<td>No new implementation approval or accepted reporting definition</td>
+</tr>
+<tr>
+<td>Next evidence</td>
+<td>Finance interview; Technician Lead interview; process exception examples</td>
+</tr>
+</tbody>
+</table></div>
+<p>Expected intermediate result: a note that separates facts, requests and interpretation.</p>
+<h3>4.3 Step 2: build the stakeholder map</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Discovery contribution</th>
+<th>Decision role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sponsor</td>
+<td>Priorities, outcomes and engagement boundaries</td>
+<td>Scope and cross-functional priority approval</td>
+</tr>
+<tr>
+<td>Operations Manager</td>
+<td>Intake, corrections and process ownership</td>
+<td>Operational facts and priorities</td>
+</tr>
+<tr>
+<td>Finance Lead</td>
+<td>Handoff fields, disclosure and invoice release</td>
+<td>Finance controls and disclosures</td>
+</tr>
+<tr>
+<td>Dispatcher</td>
+<td>Assignment, status and coordination needs</td>
+<td>Process contributor, not scope approver</td>
+</tr>
+<tr>
+<td>Technician Lead</td>
+<td>Completion entry and field practicality</td>
+<td>Technician workflow contributor</td>
+</tr>
+<tr>
+<td>Implementation Lead</td>
+<td>Evidence structure, dependencies and sizing</td>
+<td>Supplier recommendations</td>
+</tr>
+<tr>
+<td>Client Administrator</td>
+<td>Tenant inventory and authorised access evidence</td>
+<td>Product-access owner within client authority</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Client Administrator is a new supporting role in this chapter. The later supplied contact is admin@evergreen.example.com.</p>
+<h3>4.4 Step 3: write the initial charter</h3>
+<p>Artifact: Evergreen Discovery Charter v0.1 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Charter field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Establish the business facts, boundaries and unresolved matters needed for responsible implementation planning</td>
+</tr>
+<tr>
+<td>Business outcomes</td>
+<td>Reliable intake, internal job visibility and controlled Finance handoff; management reporting remains to be defined</td>
+</tr>
+<tr>
+<td>Authorised phase</td>
+<td>Integrated discovery and kickoff package under EVG-SRC-014, within 22 supplier person-hours</td>
+</tr>
+<tr>
+<td>EVG-OBJ-001</td>
+<td>Identify owners, information and unresolved rules at each major intake-to-Finance handoff</td>
+</tr>
+<tr>
+<td>EVG-OBJ-002</td>
+<td>Confirm current visibility audience and distinguish portal/routing requests from current authorised work</td>
+</tr>
+<tr>
+<td>EVG-OBJ-003</td>
+<td>Propose reproducible reporting and first-pass definitions, with any missing cutoff or approval marked</td>
+</tr>
+<tr>
+<td>EVG-OBJ-004</td>
+<td>Obtain permitted environment/source evidence or identify the gaps preventing later sizing</td>
+</tr>
+<tr>
+<td>Deliverables</td>
+<td>Stakeholder map, source-linked notes, question updates, draft charter and discovery estimate</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Solution configuration, detailed routing design, data migration, product test execution, release and new support service</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Sponsor approves scope; process owners confirm facts; Finance controls invoice release and disclosure; Implementation Lead recommends feasibility and effort</td>
+</tr>
+<tr>
+<td>Measurement status</td>
+<td>60% synthetic sample baseline; 80% discussion target; no approved performance guarantee</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Stakeholder availability, Finance field list, administrator inventory and owner validation</td>
+</tr>
+<tr>
+<td>Acceptance status</td>
+<td>Draft for client review; no charter acceptance supplied</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.5 Step 4: size one activity transparently</h3>
+<p>The Sponsor interview uses 0.25 hours preparation, 0.50 hours discussion and 0.25 hours notes.</p>
+<blockquote>
+<p>0.25+0.50+0.25=1.00 supplier person-hour</p>
+</blockquote>
+<p>Sponsor participation is 0.50 person-hours.</p>
+<p>Expected intermediate result: a bounded activity estimate with separate roles and a stated meeting dependency. It is not an implementation estimate.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “All stakeholders agreed to the reporting dashboard and portal.”</p>
+<p>The supplied dialogue contains neither agreement on reporting definitions nor approval of a portal.</p>
+<p>Correction: “The Sponsor prioritised internal visibility and Finance handoff. Weekly reporting remains a candidate pending definitions. Portal and routing requests remain separate from approved delivery scope.”</p>
+<p>The corrected note gives the next reader a usable account of what actually exists in the simulation.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and access</p>
+<p>Complete the discovery notes, charter and initial estimate assumptions for the integrated package.</p>
+<p>Use the Chapter 1 continuity and EVG-SRC-014–016 above, plus the inputs below. You need a document editor and calculator. No tenant access is required.</p>
+<p>Additional interview and inventory inputs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied simulation input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-017</td>
+<td>Finance: “The completion handoff needs job reference, customer reference, completion date and completion summary. Completion must not release an invoice. Dispatch may see a nonfinancial handoff status and responsible Finance contact, but not cost or margin. Technician users must not see cost or margin. A redacted field-name list will be available on day 5.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-018</td>
+<td>Technician Lead: “Operations should supply job and customer references before assignment. We can supply completion date and summary. A required summary is reasonable, but cancellation and rescheduling rules still need agreement. We are not requesting automatic invoice release.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-019</td>
+<td>Client Administrator: “Zoho CRM is in use. I can provide a permitted inventory on day 5. Edition, hosting region and environment details are not yet evidenced in this packet. No credentials or record exports are approved.” Contact: admin@evergreen.example.com</td>
+</tr>
+<tr>
+<td>EVG-SRC-020</td>
+<td>Availability and capacity: packet on day 1; Sponsor interview day 2; Operations/Dispatcher day 3; Finance and Technician Lead interviews day 4; administrator inventory and Finance field list day 5; kickoff day 7; owner validation day 8. Implementation Lead capacity is four hours per working day.</td>
+</tr>
+<tr>
+<td>EVG-SRC-021</td>
+<td>Supplier sizing assumptions and work breakdown shown below. All hours are planned effort.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Business field descriptions such as “completion date” are not Zoho API field names.</p>
+<p>Supplied work breakdown</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Work ID</th>
+<th>Activity</th>
+<th>Supplier effort: Implementation Lead</th>
+<th>Client effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D01</td>
+<td>Review and index packet</td>
+<td>2 hours</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>Sponsor interview, preparation and notes</td>
+<td>1 hour</td>
+<td>Sponsor: 0.5 hours</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>Operations/Dispatcher walkthrough and notes</td>
+<td>2 hours</td>
+<td>Operations: 1 hour; Dispatcher: 1 hour</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>Finance interview and notes</td>
+<td>1.5 hours</td>
+<td>Finance: 0.75 hours</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>Technician Lead interview and notes</td>
+<td>1.5 hours</td>
+<td>Technician Lead: 0.75 hours</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>Inventory and redacted field-list review</td>
+<td>2 hours</td>
+<td>Administrator: 0.5 hours; Finance: 0.25 hours</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>Consolidate findings, questions and requirement links</td>
+<td>3 hours</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>Kickoff preparation, meeting and notes</td>
+<td>1.5 hours</td>
+<td>Six client participants: 0.75 hours each</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>Draft charter and initial estimate</td>
+<td>2 hours</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Targeted owner validation and corrections</td>
+<td>1.5 hours</td>
+<td>Sponsor, Operations and Finance: 0.25 hours each</td>
+</tr>
+</tbody>
+</table></div>
+<p>The six client kickoff participants are Sponsor, Operations Manager, Finance Lead, Dispatcher, Technician Lead and Client Administrator.</p>
+<p>Additional estimate rules:</p>
+<ul>
+<li>A supplier reserve of 0–4 hours covers desk corrections within the existing packet.</li>
+<li>The reserve does not include new interviews or detailed solution design.</li>
+<li>Reserve work occurs after D10.</li>
+<li>Desk activities may be divided across working days.</li>
+<li>Meetings occur at their supplied slots.</li>
+<li>Dependent work may start on the same day if capacity remains.</li>
+<li>Discovery working day 1 is a new planning origin. It is not mapped to a promised release date.</li>
+</ul>
+<p>Guided steps and expected results</p>
+<ol>
+<li>Prepare an interview plan.  </li>
+</ol>
+<p>Give each interview a purpose, two neutral questions and a permitted evidence request.  </p>
+<p>Expected result: questions address normal work, exceptions and decisions, without requesting unrestricted data.</p>
+<ol start="2">
+<li>Write notes for Finance, Technician Lead and Administrator.  </li>
+</ol>
+<p>Separate confirmed business statements from unavailable documents.  </p>
+<p>Expected result: a field-list promise is not labelled a received list, and a statement that CRM is in use is not labelled verified licence evidence.</p>
+<ol start="3">
+<li>Record the visibility resolution.  </li>
+</ol>
+<p>Explain how the nonfinancial status option meets dispatch coordination while preserving Finance controls.  </p>
+<p>Expected result: the underlying need and the permitted information are explicit.</p>
+<ol start="4">
+<li>Update early requirement links.  </li>
+</ol>
+<p>Use EVG-REQ-007 for the completion handoff fields and EVG-REQ-008 for nonfinancial dispatch handoff visibility. Link them to EVG-TEST-004 and EVG-TEST-005 respectively.  </p>
+<p>Expected result: business confirmation with proposed tests, not executed results.</p>
+<ol start="5">
+<li>Calculate supplier and client effort.  </li>
+</ol>
+<p>Sum the work table and apply the reserve separately.  </p>
+<p>Expected result: reproducible totals that remain within the supplied supplier ceiling.</p>
+<ol start="6">
+<li>Derive the elapsed schedule and finish the charter.  </li>
+</ol>
+<p>Account for meetings, document availability and daily capacity.  </p>
+<p>Expected result: a schedule range supported by dependencies, not by dividing total hours alone.</p>
+<p>Blank discovery note worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Note ID and sources</td>
+<td></td>
+<td>Give the note a stable identifier and cite supplied sources</td>
+</tr>
+<tr>
+<td>Participants and purpose</td>
+<td></td>
+<td>State whose account is represented and why</td>
+</tr>
+<tr>
+<td>Confirmed business facts</td>
+<td></td>
+<td>Separate current behaviour from requested changes</td>
+</tr>
+<tr>
+<td>Needs and requested behaviour</td>
+<td></td>
+<td>Record the need and the proposed solution distinctly</td>
+</tr>
+<tr>
+<td>Constraints and permissions</td>
+<td></td>
+<td>Identify data, control and authority boundaries</td>
+</tr>
+<tr>
+<td>Conflicts and interpretation</td>
+<td></td>
+<td>State what differs; label your interpretation</td>
+</tr>
+<tr>
+<td>Requirement and test links</td>
+<td></td>
+<td>Preserve existing IDs; state evidence maturity</td>
+</tr>
+<tr>
+<td>Open questions</td>
+<td></td>
+<td>Give an owner and closure evidence</td>
+</tr>
+<tr>
+<td>Decision status</td>
+<td></td>
+<td>Confirmed, proposed, deferred or unresolved</td>
+</tr>
+<tr>
+<td>Next action</td>
+<td></td>
+<td>Name the responsible role and required output</td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank charter worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Charter field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose and outcomes</td>
+<td></td>
+<td>Explain the business reason</td>
+</tr>
+<tr>
+<td>Authorised phase and ceiling</td>
+<td></td>
+<td>Cite scope authority and effort boundary</td>
+</tr>
+<tr>
+<td>Discovery objectives</td>
+<td></td>
+<td>Use observable results</td>
+</tr>
+<tr>
+<td>Deliverables and exclusions</td>
+<td></td>
+<td>Distinguish investigation from implementation</td>
+</tr>
+<tr>
+<td>Stakeholders and decision rights</td>
+<td></td>
+<td>Name contributors and approvers</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td></td>
+<td>State baseline, definitions and target status</td>
+</tr>
+<tr>
+<td>Dependencies and gaps</td>
+<td></td>
+<td>Explain consequences and owners</td>
+</tr>
+<tr>
+<td>Effort and schedule</td>
+<td></td>
+<td>Separate roles, units, reserve and elapsed time</td>
+</tr>
+<tr>
+<td>Review and next decision</td>
+<td></td>
+<td>State draft status and requested decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank estimate assumption worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Assumption ID</th>
+<th>Planning condition</th>
+<th>Evidence/status</th>
+<th>Impact if false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: discovery notes, updated stakeholder map, Discovery Charter v0.2 and an estimate/assumption sheet.</p>
+<p>Cleanup: keep sources and versioned outputs. Remove temporary duplicate notes you created. No product-state cleanup is needed.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Continue from the guided package, but replace the affected availability and decision inputs with these new synthetic facts.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Changed input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-022</td>
+<td>Sponsor: “Keep the day 7 kickoff for alignment only. The Technician Lead is now available on day 8, with no deputy. Do not present technician-dependent findings as validated before that interview. Defer portal and routing to a separate later assessment. The supplier ceiling remains 22 hours. One additional 30-minute Sponsor review is authorised after the revised pack is ready.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-023</td>
+<td>Finance: “The interview remains on day 4, but the redacted field list will arrive at the start of day 9 rather than day 5.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-024</td>
+<td>Supplier Sales Lead: “Please describe the day 7 kickoff as final discovery approval and implementation readiness.” No authority or evidence supports that request.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For this challenge:</p>
+<ul>
+<li>D05 moves to day 8.</li>
+<li>D06 remains a single two-hour activity and cannot start until both required documents are available.</li>
+<li>D08 remains 1.5 supplier hours and the same client effort. A gap summary replaces the unfinished charter as its input; this substitution is explicitly permitted by the Sponsor.</li>
+<li>D07 and D09 retain their original dependencies.</li>
+<li>D10 may occur on days 10 and 11 after its dependencies are met. Its desk work and validation contacts may be split.</li>
+<li>The additional Sponsor review requires 0.5 supplier hours and 0.5 Sponsor hours. It follows D10 and is available on day 11.</li>
+<li>Capacity remains four supplier hours per working day.</li>
+<li>Any remaining reserve is used after the additional Sponsor review and must fit within the 22-hour ceiling.</li>
+<li>No final review result or client acceptance is supplied.</li>
+</ul>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Revised discovery notes and question status.</li>
+<li>Discovery Charter v0.3, with accurate kickoff and acceptance status.</li>
+<li>A revised supplier/client effort calculation.</li>
+<li>An elapsed completion range supported by a feasible schedule.</li>
+<li>A short response to the Sales Lead.</li>
+<li>A revised status for EVG-CHANGE-001.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your work must preserve Finance controls, distinguish alignment from validation, account for both delayed inputs and avoid calling an unreviewed pack accepted. It must keep the estimate within the ceiling or explicitly request a different decision.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notes contain only requested screens</td>
+<td>Interview focused on solutions</td>
+<td>Ask for a concrete case, decisions, required information and exceptions</td>
+</tr>
+<tr>
+<td>One stakeholder dominates the discussion</td>
+<td>Facilitation did not separate contributions</td>
+<td>Invite relevant owners, summarise differing needs and route decisions</td>
+</tr>
+<tr>
+<td>“Agreed” appears without an approver</td>
+<td>Silence or attendance was treated as approval</td>
+<td>Replace it with accurate status and identify the decision owner</td>
+</tr>
+<tr>
+<td>Financial records are unavailable</td>
+<td>Permission boundary or missing evidence</td>
+<td>Use permitted field descriptions and record the limitation</td>
+</tr>
+<tr>
+<td>An absent Technician Lead is treated as represented</td>
+<td>Missing expertise was hidden</td>
+<td>Mark technician-dependent findings unvalidated and arrange follow-up</td>
+</tr>
+<tr>
+<td>The estimate is total hours divided by capacity</td>
+<td>Meeting and evidence dependencies were omitted</td>
+<td>Build a feasible sequence using availability</td>
+</tr>
+<tr>
+<td>Kickoff is labelled implementation-ready</td>
+<td>Meeting completion was confused with readiness</td>
+<td>Describe its actual alignment purpose and open decisions</td>
+</tr>
+<tr>
+<td>The field list is promised but not received</td>
+<td>Future evidence was treated as present</td>
+<td>Record owner, expected arrival and dependent work</td>
+</tr>
+</tbody>
+</table></div>
+<p>If you circulate incorrect notes, issue a versioned correction explaining the changed finding and affected decision. Preserve the original source and correction.</p>
+<p>Recovery limits are important: correcting notes does not restore data, validate a product or establish support coverage. Operational incidents remain with the client’s existing support owner unless a separate service is authorised.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What should a discovery note contain when two stakeholders describe different cancellation rules?</li>
+<li>Why is a customer portal request not sufficiently defined when the client cannot identify who may log in?</li>
+<li>How can the day 7 kickoff remain useful when technician validation and the field list are incomplete?</li>
+<li>Which evidence is needed before EVG-Q-002 can be closed?</li>
+<li>Why does Finance’s confirmation of required handoff fields not demonstrate that those fields exist in the proposed Zoho solution?</li>
+<li>What should happen if the discovery package needs another interview beyond the supplied estimate assumptions?</li>
+</ol>
+<p>Attempt the questions and exercises before reading the solutions.</p>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: “How do you record completion today?” and “Which parts are difficult or cause missing information?” are neutral. Asking about a recent completed job or return is also appropriate.</p>
+<p>LC2: Dispatch needs handoff visibility and ownership so it can coordinate work without repeated chasing. The alternative must preserve restrictions on financial details and Finance’s invoice-release control.</p>
+<p>LC3: The Dispatcher can confirm the assignment practice they perform. Adding automated routing changes the proposed work and requires the Sponsor’s scope decision, supported by further business and feasibility evidence.</p>
+<p>LC4: Holding a meeting describes an activity or deliverable. An objective describes the result, such as shared understanding of authority, responsibilities and unresolved decisions.</p>
+<p>LC5: Client time affects availability and ownership but is not supplier delivery effort. A reserve has a defined purpose and limit; extra scope needs its own assessment and authority.</p>
+<h3>9.2 Guided practice: completed discovery notes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Note ID</th>
+<th>Sources</th>
+<th>Confirmed findings</th>
+<th>Unresolved matters and actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-NOTE-002</td>
+<td>EVG-SRC-017</td>
+<td>Finance requires job reference, customer reference, completion date and summary. Completion alone does not release invoices. Nonfinancial status/contact may be shared with Dispatch; cost/margin restrictions apply.</td>
+<td>Detailed field evidence and access design remain outstanding under EVG-Q-003. Finance to supply the permitted list.</td>
+</tr>
+<tr>
+<td>EVG-NOTE-003</td>
+<td>EVG-SRC-018</td>
+<td>Technician Lead confirms ability to provide completion date and summary; Operations supplies references before assignment.</td>
+<td>Cancellation/rescheduling treatment remains open under EVG-Q-009. Operations and Technician Lead to supply exception rules.</td>
+</tr>
+<tr>
+<td>EVG-NOTE-004</td>
+<td>EVG-SRC-019</td>
+<td>Administrator reports CRM in use and agrees to supply permitted inventory. No credentials or exports approved.</td>
+<td>EVG-Q-002 remains open: edition, region and environments are not yet evidenced. Historical source inventory remains open under EVG-Q-006.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Finance field-list promise is not a received document. The Administrator’s statement is useful business evidence, but it is not verified metadata for edition or environment.</p>
+<p>Record EVG-DEC-005: use the confirmed nonfinancial handoff status/contact need to address dispatch coordination while preserving Finance restrictions. Do not broaden it into unrestricted invoice visibility.</p>
+<p>Early requirement-to-test links</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement ID</th>
+<th>Confirmed business need</th>
+<th>Source</th>
+<th>Proposed test and expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-REQ-007</td>
+<td>Completion handoff contains job reference, customer reference, completion date and completion summary</td>
+<td>EVG-SRC-017 and EVG-SRC-018</td>
+<td>EVG-TEST-004: use a synthetic completed job with all four items, then one missing summary. Expect complete information to qualify for handoff and incomplete information to be identified rather than silently treated as complete.</td>
+</tr>
+<tr>
+<td>EVG-REQ-008</td>
+<td>Dispatch can see nonfinancial handoff status and responsible Finance contact without cost/margin</td>
+<td>EVG-SRC-017, supported by EVG-SRC-016</td>
+<td>EVG-TEST-005: compare an authorised dispatch view with restricted financial fields. Expect permitted status/contact visibility and no cost/margin visibility.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These checks are proposed, not executed. The precise validation behaviour, role configuration and full test data will be developed in later chapters.</p>
+<p>EVG-REQ-001–003 and EVG-TEST-001–003 remain unchanged. EVG-REQ-004–006 remain candidates.</p>
+<p>Guided effort calculation</p>
+<p>Supplier base effort:</p>
+<blockquote>
+<p>2+1+2+1.5+1.5+2+3+1.5+2+1.5 =18 person-hours</p>
+</blockquote>
+<p>Supplier planning range:</p>
+<blockquote>
+<p>18+(0–4)=18–22 person-hours</p>
+</blockquote>
+<p>Client effort:</p>
+<blockquote>
+<p>0.5+2+0.75+0.75+0.75+4.5+0.75 =10 person-hours</p>
+</blockquote>
+<p>Client role totals reconcile:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Client role</th>
+<th>Planned effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sponsor</td>
+<td>1.5 hours</td>
+</tr>
+<tr>
+<td>Operations Manager</td>
+<td>2 hours</td>
+</tr>
+<tr>
+<td>Dispatcher</td>
+<td>1.75 hours</td>
+</tr>
+<tr>
+<td>Finance Lead</td>
+<td>2 hours</td>
+</tr>
+<tr>
+<td>Technician Lead</td>
+<td>1.5 hours</td>
+</tr>
+<tr>
+<td>Client Administrator</td>
+<td>1.25 hours</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>10 hours</td>
+</tr>
+</tbody>
+</table></div>
+<p>Feasible base schedule</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working day</th>
+<th>Supplier work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D02</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D03</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D04 and D05</td>
+</tr>
+<tr>
+<td>5</td>
+<td>D06 and first two hours of D07</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Remaining hour of D07, then D09</td>
+</tr>
+<tr>
+<td>7</td>
+<td>D08</td>
+</tr>
+<tr>
+<td>8</td>
+<td>D10</td>
+</tr>
+<tr>
+<td>9, if needed</td>
+<td>Up to four hours of correction reserve</td>
+</tr>
+</tbody>
+</table></div>
+<p>The planning range is 8–9 elapsed working days. The base work finishes on day 8; the full reserve extends it to day 9.</p>
+<p>Dividing 18 hours by four gives 4.5 capacity-days, but it does not produce a feasible elapsed schedule because the meetings and evidence arrive on specific days.</p>
+<p>Completed initial assumptions</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Assumption ID</th>
+<th>Planning condition</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-ASM-001</td>
+<td>Relevant owners remain available at the supplied slots</td>
+<td>Slots supplied for this package; attendance not observed</td>
+</tr>
+<tr>
+<td>EVG-ASM-002</td>
+<td>Six-case baseline represents broader operations</td>
+<td>Unconfirmed</td>
+</tr>
+<tr>
+<td>EVG-ASM-003</td>
+<td>One interview per listed group and no detailed solution design</td>
+<td>Estimate boundary</td>
+</tr>
+<tr>
+<td>EVG-ASM-004</td>
+<td>Inventory and field list arrive on day 5</td>
+<td>Planning input, not receipt evidence</td>
+</tr>
+</tbody>
+</table></div>
+<p>Completed charter</p>
+<p>Artifact: Evergreen Discovery Charter v0.2 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Establish business needs, owners, boundaries and gaps for later implementation planning</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Integrated discovery package under EVG-SRC-014; supplier ceiling 22 hours</td>
+</tr>
+<tr>
+<td>Objectives</td>
+<td>EVG-OBJ-001–004 retained from v0.1</td>
+</tr>
+<tr>
+<td>Outcomes</td>
+<td>Reliable intake, internal visibility and controlled Finance handoff; reporting definitions still pending</td>
+</tr>
+<tr>
+<td>Deliverables</td>
+<td>Stakeholder map, EVG-NOTE-001–004, question updates, charter and estimate/assumption sheet</td>
+</tr>
+<tr>
+<td>Requirements</td>
+<td>EVG-REQ-001–003, 007 and 008 verified as business needs; EVG-REQ-004–006 candidates</td>
+</tr>
+<tr>
+<td>Traceability</td>
+<td>EVG-TEST-001–005 proposed; none executed</td>
+</tr>
+<tr>
+<td>Decisions</td>
+<td>Sponsor approves scope; Operations confirms operational facts; Finance controls release/disclosure; Implementation Lead recommends effort and feasibility</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td>60% synthetic first-pass sample; 80% target and 15 February date remain preferences</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Meetings, day 5 documents, day 7 kickoff and day 8 validation</td>
+</tr>
+<tr>
+<td>Effort and schedule</td>
+<td>18–22 supplier hours; 10 client hours; 8–9 elapsed working days under supplied conditions</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Configuration, migration, detailed routing design, product tests, release and new support</td>
+</tr>
+<tr>
+<td>Open matters</td>
+<td>EVG-Q-002–009 remain open or partially clarified; product evidence and exception rules are not complete</td>
+</tr>
+<tr>
+<td>Review status</td>
+<td>Draft for review. No charter acceptance, implementation readiness or next-stage authority supplied</td>
+</tr>
+</tbody>
+</table></div>
+<h3>9.3 Independent challenge solution</h3>
+<p>Effort</p>
+<p>The additional Sponsor review adds 0.5 supplier hours and 0.5 client hours.</p>
+<blockquote>
+<p>18+0.5=18.5 supplier base hours</p>
+</blockquote>
+<p>Remaining reserve within the ceiling:</p>
+<blockquote>
+<p>22-18.5=3.5 hours</p>
+</blockquote>
+<p>Revised supplier range:</p>
+<blockquote>
+<p>18.5+(0–3.5)=18.5–22 person-hours</p>
+</blockquote>
+<p>Revised client effort:</p>
+<blockquote>
+<p>10+0.5=10.5 person-hours</p>
+</blockquote>
+<p>The original four-hour reserve cannot remain unchanged: that would produce 22.5 supplier hours and exceed the ceiling.</p>
+<p>Feasible revised schedule</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Working day</th>
+<th>Supplier work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D02</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D03</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D04</td>
+</tr>
+<tr>
+<td>5–6</td>
+<td>No remaining activity ready under the challenge’s dependencies</td>
+</tr>
+<tr>
+<td>7</td>
+<td>D08: alignment using gap summary</td>
+</tr>
+<tr>
+<td>8</td>
+<td>D05</td>
+</tr>
+<tr>
+<td>9</td>
+<td>D06, then two hours of D07</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Remaining D07, D09, then first hour of D10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Remaining half-hour of D10, then half-hour Sponsor review</td>
+</tr>
+<tr>
+<td>11–12, if needed</td>
+<td>Up to 3.5 hours reserve; day 11 has three hours remaining</td>
+</tr>
+</tbody>
+</table></div>
+<p>Base completion is day 11. Full remaining reserve finishes on day 12. The revised range is 11–12 elapsed working days, conditional on receipt and availability.</p>
+<p>This schedule preserves the permitted day 7 meeting but changes what it can demonstrate.</p>
+<p>Revised note and decision</p>
+<p>EVG-NOTE-005, sources EVG-SRC-022–024:</p>
+<ul>
+<li>Technician confirmation is pending until the day 8 interview.</li>
+<li>D06 cannot begin until the day 9 field list arrives.</li>
+<li>Day 7 is alignment only, using a gap summary.</li>
+<li>No final discovery acceptance or implementation readiness is supplied.</li>
+<li>Portal/routing assessment is deferred by the Sponsor.</li>
+<li>The Sales Lead’s requested label is unsupported and is not adopted.</li>
+</ul>
+<p>Record EVG-DEC-006: use day 7 for alignment only and schedule remaining validation after the missing inputs, under the Sponsor’s explicit permission.</p>
+<p>Revised charter</p>
+<p>Artifact: Evergreen Discovery Charter v0.3 — draft student model</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose and objectives</td>
+<td>Purpose and EVG-OBJ-001–004 unchanged</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Integrated discovery package plus one additional 30-minute Sponsor review; ceiling remains 22 supplier hours</td>
+</tr>
+<tr>
+<td>Priorities</td>
+<td>Internal visibility and Finance handoff; portal/routing deferred to separate later assessment</td>
+</tr>
+<tr>
+<td>Findings and requirements</td>
+<td>Preserve existing verified business needs; do not claim technician-dependent validation before D05</td>
+</tr>
+<tr>
+<td>Deliverables</td>
+<td>Updated notes, gap summary for day 7, revised charter, estimate and validation plan</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Technician Lead day 8; field list day 9; D10 on days 10–11; Sponsor review day 11</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>18.5–22 supplier hours; 10.5 client hours</td>
+</tr>
+<tr>
+<td>Elapsed schedule</td>
+<td>11–12 working days under supplied conditions</td>
+</tr>
+<tr>
+<td>Kickoff status</td>
+<td>Alignment only; not final discovery approval</td>
+</tr>
+<tr>
+<td>Acceptance status</td>
+<td>No acceptance result supplied; charter remains draft</td>
+</tr>
+<tr>
+<td>Exclusions and support</td>
+<td>No implementation, migration, release or new support service</td>
+</tr>
+<tr>
+<td>Next decision</td>
+<td>Review completed findings and decide any next-stage scope after remaining evidence</td>
+</tr>
+</tbody>
+</table></div>
+<p>EVG-CHANGE-001 status: deferred by the Sponsor for separate later assessment. It is neither approved delivery nor deleted from the record.</p>
+<p>A suitable response to the Sales Lead is:</p>
+<p>The day 7 meeting is authorised as alignment only because technician validation and the field-list review remain incomplete. We will describe the open dependencies and planned follow-up accurately; no final discovery acceptance or implementation readiness has been supplied.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>Record both accounts with sources, explain the difference, identify the affected process decision and assign the Operations Manager to confirm the rule. Do not choose whichever account sounds easier to automate.</li>
+<li>External access needs a defined eligible audience and identity/access rules. Without them, visibility and data separation cannot be specified responsibly.</li>
+<li>It can confirm purpose, authority, priorities, owners, known findings and the recovery plan. It cannot validate absent contributions or accept the unfinished pack.</li>
+<li>Permitted evidence of applications, edition, hosting region, environments and administrator ownership. A statement that CRM is in use closes only part of the question.</li>
+<li>Finance has confirmed a business need. Product metadata, configuration evidence and later tests are still needed to demonstrate implementation.</li>
+<li>Assess the added work, dependencies and effect on the ceiling. Obtain the appropriate scope or effort decision before treating it as included.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Discovery improves implementation judgement when it turns conversations into evidence, decisions and explicit gaps.</p>
+<p>Your strongest outputs are not the longest notes. They are the ones that let another person distinguish what was confirmed, what was requested, who can decide and what must happen next.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can ask neutral questions about normal work and exceptions.</li>
+<li>I can separate a requested feature from its underlying need.</li>
+<li>I can facilitate conflicting needs while preserving control boundaries.</li>
+<li>I can identify decision owners and actionable dependencies.</li>
+<li>I can write observable discovery objectives.</li>
+<li>I can produce source-linked notes and a draft charter.</li>
+<li>I can estimate discovery effort separately from client participation and elapsed schedule.</li>
+<li>I can explain what an incomplete kickoff does and does not establish.</li>
+</ul>
+<p>Your project pack now contains stakeholder discovery evidence, a charter and bounded estimate assumptions.</p>
+<p>Chapter 3, Process Analysis and Redesign, uses these findings to model current and future work, including handoffs, bottlenecks, cancellation, rescheduling and controls. EVG-Q-009 is an important starting question for that work.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decision right</td>
+<td>Authority to make a defined decision</td>
+</tr>
+<tr>
+<td>Dependency</td>
+<td>A condition required before another activity or decision can proceed</td>
+</tr>
+<tr>
+<td>Discovery objective</td>
+<td>An observable result the investigation should achieve</td>
+</tr>
+<tr>
+<td>Early sizing</td>
+<td>Initial structured estimation before detailed delivery information is available</td>
+</tr>
+<tr>
+<td>Facilitation</td>
+<td>Guiding discussion so participants contribute evidence and reach appropriate decisions</td>
+</tr>
+<tr>
+<td>Focused question</td>
+<td>A question seeking a specific fact or confirmation</td>
+</tr>
+<tr>
+<td>Kickoff</td>
+<td>Alignment on purpose, boundaries, responsibilities and next actions</td>
+</tr>
+<tr>
+<td>Open question</td>
+<td>A question inviting explanation rather than a short fixed answer</td>
+</tr>
+<tr>
+<td>Project charter</td>
+<td>Concise record of purpose, boundaries, stakeholders, objectives and major conditions</td>
+</tr>
+<tr>
+<td>Reserve</td>
+<td>Explicit effort allocated for identified uncertainty within a defined boundary</td>
+</tr>
+<tr>
+<td>Stakeholder</td>
+<td>A person or group affecting, contributing to or affected by the engagement</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Confirmation that information or behaviour is appropriate for its intended business use</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM — Feature-wise comparison of editions<br />
+<a href="https://www.zoho.com/crm/complete-feature-list.html">Open official reference</a></li>
+</ol>
+<p>Useful when defining the edition evidence needed for product-fit discovery. It does not verify the client’s purchased entitlement.</p>
+<ol start="2">
+<li>Zoho CRM Developer Documentation — API v8: Get Organization Details<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-org-data.html">Open official reference</a></li>
+</ol>
+<p>Describes organisation metadata and scope/permission conditions. It supports an authorised inventory request, not unrestricted access.</p>
+<p>The official references were accessed on 5 October 2026. Product research is partially verified: the documentation-based statements are supported, but Evergreen’s tenant, edition, region, permissions and product fit remain unverified. No product execution is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Produce discovery notes, charter and initial estimate assumptions.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-01">← Previous chapter</a><a href="/course-book/course-05/chapter-03">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

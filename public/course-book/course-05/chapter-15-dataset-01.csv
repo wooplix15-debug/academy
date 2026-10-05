@@ -1,0 +1,7 @@
+participant,role,first_attempt_complete,first_attempt_correct,repeat_required,final_attempt_complete,final_attempt_correct
+P01,Operations,yes,yes,no,yes,yes
+P02,Dispatch,yes,no,yes,yes,yes
+P03,Technician Lead,yes,no,yes,yes,yes
+P04,Finance,yes,yes,no,yes,yes
+P05,Sponsor,yes,yes,no,yes,yes
+P06,Administrator,no,unknown,unknown,no,unknown

@@ -1,0 +1,1386 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sixteen student chapters on Zoho implementation and consulting: discovery, architecture, migration, testing, release and handover."><meta name="theme-color" content="#101d31"><title>Course Book · Course 5 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/zoho-implementation-consulting-practicum">Course 5</a><span>/</span><a href="/course-book/course-05">Course Book</a><span>/</span><span>Chapter 12</span></div><header class="book-hero"><p class="eyebrow">COURSE 05 · CHAPTER 12</p><h1>Scope Change and Communication</h1><p>Handle a change request and steering review.</p><div class="book-tags"><span>Student course book</span><span>Fictional Evergreen case</span><span>Worked examples &amp; practice</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-05/chapter-12-student.md">Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation: controlled change</a><a href="#section-4">4. Worked case: prepare Evergreen’s steering options</a><a href="#section-5">5. Try it yourself — guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><div class="book-downloads"><b>Practice resources</b><div class="reader-actions"><a download href="/course-book/course-05/chapter-12-dataset-01.csv">Practice dataset (CSV) ↓</a></div></div><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>Change is normal in an implementation. Discovery improves understanding, prototypes expose assumptions and stakeholders develop new expectations.</p>
+<p>The consulting problem is not that requests change. It is that work, effort or commitments can change without a clear decision.</p>
+<p>Your job is to make each material change understandable: what is requested, why it matters, what it affects, which options exist and who can decide.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Compare a request with the applicable scope baseline.</li>
+<li>Analyse effects on requirements, architecture, effort, schedule, testing and ownership.</li>
+<li>Prioritise competing needs without hiding essential controls.</li>
+<li>Distinguish approval of planning scope from execution authority and acceptance.</li>
+<li>Record risks, issues, assumptions and dependencies.</li>
+<li>Produce a concise, evidence-based status report.</li>
+<li>Handle a steering review and preserve its decisions.</li>
+<li>Communicate exceptions and uncertainty without inventing progress.</li>
+</ul>
+<p>Prerequisites and continuity</p>
+<p>You need the scope, estimates, prototype and quality evidence from Chapters 5–11.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Carried-forward item</th>
+<th>State entering this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conditional core pilot</td>
+<td>78 base supplier hours plus 11.7 reserve; upper bound 89.7</td>
+</tr>
+<tr>
+<td>Conditional reporting option</td>
+<td>86 base hours plus 12.9 reserve; upper bound 98.9</td>
+</tr>
+<tr>
+<td>Requested ceiling</td>
+<td>100 supplier person-hours, including reserve</td>
+</tr>
+<tr>
+<td>Elapsed ranges</td>
+<td>Core 27–31 working days; reporting option 30–34</td>
+</tr>
+<tr>
+<td>Actual supplier effort</td>
+<td>Not supplied</td>
+</tr>
+<tr>
+<td>Native fit</td>
+<td>Unverified</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-001</td>
+<td>Portal/routing deferred</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-002</td>
+<td>Weekly reporting pending</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-003</td>
+<td>Multi-site/multi-visit assessment only</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-004</td>
+<td>Automatic customer notification requested</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-005</td>
+<td>Automated Finance-handoff assessment requested</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-001</td>
+<td>Corrected and retested in local receiver V2 only</td>
+</tr>
+<tr>
+<td>EVG-DEFECT-002</td>
+<td>Proposed sender-wrapper defect; recorded reproduction pending</td>
+</tr>
+<tr>
+<td>Product readiness</td>
+<td>No Zoho execution, client UAT or release acceptance</td>
+</tr>
+<tr>
+<td>Migration exceptions</td>
+<td>C04 unresolved; cancellation group held</td>
+</tr>
+</tbody>
+</table></div>
+<p>Your project contribution</p>
+<p>You will produce:</p>
+<ol>
+<li>A change-impact pack.</li>
+<li>A prioritisation recommendation.</li>
+<li>A risks/issues/assumptions/dependencies sheet.</li>
+<li>A planning status report.</li>
+<li>A steering decision record and updated planning baseline.</li>
+</ol>
+<p>All Evergreen facts, estimates, dates and decisions are synthetic. Sample approval language is educational, not approved legal language or Wooplix policy.</p>
+<p>This chapter supplies explicit fictional planning decisions. They are exercise evidence, not client signatures or approval of actual implementation.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>2.1 Compare the request with a named baseline</h3>
+<p>Skill: establish whether the request changes the work boundary.</p>
+<p>A baseline is the reference against which proposed work is compared. Name its version and authority.</p>
+<p>A request can already appear in the requirements register and still be outside the current scope. EVG-REQ-004 is a verified reporting need, but earlier pilot proposals excluded it.</p>
+<p>Likewise, a new stakeholder request does not automatically alter an approved requirement or delivery plan.</p>
+<p>Classify the request before estimating:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Request type</th>
+<th>Typical treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clarification of existing behaviour</td>
+<td>Refine wording and assess whether effort changes</td>
+</tr>
+<tr>
+<td>Defect against the applicable requirement</td>
+<td>Correct through quality management</td>
+</tr>
+<tr>
+<td>Additional capability</td>
+<td>Change-impact analysis</td>
+</tr>
+<tr>
+<td>Removed capability</td>
+<td>Assess lost outcome, controls and evidence</td>
+</tr>
+<tr>
+<td>Changed constraint or availability</td>
+<td>Revise assumptions, dependencies and forecast</td>
+</tr>
+<tr>
+<td>Product-fit failure</td>
+<td>Reopen architecture and scope assumptions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not call every correction a change. Fixing a demonstrated failure against the applicable baseline is different from adding automatic customer emails.</p>
+<p>Do not use “small change” as a classification. A small screen adjustment can affect access, integrations or acceptance criteria.</p>
+<p>A useful response is:</p>
+<p>“I have recorded the request. I will compare it with SB-02 v1.0 and identify the affected work and decision.”</p>
+<p>That acknowledges the need without promising delivery.</p>
+<p>Lesson check LC1: Why can reporting be a scope change even though EVG-REQ-004 is already verified?</p>
+<h3>2.2 Analyse impact across the engagement</h3>
+<p>Skill: explain what changes besides configuration effort.</p>
+<p>Impact analysis examines the consequences of a request.</p>
+<p>Cover:</p>
+<ul>
+<li>Business value and affected users.</li>
+<li>Requirement and acceptance changes.</li>
+<li>Product and architecture assumptions.</li>
+<li>Data, identity and environment needs.</li>
+<li>Configuration/development work.</li>
+<li>Tests, defects and retesting.</li>
+<li>Training, handover and support.</li>
+<li>Staff effort, reserve and elapsed schedule.</li>
+<li>Dependencies and decision owners.</li>
+</ul>
+<p>A request for customer notification affects more than an email template. You need a trigger, recipient rule, permitted wording, outbound isolation and ownership.</p>
+<p>For Evergreen, “service completed” must not imply that Finance has approved an invoice. A notification request therefore touches EVG-REQ-003 even if it does not change that requirement’s underlying control.</p>
+<p>Separate quantities:</p>
+<ul>
+<li>Additional base effort: new work.</li>
+<li>Additional reserve: uncertainty associated with the revised base.</li>
+<li>Revised total: current scope plus the requested change.</li>
+<li>Elapsed impact: derived from dependencies and availability.</li>
+</ul>
+<p>Do not put new features inside existing reserve. Reserve covers defined uncertainty, not unapproved scope.</p>
+<p>Also distinguish supplier-hour ceilings from prices. One hundred person-hours is an effort constraint; no fee or payment arrangement is supplied.</p>
+<p>Lesson check LC2: Name four impacts of an automatic completion email beyond preparing its text.</p>
+<h3>2.3 Prioritise conflicting needs using value, readiness and constraints</h3>
+<p>Skill: recommend an order without treating budget fit as the only criterion.</p>
+<p>Priority and readiness are different.</p>
+<p>A high-value request may remain unready because its rules or product fit are undefined. A lower-priority request may be ready and fit the current delivery boundary.</p>
+<p>Use questions such as:</p>
+<ol>
+<li>Does an essential control depend on this work?</li>
+<li>What happens if it is deferred?</li>
+<li>Is an authorised temporary method available?</li>
+<li>Is the need sufficiently defined?</li>
+<li>Does it introduce a new application or interface boundary?</li>
+<li>Can it fit the effort and schedule constraints?</li>
+<li>Who must accept the trade-off?</li>
+</ol>
+<p>A Must control should not be removed silently to make another request fit. “Skip permission checks so we can add reporting” changes the quality and acceptance basis.</p>
+<p>A temporary method must also be evidenced. “Staff can handle it manually” is not enough. Identify the records, owner, procedure and closure evidence.</p>
+<p>Consider this disagreement:</p>
+<p>Operations: “Multi-site coordination is urgent.”  </p>
+<p>Sponsor: “Management reporting is what I need first.”  </p>
+<p>Implementation Lead: “We need to distinguish the immediate operating need from the pilot expansion. Let us check whether the temporary site register is ready for the identified jobs, then compare the implementation options.”</p>
+<p>This avoids deciding by volume, seniority or familiarity alone.</p>
+<p>Lesson check LC3: Why can a high-priority multi-site request remain outside the current pilot while still requiring an immediate operational action?</p>
+<h3>2.4 Establish approval boundaries and decision rights</h3>
+<p>Skill: record exactly what was decided.</p>
+<p>A steering group brings business and supplier owners together to review material decisions. Attendance does not give every participant authority over every subject.</p>
+<p>Evergreen’s supplied decision rights remain:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning scope and additional supplier work</td>
+<td>Client Sponsor</td>
+</tr>
+<tr>
+<td>Operational facts and temporary dispatch controls</td>
+<td>Operations Manager</td>
+</tr>
+<tr>
+<td>Finance disclosure, review and invoice authority</td>
+<td>Finance Lead</td>
+</tr>
+<tr>
+<td>Technical feasibility and supplier estimate recommendation</td>
+<td>Implementation Lead</td>
+</tr>
+<tr>
+<td>Product access and connection administration</td>
+<td>Authorised Client Administrator</td>
+</tr>
+<tr>
+<td>Acceptance evidence</td>
+<td>Sponsor using relevant business-owner input</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record approvals precisely:</p>
+<ul>
+<li>Which change?</li>
+<li>Which version?</li>
+<li>Which deliverable and requirement?</li>
+<li>Which effort and schedule assumptions?</li>
+<li>Which exclusions remain?</li>
+<li>Is this planning approval, execution authority or acceptance?
+“Approved” without this context is ambiguous.</li>
+</ul>
+<p>A planning baseline can be approved while execution remains blocked. Native-fit, access and environment evidence still matter.</p>
+<p>Zoho’s Profiles API returns detailed permission information for a specific profile; a list of profile names and IDs is not equivalent evidence.1 A steering decision cannot turn that limited evidence into verified access.</p>
+<p>Lesson check LC4: What is missing from the statement “The Sponsor approved reporting”?</p>
+<h3>2.5 Use risks, issues, assumptions and dependencies correctly</h3>
+<p>Skill: make uncertainty and current blockers actionable.</p>
+<p>The common abbreviation RAID refers to risks, assumptions, issues and dependencies.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+<th>Evergreen example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk</td>
+<td>An uncertain future event with an effect</td>
+<td>Native-fit failure could increase effort</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>A condition that already exists</td>
+<td>Specific permission evidence is missing</td>
+</tr>
+<tr>
+<td>Assumption</td>
+<td>An unconfirmed condition used for planning</td>
+<td>One weekly report satisfies the reporting addition</td>
+</tr>
+<tr>
+<td>Dependency</td>
+<td>An input or decision needed before work proceeds</td>
+<td>Authority and readiness evidence before product execution</td>
+</tr>
+</tbody>
+</table></div>
+<p>These categories can be linked. Missing permission evidence is an issue; its possible delay to delivery is a risk.</p>
+<p>A useful entry includes owner, consequence, action and due date or decision trigger. “Permissions risk” is not actionable.</p>
+<p>Do not record a requested date as a promised delivery date. State whether it is a request, confirmed commitment or unresolved expectation.</p>
+<p>Do not mark an assumption resolved because nobody challenged it.</p>
+<p>Lesson check LC5: Why is “we might lack permission details” the wrong description when those details are already missing?</p>
+<h3>2.6 Report status from evidence and ask for a decision</h3>
+<p>Skill: help stakeholders act rather than merely read updates.</p>
+<p>A useful status report explains:</p>
+<ul>
+<li>Current phase and baseline.</li>
+<li>What evidence exists.</li>
+<li>What remains incomplete.</li>
+<li>Forecast effort and schedule.</li>
+<li>Material risks and issues.</li>
+<li>Decisions needed, owners and timing.</li>
+<li>Next authorised actions.</li>
+</ul>
+<p>Do not invent a completion percentage. A local prototype running successfully does not mean the implementation is 80% complete.</p>
+<p>This chapter uses synthetic status rules:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Rule for the current phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>Current-phase forecast fits constraints, with no material unresolved decision threatening progression</td>
+</tr>
+<tr>
+<td>Amber</td>
+<td>Evidence or decisions remain that could affect the forecast or block progression</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>A stated constraint is breached, or an essential operating control for an affected case is not satisfied</td>
+</tr>
+</tbody>
+</table></div>
+<p>Report dimensions separately. Planning can be Amber while a particular operational case is Red and product execution is Not ready.</p>
+<p>A concise decision request is better than a vague warning:</p>
+<p>“Please select the reporting-only option or authorise a revised ceiling. Reporting plus notification has a full-reserve forecast of 110.4 hours against 100.”</p>
+<p>Lesson check LC6: Why should a status report separate planning forecast from execution readiness?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation: controlled change</h2>
+<p><strong>Process map</strong> — read each row as one arrow in the supplied diagram.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part / owner</th>
+<th>From</th>
+<th>Route / condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Request recorded</td>
+<td>Continue</td>
+<td>Compare with named baseline</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Compare with named baseline</td>
+<td>Continue</td>
+<td>Clarify need and affected requirements</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Clarify need and affected requirements</td>
+<td>Continue</td>
+<td>Assess effort, schedule, controls and dependencies</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Assess effort, schedule, controls and dependencies</td>
+<td>Continue</td>
+<td>Recommend options</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Recommend options</td>
+<td>Continue</td>
+<td>Authorised decision</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Authorised decision</td>
+<td>Approved for planning</td>
+<td>Version planning baseline</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Authorised decision</td>
+<td>Deferred or rejected</td>
+<td>Retain request and reason</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Authorised decision</td>
+<td>More evidence needed</td>
+<td>Clarify need and affected requirements</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Version planning baseline</td>
+<td>Continue</td>
+<td>Execution authority and readiness met?</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Execution authority and readiness met?</td>
+<td>No</td>
+<td>Keep affected work pending</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Execution authority and readiness met?</td>
+<td>Yes</td>
+<td>Authorised delivery</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram separates approving a proposal from starting work.</p>
+<p>Deferred requests remain visible. Approval updates a specific reference; it does not silently erase assumptions or establish product readiness.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: prepare Evergreen’s steering options</h2>
+<h3>4.1 New planning baseline</h3>
+<p>EVG-SRC-105 supplies this synthetic Sponsor instruction:</p>
+<p>“Approve SB-02 v1.0 as the planning reference for the original single-current-visit pilot: 78 base supplier hours, 15% reserve and a 27–31-working-day range. The supplier ceiling is 100 hours including reserve. This is planning approval only. No tenant implementation or release is authorised.”</p>
+<p>Earlier SB-01 drafts retain their earlier status.</p>
+<p>Record EVG-DEC-035: use the explicitly supplied SB-02 v1.0 planning decision without implying execution authority.</p>
+<h3>4.2 Complete change-effort inputs</h3>
+<p>EVG-SRC-106 supplies conditional additional work estimates. All values are supplier person-hours.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Definition/design: Implementation Lead</th>
+<th>Construction: Developer</th>
+<th>Checks: Quality Lead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-CHANGE-001: portal/routing assessment and candidate delivery</td>
+<td>6</td>
+<td>14</td>
+<td>4</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-002: one weekly report</td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-003: multi-site/multi-visit</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-004: customer notification</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EVG-CHANGE-005: automated Finance handoff</td>
+<td>3</td>
+<td>10</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<p>For reporting, the five Implementation Lead hours include definitions and configuration, consistent with Chapter 9.</p>
+<p>Dependencies and uncertainty:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Dependency</th>
+<th>Condition behind the estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Audience/identity and routing rules; product boundary</td>
+<td>No additional unassessed application/integration</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Existing UTC definitions and approved report fields</td>
+<td>One report, no extra dashboards</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Visit/site model and independent rescheduling proof</td>
+<td>Bounded original pilot, not fleet-wide redesign</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Trigger, recipient, wording and outbound controls</td>
+<td>No additional notification channel</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Identified system, contract, identity and durable recovery design</td>
+<td>No broader financial-process redesign</td>
+</tr>
+</tbody>
+</table></div>
+<p>Only the reporting option has a complete supplied elapsed schedule. Staff-hour estimates for the other requests are not delivery-date commitments.</p>
+<h3>4.3 Calculate the options</h3>
+<p>For any selected change:</p>
+<blockquote>
+<p>Revised upper bound = (core base+added base)×1.15</p>
+</blockquote>
+<p>Reporting:</p>
+<blockquote>
+<p>(78+8)×1.15=98.9 hours</p>
+</blockquote>
+<p>Multi-site:</p>
+<blockquote>
+<p>(78+14)×1.15=105.8 hours</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option added to core</th>
+<th>Revised base</th>
+<th>Reserve</th>
+<th>Upper bound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>78</td>
+<td>11.7</td>
+<td>89.7</td>
+</tr>
+<tr>
+<td>Portal/routing</td>
+<td>104</td>
+<td>15.6</td>
+<td>119.6</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>86</td>
+<td>12.9</td>
+<td>98.9</td>
+</tr>
+<tr>
+<td>Multi-site</td>
+<td>92</td>
+<td>13.8</td>
+<td>105.8</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>88</td>
+<td>13.2</td>
+<td>101.2</td>
+</tr>
+<tr>
+<td>Automated handoff</td>
+<td>96</td>
+<td>14.4</td>
+<td>110.4</td>
+</tr>
+<tr>
+<td>Reporting and notification</td>
+<td>96</td>
+<td>14.4</td>
+<td>110.4</td>
+</tr>
+<tr>
+<td>Reporting and multi-site</td>
+<td>100</td>
+<td>15</td>
+<td>115</td>
+</tr>
+</tbody>
+</table></div>
+<p>Headroom is not approved extra scope. A 1.1-hour margin does not authorise another feature.</p>
+<h3>4.4 Inspect the competing operational need</h3>
+<p>EVG-SRC-107 supplies ten upcoming synthetic jobs. This is a separate planning sample, not the migration dataset.</p>
+<p>The temporary multi-site method is ready only when all four readiness fields are yes. Single-site rows are excluded from that readiness measure.</p>
+<pre><code class="language-csv">job_ref,site_count,site_register_ready,dispatcher_named,customer_confirmations_recorded,technician_acknowledgements_recorded
+EVG-JOB-2101,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2102,2,yes,yes,yes,yes
+EVG-JOB-2103,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2104,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2105,2,yes,yes,yes,yes
+EVG-JOB-2106,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2107,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2108,2,yes,yes,yes,yes
+EVG-JOB-2109,1,not_applicable,not_applicable,not_applicable,not_applicable
+EVG-JOB-2110,1,not_applicable,not_applicable,not_applicable,not_applicable
+</code></pre>
+<p>Three of ten have multiple sites:</p>
+<blockquote>
+<p>(3) ÷ (10)×100=30%</p>
+</blockquote>
+<p>All three meet the supplied temporary-readiness rule:</p>
+<blockquote>
+<p>(3) ÷ (3)×100=100%</p>
+</blockquote>
+<p>These describe the synthetic sample, not Evergreen’s normal operating performance.</p>
+<p>The temporary method preserves one business job reference with site-labelled visit rows. Operations oversees it; Dispatch maintains coordination evidence.</p>
+<h3>4.5 Resolve the discussion without inventing agreement</h3>
+<p>EVG-SRC-108 supplies a fictional steering conversation:</p>
+<p>Operations: “Multi-site coordination is urgent.”  </p>
+<p>Sponsor: “Can we add reporting and notification within one hundred hours?”  </p>
+<p>Finance: “Any customer wording must distinguish service completion from my review.”  </p>
+<p>Implementation Lead: “Reporting and notification total 110.4 hours with the supplied reserve. Reporting alone is 98.9. The three identified multi-site cases currently meet the temporary control rule, while the expanded product design still needs proof.”</p>
+<p>EVG-SRC-109 confirms that native-fit and specific permission evidence remain missing. Administrator evidence is requested by 2 February 2027; that date is not a confirmed promise.</p>
+<p>EVG-SRC-110 confirms Finance’s review/disclosure controls cannot be removed through a majority vote.</p>
+<p>EVG-SRC-111 confirms no actual supplier hours, product progress percentage or supported calendar launch date is available.</p>
+<p>A defensible recommendation is:</p>
+<ul>
+<li>Approve reporting for the planning baseline if the Sponsor accepts the stated conditions.</li>
+<li>Retain multi-site as a high operational priority, using the evidenced temporary method for the identified cases.</li>
+<li>Keep notification and automated integration outside the baseline.</li>
+<li>Preserve essential tests and reserve.</li>
+<li>Obtain readiness evidence before execution.</li>
+</ul>
+<p>Record EVG-DEC-036: recommend the reporting-only planning option while preserving controls and unresolved proof conditions.</p>
+<h3>4.6 Completed change-impact entry</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-002 assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Add one weekly open/completed report</td>
+</tr>
+<tr>
+<td>Requirement/test</td>
+<td>EVG-REQ-004 / EVG-TEST-009</td>
+</tr>
+<tr>
+<td>Deliverable</td>
+<td>EVG-DEL-007</td>
+</tr>
+<tr>
+<td>Baseline affected</td>
+<td>SB-02 v1.0 excludes reporting</td>
+</tr>
+<tr>
+<td>Added base</td>
+<td>Eight hours: six Implementation Lead, two Quality Lead</td>
+</tr>
+<tr>
+<td>Added full-reserve forecast</td>
+<td>98.9 − 89.7 = 9.2 hours</td>
+</tr>
+<tr>
+<td>Elapsed effect</td>
+<td>Core 27–31 becomes reporting option 30–34 working days</td>
+</tr>
+<tr>
+<td>Assumption</td>
+<td>One report using established UTC definitions</td>
+</tr>
+<tr>
+<td>Exclusions retained</td>
+<td>Notification, portal/routing, multi-site expansion, live integration, production migration/release</td>
+</tr>
+<tr>
+<td>Decision needed</td>
+<td>Sponsor’s planning-scope decision</td>
+</tr>
+<tr>
+<td>Execution status</td>
+<td>Not authorised</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.7 Completed RAID sheet</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID/type</th>
+<th>Condition and effect</th>
+<th>Owner</th>
+<th>Action/trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-RISK-001</td>
+<td>Native-fit failure could increase effort or alter architecture</td>
+<td>Implementation Lead</td>
+<td>Complete authorised product proof before commitment</td>
+</tr>
+<tr>
+<td>EVG-ISSUE-001</td>
+<td>Specific permissions/readiness evidence is missing now</td>
+<td>Client Administrator</td>
+<td>Supply permitted evidence; 2 February requested, unconfirmed</td>
+</tr>
+<tr>
+<td>EVG-ASM-006</td>
+<td>One weekly report satisfies the addition</td>
+<td>Sponsor/Operations</td>
+<td>Confirm fields/output before design</td>
+</tr>
+<tr>
+<td>EVG-DEP-001</td>
+<td>Authority and environment evidence required before product execution</td>
+<td>Sponsor/Administrator</td>
+<td>Record authority and readiness separately</td>
+</tr>
+<tr>
+<td>EVG-RISK-002</td>
+<td>Temporary multi-site coordination may lose synchronisation</td>
+<td>Operations</td>
+<td>Monitor site register and acknowledgements for identified cases</td>
+</tr>
+<tr>
+<td>EVG-ISSUE-002</td>
+<td>Sender-wrapper reproduction evidence is absent</td>
+<td>Developer/Quality Lead</td>
+<td>Reproduce EVG-DEFECT-002 locally and record result</td>
+</tr>
+<tr>
+<td>EVG-RISK-003</td>
+<td>Notification wording could imply Finance approval</td>
+<td>Finance Lead</td>
+<td>Resolve trigger/content before any delivery decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>A mistake and its correction</p>
+<p>Mistake: “Reporting fits, so the project is Green and ready to build.”</p>
+<p>Correction: “The reporting forecast fits the effort ceiling. Planning remains Amber because product-fit and readiness evidence are unresolved. Execution remains Not ready.”</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2>
+<p>Learning goal and complete inputs</p>
+<p>Handle a supplied steering decision and produce an updated baseline and status report.</p>
+<p>Use all worked-case inputs plus these new synthetic sources:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-112</td>
+<td>Sponsor: “Approve EVG-CHANGE-002 for SB-02 v1.1 planning scope: 86 base hours, 12.9 reserve, upper bound 98.9 and 30–34 working days from a future authorised start. No execution authority or approval of other changes.”</td>
+</tr>
+<tr>
+<td>EVG-SRC-113</td>
+<td>Administrator has not confirmed the evidence-delivery date. The requested 2 February date remains unconfirmed.</td>
+</tr>
+<tr>
+<td>EVG-SRC-114</td>
+<td>Developer has not supplied recorded reproduction of EVG-DEFECT-002. EVG-DEFECT-001 remains locally retested only.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use 31 January 2027 as the synthetic status date.</p>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Classify the approval.  </li>
+</ol>
+<p>Expected: reporting is planning-approved; execution and acceptance are not.</p>
+<ol start="2">
+<li>Update SB-02’s version.  </li>
+</ol>
+<p>Expected: v1.0 preserved; v1.1 adds EVG-REQ-004, EVG-DEL-007 and EVG-TEST-009.</p>
+<ol start="3">
+<li>Update the forecast.  </li>
+</ol>
+<p>Expected: 98.9 upper bound with 1.1 hours of headroom, not discretionary scope.</p>
+<ol start="4">
+<li>Update RAID and change states.  </li>
+</ol>
+<p>Expected: missing evidence and reproduction remain open.</p>
+<ol start="5">
+<li>Write a one-page status report.  </li>
+</ol>
+<p>Expected: current phase, evidence, forecast, blockers and decisions are distinguishable.</p>
+<ol start="6">
+<li>Respond to the launch-date question.  </li>
+</ol>
+<p>Expected: no calendar commitment inferred from planning approval.</p>
+<p>Blank change-impact worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change ID/requester</td>
+<td></td>
+<td>Preserve the original request</td>
+</tr>
+<tr>
+<td>Baseline/version</td>
+<td></td>
+<td>Identify the comparison reference</td>
+</tr>
+<tr>
+<td>Need and affected records</td>
+<td></td>
+<td>Requirement, deliverable and test links</td>
+</tr>
+<tr>
+<td>Work breakdown</td>
+<td></td>
+<td>Roles, person-hours and dependencies</td>
+</tr>
+<tr>
+<td>Forecast/reserve</td>
+<td></td>
+<td>Revised total and uncertainty</td>
+</tr>
+<tr>
+<td>Elapsed schedule</td>
+<td></td>
+<td>Use a supplied feasible plan or state the missing dependency</td>
+</tr>
+<tr>
+<td>Options/consequences</td>
+<td></td>
+<td>Include deferral and control implications</td>
+</tr>
+<tr>
+<td>Decision/status</td>
+<td></td>
+<td>Planning, execution or acceptance; source</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td></td>
+<td>Owner, next action and date status</td>
+</tr>
+</tbody>
+</table></div>
+<p>Blank status worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Status field</th>
+<th>Your entry</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>As-of date/current phase</td>
+<td></td>
+<td>Identify the reporting point</td>
+</tr>
+<tr>
+<td>Applicable baseline</td>
+<td></td>
+<td>Version and supplied authority</td>
+</tr>
+<tr>
+<td>Evidence/progress</td>
+<td></td>
+<td>Observations without invented percentages</td>
+</tr>
+<tr>
+<td>Effort/schedule forecast</td>
+<td></td>
+<td>Separate staff units and elapsed range</td>
+</tr>
+<tr>
+<td>Material RAID</td>
+<td></td>
+<td>Owner and action</td>
+</tr>
+<tr>
+<td>Change decisions</td>
+<td></td>
+<td>Approved, pending, deferred or rejected</td>
+</tr>
+<tr>
+<td>Decision requests</td>
+<td></td>
+<td>Specific question and decision owner</td>
+</tr>
+<tr>
+<td>Next authorised activity</td>
+<td></td>
+<td>Respect readiness and authority</td>
+</tr>
+</tbody>
+</table></div>
+<p>Final artifacts: SB-02 v1.1, updated change/RAID sheets and Planning Status Report v0.1.</p>
+<p>Cleanup: retain prior versions and source decisions. Remove duplicate scratch drafts. No tenant cleanup applies.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Changed constraints</p>
+<p>Use 1 February 2027 as the new synthetic status date.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Changed input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVG-SRC-115</td>
+<td>Operations reports EVG-JOB-2105’s second technician acknowledgement is missing. Other readiness fields and jobs are unchanged. The affected visit is planned for 3 February. Operations may hold dispatch until the rule is satisfied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-116</td>
+<td>Sponsor requests one additional technician dashboard beyond the approved weekly report. No change approval is supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-117</td>
+<td>Dashboard estimate: Implementation Lead definitions/configuration 3 hours, documentation 1 hour, Quality Lead checks 2 hours. It follows reporting preparation and requires revised review availability; no elapsed schedule is supplied.</td>
+</tr>
+<tr>
+<td>EVG-SRC-118</td>
+<td>Sponsor is unavailable for another scope decision until 4 February, with no delegated scope approver. Administrator evidence date remains unconfirmed.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record the dashboard request as EVG-CHANGE-006, linked to candidate EVG-REQ-017.</p>
+<p>Deliverables</p>
+<p>Produce:</p>
+<ol>
+<li>Dashboard impact analysis against SB-02 v1.1.</li>
+<li>Revised effort/reserve calculation and ceiling comparison.</li>
+<li>Temporary-method readiness calculation.</li>
+<li>Updated RAID and status report.</li>
+<li>Immediate recommendation for EVG-JOB-2105.</li>
+<li>A decision request for the Sponsor.</li>
+</ol>
+<p>Success criteria</p>
+<p>Preserve the approved planning baseline while the dashboard remains pending. Do not start new work or use reserve for it.</p>
+<p>Recognise the missing acknowledgement as a current issue. Do not wait for the Sponsor to exercise Operations’ existing authority over dispatch readiness.</p>
+<p>Do not invent dashboard schedule dates or claim the visit has actually been held.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request treated as approval</td>
+<td>Decision state omitted</td>
+<td>Record requester, owner and explicit approval type</td>
+</tr>
+<tr>
+<td>Reserve funds a dashboard</td>
+<td>New scope hidden as uncertainty</td>
+<td>Add base work and recalculate reserve</td>
+</tr>
+<tr>
+<td>Urgent request bypasses controls</td>
+<td>Priority confused with authority</td>
+<td>Use authorised operational containment; assess scope separately</td>
+</tr>
+<tr>
+<td>“Agreed” without version</td>
+<td>Approval reference unclear</td>
+<td>Identify change, version, effort and boundaries</td>
+</tr>
+<tr>
+<td>Local defect described as product-fixed</td>
+<td>Evidence scope broadened</td>
+<td>State local retest and remaining product checks</td>
+</tr>
+<tr>
+<td>Date request reported as a promise</td>
+<td>Schedule certainty overstated</td>
+<td>Label requested/unconfirmed dates</td>
+</tr>
+<tr>
+<td>Status percentage has no denominator</td>
+<td>Progress fabricated</td>
+<td>Report completed evidence and remaining work</td>
+</tr>
+<tr>
+<td>Two current baseline copies differ</td>
+<td>Version control failed</td>
+<td>Issue a clearly identified superseding planning version</td>
+</tr>
+<tr>
+<td>New issue remains called a risk</td>
+<td>Existing problem hidden</td>
+<td>Record issue and immediate action</td>
+</tr>
+</tbody>
+</table></div>
+<p>If an inaccurate commitment has been circulated, issue a versioned correction identifying the affected statement and decision. Editing your own copy does not correct everyone’s understanding.</p>
+<p>Scope communication does not establish technical recovery. Existing client support retains operational incidents unless a separate service is authorised.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What makes a change-impact analysis more than an added-hour estimate?</li>
+<li>Why can planning approval coexist with execution Not ready?</li>
+<li>Which current Evergreen items are issues rather than only risks?</li>
+<li>What should happen when a requested dashboard exceeds the effort ceiling?</li>
+<li>Why should high priority not override Finance’s review boundary?</li>
+<li>What evidence is needed before calling a requested date a commitment?</li>
+<li>How should an unconfirmed assumption appear in a status report?</li>
+<li>Why must a status report distinguish local tests from product acceptance?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<h3>9.1 Lesson checks</h3>
+<p>LC1: Verification confirms the need. Scope selection determines whether the current engagement delivers it. Reporting was previously excluded.</p>
+<p>LC2: Trigger, recipient identity, Finance wording, outbound isolation, testing, support ownership and delivery authority are all relevant.</p>
+<p>LC3: The product expansion may lack definition or fit evidence. The immediate operating case still needs a safe temporary method or hold.</p>
+<p>LC4: Change ID, version, deliverable, effort, schedule conditions, exclusions and whether approval concerns planning, execution or acceptance.</p>
+<p>LC5: The absence exists now, so it is an issue. A possible future delay from that absence is a linked risk.</p>
+<p>LC6: A forecast fitting the ceiling does not establish product permissions, readiness, authority or acceptance.</p>
+<h3>9.2 Guided practice solution</h3>
+<p>Updated planning baseline</p>
+<p>SB-02 v1.1 — case-approved for planning only</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authority</td>
+<td>EVG-SRC-112</td>
+</tr>
+<tr>
+<td>Added scope</td>
+<td>One weekly report, EVG-REQ-004 / EVG-DEL-007</td>
+</tr>
+<tr>
+<td>Added check</td>
+<td>EVG-TEST-009</td>
+</tr>
+<tr>
+<td>Base/reserve</td>
+<td>86 + 12.9 = 98.9 supplier hours</td>
+</tr>
+<tr>
+<td>Client participation</td>
+<td>13 hours under the prior supplied plan</td>
+</tr>
+<tr>
+<td>Elapsed range</td>
+<td>30–34 working days from a future authorised start</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Other change requests, production migration/release and new support</td>
+</tr>
+<tr>
+<td>Execution/acceptance</td>
+<td>Not authorised/not supplied</td>
+</tr>
+<tr>
+<td>Version treatment</td>
+<td>SB-02 v1.0 retained as prior planning reference</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-037: apply the supplied reporting planning decision to v1.1 without extending its authority.</p>
+<p>Completed status report</p>
+<p>Evergreen Planning Status Report v0.1 — 31 January 2027</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status/content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current phase</td>
+<td>Planning and local/reference investigation</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>SB-02 v1.1, reporting planning-approved</td>
+</tr>
+<tr>
+<td>Planning status</td>
+<td>Amber</td>
+</tr>
+<tr>
+<td>Execution readiness</td>
+<td>Not ready</td>
+</tr>
+<tr>
+<td>Supplier forecast</td>
+<td>86–98.9 person-hours; 1.1 below ceiling at upper bound</td>
+</tr>
+<tr>
+<td>Elapsed forecast</td>
+<td>Conditional 30–34 working days; calendar start unassigned</td>
+</tr>
+<tr>
+<td>Evidence available</td>
+<td>Requirements, proposed design/access/migration packs; local receiver V2 reference checks</td>
+</tr>
+<tr>
+<td>Evidence limitations</td>
+<td>No Zoho execution, client UAT or release acceptance</td>
+</tr>
+<tr>
+<td>Material issues</td>
+<td>Readiness evidence missing; sender-wrapper reproduction pending</td>
+</tr>
+<tr>
+<td>Other changes</td>
+<td>001 deferred; 003 assessment; 004/005 requested, not approved</td>
+</tr>
+<tr>
+<td>Immediate actions</td>
+<td>Obtain permitted evidence; maintain temporary multi-site controls; complete local reproduction</td>
+</tr>
+<tr>
+<td>Decisions requested</td>
+<td>Confirm reporting output boundary and readiness route</td>
+</tr>
+<tr>
+<td>Launch statement</td>
+<td>Earlier preferred date is not a supported commitment</td>
+</tr>
+</tbody>
+</table></div>
+<p>No actual-effort total or implementation completion percentage is supplied.</p>
+<p>A suitable response is:</p>
+<p>Reporting is now in the planning baseline, with a conditional 30–34-working-day range. The calendar start depends on authority and readiness, and native fit remains unverified. We cannot present the preferred launch date as a supported commitment.</p>
+<h3>9.3 Independent challenge solution</h3>
+<p>Dashboard estimate</p>
+<p>Additional base:</p>
+<blockquote>
+<p>3+1+2=6 hours</p>
+</blockquote>
+<p>Revised base:</p>
+<blockquote>
+<p>86+6=92 hours</p>
+</blockquote>
+<p>Reserve:</p>
+<blockquote>
+<p>92×0.15=13.8 hours</p>
+</blockquote>
+<p>Upper bound:</p>
+<blockquote>
+<p>92+13.8=105.8 hours</p>
+</blockquote>
+<p>Ceiling excess:</p>
+<blockquote>
+<p>105.8-100=5.8 hours</p>
+</blockquote>
+<p>The dashboard does not fit the current ceiling with the supplied reserve rule.</p>
+<p>Options include:</p>
+<ul>
+<li>Defer the dashboard and retain SB-02 v1.1.</li>
+<li>Request a revised ceiling.</li>
+<li>Assess an explicitly authorised scope trade.</li>
+<li>Propose a separately reviewed reserve change.</li>
+</ul>
+<p>No option is approved merely because it is listed.</p>
+<p>Completed change entry</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>EVG-CHANGE-006</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need</td>
+<td>Technician dashboard</td>
+</tr>
+<tr>
+<td>Candidate requirement</td>
+<td>EVG-REQ-017</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>Outside SB-02 v1.1</td>
+</tr>
+<tr>
+<td>Additional base</td>
+<td>Six hours</td>
+</tr>
+<tr>
+<td>Revised upper bound</td>
+<td>105.8 hours</td>
+</tr>
+<tr>
+<td>Constraint</td>
+<td>Exceeds 100 by 5.8</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Not baselined; revised review availability missing</td>
+</tr>
+<tr>
+<td>Decision owner</td>
+<td>Sponsor, next available 4 February</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Requested, pending</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Keep outside the baseline until decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>Readiness</p>
+<p>The three multi-site jobs remain the denominator. Two satisfy all four conditions.</p>
+<blockquote>
+<p>(2) ÷ (3)×100≈66.67%</p>
+</blockquote>
+<p>EVG-JOB-2105 is not ready because one required acknowledgement is missing.</p>
+<p>This is a temporary-method readiness measure, not project completion.</p>
+<p>Add EVG-ISSUE-003:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Completed entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Condition</td>
+<td>Second technician acknowledgement missing for EVG-JOB-2105</td>
+</tr>
+<tr>
+<td>Effect</td>
+<td>Temporary dispatch-readiness rule not satisfied</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Operations Manager; Dispatch obtains evidence</td>
+</tr>
+<tr>
+<td>Immediate recommendation</td>
+<td>Hold the affected dispatch until acknowledgement is confirmed</td>
+</tr>
+<tr>
+<td>Scope effect</td>
+<td>Does not approve multi-site software expansion</td>
+</tr>
+<tr>
+<td>Evidence status</td>
+<td>Issue supplied; hold action not observed</td>
+</tr>
+</tbody>
+</table></div>
+<p>Record EVG-DEC-038: recommend using Operations’ existing readiness authority while the scope request waits.</p>
+<p>Revised status summary</p>
+<p>Planning Status Report v0.2 — 1 February 2027</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Applicable baseline</td>
+<td>SB-02 v1.1 unchanged</td>
+</tr>
+<tr>
+<td>Baseline forecast</td>
+<td>98.9 upper bound remains within 100</td>
+</tr>
+<tr>
+<td>Dashboard option</td>
+<td>105.8; exceeds ceiling; not approved</td>
+</tr>
+<tr>
+<td>Overall planning</td>
+<td>Amber</td>
+</tr>
+<tr>
+<td>Affected operational case</td>
+<td>Red: EVG-JOB-2105 readiness incomplete</td>
+</tr>
+<tr>
+<td>Product execution</td>
+<td>Not ready</td>
+</tr>
+<tr>
+<td>Next scope decision</td>
+<td>Sponsor available 4 February</td>
+</tr>
+<tr>
+<td>Immediate owner action</td>
+<td>Operations/Dispatch address missing acknowledgement before affected visit</td>
+</tr>
+</tbody>
+</table></div>
+<p>A suitable Sponsor request is:</p>
+<p>The additional dashboard requires six base hours and produces a 105.8-hour full-reserve forecast, 5.8 above the ceiling. Please decide whether to defer it, revise the ceiling or assess a scope trade. SB-02 v1.1 remains the planning reference. Separately, Operations is being asked to contain the incomplete acknowledgement for EVG-JOB-2105 under its existing authority.</p>
+<h3>9.4 Understanding check answers</h3>
+<ol>
+<li>It covers outcomes, architecture, data, controls, tests, responsibilities, dependencies and schedule as well as effort.</li>
+<li>Approval of selected work does not supply product evidence or execution authority.</li>
+<li>Missing readiness evidence, missing sender reproduction and the newly missing acknowledgement are current issues.</li>
+<li>Keep it pending and present options; do not absorb it silently into reserve.</li>
+<li>Priority does not remove the Finance decision right or the confirmed control.</li>
+<li>An authorised, explicit commitment with a defined scope and supported conditions.</li>
+<li>State its owner, impact if false and required confirmation.</li>
+<li>Local evidence checks a model/component. Product acceptance requires appropriate actual environment and business evidence.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>Change control makes decisions visible. Good communication explains what changed, what remains conditional and who must act.</p>
+<p>Your strongest status report is not the most optimistic one. It is the one that lets the client distinguish approved scope, unresolved requests, current issues and supported forecasts.</p>
+<p>Completion checklist</p>
+<ul>
+<li>I can compare requests with a named baseline.</li>
+<li>I can analyse effort, schedule, control and ownership effects.</li>
+<li>I can prioritise competing needs with evidence.</li>
+<li>I can distinguish planning, execution and acceptance decisions.</li>
+<li>I can maintain actionable RAID information.</li>
+<li>I can report status without invented progress.</li>
+<li>I can handle an urgent operational exception within existing authority.</li>
+<li>I can preserve decisions and baseline versions.</li>
+</ul>
+<p>Your project pack now contains handled change scenarios, a steering recommendation, a supplied planning decision and status communication.</p>
+<p>Chapter 13, User Acceptance Testing, builds business-led scenarios, representative roles, expected results, traceability, defect decisions and acceptance evidence. The approved planning scope and unresolved readiness conditions provide its starting boundary.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change-impact analysis</td>
+<td>Evaluation of a request’s effects across delivery</td>
+</tr>
+<tr>
+<td>Decision right</td>
+<td>Authority to make a defined decision</td>
+</tr>
+<tr>
+<td>Headroom</td>
+<td>Difference between a forecast and a stated ceiling</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>Existing condition requiring action</td>
+</tr>
+<tr>
+<td>Planning baseline</td>
+<td>Approved reference for planned scope and forecast</td>
+</tr>
+<tr>
+<td>RAID</td>
+<td>Risks, assumptions, issues and dependencies</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Uncertain event that could affect an outcome</td>
+</tr>
+<tr>
+<td>Scope trade</td>
+<td>Explicit exchange of included work and its consequences</td>
+</tr>
+<tr>
+<td>Steering review</td>
+<td>Business/supplier review of material decisions and exceptions</td>
+</tr>
+<tr>
+<td>Status report</td>
+<td>Evidence-based account of position, forecast, blockers and decisions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<ol>
+<li>Zoho CRM API v8 — Get Profiles<br />
+<a href="https://www.zoho.com/crm/developer/docs/api/v8/get-profiles.html">Open official reference</a></li>
+</ol>
+<p>Useful when evaluating whether access evidence is sufficient: detailed permissions require specific-profile retrieval rather than a profile list alone.</p>
+<p>The official reference was accessed on 5 October 2026. Confirm the applicable edition, permissions and environment before using product-specific procedures. The cited product-evidence distinction is documentation-based; Evergreen’s configured permissions and product behaviour remain unverified. No Zoho execution, actual client signature or release acceptance is claimed.</p></section><div class="book-end"><h2>Keep your project work</h2><p>Handle a change request and steering review.</p><div class="reader-actions"><a href="/course-book/course-05/chapter-11">← Previous chapter</a><a href="/course-book/course-05/chapter-13">Next chapter →</a></div><p><a href="/course-book/course-05">All 16 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-05/course-book.js" defer></script></body></html>

@@ -1,0 +1,7 @@
+job_ref,status,completed_at,cancelled,finance_status,finance_contact
+EVG-JOB-1501,open,,no,not_sent,finance@evergreen.example.com
+EVG-JOB-1502,completed,2027-01-21T10:00:00Z,no,under_review,finance@evergreen.example.com
+EVG-JOB-1503,cancelled,,yes,not_sent,finance@evergreen.example.com
+EVG-JOB-1504,completed,2027-01-26T15:00:00Z,no,returned,finance@evergreen.example.com
+EVG-JOB-1505,open,,no,returned,finance@evergreen.example.com
+For this exercise, the reporting week is Monday 25 January through Sunday 31 January 2027, and the reporting cutoff is Sunday 31 January 2027 at 23:59 UTC. No later records are supplied.
