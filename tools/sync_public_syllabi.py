@@ -31,11 +31,11 @@ def chapter_id(number):
 def syllabus(course):
     blocks = []
     for number, chapter in enumerate(course['chapters'], 1):
-        blocks.append(f'''<details class="module" id="{chapter_id(number)}">
+        blocks.append(f'''<details class="module" id="{chapter_id(number)}" open>
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
 <div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p></div></details>''')
     return f'''<section class="course-syllabus" id="syllabus">
-<div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2><p>Open a chapter to read its topics and practice task.</p><p>Duration: {escape(course['duration'])}</p><a class="text-link" href="{escape(course['source'])}" target="_blank" rel="noopener">Open syllabus in Google Docs ↗</a><p><a class="text-link" href="/syllabus.html">Browse all five courses →</a></p></div>
+<div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2><p>All chapters, topics and practice tasks are shown below. You can collapse chapters as you read.</p><p>Duration: {escape(course['duration'])}</p><a class="text-link" href="{escape(course['source'])}" target="_blank" rel="noopener">Open syllabus in Google Docs ↗</a><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
 <div><div class="chapter-controls"><button type="button" data-chapters="open">Expand all chapters</button><button type="button" data-chapters="close">Collapse all</button></div><div class="module-list">{''.join(blocks)}</div></div></section>'''
 
 
@@ -59,6 +59,7 @@ for course, slug in zip(DATA['courses'], SLUGS):
     facts = f'''<section class="course-facts"><article><span>WHO IT’S FOR</span><p>{escape(course['audience'])}</p></article><article><span>WHAT TO BRING</span><p>{escape(course['prerequisites'])}</p></article><article><span>COURSE PROJECT</span><p>{escape(course['project'][0])}: {escape(project_brief)}</p></article></section>'''
     page = replace_section(page, 'course-facts', facts)
     page = re.sub(r'<p class="course-summary">.*?</p>', lambda _: '<p class="course-summary">'+escape(course['summary'])+'</p>', page)
+    page = re.sub(r'<h1>.*?</h1>', lambda _: '<h1>'+escape(course['title'])+'</h1>', page)
     if 'href="/syllabus.html">Curriculum' not in page:
         page = page.replace('<a href="/#programmes">Programmes</a>', '<a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a>', 1)
     path.write_text(page)
@@ -74,4 +75,27 @@ for course, slug in zip(DATA['courses'], SLUGS):
     cards.append(f'''<article class="curriculum-course" id="course-{course['id']}"><p class="eyebrow">COURSE {course['id']:02} · {len(course['chapters'])} CHAPTERS</p><h2><a href="/courses/{slug}.html">{escape(course['title'])}</a></h2><p>{escape(course['summary'])}</p><p><b>For:</b> {escape(course['audience'])}</p><ol class="chapter-index">{chapters}</ol><a class="button button-dark" href="/courses/{slug}.html#syllabus">Topics and practice tasks →</a></article>''')
 main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav><a class="text-link" href="https://docs.google.com/document/d/1I_E3SRYQvkkK7hAbIq0AMDtWTE-zg4AYlKslBWVGp-g/edit" target="_blank" rel="noopener">Open the master curriculum in Google Docs ↗</a></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
 (PUBLIC / 'syllabus.html').write_text(head + main + footer)
-print('Updated five public course pages and the curriculum directory: 86 chapters.')
+
+# Keep the home page chapter directory in sync with exactly the same source.
+home_path = PUBLIC / 'index.html'
+home = home_path.read_text()
+home_section = f'''<section class="curriculum-home" id="curriculum" aria-labelledby="curriculum-title"><div class="curriculum-home-heading"><p class="eyebrow">FIVE COURSES · 86 CHAPTERS</p><h2 id="curriculum-title">Full course syllabus.</h2><p>Every chapter from our five course syllabi is listed here. Select a chapter to read its topics and practice task.</p><nav class="curriculum-jump" aria-label="Jump to a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></div>{''.join(cards)}</section>'''
+if 'id="curriculum"' in home:
+    home = replace_section(home, 'curriculum-home', home_section)
+else:
+    home = re.sub(r'<section class="detail-section section-pad"[^>]*>.*?</section>', '', home, flags=re.S)
+    anchor = '<section class="approach-section section-pad"'
+    if home.count(anchor) != 1:
+        raise ValueError('Could not locate the home page curriculum insertion point')
+    home = home.replace(anchor, home_section+'\n\n    '+anchor, 1)
+if 'href="/syllabus.css"' not in home:
+    home = home.replace('</head>', '<link rel="stylesheet" href="/syllabus.css"></head>', 1)
+home = home.replace('href="/syllabus.html">Curriculum', 'href="#curriculum">Curriculum')
+home = home.replace('href="/syllabus.html">Browse all 86 chapters', 'href="#curriculum">Browse all 86 chapters')
+home = home.replace('<a class="text-link" href="#approach">See how learning works <span aria-hidden="true">→</span></a>', '<a class="text-link" href="#curriculum">Browse all 86 chapters <span aria-hidden="true">↓</span></a>')
+for course, slug in zip(DATA['courses'], SLUGS):
+    home = home.replace(f'href="/courses/{slug}.html" class="card-link">View course outline', f'href="/courses/{slug}.html#syllabus" class="card-link">Read all {len(course["chapters"])} chapters')
+home = home.replace('AI &amp; Agentic AI Builder</h3>', 'AI &amp; Agentic AI Builder for Business Systems</h3>')
+home = home.replace('Corporate AI &amp; Automation Workshop</h3>', 'Corporate AI &amp; Automation Opportunity Workshop</h3>')
+home_path.write_text(re.sub(r'^ +$', '', home, flags=re.M))
+print('Updated home page, five course pages and curriculum directory: 86 chapters.')
