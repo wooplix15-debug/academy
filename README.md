@@ -77,4 +77,4 @@ See [`VERIFICATION_V2.md`](VERIFICATION_V2.md) for the checks documented for thi
 
 ## Student Course Book
 
-Course 1 now has a public student reader at `/course-book/course-01/`. Chapter 1 is available; the remaining chapters are listed as coming next. Edit `materials/student_books/course_01/chapter_01.md`, then run `python3 tools/sync_public_syllabi.py` and `python3 tools/build_student_coursebook.py`. Only student-facing chapter text is published; source metadata and AI continuity are excluded. The reader includes a section menu, accessible SVG process diagram, downloadable datasets, explained solutions and printing.
+Course 1 has a public student reader at `/course-book/course-01/`. Course 4, Corporate AI & Automation Opportunity Workshop, has a public reader at `/course-book/course-04/` with all ten chapters. Course 4 source chapters are in `materials/student_books/course_04/`; rebuild them with `python3 tools/build_student_coursebook_04.py`. Only student-facing chapter text is rendered; source metadata is excluded. Both readers include section menus, explained solutions and print/save as PDF.

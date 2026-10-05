@@ -1,0 +1,1116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Read the Course 4 student book: ten chapters on choosing a business process and preparing a measured automation pilot proposal."><meta name="theme-color" content="#101d31"><title>Course Book · Course 4 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/corporate-ai-automation-workshop">Course 4 · Corporate AI &amp; Automation Opportunity Workshop</a><span>/</span><a href="/course-book/course-04/">Course Book</a><span>/</span><span>Chapter 2</span></div><header class="book-hero"><p class="eyebrow">COURSE 04 · CHAPTER 02</p><h1>Process Discovery and Problem Framing</h1><p>Before you can improve a process, you need to understand what actually happens. A description such as “Sales receives an enquiry, Operations checks it, and Sales sends a quotation” is a useful starting point. It does not yet explain where work waits, why it returns or what happens when information is missing.</p><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a href="/course-book/course-04/chapter-02-student.md" download>Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation — Meridian’s current-state routes</a><a href="#section-4">4. Worked case — Discover what the sample actually supports</a><a href="#section-5">5. Try it yourself — Guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>Before you can improve a process, you need to understand what actually happens. A description such as “Sales receives an enquiry, Operations checks it, and Sales sends a quotation” is a useful starting point. It does not yet explain where work waits, why it returns or what happens when information is missing.</p>
+<p>In this chapter, you will learn to:</p>
+<ul>
+<li>Define a process trigger, boundary and end condition.</li>
+<li>Identify the people involved and the information passed between them.</li>
+<li>Map decisions, queues, rework and exceptions.</li>
+<li>Separate staff effort from elapsed time.</li>
+<li>Distinguish supplied facts, assumptions and unknowns.</li>
+<li>Write a problem statement that describes an evidenced business issue.</li>
+</ul>
+<p>Your required practice is to map a familiar process, including its trigger, roles, handoffs and exceptions, and mark facts separately from assumptions. A complete Meridian Supply practice packet is supplied if you do not have a permission-cleared company process.</p>
+<p>Prerequisites and continuity</p>
+<p>Chapter 1 introduced rules, integrations, generative assistance and agents. You should now recognise that different tasks may need different capabilities.</p>
+<p>Meridian’s established discovery candidates remain:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Opportunity ID</th>
+<th>Existing candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-OPP-001</td>
+<td>Improve required-field completeness and validity</td>
+</tr>
+<tr>
+<td>MSP-OPP-002</td>
+<td>Reduce effort spent organising varied enquiry wording</td>
+</tr>
+<tr>
+<td>MSP-OPP-003</td>
+<td>Investigate repeated entry of approved enquiry information</td>
+</tr>
+</tbody>
+</table></div>
+<p>The supplied weekly baseline remains 120 completed enquiries, 18 initial staff minutes per enquiry and 24 enquiries requiring six additional rework minutes: 38.4 staff hours in total.</p>
+<p>The Chapter 1 pilot reference packet remains a separate six-case packet with 36 manual preparation minutes. Pilot MSP-PILOT-001 is proposed, not executed.</p>
+<p>This chapter introduces new, explicitly labelled synthetic discovery records. They do not replace the earlier enquiry records or establish pilot results.</p>
+<h3>Your contribution to the course project</h3>
+<p>You will produce a Current-State Process Map, a Discovery Evidence Register and an Evidence-Based Problem Statement.</p>
+<p>These artifacts support your Business Automation Pilot Proposal. They help you choose a process boundary, explain where the problem occurs and avoid building a solution around an untested assumption.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>Lesson 1 — Define where the process starts, ends and changes hands</h3>
+<p>A process is a connected set of activities that turns an input into a result. A department is not a process. “Sales” names a team; “receive an enquiry and issue a quotation” describes work with a possible boundary.</p>
+<p>The trigger starts a particular instance of the process. Receiving a customer enquiry is a trigger. “Every Monday” can also be a trigger for scheduled work. Official automation documentation uses the same basic idea: a trigger is the event that starts a flow.1</p>
+<p>A boundary states what you include. It should identify a start condition and an end condition.</p>
+<p>For Meridian:</p>
+<p>Start when a customer enquiry becomes available in the Sales inbox. End when Sales sends a quotation or records an authorised closure.</p>
+<p>Order acceptance, stock reservation, fulfilment and invoicing are outside this discovery boundary. They may influence it, but they are different processes.</p>
+<p>A case can remain inside the boundary without reaching an end condition. An enquiry waiting for availability confirmation is still open.</p>
+<p>Identify people by their work</p>
+<p>A process map should show who performs an activity and who receives its output.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Participant</th>
+<th>Role in Meridian’s discovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>Supplies the enquiry, clarification or withdrawal</td>
+</tr>
+<tr>
+<td>Sales Lead and Sales staff</td>
+<td>Own intake, customer clarification, quotation preparation and customer-facing acceptance</td>
+</tr>
+<tr>
+<td>Operations Lead and Operations staff</td>
+<td>Check product and availability information; resolve availability exceptions</td>
+</tr>
+<tr>
+<td>IT Lead</td>
+<td>Investigates access exceptions and later assesses technical connections</td>
+</tr>
+<tr>
+<td>Finance Lead</td>
+<td>Checks effort and cost evidence; does not perform every enquiry step</td>
+</tr>
+<tr>
+<td>Sponsor</td>
+<td>Owns the later investment decision; does not approve every quotation in this scenario</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not insert a participant into every case simply because that person belongs to the management team.</p>
+<p>Worked example: make a handoff visible</p>
+<p>“Sales asks Operations to check the enquiry” hides several questions.</p>
+<p>A clearer handoff description is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Handoff element</th>
+<th>Completed description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sender</td>
+<td>Sales</td>
+</tr>
+<tr>
+<td>Receiver</td>
+<td>Operations</td>
+</tr>
+<tr>
+<td>Item transferred</td>
+<td>Enquiry reference, product code, quantity and requested delivery date</td>
+</tr>
+<tr>
+<td>Receiver’s task</td>
+<td>Check the product and availability information</td>
+</tr>
+<tr>
+<td>Completion evidence</td>
+<td>Operations records checked facts or a specific exception</td>
+</tr>
+<tr>
+<td>Return owner</td>
+<td>Sales, if customer information needs correction; Operations, if availability remains unresolved</td>
+</tr>
+</tbody>
+</table></div>
+<p>A handoff transfers work or information between participants. Sending an item does not prove that the receiver has started it. That gap may be a queue.</p>
+<p>Check L1: Why is “Sales → Operations” insufficient as a complete handoff description?</p>
+<h3>Lesson 2 — Show decisions, exceptions and rework instead of drawing only the normal path</h3>
+<p>A decision selects a route according to a condition. Useful decision labels are questions with clear answers:</p>
+<ul>
+<li>Are required fields complete and valid?</li>
+<li>Is source access permitted?</li>
+<li>Is the product code recognised?</li>
+<li>Can Operations complete the availability check?</li>
+</ul>
+<p>“Check enquiry” is an activity. “Is the enquiry complete?” is a decision. Keeping them separate helps you identify the rule or judgement behind the route.</p>
+<p>An exception is a condition requiring a different path from routine processing. Missing information, an unknown product and denied source access are examples.</p>
+<p>An exception is not necessarily an error. A customer may legitimately request more units than a stock snapshot shows. The process must handle that condition even when everyone has performed their task correctly.</p>
+<p>Rework means repeating or correcting work because an earlier result was incomplete or incorrect. A wrong copied product code is rework. Waiting for a legitimate availability decision is not automatically rework.</p>
+<p>Worked example: two superficially similar returns</p>
+<p>Consider these supplied situations:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Classification</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales notices missing quantity before sending the request to Operations</td>
+<td>Intake exception</td>
+<td>The request needs clarification before the handoff</td>
+</tr>
+<tr>
+<td>Sales forwards a request without quantity; Operations returns it</td>
+<td>Rework after handoff</td>
+<td>The receiving team could not use the earlier output</td>
+</tr>
+<tr>
+<td>Operations finds a request for 60 units against a 40-unit snapshot</td>
+<td>Availability exception</td>
+<td>The customer request may be valid, but availability needs investigation</td>
+</tr>
+<tr>
+<td>Sales copies BF-10 as BF-1O, using the letter O instead of zero</td>
+<td>Data-entry error requiring rework</td>
+<td>The source value was changed incorrectly</td>
+</tr>
+</tbody>
+</table></div>
+<p>These distinctions matter when measuring improvement. A better intake check might reduce Operations returns. It would not necessarily remove genuine stock shortages.</p>
+<p>An exception path needs a destination and an owner. “Reject” is incomplete unless you explain who receives the issue, what happens next and whether the case closes or stays open.</p>
+<p>For denied source access, the safe path is to stop source enrichment and refer the access issue to IT. Sales tracks the enquiry. The map must not silently replace this with “use another person’s account”.</p>
+<p>Check L2: Why should a valid stock-shortage request and an incorrectly copied product code appear as different exception paths?</p>
+<h3>Lesson 3 — Find waiting without confusing it with staff effort</h3>
+<p>Staff effort is time spent actively working. Elapsed time is the interval between two events. A customer experiences elapsed time, including waiting.</p>
+<p>A queue contains work ready for an activity but not yet started. A request may wait in an Operations queue even though no one is actively working on it.</p>
+<p>Other waits should be named accurately. Waiting for a customer reply is different from waiting for an internal team to start work. Both affect elapsed time, but they have different owners and possible remedies.</p>
+<p>For a serial case with complete, non-overlapping records:</p>
+<p>Elapsed time = active processing intervals + waiting intervals</p>
+<p>For the simple examples in this chapter, staff work does not overlap. In a real process, two people may work simultaneously. Their combined staff effort can then exceed the elapsed processing interval. Do not apply the serial formula without checking that assumption.</p>
+<p>Worked example: a short task inside a long process</p>
+<p>A supplied enquiry trace shows:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Time on 2026-10-05</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enquiry received; Sales starts</td>
+<td>09:00</td>
+</tr>
+<tr>
+<td>Sales finishes intake; Operations queue begins</td>
+<td>09:06</td>
+</tr>
+<tr>
+<td>Operations starts</td>
+<td>10:00</td>
+</tr>
+<tr>
+<td>Operations finishes; Sales quotation queue begins</td>
+<td>10:08</td>
+</tr>
+<tr>
+<td>Sales resumes</td>
+<td>10:30</td>
+</tr>
+<tr>
+<td>Sales finishes review and sends quotation</td>
+<td>10:34</td>
+</tr>
+</tbody>
+</table></div>
+<p>All times use the same synthetic local clock, UTC+00:00. There are no breaks or overlapping activities in this trace.</p>
+<p>Staff effort:</p>
+<p>6 Sales intake minutes + 8 Operations minutes + 4 Sales quotation minutes = 18 staff minutes</p>
+<p>Waiting:</p>
+<p>54 Operations queue minutes + 22 Sales queue minutes = 76 minutes</p>
+<p>Elapsed time:</p>
+<p>10:34 − 09:00 = 94 minutes</p>
+<p>Reconciliation:</p>
+<p>18 + 76 = 94 minutes</p>
+<p>Automating two minutes of intake would affect only part of this case. It would not automatically remove the 76 minutes of waiting.</p>
+<p>The same evidence also does not prove that Operations is understaffed. The queue could reflect batching, competing priorities, working patterns or another cause. Queue duration is evidence of waiting; its cause still requires investigation.</p>
+<p>Check L3: In this trace, which is larger: active effort or waiting? What should you investigate before claiming a staffing problem?</p>
+<h3>Lesson 4 — Separate facts, assumptions and customer impact</h3>
+<p>A process map is useful only if you know which parts are supported.</p>
+<p>Use this chapter’s simple legend:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F — Fact</td>
+<td>Explicitly supported by a supplied record or scenario description</td>
+<td>“Case 101 waited 54 minutes before Operations started”</td>
+</tr>
+<tr>
+<td>A — Assumption</td>
+<td>A proposition being used or considered without sufficient evidence</td>
+<td>“The same queue pattern occurs every week”</td>
+</tr>
+<tr>
+<td>U — Unknown</td>
+<td>Information intentionally absent or not yet established</td>
+<td>“Why Operations started at 10:00”</td>
+</tr>
+</tbody>
+</table></div>
+<p>In this synthetic case, “fact” means a fact within the supplied scenario. It does not mean evidence collected from a real company.</p>
+<p>The content of an interview statement may also be uncertain. It can be a fact that the Sponsor said “Operations causes every delay”. That does not make the underlying claim true.</p>
+<p>Ask three questions:</p>
+<ol>
+<li>What exactly does the source establish?</li>
+<li>How broad is the claim?</li>
+<li>What remains unexplained?</li>
+</ol>
+<p>Worked example: from complaint to problem statement</p>
+<p>Complaint:</p>
+<p>Quotations take too long because Sales writes slowly.</p>
+<p>Evidence:</p>
+<p>In one supplied case, total elapsed time was 94 minutes, including 76 waiting minutes and 18 active staff minutes.</p>
+<p>Better problem statement:</p>
+<p>The supplied case contains substantial waiting between Sales and Operations activities. Investigate the handoff queues and intake quality before selecting a drafting solution.</p>
+<p>The improved statement identifies an evidenced condition without inventing its cause.</p>
+<p>Customer impact should also be separated into measured and hypothesised effects.</p>
+<ul>
+<li>A late quotation timestamp establishes a longer response interval.</li>
+<li>A customer asking twice for an update establishes an additional contact.</li>
+<li>“The customer was frustrated” needs customer evidence.</li>
+<li>“The business lost the order” needs outcome evidence.</li>
+</ul>
+<p>Process discovery helps you frame the problem. Chapter 3 turns recurring issues into use-case cards. Chapters 5 and 6 assess value and compare solutions.</p>
+<p>Check L4: What evidence would distinguish “customers wait longer” from “longer waits cause lost sales”?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Meridian’s current-state routes</h2>
+<p>The following is a simplified current-state discovery map. It uses ordinary flowchart conventions, not full Business Process Model and Notation, or BPMN. BPMN is a formal, implementation-independent process notation maintained by the Object Management Group.2</p>
+<p>flowchart TD
+    A[Customer enquiry available] --&gt; B[Sales intake queue]
+    B --&gt; C[Sales records and checks request]
+    C --&gt; D{Required fields usable?}
+    D --&gt;|No| E[Sales requests customer clarification]
+    E --&gt; F[Wait for customer reply]
+    F --&gt; C
+    D --&gt;|Yes| G{Source access permitted?}
+    G --&gt;|No| H[IT access exception; Sales tracks open case]
+    H --&gt;|If access is resolved| C
+    G --&gt;|Yes| I[Operations queue]
+    I --&gt; J[Operations checks product and availability]
+    J --&gt; K{Information usable?}
+    K --&gt;|No: missed or copied field| L[Return to Sales for correction]
+    L --&gt; C
+    K --&gt;|Yes| M{Availability issue unresolved?}
+    M --&gt;|Yes| N[Operations owns availability exception; case waits]
+    N --&gt;|When resolved| J
+    M --&gt;|No| O[Sales quotation queue]
+    O --&gt; P[Sales prepares, checks and sends quotation]
+    P --&gt; Q[Quotation sent: end]
+The map makes three learning points visible.</p>
+<p>First, handoffs create possible queues. The arrows do not mean work starts immediately.</p>
+<p>Second, rework returns to an earlier activity. Sales may perform an intake check again after Operations returns a missed or incorrectly copied field.</p>
+<p>Third, an exception can leave a case open. The arrows labelled “if” and “when” describe permitted recovery routes, not evidence that recovery has occurred in every case.</p>
+<p>A customer withdrawal can end the process through an authorised closure. No withdrawal appears in the main six-case packet below, so that route is examined in the independent challenge.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Discover what the sample actually supports</h2>
+<p>New scenario inputs</p>
+<p>This chapter adds a separate discovery packet under these source IDs:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-DISC-001</td>
+<td>Process description and role responsibilities used in the lessons</td>
+</tr>
+<tr>
+<td>MSP-DISC-002</td>
+<td>Six-case input and timing packet below</td>
+</tr>
+<tr>
+<td>MSP-DISC-003</td>
+<td>Detailed event trace for MSP-ENQ-101, shown in Lesson 3</td>
+</tr>
+<tr>
+<td>MSP-DISC-004</td>
+<td>Stakeholder statements below</td>
+</tr>
+</tbody>
+</table></div>
+<p>The following extensions are explicit synthetic scenario assumptions:</p>
+<ul>
+<li>Current intake checking is manual and can miss required-field problems.</li>
+<li>Operations returns unusable handoffs to Sales.</li>
+<li>Operations owns unresolved availability issues.</li>
+<li>Sales tracks enquiries blocked by an access issue while IT investigates.</li>
+<li>No supplied source confirms a delivery commitment. A requested date must remain distinct from a promise.</li>
+<li>All recorded activities in this packet are serial and use non-overlapping time categories.</li>
+</ul>
+<p>These describe the case being studied. They are not Wooplix policies or universal business requirements.</p>
+<p>Case conditions</p>
+<p>The catalogue still recognises BF-10 as a 10 mm brass fitting. The stock snapshot lists 40 units, and no approved substitute is supplied.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Enquiry ID</th>
+<th>Supplied condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-101</td>
+<td>BF-10, 25 units; normal handoff</td>
+</tr>
+<tr>
+<td>MSP-ENQ-102</td>
+<td>BF-10, 10 units; normal handoff</td>
+</tr>
+<tr>
+<td>MSP-ENQ-103</td>
+<td>Quantity missing at first Operations handoff; customer later supplies 12 units</td>
+</tr>
+<tr>
+<td>MSP-ENQ-104</td>
+<td>Source code BF-10 copied as BF-1O; corrected to BF-10 using the original enquiry</td>
+</tr>
+<tr>
+<td>MSP-ENQ-105</td>
+<td>BF-10, 4 units; source access denied; no resolution supplied</td>
+</tr>
+<tr>
+<td>MSP-ENQ-106</td>
+<td>BF-10, 60 units; unresolved availability exception</td>
+</tr>
+</tbody>
+</table></div>
+<p>All six request delivery on 2026-10-12. That is a customer request, not confirmed delivery.</p>
+<p>Complete timing dataset</p>
+<p>Dates are 2026-10-05, using UTC+00:00. For open cases, end_or_cutoff is the snapshot cutoff, not a completion time.</p>
+<p>operations_returns counts returns to Sales caused by missing or incorrectly copied information. It does not count an availability hold.</p>
+<p>enquiry_id,received,end_or_cutoff,status,initial_staff_min,correction_staff_min,intake_queue_min,operations_queue_min,sales_quote_queue_min,customer_wait_min,access_wait_min,availability_wait_min,operations_returns</p>
+<p>MSP-ENQ-101,09:00,10:34,quotation_sent,18,0,0,54,22,0,0,0,0</p>
+<p>MSP-ENQ-102,09:10,10:10,quotation_sent,18,0,0,30,12,0,0,0,0</p>
+<p>MSP-ENQ-103,09:20,12:20,quotation_sent,18,6,0,30,6,120,0,0,1</p>
+<p>MSP-ENQ-104,09:30,11:00,quotation_sent,18,6,0,42,24,0,0,0,1</p>
+<p>MSP-ENQ-105,09:40,13:00,open_access,4,0,0,0,0,0,196,0,0</p>
+<p>MSP-ENQ-106,09:50,13:00,open_availability,14,0,0,46,0,0,0,130,0</p>
+<p>The correction minutes are additional to initial effort. Queue values for returned cases include all visits to that queue.</p>
+<p>Stakeholder statements</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Speaker</th>
+<th>Supplied statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales Lead</td>
+<td>“Operations returned two cases in this packet for information correction.”</td>
+</tr>
+<tr>
+<td>Operations Lead</td>
+<td>“Case 106 remains with us because the requested quantity exceeds the stock snapshot.”</td>
+</tr>
+<tr>
+<td>Sponsor</td>
+<td>“I suspect slow drafting is the main cause of delay.”</td>
+</tr>
+<tr>
+<td>IT Lead</td>
+<td>“We have not established why source access was denied for case 105.”</td>
+</tr>
+<tr>
+<td>Finance Lead</td>
+<td>“We need to keep staff effort and customer elapsed time separate.”</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first two statements are supported by the case packet. The Sponsor’s causal explanation remains a hypothesis.</p>
+<h3>Step 1: reconcile individual cases</h3>
+<p>For case 103:</p>
+<p>Elapsed time = 12:20 − 09:20 = 180 minutes</p>
+<p>Staff effort = 18 + 6 = 24 minutes</p>
+<p>Waiting = 30 + 6 + 120 = 156 minutes</p>
+<p>24 + 156 = 180 minutes</p>
+<p>The case reconciles. Most of its waiting is for customer clarification, although an unusable handoff caused the clarification cycle.</p>
+<p>For case 106:</p>
+<p>Elapsed time to cutoff = 13:00 − 09:50 = 190 minutes</p>
+<p>Recorded effort = 14 minutes</p>
+<p>Waiting = 46 + 130 = 176 minutes</p>
+<p>14 + 176 = 190 minutes</p>
+<p>This is an open-case age, not quotation response time.</p>
+<h3>Step 2: define a reproducible completed-case measure</h3>
+<p>Use only cases with status quotation_sent: 101, 102, 103 and 104.</p>
+<p>Mean quotation response interval</p>
+<p>(94 + 60 + 180 + 90) minutes ÷ 4 completed quotations = 106 minutes/quotation</p>
+<p>Mean staff effort</p>
+<p>(18 + 18 + 24 + 24) staff minutes ÷ 4 = 21 staff minutes/quotation</p>
+<p>Mean waiting</p>
+<p>(76 + 42 + 156 + 66) minutes ÷ 4 = 85 minutes/quotation</p>
+<p>The two open cases are excluded from these completion measures. They must still be reported: one is awaiting access resolution and one is awaiting availability resolution.</p>
+<p>A completed-case average can understate the experience of the whole cohort when long-running cases remain unfinished.</p>
+<h3>Step 3: measure returns using the supplied flags</h3>
+<p>Define first-pass handoff completion for this example as:</p>
+<p>A quotation-completed case with no Operations return for information correction.</p>
+<p>Two of four completed cases have zero returns.</p>
+<p>First-pass handoff completion = 2 ÷ 4 × 100 = 50%</p>
+<p>This is a sample measure with a defined denominator. It is not Meridian’s company-wide rate.</p>
+<p>Case 105 had no Operations assessment. Case 106 is unfinished. Neither belongs in this completed-quotation denominator. Zero recorded returns in an unfinished record does not automatically mean successful completion.</p>
+<h3>Step 4: complete the process artifact</h3>
+<p>Completed artifact: MSP_Current_State_Process_Map_v0_1.md</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Owner</th>
+<th>Input or trigger</th>
+<th>Output and next route</th>
+<th>Evidence label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receive and queue enquiry</td>
+<td>Sales</td>
+<td>Customer message available</td>
+<td>Enquiry waits for intake</td>
+<td>F: DISC-001</td>
+</tr>
+<tr>
+<td>Record and check request</td>
+<td>Sales</td>
+<td>Enquiry and required fields</td>
+<td>Usable request, clarification or access exception</td>
+<td>F: DISC-001</td>
+</tr>
+<tr>
+<td>Obtain clarification</td>
+<td>Sales and Customer</td>
+<td>Missing or unknown required information</td>
+<td>Customer reply returns to Sales checking</td>
+<td>F: DISC-001; DISC-002 case 103</td>
+</tr>
+<tr>
+<td>Investigate access block</td>
+<td>IT; Sales tracks case</td>
+<td>Source use denied</td>
+<td>Case stays open until authorised resolution</td>
+<td>F: DISC-002 case 105</td>
+</tr>
+<tr>
+<td>Queue for Operations</td>
+<td>Operations</td>
+<td>Usable handoff</td>
+<td>Work waits for Operations start</td>
+<td>F: DISC-002; DISC-003</td>
+</tr>
+<tr>
+<td>Check product and availability</td>
+<td>Operations</td>
+<td>Request and approved sources</td>
+<td>Checked facts, correction return or availability hold</td>
+<td>F: DISC-001; DISC-002</td>
+</tr>
+<tr>
+<td>Correct unusable handoff</td>
+<td>Sales</td>
+<td>Specific return reason</td>
+<td>Corrected information sent back through checking</td>
+<td>F: DISC-002 cases 103–104</td>
+</tr>
+<tr>
+<td>Resolve availability issue</td>
+<td>Operations</td>
+<td>Unresolved availability</td>
+<td>Open case until issue is resolved</td>
+<td>F: DISC-002 case 106</td>
+</tr>
+<tr>
+<td>Queue, prepare and check quotation</td>
+<td>Sales</td>
+<td>Operations result</td>
+<td>Checked quotation ready to send</td>
+<td>F: DISC-001; DISC-003</td>
+</tr>
+<tr>
+<td>Send quotation</td>
+<td>Sales</td>
+<td>Accepted customer-facing quotation</td>
+<td>Quotation-sent end condition</td>
+<td>F: DISC-002</td>
+</tr>
+</tbody>
+</table></div>
+<p>These labels support the described route. They do not establish why every queue occurred.</p>
+<h3>Step 5: write the problem statement</h3>
+<p>Completed artifact: MSP_Problem_Statement_v0_1.md</p>
+<p>In the supplied six-case discovery packet, four enquiries reached quotation sent. Their mean response interval was 106 minutes, comprising 21 staff minutes and 85 waiting minutes. Two completed cases were returned by Operations for information correction. Two additional cases remained open at cutoff: one access block and one availability issue. Investigate intake quality and handoff waiting, while treating access and availability as distinct exceptions. The packet does not establish that drafting is the main delay cause or that these figures represent a typical week.</p>
+<p>A common mistake would be to write:</p>
+<p>An AI drafting assistant will solve Meridian’s quotation delays.</p>
+<p>The corrected statement describes the problem before deciding the solution.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — Guided practice</h2>
+<p>Learning goal and access</p>
+<p>Map the enquiry intake subprocess, from message receipt to a usable Operations handoff or an unresolved intake exception.</p>
+<p>Use the supplied afternoon packet. No product account is needed. You can work on paper or in a local document. This practice demonstrates process reasoning, not live system behaviour.</p>
+<p>In a group, use the Sponsor, Sales, Finance, Operations and IT perspectives. Individually, ask what each role would need to know before accepting your map.</p>
+<p>Complete practice inputs</p>
+<p>This packet is separate from the morning discovery packet.</p>
+<p>The required intake fields are product code, positive whole-number quantity and requested delivery date. Source access must be permitted before source enrichment. The only recognised product is BF-10.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record ID</th>
+<th>Customer input and permitted correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-201</td>
+<td>BF-10, 20 units, requested date 2026-10-14; access permitted</td>
+</tr>
+<tr>
+<td>MSP-ENQ-202</td>
+<td>BF-10, quantity missing, requested date 2026-10-14; customer supplies 12 units after clarification</td>
+</tr>
+<tr>
+<td>MSP-ENQ-203</td>
+<td>BF-1O, 8 units, requested date 2026-10-14; customer explicitly corrects the code to BF-10</td>
+</tr>
+<tr>
+<td>MSP-ENQ-204</td>
+<td>BF-10, 4 units, requested date 2026-10-14; source access denied; no resolution supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>Messages use the synthetic contact buyer@example.com.</p>
+<p>The supplied intake method is:</p>
+<ol>
+<li>Wait for Sales to start.</li>
+<li>Check required fields.</li>
+<li>Ask the customer to resolve missing or unknown values.</li>
+<li>Recheck the reply.</li>
+<li>Check source permission.</li>
+<li>Send a usable request to Operations, or refer the access exception to IT while Sales tracks the open case.</li>
+</ol>
+<p>For cases 202 and 203, Sales performs three minutes before the clarification wait and three minutes after it.</p>
+<p>enquiry_id,received,sales_start,reply_received,handoff_or_cutoff,status,staff_effort_min,intake_queue_min,customer_wait_min,access_wait_min</p>
+<p>MSP-ENQ-201,14:00,14:10,not_applicable,14:16,operations_handoff,6,10,0,0</p>
+<p>MSP-ENQ-202,14:05,14:15,14:48,14:51,operations_handoff,6,10,30,0</p>
+<p>MSP-ENQ-203,14:10,14:20,14:43,14:46,operations_handoff,6,10,20,0</p>
+<p>MSP-ENQ-204,14:15,14:25,not_applicable,15:00,open_access,4,10,0,31</p>
+<p>All times are on 2026-10-05, UTC+00:00.</p>
+<p>Two additional claims are supplied:</p>
+<ul>
+<li>“These four cases represent a typical month.” No supporting sample evidence is supplied.</li>
+<li>“An automated field check would eliminate all intake delay.” This has not been tested.</li>
+</ul>
+<p>Blank learner worksheets</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step or decision</th>
+<th>Owner</th>
+<th>Input</th>
+<th>Output or branch</th>
+<th>Handoff/queue/exception</th>
+<th>F, A or U and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Case</td>
+<td>End status</td>
+<td>Elapsed to handoff/cutoff</td>
+<td>Effort</td>
+<td>Waiting</td>
+<td>Interpretation</td>
+</tr>
+<tr>
+<td>MSP-ENQ-201</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-ENQ-202</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-ENQ-203</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-ENQ-204</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Write the boundary.
+- Expected result: receipt is the trigger; Operations handoff is the successful end; unresolved access remains open.</li>
+<li>Draw the normal path.
+- Expected result: receipt, queue, Sales check, permission decision and Operations handoff.</li>
+<li>Add clarification and access branches.
+- Expected result: a customer-reply loop and a separately owned access exception.</li>
+<li>Annotate evidence.
+- Expected result: supplied routes and records marked F; both broad claims marked A; access-denial cause marked U.</li>
+<li>Reconcile each case.
+- Expected result: elapsed time equals supplied effort plus non-overlapping waits.</li>
+<li>Write a short problem statement.
+- Expected result: a statement reporting actual packet conditions without claiming monthly representativeness or guaranteed automation effects.</li>
+</ol>
+<p>Your final artifact is MSP_Intake_Subprocess_Map_Practice.md, containing the map, timing table, evidence annotations and problem statement.</p>
+<p>An optional company alternative is acceptable if you can supply equivalent permission-cleared facts. Missing company timestamps should remain unknown rather than being estimated silently.</p>
+<p>Retain your synthetic final artifact. No system cleanup is required.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>A new packet adds a customer withdrawal and an incomplete record. These are exercise variants, not amendments to the main discovery packet.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record ID</th>
+<th>Complete supplied input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-301</td>
+<td>Received 2026-10-06 at 09:00; quotation sent at 10:00. Staff effort 18 minutes; Operations queue 10 minutes; Sales queue 2 minutes; customer clarification wait 30 minutes.</td>
+</tr>
+<tr>
+<td>MSP-ENQ-302</td>
+<td>Received at 09:10; customer sends an authorised withdrawal at 10:10. Sales records closure immediately. Staff effort 6 minutes; intake queue 4 minutes; customer wait 50 minutes. No Operations handoff occurred.</td>
+</tr>
+<tr>
+<td>MSP-ENQ-303</td>
+<td>Received at 09:20; snapshot cutoff 11:00. Last confirmed event is Operations queue entry at 09:26. Operations start timestamp is missing. Six staff minutes are recorded, but effort-log completeness is unconfirmed. Status is open; whether Operations started is unknown.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Times use UTC+00:00. A customer withdrawal before quotation may close the enquiry when Sales records it.</p>
+<p>The Sponsor states:</p>
+<p>Operations causes every delay, so we should automate Operations first.</p>
+<p>You may request permission-cleared event records from Sales and Operations. Private employee messages are outside the permitted evidence set.</p>
+<p>Deliverables</p>
+<ol>
+<li>Extend the current-state map to include authorised withdrawal and closure.</li>
+<li>Annotate the missing event without inventing a process failure.</li>
+<li>Calculate quotation response time using an explicit denominator and exclusions.</li>
+<li>Explain what the packet supports and does not support about the Sponsor’s claim.</li>
+<li>Identify two specific evidence requests.</li>
+</ol>
+<p>Success criteria</p>
+<p>Your map must show who closes a withdrawn case. Your calculation must exclude non-quotation outcomes. Your explanation must distinguish known waiting from missing evidence and avoid attributing unrecorded time to a team.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The map starts with “Sales”</td>
+<td>A team name has replaced the trigger</td>
+<td>Write the event that starts a case</td>
+<td>A reader can identify when a new case exists</td>
+</tr>
+<tr>
+<td>All arrows go directly to the next activity</td>
+<td>Waiting and handoff acceptance are hidden</td>
+<td>Add named queues and receiving owners</td>
+<td>Trace the interval between ready and started</td>
+</tr>
+<tr>
+<td>Every unusual case is called an error</td>
+<td>Legitimate exceptions are mixed with rework</td>
+<td>Separate correction, clarification, access and availability routes</td>
+<td>Each route has a reason and owner</td>
+</tr>
+<tr>
+<td>A missing timestamp is treated as a system failure</td>
+<td>Absence of evidence has become a technical diagnosis</td>
+<td>Mark the event unknown and request permitted records</td>
+<td>The map does not invent an outage</td>
+</tr>
+<tr>
+<td>Completed cases look fast while open cases disappear</td>
+<td>The denominator hides unfinished work</td>
+<td>Report completion measures and open-case ages separately</td>
+<td>Every supplied case appears in the cohort summary</td>
+</tr>
+<tr>
+<td>Interview opinions become map facts</td>
+<td>A statement has been confused with confirmation</td>
+<td>Record the statement and label its underlying claim appropriately</td>
+<td>Each factual route has a supporting source</td>
+</tr>
+<tr>
+<td>A map contains the proposed automation</td>
+<td>Current and future states have been mixed</td>
+<td>Keep observed/supplied routes separate from change hypotheses</td>
+<td>The current-state artifact can be explained without assuming implementation</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>What are Meridian’s trigger and quotation-sent end condition? Why is a stock-shortage case still open?</li>
+<li>What information makes a handoff more useful than an arrow between two departments?</li>
+<li>Why is customer clarification waiting different from an Operations queue?</li>
+<li>In the morning packet, why are cases 105 and 106 excluded from mean quotation response time but still reported?</li>
+<li>What is the difference between “the Sponsor said drafting is the problem” and “drafting is the problem”?</li>
+<li>Which evidence would you request before claiming that reducing rekeying will reduce customer waiting?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<p>Lesson checks</p>
+<p>L1: The arrow does not specify the item transferred, the receiver’s task, acceptance conditions or return owner. A complete handoff makes these visible.</p>
+<p>L2: The copied-code error requires correction of earlier work. A valid stock-shortage request requires an availability decision. Their causes, owners and possible remedies differ.</p>
+<p>L3: Waiting is larger: 76 minutes compared with 18 active staff minutes. Investigate queue arrival, workload, priorities, batching and start-time evidence before diagnosing a staffing problem.</p>
+<p>L4: Receipt and quotation timestamps can establish waiting or response intervals. Lost-sales claims also need order outcomes and evidence connecting those outcomes to delay. Timing alone does not establish the commercial cause.</p>
+<h3>Guided practice — Completed map</h3>
+<p>A correct text map is:</p>
+<p>Enquiry received → Sales intake queue → Sales checks fields → if missing or unknown, request clarification and wait for customer reply → recheck → permission decision → if permitted, hand off to Operations; if denied, refer to IT and keep the case open under Sales tracking.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step or decision</th>
+<th>Owner</th>
+<th>Input</th>
+<th>Output or branch</th>
+<th>Type</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receive and queue</td>
+<td>Sales</td>
+<td>Customer message</td>
+<td>Ready for Sales checking</td>
+<td>Trigger and queue</td>
+<td>F: practice method and times</td>
+</tr>
+<tr>
+<td>Check fields</td>
+<td>Sales</td>
+<td>Product, quantity, date</td>
+<td>Usable or clarification needed</td>
+<td>Activity and decision</td>
+<td>F: supplied requirements</td>
+</tr>
+<tr>
+<td>Clarify missing/unknown value</td>
+<td>Sales and Customer</td>
+<td>Specific missing or unknown value</td>
+<td>Authorised reply</td>
+<td>Exception and external wait</td>
+<td>F: cases 202–203</td>
+</tr>
+<tr>
+<td>Recheck reply</td>
+<td>Sales</td>
+<td>Customer correction</td>
+<td>Valid request</td>
+<td>Loop</td>
+<td>F: supplied method</td>
+</tr>
+<tr>
+<td>Check permission</td>
+<td>Sales; IT for exceptions</td>
+<td>Source-use permission</td>
+<td>Continue or stop enrichment</td>
+<td>Decision</td>
+<td>F: supplied method</td>
+</tr>
+<tr>
+<td>Send usable request</td>
+<td>Sales → Operations</td>
+<td>Checked fields</td>
+<td>Operations handoff</td>
+<td>Handoff and subprocess end</td>
+<td>F: cases 201–203</td>
+</tr>
+<tr>
+<td>Investigate access</td>
+<td>IT; Sales tracks</td>
+<td>Denied source use</td>
+<td>Open case pending resolution</td>
+<td>Exception</td>
+<td>F: case 204</td>
+</tr>
+</tbody>
+</table></div>
+<p>The cause of case 204’s access denial is U. The monthly-representativeness claim and the claim that validation removes all delay are A.</p>
+<h3>Guided practice — Timing solution</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>End status</th>
+<th>Elapsed to handoff/cutoff</th>
+<th>Effort</th>
+<th>Waiting</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-201</td>
+<td>Operations handoff</td>
+<td>16 minutes</td>
+<td>6 minutes</td>
+<td>10 minutes</td>
+<td>Completed intake</td>
+</tr>
+<tr>
+<td>MSP-ENQ-202</td>
+<td>Operations handoff</td>
+<td>46 minutes</td>
+<td>6 minutes</td>
+<td>40 minutes</td>
+<td>Includes 30-minute customer clarification wait</td>
+</tr>
+<tr>
+<td>MSP-ENQ-203</td>
+<td>Operations handoff</td>
+<td>36 minutes</td>
+<td>6 minutes</td>
+<td>30 minutes</td>
+<td>Customer authorised the product correction</td>
+</tr>
+<tr>
+<td>MSP-ENQ-204</td>
+<td>Open access</td>
+<td>45 minutes</td>
+<td>4 minutes</td>
+<td>41 minutes</td>
+<td>Age to cutoff, not completed intake time</td>
+</tr>
+</tbody>
+</table></div>
+<p>For case 202:</p>
+<p>14:51 − 14:05 = 46 minutes</p>
+<p>6 effort + 10 intake queue + 30 customer wait = 46 minutes</p>
+<p>For case 204:</p>
+<p>15:00 − 14:15 = 45 minutes</p>
+<p>4 effort + 10 intake queue + 31 access wait = 45 minutes</p>
+<p>If you report mean time to successful intake handoff:</p>
+<p>(16 + 46 + 36) ÷ 3 = 32⅔ minutes, approximately 32.7 minutes per handoff.</p>
+<p>Case 204 is excluded because it did not reach handoff. Report it separately as an open 45-minute-old case.</p>
+<h3>Guided practice — Completed problem statement</h3>
+<p>Three of four supplied afternoon enquiries reached Operations handoff. Two needed customer clarification, and one additional case remained open because source access was denied. Successful handoffs averaged approximately 32.7 elapsed minutes. Investigate required-field quality, intake waiting and access-exception handling separately. The packet does not establish a typical monthly pattern or prove that automated validation would eliminate customer or access waiting.</p>
+<h3>Independent challenge — Explained solution</h3>
+<p>Map extension:</p>
+<p>Before quotation is sent, an authorised customer withdrawal → Sales records closure → end: withdrawn.</p>
+<p>This end condition is different from quotation sent.</p>
+<p>Missing event:</p>
+<p>Annotate case 303’s Operations start as unknown. Its last confirmed state was queue entry at 09:26. Do not conclude that Operations never started or that a technical failure occurred.</p>
+<p>Quotation response measure:</p>
+<p>Only case 301 reached quotation sent.</p>
+<p>10:00 − 09:00 = 60 minutes</p>
+<p>Mean = 60 minutes ÷ 1 completed quotation = 60 minutes/quotation</p>
+<p>Exclude case 302 because it was withdrawn, and case 303 because it was open. Disclose the cohort: one quotation, one withdrawal and one open case.</p>
+<p>Case 301 reconciles:</p>
+<p>18 effort + 10 Operations queue + 2 Sales queue + 30 customer wait = 60 minutes</p>
+<p>Case 302 also reconciles:</p>
+<p>6 effort + 4 intake queue + 50 customer wait = 60 minutes</p>
+<p>For case 303, you can calculate age:</p>
+<p>11:00 − 09:20 = 100 minutes</p>
+<p>You cannot reliably allocate that interval into processing and waiting. The effort log is incomplete and the Operations start event is absent.</p>
+<p>Sponsor’s claim:</p>
+<p>The packet does not support “Operations causes every delay”. Case 301 includes more customer clarification waiting than Operations queue time. Case 302 never reached Operations. Case 303 contains insufficient evidence to assign its elapsed time.</p>
+<p>This does not prove that Operations has no problems. It shows that the proposed universal explanation is unsupported.</p>
+<p>Two suitable evidence requests:</p>
+<ol>
+<li>Request the permission-cleared Operations receipt/start/completion records for case 303.</li>
+<li>Request a complete activity log for case 303 and a broader sample of handoff timings before treating this packet as typical.</li>
+</ol>
+<p>Understanding questions</p>
+<ol>
+<li>Trigger: enquiry available in the Sales inbox. Quotation end: Sales sends the accepted quotation. A shortage case is still open because its availability issue remains unresolved.</li>
+<li>Include sender, receiver, transferred information, receiving task, completion evidence and return ownership.</li>
+<li>Customer clarification waits for an external reply. An Operations queue contains work ready for internal processing. Faster internal processing does not guarantee a faster customer reply.</li>
+<li>Neither reached quotation sent. Excluding them makes the completion calculation valid; reporting them prevents the summary from hiding unfinished work.</li>
+<li>The first is a supported statement about what was said. The second is a causal claim requiring process evidence.</li>
+<li>Request rekeying effort, error/rework records, handoff timing and the location of rekeying within the elapsed-time path. A reduction in active effort may release capacity without changing the dominant wait.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A useful current-state map shows more than activity names. It explains what starts a case, who receives each handoff, which decisions change the route, where work waits and how exceptions return or remain open.</p>
+<p>Evidence labels keep the map honest. A timestamp supports an interval; it does not automatically explain its cause. A completed-case average describes its denominator; it does not describe unfinished cases.</p>
+<p>“I can…” checklist</p>
+<ul>
+<li>I can define a trigger, boundary and end condition.</li>
+<li>I can show roles and handoff information.</li>
+<li>I can distinguish queues, external waits, rework and legitimate exceptions.</li>
+<li>I can reconcile simple serial effort and elapsed-time records.</li>
+<li>I can state a denominator and report excluded open cases.</li>
+<li>I can label facts, assumptions and unknowns.</li>
+<li>I can write an evidenced problem statement without assuming a solution.</li>
+</ul>
+<p>Your project artifacts are:</p>
+<ul>
+<li>MSP_Current_State_Process_Map_v0_1.md</li>
+<li>MSP_Discovery_Evidence_Register_v0_1.md</li>
+<li>MSP_Problem_Statement_v0_1.md</li>
+<li>MSP_Case_Assumptions_v0_2.md</li>
+</ul>
+<p>For the evidence register, retain the four source IDs, the completed-case calculations and the explicit exclusions from this chapter.</p>
+<p>For assumptions version 0.2, retain Chapter 1 assumptions MSP-A-001 to MSP-A-004 and add:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Assumption ID</th>
+<th>Added assumption</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-A-005</td>
+<td>Discovery queue patterns represent a typical week</td>
+<td>Unconfirmed</td>
+</tr>
+<tr>
+<td>MSP-A-006</td>
+<td>Drafting is the main cause of quotation delay</td>
+<td>Unsupported by the packet</td>
+</tr>
+<tr>
+<td>MSP-A-007</td>
+<td>Longer quotation waits cause lost sales</td>
+<td>No customer-outcome evidence supplied</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chapter 3, Opportunity Identification, will turn recurring, evidenced issues into use-case cards showing the affected team, task, trigger and expected result.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boundary</td>
+<td>The start, end and included scope of a process</td>
+</tr>
+<tr>
+<td>Current state</td>
+<td>The process as described by present evidence</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>A condition that selects a process route</td>
+</tr>
+<tr>
+<td>Elapsed time</td>
+<td>Time between defined events, including waiting</td>
+</tr>
+<tr>
+<td>Exception</td>
+<td>A condition requiring a different route from routine processing</td>
+</tr>
+<tr>
+<td>Fact</td>
+<td>A statement supported by the supplied evidence</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>Transfer of work or information between participants</td>
+</tr>
+<tr>
+<td>Open-case age</td>
+<td>Time from receipt to a stated cutoff for an unfinished case</td>
+</tr>
+<tr>
+<td>Problem statement</td>
+<td>A concise description of an evidenced issue and its scope</td>
+</tr>
+<tr>
+<td>Queue</td>
+<td>Work ready for an activity but not yet started</td>
+</tr>
+<tr>
+<td>Rework</td>
+<td>Repetition or correction caused by an earlier incomplete or incorrect result</td>
+</tr>
+<tr>
+<td>Staff effort</td>
+<td>Time people actively spend working</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>Information not supplied or not established</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<p>The references support the concepts identified below. The exercises are product-independent; no product execution or company process verification is claimed.</p>
+<ol>
+<li>Microsoft Learn — Triggers in Power Automate. Explains the event that starts a flow, including automated, manual and scheduled examples.</li>
+</ol>
+<p>https://learn.microsoft.com/en-us/power-automate/triggers-introduction</p>
+<ol start="2">
+<li>Object Management Group — About BPMN 2.0.2. Introduces the formal Business Process Model and Notation standard and its implementation-independent purpose. This chapter uses simplified flowcharts rather than teaching the full standard.</li>
+</ol>
+<p>https://www.omg.org/spec/BPMN/2.0.2/About-BPMN</p></section><div class="book-end"><h2>Chapter 2 complete</h2><p>Map one familiar process, including triggers, roles, handoffs and exceptions; mark facts separately from assumptions.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-01">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-03">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

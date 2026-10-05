@@ -1,0 +1,998 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Read the Course 4 student book: ten chapters on choosing a business process and preparing a measured automation pilot proposal."><meta name="theme-color" content="#101d31"><title>Course Book · Course 4 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/corporate-ai-automation-workshop">Course 4 · Corporate AI &amp; Automation Opportunity Workshop</a><span>/</span><a href="/course-book/course-04/">Course Book</a><span>/</span><span>Chapter 1</span></div><header class="book-hero"><p class="eyebrow">COURSE 04 · CHAPTER 01</p><h1>AI and Automation Literacy</h1><p>A business request such as “automate our quotations” contains several different problems. Someone may be copying information between systems, checking required fields, interpreting an unclear enquiry or deciding which information to investigate next. These tasks do not necessarily need the same solution.</p><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a href="/course-book/course-04/chapter-01-student.md" download>Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation — How capabilities can work together</a><a href="#section-4">4. Worked case — Meridian’s first capability assessment</a><a href="#section-5">5. Try it yourself — Guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A business request such as “automate our quotations” contains several different problems. Someone may be copying information between systems, checking required fields, interpreting an unclear enquiry or deciding which information to investigate next. These tasks do not necessarily need the same solution.</p>
+<p>In this chapter, you will learn to distinguish four capabilities:</p>
+<ul>
+<li>Rules: apply predefined conditions and actions.</li>
+<li>Integrations: exchange information between systems.</li>
+<li>Generative assistance: produce or transform content for a defined purpose.</li>
+<li>Agents: use a model to choose steps and tools toward a goal within an agreed boundary.</li>
+</ul>
+<p>By the end, you should be able to classify a business task, explain your classification, identify one practical limitation and describe where a person remains responsible. You will also recognise when process simplification is a better starting point than adding technology.</p>
+<h3>What you need</h3>
+<p>You do not need coding skills or a product account. You need only the ability to describe a task: what starts it, what information it uses and what result is required. All exercise information is supplied in this chapter.</p>
+<p>The fictional Meridian Supply management team is assessing its enquiry-to-quotation process. This scenario is synthetic. You may replace it with a permission-cleared company case, keeping facts and assumptions clearly separated.</p>
+<h3>Your contribution to the course project</h3>
+<p>Your course project is a Business Automation Pilot Proposal. The final proposal will include an executive proposal, current-state and future-state maps, a baseline and assumptions register, solution options, a value/cost model, data and ownership requirements, a pilot design, an adoption plan and a leadership decision.</p>
+<p>This chapter contributes your first Task Classification Register and Capability Brief. These explain what kind of help a process needs before you select a product or estimate returns.</p>
+<p>The workshop develops your ability to assess and propose an opportunity. It does not establish production implementation competence or guarantee a financial return.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>Lesson 1 — Distinguish a fixed decision from a connection between systems</h3>
+<p>A trigger is the event that starts work. A new enquiry, an approved quotation or a scheduled daily check can be a trigger. Microsoft’s Power Automate documentation uses this term for the event that starts a cloud flow.1</p>
+<p>A rule states what should happen when a condition is met:</p>
+<p>If quantity is missing, mark the enquiry “Needs clarification”.</p>
+<p>Rules are useful when the condition and permitted action can be stated precisely. They can validate fields, calculate values, route records and flag exceptions. With the same validated inputs and rule version, a deterministic rule should produce the same result.</p>
+<p>That consistency does not prove that the result is appropriate. An incorrect rule applies the wrong instruction consistently.</p>
+<p>An integration connects systems so that information can be read, copied or updated. A connector is a packaged connection to a service. An API, or application programming interface, is a defined way for software to request information or actions from another system.</p>
+<p>Integration solves a movement problem. It does not automatically solve a meaning problem. Copying an incorrect product code faithfully into another system still leaves an incorrect product code.</p>
+<p>Worked demonstration: validation and record creation</p>
+<p>For this demonstration, Meridian uses these synthetic rules:</p>
+<ul>
+<li>Quantity must be a positive whole number.</li>
+<li>The only recognised product code in the supplied catalogue is BF-10.</li>
+<li>A requested delivery date must be supplied.</li>
+<li>Missing or invalid values require clarification; they must not be guessed.</li>
+</ul>
+<p>An enquiry contains product BF-10, quantity 0 and requested delivery date 2026-10-12.</p>
+<p>The rule checks quantity and returns:</p>
+<p>Needs clarification — provide a positive whole-number quantity.</p>
+<p>It should not change 0 to 1. That would alter the customer’s request.</p>
+<p>Now consider a valid enquiry:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source field</th>
+<th>Supplied value</th>
+<th>Intended destination field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business enquiry ID</td>
+<td>MSP-ENQ-001</td>
+<td>External enquiry reference</td>
+</tr>
+<tr>
+<td>Product code</td>
+<td>BF-10</td>
+<td>Requested product</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>25 units</td>
+<td>Requested quantity</td>
+</tr>
+<tr>
+<td>Requested delivery date</td>
+<td>2026-10-12</td>
+<td>Customer requested date</td>
+</tr>
+</tbody>
+</table></div>
+<p>Copying these fields into a customer relationship management system, or CRM, is primarily an integration task. Validation rules may run before the transfer.</p>
+<p>Suppose the destination creates illustrative record ID CRM-9001. That identifier belongs to the destination system. It is different from the business enquiry ID MSP-ENQ-001, the opportunity ID MSP-OPP-001 and any pilot ID.</p>
+<p>A common mistake is to replace the business reference with the destination-generated ID. Keeping both allows you to reconcile records across systems and investigate duplicate transfers.</p>
+<p>When to choose each</p>
+<p>Choose rules when you can specify the decision. Choose integration when you need reliable movement between approved sources and destinations. Many practical solutions combine both.</p>
+<p>Check L1: An enquiry has no quantity. Why is “default to one unit” a poor rule unless the process owner has explicitly authorised it?</p>
+<h3>Lesson 2 — Use generative assistance for language work without confusing fluency with evidence</h3>
+<p>Generative AI produces content from instructions and context. A language model can draft a response, summarise an email, extract candidate fields or suggest questions.</p>
+<p>These capabilities are valuable when wording varies. Customers do not always use the same format or vocabulary. A model may help turn a long message into a concise internal brief.</p>
+<p>However, a model can produce plausible statements that are unsupported or incorrect. This is often called a hallucination. Official guidance recommends grounding answers in supplied evidence, allowing uncertainty and checking important claims; these methods reduce errors but do not eliminate them.2</p>
+<p>A useful distinction is:</p>
+<ul>
+<li>Generation: proposes wording or an interpretation.</li>
+<li>Validation: checks required fields, rules and source support.</li>
+<li>Approval: accepts responsibility for using or releasing the result.</li>
+</ul>
+<p>A readable draft has passed only the first of these.</p>
+<p>Worked demonstration: a facts-only enquiry brief</p>
+<p>The following inputs are complete for this demonstration.</p>
+<p>Customer message from buyer@example.com:</p>
+<p>Please quote for 25 BF-10 fittings. We would like delivery on 12 October 2026. Please confirm whether that date is possible.</p>
+<p>Approved synthetic sources:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Supplied fact</th>
+<th>What it does not establish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Catalogue extract</td>
+<td>BF-10 is a 10 mm brass fitting</td>
+<td>Price or delivery commitment</td>
+</tr>
+<tr>
+<td>Stock snapshot</td>
+<td>40 units are listed at the snapshot time</td>
+<td>Current reservation or future availability</td>
+</tr>
+<tr>
+<td>Delivery note</td>
+<td>Delivery requires Operations confirmation</td>
+<td>A confirmed delivery date</td>
+</tr>
+</tbody>
+</table></div>
+<p>A suitable instruction is:</p>
+<p>Prepare an internal enquiry brief using only the supplied message and sources.</p>
+<p>Separate customer requests from confirmed facts.</p>
+<p>Do not invent prices, stock reservations or delivery commitments.</p>
+<p>Identify any information that still requires confirmation.</p>
+<p>An illustrative acceptable brief is:</p>
+<p>The customer requests 25 units of BF-10, a 10 mm brass fitting, with delivery requested for 12 October 2026. The supplied stock snapshot lists 40 units. Delivery on the requested date remains unconfirmed. Operations must check availability and delivery before Sales issues a quotation. No price was supplied.</p>
+<p>This is a paper example of an acceptable output, not an observed model result.</p>
+<p>The sentence “We can deliver on 12 October” would be a mistake. It converts a customer request into a company commitment without evidence.</p>
+<p>Generative assistance is most useful here for organising language. A conventional rule can still check whether quantity is positive. An integration can retrieve approved source information. Sales remains responsible for the customer-facing quotation.</p>
+<p>Check L2: A generated brief is grammatically excellent. What two things must you still check before relying on it?</p>
+<h3>Lesson 3 — Recognise an agent by who chooses the next step</h3>
+<p>An agent, as used in this workshop, is a system in which a model chooses steps or tool use toward a goal, considers the returned information and decides what to do next.</p>
+<p>A tool is a capability available to the system, such as reading a catalogue or looking up stock. Tool access must be configured; a model’s request to use a tool is not evidence that the operation succeeded. Official tool-use documentation distinguishes the model’s tool request from execution and the returned result.3</p>
+<p>The key difference is not the number of steps. A workflow that always reads a catalogue, checks stock and creates a draft in that fixed order is still a predefined workflow. Anthropic’s architectural guidance distinguishes predefined workflows from agents that dynamically direct their processes and tool use.4 Product terminology may vary, so ask how the system actually behaves.</p>
+<p>Worked demonstration: investigate an availability problem</p>
+<p>Use these supplied facts:</p>
+<ul>
+<li>The customer requests 60 units of BF-10.</li>
+<li>The catalogue identifies BF-10 as a 10 mm brass fitting.</li>
+<li>The approved stock snapshot lists 40 units.</li>
+<li>The approved substitution guide states: “No approved substitute for BF-10.”</li>
+<li>Available tools are read-only catalogue, stock and substitution lookups.</li>
+<li>The system may make at most four lookups.</li>
+<li>It may prepare an internal brief, but cannot change records, promise delivery or send messages.</li>
+</ul>
+<p>An illustrative agent sequence could be:</p>
+<ol>
+<li>Read the catalogue to identify the item.</li>
+<li>Choose a stock lookup because availability matters.</li>
+<li>After finding only 40 units, choose the substitution guide.</li>
+<li>After finding no approved substitute, stop and refer the shortage to Operations.</li>
+</ol>
+<p>The important feature is the choice of the substitution lookup in response to the stock result. Another enquiry might not need that step.</p>
+<p>The final brief should say that the requested quantity exceeds the supplied stock snapshot and that no approved substitute is listed. It should not invent a replenishment date.</p>
+<p>Agents can help when investigation paths genuinely vary. Their limitations include incorrect tool choices, misinterpretation of results and compounded errors across steps. Additional calls can also add time and usage cost.</p>
+<p>A boundary makes the proposal assessable: which goal, which tools, which data, which actions and which stopping condition? “Handle everything” is not a useful boundary.</p>
+<p>Check L3: A system makes four model calls in a fixed sequence. Does that alone make it an agent? Explain.</p>
+<h3>Lesson 4 — Match the capability to the problem before choosing technology</h3>
+<p>Classification describes how work might be performed. It does not prove that the task is worth automating.</p>
+<p>Start by asking whether the process can be simplified. If Sales copies the same enquiry into two spreadsheets because nobody has agreed which record is authoritative, connecting both spreadsheets may preserve the duplication. Agreeing one record of origin may remove the work.</p>
+<p>A baseline describes current performance using evidence: completed volume, staff effort, rework, elapsed time or another relevant measure. Staff effort is time spent working. Elapsed time includes waiting. Reducing typing does not necessarily remove an Operations queue.</p>
+<p>Compare plausible options against the actual problem:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Plausible first option</th>
+<th>Important remaining limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required fields are often absent</td>
+<td>Simplify intake and use validation rules</td>
+<td>Customers may still need help clarifying requests</td>
+</tr>
+<tr>
+<td>Staff rekey approved data</td>
+<td>Establish one source and integrate it with the destination</td>
+<td>Field mappings, permissions and duplicate handling still matter</td>
+</tr>
+<tr>
+<td>Enquiries use varied language</td>
+<td>Use a template or source-grounded generative brief</td>
+<td>A person must verify meaning and unsupported claims</td>
+</tr>
+<tr>
+<td>Investigation paths vary</td>
+<td>Consider a bounded agent after simpler options</td>
+<td>Tool choices and stopping behaviour need evaluation</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is a qualitative comparison, not a scored ranking. It identifies questions to investigate rather than manufacturing a precise-looking winner.</p>
+<p>A solution’s business cost extends beyond initial setup. Depending on the option, assess implementation, licences, model usage, human review, support and maintenance. Someone must update rules and mappings when products or processes change.</p>
+<p>Released capacity means staff time becomes available for other work. Cash savings means an actual expense decreases. Saving an hour of typing does not automatically reduce payroll by an hour.</p>
+<p>A pilot is a bounded test of a proposed change. It needs an owner, a baseline, representative cases, measures, success criteria and stop criteria. A useful result supports a proceed, revise or defer decision. Chapter 8 develops this design in detail; here you need enough literacy to recognise what a credible test would contain.</p>
+<p>Check L4: If an opportunity removes some enquiry preparation work, why should you avoid claiming that it saves all the time spent on the enquiry-to-quotation process?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — How capabilities can work together</h2>
+<p>The diagram shows a proposed assistance pattern. It is a conceptual design, not a configured product workflow.</p>
+<p>flowchart TD
+    A[Customer enquiry] --&gt; B[Permission and required-field checks: rules]
+    B --&gt;|Missing, invalid or not permitted| C[Exception for a person]
+    B --&gt;|Permitted and valid| D[Read approved sources: integration]
+    D --&gt; E[Prepare internal brief: generative assistance]
+    E --&gt; F[Sales reviews against sources]
+    F --&gt;|Correction needed| C
+    F --&gt;|Accepted| G[Continue the human-owned quotation process]
+In plain language, the system first checks whether it may use the information and whether required fields are valid. Exceptions go to a person. Valid cases can use approved connections to obtain source facts. Generative assistance then organises those facts into a brief, which Sales checks.</p>
+<p>The diagram explains why these labels are not mutually exclusive. Rules, integrations and generative assistance can contribute to one workflow.</p>
+<p>An agent would change how some steps are selected—for example, choosing which approved source to investigate next. It would not remove the need for permission checks, reliable sources or decision ownership.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Meridian’s first capability assessment</h2>
+<p>Case inputs and evidence</p>
+<p>Meridian’s synthetic process begins with a customer enquiry. Sales records the request, Operations checks product and availability information, and Sales prepares and issues the quotation. Missing information returns to Sales or the customer for clarification.</p>
+<p>The following sample figures are supplied as scenario evidence, not measurements from a real company:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Baseline item</th>
+<th>Supplied value</th>
+<th>Evidence represented in the scenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed enquiries in one reference week</td>
+<td>120 enquiries</td>
+<td>Completed-case register</td>
+</tr>
+<tr>
+<td>Initial handling effort</td>
+<td>18 staff minutes per completed enquiry</td>
+<td>Combined Sales and Operations time log</td>
+</tr>
+<tr>
+<td>Preparation component within initial handling</td>
+<td>6 of the 18 minutes</td>
+<td>Time spent organising and checking enquiry information</td>
+</tr>
+<tr>
+<td>Additional rework</td>
+<td>24 enquiries × 6 staff minutes</td>
+<td>Correction log, separate from initial handling</td>
+</tr>
+<tr>
+<td>Rework categories</td>
+<td>14 missing quantity/date; 6 copied-code errors; 4 outdated-stock checks</td>
+<td>Categorised correction records</td>
+</tr>
+<tr>
+<td>Handoffs</td>
+<td>Sales → Operations → Sales</td>
+<td>Supplied process description</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 120 figure describes completed cases. Arrivals, unfinished records and waiting durations are not supplied. You cannot derive incoming demand or response time from this baseline.</p>
+<p>Initial effort:</p>
+<p>120 enquiries/week × 18 minutes/enquiry = 2,160 staff minutes/week</p>
+<p>Additional rework:</p>
+<p>24 reworked enquiries/week × 6 minutes/reworked enquiry = 144 staff minutes/week</p>
+<p>Total:</p>
+<p>(2,160 + 144) minutes/week ÷ 60 minutes/hour = 38.4 staff hours/week</p>
+<p>The preparation component is already inside the 18 minutes. Adding it again would double count effort.</p>
+<p>Small reference packet</p>
+<p>The team also supplies six independent synthetic cases for an offline concept test. The same 40-unit stock snapshot applies separately to each case; these cases do not reserve or consume stock.</p>
+<p>The catalogue and substitution facts from the lessons remain unchanged. No price or confirmed delivery date is supplied.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Enquiry ID</th>
+<th>Product</th>
+<th>Quantity</th>
+<th>Requested date</th>
+<th>Source access permitted?</th>
+<th>Manual preparation effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-001</td>
+<td>BF-10</td>
+<td>25 units</td>
+<td>2026-10-12</td>
+<td>Yes</td>
+<td>6 minutes</td>
+</tr>
+<tr>
+<td>MSP-ENQ-002</td>
+<td>BF-10</td>
+<td>10 units</td>
+<td>2026-10-13</td>
+<td>Yes</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>MSP-ENQ-003</td>
+<td>BF-10</td>
+<td>Missing</td>
+<td>2026-10-12</td>
+<td>Yes</td>
+<td>7 minutes</td>
+</tr>
+<tr>
+<td>MSP-ENQ-004</td>
+<td>XX-99</td>
+<td>8 units</td>
+<td>2026-10-12</td>
+<td>Yes</td>
+<td>8 minutes</td>
+</tr>
+<tr>
+<td>MSP-ENQ-005</td>
+<td>BF-10</td>
+<td>4 units</td>
+<td>2026-10-12</td>
+<td>No</td>
+<td>4 minutes</td>
+</tr>
+<tr>
+<td>MSP-ENQ-006</td>
+<td>BF-10</td>
+<td>60 units</td>
+<td>2026-10-12</td>
+<td>Yes</td>
+<td>6 minutes</td>
+</tr>
+</tbody>
+</table></div>
+<p>For case 005, the operational source is not authorised for use. Knowing the request fields does not authorise source enrichment. Treat the denied access as an exception.</p>
+<p>The packet’s manual effort is:</p>
+<p>6 + 5 + 7 + 8 + 4 + 6 = 36 staff minutes</p>
+<p>36 minutes ÷ 6 cases = 6 staff minutes/case</p>
+<p>This small packet is deliberately exception-rich. Its results must not be extrapolated to the weekly cohort without examining case mix.</p>
+<h3>Step 1: separate the problems</h3>
+<p>The team identifies three preliminary opportunities:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Opportunity ID</th>
+<th>Problem</th>
+<th>Candidate capability</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-OPP-001</td>
+<td>Missing or invalid required fields</td>
+<td>Rules and clearer intake</td>
+<td>The acceptance conditions can be stated explicitly</td>
+</tr>
+<tr>
+<td>MSP-OPP-002</td>
+<td>Time spent organising varied enquiry wording</td>
+<td>Generative assistance or a standard template</td>
+<td>The work concerns language and structure</td>
+</tr>
+<tr>
+<td>MSP-OPP-003</td>
+<td>Repeated entry of approved enquiry fields</td>
+<td>Process simplification, then integration if needed</td>
+<td>The work concerns duplication and data movement</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are discovery candidates, not approved implementation projects.</p>
+<h3>Step 2: complete the reference outcomes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Enquiry ID</th>
+<th>Correct reference outcome</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-ENQ-001</td>
+<td>Prepare a facts-only brief for Sales review</td>
+<td>Recognised product and valid request; delivery remains unconfirmed</td>
+</tr>
+<tr>
+<td>MSP-ENQ-002</td>
+<td>Prepare a facts-only brief for Sales review</td>
+<td>Same conditions, with a different quantity and requested date</td>
+</tr>
+<tr>
+<td>MSP-ENQ-003</td>
+<td>Request quantity clarification</td>
+<td>A required value is missing</td>
+</tr>
+<tr>
+<td>MSP-ENQ-004</td>
+<td>Ask Sales to verify the product code</td>
+<td>XX-99 is not in the supplied catalogue</td>
+</tr>
+<tr>
+<td>MSP-ENQ-005</td>
+<td>Stop source enrichment and refer access to IT</td>
+<td>Source use is not permitted</td>
+</tr>
+<tr>
+<td>MSP-ENQ-006</td>
+<td>Refer availability to Operations</td>
+<td>Requested quantity exceeds the snapshot; no approved substitute exists</td>
+</tr>
+</tbody>
+</table></div>
+<p>These outcomes are constructed reference answers. They are not observed automated performance.</p>
+<h3>Step 3: record the capability decision</h3>
+<p>Completed artifact: MSP_Capability_Brief_v0_1.md</p>
+<p>Assess intake simplification and validation first under MSP-OPP-001. Explore a standard template and source-grounded internal drafting under MSP-OPP-002. Investigate duplicated entry under MSP-OPP-003 before selecting an integration. The currently specified brief-preparation path does not require model-selected investigation, so an agent is not justified for this initial concept test. Sales owns brief acceptance and customer commitments; Operations owns availability confirmation; IT owns connection and access verification.</p>
+<p>Finance validates effort and cost assumptions. The Sponsor owns the later investment decision. IT’s responsibility for a connection does not transfer Sales’ responsibility for quotation accuracy.</p>
+<h3>Step 4: make the proposed test bounded</h3>
+<p>Illustrative preliminary test brief: MSP-PILOT-001 — proposed, not executed</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Supplied preliminary design</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boundary</td>
+<td>One offline round using the six-case packet; internal brief preparation only; no live writes, prices or customer messages</td>
+</tr>
+<tr>
+<td>Owners</td>
+<td>Sales Lead accountable; Operations supplies source facts; IT checks access requirements; Finance checks effort recording; Sponsor owns the decision</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>Manual packet effort of 36 minutes; the six reference outcomes above define correctness</td>
+</tr>
+<tr>
+<td>Cases</td>
+<td>Two valid requests, missing quantity, unknown product, denied access and stock shortage</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td>Correct outcome per case; unsupported statements per output; total staff effort including review and correction; completion of review and feedback by two proposed sales reviewers</td>
+</tr>
+<tr>
+<td>Success criteria</td>
+<td>Six of six correct outcomes; zero unsupported price/delivery claims or prohibited actions; total staff effort at most 30 minutes; both reviewers complete review and feedback</td>
+</tr>
+<tr>
+<td>Stop criteria</td>
+<td>Any attempted prohibited access/action, or any unsupported price/delivery commitment in a proposed brief</td>
+</tr>
+<tr>
+<td>Decision rule</td>
+<td>Proceed to broader pilot design if all criteria pass; revise if correctness and controls pass but effort/adoption targets fail; defer if a stop condition occurs until its cause is resolved</td>
+</tr>
+<tr>
+<td>Result status</td>
+<td>No candidate outputs or post-change timings have been observed</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is a learning-scale test design. Chapter 8 will address representative sampling and stronger measurement.</p>
+<p>A mistake and its correction</p>
+<p>Mistake: “The assistant will save 38.4 hours each week.”</p>
+<p>Correction: 38.4 hours is the total supplied weekly effort, including work outside brief preparation. The effect of a change is unknown. Even the 30-minute packet target is a target, not an observed result or cash saving.</p>
+<p>Completed assumptions artifact: MSP_Case_Assumptions_v0_1.md</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Assumption ID</th>
+<th>Statement</th>
+<th>Status or next evidence needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-A-001</td>
+<td>Weekly figures describe the supplied synthetic completed-case cohort</td>
+<td>Scenario input; replace with company evidence when adapting</td>
+</tr>
+<tr>
+<td>MSP-A-002</td>
+<td>Required product connections and write permissions are available</td>
+<td>Unconfirmed; IT must assess in Chapter 4</td>
+</tr>
+<tr>
+<td>MSP-A-003</td>
+<td>A template or generated brief can reduce total effort including review</td>
+<td>Untested; no savings claimed</td>
+</tr>
+<tr>
+<td>MSP-A-004</td>
+<td>The six-case packet reflects the wider process mix</td>
+<td>Not established; broader sampling is required</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — Guided practice</h2>
+<p>Learning goal</p>
+<p>Classify sample business tasks by their primary capability and record one meaningful limitation for each.</p>
+<p>Requirements and access</p>
+<p>Use paper or a local worksheet. All inputs are synthetic. No product access is required. This exercise demonstrates business reasoning; it cannot demonstrate connector behaviour, model reliability or live permissions.</p>
+<p>You may work individually. In a group, take the Sponsor, Sales Lead, Finance Lead, Operations Lead and IT Lead perspectives. Individually, consider those same perspectives when assigning ownership.</p>
+<p>Complete task inputs</p>
+<p>Classify the mechanism described, rather than guessing a different implementation.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task ID</th>
+<th>Requested task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-TASK-001</td>
+<td>In the existing enquiry record, flag quantity as invalid when it is missing, zero, negative or not a whole number</td>
+</tr>
+<tr>
+<td>MSP-TASK-002</td>
+<td>Copy a validated enquiry’s business ID, product, quantity and requested date from an intake system into a CRM draft record</td>
+</tr>
+<tr>
+<td>MSP-TASK-003</td>
+<td>Turn a supplied customer email and approved source extracts into a concise internal brief; do not select or operate tools</td>
+</tr>
+<tr>
+<td>MSP-TASK-004</td>
+<td>Investigate an availability exception by choosing among approved catalogue, stock and substitution lookups in response to their results; stop after four lookups</td>
+</tr>
+<tr>
+<td>MSP-TASK-005</td>
+<td>Set an internal reminder flag when the supplied “business days since response” field exceeds two; the example field value is three</td>
+</tr>
+<tr>
+<td>MSP-TASK-006</td>
+<td>Copy an approved quotation PDF from document storage to the matching CRM record using the business quotation ID</td>
+</tr>
+<tr>
+<td>MSP-TASK-007</td>
+<td>Suggest a clarification question from the supplied message “Need fittings for next week”; do not retrieve information or send the question</td>
+</tr>
+<tr>
+<td>MSP-TASK-008</td>
+<td>Investigate conflicting internal status reports by choosing which approved read-only source to consult next, then produce an exception brief for a person</td>
+</tr>
+</tbody>
+</table></div>
+<p>Additional exception inputs</p>
+<p>After classifying the tasks, write the permitted next action for each exception:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Supplied condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1 — Invalid quantity</td>
+<td>A new request contains quantity 0; no authorised default quantity exists</td>
+</tr>
+<tr>
+<td>E2 — Missing product</td>
+<td>A request says “Need fittings for next week”; no product code is supplied and the catalogue contains only BF-10</td>
+</tr>
+<tr>
+<td>E3 — Permission</td>
+<td>Someone asks the drafting assistant to include private staff notes; those notes are not approved or supplied</td>
+</tr>
+<tr>
+<td>E4 — Uncertain transfer</td>
+<td>For task 002, the acknowledgement is lost. An authorised destination lookup finds CRM-9001 already linked to MSP-ENQ-001, with all transferred fields matching. The permitted recovery is to reconcile a matching existing record; creating a second record is not permitted</td>
+</tr>
+</tbody>
+</table></div>
+<p>Learner worksheet</p>
+<p>Enter one primary capability. You may mention supporting capabilities in your explanation.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task ID</th>
+<th>Primary capability</th>
+<th>Why this mechanism fits</th>
+<th>One specific limitation</th>
+<th>Responsible role and boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-TASK-001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-002</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-003</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-004</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-005</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-006</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-007</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MSP-TASK-008</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Guided steps and expected intermediate results</p>
+<ol>
+<li>Identify the required result. Is it a flag, a transferred record, drafted content or an investigation?
+- Expected result: eight short descriptions of the intended output.</li>
+<li>Identify how the result is obtained. Look for fixed conditions, data movement, content generation or model-selected steps.
+- Expected result: one primary classification for every row, with supporting capabilities noted where useful.</li>
+<li>State a limitation that could affect this task.
+- Expected result: eight specific limitations. “Technology can fail” is too vague.</li>
+<li>Assign ownership and an action boundary.
+- Expected result: every row names a business owner or relevant operational role and a limit on action.</li>
+<li>Resolve E1–E4.
+- Expected result: four exception notes that preserve the request, respect access and prevent duplicate action.</li>
+</ol>
+<p>Your final artifact is C04_CH01_Task_Classification_Register.md, containing the completed table and four exception notes.</p>
+<p>Keep the synthetic final worksheet for your project. You can discard scratch copies after transferring your reasoning. No account or system cleanup is required.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Use these changed conditions. They are exercise variants and do not overwrite Meridian’s main case records.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Challenge ID</th>
+<th>Complete changed input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-CHAL-01</td>
+<td>Replace task 004 with a fixed path: read catalogue, read stock, then flag shortage if requested quantity exceeds the stock figure. No model chooses steps. Product is BF-10, quantity is 60 and stock is 40.</td>
+</tr>
+<tr>
+<td>MSP-CHAL-02</td>
+<td>An enquiry contains BF-10, quantity 0 and requested date 2026-10-12. Source access is permitted. No default or quantity correction is authorised.</td>
+</tr>
+<tr>
+<td>MSP-CHAL-03</td>
+<td>An enquiry requests 20 BF-10 units for 2026-10-09 and asks, “Can you promise that date?” The catalogue description is available, but the stock source is temporarily unavailable. No delivery confirmation or approved substitute is supplied. A person may investigate or prepare an internal brief stating the uncertainty.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Deliverables</p>
+<p>For each challenge, record:</p>
+<ol>
+<li>A suitable primary capability for the next useful task.</li>
+<li>Your reason and one limitation.</li>
+<li>The permitted next action.</li>
+<li>A statement that must not appear in the output.</li>
+</ol>
+<p>Then write a short recommendation comparing a standard internal template with generative assistance for this initial scope. Include one unresolved assumption.</p>
+<p>Observable success criteria</p>
+<p>Your work should distinguish a fixed path from agentic choice, preserve missing or invalid values as exceptions, avoid unsupported promises and connect the recommendation to the specified work.</p>
+<p>More than one classification can be valid if you define a different task boundary clearly. A different label is not enough; the explanation must show a different mechanism.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely diagnosis</th>
+<th>Correction</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every task is labelled “AI”</td>
+<td>The desired outcome has been confused with the mechanism</td>
+<td>Ask what performs the work: condition, connection, generation or model-selected investigation</td>
+<td>Explain what would still function without a language model</td>
+</tr>
+<tr>
+<td>A fluent brief changes a requested date into a promise</td>
+<td>Customer wording has been treated as company evidence</td>
+<td>Separate requested, confirmed and unknown information</td>
+<td>Trace every commitment to an approved source</td>
+</tr>
+<tr>
+<td>A required field receives a guessed value</td>
+<td>Completion has been prioritised over accuracy</td>
+<td>Retain the exception and request clarification</td>
+<td>Confirm that no unauthorised default was introduced</td>
+</tr>
+<tr>
+<td>A connection fails and staff immediately repeat the write</td>
+<td>Failure to receive confirmation has been treated as proof that nothing happened</td>
+<td>Check the destination using the business reference before an authorised retry</td>
+<td>Confirm one matching record and reconcile its status</td>
+</tr>
+<tr>
+<td>An assistant requests an unavailable or unauthorised source</td>
+<td>Tool availability or permission has been assumed</td>
+<td>Stop that lookup; refer access questions to IT and the data owner</td>
+<td>Confirm authorisation before future use</td>
+</tr>
+<tr>
+<td>An agent keeps investigating</td>
+<td>The goal or stopping condition is unclear</td>
+<td>Use a defined lookup limit and escalation condition</td>
+<td>Confirm that the unresolved issue is handed to the named owner</td>
+</tr>
+<tr>
+<td>Savings increase when the same activity appears in two worksheets</td>
+<td>Overlapping effort has been counted twice</td>
+<td>Mark which components are already included in baseline effort</td>
+<td>Recalculate using non-overlapping activities</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovery does not always mean completing the task immediately. A correctly identified exception can be the correct output.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>A rule flags enquiries with a missing requested date. A model drafts a polite request for that date. What is the primary capability of each task?</li>
+<li>A generated brief correctly repeats quantity but promises next-day delivery. The supplied sources contain no delivery commitment. What should happen, and why?</li>
+<li>IT confirms that a connection can read CRM records but cannot create them. Can Meridian claim that task 002 is ready? Explain.</li>
+<li>The weekly baseline contains 18 initial minutes per enquiry, including six preparation minutes. What is wrong with calculating initial effort as 120 × (18 + 6)?</li>
+<li>What can the supplied 120 completed enquiries tell you, and what can they not tell you about arrivals and customer waiting?</li>
+<li>Who should own acceptance of a customer-facing quotation, and what responsibilities remain with Operations, IT, Finance and the Sponsor?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<p>Lesson checks</p>
+<p>L1: Defaulting to one changes the customer’s request without evidence. A technically valid quantity may still be commercially incorrect. The permitted result is a missing-data exception unless an authorised business rule establishes a default.</p>
+<p>L2: Check that the brief preserves the customer’s meaning and that factual claims are supported by approved sources. Also apply the required-field rules. Grammar does not establish factual correctness or permission to make commitments.</p>
+<p>L3: No. A fixed sequence remains a predefined workflow even if it contains several model calls. Under this chapter’s definition, agentic behaviour involves model-selected steps or tool use in response to results.</p>
+<p>L4: The baseline includes activities outside preparation. The change may also introduce review and correction effort. Only measured, non-overlapping reductions can support a time-saving claim, and released time is not automatically cash saving.</p>
+<h3>Guided practice — Completed classification register</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task ID</th>
+<th>Primary capability</th>
+<th>Why this mechanism fits</th>
+<th>One specific limitation</th>
+<th>Responsible role and boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-TASK-001</td>
+<td>Rules</td>
+<td>Explicit conditions determine the flag</td>
+<td>Validating quantity does not confirm that the customer intended it</td>
+<td>Sales owns intake rules; flag rather than alter the request</td>
+</tr>
+<tr>
+<td>MSP-TASK-002</td>
+<td>Integrations</td>
+<td>Fields move between two systems</td>
+<td>A wrong mapping or duplicate transfer can create an incorrect record</td>
+<td>IT owns connection reliability; Sales owns field meaning</td>
+</tr>
+<tr>
+<td>MSP-TASK-003</td>
+<td>Generative assistance</td>
+<td>Supplied content is transformed into a brief</td>
+<td>It can omit an important request or add an unsupported statement</td>
+<td>Sales checks the brief; no customer sending</td>
+</tr>
+<tr>
+<td>MSP-TASK-004</td>
+<td>Agents</td>
+<td>The model chooses subsequent lookups from returned results</td>
+<td>It can select an inappropriate source or misread availability</td>
+<td>Operations owns availability interpretation; read-only and four-lookups maximum</td>
+</tr>
+<tr>
+<td>MSP-TASK-005</td>
+<td>Rules</td>
+<td>A supplied numeric field is compared with a fixed threshold</td>
+<td>An incorrect business-day field causes an incorrect flag</td>
+<td>Sales owns the reminder condition; internal flag only</td>
+</tr>
+<tr>
+<td>MSP-TASK-006</td>
+<td>Integrations</td>
+<td>A document moves between approved systems using an identifier</td>
+<td>An incorrect business-ID match can attach the wrong document</td>
+<td>IT owns transfer controls; Sales confirms the approved document</td>
+</tr>
+<tr>
+<td>MSP-TASK-007</td>
+<td>Generative assistance</td>
+<td>The task proposes wording from supplied text</td>
+<td>It cannot establish which fitting the customer means from that message alone</td>
+<td>Sales reviews and sends any clarification</td>
+</tr>
+<tr>
+<td>MSP-TASK-008</td>
+<td>Agents</td>
+<td>The model chooses sources to investigate a conflict</td>
+<td>Choosing one source does not prove that it is authoritative</td>
+<td>Operations owns resolution; read-only investigation and human acceptance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Supporting rules can validate IDs during integration. Generative assistance can produce an agent’s final brief. Those supporting capabilities do not change the main mechanism described in the task.</p>
+<p>For task 005, three business days exceeds the two-day threshold, so the expected rule result is reminder flag set. No timestamp calculation is needed because the elapsed business-day field is supplied.</p>
+<p>Exception notes</p>
+<ul>
+<li>E1: Mark the quantity invalid and ask for a positive whole number. Do not substitute one or another value.</li>
+<li>E2: Ask the customer to identify the fitting or product code. The catalogue containing only BF-10 does not prove that BF-10 is the intended item.</li>
+<li>E3: Exclude the private notes and do not attempt to retrieve them. Drafting can use the approved customer message. Refer any proposed access change to the appropriate owner.</li>
+<li>E4: Reconcile the transfer with existing destination record CRM-9001. Preserve its link to MSP-ENQ-001; do not create a duplicate. The supplied lookup establishes that the matching write already occurred.</li>
+</ul>
+<h3>Independent challenge — Completed example</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Challenge ID</th>
+<th>Primary capability and reason</th>
+<th>Limitation</th>
+<th>Permitted next action</th>
+<th>Statement to exclude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-CHAL-01</td>
+<td>Rules, supported by integrations: the path and shortage condition are predefined</td>
+<td>The stock snapshot may not establish current availability</td>
+<td>Flag shortage because 60 exceeds 40; refer to Operations</td>
+<td>“An agent autonomously resolved availability”</td>
+</tr>
+<tr>
+<td>MSP-CHAL-02</td>
+<td>Rules: quantity zero fails the explicit validation condition</td>
+<td>Validation cannot supply the customer’s intended quantity</td>
+<td>Request quantity clarification</td>
+<td>“Quantity corrected to one”</td>
+</tr>
+<tr>
+<td>MSP-CHAL-03</td>
+<td>Generative assistance for an internal uncertainty brief</td>
+<td>Available sources cannot confirm stock or delivery</td>
+<td>State the request and catalogue fact; mark stock and delivery unconfirmed; refer to Operations</td>
+<td>“Delivery on 9 October is guaranteed”</td>
+</tr>
+</tbody>
+</table></div>
+<p>For challenge 01, integration is also an acceptable primary label if your defined task is the catalogue/stock transfer rather than the shortage decision. Calling it an agent is not supported because no model chooses the path.</p>
+<p>For challenge 03, a standard template is equally acceptable if you define the task as filling known fields and uncertainty flags. An agent is unnecessary merely because a source is unavailable.</p>
+<p>Completed recommendation:</p>
+<p>Start with a standard internal template and explicit validation for the current limited scope. This keeps required fields and uncertainty visible. Compare generative assistance where variable wording creates meaningful preparation work, while retaining Sales review. Do not propose an agent solely to handle the supplied stock-source outage; the permitted response is already clear. An unresolved assumption is whether drafting reduces total effort after review and correction. Test that assumption against the manual reference packet before claiming value.</p>
+<p>Understanding questions</p>
+<ol>
+<li>Missing-date flag: rules. Polite request draft: generative assistance. The first applies an explicit condition; the second produces wording.</li>
+<li>Reject or correct the unsupported promise before acceptance. Keep the requested quantity if supported, but mark delivery unconfirmed. Correct content elsewhere does not validate the delivery claim.</li>
+<li>No. Task 002 requires creation in the destination. Read permission does not establish write permission. IT must assess the required authorised capability.</li>
+<li>The six preparation minutes are counted twice. Correct initial effort is 120 × 18 = 2,160 minutes, not 2,880 minutes. Additional supplied rework brings the total to 2,304 minutes, or 38.4 hours.</li>
+<li>The figure establishes supplied completed-case volume for the reference week. It does not establish arrivals, backlog or waiting duration. Unfinished cases could contain long waits that are absent from completed-case measures.</li>
+<li>Sales owns customer-facing quotation acceptance in this scenario. Operations confirms availability; IT owns technical access and connection assessment; Finance checks value/cost assumptions; the Sponsor owns the investment decision. Technical operation and commercial accountability are different responsibilities.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>You can now distinguish a specified decision, information movement, generated content and model-directed investigation. A process may combine these capabilities, but each should solve an identified problem.</p>
+<p>The first useful decision is often to simplify the process or clarify its rules. The value of a proposed capability remains an evidence question: what work changes, what new effort appears and what results can be measured?</p>
+<p>“I can…” checklist</p>
+<ul>
+<li>I can classify a task and explain its primary mechanism.</li>
+<li>I can give a limitation specific to that task.</li>
+<li>I can distinguish a generated draft from a verified fact or successful action.</li>
+<li>I can identify a fixed workflow that does not require an agent.</li>
+<li>I can preserve missing data and permission issues as exceptions.</li>
+<li>I can distinguish released capacity from cash savings.</li>
+<li>I can name the person responsible for the business result.</li>
+</ul>
+<p>Your project evidence from this chapter is the completed Task Classification Register, Capability Brief and initial assumptions register. The worked test brief is a proposed example, not a pilot result.</p>
+<p>Chapter 2, Process Discovery and Problem Framing, builds on these classifications. You will examine triggers, roles, handoffs, decisions, queues, rework, exceptions and customer impact, marking facts separately from assumptions.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent</td>
+<td>A system in which a model selects steps or tools toward a goal within a defined boundary</td>
+</tr>
+<tr>
+<td>API</td>
+<td>A defined interface through which software requests information or actions</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>Evidence describing performance before a proposed change</td>
+</tr>
+<tr>
+<td>Cash saving</td>
+<td>An actual reduction in expenditure</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>A packaged connection to a service or system</td>
+</tr>
+<tr>
+<td>CRM</td>
+<td>Customer relationship management system</td>
+</tr>
+<tr>
+<td>Deterministic rule</td>
+<td>A specified instruction that gives the same result for the same validated inputs and rule version</td>
+</tr>
+<tr>
+<td>Generative assistance</td>
+<td>Model-produced content or transformation used for a defined task</td>
+</tr>
+<tr>
+<td>Hallucination</td>
+<td>Plausible model output that is incorrect or unsupported</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>A connection that exchanges information or actions between systems</td>
+</tr>
+<tr>
+<td>Released capacity</td>
+<td>Staff time made available for other work</td>
+</tr>
+<tr>
+<td>Tool</td>
+<td>A capability available to a system, such as an approved lookup</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>An event that starts work</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>An organised sequence of tasks, conditions and actions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<p>The official pages below were accessed for the concepts cited in this chapter. No product was executed. Meridian’s particular connectors, editions, licences, model/tool availability, permissions and deployment-region dependencies remain unverified.</p>
+<ol>
+<li>Microsoft Learn — Triggers in Power Automate. Explains event, manual and scheduled triggers. Useful for recognising how automation starts.</li>
+</ol>
+<p>https://learn.microsoft.com/en-us/power-automate/triggers-introduction</p>
+<ol start="2">
+<li>Anthropic documentation — Reduce hallucinations. Explains uncertainty, grounding and verification, including why mitigation does not eliminate errors.</li>
+</ol>
+<p>https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</p>
+<ol start="3">
+<li>Anthropic documentation — Tool use with Claude. Explains model tool requests, execution and returned results. Useful for distinguishing requested actions from completed actions.</li>
+</ol>
+<p>https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview</p>
+<ol start="4">
+<li>Anthropic — Building effective agents. Provides the architectural distinction between predefined workflows and dynamically directed agents. Use it for conceptual comparison rather than as a current product configuration checklist.</li>
+</ol>
+<p>https://www.anthropic.com/engineering/building-effective-agents</p></section><div class="book-end"><h2>Chapter 1 complete</h2><p>Classify sample business tasks as rules, integrations, generative assistance or agents; note one limitation for each.</p><div class="reader-actions"><a class="text-link" href="/courses/corporate-ai-automation-workshop">Course 4 overview</a><a class="button button-dark" href="/course-book/course-04/chapter-02">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

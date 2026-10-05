@@ -1,0 +1,1181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Read the Course 4 student book: ten chapters on choosing a business process and preparing a measured automation pilot proposal."><meta name="theme-color" content="#101d31"><title>Course Book · Course 4 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/corporate-ai-automation-workshop">Course 4 · Corporate AI &amp; Automation Opportunity Workshop</a><span>/</span><a href="/course-book/course-04/">Course Book</a><span>/</span><span>Chapter 5</span></div><header class="book-hero"><p class="eyebrow">COURSE 04 · CHAPTER 05</p><h1>Value, Costs and Business Case</h1><p>A proposal can release staff time while increasing cash expenditure. It can also appear attractive because its calculation omits review, support or implementation work.</p><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a href="/course-book/course-04/chapter-05-student.md" download>Download chapter (Markdown) ↓</a></div></header><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. What you will learn</a><a href="#section-2">2. Lessons</a><a href="#section-3">3. Visual explanation — Two benefit views and one cost boundary</a><a href="#section-4">4. Worked case — Meridian’s provisional value/cost model</a><a href="#section-5">5. Try it yourself — Guided practice</a><a href="#section-6">6. Independent challenge</a><a href="#section-7">7. Common problems and recovery</a><a href="#section-8">8. Check your understanding</a><a href="#section-9">9. Solutions and explanations</a><a href="#section-10">10. Chapter recap and next step</a><a href="#section-11">11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2>
+<p>A proposal can release staff time while increasing cash expenditure. It can also appear attractive because its calculation omits review, support or implementation work.</p>
+<p>Your task is to build a business case that explains what the proposed change might deliver, what it would consume and which assumptions still need evidence.</p>
+<p>In this chapter, you will learn to:</p>
+<ul>
+<li>Calculate baseline volume, staff effort and additional rework.</li>
+<li>Separate distinct activities so that effort is not counted twice.</li>
+<li>Estimate the effect of coverage, adoption and human review.</li>
+<li>Distinguish released capacity from actual cash savings.</li>
+<li>Include implementation, licences, model usage, support and maintenance.</li>
+<li>Compare plausible options using consistent boundaries.</li>
+<li>Test important assumptions and explain what the numbers mean.</li>
+</ul>
+<p>Your required practice is to estimate volume, effort, errors and rework, then separate released capacity from cash savings.</p>
+<p>Prerequisites and continuity</p>
+<p>Chapter 2 taught you to distinguish staff effort from elapsed time. Chapter 3 showed that opportunities can overlap. Chapter 4 identified readiness dependencies that may affect costs.</p>
+<p>Meridian Supply’s existing opportunities remain:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Opportunity ID</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-OPP-001</td>
+<td>Improve required-field completeness and validity</td>
+</tr>
+<tr>
+<td>MSP-OPP-002</td>
+<td>Reduce effort spent organising varied enquiry wording</td>
+</tr>
+<tr>
+<td>MSP-OPP-003</td>
+<td>Investigate repeated entry of approved enquiry information</td>
+</tr>
+</tbody>
+</table></div>
+<p>The established weekly baseline is 120 completed enquiries, 18 initial staff minutes per enquiry, and 24 enquiries requiring six additional rework minutes.</p>
+<p>The six preparation minutes are already inside the 18 initial minutes.</p>
+<p>MSP-OPP-003 received a 45.00% readiness score for its stated transfer scope. Access, interfaces, licensing and support gaps remain unresolved. A financial calculation does not close those gaps.</p>
+<p>Pilot MSP-PILOT-001 remains proposed and unexecuted. No automated performance, savings or returns have been observed.</p>
+<h3>Your contribution to the course project</h3>
+<p>You will produce a Value/Cost Model and a Business Case Note for the Business Automation Pilot Proposal.</p>
+<p>These artifacts explain:</p>
+<p>What changes, how much work might be released, what additional resources are needed, and whether any expenditure can actually be avoided.</p>
+<p>The Meridian scenario is synthetic and may be replaced with a permission-cleared company case. All new cost rates in this chapter are explicit teaching assumptions.</p>
+</section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2>
+<h3>Lesson 1 — Build the baseline from volume and non-overlapping effort</h3>
+<p>A baseline describes the current process before the proposed change. Its calculation needs a defined period, case population and activity boundary.</p>
+<p>Start with:</p>
+<p>Baseline staff effort = initial handling effort + additional rework effort</p>
+<p>For Meridian:</p>
+<p>Initial effort = 120 enquiries/week × 18 minutes/enquiry = 2,160 staff minutes/week</p>
+<p>Additional rework = 24 reworked enquiries/week × 6 minutes/reworked enquiry = 144 staff minutes/week</p>
+<p>Total = (2,160 + 144) ÷ 60 = 38.4 staff hours/week</p>
+<p>The units explain the calculation. Enquiries cancel in the first multiplication, leaving minutes per week.</p>
+<p>Count the right thing</p>
+<p>The 24 figure counts enquiries requiring rework, not necessarily the number of errors or correction events. One enquiry could contain several errors. If multiple correction events are recorded, use their actual effort or an appropriate event-based model.</p>
+<p>For this chapter’s established baseline, the supplied six-minute additional effort applies once to each of the 24 reworked enquiries.</p>
+<p>The supplied rework categories are:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Reworked enquiries/week</th>
+<th>Additional minutes per enquiry</th>
+<th>Additional effort/week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing quantity or date</td>
+<td>14</td>
+<td>6</td>
+<td>84 minutes</td>
+</tr>
+<tr>
+<td>Copied-code error</td>
+<td>6</td>
+<td>6</td>
+<td>36 minutes</td>
+</tr>
+<tr>
+<td>Outdated-stock check</td>
+<td>4</td>
+<td>6</td>
+<td>24 minutes</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>24</td>
+<td></td>
+<td>144 minutes</td>
+</tr>
+</tbody>
+</table></div>
+<p>These categories partition the supplied 24 cases. Do not add the category total again to the overall rework figure.</p>
+<p>The sample rework proportion is:</p>
+<p>24 ÷ 120 × 100 = 20% of completed enquiries</p>
+<p>That is a completed-case measure. It does not establish the rework rate among unfinished enquiries or incoming demand.</p>
+<p>Avoid overlapping activities</p>
+<p>Meridian’s preparation component contains organisation, source lookup and rekeying. It is part of initial handling:</p>
+<p>18 initial minutes = 6 preparation minutes + 12 other initial minutes</p>
+<p>A calculation of 18 + 6 would count preparation twice.</p>
+<p>Similarly, an improvement that changes preparation cannot claim all 18 initial minutes as removable work. Availability checking, quotation acceptance and other activities may remain.</p>
+<p>Check L1: Why does “24 reworked enquiries” not necessarily mean “24 errors”?</p>
+<h3>Lesson 2 — Estimate changed effort after coverage and review</h3>
+<p>A proposed tool rarely affects every case equally.</p>
+<p>Coverage is the proportion of cases to which the proposed method is actually applied. It can depend on eligibility, permissions, available sources and user adoption.</p>
+<p>For example:</p>
+<p>Effective coverage = eligible proportion × adoption among eligible cases</p>
+<p>If 80% of cases are eligible and 75% of those use the method:</p>
+<p>80% × 75% = 60% effective coverage</p>
+<p>Do not apply the proposed saving to all cases when your forecast assumes partial coverage.</p>
+<p>For covered cases, include the work that remains:</p>
+<p>Net minutes released per covered case = baseline task minutes − assisted task minutes − review/correction minutes</p>
+<p>Suppose a six-minute task becomes two minutes of assisted handling plus 1.5 minutes of review:</p>
+<p>6 − 2 − 1.5 = 2.5 minutes released per covered case</p>
+<p>The forecast is not a four-minute saving. Review consumes part of the apparent reduction.</p>
+<p>New rework and recovery</p>
+<p>If assisted output needs correction, record that work. You may include it in a clearly defined review/correction allowance or model it separately.</p>
+<p>Do not count the same correction in both places.</p>
+<p>Also preserve unrelated baseline rework unless there is evidence that the proposal changes it. A drafting assistant does not automatically remove a copied-code error elsewhere in the process.</p>
+<p>A useful conservative forecast can hold baseline rework unchanged while testing preparation effort. That makes the claim narrower and easier to evaluate.</p>
+<p>Worked demonstration: permission changes coverage</p>
+<p>Ten of 12 cases are eligible for assisted preparation. Two use the original manual route because one lacks required information and one lacks permission for the proposed service.</p>
+<p>If eligible cases release 2.5 minutes each:</p>
+<p>10 × 2.5 = 25 minutes released</p>
+<p>Using 12 × 2.5 = 30 minutes would incorrectly include cases that did not use the method.</p>
+<p>Check L2: Why should a permission-blocked case remain in the total workload even though it is excluded from assisted coverage?</p>
+<h3>Lesson 3 — Separate capacity, cash and business outcomes</h3>
+<p>Released capacity is staff time available for other work. It may help a team handle demand, reduce a queue or improve service.</p>
+<p>Cash savings occur when expenditure actually decreases.</p>
+<p>Examples of possible cash reductions include:</p>
+<ul>
+<li>Removing paid overtime that would otherwise occur.</li>
+<li>Avoiding an agreed contractor expense.</li>
+<li>Cancelling a redundant subscription.</li>
+<li>Avoiding a planned purchase where the dependency is genuinely removed.</li>
+</ul>
+<p>A reduction in task effort does not automatically reduce salary expenditure. If the same employees receive the same pay, the benefit is capacity.</p>
+<p>A capacity valuation attaches a planning rate to released hours:</p>
+<p>Capacity-equivalent value = released hours × stated hourly planning rate</p>
+<p>This helps compare resource use. It is not an invoice credit or a payroll reduction.</p>
+<p>Worked demonstration: the same hours, different claims</p>
+<p>A proposal releases ten staff hours per month. The planning rate is 30 currency units per staff hour.</p>
+<p>10 hours/month × 30 CU/hour = 300 CU/month of capacity-equivalent value</p>
+<p>If salaries remain unchanged, cash savings are 0 CU/month.</p>
+<p>If Finance separately confirms that six of those hours can replace removable paid overtime at 40 CU/hour:</p>
+<p>6 hours/month × 40 CU/hour = 240 CU/month of conditional cash savings</p>
+<p>You cannot then claim all ten hours as additional capacity and add the six converted hours as another benefit. The same six hours would be counted twice.</p>
+<p>Record:</p>
+<ul>
+<li>Six hours converted into avoided overtime.</li>
+<li>Four hours remaining as released capacity.</li>
+</ul>
+<p>The conversion also depends on matching skills, timing and workload. Ten scattered minutes across several people may not remove an overtime shift.</p>
+<p>Customer outcomes need their own evidence</p>
+<p>Reduced staff effort does not prove faster customer response. Chapter 2 showed that waiting can dominate elapsed time.</p>
+<p>Similarly, faster response does not automatically prove additional revenue. A revenue claim needs evidence about demand, conversion and the relationship between the change and sales outcomes.</p>
+<p>For Meridian, lost-sales impact remains unknown. Do not add speculative revenue to the business case.</p>
+<p>Check L3: What evidence is needed before released time can be described as cash savings?</p>
+<h3>Lesson 4 — Include the whole cost of the proposed change</h3>
+<p>Separate one-time and recurring costs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cost category</th>
+<th>Typical contents</th>
+<th>Important distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation</td>
+<td>Configuration, development, mapping, testing and handover</td>
+<td>External invoices and internal staff effort affect different budgets</td>
+</tr>
+<tr>
+<td>Data preparation</td>
+<td>Source cleanup, field definitions and document organisation</td>
+<td>May be required before the tool can be evaluated</td>
+</tr>
+<tr>
+<td>Adoption</td>
+<td>User practice, instructions and process updates</td>
+<td>Staff time still has a resource cost</td>
+</tr>
+<tr>
+<td>Licences</td>
+<td>Users, applications, connectors or environments</td>
+<td>Existing licences are not automatically incremental costs</td>
+</tr>
+<tr>
+<td>Model usage</td>
+<td>Input, output, tool calls and other billed usage</td>
+<td>Include repeated calls and relevant service charges</td>
+</tr>
+<tr>
+<td>Human review</td>
+<td>Checking, correction and acceptance</td>
+<td>Count within process effort or separately, but not twice</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>Monitoring, questions, incidents and fallback work</td>
+<td>A successful demonstration does not eliminate support</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Rule, mapping, source, prompt and template updates</td>
+<td>Assign an owner and a realistic allowance</td>
+</tr>
+</tbody>
+</table></div>
+<p>An incremental cost is an additional cost caused by the proposal. Keep unchanged existing costs in the baseline, but do not present them as new purchases.</p>
+<p>Internal staff time has an economic cost even when it causes no additional cash payment. State both views.</p>
+<p>Model usage</p>
+<p>A token is a unit of text processing used by many language-model services. It is not a fixed number of words.</p>
+<p>A simple text-usage estimate is:</p>
+<p>Usage cost = input tokens ÷ billing unit × input rate + output tokens ÷ billing unit × output rate</p>
+<p>OpenAI’s official pricing documentation distinguishes input and output rates and lists additional tool-related charges.1 Exact rates depend on the chosen model and service configuration.</p>
+<p>The worked case uses fictional rates. It assumes no cached-token discounts or separately billed retrieval/storage tools. A real design using those features must add their charges.</p>
+<p>For automation platforms, an enquiry is not necessarily a billable task. Zoho Flow’s FAQ states that executions depend on plan task allowances and may also be affected by third-party API limits.2 Identify the platform’s current charging unit before translating business volume into purchased capacity.</p>
+<p>Compare options consistently</p>
+<p>Use the same:</p>
+<ul>
+<li>Workload and period.</li>
+<li>Process boundary.</li>
+<li>Coverage definition.</li>
+<li>Quality requirements.</li>
+<li>Treatment of review.</li>
+<li>Cash and internal-effort categories.</li>
+</ul>
+<p>Then test sensitive assumptions. A small change in review time can matter more than a large percentage change in model cost.</p>
+<p>Check L4: Why is “the model call is cheap” insufficient as a business-case argument?</p>
+</section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Two benefit views and one cost boundary</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>View</th>
+<th>Calculation</th>
+<th>What it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Process capacity</td>
+<td>Baseline effort − changed process effort</td>
+<td>How much task effort might be released?</td>
+</tr>
+<tr>
+<td>Net organisational capacity</td>
+<td>Process capacity released − additional support/maintenance hours</td>
+<td>How much time remains after operating the change?</td>
+</tr>
+<tr>
+<td>Cash budget</td>
+<td>Avoided expenditure − new cash expenditure</td>
+<td>Does the organisation spend less money?</td>
+</tr>
+<tr>
+<td>Capacity-equivalent comparison</td>
+<td>Valued process time released − recurring cash and internal resource costs</td>
+<td>Is the resource trade-off attractive under the stated rates?</td>
+</tr>
+</tbody>
+</table></div>
+<p>These views answer different questions.</p>
+<p>If new support work uses a different staff group, its hours may not be interchangeable with Sales hours. Report the gross release and new support requirement separately as well as the aggregate.</p>
+<p>The capacity-equivalent comparison subtracts support valued at its own rate. It should not be relabelled as cash profit.</p>
+</section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Meridian’s provisional value/cost model</h2>
+<p>Explicit new assumptions</p>
+<p>This model examines MSP-OPP-002: preparing a source-grounded internal enquiry brief. It does not include automatic quotation issuance, live record writes or availability decisions.</p>
+<p>All rates are fictional currency units, CU. They are not vendor prices or accounting requirements.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record ID</th>
+<th>Input or assumption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-VAL-001</td>
+<td>Repeats the established weekly baseline</td>
+</tr>
+<tr>
+<td>MSP-VAL-002</td>
+<td>Assumes a four-week planning period and 80% effective assisted coverage</td>
+</tr>
+<tr>
+<td>MSP-VAL-003</td>
+<td>Supplies forecast handling, review and operating effort</td>
+</tr>
+<tr>
+<td>MSP-VAL-004</td>
+<td>Supplies fictional cost rates and implementation allowances</td>
+</tr>
+<tr>
+<td>MSP-VAL-005</td>
+<td>Supplies a template alternative and sensitivity variants</td>
+</tr>
+</tbody>
+</table></div>
+<p>The planning period is called a four-week planning month. Twelve such periods contain 48 weeks, not a full 52-week calendar year. Do not reuse these totals as a calendar-year budget without adjusting the period.</p>
+<p>Further assumptions:</p>
+<ul>
+<li>The weekly volume repeats for planning; it is not an observed monthly volume.</li>
+<li>Full forecast usage begins in the first operating period.</li>
+<li>Additional baseline rework remains unchanged.</li>
+<li>Salaries remain fixed; no overtime, contractor or subscription saving is identified.</li>
+<li>Internal support and upkeep fit within existing paid hours.</li>
+<li>Taxes, financing and discounting are outside this teaching model.</li>
+<li>Readiness, entitlements and actual performance remain unconfirmed.</li>
+</ul>
+<h3>Step 1: calculate the planning baseline</h3>
+<p>Volume = 120 enquiries/week × 4 weeks/period = 480 enquiries/period</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Baseline component</th>
+<th>Calculation</th>
+<th>Staff hours/period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preparation</td>
+<td>480 × 6 minutes ÷ 60</td>
+<td>48.0</td>
+</tr>
+<tr>
+<td>Other initial handling</td>
+<td>480 × 12 minutes ÷ 60</td>
+<td>96.0</td>
+</tr>
+<tr>
+<td>Additional rework</td>
+<td>24 × 4 × 6 minutes ÷ 60</td>
+<td>9.6</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>48.0 + 96.0 + 9.6</td>
+<td>153.6</td>
+</tr>
+</tbody>
+</table></div>
+<p>This also reconciles with:</p>
+<p>38.4 hours/week × 4 weeks = 153.6 hours/period</p>
+<h3>Step 2: calculate forecast changed preparation</h3>
+<p>Supplied forecasts:</p>
+<ul>
+<li>Effective coverage: 80%.</li>
+<li>Assisted handling: two minutes per covered case.</li>
+<li>Review and correction: 1.5 minutes per covered case.</li>
+<li>Uncovered cases retain six manual preparation minutes.</li>
+<li>Review covers every assisted case.</li>
+</ul>
+<p>Covered cases = 480 × 80% = 384 cases/period</p>
+<p>Uncovered cases = 480 − 384 = 96 cases/period</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Changed preparation component</th>
+<th>Calculation</th>
+<th>Staff hours/period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assisted handling</td>
+<td>384 × 2 ÷ 60</td>
+<td>12.8</td>
+</tr>
+<tr>
+<td>Review/correction</td>
+<td>384 × 1.5 ÷ 60</td>
+<td>9.6</td>
+</tr>
+<tr>
+<td>Manual preparation for uncovered cases</td>
+<td>96 × 6 ÷ 60</td>
+<td>9.6</td>
+</tr>
+<tr>
+<td>Total preparation</td>
+<td></td>
+<td>32.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Process capacity released = 48 − 32 = 16 hours/period</p>
+<p>Changed process effort:</p>
+<p>32 preparation + 96 other initial + 9.6 rework = 137.6 hours/period</p>
+<h3>Step 3: include support and maintenance</h3>
+<p>Forecast operating effort:</p>
+<ul>
+<li>Support: two internal hours per period at 40 CU/hour.</li>
+<li>Source/template maintenance: one internal hour per period at 30 CU/hour.</li>
+</ul>
+<p>Additional operating effort = 2 + 1 = 3 hours/period</p>
+<p>Net aggregate capacity released = 16 − 3 = 13 hours/period</p>
+<p>The completed artifact should still show that 16 process hours are released while three operating hours are required. The aggregate does not establish that all hours are interchangeable across roles.</p>
+<h3>Step 4: calculate model usage</h3>
+<p>Fictional usage inputs:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Supplied assumption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal calls</td>
+<td>One per covered case</td>
+</tr>
+<tr>
+<td>Additional calls</td>
+<td>10% of covered cases require one extra call</td>
+</tr>
+<tr>
+<td>Input per call</td>
+<td>2,000 tokens</td>
+</tr>
+<tr>
+<td>Output per call</td>
+<td>500 tokens</td>
+</tr>
+<tr>
+<td>Input rate</td>
+<td>2 CU per 1,000,000 tokens</td>
+</tr>
+<tr>
+<td>Output rate</td>
+<td>8 CU per 1,000,000 tokens</td>
+</tr>
+<tr>
+<td>Other tool/storage charges</td>
+<td>Zero under this specific model assumption</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cost per call:</p>
+<p>(2,000 ÷ 1,000,000 × 2) + (500 ÷ 1,000,000 × 8)</p>
+<p>= 0.004 + 0.004 = 0.008 CU/call</p>
+<p>Expected calls:</p>
+<p>384 × 1.10 = 422.4 calls/period</p>
+<p>The fractional figure is an expected planning value. Actual call counts will be whole numbers.</p>
+<p>Usage cost:</p>
+<p>422.4 × 0.008 = 3.3792 CU/period, displayed as 3.38 CU.</p>
+<h3>Step 5: calculate implementation and recurring costs</h3>
+<p>One-time implementation</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Calculation</th>
+<th>Cash cost</th>
+<th>Internal effort value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External setup/configuration</td>
+<td>14 hours × 50 CU/hour</td>
+<td>700 CU</td>
+<td>0 CU</td>
+</tr>
+<tr>
+<td>External testing/recovery design</td>
+<td>6 hours × 50 CU/hour</td>
+<td>300 CU</td>
+<td>0 CU</td>
+</tr>
+<tr>
+<td>External handover/documentation</td>
+<td>4 hours × 50 CU/hour</td>
+<td>200 CU</td>
+<td>0 CU</td>
+</tr>
+<tr>
+<td>Internal source preparation</td>
+<td>8 hours × 30 CU/hour</td>
+<td>0 CU</td>
+<td>240 CU</td>
+</tr>
+<tr>
+<td>Internal user practice/process updates</td>
+<td>8 hours × 30 CU/hour</td>
+<td>0 CU</td>
+<td>240 CU</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>1,200 CU</td>
+<td>480 CU</td>
+</tr>
+</tbody>
+</table></div>
+<p>One-time economic resource cost = 1,200 + 480 = 1,680 CU</p>
+<p>These are estimating allowances, not supplier quotations.</p>
+<p>Recurring costs</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Calculation</th>
+<th>Cash cost/period</th>
+<th>Internal effort value/period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incremental licences</td>
+<td>3 users × 20 CU/user/period</td>
+<td>60.00 CU</td>
+<td>0 CU</td>
+</tr>
+<tr>
+<td>Model usage</td>
+<td>422.4 calls × 0.008 CU/call</td>
+<td>3.3792 CU</td>
+<td>0 CU</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>2 hours × 40 CU/hour</td>
+<td>0 CU</td>
+<td>80 CU</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>1 hour × 30 CU/hour</td>
+<td>0 CU</td>
+<td>30 CU</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>63.3792 CU</td>
+<td>110 CU</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recurring economic resource cost = 63.3792 + 110 = 173.3792 CU/period</p>
+<p>Human review is already included in changed preparation. Its planning value is:</p>
+<p>9.6 review hours × 30 CU/hour = 288 CU/period</p>
+<p>Do not add that 288 CU again to a benefit calculation that already deducted review time.</p>
+<h3>Step 6: separate the benefit statements</h3>
+<p>At 30 CU per released process hour:</p>
+<p>Gross capacity-equivalent value = 16 × 30 = 480 CU/period</p>
+<p>Recurring capacity-equivalent balance = 480 − 173.3792 = 306.6208 CU/period</p>
+<p>For 12 planning periods:</p>
+<p>12 × 306.6208 − 1,680 = 1,999.4496 CU</p>
+<p>This is a positive resource-equivalent balance under the assumptions, not cash profit.</p>
+<p>Cash savings are zero. New cash expenditure is:</p>
+<p>1,200 + 12 × 63.3792 = 1,960.5504 CU</p>
+<p>Therefore the proposal has a forecast cash increase of 1,960.55 CU over the 12-period horizon.</p>
+<p>There is no cash-savings payback in this base case because no avoided expenditure has been identified.</p>
+<h3>Step 7: compare the template alternative</h3>
+<p>The supplied template forecast uses the same 480 cases and 80% coverage:</p>
+<ul>
+<li>Three preparation minutes plus one review minute per covered case.</li>
+<li>Six manual minutes for uncovered cases.</li>
+<li>Baseline rework unchanged.</li>
+<li>One support hour at 40 CU and half a maintenance hour at 30 CU per period.</li>
+<li>Eight internal setup hours at 30 CU.</li>
+<li>No incremental licence, model or external implementation charge under this option’s assumptions.</li>
+</ul>
+<p>Process release:</p>
+<p>384 × (6 − 3 − 1) ÷ 60 = 12.8 hours/period</p>
+<p>Net aggregate capacity:</p>
+<p>12.8 − 1 − 0.5 = 11.3 hours/period</p>
+<p>Recurring equivalent balance:</p>
+<p>12.8 × 30 − (40 + 15) = 329 CU/period</p>
+<p>Twelve-period balance:</p>
+<p>12 × 329 − 8 × 30 = 3,708 CU</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Forecast measure</th>
+<th>Template</th>
+<th>Generative assistance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gross process hours released/period</td>
+<td>12.8</td>
+<td>16.0</td>
+</tr>
+<tr>
+<td>Additional operating hours/period</td>
+<td>1.5</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>Net aggregate hours released/period</td>
+<td>11.3</td>
+<td>13.0</td>
+</tr>
+<tr>
+<td>New cash cost/period</td>
+<td>0 CU</td>
+<td>63.38 CU</td>
+</tr>
+<tr>
+<td>One-time economic resource cost</td>
+<td>240 CU</td>
+<td>1,680 CU</td>
+</tr>
+<tr>
+<td>Twelve-period equivalent balance</td>
+<td>3,708 CU</td>
+<td>1,999.45 CU</td>
+</tr>
+</tbody>
+</table></div>
+<p>The generative option releases more forecast time but has a lower equivalent balance. This makes the template a credible comparator. Neither forecast establishes actual performance.</p>
+<h3>Step 8: test sensitivity</h3>
+<p>Change one assumption at a time; keep the other base inputs unchanged.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Gross hours released/period</th>
+<th>Recurring equivalent balance/period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base: 80% coverage, 1.5-minute review</td>
+<td>16.0</td>
+<td>306.62 CU</td>
+</tr>
+<tr>
+<td>Coverage falls to 50%</td>
+<td>10.0</td>
+<td>127.89 CU</td>
+</tr>
+<tr>
+<td>Review rises to 2.5 minutes</td>
+<td>9.6</td>
+<td>114.62 CU</td>
+</tr>
+<tr>
+<td>Review rises to 4 minutes</td>
+<td>0.0</td>
+<td>−173.38 CU</td>
+</tr>
+</tbody>
+</table></div>
+<p>For 50% coverage:</p>
+<p>Covered cases = 480 × 50% = 240</p>
+<p>Usage = 240 × 1.10 × 0.008 = 2.112 CU</p>
+<p>Balance = 240 × 2.5 ÷ 60 × 30 − 110 − 60 − 2.112 = 127.888 CU</p>
+<p>At four review minutes, assisted handling plus review equals the original six-minute task. Support and cash costs remain, so the proposal consumes additional resources.</p>
+<p>The recurring equivalent break-even review time, (r), satisfies:</p>
+<p>384 × (6 − 2 − r) ÷ 60 × 30 = 173.3792</p>
+<p>192 × (4 − r) = 173.3792</p>
+<p>r = 4 − 173.3792 ÷ 192 ≈ 3.097 minutes/case</p>
+<p>This threshold concerns the recurring resource-equivalent balance. It excludes one-time setup and is not a cash break-even point.</p>
+<p>Completed business case note</p>
+<p>Artifact: MSP_Business_Case_Note_v0_1.md</p>
+<p>Compare the standard template with source-grounded assistance before choosing a solution. The assistance forecast releases 16 process hours per four-week period, requiring three additional operating hours. Its 12-period resource-equivalent balance is 1,999.45 CU, but its cash expenditure increases by 1,960.55 CU. The template has a higher forecast equivalent balance under the supplied assumptions. Revise the estimates using measured coverage, review effort, quality and confirmed costs. Existing readiness gaps remain open.</p>
+<p>For the proposed pilot, record preparation, review, correction and fallback effort separately. Preserve its existing boundary and stop criteria. Chapter 8 develops the measurement design.</p>
+<p>Mistake and correction</p>
+<p>Mistake: “Add 16 hours of capacity value, 288 CU of avoided review and a payroll saving.”</p>
+<p>Correction: Review is performed, not avoided. The 16-hour release already deducts review. Fixed payroll does not decrease. The base model supports capacity and expenditure statements only.</p>
+</section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — Guided practice</h2>
+<p>Learning goal and access</p>
+<p>Build a small baseline and forecast from case-level inputs. Calculate rework, changed effort, model usage and released capacity.</p>
+<p>Use paper or a local worksheet. No product account is needed.</p>
+<p>The following packet is synthetic and separate from all earlier packets. The proposed timings and calls are supplied simulation inputs, not observed model results.</p>
+<p>Complete inputs</p>
+<p>For each of 12 completed baseline cases:</p>
+<ul>
+<li>Preparation takes six minutes.</li>
+<li>Other initial handling takes 12 minutes.</li>
+<li>A yes rework flag adds six further minutes.</li>
+<li>That baseline rework remains unchanged in the forecast.</li>
+<li>All staff are salaried; no paid expense is removed.</li>
+<li>Packet-level support/setup costs are not supplied. Do not invent them or call this a complete deployment budget.</li>
+</ul>
+<p>For forecast eligible cases, review minutes include all assisted-output corrections. Cases 606 and 610 use an additional draft call; its review effort is already included.</p>
+<p>Case 603 needs quantity clarification. Case 605 lacks permission to use the proposed drafting service. Their six-minute manual fallback includes permitted enquiry handling and exception recording; it does not authorise prohibited source access.</p>
+<p>enquiry_id,baseline_rework_flag,eligible,assisted_min,review_correction_min,manual_fallback_min,model_calls,scenario</p>
+<p>MSP-ENQ-601,no,yes,2,1,0,1,normal</p>
+<p>MSP-ENQ-602,yes,yes,2,2,0,1,normal</p>
+<p>MSP-ENQ-603,no,no,0,0,6,0,missing_quantity</p>
+<p>MSP-ENQ-604,no,yes,2,1,0,1,normal</p>
+<p>MSP-ENQ-605,no,no,0,0,6,0,service_permission_denied</p>
+<p>MSP-ENQ-606,no,yes,2,2,0,2,additional_draft_after_source_check</p>
+<p>MSP-ENQ-607,yes,yes,2,1,0,1,normal</p>
+<p>MSP-ENQ-608,no,yes,2,2,0,1,normal</p>
+<p>MSP-ENQ-609,no,yes,2,1,0,1,normal</p>
+<p>MSP-ENQ-610,yes,yes,2,2,0,2,additional_draft_after_source_check</p>
+<p>MSP-ENQ-611,no,yes,2,1,0,1,normal</p>
+<p>MSP-ENQ-612,no,yes,2,2,0,1,normal</p>
+<p>Each call uses the worked-case fictional allowance: 2,000 input tokens and 500 output tokens, at 2 and 8 CU per million respectively.</p>
+<p>Learner worksheet</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Formula and inputs</th>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed baseline volume</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Reworked cases and proportion</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Baseline preparation effort</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Baseline total effort</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Forecast preparation effort</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Forecast total effort</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Process capacity released</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Model usage cost</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cash savings</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Steps and expected intermediate results</p>
+<ol>
+<li>Count cases and rework flags.
+- Expected result: a reproducible denominator and a separate reworked-case count.</li>
+<li>Calculate baseline effort.
+- Expected result: preparation, other initial work and additional rework shown separately.</li>
+<li>Sum forecast preparation components.
+- Expected result: assisted handling, review/correction and manual fallback all included.</li>
+<li>Preserve unchanged activities.
+- Expected result: other initial effort and baseline rework remain in the forecast.</li>
+<li>Count calls and price usage.
+- Expected result: additional calls included; no call charged to ineligible cases.</li>
+<li>Write benefit statements.
+- Expected result: released minutes reported as capacity; cash savings reported separately; deployment costs identified as incomplete.</li>
+</ol>
+<p>Your final artifact is C04_CH05_Value_Cost_Model_Practice.md.</p>
+<p>In a group, Finance can check units, Sales can check review/fallback effort, Operations can check unchanged work and IT can check cost dependencies. Individually, perform those checks in the same order.</p>
+<p>Retain the final synthetic worksheet. No system cleanup is required.</p>
+</section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
+<p>Use this changed planning scenario for MSP-OPP-002. It does not overwrite the main case.</p>
+<p>Supplied changes and retained inputs</p>
+<ul>
+<li>Volume remains 480 cases per four-week period.</li>
+<li>Effective coverage remains 80%.</li>
+<li>Assisted handling remains two minutes.</li>
+<li>Review/correction rises to 2.5 minutes per covered case.</li>
+<li>Support remains two hours and maintenance one hour per period.</li>
+<li>Licence cost remains 60 CU per period.</li>
+<li>Usage remains one call plus a 10% extra-call allowance, at 0.008 CU per call.</li>
+<li>External setup remains 1,200 CU.</li>
+<li>Internal setup remains 16 hours, performed within existing paid hours.</li>
+<li>Finance confirms the exercise condition: if the forecast net capacity is attained and matches the work schedule, up to six paid overtime hours per period can be removed at 40 CU/hour.</li>
+<li>Those overtime hours are part of the existing workload, not extra volume.</li>
+<li>No other expense is removed.</li>
+</ul>
+<p>Deliverables</p>
+<ol>
+<li>Calculate gross and net capacity released.</li>
+<li>Calculate conditional avoided overtime expenditure.</li>
+<li>Calculate recurring net cash benefit and the 12-period cash balance after external setup.</li>
+<li>Identify capacity remaining after overtime conversion.</li>
+<li>State what must be measured before the forecast becomes an actual cash-saving claim.</li>
+</ol>
+<p>Success criteria</p>
+<p>Include review, support and maintenance. Respect the six-hour conversion limit. Count converted hours once. Keep internal setup effort visible even though it creates no additional cash payment.</p>
+</section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Diagnosis</th>
+<th>Correction</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claimed saving exceeds baseline task time</td>
+<td>Scope or overlap error</td>
+<td>Map each saving to a distinct baseline activity</td>
+<td>Claimed removable minutes do not exceed that activity</td>
+</tr>
+<tr>
+<td>Review appears both in changed effort and as another deducted cost</td>
+<td>Double counting</td>
+<td>Choose one consistent treatment</td>
+<td>Review is counted once</td>
+</tr>
+<tr>
+<td>All cases receive the assisted saving</td>
+<td>Coverage ignored</td>
+<td>Separate covered and fallback cases</td>
+<td>Counts reconcile to total volume</td>
+</tr>
+<tr>
+<td>Rework disappears without evidence</td>
+<td>Optimistic assumption</td>
+<td>Hold it unchanged or supply a supported reduction</td>
+<td>Every reduction has a stated basis</td>
+</tr>
+<tr>
+<td>Salaried time becomes payroll savings</td>
+<td>Capacity confused with expenditure</td>
+<td>Identify a removable expense</td>
+<td>Finance can name the budget line and conversion mechanism</td>
+</tr>
+<tr>
+<td>A missing price is entered as zero</td>
+<td>Unknown treated as free</td>
+<td>Mark the dependency unresolved</td>
+<td>Zero appears only where the scenario supports no incremental charge</td>
+</tr>
+<tr>
+<td>Usage excludes additional calls</td>
+<td>Recovery consumption omitted</td>
+<td>Count all forecast or recorded calls</td>
+<td>Call total reconciles to the case packet</td>
+</tr>
+<tr>
+<td>Four-week totals are called a calendar-year budget</td>
+<td>Period mismatch</td>
+<td>State weeks and adjust the horizon</td>
+<td>Annual volume matches the chosen calendar basis</td>
+</tr>
+</tbody>
+</table></div>
+<p>When costs are incomplete, keep the model provisional. The specific recovery is to obtain the missing entitlement, implementation or operating estimate.</p>
+</section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2>
+<ol>
+<li>Why is Meridian’s weekly total 38.4 hours rather than 48 hours?</li>
+<li>Why must review effort be included even if the output usually looks correct?</li>
+<li>What is the cash-saving claim in the main worked case?</li>
+<li>Why can the template have a better equivalent balance while releasing fewer hours?</li>
+<li>Which guided-practice cases are excluded from model usage, and why?</li>
+<li>What would you need before adding a revenue benefit for faster quotations?</li>
+</ol>
+</section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><p>Try the questions first. Open the solutions when you are ready to compare your reasoning.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>
+<p>Lesson checks</p>
+<p>L1: A reworked enquiry may contain several errors or correction events. The supplied baseline counts affected enquiries and assigns six additional minutes to each.</p>
+<p>L2: The case still consumes permitted manual handling and exception effort. Excluding it from assisted coverage must not remove it from workload.</p>
+<p>L3: Identify an expense that can be removed, confirm the hours match the work and schedule, and obtain Finance’s agreement about the budget effect. Actual savings require observed reductions.</p>
+<p>L4: Model charges are only one component. Implementation, licences, review, data upkeep and support may dominate total cost.</p>
+<h3>Guided practice — Completed worksheet</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Formula and inputs</th>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed baseline volume</td>
+<td>Count all records</td>
+<td>12 cases</td>
+<td>Separate sample</td>
+</tr>
+<tr>
+<td>Reworked cases</td>
+<td>Cases 602, 607 and 610</td>
+<td>3 cases</td>
+<td>Count from supplied flags</td>
+</tr>
+<tr>
+<td>Rework proportion</td>
+<td>3 ÷ 12 × 100</td>
+<td>25%</td>
+<td>Sample proportion, not the weekly 20% rate</td>
+</tr>
+<tr>
+<td>Baseline preparation</td>
+<td>12 × 6</td>
+<td>72 minutes</td>
+<td>Inside initial handling</td>
+</tr>
+<tr>
+<td>Other initial effort</td>
+<td>12 × 12</td>
+<td>144 minutes</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td>Additional rework</td>
+<td>3 × 6</td>
+<td>18 minutes</td>
+<td>Additional and unchanged</td>
+</tr>
+<tr>
+<td>Baseline total</td>
+<td>72 + 144 + 18</td>
+<td>234 minutes</td>
+<td>3.9 staff hours</td>
+</tr>
+<tr>
+<td>Assisted handling</td>
+<td>10 × 2</td>
+<td>20 minutes</td>
+<td>Ten eligible cases</td>
+</tr>
+<tr>
+<td>Review/correction</td>
+<td>Five × 1 + five × 2</td>
+<td>15 minutes</td>
+<td>Includes assisted corrections</td>
+</tr>
+<tr>
+<td>Manual fallback</td>
+<td>2 × 6</td>
+<td>12 minutes</td>
+<td>Cases 603 and 605</td>
+</tr>
+<tr>
+<td>Forecast preparation</td>
+<td>20 + 15 + 12</td>
+<td>47 minutes</td>
+<td>Includes all preparation routes</td>
+</tr>
+<tr>
+<td>Forecast total</td>
+<td>47 + 144 + 18</td>
+<td>209 minutes</td>
+<td>Approximately 3.483 staff hours</td>
+</tr>
+<tr>
+<td>Process capacity released</td>
+<td>234 − 209</td>
+<td>25 minutes</td>
+<td>Approximately 0.417 staff hours</td>
+</tr>
+<tr>
+<td>Model usage</td>
+<td>12 calls × 0.008</td>
+<td>0.096 CU</td>
+<td>Display as 0.10 CU</td>
+</tr>
+<tr>
+<td>Cash savings</td>
+<td>No removable expense supplied</td>
+<td>0 CU</td>
+<td>Capacity is not payroll saving</td>
+</tr>
+</tbody>
+</table></div>
+<p>Call reconciliation:</p>
+<p>10 first calls + 2 additional calls = 12 calls</p>
+<p>Token reconciliation:</p>
+<p>12 × 2,000 = 24,000 input tokens</p>
+<p>12 × 500 = 6,000 output tokens</p>
+<p>Cost:</p>
+<p>24,000 ÷ 1,000,000 × 2 + 6,000 ÷ 1,000,000 × 8</p>
+<p>= 0.048 + 0.048 = 0.096 CU</p>
+<p>An acceptable conclusion is:</p>
+<p>The supplied forecast releases 25 process minutes across 12 cases and adds 0.096 CU of model usage. No cash saving is established. Setup, licensing and packet-level support costs are incomplete, so this is a task-effort comparison rather than a full deployment business case.</p>
+<p>Do not extrapolate the packet’s 25% rework proportion to the established weekly baseline. They are different samples.</p>
+<h3>Independent challenge — Explained solution</h3>
+<p>Covered cases:</p>
+<p>480 × 80% = 384</p>
+<p>Release per covered case:</p>
+<p>6 − 2 − 2.5 = 1.5 minutes</p>
+<p>Gross process release:</p>
+<p>384 × 1.5 ÷ 60 = 9.6 hours/period</p>
+<p>Net aggregate release:</p>
+<p>9.6 − 2 − 1 = 6.6 hours/period</p>
+<p>Under the supplied work-matching condition, convertible overtime is:</p>
+<p>Minimum of 6.6 released hours and 6 removable overtime hours = 6 hours</p>
+<p>Conditional avoided expenditure:</p>
+<p>6 × 40 = 240 CU/period</p>
+<p>Recurring new cash cost remains:</p>
+<p>60 + 384 × 1.10 × 0.008 = 63.3792 CU/period</p>
+<p>Recurring net cash benefit:</p>
+<p>240 − 63.3792 = 176.6208 CU/period</p>
+<p>Twelve-period balance after external setup:</p>
+<p>12 × 176.6208 − 1,200 = 919.4496 CU, displayed as 919.45 CU.</p>
+<p>Remaining capacity:</p>
+<p>6.6 − 6 = 0.6 hours/period</p>
+<p>Do not add the converted six hours again as additional capacity value.</p>
+<p>The 16 internal setup hours remain a resource requirement. They create no new cash payment under the supplied exercise conditions, so they are not included in this cash balance.</p>
+<p>Before claiming actual cash savings, measure:</p>
+<ul>
+<li>Covered case volume and achieved effort, including correction.</li>
+<li>Operating support and maintenance effort.</li>
+<li>Whether released time matches the overtime work.</li>
+<li>Actual overtime hours and payments removed.</li>
+<li>Actual licences, usage and implementation payments.</li>
+</ul>
+<p>Existing readiness gaps still require resolution before live use.</p>
+<p>Understanding questions</p>
+<ol>
+<li>Correct effort is 120 × 18 + 24 × 6 = 2,304 minutes, or 38.4 hours. Adding the six preparation minutes to the 18 initial minutes would count them twice.</li>
+<li>Review is real work and is necessary for acceptance. Omitting it overstates release and can conceal correction effort.</li>
+<li>Zero cash savings. The forecast adds 1,960.55 CU of cash expenditure over 12 four-week periods.</li>
+<li>Its lower setup and operating requirements can outweigh its smaller time reduction. Benefits and costs must be compared together.</li>
+<li>Cases 603 and 605: missing quantity and denied drafting-service permission. Their manual fallback remains in total effort.</li>
+<li>You need response-time evidence, customer/order outcomes and a justified relationship between faster quotations and additional business. Staff-effort reductions alone are insufficient.</li>
+</ol>
+</div></details></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2>
+<p>A useful business case reconciles baseline work, changed work and operating requirements. It makes clear which figures are evidence, forecasts or unresolved inputs.</p>
+<p>The strongest benefit statement may be released capacity rather than cash savings. That can still matter, provided you explain what the team will do with the time and how the result will be measured.</p>
+<p>“I can…” checklist</p>
+<ul>
+<li>I can calculate volume, effort and additional rework with units.</li>
+<li>I can avoid overlapping activity counts.</li>
+<li>I can apply coverage and include review/fallback effort.</li>
+<li>I can distinguish capacity value from avoided expenditure.</li>
+<li>I can include one-time and recurring costs.</li>
+<li>I can price supplied usage inputs without inventing vendor rates.</li>
+<li>I can compare options and test sensitive assumptions.</li>
+<li>I can explain a provisional business case without claiming observed returns.</li>
+</ul>
+<p>Your project artifacts are:</p>
+<ul>
+<li>MSP_Value_Cost_Model_v0_1.md</li>
+<li>MSP_Business_Case_Note_v0_1.md</li>
+<li>MSP_Case_Assumptions_v0_5.md</li>
+</ul>
+<p>Retain assumptions MSP-A-001 through MSP-A-014 and add:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Assumption ID</th>
+<th>New assumption</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSP-A-015</td>
+<td>Weekly workload repeats across four-week planning periods</td>
+<td>Planning assumption</td>
+</tr>
+<tr>
+<td>MSP-A-016</td>
+<td>Assistance reaches 80% coverage with two-minute handling and 1.5-minute review</td>
+<td>Untested forecast</td>
+</tr>
+<tr>
+<td>MSP-A-017</td>
+<td>Supplied fictional implementation, licence and usage rates approximate future resource needs</td>
+<td>Replace with confirmed estimates</td>
+</tr>
+<tr>
+<td>MSP-A-018</td>
+<td>Full usage begins immediately and baseline rework stays unchanged</td>
+<td>Modelling assumption</td>
+</tr>
+<tr>
+<td>MSP-A-019</td>
+<td>Main-case salaries remain fixed and no avoidable expenditure is identified</td>
+<td>Base-case condition; overtime challenge is separate</td>
+</tr>
+<tr>
+<td>MSP-A-020</td>
+<td>Support takes two hours and maintenance one hour per period</td>
+<td>Untested operating allowance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chapter 6, Prioritisation and Solution Selection, compares plausible options against value, feasibility, complexity, data readiness, failure consequences, reversibility and ownership.</p>
+</section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2>
+<p>Glossary</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity-equivalent value</td>
+<td>Planning value assigned to staff time, without implying expenditure reduction</td>
+</tr>
+<tr>
+<td>Cash saving</td>
+<td>An actual decrease in expenditure</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>Proportion of cases actually handled by the proposed method</td>
+</tr>
+<tr>
+<td>Incremental cost</td>
+<td>Additional cost caused by a change</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Work to keep rules, mappings, sources or assistance current</td>
+</tr>
+<tr>
+<td>Net capacity</td>
+<td>Released process effort after additional operating effort</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Cost repeated during operation</td>
+</tr>
+<tr>
+<td>Released capacity</td>
+<td>Staff time made available for other work</td>
+</tr>
+<tr>
+<td>Sensitivity analysis</td>
+<td>Testing how results change when assumptions change</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>A text-processing unit used by many model services</td>
+</tr>
+<tr>
+<td>Usage cost</td>
+<td>Charge associated with measured service consumption</td>
+</tr>
+</tbody>
+</table></div>
+<p>Further reading</p>
+<p>Official sources were accessed for charging concepts. The worked rates are fictional, and no product usage was executed. Actual pricing depends on the chosen product, model, plan, edition, region, service configuration and contract.</p>
+<ol>
+<li>OpenAI — API pricing. Distinguishes input/output token rates and additional tool-related charges. Use the applicable configuration when replacing the fictional rates.</li>
+</ol>
+<p>https://developers.openai.com/api/docs/pricing</p>
+<ol start="2">
+<li>Zoho Flow — FAQ. Explains plan task allowances and notes that third-party API limits can affect execution. Use current product help to establish the charging unit for the proposed workflow.</li>
+</ol>
+<p>https://www.zoho.com/flow/help/faq.html</p></section><div class="book-end"><h2>Chapter 5 complete</h2><p>Estimate volume, staff effort, errors and rework; separate released capacity from cash savings.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-04">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-06">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>
