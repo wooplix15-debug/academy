@@ -1,0 +1,36 @@
+.module { scroll-margin-top: 100px; }
+.module-title { font-size: 15px; }
+.module-content p { font-size: 14px; line-height: 1.75; }
+.chapter-controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.chapter-controls button { border: 1px solid #aebdbf; border-radius: 5px; padding: 10px 14px; background: transparent; color: #183443; font: 600 12px var(--display); cursor: pointer; }
+.chapter-controls button:hover { background: #e1eeec; }
+.chapter-controls button:focus-visible, .chapter-index a:focus-visible { outline: 3px solid #13928c; outline-offset: 3px; }
+.project-evidence ul { margin: 12px 0 30px; padding-left: 20px; }
+.project-evidence li { color: #bac4ce; font-size: 14px; line-height: 1.7; margin-bottom: 9px; }
+.project-evidence p, .course-project>div:first-child>p:last-child { font-size: 14px; }
+.course-project h2 { font-size: 40px; line-height: 1.15; overflow-wrap: anywhere; }
+.syllabus-intro .text-link { display: inline-block; margin-top: 12px; font-size: 13px; }
+.curriculum-header, .curriculum-directory { max-width: 1164px; margin: auto; padding: 64px 38px; }
+.curriculum-header { padding-bottom: 32px; }
+.curriculum-header h1 { font: 800 64px/1.1 var(--display); letter-spacing: -2px; color: var(--navy); margin: 20px 0; }
+.curriculum-header>p:not(.eyebrow) { color: #536575; line-height: 1.7; max-width: 700px; }
+.curriculum-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.curriculum-jump a { padding: 10px 14px; border: 1px solid #c4d5d5; border-radius: 5px; font-size: 13px; color: #173d49; text-decoration: none; }
+.curriculum-jump a:hover { background: #e1eeec; }
+.curriculum-directory { padding-top: 16px; }
+.curriculum-course { scroll-margin-top: 100px; padding: 42px 0; border-top: 1px solid #cbd3d5; }
+.curriculum-course h2 { font: 700 29px/1.3 var(--display); margin: 14px 0; }
+.curriculum-course h2 a { text-decoration: none; color: var(--navy); }
+.curriculum-course>p:not(.eyebrow) { color: #536575; font-size: 14px; line-height: 1.7; max-width: 850px; }
+.chapter-index { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; margin: 24px 0; padding: 0; list-style: none; }
+.chapter-index a { display: flex; gap: 12px; color: #243c4c; text-decoration: none; padding: 12px 0; border-bottom: 1px solid #e0e7e7; font-size: 14px; line-height: 1.5; }
+.chapter-index a:hover { color: #087d76; }
+.chapter-index span { color: #128e88; min-width: 24px; font-weight: 700; }
+@media (max-width: 760px) {
+  .curriculum-header, .curriculum-directory { padding-left: 22px; padding-right: 22px; }
+  .curriculum-header h1 { font-size: 46px; }
+  .curriculum-course h2 { font-size: 25px; }
+  .chapter-index { grid-template-columns: 1fr; }
+  .module-title { font-size: 14px; }
+  .course-project h2 { font-size: 34px; }
+}

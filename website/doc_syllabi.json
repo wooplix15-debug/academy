@@ -1,0 +1,579 @@
+{
+  "updated": "2026-10-05",
+  "source": "Five linked Wooplix Academy course syllabus Google Docs",
+  "courses": [
+    {
+      "id": 1,
+      "title": "Zoho Business Process & Corporate Automation",
+      "source": "https://docs.google.com/document/d/1gbvRU6wfznPNeMNE6Q6FtwXcx5P4j6RoVcMTB2T4WiQ/edit",
+      "revision": "AHj4eMTYlWx57ntHshPYUtsia6DtCGqNqM7CxF9sB43KIVY_YaJKQVUn69gsSLpQShqoxQOz_N2XNIoFFik86UYcceq6r9hiIV2bOmruNck",
+      "audience": "Operations, sales, finance, HR and service teams; business owners and Zoho administrators.",
+      "prerequisites": "No coding required. Basic spreadsheet and web application skills are useful.",
+      "duration": "Confirmed for each cohort, based on delivery format and learner experience.",
+      "summary": "Configure Zoho applications for sales, finance, service and employee processes.",
+      "chapters": [
+        {
+          "title": "Business Process Discovery",
+          "topics": "Process triggers, participants, decisions, handoffs, exceptions, bottlenecks, rework, mapping the current process and proposed changes, starting measurements and acceptance criteria.",
+          "practice": "Map a business process and define its measurable improvement goal."
+        },
+        {
+          "title": "Zoho Ecosystem and Solution Selection",
+          "topics": "Roles of CRM, Books, Desk, People, Flow, Creator and Analytics; Zoho One administration; application selection, data ownership and integration choices.",
+          "practice": "Create an application map identifying the system that owns each record."
+        },
+        {
+          "title": "Organisation and User Administration",
+          "topics": "Organisation settings, locale, currencies, business hours, holidays, users, teams, identity controls and user onboarding/offboarding.",
+          "practice": "Configure a training organisation and user-lifecycle checklist."
+        },
+        {
+          "title": "CRM Data Architecture",
+          "topics": "Leads, Contacts, Accounts, Deals and activities; custom modules, fields, lookups, layouts, subforms, validation and data dictionaries.",
+          "practice": "Build a CRM data model and field dictionary."
+        },
+        {
+          "title": "Roles, Profiles and Record Access",
+          "topics": "Role hierarchy, profiles, field restrictions, sharing, ownership, teams, territories and audit visibility.",
+          "practice": "Demonstrate permitted and denied actions for representative users."
+        },
+        {
+          "title": "Data Preparation and Migration",
+          "topics": "Data profiling, cleansing, field mapping, identifiers, duplicates, relationship-preserving import order, rejected records, reconciliation and backup planning.",
+          "practice": "Import a deliberately messy dataset and reconcile the result."
+        },
+        {
+          "title": "Lead Capture and Customer Engagement",
+          "topics": "Webforms and Forms handoffs, lead assignment, conversion, email templates, activities, follow-ups, communication preferences and tracking where enquiries come from.",
+          "practice": "Build an enquiry-to-qualified-lead workflow."
+        },
+        {
+          "title": "Sales Operations and Management",
+          "topics": "Pipelines, stage definitions, scoring, segmentation, territories, forecasts, targets, views, macros and exception reporting.",
+          "practice": "Configure sales-management views and operating rules."
+        },
+        {
+          "title": "Workflow Automation",
+          "topics": "Triggers, criteria, immediate and scheduled actions, notifications, tasks, field updates, execution order, repeated execution and automation conflicts.",
+          "practice": "Build and test an automation set with exception cases."
+        },
+        {
+          "title": "Blueprint, Approvals and Journey Orchestration",
+          "topics": "States, transitions, entry/exit criteria, mandatory information, approval and review processes, escalations and supported CommandCenter scenarios.",
+          "practice": "Implement a controlled process with approval and exception routes."
+        },
+        {
+          "title": "Guided Screens and User Actions",
+          "topics": "Canvas, layouts, wizards, Kiosk Studio, screens for specific tasks, guided actions, usability and accessibility.",
+          "practice": "Create a guided sales or service task."
+        },
+        {
+          "title": "Products, Pricing and Commercial Records",
+          "topics": "Products, price books, quote line items, discounts, approval controls, configure-price-quote concepts and relationships among commercial records.",
+          "practice": "Demonstrate a quotation with pricing and approval rules."
+        },
+        {
+          "title": "Books and the Sales-to-Finance Handoff",
+          "topics": "Customers, contact persons, items, quotes, orders, invoices, payments, receivables, adjustments, tax/currency settings, mappings, synchronisation and reconciliation.",
+          "practice": "Trace a quote-to-payment scenario and investigate a discrepancy."
+        },
+        {
+          "title": "Cross-Application Automation with Flow",
+          "topics": "Event, polling, scheduled, email and webhook triggers; actions, conditions, branching, mapping, connections, execution history and failed-run handling.",
+          "practice": "Build a cross-app flow and recover a failed handoff."
+        },
+        {
+          "title": "Customer Service with Desk",
+          "topics": "Ticket intake, departments, queues, assignment, service-level targets, escalations, notifications, CRM context, knowledge-base ownership and service reporting.",
+          "practice": "Configure ticket routing and escalation; publish a support article."
+        },
+        {
+          "title": "Employee Processes with People",
+          "topics": "Employee records, onboarding, leave, attendance, shifts, timesheets, documents, approvals, employee cases and confidential access.",
+          "practice": "Build an onboarding or leave-approval process."
+        },
+        {
+          "title": "Reporting and Zoho Analytics",
+          "topics": "Reports, connectors, relationships, data grain, formulas, pivots, dashboards, filters, sharing, refresh, duplicated totals after joins and metric definitions.",
+          "practice": "Build a dashboard and reconcile it to source records."
+        },
+        {
+          "title": "Testing, Rollout and Administration",
+          "topics": "Functional and access testing, user acceptance, release readiness, configuration records, training, support routing and controlled improvements.",
+          "practice": "Prepare a launch pack, user guide and improvement backlog."
+        }
+      ],
+      "project": [
+        "Meridian Supply",
+        "Project brief: Configure a connected enquiry-to-order and customer-service process for a fictional business.",
+        "Project work:",
+        "• Current-state and future-state process maps.",
+        "• Application map, data dictionary and access matrix.",
+        "• CRM pipeline, lead capture, assignment and controlled transitions.",
+        "• Follow-up automation and one guided user experience.",
+        "• Books handoff with verified mappings.",
+        "• Flow integration and Desk service process.",
+        "• Separate People operational exercise.",
+        "• Dashboard reconciled to source records.",
+        "• Demonstration of a duplicate, denied action and failed handoff.",
+        "• User acceptance evidence, user instructions and support ownership.",
+        "How learning is assessed",
+        "Show your configured process and submit the project files. Review covers business fit, configuration, data quality, access, exception handling and user adoption. Each learner explains their own work and demonstrates a duplicate, denied action or failed handoff."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Zoho Developer & Implementation Engineer",
+      "source": "https://docs.google.com/document/d/1dlrdiyiuEK-GxN3wPxknoMOX-gOHL0ouHjsMVe9wyTc/edit",
+      "revision": "ANLCKQm5KsW46vYfbGgFF0e-B1KpA6-6HjWnQL5V8rBTWgyAdfQALha3dIAfzm2bzR5B-yHymyL2mSd0_8zXu3RETNvG0vDg1UrFJ-wQxLs",
+      "audience": "Zoho developers, administrators moving into development, implementation engineers and technical consultants.",
+      "prerequisites": "Know CRM records, fields and workflows, with basic programming familiarity. Deluge is taught.",
+      "duration": "Confirmed for each cohort, based on delivery format and learner experience.",
+      "summary": "Build custom Zoho applications, connect APIs and prepare solutions for release.",
+      "chapters": [
+        {
+          "title": "Requirements and Solution Design",
+          "topics": "Functional and non-functional requirements, acceptance criteria, people involved, data ownership, constraints, configuration-versus-code decisions and architecture records.",
+          "practice": "Produce a technical specification and solution diagram."
+        },
+        {
+          "title": "Programming and Developer Tooling",
+          "topics": "Types, collections, functions, JavaScript foundations, HTTP, REST, JSON, Postman, browser tools, Git, code review and environment configuration.",
+          "practice": "Create a version-controlled exercise and API collection."
+        },
+        {
+          "title": "Creator Data Modelling and Forms",
+          "topics": "Entities, relationships, lookups, subforms, identifiers, validation, record lifecycle and schema changes.",
+          "practice": "Build customer, request, technician and job forms."
+        },
+        {
+          "title": "Creator Reports, Pages and Interfaces",
+          "topics": "Report types, filters, actions, pages, dashboards, navigation, mobile layouts and screens organised around user tasks.",
+          "practice": "Build dispatcher and technician interfaces."
+        },
+        {
+          "title": "Creator Access and Portals",
+          "topics": "Users, roles, permissions, record access, internal versus portal users, sharing and ownership.",
+          "practice": "Implement restricted customer and technician views."
+        },
+        {
+          "title": "Creator Workflows and Process Control",
+          "topics": "Form events, validation, approvals, schedules, notifications, Blueprint where applicable, execution context and recursion prevention.",
+          "practice": "Automate a service-request lifecycle with exception cases."
+        },
+        {
+          "title": "Deluge Language Foundations",
+          "topics": "Variables, operators, conditions, loops, lists, maps, collections, strings, dates, null handling and reusable functions.",
+          "practice": "Write tested priority-calculation and validation functions."
+        },
+        {
+          "title": "Deluge Data Operations",
+          "topics": "Creator record tasks versus integration tasks; criteria, search, create/update operations, relationships, mapping, partial failures and context-specific syntax.",
+          "practice": "Build validated assignment and completion automation."
+        },
+        {
+          "title": "External Services with Deluge",
+          "topics": "Connections, invokeurl, headers, parameters, request bodies, JSON parsing, files, response codes, timeouts and execution limits.",
+          "practice": "Integrate an external service and document failure handling."
+        },
+        {
+          "title": "Debugging and Maintainable Code",
+          "topics": "Logging, finding the cause of errors, reusable logic, configuration values, defensive checks, refactoring, regression and code review.",
+          "practice": "Diagnose and refactor a broken integration."
+        },
+        {
+          "title": "CRM REST API Foundations",
+          "topics": "Current API versions, module/field API names, metadata, CRUD, search, related records, attachments, pagination, API credits, concurrency limits and error interpretation.",
+          "practice": "Build a tested CRM API collection and mapping specification."
+        },
+        {
+          "title": "OAuth and Connection Security",
+          "topics": "Client types, authorisation flows, consent, scopes, access/refresh tokens, storage, revocation, connection ownership and regional endpoints.",
+          "practice": "Configure scoped access and test expired or insufficient credentials."
+        },
+        {
+          "title": "Creator API Integration",
+          "topics": "API v2.1 data, metadata, files, bulk and custom APIs; link names, environment selection, scopes and Creator-specific limits.",
+          "practice": "Build a Creator-to-CRM integration prototype."
+        },
+        {
+          "title": "Advanced CRM Data APIs",
+          "topics": "COQL, lookup joins, aggregates, Bulk Read/Write, upsert, external identifiers, Composite API semantics and GraphQL retrieval.",
+          "practice": "Select and demonstrate an API strategy for a large-data scenario."
+        },
+        {
+          "title": "Reliable Event-Driven Integration",
+          "topics": "Webhooks, polling, Notification APIs, subscription renewal, supported request verification, idempotency, out-of-order events, backoff, queues and reconciliation.",
+          "practice": "Demonstrate safe replay and recovery from transient failure."
+        },
+        {
+          "title": "CRM Server-Side Customisation",
+          "topics": "Functions, custom buttons, schedules, workflow invocation, argument mapping, business-rule enforcement and execution limits.",
+          "practice": "Implement a reusable CRM service action."
+        },
+        {
+          "title": "CRM Client Script",
+          "topics": "Supported pages/events, JavaScript, ZDK, field/form interactions, static resources, execution order, trusted domains and browser debugging.",
+          "practice": "Build a guided interface with server-enforced business rules."
+        },
+        {
+          "title": "Widgets and Contextual Data",
+          "topics": "HTML/CSS/JavaScript, widget lifecycle, embedded SDK, record context and packaging; CRM Queries, sources, variables, schemas and serializers.",
+          "practice": "Build a record-context action panel or service widget."
+        },
+        {
+          "title": "SDKs and Serverless Components",
+          "topics": "SDK selection, authentication stores, API compatibility, supported Node.js/Java functions, external processing, limits and logging and monitoring.",
+          "practice": "Implement a server-side integration component."
+        },
+        {
+          "title": "Extensions and Reusable Solutions",
+          "topics": "Native/integration extensions, variables, connections, dependencies, installation, upgrades, uninstall implications and distribution.",
+          "practice": "Package an extension prototype with lifecycle documentation."
+        },
+        {
+          "title": "Testing and Performance",
+          "topics": "Logic tests, contract/integration tests, access tests, regression, volume testing, API budgets, fault injection and diagnostics.",
+          "practice": "Produce a test suite linked to requirements and performance findings."
+        },
+        {
+          "title": "Environments, Release and Operations",
+          "topics": "Developer Edition versus sandbox; Creator development → stage → production; dependencies, supported promotion, backups, migrations, versioning and recovery.",
+          "practice": "Rehearse a release and prepare the technical handover."
+        }
+      ],
+      "project": [
+        "Nova Field Service",
+        "Project brief: Build a Creator application for request intake, dispatch, technician visits, inspections and completion, connected to CRM customer and service information.",
+        "Project work:",
+        "• Requirements, data model, architecture decisions and access design.",
+        "• Working forms, reports, role-based pages and workflows.",
+        "• Reusable Deluge functions.",
+        "• One CRM interface customisation with a clear purpose.",
+        "• OAuth-based integration with record ownership and mapping.",
+        "• Pagination or bulk handling, duplicate protection and recoverable errors.",
+        "• Proof that replay does not create duplicate business actions.",
+        "• Functional, access, integration and regression tests.",
+        "• Versioned artefacts, release/recovery plan and support runbook.",
+        "How learning is assessed",
+        "Demonstrate the application, integrations and release plan. Review covers correctness, access security, reliability, maintainability and performance. Each learner explains their code and shows recovery from an integration failure."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "AI & Agentic AI Builder for Business Systems",
+      "source": "https://docs.google.com/document/d/1sREnoL4QAmDHfVwxugidYPzdkUR-DSm7wul3C0I6sH4/edit",
+      "revision": "ANLCKQmmDK5gjkC37Pn4VBiMsDKIAlbABcdobOErxgd_avxxC11kqaXf4U6uTXm4qF0YOti9TM_47OKpBeApox9knGbdtfZ1pWYWHIJpAKk",
+      "audience": "Zoho developers, automation practitioners, solution architects and technical teams working with business processes.",
+      "prerequisites": "Understand business processes, APIs and JSON. Programming ability is needed for custom tools and code exercises.",
+      "duration": "Confirmed for each cohort, based on delivery format and learner experience.",
+      "summary": "Build assistants and agents that use business information and connected tools.",
+      "chapters": [
+        {
+          "title": "Generative AI and Agent Foundations",
+          "topics": "Models, tokens, context windows, inference, variability, hallucination, embeddings and distinctions among search, assistants, workflows and agents.",
+          "practice": "Compare architectures for business scenarios."
+        },
+        {
+          "title": "Choosing a Use Case and Measuring Success",
+          "topics": "Users, triggers, boundaries, baseline process, acceptable errors, value, human responsibility and rule-based alternatives.",
+          "practice": "Write a project brief with clear limits and evaluation objectives."
+        },
+        {
+          "title": "Model APIs and Application Foundations",
+          "topics": "Supported APIs/SDKs, messages, model selection, secrets, responses, streaming, timeouts, rate limits and environment configuration.",
+          "practice": "Build an API-backed business assistant."
+        },
+        {
+          "title": "Prompt and Context Engineering",
+          "topics": "Instruction hierarchy, task framing, examples, context assembly, prompt versions, ambiguity, clarification and untrusted content.",
+          "practice": "Compare prompt versions against a fixed test set."
+        },
+        {
+          "title": "Structured Data Extraction and Validation",
+          "topics": "JSON Schema, typed validation, classification, extraction, semantic checks, incomplete output and refusals; supported document/image inputs.",
+          "practice": "Build a validated enquiry or document extraction workflow."
+        },
+        {
+          "title": "Business Knowledge Preparation",
+          "topics": "Source ownership, permissions, parsing, OCR checks, tables, duplicates, metadata, versions, freshness, deletion and conflicting policies.",
+          "practice": "Produce a curated knowledge inventory and ingestion rules."
+        },
+        {
+          "title": "Retrieval-Augmented Generation",
+          "topics": "Chunking, embeddings, vector indexes, retrieval, context assembly, grounding, citations and insufficient-evidence behaviour.",
+          "practice": "Build a source-grounded question-answering assistant."
+        },
+        {
+          "title": "Advanced Retrieval and Evaluation",
+          "topics": "Keyword/semantic/hybrid search, filters, rewriting, reranking, retrieval precision/recall, chunk experiments and access-aware retrieval.",
+          "practice": "Compare retrieval approaches and analyse failures."
+        },
+        {
+          "title": "Tool and API Contract Design",
+          "topics": "Tool descriptions, schemas, OpenAPI/YAML, narrow operations, validation, trusted user/record context, side effects, duplicate prevention and errors.",
+          "practice": "Implement a tested read tool and constrained action tool."
+        },
+        {
+          "title": "Workflow Orchestration and State",
+          "topics": "Chaining, routing, parallel work, tool loops, state machines, retries, checkpoints, pause/resume, memory, retention and stopping rules.",
+          "practice": "Build a workflow that can pause and resume within set limits."
+        },
+        {
+          "title": "Zia Agent Studio Implementation",
+          "topics": "Agent creation, model settings, instructions, knowledge, system/custom tools, connections, parameter sources, guardrails, testing, deployment options, model availability by data centre, managed versus own API keys and usage credits.",
+          "practice": "Build a working Zia agent and configuration record."
+        },
+        {
+          "title": "Model Context Protocol",
+          "topics": "Host/client/server architecture, tools/resources/prompts, discovery, transports, compatibility, OAuth and scopes; CRM MCP capabilities and API credits.",
+          "practice": "Connect read-only CRM tools and document access."
+        },
+        {
+          "title": "Multi-Agent Design",
+          "topics": "Master/specialist patterns, routing, delegation, context handoff, permission separation, shared-state risks and failure isolation.",
+          "practice": "Compare single-agent and multi-agent implementations."
+        },
+        {
+          "title": "Controlled Business-System Actions",
+          "topics": "CRM/Desk/Books/Creator integration, draft-versus-commit separation, human approval, change previews, identity checks, record revalidation and audit events.",
+          "practice": "Implement a human-reviewed CRM update with replay protection."
+        },
+        {
+          "title": "Evaluation-Driven Development",
+          "topics": "Representative and held-out datasets, expected answers/actions, rule-based checks, human scoring, calibrated model judges, grounding and regression.",
+          "practice": "Build a reproducible evaluation dataset, runner and scorecard."
+        },
+        {
+          "title": "Prompt Injection and Data Protection",
+          "topics": "Hostile documents, tool-output injection, cross-customer access, secret exposure, output validation, sensitive logs and application-enforced permissions.",
+          "practice": "Run adversarial tests and verify the controls."
+        },
+        {
+          "title": "Model Selection and Customisation",
+          "topics": "Task-based benchmarks, prompting/retrieval/fine-tuning trade-offs, training-data quality, evaluation separation and portability.",
+          "practice": "Produce an model and customisation choice supported by results."
+        },
+        {
+          "title": "Cost, Latency and Efficiency",
+          "topics": "Token budgets, context reduction, caching, freshness, batching, routing, tool overhead, concurrency and cost per completed task.",
+          "practice": "Compare quality, cost and latency."
+        },
+        {
+          "title": "Observability and Reliability",
+          "topics": "Prompt/model/tool/knowledge versions, session traces, tool calls, latency distributions, failures, quality sampling, alerts and incident diagnosis.",
+          "practice": "Build a monitoring view and incident runbook."
+        },
+        {
+          "title": "User Experience and Release",
+          "topics": "Citations, uncertainty, action previews, escalation, pilot acceptance, configuration promotion, provider changes, fallbacks, supported reversion and feedback.",
+          "practice": "Prepare a release pack and user walkthrough."
+        }
+      ],
+      "project": [
+        "Northstar Distribution Sales Knowledge Assistant",
+        "Project brief: Build an assistant that answers product and policy questions from approved content, retrieves permitted CRM context and drafts a follow-up note or task.",
+        "Project work:",
+        "• Task brief, comparison with a process that does not use an agent and architecture.",
+        "• Versioned knowledge sources, citations and access rules.",
+        "• Structured responses and validated tool contracts.",
+        "• Correct handling of missing, ambiguous, conflicting and outdated information.",
+        "• Human approval enforced before record changes or outbound messages.",
+        "• Tests for unauthorised access, malicious source instructions and tool failures.",
+        "• Held-out evaluation covering answer quality and action correctness.",
+        "• Comparative quality, latency and cost results.",
+        "• Trace evidence, version records and support documentation.",
+        "How learning is assessed",
+        "Demonstrate the assistant against a separate evaluation dataset. Review covers source accuracy, tool actions, permissions, human approval, quality, latency and cost. Each learner explains a failure case and shows how it is handled."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Corporate AI & Automation Opportunity Workshop",
+      "source": "https://docs.google.com/document/d/1cCX2Cj1g7rc8-7dgdLpSae8-fv0NMi-RcRrwJK07qxM/edit",
+      "revision": "AHj4eMToxwNFsEhur-zM4vOGUU0xg5XLv-Cj8NYyD2DqU69FQ9uUvKtEtweqVEN1pQku-XP4b63kC-_8Ep5WKQWEnwBF5tr_NlAyvKYU0_k",
+      "audience": "Business leaders, process owners, operations managers and IT stakeholders.",
+      "prerequisites": "No coding required. Basic process knowledge and approved, non-sensitive information are useful.",
+      "duration": "Confirmed for each cohort, based on delivery format and learner experience.",
+      "summary": "Choose a business process, assess the options and prepare a practical pilot plan.",
+      "chapters": [
+        {
+          "title": "AI and Automation Literacy",
+          "topics": "Rules, integrations, generative assistance and agents; capabilities, limitations and business demonstrations.",
+          "practice": "Classify sample business tasks as rules, integrations, generative assistance or agents; note one limitation for each."
+        },
+        {
+          "title": "Process Discovery and Problem Framing",
+          "topics": "Triggers, people involved, handoffs, decisions, queues, rework, exceptions and customer impact; facts versus assumptions.",
+          "practice": "Map one familiar process, including triggers, roles, handoffs and exceptions; mark facts separately from assumptions."
+        },
+        {
+          "title": "Opportunity Identification",
+          "topics": "Sales, service, finance, HR and operations examples; document handling, knowledge retrieval, decision support and cross-app work.",
+          "practice": "Turn recurring issues into use-case cards showing the affected team, task, trigger and expected result."
+        },
+        {
+          "title": "Data and Organisational Readiness",
+          "topics": "Source quality, ownership, access, integrations, licences, process stability, support and stakeholder readiness.",
+          "practice": "Score one process for data ownership, access, integration, licences, process stability and support readiness."
+        },
+        {
+          "title": "Value, Costs and Business Case",
+          "topics": "Volumes, effort, errors, rework, implementation costs, licences, model usage, human review and support; time saved compared with actual cost savings.",
+          "practice": "Estimate volume, staff effort, errors and rework; separate released capacity from cash savings."
+        },
+        {
+          "title": "Prioritisation and Solution Selection",
+          "topics": "Value, feasibility, complexity, data readiness, failure consequences, reversibility and ownership; native features, Flow, development and AI options.",
+          "practice": "Compare native product features, Flow, custom development and AI against value, feasibility and risk."
+        },
+        {
+          "title": "Human Responsibility and Operating Controls",
+          "topics": "Decision ownership, review points, customer/employee impact, data handling, escalation and incident responsibility.",
+          "practice": "Create a responsibility map for data access, human review, decision ownership, escalation and incident handling."
+        },
+        {
+          "title": "Pilot Design and Measurement",
+          "topics": "Audience, process boundary, baseline comparison, representative cases, quality targets, adoption measures and success/stop criteria.",
+          "practice": "Draft a pilot charter with a clear boundary, baseline, representative cases, measures and stop criteria."
+        },
+        {
+          "title": "Adoption and Change Management",
+          "topics": "Affected roles, communication, user practice, feedback, process updates, resistance and accessibility.",
+          "practice": "Prepare a change plan for affected roles, practice, communications, feedback and process updates."
+        },
+        {
+          "title": "Leadership Review and Next Steps",
+          "topics": "Evidence, assumptions, costs, dependencies, unresolved questions and proceed/revise/defer decisions.",
+          "practice": "Present the evidence, assumptions, costs and open questions, then record a proceed, revise or defer decision."
+        }
+      ],
+      "project": [
+        "Business Automation Pilot Proposal",
+        "Project brief: Select one process and submit:",
+        "Project work:",
+        "• One-page executive proposal.",
+        "• Current-state and future-state process maps.",
+        "• Evidence-backed baseline and assumptions register.",
+        "• Comparison of plausible solution options.",
+        "• Value/cost model and prioritisation rationale.",
+        "• Data, integration and ownership requirements.",
+        "• Pilot boundaries, test cases, success measures and stop criteria.",
+        "• Adoption plan and leadership decision.",
+        "How learning is assessed",
+        "Present the pilot proposal and explain the evidence, assumptions and choice of solution. Review covers data quality, realistic costs and value, measurable results and clear ownership. The proposal must include success measures and stop criteria."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Zoho Implementation & Consulting Practicum",
+      "source": "https://docs.google.com/document/d/1zqTrw2ADUe1C-IKvjINXENV5JWmjP4od0muz45GwOnI/edit",
+      "revision": "ANLCKQnyIltfU2QKUd1QaUOb8DwpY5StRNWZEoYmBbM_Xv6GPEYNDcCNRgANWYypjRg1-gP3eNNDHceV2sJZi3AvWViEDYnhSjypMEGKOcg",
+      "audience": "Experienced Zoho administrators, developers, consultants and delivery leads.",
+      "prerequisites": "Complete Course 1 or Course 2, or have equivalent practical Zoho experience.",
+      "duration": "Confirmed for each cohort, based on delivery format and learner experience.",
+      "summary": "Work through a client project from discovery and scope to go-live and handover.",
+      "chapters": [
+        {
+          "title": "Consulting Role and Sales-to-Delivery Handoff",
+          "topics": "Client context, outcomes, proposals, commitments, assumptions, discovery gaps and commercial boundaries.",
+          "practice": "Review the handoff and produce an engagement brief."
+        },
+        {
+          "title": "Stakeholder Discovery and Kickoff",
+          "topics": "Interviews, facilitation, conflicting needs, decision rights, stakeholders, dependencies, early sizing and objectives.",
+          "practice": "Produce discovery notes, charter and initial estimate assumptions."
+        },
+        {
+          "title": "Process Analysis and Redesign",
+          "topics": "Swimlanes, exceptions, cancellation/rescheduling, handoffs, bottlenecks, operational controls and improvement measures.",
+          "practice": "Validate current-state and future-state models."
+        },
+        {
+          "title": "Requirements and Traceability",
+          "topics": "Requirements, user stories, non-functional needs, acceptance criteria, priorities, fit-gap analysis and requirement-to-test links.",
+          "practice": "Build a traceable requirements register."
+        },
+        {
+          "title": "Scope and Statement of Work",
+          "topics": "Deliverables, assumptions, exclusions, responsibilities, dependencies, acceptance terms, initial estimates and change mechanisms.",
+          "practice": "Draft a statement of work and scope baseline."
+        },
+        {
+          "title": "Solution Architecture and Product Fit",
+          "topics": "Application selection, native versus custom design, record ownership, integration boundaries, edition constraints and architecture decisions.",
+          "practice": "Prepare an architecture and fit-gap pack."
+        },
+        {
+          "title": "Access, Identity and Environments",
+          "topics": "Roles, profiles, sharing, connection identities, test environments, sensitive data, audit needs and environment readiness.",
+          "practice": "Produce an access matrix and environment plan."
+        },
+        {
+          "title": "Data Migration Strategy",
+          "topics": "Assessment, cleansing ownership, mapping, identifiers, import order, trial migrations, rejected records, delta changes and reconciliation.",
+          "practice": "Prepare a migration workbook and rehearsal evidence."
+        },
+        {
+          "title": "Delivery Planning and Estimation",
+          "topics": "Work breakdown, dependencies, capacity, configuration/development effort, testing, migration, training, contingency and estimate refinement.",
+          "practice": "Defend a delivery plan and estimate."
+        },
+        {
+          "title": "Prototyping and Design Validation",
+          "topics": "Small prototypes covering the full process, demonstrations, feedback, decisions, requirement refinement and difficult assumptions.",
+          "practice": "Present a working prototype and reviewed decisions."
+        },
+        {
+          "title": "Integration and Quality Management",
+          "topics": "Interface ownership, mappings, duplicate/retry behaviour, test strategy, defects, severity, root cause and retesting.",
+          "practice": "Produce integration specifications and test evidence."
+        },
+        {
+          "title": "Scope Change and Communication",
+          "topics": "Impact analysis, prioritisation, approvals, conflicting requests, risks/issues/assumptions/dependencies and status reporting.",
+          "practice": "Handle a change request and steering review."
+        },
+        {
+          "title": "User Acceptance Testing",
+          "topics": "Business-led scenarios, representative roles, expected results, traceability, defect decisions and acceptance evidence.",
+          "practice": "Facilitate UAT and record acceptance decisions."
+        },
+        {
+          "title": "Cutover, Release and Recovery",
+          "topics": "Readiness, configuration promotion, final data changes, sequencing, communications, go/no-go decisions, smoke tests and recovery.",
+          "practice": "Run a go-live simulation with a cutover runbook."
+        },
+        {
+          "title": "Training, Adoption and Support Handover",
+          "topics": "Training for each user role, administrator guides, procedures, ownership transfer, triage, escalation and support boundaries.",
+          "practice": "Deliver training and support handover packs."
+        },
+        {
+          "title": "Value Review, Closure and Client Presentation",
+          "topics": "Outcomes versus baseline, adoption evidence, commitments, improvements, commercial closure, retrospective and executive presentation.",
+          "practice": "Present the final client pack and defend individual work."
+        }
+      ],
+      "project": [
+        "Evergreen Field Services Implementation",
+        "Project brief: Act as the implementation team for a fictional client needing service intake, customer visibility, dispatch coordination, financial handoffs and management reporting.",
+        "Project work:",
+        "• Discovery notes, stakeholder map and project charter.",
+        "• Statement of work, scope baseline, assumptions and estimate.",
+        "• Process maps and traceable requirements.",
+        "• Architecture, access design and environment plan.",
+        "• Migration workbook and rehearsal results.",
+        "• Working end-to-end prototype.",
+        "• Integration specifications, tests, defects and UAT evidence.",
+        "• Handled scope-change and delivery-risk scenarios.",
+        "• Cutover/recovery runbook.",
+        "• Training materials and support handover.",
+        "• Outcome review, improvement backlog and client presentation.",
+        "• Each learner explains their contribution and responds to a client-style change, migration or incident scenario.",
+        "How learning is assessed",
+        "Present the client project pack and explain your contribution. Review covers discovery, product fit, requirement-to-test links, delivery decisions, scope and client communication. Respond to a client-style change, migration or incident scenario."
+      ]
+    }
+  ]
+}
