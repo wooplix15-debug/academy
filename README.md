@@ -1,6 +1,6 @@
 # Wooplix Academy · curriculum and teaching workspace
 
-This private draft project contains the editable curriculum workspace, a local content-drafting agent, and the offline trainer guides for all five Academy courses. Course content, hours, assessment rules, references and public claims need review by the Wooplix team before delivery or enrollment.
+This repository contains the Wooplix Academy public website, editable curriculum workspace, a local content-drafting agent, and offline trainer guides for all five Academy courses. Course content, hours, assessment rules, references and public claims need review by the Wooplix team before delivery or enrollment.
 
 ## Start here
 
@@ -9,7 +9,7 @@ This private draft project contains the editable curriculum workspace, a local c
 - Read [`Wooplix_Academy_Practical_Teaching_Guide.md`](Wooplix_Academy_Practical_Teaching_Guide.md) for how to deliver the lessons.
 - Read [`team/V2_REVIEW_AND_CHANGES.md`](team/V2_REVIEW_AND_CHANGES.md) and [`teaching-pack/CONTENT_REVIEW.md`](teaching-pack/CONTENT_REVIEW.md) for current review status and open decisions.
 
-To view the offline HTML, download or clone the repository and open the HTML file in a browser. GitHub’s file viewer shows the HTML source; this repository does not publish a public website.
+The Academy website is served from the repository root and is configured for Vercel. See [`website/LAUNCH.md`](website/LAUNCH.md) for deployment and editing instructions. Offline trainer guides are available by opening the HTML files in a browser.
 
 ## What is in this repository
 
@@ -22,7 +22,8 @@ To view the offline HTML, download or clone the repository and open the HTML fil
 | `agent/` | Optional local content-drafting runner with review and approval steps |
 | `practice/` | Local synthetic exercises and expected results |
 | `operations/`, `team/` | Draft policies, delivery checklists, review registers and team workflow |
-| `website/` | Draft website copy; claims and delivery terms need owner approval |
+| `index.html`, `styles.css`, `script.js` | Public-facing Academy website, designed for static Vercel hosting |
+| `website/` | Website editing and launch notes plus draft source copy |
 | `teaching-pack/` | Five branded, printable/offline HTML trainer guides and course-specific resources |
 
 The four programs in the editable workspace total 204 hours. Course 1 currently has 18 chapters, but its duration and assessment policy still need owner decisions. Customer-facing course names in the guide pack also need alignment with the approved offer names.
