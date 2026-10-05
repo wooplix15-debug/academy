@@ -204,14 +204,18 @@ Check L4: If an opportunity removes some enquiry preparation work, why should yo
 
 The diagram shows a proposed assistance pattern. It is a conceptual design, not a configured product workflow.
 
-flowchart TD
-    A[Customer enquiry] --> B[Permission and required-field checks: rules]
-    B -->|Missing, invalid or not permitted| C[Exception for a person]
-    B -->|Permitted and valid| D[Read approved sources: integration]
-    D --> E[Prepare internal brief: generative assistance]
-    E --> F[Sales reviews against sources]
-    F -->|Correction needed| C
-    F -->|Accepted| G[Continue the human-owned quotation process]
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Customer enquiry | Continue | Permission and required-field checks: rules |
+| Permission and required-field checks: rules | Missing, invalid or not permitted | Exception for a person |
+| Permission and required-field checks: rules | Permitted and valid | Read approved sources: integration |
+| Read approved sources: integration | Continue | Prepare internal brief: generative assistance |
+| Prepare internal brief: generative assistance | Continue | Sales reviews against sources |
+| Sales reviews against sources | Correction needed | Exception for a person |
+| Sales reviews against sources | Accepted | Continue the human-owned quotation process |
+
 In plain language, the system first checks whether it may use the information and whether required fields are valid. Exceptions go to a person. Valid cases can use approved connections to obtain source facts. Generative assistance then organises those facts into a brief, which Sales checks.
 
 The diagram explains why these labels are not mutually exclusive. Rules, integrations and generative assistance can contribute to one workflow.
@@ -398,16 +402,15 @@ Enter one primary capability. You may mention supporting capabilities in your ex
 Guided steps and expected intermediate results
 
 1. Identify the required result. Is it a flag, a transferred record, drafted content or an investigation?
-- Expected result: eight short descriptions of the intended output.
+  **Expected result:** eight short descriptions of the intended output.
 2. Identify how the result is obtained. Look for fixed conditions, data movement, content generation or model-selected steps.
-- Expected result: one primary classification for every row, with supporting capabilities noted where useful.
+  **Expected result:** one primary classification for every row, with supporting capabilities noted where useful.
 3. State a limitation that could affect this task.
-- Expected result: eight specific limitations. “Technology can fail” is too vague.
+  **Expected result:** eight specific limitations. “Technology can fail” is too vague.
 4. Assign ownership and an action boundary.
-- Expected result: every row names a business owner or relevant operational role and a limit on action.
+  **Expected result:** every row names a business owner or relevant operational role and a limit on action.
 5. Resolve E1–E4.
-- Expected result: four exception notes that preserve the request, respect access and prevent duplicate action.
-
+  **Expected result:** four exception notes that preserve the request, respect access and prevent duplicate action.
 Your final artifact is C04_CH01_Task_Classification_Register.md, containing the completed table and four exception notes.
 
 Keep the synthetic final worksheet for your project. You can discard scratch copies after transferring your reasoning. No account or system cleanup is required.

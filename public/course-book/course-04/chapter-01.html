@@ -199,15 +199,54 @@
 <p>Check L4: If an opportunity removes some enquiry preparation work, why should you avoid claiming that it saves all the time spent on the enquiry-to-quotation process?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — How capabilities can work together</h2>
 <p>The diagram shows a proposed assistance pattern. It is a conceptual design, not a configured product workflow.</p>
-<p>flowchart TD
-    A[Customer enquiry] --&gt; B[Permission and required-field checks: rules]
-    B --&gt;|Missing, invalid or not permitted| C[Exception for a person]
-    B --&gt;|Permitted and valid| D[Read approved sources: integration]
-    D --&gt; E[Prepare internal brief: generative assistance]
-    E --&gt; F[Sales reviews against sources]
-    F --&gt;|Correction needed| C
-    F --&gt;|Accepted| G[Continue the human-owned quotation process]
-In plain language, the system first checks whether it may use the information and whether required fields are valid. Exceptions go to a person. Valid cases can use approved connections to obtain source facts. Generative assistance then organises those facts into a brief, which Sales checks.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer enquiry</td>
+<td>Continue</td>
+<td>Permission and required-field checks: rules</td>
+</tr>
+<tr>
+<td>Permission and required-field checks: rules</td>
+<td>Missing, invalid or not permitted</td>
+<td>Exception for a person</td>
+</tr>
+<tr>
+<td>Permission and required-field checks: rules</td>
+<td>Permitted and valid</td>
+<td>Read approved sources: integration</td>
+</tr>
+<tr>
+<td>Read approved sources: integration</td>
+<td>Continue</td>
+<td>Prepare internal brief: generative assistance</td>
+</tr>
+<tr>
+<td>Prepare internal brief: generative assistance</td>
+<td>Continue</td>
+<td>Sales reviews against sources</td>
+</tr>
+<tr>
+<td>Sales reviews against sources</td>
+<td>Correction needed</td>
+<td>Exception for a person</td>
+</tr>
+<tr>
+<td>Sales reviews against sources</td>
+<td>Accepted</td>
+<td>Continue the human-owned quotation process</td>
+</tr>
+</tbody>
+</table></div>
+<p>In plain language, the system first checks whether it may use the information and whether required fields are valid. Exceptions go to a person. Valid cases can use approved connections to obtain source facts. Generative assistance then organises those facts into a brief, which Sales checks.</p>
 <p>The diagram explains why these labels are not mutually exclusive. Rules, integrations and generative assistance can contribute to one workflow.</p>
 <p>An agent would change how some steps are selected—for example, choosing which approved source to investigate next. It would not remove the need for permission checks, reliable sources or decision ownership.</p>
 </section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Meridian’s first capability assessment</h2>
@@ -649,17 +688,17 @@ In plain language, the system first checks whether it may use the information an
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Identify the required result. Is it a flag, a transferred record, drafted content or an investigation?
-- Expected result: eight short descriptions of the intended output.</li>
+  <strong>Expected result:</strong> eight short descriptions of the intended output.</li>
 <li>Identify how the result is obtained. Look for fixed conditions, data movement, content generation or model-selected steps.
-- Expected result: one primary classification for every row, with supporting capabilities noted where useful.</li>
+  <strong>Expected result:</strong> one primary classification for every row, with supporting capabilities noted where useful.</li>
 <li>State a limitation that could affect this task.
-- Expected result: eight specific limitations. “Technology can fail” is too vague.</li>
+  <strong>Expected result:</strong> eight specific limitations. “Technology can fail” is too vague.</li>
 <li>Assign ownership and an action boundary.
-- Expected result: every row names a business owner or relevant operational role and a limit on action.</li>
+  <strong>Expected result:</strong> every row names a business owner or relevant operational role and a limit on action.</li>
 <li>Resolve E1–E4.
-- Expected result: four exception notes that preserve the request, respect access and prevent duplicate action.</li>
+  <strong>Expected result:</strong> four exception notes that preserve the request, respect access and prevent duplicate action.
+Your final artifact is C04_CH01_Task_Classification_Register.md, containing the completed table and four exception notes.</li>
 </ol>
-<p>Your final artifact is C04_CH01_Task_Classification_Register.md, containing the completed table and four exception notes.</p>
 <p>Keep the synthetic final worksheet for your project. You can discard scratch copies after transferring your reasoning. No account or system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
 <p>Use these changed conditions. They are exercise variants and do not overwrite Meridian’s main case records.</p>
@@ -981,18 +1020,18 @@ In plain language, the system first checks whether it may use the information an
 <p>Further reading</p>
 <p>The official pages below were accessed for the concepts cited in this chapter. No product was executed. Meridian’s particular connectors, editions, licences, model/tool availability, permissions and deployment-region dependencies remain unverified.</p>
 <ol>
-<li>Microsoft Learn — Triggers in Power Automate. Explains event, manual and scheduled triggers. Useful for recognising how automation starts.</li>
+<li>Microsoft Learn — Triggers in Power Automate. Explains event, manual and scheduled triggers. Useful for recognising how automation starts.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-automate/triggers-introduction</p>
 <ol start="2">
-<li>Anthropic documentation — Reduce hallucinations. Explains uncertainty, grounding and verification, including why mitigation does not eliminate errors.</li>
+<li>Anthropic documentation — Reduce hallucinations. Explains uncertainty, grounding and verification, including why mitigation does not eliminate errors.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</p>
 <ol start="3">
-<li>Anthropic documentation — Tool use with Claude. Explains model tool requests, execution and returned results. Useful for distinguishing requested actions from completed actions.</li>
+<li>Anthropic documentation — Tool use with Claude. Explains model tool requests, execution and returned results. Useful for distinguishing requested actions from completed actions.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview</p>
 <ol start="4">
-<li>Anthropic — Building effective agents. Provides the architectural distinction between predefined workflows and dynamically directed agents. Use it for conceptual comparison rather than as a current product configuration checklist.</li>
+<li>Anthropic — Building effective agents. Provides the architectural distinction between predefined workflows and dynamically directed agents. Use it for conceptual comparison rather than as a current product configuration checklist.  </li>
 </ol>
 <p>https://www.anthropic.com/engineering/building-effective-agents</p></section><div class="book-end"><h2>Chapter 1 complete</h2><p>Classify sample business tasks as rules, integrations, generative assistance or agents; note one limitation for each.</p><div class="reader-actions"><a class="text-link" href="/courses/corporate-ai-automation-workshop">Course 4 overview</a><a class="button button-dark" href="/course-book/course-04/chapter-02">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

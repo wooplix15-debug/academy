@@ -288,28 +288,119 @@
 <p>Check L4: What evidence would distinguish “customers wait longer” from “longer waits cause lost sales”?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Meridian’s current-state routes</h2>
 <p>The following is a simplified current-state discovery map. It uses ordinary flowchart conventions, not full Business Process Model and Notation, or BPMN. BPMN is a formal, implementation-independent process notation maintained by the Object Management Group.2</p>
-<p>flowchart TD
-    A[Customer enquiry available] --&gt; B[Sales intake queue]
-    B --&gt; C[Sales records and checks request]
-    C --&gt; D{Required fields usable?}
-    D --&gt;|No| E[Sales requests customer clarification]
-    E --&gt; F[Wait for customer reply]
-    F --&gt; C
-    D --&gt;|Yes| G{Source access permitted?}
-    G --&gt;|No| H[IT access exception; Sales tracks open case]
-    H --&gt;|If access is resolved| C
-    G --&gt;|Yes| I[Operations queue]
-    I --&gt; J[Operations checks product and availability]
-    J --&gt; K{Information usable?}
-    K --&gt;|No: missed or copied field| L[Return to Sales for correction]
-    L --&gt; C
-    K --&gt;|Yes| M{Availability issue unresolved?}
-    M --&gt;|Yes| N[Operations owns availability exception; case waits]
-    N --&gt;|When resolved| J
-    M --&gt;|No| O[Sales quotation queue]
-    O --&gt; P[Sales prepares, checks and sends quotation]
-    P --&gt; Q[Quotation sent: end]
-The map makes three learning points visible.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer enquiry available</td>
+<td>Continue</td>
+<td>Sales intake queue</td>
+</tr>
+<tr>
+<td>Sales intake queue</td>
+<td>Continue</td>
+<td>Sales records and checks request</td>
+</tr>
+<tr>
+<td>Sales records and checks request</td>
+<td>Continue</td>
+<td>Required fields usable?</td>
+</tr>
+<tr>
+<td>Required fields usable?</td>
+<td>No</td>
+<td>Sales requests customer clarification</td>
+</tr>
+<tr>
+<td>Sales requests customer clarification</td>
+<td>Continue</td>
+<td>Wait for customer reply</td>
+</tr>
+<tr>
+<td>Wait for customer reply</td>
+<td>Continue</td>
+<td>Sales records and checks request</td>
+</tr>
+<tr>
+<td>Required fields usable?</td>
+<td>Yes</td>
+<td>Source access permitted?</td>
+</tr>
+<tr>
+<td>Source access permitted?</td>
+<td>No</td>
+<td>IT access exception; Sales tracks open case</td>
+</tr>
+<tr>
+<td>IT access exception; Sales tracks open case</td>
+<td>If access is resolved</td>
+<td>Sales records and checks request</td>
+</tr>
+<tr>
+<td>Source access permitted?</td>
+<td>Yes</td>
+<td>Operations queue</td>
+</tr>
+<tr>
+<td>Operations queue</td>
+<td>Continue</td>
+<td>Operations checks product and availability</td>
+</tr>
+<tr>
+<td>Operations checks product and availability</td>
+<td>Continue</td>
+<td>Information usable?</td>
+</tr>
+<tr>
+<td>Information usable?</td>
+<td>No: missed or copied field</td>
+<td>Return to Sales for correction</td>
+</tr>
+<tr>
+<td>Return to Sales for correction</td>
+<td>Continue</td>
+<td>Sales records and checks request</td>
+</tr>
+<tr>
+<td>Information usable?</td>
+<td>Yes</td>
+<td>Availability issue unresolved?</td>
+</tr>
+<tr>
+<td>Availability issue unresolved?</td>
+<td>Yes</td>
+<td>Operations owns availability exception; case waits</td>
+</tr>
+<tr>
+<td>Operations owns availability exception; case waits</td>
+<td>When resolved</td>
+<td>Operations checks product and availability</td>
+</tr>
+<tr>
+<td>Availability issue unresolved?</td>
+<td>No</td>
+<td>Sales quotation queue</td>
+</tr>
+<tr>
+<td>Sales quotation queue</td>
+<td>Continue</td>
+<td>Sales prepares, checks and sends quotation</td>
+</tr>
+<tr>
+<td>Sales prepares, checks and sends quotation</td>
+<td>Continue</td>
+<td>Quotation sent: end</td>
+</tr>
+</tbody>
+</table></div>
+<p>The map makes three learning points visible.</p>
 <p>First, handoffs create possible queues. The arrows do not mean work starts immediately.</p>
 <p>Second, rework returns to an earlier activity. Sales may perform an intake check again after Operations returns a missed or incorrectly copied field.</p>
 <p>Third, an exception can leave a case open. The arrows labelled “if” and “when” describe permitted recovery routes, not evidence that recovery has occurred in every case.</p>
@@ -701,19 +792,19 @@ The map makes three learning points visible.</p>
 <p>Steps and expected intermediate results</p>
 <ol>
 <li>Write the boundary.
-- Expected result: receipt is the trigger; Operations handoff is the successful end; unresolved access remains open.</li>
+  <strong>Expected result:</strong> receipt is the trigger; Operations handoff is the successful end; unresolved access remains open.</li>
 <li>Draw the normal path.
-- Expected result: receipt, queue, Sales check, permission decision and Operations handoff.</li>
+  <strong>Expected result:</strong> receipt, queue, Sales check, permission decision and Operations handoff.</li>
 <li>Add clarification and access branches.
-- Expected result: a customer-reply loop and a separately owned access exception.</li>
+  <strong>Expected result:</strong> a customer-reply loop and a separately owned access exception.</li>
 <li>Annotate evidence.
-- Expected result: supplied routes and records marked F; both broad claims marked A; access-denial cause marked U.</li>
+  <strong>Expected result:</strong> supplied routes and records marked F; both broad claims marked A; access-denial cause marked U.</li>
 <li>Reconcile each case.
-- Expected result: elapsed time equals supplied effort plus non-overlapping waits.</li>
+  <strong>Expected result:</strong> elapsed time equals supplied effort plus non-overlapping waits.</li>
 <li>Write a short problem statement.
-- Expected result: a statement reporting actual packet conditions without claiming monthly representativeness or guaranteed automation effects.</li>
+  <strong>Expected result:</strong> a statement reporting actual packet conditions without claiming monthly representativeness or guaranteed automation effects.
+Your final artifact is MSP_Intake_Subprocess_Map_Practice.md, containing the map, timing table, evidence annotations and problem statement.</li>
 </ol>
-<p>Your final artifact is MSP_Intake_Subprocess_Map_Practice.md, containing the map, timing table, evidence annotations and problem statement.</p>
 <p>An optional company alternative is acceptable if you can supply equivalent permission-cleared facts. Missing company timestamps should remain unknown rather than being estimated silently.</p>
 <p>Retain your synthetic final artifact. No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1107,10 +1198,10 @@ The map makes three learning points visible.</p>
 <p>Further reading</p>
 <p>The references support the concepts identified below. The exercises are product-independent; no product execution or company process verification is claimed.</p>
 <ol>
-<li>Microsoft Learn — Triggers in Power Automate. Explains the event that starts a flow, including automated, manual and scheduled examples.</li>
+<li>Microsoft Learn — Triggers in Power Automate. Explains the event that starts a flow, including automated, manual and scheduled examples.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-automate/triggers-introduction</p>
 <ol start="2">
-<li>Object Management Group — About BPMN 2.0.2. Introduces the formal Business Process Model and Notation standard and its implementation-independent purpose. This chapter uses simplified flowcharts rather than teaching the full standard.</li>
+<li>Object Management Group — About BPMN 2.0.2. Introduces the formal Business Process Model and Notation standard and its implementation-independent purpose. This chapter uses simplified flowcharts rather than teaching the full standard.  </li>
 </ol>
 <p>https://www.omg.org/spec/BPMN/2.0.2/About-BPMN</p></section><div class="book-end"><h2>Chapter 2 complete</h2><p>Map one familiar process, including triggers, roles, handoffs and exceptions; mark facts separately from assumptions.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-01">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-03">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

@@ -301,20 +301,24 @@ Check L4: Why is “the draft has been corrected” insufficient evidence to res
 
 ## 3. Visual explanation — Review, escalation and controlled return
 
-flowchart TD
-    A[Enquiry and permitted sources] --> B[Prepare draft or validation result]
-    B --> C{Required review completed?}
-    C -->|No| D[Hold case; use authorised backup or escalation]
-    C -->|Yes| E{Content and boundary acceptable?}
-    E -->|Routine missing or uncertain information| F[Named exception owner]
-    F -->|Authorised information supplied| B
-    E -->|Yes| G[Accept internal result for stated purpose]
-    E -->|Stop condition| H[Pause affected method and assess impact]
-    H --> I[Preserve evidence and correct]
-    I --> J[Verify correction and controls]
-    J --> K{Restart authorised?}
-    K -->|No| D
-    K -->|Yes| B
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Enquiry and permitted sources | Continue | Prepare draft or validation result |
+| Prepare draft or validation result | Continue | Required review completed? |
+| Required review completed? | No | Hold case; use authorised backup or escalation |
+| Required review completed? | Yes | Content and boundary acceptable? |
+| Content and boundary acceptable? | Routine missing or uncertain information | Named exception owner |
+| Named exception owner | Authorised information supplied | Prepare draft or validation result |
+| Content and boundary acceptable? | Yes | Accept internal result for stated purpose |
+| Content and boundary acceptable? | Stop condition | Pause affected method and assess impact |
+| Pause affected method and assess impact | Continue | Preserve evidence and correct |
+| Preserve evidence and correct | Continue | Verify correction and controls |
+| Verify correction and controls | Continue | Restart authorised? |
+| Restart authorised? | No | Hold case; use authorised backup or escalation |
+| Restart authorised? | Yes | Prepare draft or validation result |
+
 In plain language, a prepared result waits for its required review. Routine exceptions go to their named owners. A stop condition pauses the affected method and requires impact assessment, correction and verification.
 
 Acceptance applies to a particular version and purpose. Accepting an internal brief does not authorise a customer-facing quotation.
@@ -540,16 +544,15 @@ Learner decision worksheet
 Guided steps and expected intermediate results
 
 1. Complete the responsibility rows.
-- Expected result: every consequential decision has one accountable role.
+  **Expected result:** every consequential decision has one accountable role.
 2. Separate business approval from technical configuration.
-- Expected result: data-purpose approval and access implementation are distinct.
+  **Expected result:** data-purpose approval and access implementation are distinct.
 3. Apply the controls to each case.
-- Expected result: normal acceptance, routine exceptions and a stop condition are distinguished.
+  **Expected result:** normal acceptance, routine exceptions and a stop condition are distinguished.
 4. Create a short incident note for case 854.
-- Expected result: condition, containment, known impact, correction, unknown cause, verification status and restart owner are included.
+  **Expected result:** condition, containment, known impact, correction, unknown cause, verification status and restart owner are included.
 5. Add an impact note.
-- Expected result: explain one possible customer effect and one employee effect without inventing observed harm.
-
+  **Expected result:** explain one possible customer effect and one employee effect without inventing observed harm.
 Your final artifact is C04_CH07_Responsibility_Map_Practice.md, containing both tables, the incident note and the impact note.
 
 The exercise demonstrates operating decisions. It cannot demonstrate that a product enforces permissions or that a revised method will prevent recurrence.

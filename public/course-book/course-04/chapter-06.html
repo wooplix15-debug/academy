@@ -272,17 +272,64 @@
 <p>This is more informative than hiding the alternate result.</p>
 <p>Check L5: If two options are close and their order changes under reasonable weights, what should the recommendation explain?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Gates, comparison and the next decision</h2>
-<p>flowchart TD
-    A[Defined opportunity and required output] --&gt; B[Consider process simplification]
-    B --&gt; C[Identify plausible solution options]
-    C --&gt; D{Essential task requirement met?}
-    D --&gt;|Fails| E[Exclude or redesign the incomplete option]
-    D --&gt;|Unknown| F[Record assumption and seek evidence]
-    D --&gt;|Meets or conditionally plausible| G[Compare value, feasibility and risk]
-    F --&gt; G
-    G --&gt; H[Test sensitivity and critical dependencies]
-    H --&gt; I[Recommend proceed, revise or defer for a defined next step]
-The diagram explains why scoring follows task definition.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defined opportunity and required output</td>
+<td>Continue</td>
+<td>Consider process simplification</td>
+</tr>
+<tr>
+<td>Consider process simplification</td>
+<td>Continue</td>
+<td>Identify plausible solution options</td>
+</tr>
+<tr>
+<td>Identify plausible solution options</td>
+<td>Continue</td>
+<td>Essential task requirement met?</td>
+</tr>
+<tr>
+<td>Essential task requirement met?</td>
+<td>Fails</td>
+<td>Exclude or redesign the incomplete option</td>
+</tr>
+<tr>
+<td>Essential task requirement met?</td>
+<td>Unknown</td>
+<td>Record assumption and seek evidence</td>
+</tr>
+<tr>
+<td>Essential task requirement met?</td>
+<td>Meets or conditionally plausible</td>
+<td>Compare value, feasibility and risk</td>
+</tr>
+<tr>
+<td>Record assumption and seek evidence</td>
+<td>Continue</td>
+<td>Compare value, feasibility and risk</td>
+</tr>
+<tr>
+<td>Compare value, feasibility and risk</td>
+<td>Continue</td>
+<td>Test sensitivity and critical dependencies</td>
+</tr>
+<tr>
+<td>Test sensitivity and critical dependencies</td>
+<td>Continue</td>
+<td>Recommend proceed, revise or defer for a defined next step</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram explains why scoring follows task definition.</p>
 <p>An option with an unknown capability can receive a provisional design comparison, but it retains the unknown gate. An option known to fail the required output must be excluded or redesigned.</p>
 <p>The final decision names the next step. Proceeding with an offline comparison, technical verification or pilot design is different from proceeding with live implementation.</p>
 </section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Select the next mechanism to investigate</h2>
@@ -806,7 +853,7 @@ The diagram explains why scoring follows task definition.</p>
 </table></div>
 <h3>Step 7: record the recommendation</h3>
 <p>Completed artifact: MSP_Solution_Recommendation_v0_1.md</p>
-<p>Recommendation: investigate native validation first for MSP-OPP-001, conditionally.</p>
+<p>Recommendation: investigate native validation first for MSP-OPP-001, conditionally.  </p>
 <p>It ranks highest under the base priorities and introduces fewer proposed components. Verify the exact checks, form/import coverage, permissions, entitlement and support ownership. If native coverage is inadequate, reassess the custom validator and integration designs. Failure-focused weighting changes the leading option, so containment must be checked explicitly. Continue the template comparison for MSP-OPP-002 and resolve the shared-record question for MSP-OPP-003. No live implementation or pilot result is established.</p>
 <p>Completed reference outcomes</p>
 <div class="table-wrap"><table>
@@ -1060,17 +1107,17 @@ The diagram explains why scoring follows task definition.</p>
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Apply the task-fit requirement.
-- Expected result: distinguish a complete proposed transfer from an export-only alternative.</li>
+  <strong>Expected result:</strong> distinguish a complete proposed transfer from an export-only alternative.</li>
 <li>Calculate base totals.
-- Expected result: three reproducible weighted scores.</li>
+  <strong>Expected result:</strong> three reproducible weighted scores.</li>
 <li>Apply failure-focused weights.
-- Expected result: show whether the leading design changes.</li>
+  <strong>Expected result:</strong> show whether the leading design changes.</li>
 <li>Resolve the four cases.
-- Expected result: normal creation, clarification, permission hold and reconciliation handled separately.</li>
+  <strong>Expected result:</strong> normal creation, clarification, permission hold and reconciliation handled separately.</li>
 <li>Write a recommendation.
-- Expected result: identify the leading base option, sensitivity and evidence required before live use.</li>
+  <strong>Expected result:</strong> identify the leading base option, sensitivity and evidence required before live use.
+Your final artifact is C04_CH06_Option_Comparison_Practice.md.</li>
 </ol>
-<p>Your final artifact is C04_CH06_Option_Comparison_Practice.md.</p>
 <p>In a group, use Sponsor, Sales, Operations, Finance and IT perspectives. Individually, explain what each role needs from the recommendation.</p>
 <p>No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1432,14 +1479,14 @@ The diagram explains why scoring follows task definition.</p>
 <p>Further reading</p>
 <p>Official sources were accessed for the product and architectural concepts cited here. No product was executed. Meridian’s application, native capability, connectors, editions, entitlements, permissions and regional dependencies remain unverified.</p>
 <ol>
-<li>Microsoft Learn — Create a business rule in Microsoft Dataverse. Describes validation and other business-rule actions, with scope and app-type dependencies. It is a capability example, not confirmation of Meridian’s application.</li>
+<li>Microsoft Learn — Create a business rule in Microsoft Dataverse. Describes validation and other business-rule actions, with scope and app-type dependencies. It is a capability example, not confirmation of Meridian’s application.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-create-business-rule</p>
 <ol start="2">
-<li>Zoho Flow — FAQ. Describes cross-app trigger/action workflows and explains that deleting a flow does not remove earlier updates in other applications.</li>
+<li>Zoho Flow — FAQ. Describes cross-app trigger/action workflows and explains that deleting a flow does not remove earlier updates in other applications.  </li>
 </ol>
 <p>https://www.zoho.com/flow/help/faq.html</p>
 <ol start="3">
-<li>Anthropic — Building effective agents. Explains predefined workflows, dynamically directed agents and the trade-off between added capability and complexity. Use it for architectural reasoning rather than current configuration procedures.</li>
+<li>Anthropic — Building effective agents. Explains predefined workflows, dynamically directed agents and the trade-off between added capability and complexity. Use it for architectural reasoning rather than current configuration procedures.  </li>
 </ol>
 <p>https://www.anthropic.com/engineering/building-effective-agents</p></section><div class="book-end"><h2>Chapter 6 complete</h2><p>Compare native product features, Flow, custom development and AI against value, feasibility and risk.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-05">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-07">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

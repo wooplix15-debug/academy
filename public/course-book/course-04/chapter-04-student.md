@@ -272,15 +272,19 @@ Check L5: Why can a technically successful demonstration still be organisational
 
 ## 3. Visual explanation — Readiness is a chain of conditions
 
-flowchart LR
-    A[Useful business task] --> B[Source quality and authority]
-    B --> C[Named owners]
-    C --> D[Permitted access]
-    D --> E[Interfaces and identifiers]
-    E --> F[Licences and usage capacity]
-    F --> G[Stable process boundary]
-    G --> H[Support and stakeholder readiness]
-    H --> I[Bounded pilot decision]
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Useful business task | Continue | Source quality and authority |
+| Source quality and authority | Continue | Named owners |
+| Named owners | Continue | Permitted access |
+| Permitted access | Continue | Interfaces and identifiers |
+| Interfaces and identifiers | Continue | Licences and usage capacity |
+| Licences and usage capacity | Continue | Stable process boundary |
+| Stable process boundary | Continue | Support and stakeholder readiness |
+| Support and stakeholder readiness | Continue | Bounded pilot decision |
+
 The diagram shows a dependency chain. If the source is not authoritative, a connection only moves unreliable information faster. If access is not permitted, technical feasibility does not create permission. If a licence is missing, the design may not be deployable. If nobody supports the change, a successful test may not survive normal use.
 
 The chain is not strictly linear in every project. Some checks can occur in parallel. The learning point is that a missing condition should be made visible before a proceed decision.
@@ -614,18 +618,17 @@ Learner worksheet
 Guided steps and expected intermediate results
 
 1. Assess the source sample.
-- Expected result: you identify missing quantity, missing date, absent approved source and missing source-date evidence.
+  **Expected result:** you identify missing quantity, missing date, absent approved source and missing source-date evidence.
 2. Separate ownership from access.
-- Expected result: business owners are named, but drafting-service access and maintenance ownership remain unresolved.
+  **Expected result:** business owners are named, but drafting-service access and maintenance ownership remain unresolved.
 3. Assess the current boundary.
-- Expected result: the offline internal brief has a clear boundary and no live integration dependency.
+  **Expected result:** the offline internal brief has a clear boundary and no live integration dependency.
 4. Score each criterion.
-- Expected result: each score cites at least one supplied fact.
+  **Expected result:** each score cites at least one supplied fact.
 5. Calculate the weighted total.
-- Expected result: all weighted points sum to the total.
+  **Expected result:** all weighted points sum to the total.
 6. Write a decision.
-- Expected result: the decision states whether to proceed with a bounded offline template exercise, revise the live generative design or defer it.
-
+  **Expected result:** the decision states whether to proceed with a bounded offline template exercise, revise the live generative design or defer it.
 Your final artifact is MSP_OPP_002_Readiness_Scorecard_Practice.md.
 
 A score alone is incomplete. Include the critical gaps, the next evidence requests and one limitation of the matrix.

@@ -588,18 +588,17 @@ Learner worksheet
 Steps and expected intermediate results
 
 1. Count cases and rework flags.
-- Expected result: a reproducible denominator and a separate reworked-case count.
+  **Expected result:** a reproducible denominator and a separate reworked-case count.
 2. Calculate baseline effort.
-- Expected result: preparation, other initial work and additional rework shown separately.
+  **Expected result:** preparation, other initial work and additional rework shown separately.
 3. Sum forecast preparation components.
-- Expected result: assisted handling, review/correction and manual fallback all included.
+  **Expected result:** assisted handling, review/correction and manual fallback all included.
 4. Preserve unchanged activities.
-- Expected result: other initial effort and baseline rework remain in the forecast.
+  **Expected result:** other initial effort and baseline rework remain in the forecast.
 5. Count calls and price usage.
-- Expected result: additional calls included; no call charged to ineligible cases.
+  **Expected result:** additional calls included; no call charged to ineligible cases.
 6. Write benefit statements.
-- Expected result: released minutes reported as capacity; cash savings reported separately; deployment costs identified as incomplete.
-
+  **Expected result:** released minutes reported as capacity; cash savings reported separately; deployment costs identified as incomplete.
 Your final artifact is C04_CH05_Value_Cost_Model_Practice.md.
 
 In a group, Finance can check units, Sales can check review/fallback effort, Operations can check unchanged work and IT can check cost dependencies. Individually, perform those checks in the same order.

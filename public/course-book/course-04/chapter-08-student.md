@@ -279,19 +279,23 @@ Check L4: Why should a corrected unsupported promise still appear in the stop-co
 
 ## 3. Visual explanation — Evidence supports a bounded decision
 
-flowchart TD
-    A[Define question, audience and boundary] --> B[Freeze baseline, cases and criteria]
-    B --> C{Permissions, owners and resources confirmed?}
-    C -->|No| D[Revise or defer the affected pilot arm]
-    C -->|Yes| E[Prepare and review each assigned case]
-    E --> F{Stop condition?}
-    F -->|Yes| G[Contain, preserve evidence and investigate]
-    F -->|No| H[Record quality, effort, completion and feedback]
-    H --> I{All planned evidence complete?}
-    I -->|No| J[Report unfinished records and revise completion plan]
-    I -->|Yes| K[Compare against success criteria]
-    K --> L[Proceed, revise or defer for a named next step]
-    G --> L
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Define question, audience and boundary | Continue | Freeze baseline, cases and criteria |
+| Freeze baseline, cases and criteria | Continue | Permissions, owners and resources confirmed? |
+| Permissions, owners and resources confirmed? | No | Revise or defer the affected pilot arm |
+| Permissions, owners and resources confirmed? | Yes | Prepare and review each assigned case |
+| Prepare and review each assigned case | Continue | Stop condition? |
+| Stop condition? | Yes | Contain, preserve evidence and investigate |
+| Stop condition? | No | Record quality, effort, completion and feedback |
+| Record quality, effort, completion and feedback | Continue | All planned evidence complete? |
+| All planned evidence complete? | No | Report unfinished records and revise completion plan |
+| All planned evidence complete? | Yes | Compare against success criteria |
+| Compare against success criteria | Continue | Proceed, revise or defer for a named next step |
+| Contain, preserve evidence and investigate | Continue | Proceed, revise or defer for a named next step |
+
 The diagram separates readiness to start, immediate stopping and end-of-pilot assessment.
 
 A pilot with no stop event can still be incomplete. A pilot with excellent corrected outputs can still have triggered a stop. Both conditions belong in the decision record.
@@ -560,16 +564,15 @@ Learner charter worksheet
 Guided steps and expected intermediate results
 
 1. Draft the charter.
-- Expected result: all worksheet elements populated with the supplied facts.
+  **Expected result:** all worksheet elements populated with the supplied facts.
 2. Separate planned and completed cases.
-- Expected result: the open record remains visible.
+  **Expected result:** the open record remains visible.
 3. Calculate quality and participation.
-- Expected result: denominators distinguish reviewed cases, assigned cases and users.
+  **Expected result:** denominators distinguish reviewed cases, assigned cases and users.
 4. Calculate effort.
-- Expected result: completed-case effort and all effort spent so far are reported separately.
+  **Expected result:** completed-case effort and all effort spent so far are reported separately.
 5. Apply the decision rule.
-- Expected result: a decision that does not treat unfinished work as zero remaining effort.
-
+  **Expected result:** a decision that does not treat unfinished work as zero remaining effort.
 Your final artifact is C04_CH08_Pilot_Charter_Practice.md, containing the charter and a measurement/decision note.
 
 In a group, assign Sponsor, Sales, Operations, Finance and IT perspectives. Individually, check the same questions from each role’s viewpoint.

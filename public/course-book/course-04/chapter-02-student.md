@@ -230,27 +230,31 @@ Check L4: What evidence would distinguish “customers wait longer” from “lo
 
 The following is a simplified current-state discovery map. It uses ordinary flowchart conventions, not full Business Process Model and Notation, or BPMN. BPMN is a formal, implementation-independent process notation maintained by the Object Management Group.2
 
-flowchart TD
-    A[Customer enquiry available] --> B[Sales intake queue]
-    B --> C[Sales records and checks request]
-    C --> D{Required fields usable?}
-    D -->|No| E[Sales requests customer clarification]
-    E --> F[Wait for customer reply]
-    F --> C
-    D -->|Yes| G{Source access permitted?}
-    G -->|No| H[IT access exception; Sales tracks open case]
-    H -->|If access is resolved| C
-    G -->|Yes| I[Operations queue]
-    I --> J[Operations checks product and availability]
-    J --> K{Information usable?}
-    K -->|No: missed or copied field| L[Return to Sales for correction]
-    L --> C
-    K -->|Yes| M{Availability issue unresolved?}
-    M -->|Yes| N[Operations owns availability exception; case waits]
-    N -->|When resolved| J
-    M -->|No| O[Sales quotation queue]
-    O --> P[Sales prepares, checks and sends quotation]
-    P --> Q[Quotation sent: end]
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Customer enquiry available | Continue | Sales intake queue |
+| Sales intake queue | Continue | Sales records and checks request |
+| Sales records and checks request | Continue | Required fields usable? |
+| Required fields usable? | No | Sales requests customer clarification |
+| Sales requests customer clarification | Continue | Wait for customer reply |
+| Wait for customer reply | Continue | Sales records and checks request |
+| Required fields usable? | Yes | Source access permitted? |
+| Source access permitted? | No | IT access exception; Sales tracks open case |
+| IT access exception; Sales tracks open case | If access is resolved | Sales records and checks request |
+| Source access permitted? | Yes | Operations queue |
+| Operations queue | Continue | Operations checks product and availability |
+| Operations checks product and availability | Continue | Information usable? |
+| Information usable? | No: missed or copied field | Return to Sales for correction |
+| Return to Sales for correction | Continue | Sales records and checks request |
+| Information usable? | Yes | Availability issue unresolved? |
+| Availability issue unresolved? | Yes | Operations owns availability exception; case waits |
+| Operations owns availability exception; case waits | When resolved | Operations checks product and availability |
+| Availability issue unresolved? | No | Sales quotation queue |
+| Sales quotation queue | Continue | Sales prepares, checks and sends quotation |
+| Sales prepares, checks and sends quotation | Continue | Quotation sent: end |
+
 The map makes three learning points visible.
 
 First, handoffs create possible queues. The arrows do not mean work starts immediately.
@@ -495,18 +499,17 @@ Blank learner worksheets
 Steps and expected intermediate results
 
 1. Write the boundary.
-- Expected result: receipt is the trigger; Operations handoff is the successful end; unresolved access remains open.
+  **Expected result:** receipt is the trigger; Operations handoff is the successful end; unresolved access remains open.
 2. Draw the normal path.
-- Expected result: receipt, queue, Sales check, permission decision and Operations handoff.
+  **Expected result:** receipt, queue, Sales check, permission decision and Operations handoff.
 3. Add clarification and access branches.
-- Expected result: a customer-reply loop and a separately owned access exception.
+  **Expected result:** a customer-reply loop and a separately owned access exception.
 4. Annotate evidence.
-- Expected result: supplied routes and records marked F; both broad claims marked A; access-denial cause marked U.
+  **Expected result:** supplied routes and records marked F; both broad claims marked A; access-denial cause marked U.
 5. Reconcile each case.
-- Expected result: elapsed time equals supplied effort plus non-overlapping waits.
+  **Expected result:** elapsed time equals supplied effort plus non-overlapping waits.
 6. Write a short problem statement.
-- Expected result: a statement reporting actual packet conditions without claiming monthly representativeness or guaranteed automation effects.
-
+  **Expected result:** a statement reporting actual packet conditions without claiming monthly representativeness or guaranteed automation effects.
 Your final artifact is MSP_Intake_Subprocess_Map_Practice.md, containing the map, timing table, evidence annotations and problem statement.
 
 An optional company alternative is acceptable if you can supply equivalent permission-cleared facts. Missing company timestamps should remain unknown rather than being estimated silently.

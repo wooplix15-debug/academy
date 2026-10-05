@@ -264,17 +264,21 @@ Check L4: Why should an updated template have a version identifier even if the c
 
 ## 3. Visual explanation — Adoption is a feedback cycle
 
-flowchart TD
-    A[Understand role impacts and concerns] --> B[Communicate purpose, boundary and actions]
-    B --> C[Practise normal and exception cases]
-    C --> D{Required task usable and understood?}
-    D -->|No| E[Identify instruction, access or accessibility barrier]
-    E --> F[Propose and check a process update]
-    F --> B
-    D -->|Yes| G[Confirm participation for permitted pilot scope]
-    G --> H[Collect task, review and feedback evidence]
-    H --> I[Decide and communicate changes]
-    I --> F
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Understand role impacts and concerns | Continue | Communicate purpose, boundary and actions |
+| Communicate purpose, boundary and actions | Continue | Practise normal and exception cases |
+| Practise normal and exception cases | Continue | Required task usable and understood? |
+| Required task usable and understood? | No | Identify instruction, access or accessibility barrier |
+| Identify instruction, access or accessibility barrier | Continue | Propose and check a process update |
+| Propose and check a process update | Continue | Communicate purpose, boundary and actions |
+| Required task usable and understood? | Yes | Confirm participation for permitted pilot scope |
+| Confirm participation for permitted pilot scope | Continue | Collect task, review and feedback evidence |
+| Collect task, review and feedback evidence | Continue | Decide and communicate changes |
+| Decide and communicate changes | Continue | Propose and check a process update |
+
 The diagram shows that communication alone is not adoption.
 
 When a task cannot be completed, the next action is diagnosis. More practice may help a knowledge gap, but it will not grant missing permission or make an inaccessible control usable.
@@ -529,18 +533,17 @@ Blank learner worksheet
 Guided steps and expected intermediate results
 
 1. Identify the work and barrier.
-- Expected result: separate understanding of the process from ability to record the response.
+  **Expected result:** separate understanding of the process from ability to record the response.
 2. Draft the communication.
-- Expected result: accurate scope, next action and help route.
+  **Expected result:** accurate scope, next action and help route.
 3. Plan completion of practice.
-- Expected result: use the permitted text alternative without claiming the prototype is fixed.
+  **Expected result:** use the permitted text alternative without claiming the prototype is fixed.
 4. Assign the process update.
-- Expected result: owner, version and task-based verification.
+  **Expected result:** owner, version and task-based verification.
 5. Calculate measures.
-- Expected result: separate notice receipt, scenario completion and participant readiness.
+  **Expected result:** separate notice receipt, scenario completion and participant readiness.
 6. Record the decision.
-- Expected result: pending responses remain visible and are not removed from denominators.
-
+  **Expected result:** pending responses remain visible and are not removed from denominators.
 Your final artifact is C04_CH09_Change_Plan_Practice.md.
 
 In a group, use the five Meridian management perspectives. Individually, check whether each proposed action has a clear owner and evidence.

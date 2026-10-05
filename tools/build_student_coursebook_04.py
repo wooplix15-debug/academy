@@ -32,6 +32,47 @@ SECTION_RE = re.compile(
     r"10\. Chapter recap and next step|11\. Glossary and further reading)$"
 )
 
+def mermaid_table(lines):
+    """Convert the supplied Mermaid flow into an accessible transition table."""
+    edge_re = re.compile(r"^\s*(\w+)(?:\[([^\]]*)\]|\{([^}]*)\})?\s*-->(?:\|([^|]*)\|)?\s*(\w+)(?:\[([^\]]*)\]|\{([^}]*)\})?\s*$")
+    node_re = re.compile(r"(\w+)(?:\[([^\]]*)\]|\{([^}]*)\})")
+    labels, groups, edges = {}, {}, []
+    group = ""
+    for line in lines:
+        stripped = line.strip()
+        sub = re.match(r'^subgraph\s+\w+\["([^\"]+)"\]', stripped)
+        if sub:
+            group = sub.group(1)
+            continue
+        if stripped == "end":
+            group = ""
+            continue
+        for node, square, diamond in node_re.findall(line):
+            labels[node] = square or diamond
+            if group:
+                groups[node] = group
+        edge = edge_re.match(line)
+        if edge:
+            src, src_square, src_diamond, condition, dest, dst_square, dst_diamond = edge.groups()
+            if src_square or src_diamond:
+                labels[src] = src_square or src_diamond
+            if dst_square or dst_diamond:
+                labels[dest] = dst_square or dst_diamond
+            if group:
+                groups.setdefault(src, group)
+                groups.setdefault(dest, group)
+            edges.append((group or groups.get(src, ""), labels.get(src, src), condition or "", labels.get(dest, dest)))
+    if not edges:
+        return "\n".join(lines)
+    has_group = any(row[0] for row in edges)
+    header = "| Part | From | Route or condition | To |" if has_group else "| From | Route or condition | To |"
+    divider = "| --- | --- | --- | --- |" if has_group else "| --- | --- | --- |"
+    rows = []
+    for phase, src, condition, dest in edges:
+        values = ([phase, src, condition or "Continue", dest] if has_group else [src, condition or "Continue", dest])
+        rows.append("| " + " | ".join(str(v).replace("|", "\\|").replace("\n", " ") for v in values) + " |")
+    return "\n".join(["Transition map — each row is one arrow in the supplied flowchart.", "", header, divider, *rows])
+
 def read_source(number):
     text = (SOURCE_DIR / f"chapter_{number:02d}.md").read_text(encoding="utf-8")
     text = re.sub(r"^---\n.*?\n---\n", "", text, count=1, flags=re.S)
@@ -39,19 +80,42 @@ def read_source(number):
     title_match = re.search(r"^# (.+)$", text, flags=re.M)
     title = title_match.group(1).strip() if title_match else SYLLABUS["chapters"][number - 1]["title"]
     text = re.sub(r"^# .+\n", "", text, count=1)
-    lines = []
-    previous_kind = "blank"
-    in_fence = False
-    for original in text.splitlines():
-        line = original.rstrip()
-        if line.startswith("```"):
-            in_fence = not in_fence
+    raw_lines = text.splitlines()
+    lines, i = [], 0
+    while i < len(raw_lines):
+        line = raw_lines[i]
+        if re.match(r"^\s*flowchart\s+(?:TD|TB|LR|RL|BT)\s*$", line):
+            diagram, j = [], i + 1
+            while j < len(raw_lines):
+                candidate = raw_lines[j]
+                if re.match(r"^\s*(?:subgraph\s+|end\s*$|\w+(?:\[[^\]]*\]|\{[^}]*\})?\s*-->)", candidate):
+                    diagram.append(candidate)
+                    j += 1
+                    continue
+                if not candidate.strip() and j + 1 < len(raw_lines) and re.match(r"^\s*(?:subgraph\s+|end\s*$|\w+(?:\[[^\]]*\]|\{[^}]*\})?\s*-->)", raw_lines[j + 1]):
+                    diagram.append(candidate)
+                    j += 1
+                    continue
+                break
+            lines.extend(["", mermaid_table(diagram), ""])
+            i = j
+            continue
+        if re.match(r"^\s*- Expected result:", line):
+            line = re.sub(r"^\s*- Expected result:", "  **Expected result:**", line)
         if SECTION_RE.match(line.strip()):
             line = "## " + line.strip()
         elif re.match(r"^(?:What you need|Your contribution to the course project|Lesson \d+ — .+|Guided practice(?: — .+)?|Independent challenge(?: — .+)?|Worked example(?: — .+)?|Step \d+:.+)$", line.strip()):
             line = "### " + line.strip()
+        lines.append(line)
+        i += 1
+    # Source generation removed paragraph blank lines. Restore paragraph boundaries
+    # so prose, lists and tables remain easy to read in the student version.
+    separated, previous_kind, in_fence = [], "blank", False
+    for line in lines:
+        if line.startswith("```"):
+            in_fence = not in_fence
         if not line.strip():
-            lines.append("")
+            separated.append("")
             previous_kind = "blank"
             continue
         if in_fence:
@@ -66,12 +130,12 @@ def read_source(number):
             kind = "block"
         else:
             kind = "text"
-        if lines and lines[-1] and not in_fence:
+        if separated and separated[-1] and not in_fence:
             if (kind == "text" and previous_kind in {"text", "list", "table", "block"}) or (kind in {"list", "table", "block"} and previous_kind in {"text", "list", "table", "block"} and kind != previous_kind):
-                lines.append("")
-        lines.append(line)
+                separated.append("")
+        separated.append(line)
         previous_kind = kind
-    return title, "\n".join(lines).strip()
+    return title, "\n".join(separated).strip()
 
 def render_sections(body):
     rendered = markdown.markdown(body, extensions=["tables", "fenced_code", "sane_lists"])
@@ -116,7 +180,8 @@ for number, chapter in enumerate(SYLLABUS["chapters"], start=1):
     content = f'''{head}<main id="main" class="book-page">{hero}<div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary>{nav_html}</details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content">{reader}{end}</article></div></main>{footer.replace('</body>', '<script src="/course-book/course-04/course-book.js" defer></script></body>')}'''
     (OUT / f"{slug}.html").write_text(content, encoding="utf-8")
     # The download is student-facing text with no YAML/frontmatter.
-    (OUT / f"{slug}-student.md").write_text(f"# {title}\n\n{body}\n", encoding="utf-8")
+    downloadable_body = "\n".join(line.rstrip() for line in body.splitlines())
+    (OUT / f"{slug}-student.md").write_text(f"# {title}\n\n{downloadable_body}\n", encoding="utf-8")
     source_links.append((number, title, chapter.get("topics", "")))
 
 items = []

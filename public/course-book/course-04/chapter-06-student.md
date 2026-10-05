@@ -282,16 +282,20 @@ Check L5: If two options are close and their order changes under reasonable weig
 
 ## 3. Visual explanation — Gates, comparison and the next decision
 
-flowchart TD
-    A[Defined opportunity and required output] --> B[Consider process simplification]
-    B --> C[Identify plausible solution options]
-    C --> D{Essential task requirement met?}
-    D -->|Fails| E[Exclude or redesign the incomplete option]
-    D -->|Unknown| F[Record assumption and seek evidence]
-    D -->|Meets or conditionally plausible| G[Compare value, feasibility and risk]
-    F --> G
-    G --> H[Test sensitivity and critical dependencies]
-    H --> I[Recommend proceed, revise or defer for a defined next step]
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Defined opportunity and required output | Continue | Consider process simplification |
+| Consider process simplification | Continue | Identify plausible solution options |
+| Identify plausible solution options | Continue | Essential task requirement met? |
+| Essential task requirement met? | Fails | Exclude or redesign the incomplete option |
+| Essential task requirement met? | Unknown | Record assumption and seek evidence |
+| Essential task requirement met? | Meets or conditionally plausible | Compare value, feasibility and risk |
+| Record assumption and seek evidence | Continue | Compare value, feasibility and risk |
+| Compare value, feasibility and risk | Continue | Test sensitivity and critical dependencies |
+| Test sensitivity and critical dependencies | Continue | Recommend proceed, revise or defer for a defined next step |
+
 The diagram explains why scoring follows task definition.
 
 An option with an unknown capability can receive a provisional design comparison, but it retains the unknown gate. An option known to fail the required output must be excluded or redesigned.
@@ -573,16 +577,15 @@ Learner worksheets
 Guided steps and expected intermediate results
 
 1. Apply the task-fit requirement.
-- Expected result: distinguish a complete proposed transfer from an export-only alternative.
+  **Expected result:** distinguish a complete proposed transfer from an export-only alternative.
 2. Calculate base totals.
-- Expected result: three reproducible weighted scores.
+  **Expected result:** three reproducible weighted scores.
 3. Apply failure-focused weights.
-- Expected result: show whether the leading design changes.
+  **Expected result:** show whether the leading design changes.
 4. Resolve the four cases.
-- Expected result: normal creation, clarification, permission hold and reconciliation handled separately.
+  **Expected result:** normal creation, clarification, permission hold and reconciliation handled separately.
 5. Write a recommendation.
-- Expected result: identify the leading base option, sensitivity and evidence required before live use.
-
+  **Expected result:** identify the leading base option, sensitivity and evidence required before live use.
 Your final artifact is C04_CH06_Option_Comparison_Practice.md.
 
 In a group, use Sponsor, Sales, Operations, Finance and IT perspectives. Individually, explain what each role needs from the recommendation.

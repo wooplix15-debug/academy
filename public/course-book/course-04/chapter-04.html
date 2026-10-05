@@ -401,16 +401,59 @@
 <p>A stakeholder who disagrees may identify a missing requirement. Record the disagreement rather than treating it as resistance to be overcome.</p>
 <p>Check L5: Why can a technically successful demonstration still be organisationally unready?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Readiness is a chain of conditions</h2>
-<p>flowchart LR
-    A[Useful business task] --&gt; B[Source quality and authority]
-    B --&gt; C[Named owners]
-    C --&gt; D[Permitted access]
-    D --&gt; E[Interfaces and identifiers]
-    E --&gt; F[Licences and usage capacity]
-    F --&gt; G[Stable process boundary]
-    G --&gt; H[Support and stakeholder readiness]
-    H --&gt; I[Bounded pilot decision]
-The diagram shows a dependency chain. If the source is not authoritative, a connection only moves unreliable information faster. If access is not permitted, technical feasibility does not create permission. If a licence is missing, the design may not be deployable. If nobody supports the change, a successful test may not survive normal use.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Useful business task</td>
+<td>Continue</td>
+<td>Source quality and authority</td>
+</tr>
+<tr>
+<td>Source quality and authority</td>
+<td>Continue</td>
+<td>Named owners</td>
+</tr>
+<tr>
+<td>Named owners</td>
+<td>Continue</td>
+<td>Permitted access</td>
+</tr>
+<tr>
+<td>Permitted access</td>
+<td>Continue</td>
+<td>Interfaces and identifiers</td>
+</tr>
+<tr>
+<td>Interfaces and identifiers</td>
+<td>Continue</td>
+<td>Licences and usage capacity</td>
+</tr>
+<tr>
+<td>Licences and usage capacity</td>
+<td>Continue</td>
+<td>Stable process boundary</td>
+</tr>
+<tr>
+<td>Stable process boundary</td>
+<td>Continue</td>
+<td>Support and stakeholder readiness</td>
+</tr>
+<tr>
+<td>Support and stakeholder readiness</td>
+<td>Continue</td>
+<td>Bounded pilot decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram shows a dependency chain. If the source is not authoritative, a connection only moves unreliable information faster. If access is not permitted, technical feasibility does not create permission. If a licence is missing, the design may not be deployable. If nobody supports the change, a successful test may not survive normal use.</p>
 <p>The chain is not strictly linear in every project. Some checks can occur in parallel. The learning point is that a missing condition should be made visible before a proceed decision.</p>
 <p>Plain-text explanation:</p>
 <p>Define the task, confirm the source, name the owners, verify access, check the systems and identifiers, confirm licences and capacity, assess process stability, assign support and engage stakeholders. Then decide whether the next step is a bounded pilot, more discovery or deferral.</p>
@@ -871,7 +914,7 @@ The diagram shows a dependency chain. If the source is not authoritative, a conn
 <p>This demonstrates a limitation of weighted scoring: a high total can conceal a critical zero. Meridian should treat licence and access as gates for any live transfer, regardless of the total.</p>
 <h3>Step 6: make a readiness decision</h3>
 <p>Completed artifact: MSP_Readiness_Decision_v0_1.md</p>
-<p>Decision: revise before live transfer assessment.</p>
+<p>Decision: revise before live transfer assessment.  </p>
 <p>The proposed Sales-to-Operations transfer scores 45.00% under the supplied weights. Data ownership is partly established and the business field mapping is drafted, but access, interface behaviour, licensing and support ownership remain incomplete. Assess a shared-record alternative, confirm permissions and entitlements, test duplicate handling and name a maintenance owner. The six-case internal concept packet may remain a learning exercise, but it is not evidence that a live integration is ready. MSP-PILOT-001 remains proposed and unexecuted.</p>
 <p>Why this decision is appropriate</p>
 <p>The decision is not based on a universal pass mark. The most important gaps are specific:</p>
@@ -1047,19 +1090,19 @@ The diagram shows a dependency chain. If the source is not authoritative, a conn
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Assess the source sample.
-- Expected result: you identify missing quantity, missing date, absent approved source and missing source-date evidence.</li>
+  <strong>Expected result:</strong> you identify missing quantity, missing date, absent approved source and missing source-date evidence.</li>
 <li>Separate ownership from access.
-- Expected result: business owners are named, but drafting-service access and maintenance ownership remain unresolved.</li>
+  <strong>Expected result:</strong> business owners are named, but drafting-service access and maintenance ownership remain unresolved.</li>
 <li>Assess the current boundary.
-- Expected result: the offline internal brief has a clear boundary and no live integration dependency.</li>
+  <strong>Expected result:</strong> the offline internal brief has a clear boundary and no live integration dependency.</li>
 <li>Score each criterion.
-- Expected result: each score cites at least one supplied fact.</li>
+  <strong>Expected result:</strong> each score cites at least one supplied fact.</li>
 <li>Calculate the weighted total.
-- Expected result: all weighted points sum to the total.</li>
+  <strong>Expected result:</strong> all weighted points sum to the total.</li>
 <li>Write a decision.
-- Expected result: the decision states whether to proceed with a bounded offline template exercise, revise the live generative design or defer it.</li>
+  <strong>Expected result:</strong> the decision states whether to proceed with a bounded offline template exercise, revise the live generative design or defer it.
+Your final artifact is MSP_OPP_002_Readiness_Scorecard_Practice.md.</li>
 </ol>
-<p>Your final artifact is MSP_OPP_002_Readiness_Scorecard_Practice.md.</p>
 <p>A score alone is incomplete. Include the critical gaps, the next evidence requests and one limitation of the matrix.</p>
 <p>No system access or cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1531,14 +1574,14 @@ The diagram shows a dependency chain. If the source is not authoritative, a conn
 <p>Further reading</p>
 <p>The following official sources were accessed for product concepts. Product names, editions, permissions, usage limits, pricing and licensing terms can vary by region, plan, environment and date. No Meridian product connection or product execution is claimed.</p>
 <ol>
-<li>Zoho Flow FAQ — Flow, triggers, actions, connections and execution considerations. Describes Zoho Flow’s product-specific trigger/action model, connections and some execution and third-party API considerations.</li>
+<li>Zoho Flow FAQ — Flow, triggers, actions, connections and execution considerations. Describes Zoho Flow’s product-specific trigger/action model, connections and some execution and third-party API considerations.  </li>
 </ol>
 <p>https://www.zoho.com/flow/help/faq.html</p>
 <ol start="2">
-<li>Microsoft Learn — Manage connections in Power Automate. Explains how Power Automate connections provide access to data and actions, and discusses connection management and troubleshooting.</li>
+<li>Microsoft Learn — Manage connections in Power Automate. Explains how Power Automate connections provide access to data and actions, and discusses connection management and troubleshooting.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-automate/add-manage-connections</p>
 <ol start="3">
-<li>Microsoft Learn — Power Platform licensing FAQs. Describes licensing categories and directs readers to current product-specific licensing material. It should be checked for the relevant product, region, edition and contract before any cost model is prepared.</li>
+<li>Microsoft Learn — Power Platform licensing FAQs. Describes licensing categories and directs readers to current product-specific licensing material. It should be checked for the relevant product, region, edition and contract before any cost model is prepared.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-platform/admin/powerapps-flow-licensing-faq</p></section><div class="book-end"><h2>Chapter 4 complete</h2><p>Score one process for data ownership, access, integration, licences, process stability and support readiness.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-03">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-05">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

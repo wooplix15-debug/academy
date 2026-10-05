@@ -270,23 +270,85 @@
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Maps for the selected proposal boundary</h2>
 <p>The final proposal focuses on internal enquiry preparation under MSP-OPP-002. The wider enquiry-to-quotation process remains context.</p>
 <p>The paired maps show the current preparation pattern and the proposed template-first pattern.</p>
-<p>flowchart TD
-    subgraph Current["Current state: supplied preparation pattern"]
-        A[Open permitted enquiry packet] --&gt; B[Manually organise and check request]
-        B --&gt; C[Find approved source facts or identify missing information]
-        C --&gt; D[Carry checked fields into working record]
-        D --&gt; E[Check and record internal brief or exception]
-    end</p>
-<pre><code>subgraph Proposed["Proposed future state: template-first comparison"]
-    F[Open permitted enquiry packet] --&gt; G[Check required fields and source permission]
-    G --&gt; H[Complete standard brief with facts and explicit unknowns]
-    H --&gt; I[Sales reviews identified version]
-    I --&gt; J{Acceptable result?}
-    J --&gt;|Yes| K[Record internal brief or correct exception]
-    J --&gt;|Correction needed| H
-    J --&gt;|Stop condition| L[Pause method and follow incident route]
-end
-</code></pre>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current state: supplied preparation pattern</td>
+<td>Open permitted enquiry packet</td>
+<td>Continue</td>
+<td>Manually organise and check request</td>
+</tr>
+<tr>
+<td>Current state: supplied preparation pattern</td>
+<td>Manually organise and check request</td>
+<td>Continue</td>
+<td>Find approved source facts or identify missing information</td>
+</tr>
+<tr>
+<td>Current state: supplied preparation pattern</td>
+<td>Find approved source facts or identify missing information</td>
+<td>Continue</td>
+<td>Carry checked fields into working record</td>
+</tr>
+<tr>
+<td>Current state: supplied preparation pattern</td>
+<td>Carry checked fields into working record</td>
+<td>Continue</td>
+<td>Check and record internal brief or exception</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Open permitted enquiry packet</td>
+<td>Continue</td>
+<td>Check required fields and source permission</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Check required fields and source permission</td>
+<td>Continue</td>
+<td>Complete standard brief with facts and explicit unknowns</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Complete standard brief with facts and explicit unknowns</td>
+<td>Continue</td>
+<td>Sales reviews identified version</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Sales reviews identified version</td>
+<td>Continue</td>
+<td>Acceptable result?</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Acceptable result?</td>
+<td>Yes</td>
+<td>Record internal brief or correct exception</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Acceptable result?</td>
+<td>Correction needed</td>
+<td>Complete standard brief with facts and explicit unknowns</td>
+</tr>
+<tr>
+<td>Proposed future state: template-first comparison</td>
+<td>Acceptable result?</td>
+<td>Stop condition</td>
+<td>Pause method and follow incident route</td>
+</tr>
+</tbody>
+</table></div>
 <p>In plain language, the current pattern requires manual organisation, source lookup and field carrying. The proposed pattern uses a standard structure, explicit uncertainty and recorded review.</p>
 <p>It does not assume an integration removes rekeying. It does not automate availability decisions. Any source-grounded assistance would be a separately controlled preparation method, subject to unresolved access and entitlement conditions.</p>
 <p>These maps describe the selected preparation boundary. They do not demonstrate that the proposed state has been implemented or that customer response time has improved.</p>
@@ -503,8 +565,8 @@ end
 <h3>Step 4: complete the one-page executive proposal</h3>
 <p>Artifact: MSP_Executive_Proposal_v0_1.md</p>
 <p>Meridian Supply — Internal Enquiry Preparation Pilot Proposal</p>
-<p>Proposal: MSP-PROP-001</p>
-<p>Opportunity: MSP-OPP-002</p>
+<p>Proposal: MSP-PROP-001  </p>
+<p>Opportunity: MSP-OPP-002  </p>
 <p>Status: Draft; not independently reviewed</p>
 <p>Decision requested: Revise the pilot-start package by closing readiness gaps. Retain a standard template as the first comparison method and keep source-grounded assistance gated until its prerequisites are confirmed.</p>
 <p>Problem and evidence: Meridian’s supplied synthetic baseline contains 120 completed enquiries and 38.4 staff hours per week, including additional rework. A separate selected packet identifies six preparation minutes per case. Discovery also shows waiting and different exception types; it does not establish that drafting is the main delay cause.</p>
@@ -886,17 +948,17 @@ end
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Calculate method results.
-- Expected result: planned and completed denominators remain distinct.</li>
+  <strong>Expected result:</strong> planned and completed denominators remain distinct.</li>
 <li>Apply stop rules before interpreting attractive averages.
-- Expected result: the corrected stop event remains visible.</li>
+  <strong>Expected result:</strong> the corrected stop event remains visible.</li>
 <li>Separate task effort from pilot resources and cash.
-- Expected result: administration and trial expenditure are included without being called cash savings.</li>
+  <strong>Expected result:</strong> administration and trial expenditure are included without being called cash savings.</li>
 <li>Present a brief of up to 200 words.
-- Expected result: decision request, evidence, costs, limitations and next step.</li>
+  <strong>Expected result:</strong> decision request, evidence, costs, limitations and next step.</li>
 <li>Record the decision.
-- Expected result: each method has a bounded disposition, owner and reconsideration condition.</li>
+  <strong>Expected result:</strong> each method has a bounded disposition, owner and reconsideration condition.
+In a group, present your brief from the Sponsor, Sales, Operations, Finance and IT perspectives. Individually, write one likely question from each role and answer it using the packet.</li>
 </ol>
-<p>In a group, present your brief from the Sponsor, Sales, Operations, Finance and IT perspectives. Individually, write one likely question from each role and answer it using the packet.</p>
 <p>Your final artifact is C04_CH10_Leadership_Decision_Practice.md.</p>
 <p>Retain the synthetic artifact. No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1231,10 +1293,10 @@ end
 <p>Further reading</p>
 <p>Official sources were accessed for the concepts cited. No product execution or independent proposal review is claimed.</p>
 <ol>
-<li>Anthropic — Reduce hallucinations. Explains grounding, uncertainty and verification when using a model to prepare factual material. These measures reduce, but do not eliminate, unsupported output.</li>
+<li>Anthropic — Reduce hallucinations. Explains grounding, uncertainty and verification when using a model to prepare factual material. These measures reduce, but do not eliminate, unsupported output.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</p>
 <ol start="2">
-<li>HM Treasury — The Green Book, 2026. Explains options appraisal, uncertainty and balanced decision-making. It is UK public-sector guidance; its requirements are not presented as Meridian or Wooplix rules.</li>
+<li>HM Treasury — The Green Book, 2026. Explains options appraisal, uncertainty and balanced decision-making. It is UK public-sector guidance; its requirements are not presented as Meridian or Wooplix rules.  </li>
 </ol>
 <p>https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026</p></section><div class="book-end"><h2>Chapter 10 complete</h2><p>Present the evidence, assumptions, costs and open questions, then record a proceed, revise or defer decision.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-09">← Previous chapter</a><a class="button button-dark" href="/courses/corporate-ai-automation-workshop#syllabus">Back to the course →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

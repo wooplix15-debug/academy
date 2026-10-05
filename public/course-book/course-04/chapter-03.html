@@ -309,15 +309,54 @@
 <p>The improved version is narrower but more useful. You can inspect the output and explain what evidence would support its value.</p>
 <p>Check L4: Why is “reduce effort” insufficient as the only expected-result field on a use-case card?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — From problem evidence to a candidate opportunity</h2>
-<p>flowchart TD
-    A[Recurring issue in records or process map] --&gt; B[Identify affected team and task]
-    B --&gt; C[Define trigger and bounded output]
-    C --&gt; D[Identify work pattern]
-    D --&gt; E[Compare simplification, rules, integration and AI assistance]
-    E --&gt; F[Name owner, exceptions and proposed measure]
-    F --&gt; G[Record candidate use-case card]
-    G --&gt; H[Assess readiness, value and priority in later chapters]
-The diagram shows a reasoning sequence. You begin with an issue and its evidence, then define the work. Technology comparison follows that definition.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recurring issue in records or process map</td>
+<td>Continue</td>
+<td>Identify affected team and task</td>
+</tr>
+<tr>
+<td>Identify affected team and task</td>
+<td>Continue</td>
+<td>Define trigger and bounded output</td>
+</tr>
+<tr>
+<td>Define trigger and bounded output</td>
+<td>Continue</td>
+<td>Identify work pattern</td>
+</tr>
+<tr>
+<td>Identify work pattern</td>
+<td>Continue</td>
+<td>Compare simplification, rules, integration and AI assistance</td>
+</tr>
+<tr>
+<td>Compare simplification, rules, integration and AI assistance</td>
+<td>Continue</td>
+<td>Name owner, exceptions and proposed measure</td>
+</tr>
+<tr>
+<td>Name owner, exceptions and proposed measure</td>
+<td>Continue</td>
+<td>Record candidate use-case card</td>
+</tr>
+<tr>
+<td>Record candidate use-case card</td>
+<td>Continue</td>
+<td>Assess readiness, value and priority in later chapters</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram shows a reasoning sequence. You begin with an issue and its evidence, then define the work. Technology comparison follows that definition.</p>
 <p>The last step is assessment, not automatic implementation. A well-written card may still be deferred because its data is unavailable, its ownership is unclear or its costs exceed its value.</p>
 <p>The four work patterns describe what the business task concerns:</p>
 <ul>
@@ -827,19 +866,19 @@ The diagram shows a reasoning sequence. You begin with an issue and its evidence
 <p>Steps and expected intermediate results</p>
 <ol>
 <li>Write one recurring issue per card.
-- Expected result: three distinct issues, supported by the supplied packets.</li>
+  <strong>Expected result:</strong> three distinct issues, supported by the supplied packets.</li>
 <li>Specify trigger, team, task and result.
-- Expected result: four essential fields on every card.</li>
+  <strong>Expected result:</strong> four essential fields on every card.</li>
 <li>Separate information work from final decisions.
-- Expected result: Service eligibility, payment review and HR acceptance remain with named owners.</li>
+  <strong>Expected result:</strong> Service eligibility, payment review and HR acceptance remain with named owners.</li>
 <li>Describe the relevant exception.
-- Expected result: bespoke/missing item type, missing receiving evidence and missing start date are handled explicitly.</li>
+  <strong>Expected result:</strong> bespoke/missing item type, missing receiving evidence and missing start date are handled explicitly.</li>
 <li>Compare two plausible approaches.
-- Expected result: alternatives linked to the task, such as a template/checklist and appropriate retrieval or integration assistance.</li>
+  <strong>Expected result:</strong> alternatives linked to the task, such as a template/checklist and appropriate retrieval or integration assistance.</li>
 <li>Add measures and unknowns.
-- Expected result: measurable outputs without invented timings, costs or benefits.</li>
+  <strong>Expected result:</strong> measurable outputs without invented timings, costs or benefits.
+Your final artifact is C04_CH03_Use_Case_Cards_Practice.md, containing the three cards.</li>
 </ol>
-<p>Your final artifact is C04_CH03_Use_Case_Cards_Practice.md, containing the three cards.</p>
 <p>Retain the synthetic final artifact. No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
 <p>The Sponsor asks you to expand Meridian’s brief opportunity into “automatic complete quotations”.</p>
@@ -1354,10 +1393,10 @@ The diagram shows a reasoning sequence. You begin with an issue and its evidence
 <p>Further reading</p>
 <p>Official documentation was accessed for the retrieval and grounding concepts cited here. The business examples are synthetic, and no product execution is claimed. Meridian’s particular source connections, tool availability, licences, permissions and deployment requirements remain unverified.</p>
 <ol>
-<li>OpenAI documentation — File search. Describes semantic and keyword search over configured knowledge bases of uploaded files. Useful for understanding a concrete retrieval capability without assuming that all organisational content is connected.</li>
+<li>OpenAI documentation — File search. Describes semantic and keyword search over configured knowledge bases of uploaded files. Useful for understanding a concrete retrieval capability without assuming that all organisational content is connected.  </li>
 </ol>
 <p>https://developers.openai.com/api/docs/guides/tools-file-search</p>
 <ol start="2">
-<li>Anthropic documentation — Reduce hallucinations. Explains grounding, uncertainty and verification, including why these measures do not eliminate unsupported output.</li>
+<li>Anthropic documentation — Reduce hallucinations. Explains grounding, uncertainty and verification, including why these measures do not eliminate unsupported output.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</p></section><div class="book-end"><h2>Chapter 3 complete</h2><p>Turn recurring issues into use-case cards showing the affected team, task, trigger and expected result.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-02">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-04">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

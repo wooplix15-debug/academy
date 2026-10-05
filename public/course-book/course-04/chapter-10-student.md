@@ -242,23 +242,22 @@ The final proposal focuses on internal enquiry preparation under MSP-OPP-002. Th
 
 The paired maps show the current preparation pattern and the proposed template-first pattern.
 
-flowchart TD
-    subgraph Current["Current state: supplied preparation pattern"]
-        A[Open permitted enquiry packet] --> B[Manually organise and check request]
-        B --> C[Find approved source facts or identify missing information]
-        C --> D[Carry checked fields into working record]
-        D --> E[Check and record internal brief or exception]
-    end
+Transition map — each row is one arrow in the supplied flowchart.
 
-    subgraph Proposed["Proposed future state: template-first comparison"]
-        F[Open permitted enquiry packet] --> G[Check required fields and source permission]
-        G --> H[Complete standard brief with facts and explicit unknowns]
-        H --> I[Sales reviews identified version]
-        I --> J{Acceptable result?}
-        J -->|Yes| K[Record internal brief or correct exception]
-        J -->|Correction needed| H
-        J -->|Stop condition| L[Pause method and follow incident route]
-    end
+| Part | From | Route or condition | To |
+| --- | --- | --- | --- |
+| Current state: supplied preparation pattern | Open permitted enquiry packet | Continue | Manually organise and check request |
+| Current state: supplied preparation pattern | Manually organise and check request | Continue | Find approved source facts or identify missing information |
+| Current state: supplied preparation pattern | Find approved source facts or identify missing information | Continue | Carry checked fields into working record |
+| Current state: supplied preparation pattern | Carry checked fields into working record | Continue | Check and record internal brief or exception |
+| Proposed future state: template-first comparison | Open permitted enquiry packet | Continue | Check required fields and source permission |
+| Proposed future state: template-first comparison | Check required fields and source permission | Continue | Complete standard brief with facts and explicit unknowns |
+| Proposed future state: template-first comparison | Complete standard brief with facts and explicit unknowns | Continue | Sales reviews identified version |
+| Proposed future state: template-first comparison | Sales reviews identified version | Continue | Acceptable result? |
+| Proposed future state: template-first comparison | Acceptable result? | Yes | Record internal brief or correct exception |
+| Proposed future state: template-first comparison | Acceptable result? | Correction needed | Complete standard brief with facts and explicit unknowns |
+| Proposed future state: template-first comparison | Acceptable result? | Stop condition | Pause method and follow incident route |
+
 In plain language, the current pattern requires manual organisation, source lookup and field carrying. The proposed pattern uses a standard structure, explicit uncertainty and recorded review.
 
 It does not assume an integration removes rekeying. It does not automate availability decisions. Any source-grounded assistance would be a separately controlled preparation method, subject to unresolved access and entitlement conditions.
@@ -613,16 +612,15 @@ Learner worksheet
 Guided steps and expected intermediate results
 
 1. Calculate method results.
-- Expected result: planned and completed denominators remain distinct.
+  **Expected result:** planned and completed denominators remain distinct.
 2. Apply stop rules before interpreting attractive averages.
-- Expected result: the corrected stop event remains visible.
+  **Expected result:** the corrected stop event remains visible.
 3. Separate task effort from pilot resources and cash.
-- Expected result: administration and trial expenditure are included without being called cash savings.
+  **Expected result:** administration and trial expenditure are included without being called cash savings.
 4. Present a brief of up to 200 words.
-- Expected result: decision request, evidence, costs, limitations and next step.
+  **Expected result:** decision request, evidence, costs, limitations and next step.
 5. Record the decision.
-- Expected result: each method has a bounded disposition, owner and reconsideration condition.
-
+  **Expected result:** each method has a bounded disposition, owner and reconsideration condition.
 In a group, present your brief from the Sponsor, Sales, Operations, Finance and IT perspectives. Individually, write one likely question from each role and answer it using the packet.
 
 Your final artifact is C04_CH10_Leadership_Decision_Practice.md.

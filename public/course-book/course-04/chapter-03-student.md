@@ -232,14 +232,18 @@ Check L4: Why is “reduce effort” insufficient as the only expected-result fi
 
 ## 3. Visual explanation — From problem evidence to a candidate opportunity
 
-flowchart TD
-    A[Recurring issue in records or process map] --> B[Identify affected team and task]
-    B --> C[Define trigger and bounded output]
-    C --> D[Identify work pattern]
-    D --> E[Compare simplification, rules, integration and AI assistance]
-    E --> F[Name owner, exceptions and proposed measure]
-    F --> G[Record candidate use-case card]
-    G --> H[Assess readiness, value and priority in later chapters]
+Transition map — each row is one arrow in the supplied flowchart.
+
+| From | Route or condition | To |
+| --- | --- | --- |
+| Recurring issue in records or process map | Continue | Identify affected team and task |
+| Identify affected team and task | Continue | Define trigger and bounded output |
+| Define trigger and bounded output | Continue | Identify work pattern |
+| Identify work pattern | Continue | Compare simplification, rules, integration and AI assistance |
+| Compare simplification, rules, integration and AI assistance | Continue | Name owner, exceptions and proposed measure |
+| Name owner, exceptions and proposed measure | Continue | Record candidate use-case card |
+| Record candidate use-case card | Continue | Assess readiness, value and priority in later chapters |
+
 The diagram shows a reasoning sequence. You begin with an issue and its evidence, then define the work. Technology comparison follows that definition.
 
 The last step is assessment, not automatic implementation. A well-written card may still be deferred because its data is unavailable, its ownership is unclear or its costs exceed its value.
@@ -492,18 +496,17 @@ Complete one card for each issue. Use IDs EX-OPP-SVC-001, EX-OPP-FIN-001 and EX-
 Steps and expected intermediate results
 
 1. Write one recurring issue per card.
-- Expected result: three distinct issues, supported by the supplied packets.
+  **Expected result:** three distinct issues, supported by the supplied packets.
 2. Specify trigger, team, task and result.
-- Expected result: four essential fields on every card.
+  **Expected result:** four essential fields on every card.
 3. Separate information work from final decisions.
-- Expected result: Service eligibility, payment review and HR acceptance remain with named owners.
+  **Expected result:** Service eligibility, payment review and HR acceptance remain with named owners.
 4. Describe the relevant exception.
-- Expected result: bespoke/missing item type, missing receiving evidence and missing start date are handled explicitly.
+  **Expected result:** bespoke/missing item type, missing receiving evidence and missing start date are handled explicitly.
 5. Compare two plausible approaches.
-- Expected result: alternatives linked to the task, such as a template/checklist and appropriate retrieval or integration assistance.
+  **Expected result:** alternatives linked to the task, such as a template/checklist and appropriate retrieval or integration assistance.
 6. Add measures and unknowns.
-- Expected result: measurable outputs without invented timings, costs or benefits.
-
+  **Expected result:** measurable outputs without invented timings, costs or benefits.
 Your final artifact is C04_CH03_Use_Case_Cards_Practice.md, containing the three cards.
 
 Retain the synthetic final artifact. No system cleanup is required.

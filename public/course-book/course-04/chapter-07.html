@@ -366,21 +366,84 @@
 <p>REQ-8301 is a destination-generated identifier. Keep it distinct from the business enquiry, opportunity and pilot IDs.</p>
 <p>Check L4: Why is “the draft has been corrected” insufficient evidence to restart a paused method?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Review, escalation and controlled return</h2>
-<p>flowchart TD
-    A[Enquiry and permitted sources] --&gt; B[Prepare draft or validation result]
-    B --&gt; C{Required review completed?}
-    C --&gt;|No| D[Hold case; use authorised backup or escalation]
-    C --&gt;|Yes| E{Content and boundary acceptable?}
-    E --&gt;|Routine missing or uncertain information| F[Named exception owner]
-    F --&gt;|Authorised information supplied| B
-    E --&gt;|Yes| G[Accept internal result for stated purpose]
-    E --&gt;|Stop condition| H[Pause affected method and assess impact]
-    H --&gt; I[Preserve evidence and correct]
-    I --&gt; J[Verify correction and controls]
-    J --&gt; K{Restart authorised?}
-    K --&gt;|No| D
-    K --&gt;|Yes| B
-In plain language, a prepared result waits for its required review. Routine exceptions go to their named owners. A stop condition pauses the affected method and requires impact assessment, correction and verification.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enquiry and permitted sources</td>
+<td>Continue</td>
+<td>Prepare draft or validation result</td>
+</tr>
+<tr>
+<td>Prepare draft or validation result</td>
+<td>Continue</td>
+<td>Required review completed?</td>
+</tr>
+<tr>
+<td>Required review completed?</td>
+<td>No</td>
+<td>Hold case; use authorised backup or escalation</td>
+</tr>
+<tr>
+<td>Required review completed?</td>
+<td>Yes</td>
+<td>Content and boundary acceptable?</td>
+</tr>
+<tr>
+<td>Content and boundary acceptable?</td>
+<td>Routine missing or uncertain information</td>
+<td>Named exception owner</td>
+</tr>
+<tr>
+<td>Named exception owner</td>
+<td>Authorised information supplied</td>
+<td>Prepare draft or validation result</td>
+</tr>
+<tr>
+<td>Content and boundary acceptable?</td>
+<td>Yes</td>
+<td>Accept internal result for stated purpose</td>
+</tr>
+<tr>
+<td>Content and boundary acceptable?</td>
+<td>Stop condition</td>
+<td>Pause affected method and assess impact</td>
+</tr>
+<tr>
+<td>Pause affected method and assess impact</td>
+<td>Continue</td>
+<td>Preserve evidence and correct</td>
+</tr>
+<tr>
+<td>Preserve evidence and correct</td>
+<td>Continue</td>
+<td>Verify correction and controls</td>
+</tr>
+<tr>
+<td>Verify correction and controls</td>
+<td>Continue</td>
+<td>Restart authorised?</td>
+</tr>
+<tr>
+<td>Restart authorised?</td>
+<td>No</td>
+<td>Hold case; use authorised backup or escalation</td>
+</tr>
+<tr>
+<td>Restart authorised?</td>
+<td>Yes</td>
+<td>Prepare draft or validation result</td>
+</tr>
+</tbody>
+</table></div>
+<p>In plain language, a prepared result waits for its required review. Routine exceptions go to their named owners. A stop condition pauses the affected method and requires impact assessment, correction and verification.</p>
 <p>Acceptance applies to a particular version and purpose. Accepting an internal brief does not authorise a customer-facing quotation.</p>
 <p>The final return arrow requires a restart decision. Correcting a single case does not automatically restart the process.</p>
 </section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Meridian’s proposed responsibility and controls map</h2>
@@ -995,17 +1058,17 @@ In plain language, a prepared result waits for its required review. Routine exce
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Complete the responsibility rows.
-- Expected result: every consequential decision has one accountable role.</li>
+  <strong>Expected result:</strong> every consequential decision has one accountable role.</li>
 <li>Separate business approval from technical configuration.
-- Expected result: data-purpose approval and access implementation are distinct.</li>
+  <strong>Expected result:</strong> data-purpose approval and access implementation are distinct.</li>
 <li>Apply the controls to each case.
-- Expected result: normal acceptance, routine exceptions and a stop condition are distinguished.</li>
+  <strong>Expected result:</strong> normal acceptance, routine exceptions and a stop condition are distinguished.</li>
 <li>Create a short incident note for case 854.
-- Expected result: condition, containment, known impact, correction, unknown cause, verification status and restart owner are included.</li>
+  <strong>Expected result:</strong> condition, containment, known impact, correction, unknown cause, verification status and restart owner are included.</li>
 <li>Add an impact note.
-- Expected result: explain one possible customer effect and one employee effect without inventing observed harm.</li>
+  <strong>Expected result:</strong> explain one possible customer effect and one employee effect without inventing observed harm.
+Your final artifact is C04_CH07_Responsibility_Map_Practice.md, containing both tables, the incident note and the impact note.</li>
 </ol>
-<p>Your final artifact is C04_CH07_Responsibility_Map_Practice.md, containing both tables, the incident note and the impact note.</p>
 <p>The exercise demonstrates operating decisions. It cannot demonstrate that a product enforces permissions or that a revised method will prevent recurrence.</p>
 <p>Retain the synthetic final artifact. No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1453,10 +1516,10 @@ In plain language, a prepared result waits for its required review. Routine exce
 <p>Further reading</p>
 <p>The following official sources were accessed for the concepts cited. No product configuration or execution is claimed. Meridian’s actual permission model, edition, environment, region and support arrangements remain unverified.</p>
 <ol>
-<li>Microsoft Learn — Ownership-based security in Microsoft Dataverse. Explains separate privileges and how effective access can combine roles, teams and sharing. These details apply to Dataverse environments, not automatically to every application.</li>
+<li>Microsoft Learn — Ownership-based security in Microsoft Dataverse. Explains separate privileges and how effective access can combine roles, teams and sharing. These details apply to Dataverse environments, not automatically to every application.  </li>
 </ol>
 <p>https://learn.microsoft.com/en-us/power-platform/admin/wp-security-cds</p>
 <ol start="2">
-<li>Anthropic documentation — Mitigate jailbreaks and prompt injections. Explains instructions embedded in third-party content, source/instruction separation and limiting access to sensitive data and actions. Use the relevant current implementation guidance if a technical solution is later built.</li>
+<li>Anthropic documentation — Mitigate jailbreaks and prompt injections. Explains instructions embedded in third-party content, source/instruction separation and limiting access to sensitive data and actions. Use the relevant current implementation guidance if a technical solution is later built.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks</p></section><div class="book-end"><h2>Chapter 7 complete</h2><p>Create a responsibility map for data access, human review, decision ownership, escalation and incident handling.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-06">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-08">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>

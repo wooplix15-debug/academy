@@ -230,20 +230,79 @@
 <p>Freeze criteria before collecting results. If you lower a target after a failure, preserve the original result and label the new design separately.</p>
 <p>Check L4: Why should a corrected unsupported promise still appear in the stop-condition count?</p>
 </section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation — Evidence supports a bounded decision</h2>
-<p>flowchart TD
-    A[Define question, audience and boundary] --&gt; B[Freeze baseline, cases and criteria]
-    B --&gt; C{Permissions, owners and resources confirmed?}
-    C --&gt;|No| D[Revise or defer the affected pilot arm]
-    C --&gt;|Yes| E[Prepare and review each assigned case]
-    E --&gt; F{Stop condition?}
-    F --&gt;|Yes| G[Contain, preserve evidence and investigate]
-    F --&gt;|No| H[Record quality, effort, completion and feedback]
-    H --&gt; I{All planned evidence complete?}
-    I --&gt;|No| J[Report unfinished records and revise completion plan]
-    I --&gt;|Yes| K[Compare against success criteria]
-    K --&gt; L[Proceed, revise or defer for a named next step]
-    G --&gt; L
-The diagram separates readiness to start, immediate stopping and end-of-pilot assessment.</p>
+<p>Transition map — each row is one arrow in the supplied flowchart.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Route or condition</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Define question, audience and boundary</td>
+<td>Continue</td>
+<td>Freeze baseline, cases and criteria</td>
+</tr>
+<tr>
+<td>Freeze baseline, cases and criteria</td>
+<td>Continue</td>
+<td>Permissions, owners and resources confirmed?</td>
+</tr>
+<tr>
+<td>Permissions, owners and resources confirmed?</td>
+<td>No</td>
+<td>Revise or defer the affected pilot arm</td>
+</tr>
+<tr>
+<td>Permissions, owners and resources confirmed?</td>
+<td>Yes</td>
+<td>Prepare and review each assigned case</td>
+</tr>
+<tr>
+<td>Prepare and review each assigned case</td>
+<td>Continue</td>
+<td>Stop condition?</td>
+</tr>
+<tr>
+<td>Stop condition?</td>
+<td>Yes</td>
+<td>Contain, preserve evidence and investigate</td>
+</tr>
+<tr>
+<td>Stop condition?</td>
+<td>No</td>
+<td>Record quality, effort, completion and feedback</td>
+</tr>
+<tr>
+<td>Record quality, effort, completion and feedback</td>
+<td>Continue</td>
+<td>All planned evidence complete?</td>
+</tr>
+<tr>
+<td>All planned evidence complete?</td>
+<td>No</td>
+<td>Report unfinished records and revise completion plan</td>
+</tr>
+<tr>
+<td>All planned evidence complete?</td>
+<td>Yes</td>
+<td>Compare against success criteria</td>
+</tr>
+<tr>
+<td>Compare against success criteria</td>
+<td>Continue</td>
+<td>Proceed, revise or defer for a named next step</td>
+</tr>
+<tr>
+<td>Contain, preserve evidence and investigate</td>
+<td>Continue</td>
+<td>Proceed, revise or defer for a named next step</td>
+</tr>
+</tbody>
+</table></div>
+<p>The diagram separates readiness to start, immediate stopping and end-of-pilot assessment.</p>
 <p>A pilot with no stop event can still be incomplete. A pilot with excellent corrected outputs can still have triggered a stop. Both conditions belong in the decision record.</p>
 </section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case — Meridian’s broader comparison charter</h2>
 <p>Explicit new scenario inputs</p>
@@ -764,17 +823,17 @@ The diagram separates readiness to start, immediate stopping and end-of-pilot as
 <p>Guided steps and expected intermediate results</p>
 <ol>
 <li>Draft the charter.
-- Expected result: all worksheet elements populated with the supplied facts.</li>
+  <strong>Expected result:</strong> all worksheet elements populated with the supplied facts.</li>
 <li>Separate planned and completed cases.
-- Expected result: the open record remains visible.</li>
+  <strong>Expected result:</strong> the open record remains visible.</li>
 <li>Calculate quality and participation.
-- Expected result: denominators distinguish reviewed cases, assigned cases and users.</li>
+  <strong>Expected result:</strong> denominators distinguish reviewed cases, assigned cases and users.</li>
 <li>Calculate effort.
-- Expected result: completed-case effort and all effort spent so far are reported separately.</li>
+  <strong>Expected result:</strong> completed-case effort and all effort spent so far are reported separately.</li>
 <li>Apply the decision rule.
-- Expected result: a decision that does not treat unfinished work as zero remaining effort.</li>
+  <strong>Expected result:</strong> a decision that does not treat unfinished work as zero remaining effort.
+Your final artifact is C04_CH08_Pilot_Charter_Practice.md, containing the charter and a measurement/decision note.</li>
 </ol>
-<p>Your final artifact is C04_CH08_Pilot_Charter_Practice.md, containing the charter and a measurement/decision note.</p>
 <p>In a group, assign Sponsor, Sales, Operations, Finance and IT perspectives. Individually, check the same questions from each role’s viewpoint.</p>
 <p>Retain the synthetic artifact. No system cleanup is required.</p>
 </section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2>
@@ -1128,10 +1187,10 @@ The diagram separates readiness to start, immediate stopping and end-of-pilot as
 <p>Further reading</p>
 <p>Official documentation was accessed for evaluation concepts. This chapter uses product-independent measurement and does not require an evaluation API or claim product execution. Any later tool choice requires current checks of availability, permissions, edition and service terms.</p>
 <ol>
-<li>OpenAI — Evaluation best practices. Explains task-specific evaluation, realistic cases, human judgement and coverage of edge conditions.</li>
+<li>OpenAI — Evaluation best practices. Explains task-specific evaluation, realistic cases, human judgement and coverage of edge conditions.  </li>
 </ol>
 <p>https://developers.openai.com/api/docs/guides/evaluation-best-practices</p>
 <ol start="2">
-<li>Anthropic — Define success criteria and build evaluations. Explains specific, measurable, relevant criteria and multidimensional evaluation. Its example thresholds are examples, not Meridian requirements.</li>
+<li>Anthropic — Define success criteria and build evaluations. Explains specific, measurable, relevant criteria and multidimensional evaluation. Its example thresholds are examples, not Meridian requirements.  </li>
 </ol>
 <p>https://platform.claude.com/docs/en/test-and-evaluate/develop-tests</p></section><div class="book-end"><h2>Chapter 8 complete</h2><p>Draft a pilot charter with a clear boundary, baseline, representative cases, measures and stop criteria.</p><div class="reader-actions"><a class="text-link" href="/course-book/course-04/chapter-07">← Previous chapter</a><a class="button button-dark" href="/course-book/course-04/chapter-09">Next chapter →</a></div><p><a href="/course-book/course-04/">All Course 4 chapters →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-04/course-book.js" defer></script></body></html>
