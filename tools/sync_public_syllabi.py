@@ -31,7 +31,7 @@ def chapter_id(number):
 def syllabus(course):
     blocks = []
     for number, chapter in enumerate(course['chapters'], 1):
-        has_book = course['id'] in {4, 5} or (course['id'] == 1 and number == 1)
+        has_book = course['id'] in {4, 5} or (course['id'] == 1 and number <= 8)
         chapter_book = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}/chapter-{number:02d}">Read this chapter in the Course Book →</a></p>' if has_book else ''
         blocks.append(f'''<details class="module" id="{chapter_id(number)}" open>
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
