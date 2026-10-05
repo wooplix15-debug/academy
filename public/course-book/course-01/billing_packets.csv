@@ -1,0 +1,7 @@
+order_id,customer_id,quote_id,confirmation_ref,billing_contact_email,installation_required
+MER-ORD-001,MER-CUST-001,MER-QUOTE-001,CONF-001,northbank.billing@example.com,Yes
+MER-ORD-002,MER-CUST-002,MER-QUOTE-002,CONF-002,,No
+MER-ORD-003,MER-CUST-003,MER-QUOTE-003,CONF-003,harbor.billing@example.com,Yes
+MER-ORD-004,MER-CUST-004,MER-QUOTE-004,CONF-004,,No
+MER-ORD-005,MER-CUST-005,MER-QUOTE-005,CONF-005,oak.billing@example.com,Yes
+MER-ORD-006,MER-CUST-006,MER-QUOTE-006,CONF-006,elm.billing@example.com,No

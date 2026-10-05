@@ -74,3 +74,7 @@ Live drafting is optional and uses billable model API calls. Set `OPENAI_API_KEY
 Use synthetic records in examples. Do not claim official Zoho certification, employment, client results, approved savings, prices or trainer experience without documented owner approval. Keep expected results distinct from observed results. No license file is included; ask Wooplix before reusing these materials outside the team.
 
 See [`VERIFICATION_V2.md`](VERIFICATION_V2.md) for the checks documented for this workspace and their limits.
+
+## Student Course Book
+
+Course 1 now has a public student reader at `/course-book/course-01/`. Chapter 1 is available; the remaining chapters are listed as coming next. Edit `materials/student_books/course_01/chapter_01.md`, then run `python3 tools/sync_public_syllabi.py` and `python3 tools/build_student_coursebook.py`. Only student-facing chapter text is published; source metadata and AI continuity are excluded. The reader includes a section menu, accessible SVG process diagram, downloadable datasets, explained solutions and printing.

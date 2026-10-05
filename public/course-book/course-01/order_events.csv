@@ -1,0 +1,7 @@
+order_id,confirmation_at,first_sent_at,accepted_at,finance_returned,return_reason,status_at_cutoff
+MER-ORD-001,2026-09-14T09:00:00Z,2026-09-14T09:30:00Z,2026-09-14T10:00:00Z,No,None,Accepted
+MER-ORD-002,2026-09-14T09:15:00Z,2026-09-14T10:15:00Z,2026-09-14T14:15:00Z,Yes,Billing email missing,Accepted
+MER-ORD-003,2026-09-14T10:00:00Z,2026-09-14T10:30:00Z,2026-09-14T11:00:00Z,No,None,Accepted
+MER-ORD-004,2026-09-14T10:30:00Z,2026-09-14T12:00:00Z,2026-09-14T16:30:00Z,Yes,Billing email missing,Accepted
+MER-ORD-005,2026-09-14T13:00:00Z,2026-09-14T14:00:00Z,,Unknown,Not yet determined,Awaiting finance review
+MER-ORD-006,2026-09-14T14:00:00Z,,,Unknown,Not yet determined,Awaiting Sales send
