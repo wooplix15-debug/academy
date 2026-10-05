@@ -11,7 +11,8 @@ nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => 
   menuButton?.setAttribute('aria-label', 'Open menu');
   nav.classList.remove('is-open');
 }));
-document.querySelector('#year').textContent = new Date().getFullYear();
+const yearLabel = document.querySelector('#year');
+if (yearLabel) yearLabel.textContent = new Date().getFullYear();
 const courseDetails = document.querySelectorAll('.detail-list details');
 courseDetails.forEach(detail => detail.addEventListener('toggle', () => {
   if (detail.open) courseDetails.forEach(other => { if (other !== detail) other.open = false; });
