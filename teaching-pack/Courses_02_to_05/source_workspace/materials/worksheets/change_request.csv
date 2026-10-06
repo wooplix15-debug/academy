@@ -1,0 +1,2 @@
+change_id,reason,affected_modules,hours_delta,assessment_impact,website_impact,active_cohort_impact,author,technical_reviewer,approved_version
+CHANGE01,add timeout recovery lab,ZDV-M09,0,add ambiguous timeout scenario,none until reviewed,trainer correction notice if already taught,,,

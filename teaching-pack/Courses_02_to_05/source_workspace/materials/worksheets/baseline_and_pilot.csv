@@ -1,0 +1,2 @@
+task_id,case_type,baseline_active_minutes,assisted_generation_minutes,review_minutes,correction_minutes,total_assisted_minutes,quality_pass,observed_or_estimated,reviewer
+TASK01,synthetic follow up,10,,,,,,synthetic example,

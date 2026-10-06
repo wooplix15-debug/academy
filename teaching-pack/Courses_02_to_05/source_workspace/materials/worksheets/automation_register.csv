@@ -1,0 +1,2 @@
+rule_id,requirement_id,trigger,condition,action,replay_rule,owner,edition_verified,test_ref
+AUTO01,R01,lead create,region West,assign West Sales,verify after unrelated edit,Sales Operations,,

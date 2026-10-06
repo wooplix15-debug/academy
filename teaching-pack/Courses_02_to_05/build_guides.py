@@ -16,7 +16,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 LOCAL_SOURCE = HERE / "source_workspace"
-SOURCE = LOCAL_SOURCE if LOCAL_SOURCE.exists() else (ROOT if (ROOT / "data" / "catalog.json").exists() else ROOT / "outputs" / "Wooplix_Academy_Workspace_V2")
+SOURCE = LOCAL_SOURCE if LOCAL_SOURCE.exists() else ROOT / "outputs" / "Wooplix_Academy_Workspace_V2"
 CATALOG = json.loads((SOURCE / "data" / "catalog.json").read_text(encoding="utf-8"))
 PROGRAMS = {p["id"]: p for p in CATALOG["programs"]}
 COURSE_IDS = ["ZDV", "AAB", "CAW", "ZIM"]
@@ -115,41 +115,10 @@ def source_info(source_id: str) -> tuple[str, str | None, str]:
     return source_id, None, "source note not present in this package"
 
 
-def markdown_sections(source: str) -> dict[str, str]:
-    """Return level-two Markdown sections without changing their source text."""
-    result: dict[str, str] = {}
-    current = ""
-    lines: list[str] = []
-    for line in source.splitlines():
-        match = re.match(r"^##\s+(.+)$", line)
-        if match:
-            if current:
-                result[current] = "\n".join(lines).strip()
-            current, lines = match.group(1).strip(), []
-        elif current:
-            lines.append(line)
-    if current:
-        result[current] = "\n".join(lines).strip()
-    return result
-
-
-def process_strip(steps: list[str]) -> str:
-    """Turn the lab's own steps into a small visual teaching sequence."""
-    steps = steps[:5]
-    if not steps:
-        return ""
-    cards = "".join(
-        f'<div class="flow-step"><span>{i:02}</span><p>{esc(step)}</p></div>'
-        for i, step in enumerate(steps, 1)
-    )
-    return f'<div class="flow-strip" role="img" aria-label="Practical sequence with {len(steps)} steps">{cards}</div>'
-
-
 def module_html(course: dict, module: dict) -> str:
     lesson_path = SOURCE / module["practical_lab_path"]
     key_path = SOURCE / module["trainer_key_path"]
     lesson_text = lesson_path.read_text(encoding="utf-8")
-    sections = markdown_sections(lesson_text)
     boilerplate = "Verify the current edition, account metadata and API signature before a live product demonstration. Examples and thresholds are proposed lab rules."
     guidance = {
         "ZDV": "Verify the Creator or CRM edition, event, API scope or quota used by this module. Examples and thresholds are proposed lab rules.",
@@ -158,29 +127,13 @@ def module_html(course: dict, module: dict) -> str:
         "ZIM": "Verify the CRM feature, edition, profile or sandbox behavior used by this module. Examples and thresholds are proposed lab rules.",
     }
     lesson_text = lesson_text.replace(boilerplate, guidance[course["id"]])
-    key_sections = markdown_sections(key_path.read_text(encoding="utf-8"))
+    lesson = markdown_html(lesson_text)
+    key = markdown_html(key_path.read_text(encoding="utf-8"))
     number = module["id"]
     deps = ", ".join(module.get("depends_on", [])) or "Course entry module"
     outcomes = "".join(f"<li>{esc(x)}</li>" for x in module["outcomes"])
     checks = "".join(f"<li>{esc(x)}</li>" for x in module["acceptance_checks"])
     topics = "".join(f"<li>{esc(x)}</li>" for x in module["topics"])
-    module_no = esc(number.split("-")[-1].removeprefix("M"))
-    purpose = markdown_html(sections.get("Purpose", ""))
-    concept = markdown_html(sections.get("Explain the concept", ""))
-    example = markdown_html(sections.get("Demonstration and sample input", ""))
-    sequence = markdown_html(sections.get("Live teaching sequence", ""))
-    lab = markdown_html(sections.get("Guided lab", ""))
-    lab_steps = re.findall(r"^\s*\d+\.\s+(.+)$", sections.get("Guided lab", ""), re.M)
-    expected = markdown_html(sections.get("Expected result", ""))
-    negative = markdown_html(sections.get("Negative test", ""))
-    recovery = markdown_html(sections.get("Recovery test", ""))
-    independent = markdown_html(sections.get("Independent practice", ""))
-    reflection = markdown_html(sections.get("Learner reflection", ""))
-    source_note = markdown_html(sections.get("Source verification", ""))
-    prep = markdown_html(sections.get("Trainer preparation", ""))
-    submission = markdown_html(sections.get("Submit and assess", ""))
-    capstone = markdown_html(sections.get("Prerequisite and capstone contribution", ""))
-    key = markdown_html("\n\n".join(f"## {title}\n{body}" for title, body in key_sections.items()))
     code_html = ""
     if course["id"] == "ZDV" and number in {"ZDV-M03", "ZDV-M08"}:
         code_name = "normalize_requests.deluge" if number == "ZDV-M03" else "create_training_lead.deluge"
@@ -189,21 +142,13 @@ def module_html(course: dict, module: dict) -> str:
             safety = "Review the synthetic inputs and expected results. This starter has not been executed in a connected Zoho editor." if number == "ZDV-M03" else "External write is disabled by default. Do not enable it before confirming the training account, connection, field names and approval. It has not been executed in a connected Zoho editor."
             code_html = f'<details class="code-example"><summary>Open Deluge teaching example · {esc(code_name)}</summary><p>{esc(safety)}</p><pre><code>{esc(code_path.read_text(encoding="utf-8"))}</code></pre></details>'
     return f'''<article class="module" id="{esc(number)}" data-search="{esc(module['title']+' '+' '.join(module['topics'])+' '+module['lab'])}">
-      <header class="chapter-head"><span class="chapter-number">{module_no}</span><div><p class="eyebrow">{esc(number)} · {esc(module['live_hours'])} FACILITATED HOURS · {esc(module['practice_hours'])} PRACTICE HOURS</p><h2>{esc(module['title'])}</h2>{purpose}<p class="muted builds-on">Builds on: {esc(deps)}</p></div></header>
+      <header class="module-head"><div class="module-code">{esc(number)}</div><div><p class="eyebrow">{esc(module['live_hours'])} FACILITATED HOURS · {esc(module['practice_hours'])} PRACTICE HOURS</p><h2>{esc(module['title'])}</h2><p class="muted">Builds on: {esc(deps)}</p></div></header>
       <div class="outcomes"><strong>By the end, learners can</strong><ul>{outcomes}</ul></div>
-      <details class="capstone-note"><summary>Portfolio and prerequisite</summary>{capstone}</details>
-      <h3>Topics in this chapter</h3><ul class="topics">{topics}</ul>
-      <section class="teach-block"><p class="section-label">TEACH THE IDEA</p>{concept}</section>
-      <section class="example-block"><p class="section-label">WORKED EXAMPLE</p>{example}</section>
-      <h3>Teaching sequence</h3><div class="teaching-sequence">{sequence}</div>
-      <h3>Guided practical</h3>{process_strip(lab_steps)}<div class="lesson-content">{lab}</div>{code_html}
-      <section class="expected-block"><h3>Expected result</h3>{expected}</section>
-      <div class="recovery-grid"><section><h3>Failure to test</h3>{negative}</section><section><h3>Recovery to demonstrate</h3>{recovery}</section></div>
-      <section class="independent-block"><h3>Independent practice</h3>{independent}</section>
-      <section class="module-check"><h3>Submission and review</h3>{submission}<ul>{checks}</ul><p><strong>Evidence to collect:</strong> {esc(module['evidence'])}</p></section>
-      <section class="reflection-block"><h3>Ask learners to explain</h3>{reflection}</section>
-      <details class="trainer-key"><summary>Trainer answer guide and marking notes</summary><div>{key}</div></details>
-      <details class="source-notes"><summary>Source checks and trainer preparation</summary>{source_note}{prep}<p class="source-line"><strong>Source files:</strong> {esc(lesson_path.name)} · {esc(key_path.name)}. Check the cited source and account behavior before a live demonstration.</p></details>
+      <h3>Topics to teach</h3><ul class="topics">{topics}</ul>
+      <div class="lesson-content">{lesson}</div>{code_html}
+      <section class="module-check"><h3>Review against the module outcomes</h3><ul>{checks}</ul><p><strong>Evidence to collect:</strong> {esc(module['evidence'])}</p></section>
+      <details class="trainer-key"><summary>Trainer answer guide and review notes</summary><div>{key}</div></details>
+      <p class="source-line"><strong>Lesson source:</strong> {esc(lesson_path.name)} · <strong>Trainer key:</strong> {esc(key_path.name)}. Use the source links in the lesson to confirm product behavior before a live demonstration.</p>
       <label class="prepared"><input type="checkbox" data-module="{esc(number)}"> Mark trainer preparation complete</label>
     </article>'''
 
@@ -235,7 +180,7 @@ def course_page(course: dict) -> str:
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(course['title'])} | Wooplix Academy Trainer Guide</title>
 <style>
 :root{{--ink:#1c303a;--muted:#526973;--blue:#096b9b;--teal:#16878a;--red:#c52c40;--line:#dbe4e7;--paper:#fff;--canvas:#f3f6f7;--pale:#eaf5f4}}*{{box-sizing:border-box}}body{{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.68 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}.bar{{position:sticky;top:0;z-index:3;background:white;border-bottom:1px solid var(--line);padding:11px 20px;display:flex;justify-content:space-between;gap:12px;align-items:center}}.brand{{font-weight:800;letter-spacing:.08em;color:var(--blue)}}.brand b{{color:var(--red)}}.brand-badge{{height:32px;max-width:210px;object-fit:contain;vertical-align:middle;margin-right:9px}}.tools{{display:flex;gap:8px;align-items:center}}input[type=search]{{border:1px solid var(--line);border-radius:8px;padding:9px 12px;min-width:230px;font:inherit}}button{{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:9px 12px;font:inherit;cursor:pointer}}.wrap{{max-width:1280px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:280px minmax(0,900px);gap:24px;align-items:start}}nav{{position:sticky;top:67px;max-height:calc(100vh - 84px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}}nav h2{{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 9px}}nav a{{display:flex;gap:9px;padding:8px 9px;text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.35;border-radius:7px}}nav a:hover{{background:var(--pale)}}nav span{{color:var(--teal);font-weight:800}}main{{min-width:0}}.cover,.overview,.module,.references{{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,38px);margin-bottom:18px;box-shadow:0 8px 25px #102b3b0a}}.cover{{border-top:5px solid var(--teal)}}.eyebrow{{font-size:.74rem;letter-spacing:.12em;font-weight:800;color:var(--blue);text-transform:uppercase;margin:0 0 7px}}h1{{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;letter-spacing:-.035em;margin:4px 0 15px}}h2{{font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.2;margin:3px 0 8px}}h3{{font-size:1.14rem;line-height:1.35;margin:24px 0 8px}}h4{{font-size:1rem;margin:20px 0 7px}}.muted,.cover p{{color:var(--muted)}}.summary-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}}.fact{{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdfd}}.fact strong{{display:block;color:var(--blue);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}}.fact span{{display:block;margin-top:3px}}.module-head{{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start}}.module-code{{font-size:1.15rem;font-weight:800;color:var(--teal);padding-top:9px}}.outcomes,.module-check{{background:#f4f9f9;border:1px solid var(--line);border-radius:11px;padding:13px 17px;margin:20px 0}}.outcomes ul,.module-check ul{{margin:6px 0 0;padding-left:21px}}ul,ol{{padding-left:1.35rem}}li{{margin:4px 0}}.lesson-content h2{{font-size:1.36rem;margin-top:27px}}.lesson-content h3{{font-size:1.1rem}}.lesson-content p{{margin:9px 0 14px}}code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1f4f5;padding:1px 4px;border-radius:4px}}pre{{overflow:auto;background:#172b35;color:#f5f8f9;padding:14px;border-radius:10px}}blockquote{{border-left:3px solid var(--teal);padding-left:14px;color:var(--muted)}}.trainer-key{{border:1px solid #ead8dc;border-radius:11px;padding:0 15px;background:#fffafa;margin:20px 0}}.trainer-key summary{{padding:13px 0;cursor:pointer;font-weight:750;color:#9f2f45}}.trainer-key[open]{{padding-bottom:14px}}.source-line{{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}}.prepared{{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:.88rem}}.prepared input{{accent-color:var(--teal);width:17px;height:17px}}.hidden{{display:none!important}}.references a{{color:var(--blue)}}.references li{{padding:4px 0}}.notice{{border-left:4px solid var(--teal);padding:11px 15px;background:#eff8f7;margin:20px 0}}footer{{text-align:center;color:var(--muted);font-size:.83rem;padding:16px}}@media(max-width:900px){{.wrap{{grid-template-columns:1fr}}nav{{position:static;max-height:270px;display:flex;flex-wrap:wrap;align-content:start}}nav h2{{width:100%}}nav a{{width:49%}}}}@media(max-width:600px){{.wrap{{padding:0 10px;margin:12px auto;gap:12px}}.bar{{padding:9px 11px}}.tools{{flex-wrap:wrap;justify-content:end}}input[type=search]{{min-width:120px;width:40vw}}button{{padding:7px}}.summary-grid{{grid-template-columns:1fr}}nav a{{width:100%}}}}@media print{{body{{background:#fff;font-size:10.5pt}}.bar,nav,.prepared{{display:none!important}}.wrap{{display:block;margin:0;padding:0}}.cover,.overview,.module,.references{{box-shadow:none;border:0;border-radius:0;margin:0;padding:12mm;break-after:page}}.module{{break-before:page}}.trainer-key:not([open])>*:not(summary){{display:block!important}}.trainer-key>summary{{list-style:none}}a{{color:inherit;text-decoration:none}}}}
-.chapter-head{{display:grid;grid-template-columns:82px minmax(0,1fr);gap:20px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:20px}}.chapter-number{{font-size:4.8rem;line-height:.95;font-weight:300;letter-spacing:-.08em;color:var(--teal);font-variant-numeric:tabular-nums}}.chapter-head h2{{font-size:clamp(1.7rem,3.5vw,2.35rem);margin:4px 0 10px}}.chapter-head p{{margin:7px 0}}.builds-on{{font-size:.9rem}}.section-label{{font-size:.73rem;letter-spacing:.12em;font-weight:850;color:var(--blue);margin:0 0 9px}}.teach-block,.example-block,.expected-block,.independent-block,.reflection-block{{border-radius:12px;padding:17px 20px;margin:20px 0}}.teach-block{{background:#f4f9fa;border:1px solid var(--line)}}.example-block{{background:#fff8ed;border-left:4px solid #db9d43}}.expected-block{{background:#eff8f5;border-left:4px solid var(--teal);padding:4px 18px 14px}}.independent-block{{background:#f5f4fb;border-left:4px solid #7e70ad}}.reflection-block{{background:#f6f8f9;border:1px solid var(--line)}}.teaching-sequence ul{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:10px 0}}.teaching-sequence li{{margin:0;padding:10px 13px;background:#f8fafb;border:1px solid var(--line);border-radius:8px}}.flow-strip{{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0 18px}}.flow-step{{min-height:102px;padding:11px 12px;background:#f8fbfb;border:1px solid var(--line);border-radius:10px}}.flow-step span{{display:inline-block;color:var(--teal);font-weight:850;font-size:.78rem;letter-spacing:.08em}}.flow-step p{{font-size:.88rem;line-height:1.45;margin:5px 0}}.recovery-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}}.recovery-grid section{{padding:12px 16px;border:1px solid var(--line);border-radius:11px}}.recovery-grid section:first-child{{background:#fff8f7;border-top:3px solid var(--red)}}.recovery-grid section:last-child{{background:#f1f8f6;border-top:3px solid var(--teal)}}.recovery-grid h3{{margin:4px 0 8px}}.capstone-note,.source-notes{{border:1px solid var(--line);border-radius:10px;padding:0 14px;margin:17px 0;background:#fbfcfc}}.capstone-note summary,.source-notes summary{{cursor:pointer;padding:11px 0;font-weight:750;color:var(--blue)}}.capstone-note[open],.source-notes[open]{{padding-bottom:12px}}.module-check h3{{margin-top:4px}}.module-check>p{{margin-bottom:4px}}@media(max-width:700px){{.chapter-head{{grid-template-columns:55px 1fr;gap:12px}}.chapter-number{{font-size:3.4rem}}.flow-strip{{grid-template-columns:1fr 1fr}}.recovery-grid,.teaching-sequence ul{{grid-template-columns:1fr}}}}</style></head><body><header class="bar"><div class="brand"><img class="brand-badge" src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"> · {esc(course_id)}</div><div class="tools"><input id="search" type="search" placeholder="Find a module or topic"><button id="expand" type="button">Open trainer keys</button><button onclick="window.print()" type="button">Print</button></div></header>
+</style></head><body><header class="bar"><div class="brand"><img class="brand-badge" src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"> · {esc(course_id)}</div><div class="tools"><input id="search" type="search" placeholder="Find a module or topic"><button id="expand" type="button">Open trainer keys</button><button onclick="window.print()" type="button">Print</button></div></header>
 <div class="wrap"><nav><h2>{len(modules)} modules</h2>{nav}</nav><main>
 <section class="cover"><p class="eyebrow">TRAINER GUIDE · DRAFT FOR TEAM REVIEW</p><h1>{esc(course['title'])}</h1><p>{esc(course['outcome'])}</p><div class="summary-grid">{cards}</div><div class="notice"><strong>Trainer note.</strong> Course examples and test values are synthetic teaching material. Use current official documentation and the actual training organization for product steps; distinguish mock results from observed results. Do not claim vendor certification, employment or client outcomes.</div><p><strong>Capstone:</strong> {esc(course['capstone'])}</p></section>
 <section class="overview"><p class="eyebrow">ASSESSMENT AND PROJECT</p><h2>What learners build</h2><p>{esc(course['deliverables'])}</p><h3>Capstone scenarios to demonstrate</h3><ul>{tests}</ul><h3>Assessment weighting</h3><ul>{weights}</ul><p class="muted">The syllabus contains proposed completion rules. Confirm current grading, attendance, resubmission and credential wording with the academic lead before enrollment.</p><h3>How to use the trainer guide</h3><p>Each module contains the authored lesson plan followed by its trainer key. Use the linked module navigation, search, and print controls. Check the stated prerequisites and time budget; retain one portfolio of evidence through the capstone.</p></section>
@@ -276,13 +221,15 @@ def main() -> None:
     (HERE / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wooplix Academy · Trainer Guides 2–5</title><style>:root{{--ink:#19313d;--muted:#506773;--teal:#16878a;--blue:#096b9b;--red:#c52c40;--line:#dbe4e7;--pale:#f3f7f8}}*{{box-sizing:border-box}}body{{margin:0;background:var(--pale);color:var(--ink);font:16px/1.6 system-ui,sans-serif}}.brand-badge{{height:36px;max-width:250px;object-fit:contain;vertical-align:middle;margin-right:10px}}header{{background:#fff;border-bottom:1px solid var(--line);padding:26px max(calc((100vw - 1020px)/2),22px)}}.brand{{font-weight:850;letter-spacing:.09em;color:var(--blue)}}.brand b{{color:var(--red)}}main{{max-width:1020px;margin:40px auto;padding:0 22px}}h1{{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;margin:10px 0}}.intro{{color:var(--muted);max-width:740px}}.grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}}.course{{display:block;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:14px;padding:23px;color:inherit;text-decoration:none}}.course:hover{{transform:translateY(-2px);box-shadow:0 12px 26px #152d380f}}.course span{{font-size:.78rem;color:var(--teal);font-weight:800;letter-spacing:.1em}}.course h2{{font-size:1.35rem;line-height:1.25;margin:8px 0}}.course p{{color:var(--muted)}}.course strong{{color:var(--blue)}}.note{{margin-top:27px;padding:15px 18px;border-left:4px solid var(--teal);background:#eaf5f4}}footer{{text-align:center;color:var(--muted);margin:40px}}@media(max-width:650px){{.grid{{grid-template-columns:1fr}}}}</style></head><body><header><div class="brand"><img class="brand-badge" src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"> ACADEMY</div></header><main><p class="brand">TRAINER CONTENT · DRAFTS</p><h1>Course teaching guides</h1><p class="intro">Open a course to view its modules, classroom materials and trainer answer guidance. The guides are built from the current local syllabus, lesson plans and trainer keys.</p><div class="grid">{cards}</div><p class="note"><strong>Before delivery:</strong> Confirm the account edition, rehearse exact product steps, verify source links and set any course pass or attendance rules with the academic lead.</p></main><footer>Wooplix Academy · Courses 2–5 · Local draft library</footer></body></html>''', encoding="utf-8")
     readme = """# Wooplix Academy trainer guides for Courses 2–5
 
-Open `index.html` or choose a course from the pack’s `START_HERE.html`. Each guide works offline; official references require internet. The guides are assembled from the included catalog, 36 lesson plans and matching trainer keys.
+Open the four HTML guides in a current browser. Each is self-contained and works offline; external official source links need internet. The guides are assembled from the version 0.2 catalog, all 36 authored lesson plans and their matching trainer answer keys. Course hours and module order follow the catalog.
 
-## Edit and rebuild this copy
+`resources/datasets` and `resources/worksheets` contain the synthetic class materials. Do not use them as production imports. For edits, update the source syllabus, lesson plan or trainer key in `outputs/Wooplix_Academy_Workspace_V2`, then run `python3 build_guides.py` to refresh the HTML files.
 
-Edit the files under `source_workspace/`: the syllabi in `curriculum`, lessons in `materials/lesson_plans`, answer guidance in `materials/trainer_keys`, and course structure in `data/catalog.json`. Then run `python3 build_guides.py` from this folder. The script rebuilds all four HTML guides, the index, resource copies and this README. Keep `wooplix_partner_badge.png` beside the guides.
+All files are drafts for trainer and academic review. Product steps and feature access must be rehearsed in the chosen Zoho edition. This pack does not claim official vendor certification or client outcomes.
 
-`resources/datasets` and `resources/worksheets` are synthetic class materials, not production imports. All files are trainer drafts. Rehearse product steps in the selected edition and confirm assessment, attendance and certificate policies before enrollment. No official Zoho credential or client outcome is claimed.
+## Source impact
+
+This build creates separate trainer-facing views for ZDV, AAB, CAW and ZIM. It does not change the source syllabi, lesson plans, trainer keys, catalog hours, assessment policy or public website copy. Reference identifiers and review dates remain in the source files and knowledge manifest.
 """
     (HERE / "README.md").write_text(readme, encoding="utf-8")
 

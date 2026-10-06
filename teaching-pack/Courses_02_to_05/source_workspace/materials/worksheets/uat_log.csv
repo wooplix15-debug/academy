@@ -1,0 +1,2 @@
+case_id,requirement_id,input,persona,expected,actual,evidence_ref,defect_severity,tester,result
+UAT01,R01,L001 West,Sales West,West Sales owner,,,,,not_run

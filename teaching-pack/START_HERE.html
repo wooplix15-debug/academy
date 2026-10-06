@@ -1,1 +1,1504 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wooplix Academy Course Teaching Pack</title><style>:root{--ink:#19313d;--muted:#506773;--teal:#16878a;--blue:#096b9b;--red:#c52c40;--line:#dbe4e7;--paper:#fff;--pale:#f3f7f8}*{box-sizing:border-box}body{margin:0;background:var(--pale);color:var(--ink);font:16px/1.6 system-ui,sans-serif}header{background:#fff;border-bottom:1px solid var(--line);padding:22px max(calc((100vw - 1050px)/2),22px);display:flex;align-items:center;justify-content:space-between;gap:20px}header img{max-width:255px;max-height:45px;object-fit:contain}main{max-width:1050px;margin:38px auto;padding:0 22px}.kicker{color:var(--blue);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin:.3em 0}.intro{max-width:760px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:25px}.card{display:block;background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:14px;padding:22px;color:inherit;text-decoration:none}.card:hover{box-shadow:0 12px 26px #152d3812;transform:translateY(-2px)}.card span{font-size:.76rem;color:var(--teal);font-weight:850;letter-spacing:.1em}.card h2{font-size:1.3rem;line-height:1.25;margin:9px 0}.card p{color:var(--muted)}.card strong{color:var(--blue)}.note{margin:25px 0;padding:15px 18px;background:#eaf5f4;border-left:4px solid var(--teal)}footer{text-align:center;color:var(--muted);padding:25px}@media(max-width:650px){.grid{grid-template-columns:1fr}header{padding:14px 18px}}</style></head><body><header><img src="wooplix_partner_badge.png" alt="Wooplix authorized partner and NASSCOM member"><strong>ACADEMY · TRAINER LIBRARY</strong></header><main><p class="kicker">Five course teaching pack</p><h1>Course guides and class materials</h1><p class="intro">Choose a course to open its trainer guide. The pack contains lesson plans, trainer answer guidance, exercises and the supporting synthetic materials.</p><div class="grid"><a class="card" href="Course_01_Zoho_Business_Process_Automation/Course_01_Teacher_Guide.html"><span>COURSE 01</span><h2>Zoho Business Process & Corporate Automation</h2><p>Business owners, operations teams and Zoho administrators</p><strong>18 syllabus chapters · duration to be set by Wooplix</strong></a><a class="card" href="Courses_02_to_05/ZDV_zoho_creator_deluge_and_integration_developer_Trainer_Guide.html"><span>COURSE 02</span><h2>Zoho Creator Deluge and Integration Developer</h2><p>Existing Zoho developers and implementation specialists</p><strong>12 weeks · 72 hours</strong></a><a class="card" href="Courses_02_to_05/AAB_ai_and_agentic_business_automation_builder_Trainer_Guide.html"><span>COURSE 03</span><h2>AI and Agentic Business Automation Builder</h2><p>Zoho developers and automation practitioners</p><strong>10 weeks · 60 hours</strong></a><a class="card" href="Courses_02_to_05/CAW_corporate_ai_and_automation_discovery_workshop_Trainer_Guide.html"><span>COURSE 04</span><h2>Corporate AI and Automation Discovery Workshop</h2><p>Department leaders and employee teams</p><strong>2 weeks · 12 hours</strong></a><a class="card" href="Courses_02_to_05/ZIM_zoho_crm_implementation_practitioner_Trainer_Guide.html"><span>COURSE 05</span><h2>Zoho CRM Implementation Practitioner</h2><p>CRM administrators, sales operations and consultants</p><strong>10 weeks · 60 hours</strong></a></div><p class="note"><strong>Trainer review:</strong> Confirm the course title and duration before enrollment. Rehearse current Zoho steps in the selected account. The AI materials use approved/synthetic inputs and require a human reviewer for consequential actions.</p><p><a href="README.md">Read the editing and source notes</a></p></main><footer>Wooplix Academy · editable local teaching materials</footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wooplix Academy · Course Teaching & Learning Portal</title>
+  <meta name="description" content="Central curriculum portal for Wooplix Academy: Zoho Business Automation, Deluge Developer, Agentic AI, and CRM Practitioner courses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #0d9488;
+      --accent-light: #ccfbf1;
+      --indigo: #6366f1;
+      --indigo-light: #e0e7ff;
+      --amber: #f59e0b;
+      --amber-light: #fef3c7;
+      --rose: #e11d48;
+      --rose-light: #ffe4e6;
+      
+      --bg-canvas: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f1f5f9;
+      --border-subtle: #e2e8f0;
+      --border-hover: #cbd5e1;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+      --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.06);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    [data-theme="dark"] {
+      --bg-canvas: #090d16;
+      --bg-card: #131b2e;
+      --bg-card-subtle: #1e293b;
+      --border-subtle: #1e293b;
+      --border-hover: #334155;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --primary-light: #082f49;
+      --accent-light: #134e4a;
+      --indigo-light: #1e1b4b;
+      --amber-light: #451a03;
+      --rose-light: #4c0519;
+      
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+      --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .brand-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      border-radius: var(--radius-full);
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--border-hover);
+      transform: rotate(15deg);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-canvas) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 60px 24px 44px;
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      background: var(--accent-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--text-main);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    /* Live Search & Filter Bar */
+    .search-wrapper {
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--text-main);
+      box-shadow: var(--shadow-md);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Section Tabs */
+    .portal-tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 34px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary);
+      border-radius: var(--radius-full);
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* Course & Chapter Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-accent, var(--primary));
+      transition: height 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-hover);
+    }
+
+    .card:hover::before {
+      height: 6px;
+    }
+
+    .card-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .card-id-pill {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--badge-bg, var(--primary-light));
+      color: var(--badge-color, var(--primary));
+    }
+
+    .card-duration {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 750;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .card-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--card-accent, var(--primary));
+    }
+
+    .card-footer span.arrow {
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover .card-footer span.arrow {
+      transform: translateX(4px);
+    }
+
+    /* Student Chapter Items */
+    .chapter-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .chapter-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .chapter-badge-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .status-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .status-verified {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .status-draft {
+      background: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .chapter-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .chapter-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 16px;
+    }
+
+    .chapter-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-subtle);
+    }
+
+    /* Notice Callout Box */
+    .callout-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .callout-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .callout-body h3 {
+      font-size: 1rem;
+      font-weight: 750;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .callout-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Utility */
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .header-inner {
+        padding: 12px 16px;
+      }
+      .hero {
+        padding: 40px 16px 30px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="header-inner">
+      <a href="START_HERE.html" class="brand-group">
+        <img src="wooplix_partner_badge.png" alt="Wooplix Authorized Partner Badge" class="brand-logo">
+        <span class="brand-badge">⚡ Teaching Pack Hub</span>
+      </a>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-kicker">Five-Course Training Ecosystem · 2026 Edition</div>
+      <h1>Enterprise AI & Zoho <span>Curriculum Library</span></h1>
+      <p class="hero-lead">Comprehensive lesson plans, authored student coursebooks, synthetic test fixtures, and verified trainer answer keys for classroom & corporate delivery.</p>
+      
+      <!-- Interactive Filter -->
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="courseSearch" class="search-input" placeholder="Search courses, student chapters, or topics (e.g. Deluge, Prompts, CRM, Testing)...">
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Body -->
+  <main>
+    <!-- Notice Callout -->
+    <div class="callout-box">
+      <div class="callout-icon">🛡️</div>
+      <div class="callout-body">
+        <h3>Trainer & Student Safety Protocol</h3>
+        <p>All case studies (Northstar Distribution, Nova Field Service, Meridian Supply) use synthetic data with explicit tenant boundaries. Generative actions remain proposals requiring human review; no direct unapproved external writes are permitted.</p>
+      </div>
+    </div>
+
+    <!-- Portal View Tabs -->
+    <div class="portal-tabs">
+      <button class="tab-btn active" data-tab="trainer-guides">Trainer Guides (5 Courses)</button>
+      <button class="tab-btn" data-tab="student-chapters">Student Coursebooks & Chapters</button>
+      <button class="tab-btn" data-tab="class-materials">Worksheets & Assets</button>
+    </div>
+
+    <!-- TAB 1: TRAINER GUIDES -->
+    <section id="tab-trainer-guides" class="tab-content">
+      <div class="grid" id="guidesGrid">
+        
+        <!-- Course 1 -->
+        <a class="card" style="--card-accent: #0284c7; --badge-bg: #e0f2fe; --badge-color: #0284c7;" href="Course_01_Zoho_Business_Process_Automation/Course_01_Teacher_Guide.html" data-keywords="course 1 zoho business process automation meridian crm books desk analytics flow">
+          <div class="card-meta-top">
+            <span class="card-id-pill">COURSE 01</span>
+            <span class="card-duration">18 Modules</span>
+          </div>
+          <h2>Zoho Business Process & Corporate Automation</h2>
+          <p class="card-desc">Foundational operations, process discovery, user lifecycle, and cross-application solution architecture using Zoho One.</p>
+          <div class="card-footer">
+            <span>Open Trainer Guide</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Course 2 -->
+        <a class="card" style="--card-accent: #0d9488; --badge-bg: #ccfbf1; --badge-color: #0d9488;" href="Courses_02_to_05/ZDV_zoho_creator_deluge_and_integration_developer_Trainer_Guide.html" data-keywords="course 2 zdv zoho creator deluge integration developer nova field service api testing">
+          <div class="card-meta-top">
+            <span class="card-id-pill">COURSE 02 · ZDV</span>
+            <span class="card-duration">12 Weeks · 72 Hours</span>
+          </div>
+          <h2>Zoho Creator Deluge & Integration Developer</h2>
+          <p class="card-desc">Advanced Deluge script design, schema normalization, webhooks, composite APIs, and automated error recovery pipelines.</p>
+          <div class="card-footer">
+            <span>Open Trainer Guide</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Course 3 -->
+        <a class="card" style="--card-accent: #6366f1; --badge-bg: #e0e7ff; --badge-color: #6366f1;" href="Courses_02_to_05/AAB_ai_and_agentic_business_automation_builder_Trainer_Guide.html" data-keywords="course 3 aab ai and agentic business automation builder northstar prompt engineering mcp zia">
+          <div class="card-meta-top">
+            <span class="card-id-pill">COURSE 03 · AAB</span>
+            <span class="card-duration">10 Weeks · 60 Hours</span>
+          </div>
+          <h2>AI & Agentic Business Automation Builder</h2>
+          <p class="card-desc">Model APIs, grounding prompts, context envelopes, tool contracts, Zia Agent Studio, and Model Context Protocol (MCP) integrations.</p>
+          <div class="card-footer">
+            <span>Open Trainer Guide</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Course 4 -->
+        <a class="card" style="--card-accent: #f59e0b; --badge-bg: #fef3c7; --badge-color: #b45309;" href="Courses_02_to_05/CAW_corporate_ai_and_automation_discovery_workshop_Trainer_Guide.html" data-keywords="course 4 caw corporate ai automation discovery workshop executive leadership">
+          <div class="card-meta-top">
+            <span class="card-id-pill">COURSE 04 · CAW</span>
+            <span class="card-duration">2 Weeks · 12 Hours</span>
+          </div>
+          <h2>Corporate AI & Automation Discovery Workshop</h2>
+          <p class="card-desc">High-impact discovery framework for executives and department leads to identify, evaluate, and budget automation candidates.</p>
+          <div class="card-footer">
+            <span>Open Trainer Guide</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Course 5 -->
+        <a class="card" style="--card-accent: #e11d48; --badge-bg: #ffe4e6; --badge-color: #e11d48;" href="Courses_02_to_05/ZIM_zoho_crm_implementation_practitioner_Trainer_Guide.html" data-keywords="course 5 zim zoho crm implementation practitioner blueprints territory migration">
+          <div class="card-meta-top">
+            <span class="card-id-pill">COURSE 05 · ZIM</span>
+            <span class="card-duration">10 Weeks · 60 Hours</span>
+          </div>
+          <h2>Zoho CRM Implementation Practitioner</h2>
+          <p class="card-desc">End-to-end CRM deployment: pipeline staging, Blueprints, validation rules, data migration, security profiles, and analytics.</p>
+          <div class="card-footer">
+            <span>Open Trainer Guide</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: STUDENT COURSEBOOKS -->
+    <section id="tab-student-chapters" class="tab-content hidden">
+      <h2 style="font-size: 1.4rem; margin-bottom: 20px; font-weight: 750;">Authored Student Chapters (Markdown)</h2>
+      <div class="grid" id="chaptersGrid">
+
+        <!-- C01-CH09 -->
+        <div class="chapter-card" data-keywords="c01 ch09 workflow automation meridian solar crm rules triggers actions scheduled">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH09</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Workflow Automation</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Rules, criteria, instant actions, scheduled triggers, webhooks, and field update guardrails in Zoho CRM.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH09_Workflow_Automation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH10 -->
+        <div class="chapter-card" data-keywords="c01 ch10 blueprint approvals journey orchestration meridian solar transitions commandcenter">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH10</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Blueprint, Approvals and Journey Orchestration</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Process stage control, transitions, validation rules, multi-stage discount approvals, and CommandCenter journeys.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH10_Blueprint_Approvals_and_Journey_Orchestration_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH11 -->
+        <div class="chapter-card" data-keywords="c01 ch11 guided screens user actions meridian solar canvas wizards buttons scripts">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH11</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Guided Screens and User Actions</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Canvas layouts, wizards, custom buttons, subforms, and client-side scripts for sales rep productivity.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH11_Guided_Screens_and_User_Actions_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH12 -->
+        <div class="chapter-card" data-keywords="c01 ch12 products pricing commercial records meridian solar quotes sales orders price books">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH12</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Products, Pricing and Commercial Records</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Price books, volume discount tiers, bundle configurations, and quotation-to-sales-order lifecycles.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH12_Products_Pricing_and_Commercial_Records_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH13 -->
+        <div class="chapter-card" data-keywords="c01 ch13 books sales finance handoff meridian solar invoices payments receivables">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH13</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Books and the Sales-to-Finance Handoff</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">CRM to Zoho Books sync, invoice generation, tax rules, payment status reconciliation, and receivables tracking.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH13_Books_and_the_Sales_to_Finance_Handoff_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH14 -->
+        <div class="chapter-card" data-keywords="c01 ch14 cross application automation flow meridian solar webhooks payload mapping">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH14</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Cross-Application Automation with Flow</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Multi-app webhooks, payload mapping, branch logic, retry queues, and Zoho Flow orchestration.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH14_Cross_Application_Automation_with_Flow_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH15 -->
+        <div class="chapter-card" data-keywords="c01 ch15 customer service desk meridian solar tickets sla routing support">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH15</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Customer Service with Desk</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Support ticket intake, SLA response timers, department routing, CRM customer context, and escalation rules.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH15_Customer_Service_with_Desk_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH16 -->
+        <div class="chapter-card" data-keywords="c01 ch16 employee processes people meridian solar onboarding assets hr workflows">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH16</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Employee Processes with People</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Onboarding checklists, department transitions, asset assignment, and employee self-service records.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH16_Employee_Processes_with_People_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH17 -->
+        <div class="chapter-card" data-keywords="c01 ch17 reporting zoho analytics meridian solar sql query dashboards executive kpis">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH17</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Reporting and Zoho Analytics</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Data synchronization, cross-table relational models, SQL query tables, executive dashboards, and scheduled alerts.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH17_Reporting_and_Zoho_Analytics_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C01-CH18 -->
+        <div class="chapter-card" data-keywords="c01 ch18 testing rollout administration meridian solar sandbox change sets deployment audit">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #fef3c7; --badge-color: #d97706;">C01-CH18</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Testing, Rollout and Administration</h3>
+          <p class="chapter-meta">
+            <span>Course: BPA</span>
+            <span>Case: Meridian Solar</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Sandbox testing, change sets, deployment runbooks, role-based security audits, and handover documentation.</p>
+          <div class="chapter-actions">
+            <a href="C01_CH18_Testing_Rollout_and_Administration_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH01 -->
+        <div class="chapter-card" data-keywords="c02 ch01 requirements solution design nova field service functional non-functional adr acceptance criteria">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH01</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Requirements and Solution Design</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Functional vs non-functional requirements, data ownership boundaries, ADRs, testable acceptance criteria, and solution diagramming.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH01_Requirements_and_Solution_Design_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH02 -->
+        <div class="chapter-card" data-keywords="c02 ch02 programming developer tooling nova field service javascript postman git http json">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH02</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Programming and Developer Tooling</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Types, collections, functions, HTTP/REST, JSON payloads, Postman collections/variables, browser dev tools, and Git workflows.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH02_Programming_and_Developer_Tooling_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH03 -->
+        <div class="chapter-card" data-keywords="c02 ch03 creator data modelling forms nova field service lookups subforms lifecycle">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH03</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Creator Data Modelling and Forms</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Entities, relationships, lookups, subforms, business vs surrogate IDs, validation layers, lifecycle states, and safe schema migrations.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH03_Creator_Data_Modelling_and_Forms_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH04 -->
+        <div class="chapter-card" data-keywords="c02 ch04 creator reports pages interfaces nova field service kanban mobile dashboard">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH04</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Creator Reports, Pages and Interfaces</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Operational queues, criteria filtering, custom action transition gates, task-focused dashboards, and mobile field technician layouts.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH04_Creator_Reports_Pages_and_Interfaces_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH05 -->
+        <div class="chapter-card" data-keywords="c02 ch05 creator access portals nova field service security roles permissions profiles">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH05</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Creator Access and Portals</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Users, permissions, roles, profiles, record-level criteria, customer portal boundaries, and negative security testing.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH05_Creator_Access_and_Portals_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH06 -->
+        <div class="chapter-card" data-keywords="c02 ch06 creator workflows process control nova field service blueprints approvals events">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH06</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Creator Workflows and Process Control</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Form events, field actions, validation rules, multi-stage approval processes, blueprint gates, and automated notifications.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH06_Creator_Workflows_and_Process_Control_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH07 -->
+        <div class="chapter-card" data-keywords="c02 ch07 deluge language foundations nova field service syntax maps lists functions">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH07</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Deluge Language Foundations</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Deluge syntax, data types, collections, maps, lists, conditional logic, loops, custom functions, and execution contexts.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH07_Deluge_Language_Foundations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH08 -->
+        <div class="chapter-card" data-keywords="c02 ch08 deluge data operations nova field service queries insert update delete subforms">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH08</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Deluge Data Operations</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Database querying, insert/update/delete operations, criteria syntax, subform iteration, transactions, and aggregate metrics.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH08_Deluge_Data_Operations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH09 -->
+        <div class="chapter-card" data-keywords="c02 ch09 external services deluge nova field service invokeurl rest api oauth connections">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH09</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">External Services with Deluge</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">invokeurl task, REST integration, headers, authentication, OAuth connections, response parsing, and error recovery.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH09_External_Services_with_Deluge_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH10 -->
+        <div class="chapter-card" data-keywords="c02 ch10 debugging maintainable code nova field service logging refactoring limits runbook">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH10</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Debugging and Maintainable Code</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Deluge debugging, info logging, try-catch error handling, modular refactoring, execution limits, and runbook diagnostics.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH10_Debugging_and_Maintainable_Code_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH11 -->
+        <div class="chapter-card" data-keywords="c02 ch11 crm rest api foundations nova field service crud search coql bulk attachments">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH11</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">CRM REST API Foundations</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Zoho CRM REST API v8 fundamentals, module and field metadata inspection, CRUD operations, criteria search, related records, and attachments.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH11_CRM_REST_API_Foundations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH12 -->
+        <div class="chapter-card" data-keywords="c02 ch12 oauth connections integration security nova field service refresh tokens scopes grant types">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH12</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">OAuth, Connections and Integration Security</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">OAuth 2.0 authorization flows, multi-DC accounts, grant types, refresh token rotation, Zoho Connections in Deluge, and credential hygiene.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH12_OAuth_Connections_and_Integration_Security_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH13 -->
+        <div class="chapter-card" data-keywords="c02 ch13 creator api integration nova field service v2 api forms reports subforms files webhook">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH13</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Creator API Integration</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Zoho Creator REST API v2 endpoints, form record insertion, report query filtering, subform item payloads, file uploads, and webhook bridges.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH13_Creator_API_Integration_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH21 -->
+        <div class="chapter-card" data-keywords="c02 ch21 testing performance nova field service deluge integration credits">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH21</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Testing and Performance</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Unit, contract, sandbox, and integration testing for Creator & CRM. API credit budgets, concurrency, and synthetic fault injection.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH21_Testing_and_Performance_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C02-CH22 -->
+        <div class="chapter-card" data-keywords="c02 ch22 environments release operations nova field service sandbox rollback">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #ccfbf1; --badge-color: #0d9488;">C02-CH22</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Environments, Release and Operations</h3>
+          <p class="chapter-meta">
+            <span>Course: ZDV</span>
+            <span>Case: Nova Field Service</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Developer sandbox lifecycle, promotion runbooks, zero-loss rollback, dead-letter monitoring, and operational incident logs.</p>
+          <div class="chapter-actions">
+            <a href="C02_CH22_Environments_Release_and_Operations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH01 -->
+        <div class="chapter-card" data-keywords="c03 ch01 generative ai agent foundations northstar tokens context embeddings">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH01</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Generative AI and Agent Foundations</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Tokens, context windows, probabilistic inference, hallucination boundaries, embeddings vs permissions, and proposal-only actions.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH01_Generative_AI_and_Agent_Foundations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH02 -->
+        <div class="chapter-card" data-keywords="c03 ch02 use case measuring success northstar baseline evaluation targets">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH02</span>
+            <span class="status-badge status-draft">Draft</span>
+          </div>
+          <h3 class="chapter-title">Choosing a Use Case and Measuring Success</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Process boundaries, baseline timing metrics, critical failure criteria, rule-based alternatives, and held-out evaluation datasets.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH02_Choosing_a_Use_Case_and_Measuring_Success_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH03 -->
+        <div class="chapter-card" data-keywords="c03 ch03 model apis application foundations responses api streaming python">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH03</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Model APIs and Application Foundations</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Python SDK configuration, OpenAI Responses API, server-side permissions, streaming delta buffering, and rate limit recovery.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH03_Model_APIs_and_Application_Foundations_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH04 -->
+        <div class="chapter-card" data-keywords="c03 ch04 prompt context engineering hierarchy few-shot injection delimiters">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH04</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Prompt and Context Engineering</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Instruction hierarchy, untrusted source delimiters, prompt injection defense, clarification loops, and benchmark evaluation.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH04_Prompt_and_Context_Engineering_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH05 -->
+        <div class="chapter-card" data-keywords="c03 ch05 structured data extraction validation json schema pydantic refusal ocr">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH05</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Structured Data Extraction and Validation</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">JSON Schema, Pydantic typed models, classification vs extraction, semantic cross-field validation, and safe proposal boundaries.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH05_Structured_Data_Extraction_and_Validation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH06 -->
+        <div class="chapter-card" data-keywords="c03 ch06 business knowledge preparation ownership permissions ocr tables duplicates tombstone">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH06</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Business Knowledge Preparation</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Source governance, custodians, metadata pipelines, table preservation, OCR confidence gates, duplicates, and policy retirement.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH06_Business_Knowledge_Preparation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH07 -->
+        <div class="chapter-card" data-keywords="c03 ch07 retrieval augmented generation rag chunking embeddings vector index citations grounding">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH07</span>
+            <span class="status-badge status-draft">Partially Verified</span>
+          </div>
+          <h3 class="chapter-title">Retrieval-Augmented Generation</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Chunking strategies, embedding vectors, permission pre-filters, cited context assembly, and claim-level grounding verification.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH07_Retrieval_Augmented_Generation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH08 -->
+        <div class="chapter-card" data-keywords="c03 ch08 advanced retrieval evaluation hybrid search reranking precision recall experiments">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH08</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Advanced Retrieval and Evaluation</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Keyword vs semantic vs hybrid search, query rewriting, reranking algorithms, Precision@k, Recall@k, and chunking experiments.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH08_Advanced_Retrieval_and_Evaluation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH09 -->
+        <div class="chapter-card" data-keywords="c03 ch09 tool api contract design json schema function calling openapi narrow operations side effects idempotency">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH09</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Tool and API Contract Design</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">JSON Schema tool contracts, narrow read operations, side-effect boundaries, approval binding, stale record detection, and duplicate write prevention.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH09_Tool_and_API_Contract_Design_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH10 -->
+        <div class="chapter-card" data-keywords="c03 ch10 workflow orchestration state machine chaining routing parallel reads retries checkpoints pause resume memory">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH10</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Workflow Orchestration and State</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Chaining, routing, parallel reads, finite state machines, exponential backoff retries, durable checkpoints, pause/resume approval flows, and memory isolation.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH10_Workflow_Orchestration_and_State_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH11 -->
+        <div class="chapter-card" data-keywords="c03 ch11 zia agent studio low code knowledge base custom tools openapi guardrails zks byok deployment">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH11</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Zia Agent Studio Implementation</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Low-code agent authoring, data-centre model availability, ZKS vs BYOK billing, OpenAPI 3.0 tool groups, On-Trigger parameter mapping, guardrails, and deployment.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH11_Zia_Agent_Studio_Implementation_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH12 -->
+        <div class="chapter-card" data-keywords="c03 ch12 model context protocol mcp host client server tools resources prompts stdio http oauth">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH12</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Model Context Protocol</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">MCP host/client/server architecture, tools vs resources vs prompts, stdio and streamable HTTP transports, OAuth scopes, and read-only CRM integration.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH12_Model_Context_Protocol_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+        <!-- C03-CH13 -->
+        <div class="chapter-card" data-keywords="c03 ch13 multi agent systems supervisor specialist handoffs routing evaluator guardrails stopping conditions">
+          <div class="chapter-badge-group">
+            <span class="card-id-pill" style="--badge-bg: #e0e7ff; --badge-color: #6366f1;">C03-CH13</span>
+            <span class="status-badge status-verified">Verified (Oct 2026)</span>
+          </div>
+          <h3 class="chapter-title">Multi-Agent Systems</h3>
+          <p class="chapter-meta">
+            <span>Course: AAB</span>
+            <span>Case: Northstar Distribution</span>
+            <span>Target: Student</span>
+          </p>
+          <p class="card-desc">Decomposing business workflows, supervisor and specialist agents, structured handoffs, scoped tool permissions, evaluator-optimizer loops, and audit traces.</p>
+          <div class="chapter-actions">
+            <a href="C03_CH13_Multi_Agent_Systems_Student.md" class="btn btn-outline" download>Download .md</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: CLASSROOM MATERIALS -->
+    <section id="tab-class-materials" class="tab-content hidden">
+      <h2 style="font-size: 1.4rem; margin-bottom: 20px; font-weight: 750;">Synthetic Datasets & Teaching Worksheets</h2>
+      <div class="grid">
+        <div class="card" style="--card-accent: #0284c7;">
+          <h2>Meridian Leads Dataset</h2>
+          <p class="card-desc">Synthetic training leads CSV used for Course 1 process discovery and qualification simulations.</p>
+          <div class="card-footer">
+            <a href="Course_01_Zoho_Business_Process_Automation/meridian_synthetic_leads.csv" class="btn btn-primary" download>Download CSV</a>
+          </div>
+        </div>
+
+        <div class="card" style="--card-accent: #0d9488;">
+          <h2>Deluge Code Examples</h2>
+          <p class="card-desc">Sample Deluge normalization scripts, webhook processors, and lead creation starter templates.</p>
+          <div class="card-footer">
+            <a href="Courses_02_to_05/resources/code_examples/" class="btn btn-outline">Explore Scripts</a>
+          </div>
+        </div>
+
+        <div class="card" style="--card-accent: #6366f1;">
+          <h2>Assessment Rubrics & Logs</h2>
+          <p class="card-desc">Practical assessment rubrics, UAT testing logs, data dictionaries, and sync contract templates.</p>
+          <div class="card-footer">
+            <a href="Courses_02_to_05/resources/Practical_Assessment_Rubric.md" class="btn btn-outline" download>Assessment Rubric (.md)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="README.md">Repository Documentation</a>
+      <a href="Courses_02_to_05/index.html">Courses 2–5 Directory</a>
+      <a href="Course_01_Zoho_Business_Process_Automation/Course_01_Teacher_Guide.html">Course 1 Guide</a>
+    </div>
+    <p>Wooplix Academy · Authorized Training Partner · Offline-First Educational Suite</p>
+  </footer>
+
+  <script>
+    // Tab Switching Logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.add('hidden'));
+
+        tab.classList.add('active');
+        const targetId = 'tab-' + tab.dataset.tab;
+        document.getElementById(targetId)?.classList.remove('hidden');
+      });
+    });
+
+    // Real-Time Search & Filter
+    const searchInput = document.getElementById('courseSearch');
+    const filterableCards = document.querySelectorAll('[data-keywords]');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      
+      filterableCards.forEach(card => {
+        const keywords = card.getAttribute('data-keywords') || '';
+        const text = card.innerText.toLowerCase();
+        const matches = !query || keywords.includes(query) || text.includes(query);
+        card.classList.toggle('hidden', !matches);
+      });
+
+      // Auto-switch to tabs that have matching content if needed
+      if (query.length > 2) {
+        tabContents.forEach(content => {
+          const visibleInTab = content.querySelectorAll('[data-keywords]:not(.hidden)');
+          if (visibleInTab.length > 0 && content.classList.contains('hidden')) {
+            // activate tab with hits
+            const tabName = content.id.replace('tab-', '');
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+            tabContents.forEach(c => c.classList.toggle('hidden', c !== content));
+          }
+        });
+      }
+    });
+
+    // Theme Toggle (Dark / Light Mode)
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', () => {
+      const active = document.documentElement.getAttribute('data-theme');
+      const next = active === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
