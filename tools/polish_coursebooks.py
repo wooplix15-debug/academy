@@ -4,8 +4,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BOOKS = {
-    '02': {'total': 20, 'ready': 7, 'course': 'zoho-developer-implementation-engineer'},
-    '01': {'total': 18, 'ready': 8, 'course': 'zoho-business-process-automation'},
+    '02': {'total': 20, 'ready': 20, 'course': 'zoho-developer-implementation-engineer'},
+    '01': {'total': 18, 'ready': 18, 'course': 'zoho-business-process-automation'},
+    '03': {'total': 20, 'ready': 20, 'course': 'ai-agentic-ai-builder'},
     '04': {'total': 10, 'ready': 10, 'course': 'corporate-ai-automation-workshop'},
     '05': {'total': 16, 'ready': 16, 'course': 'zoho-implementation-consulting-practicum'},
 }
@@ -17,11 +18,6 @@ for course, info in BOOKS.items():
     index = folder / 'index.html'
     page = index.read_text()
     page = re.sub(r'<section class="book-coursebar" data-coursebook-polish="coursebar".*?</section>', '', page, flags=re.S)
-    if course in {'01', '02'}:
-        page = re.sub(r'<li class="book-chapter pending">.*?</li>', '', page, flags=re.S)
-        page = re.sub(r'<p class="book-course-note".*?</p>', '', page, flags=re.S)
-        note = '<p class="book-course-note">Chapters 1–8 are ready to read. The full Course 1 syllabus shows the remaining chapters and what they cover.</p>' if course == '01' else '<p class="book-course-note">Chapters 14–20 are ready to read. The full Course 2 syllabus shows the earlier foundations.</p>'
-        page = page.replace('</ol></main>', '</ol>'+note+'</main>')
     page = page.replace('<ol class="book-chapters">', bar+'<ol class="book-chapters">', 1)
     index.write_text(page)
 
@@ -38,4 +34,4 @@ for course, info in BOOKS.items():
         page = page.replace('<div class="book-layout">', strip+'<div class="book-layout">', 1)
         page = page.replace('<article class="book-content">', '<article class="book-content">'+guide, 1)
         chapter.write_text(page)
-print('Polished Course Books 1, 2, 4 and 5.')
+print('Polished Course Books 1–5.')

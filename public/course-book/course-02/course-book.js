@@ -1,7 +1,7 @@
 (() => {
   const sections = [...document.querySelectorAll('.book-section')];
   const links = [...document.querySelectorAll('.reader-sidebar nav a')];
-  const key = 'wooplix-course02-' + location.pathname + '-section';
+  const key = 'wooplix-course01-chapter01-section';
   const setCurrent = id => links.forEach(a => {
     if (a.hash === '#' + id) a.setAttribute('aria-current', 'location');
     else a.removeAttribute('aria-current');

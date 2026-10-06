@@ -1,0 +1,565 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Build assistants and agents that use business information and connected tools."><meta name="theme-color" content="#101d31"><title>Course Book · Course 3 | Wooplix Academy</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/course-page.css"><link rel="stylesheet" href="/syllabus.css"><link rel="stylesheet" href="/course-book.css"><link rel="stylesheet" href="/course-book/course-05/reader.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Wooplix Academy home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button><nav id="primary-nav" class="primary-nav" aria-label="Main navigation"><a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a><a href="/#approach">How we teach</a><a href="/#teams">For organisations</a><a class="nav-cta" href="https://www.wooplix.com/contact-us/" target="_blank" rel="noopener">Talk to us <span>↗</span></a></nav></div></header>
+<main id="main" class="book-page"><div class="book-breadcrumb"><a href="/courses/ai-agentic-ai-builder">Course 3</a><span>/</span><a href="/course-book/course-03">Course Book</a><span>/</span><span>Chapter 9</span></div><header class="book-hero"><p class="eyebrow">COURSE 03 · CHAPTER 09</p><h1>Tool and API Contract Design</h1><p>Implement a tested read tool and constrained action tool.</p><div class="book-tags"><span>Student course book</span><span>Worked examples</span><span>Practice and solutions</span></div><div class="reader-actions"><button type="button" data-print>Print / save PDF</button><a download href="/course-book/course-03/chapter-09-student.md">Download chapter (Markdown) ↓</a></div></header><div class="chapter-strip" data-coursebook-polish="chapter-strip"><b>Course 3 · Chapter 9 of 20</b><a href="/course-book/course-03">View all available chapters →</a></div><div class="book-layout"><aside class="reader-sidebar"><details open><summary>In this chapter</summary><nav aria-label="Chapter sections"><a href="#section-1">1. 1. What you will learn</a><a href="#section-2">2. 2. Lessons</a><a href="#section-3">3. 3. Visual explanation</a><a href="#section-4">4. 4. Worked case: Northstar read and constrained action tools</a><a href="#section-5">5. 5. Try it yourself — guided practice</a><a href="#section-6">6. 6. Independent challenge</a><a href="#section-7">7. 7. Common problems and recovery</a><a href="#section-8">8. 8. Check your understanding</a><a href="#section-9">9. 9. Solutions and explanations</a><a href="#section-10">10. 10. Chapter recap and next step</a><a href="#section-11">11. 11. Glossary and further reading</a></nav></details><p class="save-note">Your reading position is saved on this browser.</p></aside><article class="book-content"><section class="book-reading-guide" data-coursebook-polish="reading-guide" aria-label="How to use this chapter"><b>How to use this chapter</b><p>Read the lesson first. Then work through the case and practice before opening the solutions. Keep your notes or worksheet for the next chapter.</p></section><section class="book-section" aria-labelledby="section-1"><h2 id="section-1">1. What you will learn</h2><p>A tool gives a model access to application data or functionality. A poorly designed tool can expose too much data, accept unsafe arguments or make an irreversible change from an ambiguous request.</p><p>In this chapter, you will learn how to:</p><ul><li>design clear tool descriptions;</li><li>define JSON Schema contracts for tool arguments;</li><li>distinguish a model-facing function tool from an HTTP API described with OpenAPI;</li><li>create narrow read operations;</li><li>validate trusted user and record context;</li><li>identify side effects;</li><li>separate proposals from approved actions;</li><li>prevent duplicate writes with idempotency and record checks;</li><li>return useful, controlled errors;</li><li>implement and test a permitted read tool and a constrained action tool.</li></ul><p>The Northstar Sales Knowledge Assistant continues to use:</p><ul><li>`NST-CUST-001`, Acme Office Supply;</li><li>`NST-CUST-002`, Beacon Retail;</li><li>`NST-PROD-001:v1.2`;</li><li>`NST-POLICY-001:v3.0`;</li><li>`NST-EVAL-001`;</li><li>`NST-BRIEF-001`;</li><li>the proposal-only action boundary established in earlier chapters.</li></ul><p>The custom implementation in this chapter uses Python function tools and an in-memory synthetic store. It does not claim to use current Zoho CRM API field names or execute a real CRM write.</p><p>The OpenAI function-calling documentation describes a five-step loop:</p><ol><li>send the model a request with available tools;</li><li>receive a tool call;</li><li>execute application code;</li><li>return the tool output with the call identifier;</li><li>receive the final response or another tool call. </li></ol><p>Tool schemas, OpenAPI descriptions, Zia Agent Studio tools and MCP tools are related concepts but separate implementation mechanisms. Zia Agent Studio and MCP are covered in later chapters.</p><p>---</p></section><section class="book-section" aria-labelledby="section-2"><h2 id="section-2">2. Lessons</h2><h3>Lesson 1: A tool contract defines a controlled operation</h3><p>#### What a tool is A tool is a named operation that the application makes available to a model. It may:</p><ul><li>read permitted information;</li><li>search a prepared knowledge collection;</li><li>calculate a value;</li><li>create a proposal;</li><li>execute an approved business action.</li></ul><p>A model tool call is a request from the model to the application. The model does not execute your Python function directly. Your application receives the request, validates it and decides whether to run the operation.</p><p>#### Tool descriptions A good description answers:</p><ul><li>what the tool does;</li><li>when the model should use it;</li><li>when the model must not use it;</li><li>what each argument means;</li><li>what the output represents;</li><li>whether the operation has side effects;</li><li>which failures are possible.</li></ul><p>**Weak description:** &gt; Get customer data.</p><p>**Stronger description:** &gt; Read selected CRM fields for one customer after the application has verified the authenticated user&#x27;s tenant and assignment scope. This operation has no side effects. Do not use it to search across customers or to decide whether the requester is authorized.</p><p>The description helps the model select the tool. The executor must still enforce the rule.</p><p>#### Narrow operations A broad tool is difficult to secure: `run_any_crm_query(query: string)`</p><p>A narrow tool is easier to validate: `get_permitted_customer_context(customer_id, fields)`</p><p>The narrow operation controls:</p><ul><li>which object can be read;</li><li>which fields can be returned;</li><li>which identifier is accepted;</li><li>which user and tenant context applies;</li><li>whether a write is possible.</li></ul><p>#### Side-effect classification Every tool should state its side-effect class:</p><div class="table-wrap"><table><thead><tr><th scope="col">Side-effect class</th><th scope="col">Example</th><th scope="col">Control</th></tr></thead><tbody><tr><td>`read_only`</td><td>Get selected customer fields</td><td>Permission check</td></tr><tr><td>`compute_only`</td><td>Calculate policy band</td><td>Deterministic validation</td></tr><tr><td>`proposal_only`</td><td>Prepare a task draft</td><td>No record mutation</td></tr><tr><td>`write`</td><td>Create a CRM task</td><td>Approval, revalidation, idempotency</td></tr><tr><td>`external_send`</td><td>Send a message</td><td>Recipient validation and approval</td></tr></tbody></table></div><p>A prompt should not be the only place where side effects are described. Record them in the contract and enforce them in code.</p><p>#### Tool names and namespaces Use names that describe the operation:</p><ul><li>`crm.get_permitted_customer_context`</li><li>`crm.draft_follow_up_task`</li><li>`crm.create_approved_follow_up_task`</li></ul><p>A namespace groups related operations. It does not create permission by itself. The application still maps each operation to an executor and authorization policy.</p><p>&gt; **Check for understanding:** Why is `run_any_crm_query` a poor model-facing tool for Northstar? &gt; *Answer:* It allows arbitrary tables, fields, filters and potentially unauthorized records. It increases ambiguity and makes permission enforcement difficult.</p><p>---</p><h3>Lesson 2: Define schemas with JSON Schema</h3><p>#### Function tools use an argument schema A function tool can define its arguments with JSON Schema. A simplified read-tool definition is:</p><pre><code class="language-json">{
+  &quot;type&quot;: &quot;function&quot;,
+  &quot;name&quot;: &quot;get_permitted_customer_context&quot;,
+  &quot;description&quot;: &quot;Read selected fields for one customer after server-side permission checks. Read-only.&quot;,
+  &quot;strict&quot;: true,
+  &quot;parameters&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;customer_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;pattern&quot;: &quot;^NST-CUST-[0-9]{3}$&quot;
+      },
+      &quot;fields&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;items&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [
+            &quot;account_name&quot;,
+            &quot;primary_contact_name&quot;,
+            &quot;primary_contact_email&quot;,
+            &quot;assigned_user_id&quot;,
+            &quot;region&quot;
+          ]
+        },
+        &quot;minItems&quot;: 1,
+        &quot;uniqueItems&quot;: true
+      }
+    },
+    &quot;required&quot;: [&quot;customer_id&quot;, &quot;fields&quot;],
+    &quot;additionalProperties&quot;: false
+  }
+}</code></pre><p>The accessed OpenAI function-calling guide recommends strict schemas and documents requirements such as `additionalProperties: false` and marking all properties required. Optional values can be represented with a nullable type.</p><p>#### Strict does not mean authorized Strict schema validation can ensure:</p><ul><li>`customer_id` has the right pattern</li><li>`fields` contains permitted field names</li><li>no unexpected properties are included</li></ul><p>It cannot ensure:</p><ul><li>Sam may read this customer</li><li>the record belongs to this tenant</li><li>the fields are appropriate for this request</li><li>the source is current</li></ul><p>Those checks belong to the executor.</p><p>#### Avoid unnecessary arguments If the application already knows the authenticated user, do not ask the model to provide `requester_id`:</p><pre><code class="language-json">{
+  &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+  &quot;requester_id&quot;: &quot;sam.rep@example.com&quot;
+}</code></pre><p>The model could provide a false or stale requester ID. Instead:</p><ul><li>**Model supplies:** `customer_id` and `fields`</li><li>**Application supplies:** authenticated requester, tenant, roles, permissions, request trace</li></ul><p>This follows a general tool-design principle: *do not make the model fill values the application already knows.*</p><p>#### Constrained action schema A Northstar write operation should require evidence that the action was reviewed:</p><pre><code class="language-json">{
+  &quot;type&quot;: &quot;function&quot;,
+  &quot;name&quot;: &quot;create_approved_follow_up_task&quot;,
+  &quot;description&quot;: &quot;Create one task from an approved proposal after record and permission revalidation.&quot;,
+  &quot;strict&quot;: true,
+  &quot;parameters&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;proposal_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;pattern&quot;: &quot;^NST-PROP-[0-9]{3}$&quot;
+      },
+      &quot;approval_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;pattern&quot;: &quot;^NST-APR-[0-9]{3}$&quot;
+      },
+      &quot;expected_record_version&quot;: {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;minimum&quot;: 1
+      },
+      &quot;idempotency_key&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;minLength&quot;: 16,
+        &quot;maxLength&quot;: 100
+      }
+    },
+    &quot;required&quot;: [
+      &quot;proposal_id&quot;,
+      &quot;approval_id&quot;,
+      &quot;expected_record_version&quot;,
+      &quot;idempotency_key&quot;
+    ],
+    &quot;additionalProperties&quot;: false
+  }
+}</code></pre><p>The model does not supply task body, customer ID or owner in this contract. Those values are loaded from the stored proposal after the application has checked that the approval belongs to that proposal.</p><p>&gt; **Check for understanding:** Why should `customer_id` be read from the approved proposal rather than supplied again by the model during execution? &gt; *Answer:* Repeated model-supplied identifiers create opportunities for mismatch. Loading the customer from the stored proposal and revalidating it gives the executor one controlled source of truth.</p><p>---</p><h3>Lesson 3: OpenAPI and function tools are different contracts</h3><p>#### OpenAPI OpenAPI is a language-independent description format for HTTP APIs. The official OpenAPI specification describes how an API consumer can understand and interact with an API without inspecting its source code. It supports JSON or YAML representations, paths, operations, parameters, request bodies, responses and security descriptions.</p><p>A Northstar HTTP service might describe a read operation as:</p><pre><code class="language-yaml">openapi: 3.2.1
+info:
+  title: Northstar CRM Read API
+  version: &quot;0.1.0&quot;
+paths:
+  /customers/{customerId}/permitted-context:
+    get:
+      operationId: getPermittedCustomerContext
+      summary: Read selected fields for one permitted customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: &#x27;^NST-CUST-[0-9]{3}$&#x27;
+        - name: fields
+          in: query
+          required: true
+          schema:
+            type: array
+            minItems: 1
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - account_name
+                - primary_contact_name
+                - primary_contact_email
+                - assigned_user_id
+                - region
+      responses:
+        &quot;200&quot;:
+          description: Permitted customer context
+          content:
+            application/json:
+              schema:
+                $ref: &quot;#/components/schemas/CustomerContext&quot;
+        &quot;403&quot;:
+          description: Permission denied
+        &quot;404&quot;:
+          description: Record not found within permitted scope
+        &quot;422&quot;:
+          description: Invalid request
+components:
+  schemas:
+    CustomerContext:
+      type: object
+      required:
+        - customer_id
+        - record_version
+        - fields
+      additionalProperties: false
+      properties:
+        customer_id:
+          type: string
+        record_version:
+          type: integer
+        fields:
+          type: object</code></pre><p>This describes an HTTP API. It does not automatically create a secure model tool.</p><p>#### Function-tool schema The model-facing function tool might expose the same operation as:</p><pre><code class="language-json">{
+  &quot;type&quot;: &quot;function&quot;,
+  &quot;name&quot;: &quot;crm_get_permitted_customer_context&quot;,
+  &quot;description&quot;: &quot;Read selected fields for one customer after server-side permission checks.&quot;,
+  &quot;strict&quot;: true,
+  &quot;parameters&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;customer_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;pattern&quot;: &quot;^NST-CUST-[0-9]{3}$&quot;
+      },
+      &quot;fields&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;items&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [
+            &quot;account_name&quot;,
+            &quot;primary_contact_name&quot;,
+            &quot;primary_contact_email&quot;,
+            &quot;assigned_user_id&quot;,
+            &quot;region&quot;
+          ]
+        }
+      }
+    },
+    &quot;required&quot;: [&quot;customer_id&quot;, &quot;fields&quot;],
+    &quot;additionalProperties&quot;: false
+  }
+}</code></pre><p>The HTTP service may have path parameters, authentication headers and query serialization that the model should never control. The application adapts the model tool call to the HTTP request.</p><p>#### When to use each</p><div class="table-wrap"><table><thead><tr><th scope="col">Contract</th><th scope="col">Main audience</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>**JSON Schema function tool**</td><td>Model and application adapter</td><td>Describe model-callable arguments</td></tr><tr><td>**OpenAPI**</td><td>HTTP API consumers and tools</td><td>Describe paths, methods, parameters, bodies and responses</td></tr><tr><td>**Internal typed interface**</td><td>Application developers</td><td>Enforce code-level types and behavior</td></tr><tr><td>**MCP tool description**</td><td>MCP host/client/server ecosystem</td><td>Discover and call MCP-exposed capabilities</td></tr></tbody></table></div><p>The same business operation may have all four descriptions, but they should not be copied blindly from one format to another.</p><p>&gt; **Check for understanding:** If an OpenAPI document contains a 403 response, does the model automatically know that a user is unauthorized? &gt; *Answer:* No. The server must return the 403, and the application must decide how to communicate the result.</p><p>---</p><h3>Lesson 4: Trusted context, validation and errors</h3><p>#### Trusted context The executor should receive trusted context from the application:</p><pre><code class="language-python">session = {
+    &quot;requester_id&quot;: &quot;sam.rep@example.com&quot;,
+    &quot;tenant_id&quot;: &quot;northstar-demo&quot;,
+    &quot;role&quot;: &quot;Sales Representative&quot;,
+    &quot;region&quot;: &quot;West&quot;,
+    &quot;permitted_customer_ids&quot;: {&quot;NST-CUST-001&quot;},
+}</code></pre><p>The tool call supplies a requested customer ID. The executor compares it with this session. The model cannot grant itself access.</p><p>#### Validation layers A safe executor validates in this order:</p><ol><li>tool name is known;</li><li>arguments are valid JSON;</li><li>arguments match schema;</li><li>argument values are valid for the operation;</li><li>authenticated user and tenant are trusted;</li><li>requested record is in scope;</li><li>current record version is valid;</li><li>approval exists where needed;</li><li>duplicate or idempotency checks pass;</li><li>operation executes;</li><li>result is recorded and returned.</li></ol><p>#### Error categories A tool output should be structured enough for the application and model to distinguish recovery paths:</p><pre><code class="language-json">{
+  &quot;ok&quot;: false,
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;permission_denied&quot;,
+    &quot;message&quot;: &quot;The requested customer is outside the requester&#x27;s permitted scope.&quot;,
+    &quot;retryable&quot;: false,
+    &quot;user_safe_message&quot;: &quot;I cannot provide that customer context in your current access scope.&quot;
+  }
+}</code></pre><div class="table-wrap"><table><thead><tr><th scope="col">Error code</th><th scope="col">Meaning</th><th scope="col">Retry?</th></tr></thead><tbody><tr><td>`invalid_arguments`</td><td>Schema or value validation failed</td><td>No, correct input</td></tr><tr><td>`permission_denied`</td><td>User lacks access</td><td>No</td></tr><tr><td>`not_found_in_scope`</td><td>No accessible record was found</td><td>No, or clarify</td></tr><tr><td>`approval_required`</td><td>Required approval is missing</td><td>No, obtain approval</td></tr><tr><td>`stale_record`</td><td>Record version changed</td><td>Review and retry with new proposal</td></tr><tr><td>`duplicate_request`</td><td>Idempotency key already completed</td><td>Return existing result</td></tr><tr><td>`conflict`</td><td>Current data conflicts with proposal</td><td>Review</td></tr><tr><td>`dependency_unavailable`</td><td>CRM or service unavailable</td><td>Maybe, within limits</td></tr><tr><td>`internal_error`</td><td>Unexpected application failure</td><td>Log and stop</td></tr></tbody></table></div><p>Do not return raw stack traces, database details or credentials to the model.</p><p>&gt; **Check for understanding:** Why should `permission_denied` be different from `not_found_in_scope`? &gt; *Answer:* The application may intentionally avoid revealing whether a record exists. Internally, however, the distinction helps diagnose authorization and data issues.</p><p>---</p><h3>Lesson 5: Side effects and duplicate prevention</h3><p>#### Read and write operations Northstar separates:</p><ul><li>`get_permitted_customer_context`: read-only</li><li>`draft_follow_up_task`: proposal-only</li><li>`create_approved_follow_up_task`: controlled write</li></ul><p>The model may call the first two within its allowed scope. The application controls the third.</p><p>#### Idempotency An idempotency key identifies one intended operation. If the same operation is submitted again with the same key, the executor returns the original result instead of creating a duplicate.</p><pre><code class="language-python">idempotency_key = &quot;northstar:NST-PROP-001:approved-task:v1&quot;</code></pre><p>The key should be generated by the application, not invented by the model.</p><p>#### Record-version revalidation The proposal may have been based on record version 7. Before writing:</p><ul><li>`proposal.expected_record_version = 7`</li><li>`current_customer.record_version = 8`</li></ul><p>The executor must return `stale_record` and stop. It must not update the new record using old context.</p><p>#### Approval binding An approval should be bound to: proposal ID, action type, target customer, record version, approver identity, approval timestamp, approval status. An approval for `NST-PROP-001` must not authorize `NST-PROP-002`.</p><p>&gt; **Check for understanding:** Why is a retry after a timeout dangerous for a task-creation operation? &gt; *Answer:* The original request may have succeeded even though the response was lost. A second attempt without idempotency could create a duplicate task.</p><p>---</p></section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation</h2><h3>Tool-call and execution boundary</h3><pre><code class="language-mermaid">sequenceDiagram
+    participant U as User
+    participant M as Model
+    participant A as Application
+    participant T as Tool executor
+    participant CRM as CRM
+
+    U-&gt;&gt;A: Ask for customer context or follow-up
+    A-&gt;&gt;M: Request with narrow tools
+    M-&gt;&gt;A: Tool call with arguments
+    A-&gt;&gt;T: Tool call plus trusted session context
+    T-&gt;T: Validate schema, permissions and record scope
+    T-&gt;&gt;CRM: Read or controlled write
+    CRM--&gt;&gt;T: Result or error
+    T--&gt;&gt;A: Typed tool output
+    A-&gt;&gt;M: Tool output with call ID
+    M--&gt;&gt;A: Final answer or next tool call
+    A--&gt;&gt;U: Answer, proposal or controlled error</code></pre><p>**Plain-text explanation:** The model proposes a tool call. The application supplies trusted identity. The executor validates arguments and permissions. Only the executor contacts the CRM. The model receives a result or typed error. A final answer is not evidence of a write unless the executor returns it.</p><p>---</p></section><section class="book-section" aria-labelledby="section-4"><h2 id="section-4">4. Worked case: Northstar read and constrained action tools</h2><h3>Scenario data</h3><pre><code class="language-json">{
+  &quot;customers&quot;: [
+    {
+      &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+      &quot;account_name&quot;: &quot;Acme Office Supply&quot;,
+      &quot;primary_contact_name&quot;: &quot;Jordan Lee&quot;,
+      &quot;primary_contact_email&quot;: &quot;jordan.lee@example.com&quot;,
+      &quot;assigned_user_id&quot;: &quot;sam.rep@example.com&quot;,
+      &quot;region&quot;: &quot;West&quot;,
+      &quot;record_version&quot;: 7
+    },
+    {
+      &quot;customer_id&quot;: &quot;NST-CUST-002&quot;,
+      &quot;account_name&quot;: &quot;Beacon Retail&quot;,
+      &quot;primary_contact_name&quot;: &quot;Priya Shah&quot;,
+      &quot;primary_contact_email&quot;: &quot;priya.shah@example.com&quot;,
+      &quot;assigned_user_id&quot;: &quot;lee.rep@example.com&quot;,
+      &quot;region&quot;: &quot;East&quot;,
+      &quot;record_version&quot;: 3
+    }
+  ],
+  &quot;proposals&quot;: [
+    {
+      &quot;proposal_id&quot;: &quot;NST-PROP-001&quot;,
+      &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+      &quot;owner_user_id&quot;: &quot;sam.rep@example.com&quot;,
+      &quot;title&quot;: &quot;Confirm a policy-compliant NS-4000 offer&quot;,
+      &quot;body&quot;: &quot;Follow up with Acme about an offer within current policy.&quot;,
+      &quot;expected_record_version&quot;: 7,
+      &quot;status&quot;: &quot;pending_approval&quot;
+    }
+  ],
+  &quot;approvals&quot;: [
+    {
+      &quot;approval_id&quot;: &quot;NST-APR-001&quot;,
+      &quot;proposal_id&quot;: &quot;NST-PROP-001&quot;,
+      &quot;approver_user_id&quot;: &quot;manager@example.com&quot;,
+      &quot;status&quot;: &quot;approved&quot;,
+      &quot;approved_record_version&quot;: 7
+    }
+  ],
+  &quot;task_idempotency&quot;: {}
+}</code></pre><p>Trusted session:</p><pre><code class="language-json">{
+  &quot;requester_id&quot;: &quot;sam.rep@example.com&quot;,
+  &quot;tenant_id&quot;: &quot;northstar-demo&quot;,
+  &quot;role&quot;: &quot;Sales Representative&quot;,
+  &quot;permitted_customer_ids&quot;: [&quot;NST-CUST-001&quot;]
+}</code></pre><h3>Read tool execution</h3><p>A valid Sam request:</p><pre><code class="language-json">{
+  &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+  &quot;fields&quot;: [
+    &quot;account_name&quot;,
+    &quot;primary_contact_name&quot;,
+    &quot;primary_contact_email&quot;,
+    &quot;region&quot;
+  ]
+}</code></pre><p>Expected tool result:</p><pre><code class="language-json">{
+  &quot;ok&quot;: true,
+  &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+  &quot;record_version&quot;: 7,
+  &quot;fields&quot;: {
+    &quot;account_name&quot;: &quot;Acme Office Supply&quot;,
+    &quot;primary_contact_name&quot;: &quot;Jordan Lee&quot;,
+    &quot;primary_contact_email&quot;: &quot;jordan.lee@example.com&quot;,
+    &quot;region&quot;: &quot;West&quot;
+  }
+}</code></pre><p>A request for Beacon from Sam:</p><pre><code class="language-json">{
+  &quot;ok&quot;: false,
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;permission_denied&quot;,
+    &quot;retryable&quot;: false,
+    &quot;user_safe_message&quot;: &quot;I cannot provide that customer context in your current access scope.&quot;
+  }
+}</code></pre><p>No Beacon fields enter the model context.</p><h3>Approved action execution</h3><ol><li>The model requests `crm_create_approved_follow_up_task`.</li><li>The application validates the JSON arguments.</li><li>The executor loads `NST-PROP-001`.</li><li>The executor confirms that the proposal is for `NST-CUST-001`.</li><li>The executor confirms approval `NST-APR-001` belongs to the proposal.</li><li>The executor confirms the approval is for record version 7.</li><li>The executor reads the current customer record.</li><li>The executor compares current version with expected version 7.</li><li>The executor checks the idempotency key.</li><li>The executor creates one task.</li><li>The executor stores the generated task ID and returns success:</li></ol><pre><code class="language-json">{
+  &quot;ok&quot;: true,
+  &quot;task_id&quot;: &quot;task_generated_001&quot;,
+  &quot;proposal_id&quot;: &quot;NST-PROP-001&quot;,
+  &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+  &quot;record_version&quot;: 7,
+  &quot;idempotency_key&quot;: &quot;northstar:NST-PROP-001:approved-task:v1&quot;,
+  &quot;action_status&quot;: &quot;executed&quot;
+}</code></pre><p>Duplicate retry returns `action_status: &quot;already_executed&quot;` without creating a second task. If the record version is 8, the executor stops with `code: &quot;stale_record&quot;`.</p><p>---</p></section><section class="book-section" aria-labelledby="section-5"><h2 id="section-5">5. Try it yourself — guided practice</h2><h3>Learning goal</h3><p>Implement and test:</p><ol><li>a read-only customer-context tool;</li><li>a proposal-only task tool;</li><li>a constrained approved-task action with duplicate prevention.</li></ol><h3>Synthetic store</h3><pre><code class="language-python">STORE = {
+    &quot;customers&quot;: {
+        &quot;NST-CUST-001&quot;: {
+            &quot;account_name&quot;: &quot;Acme Office Supply&quot;,
+            &quot;primary_contact_name&quot;: &quot;Jordan Lee&quot;,
+            &quot;primary_contact_email&quot;: &quot;jordan.lee@example.com&quot;,
+            &quot;assigned_user_id&quot;: &quot;sam.rep@example.com&quot;,
+            &quot;region&quot;: &quot;West&quot;,
+            &quot;record_version&quot;: 7,
+        },
+        &quot;NST-CUST-002&quot;: {
+            &quot;account_name&quot;: &quot;Beacon Retail&quot;,
+            &quot;primary_contact_name&quot;: &quot;Priya Shah&quot;,
+            &quot;primary_contact_email&quot;: &quot;priya.shah@example.com&quot;,
+            &quot;assigned_user_id&quot;: &quot;lee.rep@example.com&quot;,
+            &quot;region&quot;: &quot;East&quot;,
+            &quot;record_version&quot;: 3,
+        },
+    },
+    &quot;proposals&quot;: {
+        &quot;NST-PROP-001&quot;: {
+            &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+            &quot;owner_user_id&quot;: &quot;sam.rep@example.com&quot;,
+            &quot;title&quot;: &quot;Confirm a policy-compliant NS-4000 offer&quot;,
+            &quot;body&quot;: &quot;Follow up with Acme about an offer within current policy.&quot;,
+            &quot;status&quot;: &quot;pending_approval&quot;,
+            &quot;record_version&quot;: 7,
+        },
+        &quot;NST-PROP-002&quot;: {
+            &quot;customer_id&quot;: &quot;NST-CUST-001&quot;,
+            &quot;owner_user_id&quot;: &quot;sam.rep@example.com&quot;,
+            &quot;title&quot;: &quot;Review NS-4000 compatibility&quot;,
+            &quot;body&quot;: &quot;Confirm compatibility evidence before making a commitment.&quot;,
+            &quot;status&quot;: &quot;pending_approval&quot;,
+            &quot;record_version&quot;: 7,
+        },
+    },
+    &quot;approvals&quot;: {
+        &quot;NST-APR-001&quot;: {
+            &quot;proposal_id&quot;: &quot;NST-PROP-001&quot;,
+            &quot;approver_user_id&quot;: &quot;manager@example.com&quot;,
+            &quot;status&quot;: &quot;approved&quot;,
+            &quot;approved_record_version&quot;: 7,
+        }
+    },
+    &quot;idempotency&quot;: {},
+    &quot;tasks&quot;: {},
+}
+
+SAM = {
+    &quot;requester_id&quot;: &quot;sam.rep@example.com&quot;,
+    &quot;tenant_id&quot;: &quot;northstar-demo&quot;,
+    &quot;permitted_customer_ids&quot;: {&quot;NST-CUST-001&quot;},
+}
+
+LEE = {
+    &quot;requester_id&quot;: &quot;lee.rep@example.com&quot;,
+    &quot;tenant_id&quot;: &quot;northstar-demo&quot;,
+    &quot;permitted_customer_ids&quot;: {&quot;NST-CUST-002&quot;},
+}</code></pre><h3>Guided steps</h3><ul><li>**Step 1:** Implement `get_permitted_customer_context(session, customer_id, fields)`.</li><li>**Step 2:** Implement `draft_follow_up_task(session, customer_id, title, body, source_ids)`.</li><li>**Step 3:** Implement `create_approved_follow_up_task(session, proposal_id, approval_id, expected_record_version, idempotency_key)`.</li><li>**Step 4:** Add structured error results with codes and retryability flags.</li><li>**Step 5:** Write tests for permitted read, unauthorized read, invalid fields, missing approval, stale record, successful action, and repeated idempotency key.</li></ul><p>---</p></section><section class="book-section" aria-labelledby="section-6"><h2 id="section-6">6. Independent challenge</h2><h3>Requirements</h3><p>Northstar adds a constrained &quot;prepare customer reply&quot; operation. The operation must:</p><ul><li>create a proposal only;</li><li>use an existing permitted customer context;</li><li>include source IDs;</li><li>reject any body containing a claim of execution;</li><li>reject recipients outside the permitted customer;</li><li>prevent duplicate proposals with an idempotency key;</li><li>require a current customer record version;</li><li>never send a message.</li></ul><h3>Candidate proposal requests</h3><div class="table-wrap"><table><thead><tr><th scope="col">Case ID</th><th scope="col">Customer ID</th><th scope="col">Recipient</th><th scope="col">Title</th><th scope="col">Body</th><th scope="col">Source IDs</th><th scope="col">Record Version</th><th scope="col">Idempotency Key</th></tr></thead><tbody><tr><td>**C-01**</td><td>NST-CUST-002</td><td>priya.shah@example.com</td><td>NS-4000 follow-up</td><td>&quot;The approved guide does not specify WarehousePro compatibility. No message has been sent.&quot;</td><td>NST-PROD-001:v1.2</td><td>3</td><td>northstar:reply:C-01:v1</td></tr><tr><td>**C-02**</td><td>NST-CUST-002</td><td>other@example.com</td><td>NS-4000 follow-up</td><td>&quot;Please review the current compatibility information.&quot;</td><td>NST-PROD-001:v1.2</td><td>3</td><td>northstar:reply:C-02:v1</td></tr><tr><td>**C-03**</td><td>NST-CUST-002</td><td>priya.shah@example.com</td><td>NS-4000 follow-up</td><td>&quot;The task was created and the email was sent.&quot;</td><td>NST-PROD-001:v1.2</td><td>3</td><td>northstar:reply:C-03:v1</td></tr><tr><td>**C-04**</td><td>NST-CUST-002</td><td>priya.shah@example.com</td><td>NS-4000 follow-up</td><td>&quot;The approved policy allows up to 5% without manager approval.&quot;</td><td>NST-POLICY-001:v3.0</td><td>2</td><td>northstar:reply:C-04:v1</td></tr><tr><td>**C-05**</td><td>NST-CUST-002</td><td>priya.shah@example.com</td><td>NS-4000 follow-up</td><td>&quot;The approved guide does not specify compatibility.&quot;</td><td>NST-PROD-001:v1.2</td><td>3</td><td>northstar:reply:C-01:v1</td></tr></tbody></table></div><h3>Deliverables</h3><ol><li>Define a proposal-tool JSON Schema.</li><li>Define semantic validation rules.</li><li>Decide the result for all five cases.</li><li>Implement duplicate prevention.</li><li>Define error codes for invalid recipient, execution claim, stale record and duplicate.</li><li>Write tests for normal, invalid, permission and duplicate scenarios.</li><li>State which checks must be application code rather than prompt instructions.</li></ol><p>---</p></section><section class="book-section" aria-labelledby="section-7"><h2 id="section-7">7. Common problems and recovery</h2><div class="table-wrap"><table><thead><tr><th scope="col">Symptom</th><th scope="col">Diagnosis</th><th scope="col">Correction</th><th scope="col">Verification</th></tr></thead><tbody><tr><td>Tool accepts arbitrary CRM queries</td><td>Operation is too broad</td><td>Replace with narrow read methods</td><td>Schema exposes only approved identifiers and fields</td></tr><tr><td>Model supplies requester_id</td><td>Trusted context exposed as argument</td><td>Bind requester from session</td><td>Changing model argument cannot change identity</td></tr><tr><td>Read tool returns full customer record</td><td>Field minimization absent</td><td>Require an allowed field list</td><td>Test returns only requested permitted fields</td></tr><tr><td>Action runs without approval</td><td>Approval described only in prompt</td><td>Verify approval in executor</td><td>Missing approval returns approval_required</td></tr><tr><td>Task is duplicated after timeout</td><td>No idempotency key</td><td>Store operation result atomically</td><td>Repeated request returns original task</td></tr><tr><td>Stale proposal updates current data</td><td>Record version not rechecked</td><td>Re-read and compare immediately before write</td><td>Version mismatch returns stale_record</td></tr></tbody></table></div><p>---</p></section><section class="book-section" aria-labelledby="section-8"><h2 id="section-8">8. Check your understanding</h2><ol><li>What is the difference between a tool description and a tool executor?</li><li>Why should a customer read tool accept a field allowlist?</li><li>Which values should come from trusted application context rather than the model?</li><li>What does `strict: true` help with?</li><li>Does strict schema validation enforce customer permissions?</li><li>What is an OpenAPI document used for?</li><li>Why should an OpenAPI description not be copied directly into a model-facing tool contract?</li><li>What is the difference between a read tool and a proposal-only tool?</li><li>What checks should occur before an approved write?</li><li>What is idempotency?</li><li>Why is a record-version check needed after approval?</li><li>What should a tool return after a timeout whose write result is unknown?</li><li>Why should permission-denied results contain no customer fields?</li><li>Why might an application disable parallel tool calls?</li><li>What evidence supports a claim that a CRM task was created?</li></ol><p>---</p></section><section class="book-section" aria-labelledby="section-9"><h2 id="section-9">9. Solutions and explanations</h2><h3>Guided-practice solution</h3><pre><code class="language-python">import re
+
+CUSTOMER_ID_PATTERN = re.compile(r&quot;^NST-CUST-[0-9]{3}$&quot;)
+ALLOWED_FIELDS = {
+    &quot;account_name&quot;,
+    &quot;primary_contact_name&quot;,
+    &quot;primary_contact_email&quot;,
+    &quot;assigned_user_id&quot;,
+    &quot;region&quot;,
+}
+
+def get_permitted_customer_context(session, store, customer_id, fields):
+    if not CUSTOMER_ID_PATTERN.fullmatch(customer_id):
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;invalid_arguments&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The customer identifier is invalid.&quot;,
+            },
+        }
+
+    if not fields or any(field not in ALLOWED_FIELDS for field in fields):
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;invalid_arguments&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;One or more requested fields are invalid.&quot;,
+            },
+        }
+
+    if customer_id not in session[&quot;permitted_customer_ids&quot;]:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;permission_denied&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;I cannot provide that customer context in your current access scope.&quot;,
+            },
+        }
+
+    record = store[&quot;customers&quot;].get(customer_id)
+    if record is None:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;not_found_in_scope&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The permitted customer record was not found.&quot;,
+            },
+        }
+
+    selected = {field: record[field] for field in fields if field in record}
+    return {
+        &quot;ok&quot;: True,
+        &quot;customer_id&quot;: customer_id,
+        &quot;record_version&quot;: record[&quot;record_version&quot;],
+        &quot;fields&quot;: selected,
+        &quot;side_effect&quot;: &quot;read_only&quot;,
+    }
+
+def draft_follow_up_task(session, store, customer_id, title, body, source_ids):
+    if customer_id not in session[&quot;permitted_customer_ids&quot;]:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;permission_denied&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The customer is outside your access scope.&quot;,
+            },
+        }
+
+    if not title.strip() or not body.strip() or not source_ids:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;invalid_arguments&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The proposal is missing required fields.&quot;,
+            },
+        }
+
+    record = store[&quot;customers&quot;].get(customer_id)
+    if record is None:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;not_found_in_scope&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The permitted customer record was not found.&quot;,
+            },
+        }
+
+    proposal_id = f&quot;NST-PROP-{len(store[&#x27;proposals&#x27;]) + 1:03d}&quot;
+    store[&quot;proposals&quot;][proposal_id] = {
+        &quot;customer_id&quot;: customer_id,
+        &quot;owner_user_id&quot;: session[&quot;requester_id&quot;],
+        &quot;title&quot;: title,
+        &quot;body&quot;: body,
+        &quot;source_ids&quot;: source_ids,
+        &quot;status&quot;: &quot;pending_approval&quot;,
+        &quot;record_version&quot;: record[&quot;record_version&quot;],
+    }
+
+    return {
+        &quot;ok&quot;: True,
+        &quot;proposal_id&quot;: proposal_id,
+        &quot;customer_id&quot;: customer_id,
+        &quot;record_version&quot;: record[&quot;record_version&quot;],
+        &quot;action_status&quot;: &quot;proposal_only&quot;,
+        &quot;side_effect&quot;: &quot;proposal_created&quot;,
+        &quot;write_executed&quot;: False,
+    }
+
+def create_approved_follow_up_task(
+    session,
+    store,
+    proposal_id,
+    approval_id,
+    expected_record_version,
+    idempotency_key,
+):
+    if len(idempotency_key) &lt; 16:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;invalid_arguments&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The idempotency key is invalid.&quot;,
+            },
+        }
+
+    previous = store[&quot;idempotency&quot;].get(idempotency_key)
+    if previous is not None:
+        return {
+            &quot;ok&quot;: True,
+            &quot;duplicate&quot;: True,
+            &quot;task_id&quot;: previous[&quot;task_id&quot;],
+            &quot;proposal_id&quot;: previous[&quot;proposal_id&quot;],
+            &quot;action_status&quot;: &quot;already_executed&quot;,
+        }
+
+    proposal = store[&quot;proposals&quot;].get(proposal_id)
+    if proposal is None:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;not_found_in_scope&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The proposal was not found.&quot;,
+            },
+        }
+
+    if proposal[&quot;owner_user_id&quot;] != session[&quot;requester_id&quot;]:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;permission_denied&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;You cannot execute this proposal.&quot;,
+            },
+        }
+
+    approval = store[&quot;approvals&quot;].get(approval_id)
+    if (
+        approval is None
+        or approval[&quot;proposal_id&quot;] != proposal_id
+        or approval[&quot;status&quot;] != &quot;approved&quot;
+        or approval[&quot;approved_record_version&quot;] != expected_record_version
+    ):
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;approval_required&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;A matching approval is required.&quot;,
+            },
+        }
+
+    customer_id = proposal[&quot;customer_id&quot;]
+    if customer_id not in session[&quot;permitted_customer_ids&quot;]:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;permission_denied&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The customer is outside your access scope.&quot;,
+            },
+        }
+
+    current_record = store[&quot;customers&quot;].get(customer_id)
+    if current_record is None:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;not_found_in_scope&quot;,
+                &quot;retryable&quot;: False,
+                &quot;user_safe_message&quot;: &quot;The customer record was not found.&quot;,
+            },
+        }
+
+    if current_record[&quot;record_version&quot;] != expected_record_version:
+        return {
+            &quot;ok&quot;: False,
+            &quot;error&quot;: {
+                &quot;code&quot;: &quot;stale_record&quot;,
+                &quot;retryable&quot;: False,
+                &quot;expected_record_version&quot;: expected_record_version,
+                &quot;current_record_version&quot;: current_record[&quot;record_version&quot;],
+            },
+        }
+
+    task_id = f&quot;task_generated_{len(store[&#x27;tasks&#x27;]) + 1:03d}&quot;
+    store[&quot;tasks&quot;][task_id] = {
+        &quot;customer_id&quot;: customer_id,
+        &quot;owner_user_id&quot;: proposal[&quot;owner_user_id&quot;],
+        &quot;title&quot;: proposal[&quot;title&quot;],
+        &quot;body&quot;: proposal[&quot;body&quot;],
+        &quot;proposal_id&quot;: proposal_id,
+        &quot;approval_id&quot;: approval_id,
+        &quot;record_version&quot;: expected_record_version,
+    }
+
+    store[&quot;idempotency&quot;][idempotency_key] = {
+        &quot;task_id&quot;: task_id,
+        &quot;proposal_id&quot;: proposal_id,
+    }
+
+    return {
+        &quot;ok&quot;: True,
+        &quot;task_id&quot;: task_id,
+        &quot;proposal_id&quot;: proposal_id,
+        &quot;customer_id&quot;: customer_id,
+        &quot;record_version&quot;: expected_record_version,
+        &quot;action_status&quot;: &quot;executed&quot;,
+    }</code></pre><h3>Independent challenge solutions</h3><ul><li>**C-01:** Accept proposal (all validation checks pass).</li><li>**C-02:** Reject with `invalid_recipient` (recipient does not match Priya Shah).</li><li>**C-03:** Reject with `execution_claim_not_allowed` (falsely claims action execution).</li><li>**C-04:** Reject with `stale_record` (expected version 2 does not match current version 3).</li><li>**C-05:** Return existing proposal (idempotency key matches C-01).</li></ul><h3>Check-your-understanding answers</h3><ol><li>A tool description tells the model and developers what an operation is intended to do. The executor validates and performs the operation.</li><li>An allowlist prevents the model from requesting unrelated or sensitive fields.</li><li>Requester identity, tenant, role, permissions, current record state and approval authority.</li><li>It constrains tool-call arguments to the declared schema and helps reject unexpected fields or values.</li><li>No. Permissions require trusted application context and executor checks.</li><li>OpenAPI describes an HTTP API&#x27;s paths, methods, parameters, bodies, responses and security metadata.</li><li>HTTP paths, auth headers and deployment details are not necessarily appropriate model arguments. A model-facing adapter should expose only what the model needs.</li><li>A read-only tool returns data without changing it. A proposal-only tool stores a reviewable candidate without executing the business action.</li><li>Validate arguments, permission, proposal, approval, current record version, idempotency and side-effect policy.</li><li>Idempotency means repeating the same intended operation does not create additional effects.</li><li>Approval may have been based on old customer data. Revalidation prevents a stale proposal from changing current data.</li><li>Return an uncertain or dependency error and use idempotency before retrying. Do not assume success or failure from the timeout alone.</li><li>To prevent accidental disclosure through tool output.</li><li>Parallel side-effecting calls can race or create duplicates. Disable them or enforce stronger transactional controls.</li><li>A generated task ID, execution status, target record, approval and audit evidence.</li></ol><p>---</p></section><section class="book-section" aria-labelledby="section-10"><h2 id="section-10">10. Chapter recap and next step</h2><p>A tool is an application boundary, not merely a function name in a prompt.</p><p>You can now:</p><ul><li>write useful tool descriptions;</li><li>define strict JSON Schema arguments;</li><li>keep trusted identity outside model-controlled arguments;</li><li>distinguish model-facing function tools from OpenAPI HTTP contracts;</li><li>classify read, proposal and write side effects;</li><li>validate permissions, approvals and record versions;</li><li>return typed errors;</li><li>prevent duplicate writes with idempotency;</li><li>preserve execution evidence;</li><li>test normal, invalid, permission and recovery cases.</li></ul><h3>I can checklist</h3><ul><li>[x] I can design a narrow read tool.</li><li>[x] I can write a strict JSON Schema for tool arguments.</li><li>[x] I can state a tool&#x27;s side effects.</li><li>[x] I can keep requester and tenant context in application code.</li><li>[x] I can distinguish OpenAPI from a model function-tool definition.</li><li>[x] I can define safe errors.</li><li>[x] I can require approval before a write.</li><li>[x] I can revalidate a record immediately before execution.</li><li>[x] I can use an idempotency key to prevent duplicates.</li><li>[x] I can test permission denial without returning data.</li><li>[x] I can prove execution with an application-generated identifier.</li></ul><p>Chapter 10 will orchestrate these operations with chaining, routing, tool loops, state machines, retries, checkpoints, pause/resume behavior, memory and stopping rules.</p><p>---</p></section><section class="book-section" aria-labelledby="section-11"><h2 id="section-11">11. Glossary and further reading</h2><h3>Glossary</h3><ul><li>**Action tool:** A tool that can change business state or cause an external side effect.</li><li>**Idempotency:** The property that repeating an operation with the same key does not create another effect.</li><li>**OpenAPI:** A language-independent description format for HTTP APIs.</li><li>**Proposal-only tool:** A tool that stores a candidate action for review without executing it.</li><li>**Read tool:** A tool that retrieves data without changing business state.</li><li>**Record revalidation:** Checking permissions, record version and current conditions immediately before a write.</li><li>**Side effect:** A change outside the returned value, such as creating a task or sending a message.</li><li>**Strict schema:** A tool argument contract that requires declared fields and rejects unexpected properties.</li><li>**Tool contract:** The name, description, input schema, output, permissions, side effects and error behavior of a tool.</li><li>**Tool call:** A model-generated request for the application to invoke a named tool with arguments.</li><li>**Trusted context:** Identity, tenant, role, permissions and current record information supplied by the application.</li></ul><h3>Further reading</h3><ol><li>OpenAI function calling — tool definitions, strict schemas, tool-call flow, tool outputs, tool choice and parallel calls. `&lt;<a href="https://developers.openai.com/api/docs/guides/function-calling&gt;`" target="_blank" rel="noopener">https://developers.openai.com/api/docs/guides/function-calling&gt;`</a></li><li>OpenAI tools overview — function tools, hosted tools, MCP and tool configuration. `&lt;<a href="https://developers.openai.com/api/docs/guides/tools&gt;`" target="_blank" rel="noopener">https://developers.openai.com/api/docs/guides/tools&gt;`</a></li><li>OpenAPI Specification 3.2.1 — current API-description format, paths, operations, schemas and security metadata. `&lt;<a href="https://spec.openapis.org/oas/v3.2.1.html&gt;`" target="_blank" rel="noopener">https://spec.openapis.org/oas/v3.2.1.html&gt;`</a></li><li>JSON Schema reference — types, enums, conditionals and schema composition. `&lt;<a href="https://json-schema.org/understanding-json-schema&gt;`" target="_blank" rel="noopener">https://json-schema.org/understanding-json-schema&gt;`</a></li><li>OpenAI structured outputs — schema-constrained response and parsing concepts. `&lt;<a href="https://developers.openai.com/api/docs/guides/structured-outputs&gt;`" target="_blank" rel="noopener">https://developers.openai.com/api/docs/guides/structured-outputs&gt;`</a></li></ol></section><div class="book-end"><h2>Continue your course work</h2><p>Implement a tested read tool and constrained action tool.</p><div class="reader-actions"><a href="/course-book/course-03/chapter-08">← Previous chapter</a><a href="/course-book/course-03/chapter-10">Next chapter →</a></div><p><a href="/course-book/course-03">Course Book index →</a></p></div></article></div></main><footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">wooplix<span>academy</span></span></a><p>Practical Zoho &amp; AI learning<br>for people doing the work.</p><a class="back-top" href="#main">Back to top ↑</a></div><div class="footer-bottom"><span>© Wooplix Academy</span><span>Course details are confirmed before each cohort.</span><a href="/#programmes">All programmes</a></div></footer><script src="/script.js" defer></script><script src="/course-book/course-03/course-book.js" defer></script></body></html>
