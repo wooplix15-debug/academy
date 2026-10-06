@@ -223,19 +223,9 @@
           "practice": "Implement a server-side integration component."
         },
         {
-          "title": "Extensions and Reusable Solutions",
-          "topics": "Native/integration extensions, variables, connections, dependencies, installation, upgrades, uninstall implications and distribution.",
-          "practice": "Package an extension prototype with lifecycle documentation."
-        },
-        {
-          "title": "Testing and Performance",
-          "topics": "Logic tests, contract/integration tests, access tests, regression, volume testing, API budgets, fault injection and diagnostics.",
-          "practice": "Produce a test suite linked to requirements and performance findings."
-        },
-        {
-          "title": "Environments, Release and Operations",
-          "topics": "Developer Edition versus sandbox; Creator development \u2192 stage \u2192 production; dependencies, supported promotion, backups, migrations, versioning and recovery.",
-          "practice": "Rehearse a release and prepare the technical handover."
+          "title": "Extensions, Testing and Release Readiness",
+          "topics": "Native/integration extensions, configuration, connections, installation, upgrades, testing, performance budgets, fault injection, environments, release controls and technical handover.",
+          "practice": "Package an extension, test it against defined scenarios and prepare its release handover."
         }
       ],
       "project": [

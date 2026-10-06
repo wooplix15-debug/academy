@@ -31,12 +31,12 @@ def chapter_id(number):
 def syllabus(course):
     blocks = []
     for number, chapter in enumerate(course['chapters'], 1):
-        has_book = course['id'] in {4, 5} or (course['id'] == 1 and number <= 8)
+        has_book = course['id'] in {4, 5} or (course['id'] == 1 and number <= 8) or (course['id'] == 2 and 14 <= number <= 20)
         chapter_book = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}/chapter-{number:02d}">Read this chapter in the Course Book →</a></p>' if has_book else ''
         blocks.append(f'''<details class="module" id="{chapter_id(number)}" open>
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
 <div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p>{chapter_book}</div></details>''')
-    book_link = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Open the Course Book →</a></p>' if course['id'] in {1, 4, 5} else ''
+    book_link = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Open the Course Book →</a></p>' if course['id'] in {1, 2, 4, 5} else ''
     return f'''<section class="course-syllabus" id="syllabus">
 <div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2>{book_link}<p>Read the topics and practice task for each chapter. Expand or collapse chapters as you read.</p><p>Ask us about the course duration, schedule and delivery format.</p><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
 <div><div class="chapter-controls"><button type="button" data-chapters="open">Expand all chapters</button><button type="button" data-chapters="close">Collapse all</button></div><div class="module-list">{''.join(blocks)}</div></div></section>'''
@@ -79,7 +79,7 @@ footer = template[template.index('<footer'):]
 cards = []
 for course, slug in zip(DATA['courses'], SLUGS):
     chapters = ''.join(f'<li><a href="/courses/{slug}.html#{chapter_id(n)}"><span>{n:02}</span>{escape(ch["title"])}</a></li>' for n, ch in enumerate(course['chapters'], 1))
-    book_action = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Course Book · start learning →</a></p>' if course['id'] in {1, 4, 5} else ''
+    book_action = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Course Book · start learning →</a></p>' if course['id'] in {1, 2, 4, 5} else ''
     cards.append(f'''<article class="curriculum-course" id="course-{course['id']}"><p class="eyebrow">COURSE {course['id']:02} · {len(course['chapters'])} CHAPTERS</p><h2><a href="/courses/{slug}.html">{escape(course['title'])}</a></h2><p>{escape(course['summary'])}</p><p><b>For:</b> {escape(course['audience'])}</p><ol class="chapter-index">{chapters}</ol><a class="button button-dark" href="/courses/{slug}.html#syllabus">Topics and practice tasks →</a>{book_action}</article>''')
 main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
 (PUBLIC / 'syllabus.html').write_text(head + main + footer)
@@ -87,7 +87,8 @@ main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow"
 # Keep the home page chapter directory in sync with exactly the same source.
 home_path = PUBLIC / 'index.html'
 home = home_path.read_text()
-home_section = f'''<section class="curriculum-home" id="curriculum" aria-labelledby="curriculum-title"><div class="curriculum-home-heading"><p class="eyebrow">FIVE COURSES · 86 CHAPTERS</p><h2 id="curriculum-title">Full course syllabus.</h2><p>Every chapter from our five course syllabi is listed here. Select a chapter to read its topics and practice task.</p><nav class="curriculum-jump" aria-label="Jump to a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></div>{''.join(cards)}</section>'''
+total_chapters = sum(len(course['chapters']) for course in DATA['courses'])
+home_section = f'''<section class="curriculum-home" id="curriculum" aria-labelledby="curriculum-title"><div class="curriculum-home-heading"><p class="eyebrow">FIVE COURSES · {total_chapters} CHAPTERS</p><h2 id="curriculum-title">Full course syllabus.</h2><p>Every chapter from our five course syllabi is listed here. Select a chapter to read its topics and practice task.</p><nav class="curriculum-jump" aria-label="Jump to a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></div>{''.join(cards)}</section>'''
 if 'id="curriculum"' in home:
     home = replace_section(home, 'curriculum-home', home_section)
 else:
@@ -99,8 +100,9 @@ else:
 if 'href="/syllabus.css"' not in home:
     home = home.replace('</head>', '<link rel="stylesheet" href="/syllabus.css"></head>', 1)
 home = home.replace('href="/syllabus.html">Curriculum', 'href="#curriculum">Curriculum')
-home = home.replace('href="/syllabus.html">Browse all 86 chapters', 'href="#curriculum">Browse all 86 chapters')
-home = home.replace('<a class="text-link" href="#approach">See how learning works <span aria-hidden="true">→</span></a>', '<a class="text-link" href="#curriculum">Browse all 86 chapters <span aria-hidden="true">↓</span></a>')
+home = home.replace('href="/syllabus.html">Browse all 86 chapters', f'href="#curriculum">Browse all {total_chapters} chapters')
+home = home.replace('<a class="text-link" href="#approach">See how learning works <span aria-hidden="true">→</span></a>', f'<a class="text-link" href="#curriculum">Browse all {total_chapters} chapters <span aria-hidden="true">↓</span></a>')
+home = home.replace('Browse all 86 chapters', f'Browse all {total_chapters} chapters')
 for course, slug in zip(DATA['courses'], SLUGS):
     home = home.replace(f'href="/courses/{slug}.html" class="card-link">View course outline', f'href="/courses/{slug}.html#syllabus" class="card-link">Read all {len(course["chapters"])} chapters')
 home = home.replace('AI &amp; Agentic AI Builder</h3>', 'AI &amp; Agentic AI Builder for Business Systems</h3>')
@@ -111,4 +113,4 @@ for asset in PUBLIC.rglob('*'):
         content = asset.read_text()
         if any(host in content for host in ('docs.google.com', 'drive.google.com')):
             raise ValueError(f'Internal document link found in public asset: {asset}')
-print('Updated home page, five course pages and curriculum directory: 86 chapters.')
+print(f'Updated home page, five course pages and curriculum directory: {total_chapters} chapters.')
