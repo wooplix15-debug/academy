@@ -31,11 +31,9 @@ def chapter_id(number):
 def syllabus(course):
     blocks = []
     for number, chapter in enumerate(course['chapters'], 1):
-        has_book = course['id'] in {1, 2, 3, 4, 5}
-        chapter_book = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}/chapter-{number:02d}">Read this chapter in the Course Book →</a></p>' if has_book else ''
         blocks.append(f'''<details class="module" id="{chapter_id(number)}" open>
 <summary><span class="module-number">{number:02}</span><span class="module-title">{escape(chapter['title'])}</span><span class="module-plus" aria-hidden="true">+</span></summary>
-<div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p>{chapter_book}</div></details>''')
+<div class="module-content"><p><b>Topics:</b> {escape(chapter['topics'])}</p><p><b>Practice:</b> {escape(chapter['practice'])}</p></div></details>''')
     book_link = f'<p><a class="text-link" href="/course-book/course-{course["id"]:02d}">Open the Course Book →</a></p>' if course['id'] in {1, 2, 3, 4, 5} else ''
     return f'''<section class="course-syllabus" id="syllabus">
 <div class="syllabus-intro"><p class="eyebrow">{len(blocks)} CHAPTERS</p><h2>Course syllabus.</h2>{book_link}<p>Read the topics and practice task for each chapter. Expand or collapse chapters as you read.</p><p>Ask us about the course duration, schedule and delivery format.</p><p><a class="text-link" href="/#curriculum">Browse all five courses →</a></p></div>
