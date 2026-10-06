@@ -1297,7 +1297,7 @@ By the end of this chapter, you will be able to:
 - Interpret Function revisions, logs, failures, analytics, and credit information.
 - Decide whether an implementation is ready for sandbox testing, controlled release, or further development.
 - Preserve Nova’s rule that accepted Creator completion remains valid when CRM delivery fails.
-This chapter builds on Chapter 20. The previous chapter packaged reusable extension components and installation-aware configuration. This chapter verifies that those components behave correctly under normal load, invalid input, API failure, quota pressure, duplicate delivery, and version changes.
+This testing module extends the extension design you have just completed. It verifies reusable components under normal load, invalid input, API failure, quota pressure, duplicate delivery and version changes.
 ### Testing module — Lessons
 ### Testing module — Lesson 1 — Testing is an evidence model
 A test is not only a command that returns “pass.”
@@ -1811,7 +1811,7 @@ event_key: "NOV-REQ-801:completed:v1"
 crm_account_id: "000900000000002901"
 event_type: "completion"
 payload_version: "1"
-lab_marker: "NOVCH21LAB901A"
+lab_marker: "NOVCH20LAB901A"
 The intended future flow is:
 Creator completion accepted
         |
@@ -1819,7 +1819,7 @@ Creator completion accepted
 Delivery boundary
         |
         +--> CRM summary or external destination
-The delivery boundary does not yet have a production queue or persistent ledger. Chapter 21 uses an in-memory test ledger to validate the intended state transitions.
+The delivery boundary does not yet have a production queue or persistent ledger. This chapter uses an in-memory test ledger to validate the intended state transitions.
 Scenario matrix
 ID	Setup	Expected result
 S01	Valid completion event	Delivered
@@ -2080,12 +2080,12 @@ REST timeout breach	Detected	 	Local
 Response-size breach	Detected	 	Local
 Live Zoho request	Not attempted	 	None
 The prepared local verification artifacts are:
-c02_ch21_harness.cjs
-c02_ch21_verify.cjs
+c02_ch20_harness.cjs
+c02_ch20_verify.cjs
 Run:
-node c02_ch21_verify.cjs
+node c02_ch20_verify.cjs
 Prepared local result:
-26 Chapter 21 local scenario and budget cases passed. No Zoho requests made.
+26 local scenario and budget cases for this chapter passed. No Zoho requests made.
 ### Testing module — Independent challenge
 Design a complete test plan for Nova’s extension and CRM delivery boundary.
 Your plan must include:
@@ -2288,7 +2288,7 @@ Recovery:
 12. What does the CRM Search API limit imply for large search results?
 13. Why should a Function fetch only required fields?
 14. What evidence should accompany a release decision?
-15. What does the Chapter 21 lab claim about live Zoho requests?
+15. What does the local lab claim about live Zoho requests?
 ### Testing module — Solutions and explanations
 Guided practice solution
 A valid solution:
@@ -2306,7 +2306,7 @@ A valid solution:
 - Uses explicit API credit estimates.
 - Records local evidence separately from tenant evidence.
 The prepared harness passed:
-26 Chapter 21 local scenario and budget cases passed. No Zoho requests made.
+26 local scenario and budget cases for this chapter passed. No Zoho requests made.
 This result covers the local scenario simulator and performance-budget checks only.
 Independent challenge solution
 A strong test plan contains:
@@ -2361,8 +2361,8 @@ You learned that:
 - Function Analytics, Revisions, Logs, Failures, and Credits support operational diagnosis.
 - A rerun control is not a replacement for idempotency.
 - Release decisions should be tied to explicit evidence and blocking conditions.
-- The local Chapter 21 harness passed 26 synthetic cases without making live Zoho requests.
-In the next chapter, you will plan environments, releases, deployment promotion, rollback, and operational handover.
+- The local harness passed 26 synthetic cases without making live Zoho requests.
+Use the evidence in this module to decide whether an extension is ready for controlled release and operational handover.
 ### Testing module — Glossary and further reading
 Glossary
 API credit

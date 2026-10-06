@@ -1,4 +1,4 @@
-"""Extract verified Course 2 chapters 14–21 into the public student reader."""
+"""Extract verified Course 2 chapters 14–20 into the public student reader."""
 import html
 import json
 import re
@@ -34,6 +34,23 @@ def chapter_block(number):
         lines.insert(0, supplied_title)
     if number == 20:
         _, testing_lines = chapter_block(21)
+        # Chapter 21 was merged into the final approved 20-chapter syllabus.
+        # Keep the useful testing material, but remove the old chapter identity.
+        replacements = {
+            'This chapter builds on Chapter 20. The previous chapter packaged reusable extension components and installation-aware configuration. This chapter verifies that those components behave correctly under normal load, invalid input, API failure, quota pressure, duplicate delivery, and version changes.': 'This testing module extends the extension design you have just completed. It verifies reusable components under normal load, invalid input, API failure, quota pressure, duplicate delivery and version changes.',
+            'Chapter 21 uses an in-memory test ledger': 'This chapter uses an in-memory test ledger',
+            'Chapter 21 local scenario and budget cases': 'local scenario and budget cases for this chapter',
+            'What does the Chapter 21 lab claim about live Zoho requests?': 'What does the local lab claim about live Zoho requests?',
+            'The local Chapter 21 harness passed': 'The local harness passed',
+            'In the next chapter, you will plan environments, releases, deployment promotion, rollback, and operational handover.': 'Use the evidence in this module to decide whether an extension is ready for controlled release and operational handover.',
+            'c02_ch21_harness.cjs': 'c02_ch20_harness.cjs',
+            'c02_ch21_verify.cjs': 'c02_ch20_verify.cjs',
+            'NOVCH21LAB': 'NOVCH20LAB',
+        }
+        testing_text = '\n'.join(testing_lines)
+        for old, new in replacements.items():
+            testing_text = testing_text.replace(old, new)
+        testing_lines = testing_text.splitlines()
         lines.extend(['', '### Testing, performance and release readiness', ''])
         major = {'What you will learn', 'Lessons', 'Visual explanation', 'Worked case', 'Try it yourself', 'Independent challenge', 'Common problems and recovery', 'Check your understanding', 'Solutions and explanations', 'Chapter recap and next step', 'Glossary and further reading'}
         for test_line in testing_lines:
@@ -161,4 +178,4 @@ for number, chapter in enumerate(COURSE['chapters'], 1):
     items.append(f'<li class="book-chapter {"available" if available else "pending"}"><span class="chapter-num">{number:02d}</span><div><h2>{link}</h2><p>{html.escape(chapter["topics"])}</p><span class="chapter-status">{"Ready to read" if available else "Planned chapter"}</span></div>{button}</li>')
 index = head + '''<main id="main" class="book-directory"><div class="book-breadcrumb"><a href="/courses/zoho-developer-implementation-engineer">Course 2</a><span>/</span><span>Course Book</span></div><header class="book-hero"><p class="eyebrow">COURSE 02 · STUDENT LEARNING</p><h1>Course Book</h1><p>Zoho Developer &amp; Implementation Engineer</p><p class="book-description">Read the advanced CRM engineering chapters on data APIs, dependable event handling, server-side work, client scripts, widgets, extensions, testing and release readiness.</p><a class="button button-dark" href="/course-book/course-02/chapter-14">Start Chapter 14 →</a></header><ol class="book-chapters">'''+''.join(items)+'</ol></main>'+footer
 (OUT / 'index.html').write_text(index)
-print('Built Course 2 Chapters 14–21 from completed student source.')
+print('Built Course 2 Chapters 14–20 from completed student source.')
