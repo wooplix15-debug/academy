@@ -172,7 +172,9 @@ for course in (1,2,3):
         # Use the approved title; imported headings and YAML metadata are internal formatting only.
         body=re.sub(r'^' + re.escape(expected) + r'\n', '', body, count=1)
         body=re.sub(r'^#\s*' + re.escape(expected) + r'\n', '', body, count=1)
-        clean=f'# {expected}\n\n'+body.strip()+'\n'
+        # Keep an existing reviewed visible title (Course 1 Chapter 1 uses a
+        # fuller hand-edited title) instead of adding a second heading.
+        clean = body.strip()+'\n' if body.lstrip().startswith('# ') else f'# {expected}\n\n'+body.strip()+'\n'
         (folder/f'chapter_{number:02d}.md').write_text(clean)
         nav, content=sections(markdown_html(clean))
         prev=f'<a href="/course-book/course-{course:02d}/chapter-{number-1:02d}">← Previous chapter</a>' if number>1 else f'<a href="/courses/{SLUGS[course]}">Course overview</a>'
