@@ -82,11 +82,16 @@ for course, slug in zip(DATA['courses'], SLUGS):
 main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow">WOOPLIX ACADEMY · ZOHO &amp; AI</p><h1>Course syllabi.</h1><p>Five courses. Choose a course or chapter to see what you will learn and practise.</p><nav class="curriculum-jump" aria-label="Choose a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></section><section class="curriculum-directory" aria-label="Course chapter directory">{''.join(cards)}</section></main>'''
 (PUBLIC / 'syllabus.html').write_text(head + main + footer)
 
-# Keep the home page chapter directory in sync with exactly the same source.
+# Keep a compact, expandable course library on the home page. The full directory
+# remains available at /syllabus.html for visitors who want every chapter at once.
 home_path = PUBLIC / 'index.html'
 home = home_path.read_text()
 total_chapters = sum(len(course['chapters']) for course in DATA['courses'])
-home_section = f'''<section class="curriculum-home" id="curriculum" aria-labelledby="curriculum-title"><div class="curriculum-home-heading"><p class="eyebrow">FIVE COURSES · {total_chapters} CHAPTERS</p><h2 id="curriculum-title">Full course syllabus.</h2><p>Every chapter from our five course syllabi is listed here. Select a chapter to read its topics and practice task.</p><nav class="curriculum-jump" aria-label="Jump to a course">{''.join(f'<a href="#course-{c["id"]}">Course {c["id"]:02} · {len(c["chapters"])} chapters</a>' for c in DATA['courses'])}</nav></div>{''.join(cards)}</section>'''
+home_cards = []
+for course, slug in zip(DATA['courses'], SLUGS):
+    chapters = ''.join(f'<li><a href="/courses/{slug}.html#{chapter_id(n)}"><span>{n:02}</span>{escape(ch["title"])}</a></li>' for n, ch in enumerate(course['chapters'], 1))
+    home_cards.append(f'''<details class="home-course" id="course-{course['id']}"><summary><span class="home-course-number">COURSE {course['id']:02}</span><span><b>{escape(course['title'])}</b><small>{len(course['chapters'])} chapters · {escape(course['summary'])}</small></span><span class="home-course-plus" aria-hidden="true">+</span></summary><div class="home-course-body"><p><b>For:</b> {escape(course['audience'])}</p><ol class="chapter-index">{chapters}</ol><div class="home-course-actions"><a class="button button-dark" href="/courses/{slug}.html#syllabus">Course details →</a><a class="text-link" href="/course-book/course-{course['id']:02d}">Open Course Book →</a></div></div></details>''')
+home_section = f'''<section class="curriculum-home" id="curriculum" aria-labelledby="curriculum-title"><div class="curriculum-home-heading"><p class="eyebrow">FIVE COURSES · {total_chapters} CHAPTERS</p><h2 id="curriculum-title">Find your course.</h2><p>Choose a programme to view its chapter list, practical syllabus and student Course Book.</p><p class="library-actions"><a class="button button-dark" href="/syllabus.html">View full chapter directory →</a></p></div><div class="home-course-library">{''.join(home_cards)}</div></section>'''
 if 'id="curriculum"' in home:
     home = replace_section(home, 'curriculum-home', home_section)
 else:
@@ -98,9 +103,11 @@ else:
 if 'href="/syllabus.css"' not in home:
     home = home.replace('</head>', '<link rel="stylesheet" href="/syllabus.css"></head>', 1)
 home = home.replace('href="/syllabus.html">Curriculum', 'href="#curriculum">Curriculum')
-home = home.replace('href="/syllabus.html">Browse all 86 chapters', f'href="#curriculum">Browse all {total_chapters} chapters')
-home = home.replace('<a class="text-link" href="#approach">See how learning works <span aria-hidden="true">→</span></a>', f'<a class="text-link" href="#curriculum">Browse all {total_chapters} chapters <span aria-hidden="true">↓</span></a>')
-home = home.replace('Browse all 86 chapters', f'Browse all {total_chapters} chapters')
+home = home.replace('href="/syllabus.html">Browse all 86 chapters', f'href="#curriculum">Find your course')
+home = home.replace('<a class="text-link" href="#approach">See how learning works <span aria-hidden="true">→</span></a>', '<a class="text-link" href="#curriculum">Find your course <span aria-hidden="true">↓</span></a>')
+home = home.replace('Browse all 86 chapters', 'Find your course')
+home = home.replace('Browse all 84 chapters', 'Find your course')
+home = re.sub(r'<p class="course-footnote"><a href="#curriculum">.*?</a><br>', '<p class="course-footnote"><a href="#curriculum">Choose from five courses →</a><br>', home)
 for course, slug in zip(DATA['courses'], SLUGS):
     home = home.replace(f'href="/courses/{slug}.html" class="card-link">View course outline', f'href="/courses/{slug}.html#syllabus" class="card-link">Read all {len(course["chapters"])} chapters')
 home = home.replace('AI &amp; Agentic AI Builder</h3>', 'AI &amp; Agentic AI Builder for Business Systems</h3>')

@@ -13,8 +13,7 @@ BOOKS = {
 
 for course, info in BOOKS.items():
     folder = ROOT / 'public/course-book' / f'course-{course}'
-    progress = round(info['ready'] / info['total'] * 100)
-    bar = f'''<section class="book-coursebar" data-coursebook-polish="coursebar" aria-label="Course Book progress"><strong>Course {int(course)} · {info['ready']} of {info['total']} chapters ready</strong><div class="book-progress" aria-hidden="true"><i style="width:{progress}%"></i></div><a href="/courses/{info['course']}">Full syllabus →</a></section>'''
+    bar = f'''<section class="book-coursebar" data-coursebook-polish="coursebar" aria-label="Course Book details"><strong>Course {int(course)} · {info['total']} chapters</strong><a href="/courses/{info['course']}">Full syllabus →</a></section>'''
     index = folder / 'index.html'
     page = index.read_text()
     page = re.sub(r'<section class="book-coursebar" data-coursebook-polish="coursebar".*?</section>', '', page, flags=re.S)
