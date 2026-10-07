@@ -16,3 +16,4 @@
 /* Quiet, readable chapter pages. These styles also cover older imported Markdown. */
 .book-reading-guide{display:block;padding:13px 17px;border-radius:8px}.book-reading-guide p{font-size:.88rem;line-height:1.6}.book-reading-guide strong{color:var(--book-green)}
 .book-content hr{border:0;border-top:1px solid var(--book-line);margin:28px 0}.book-content pre{margin:20px 0;padding:18px;overflow:auto;border-radius:10px;background:#17382f;color:#f6fbf7;font-size:.84rem;line-height:1.65}.book-content code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}.book-content :not(pre)>code{padding:2px 5px;border-radius:4px;background:#edf3ed;color:#164f40}
+.book-content blockquote{margin:20px 0;padding:3px 20px;border-left:3px solid #78a78f;background:#f4f8f3;color:var(--book-muted)}.book-content blockquote p{margin:14px 0}

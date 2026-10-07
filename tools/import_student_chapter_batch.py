@@ -34,18 +34,49 @@ def c03_from_paste(number):
 
 def source_for(course, number):
     cid = f'C{course:02d}'
+    # Course 1 Chapter 1 is the hand-edited foundation chapter. Keep its
+    # reviewed local version instead of replacing it from an older import.
+    existing = ROOT / 'materials' / 'student_books' / f'course_{course:02d}' / f'chapter_{number:02d}.md'
+    if course == 1 and number == 1 and existing.exists():
+        return existing.read_text().strip() + '\n'
     if course == 3 and number >= 14:
         return c03_from_paste(number)
     matches = list(DOWNLOADS.glob(f'{cid}_CH{number:02d}_*_Student.md'))
     if len(matches) == 1:
         return strip_source(matches[0].read_text(), cid, number)
-    existing = ROOT / 'materials' / 'student_books' / f'course_{course:02d}' / f'chapter_{number:02d}.md'
     if existing.exists():
         return existing.read_text().strip() + '\n'
     raise ValueError(f'{cid} {number}: {matches}')
 
 def markdown_html(body):
     out=[]; lines=body.splitlines(); i=0
+    plain_mode = re.search(r'^## ', body, re.M) is None
+    top_sections = re.compile(
+        r'^\d+\.\s+(What you will learn|Lessons|Visual explanation|Worked case.*|Try it yourself.*|'
+        r'Independent challenge.*|Common problems.*|Check your understanding|Solutions and explanations|'
+        r'Chapter recap.*|Glossary.*)$', re.I)
+    plain_top_sections = re.compile(
+        r'^(What you will learn|Visual explanation.*|Worked case.*|Try it yourself.*|'
+        r'Independent challenge.*|Common problems.*|Knowledge check|Check your understanding|'
+        r'Solutions.*|Chapter recap.*|Glossary.*|Further reading)$', re.I)
+    def numbered_top_section(index):
+        hit = re.match(r'^(\d+)\.\s+\S+', lines[index])
+        if not hit:
+            return False
+        number = hit.group(1)
+        probe = index + 1
+        while probe < len(lines) and not lines[probe].strip():
+            probe += 1
+        return probe < len(lines) and re.match(r'^' + re.escape(number) + r'\.\d+\s+', lines[probe]) is not None
+    def heading_tag(index):
+        line = lines[index].strip()
+        if top_sections.match(line) or numbered_top_section(index) or plain_top_sections.match(line):
+            return 'h2'
+        if re.match(r'^Lesson\s+\d+\b', line, re.I):
+            return 'h2' if plain_mode else 'h3'
+        if re.match(r'^\d+\.\d+\s+\S+', line):
+            return 'h3'
+        return None
     def links(s):
         value=escape(s)
         return re.sub(r'(https?://[^\s<]+)', r'<a href="\1" target="_blank" rel="noopener">\1</a>', value)
@@ -58,6 +89,21 @@ def markdown_html(body):
             lang=line[3:].strip(); i+=1; code=[]
             while i<len(lines) and not lines[i].startswith('```'): code.append(lines[i]); i+=1
             i+=1; out.append(f'<pre><code class="language-{escape(lang)}">{escape(chr(10).join(code))}</code></pre>'); continue
+        # Earlier approved exports used numbered plain-text section labels.
+        # Treat only the fixed coursebook sections as top-level headings so
+        # ordinary numbered instructions remain lists.
+        tag = heading_tag(i)
+        if tag:
+            title = re.sub(r'^\d+(?:\.\d+)?\.\s*', '', line).strip()
+            out.append(f'<{tag}>'+links(title)+f'</{tag}>'); i+=1; continue
+        # Preserve un-fenced Mermaid diagrams as readable code blocks. They
+        # are diagrams in the source, not prose paragraphs.
+        if re.match(r'^(?:flowchart|sequenceDiagram|stateDiagram|graph)\b', line):
+            diagram=[line]; i+=1
+            while i < len(lines) and (lines[i].startswith((' ', '\t')) or not lines[i].strip()):
+                if lines[i].strip(): diagram.append(lines[i])
+                i+=1
+            out.append('<pre><code class="language-mermaid">'+escape(chr(10).join(diagram))+'</code></pre>'); continue
         if line.strip() == '---': out.append('<hr>'); i+=1; continue
         if line.startswith('#### '): out.append('<h4>'+links(line[5:].strip())+'</h4>'); i+=1; continue
         if line.startswith('### '): out.append('<h3>'+links(line[4:].strip())+'</h3>'); i+=1; continue
@@ -78,12 +124,16 @@ def markdown_html(body):
             vals=[]
             while i<len(lines) and lines[i].startswith('- '): vals.append(lines[i][2:]); i+=1
             out.append('<ul>'+''.join('<li>'+links(x)+'</li>' for x in vals)+'</ul>'); continue
+        if line.startswith('> '):
+            vals=[]
+            while i<len(lines) and lines[i].startswith('> '): vals.append(lines[i][2:]); i+=1
+            out.append('<blockquote><p>'+links(' '.join(vals))+'</p></blockquote>'); continue
         if re.match(r'^\d+\. ',line):
             vals=[]
             while i<len(lines) and re.match(r'^\d+\. ',lines[i]): vals.append(re.sub(r'^\d+\. ','',lines[i])); i+=1
             out.append('<ol>'+''.join('<li>'+links(x)+'</li>' for x in vals)+'</ol>'); continue
         vals=[line]; i+=1
-        while i<len(lines) and lines[i].strip() and not lines[i].startswith(('#','|','- ','```')) and '\t' not in lines[i] and not re.match(r'^\d+\. ',lines[i]): vals.append(lines[i]); i+=1
+        while i<len(lines) and lines[i].strip() and not lines[i].startswith(('#','|','- ','```')) and '\t' not in lines[i] and not re.match(r'^\d+\. ',lines[i]) and not heading_tag(i): vals.append(lines[i]); i+=1
         para(vals)
     return ''.join(out)
 

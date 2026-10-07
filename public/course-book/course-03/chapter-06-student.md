@@ -341,7 +341,7 @@ discount above 10%: not permitted
 
 NST-POLICY-001:West:v3.1-draft
 scope: West
-status: draft
+status: final
 discount above 10%: manager may approve up to 12%
 
 NST-POLICY-001:West:v3.1
@@ -509,7 +509,7 @@ knowledge_inventory:
       title: "West Discount Policy draft"
       source_type: "policy"
       owner_id: "policy-owner@example.com"
-      status: "draft"
+      status: "final"
       disposition: "hold"
       provider_index_eligible: false
       reason: "Draft explicitly excluded from customer-facing decisions"
