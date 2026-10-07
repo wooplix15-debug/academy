@@ -72,10 +72,16 @@ A knowledge inventory is a register of candidate and active sources. A useful in
 - review date;
 - deletion status;
 - reason for inclusion or exclusion.
-A product-generated file ID is not a replacement for the business source ID. For example:
-Business source ID: NST-PROD-001:v1.2
-Provider file ID:    file_abc123
-The provider ID may change when the file is uploaded again. The business source ID should remain linked to the business version.
+### Keep two IDs for two different jobs
+
+Do not replace the business source ID with a product-generated file ID. They answer different questions:
+
+| ID | Example | What it tells you |
+| --- | --- | --- |
+| Business source ID | `NST-PROD-001:v1.2` | Which approved product guide and version the business means. |
+| Provider file ID | `file_abc123` | Which uploaded file the technical platform stored. |
+
+The provider file ID can change when a file is uploaded again. The business source ID should continue to identify the same approved business version. Keep both IDs linked in the inventory.
 Northstar source classes
 Source class	Example	Default use
 Approved product source	NST-PROD-001:v1.2	Product facts

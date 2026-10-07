@@ -34,10 +34,11 @@ def c03_from_paste(number):
 
 def source_for(course, number):
     cid = f'C{course:02d}'
-    # Course 1 Chapter 1 is the hand-edited foundation chapter. Keep its
-    # reviewed local version instead of replacing it from an older import.
+    # The local student_books folder is the reviewed editing source. External
+    # imports are only a first-load fallback, so later editorial work is not
+    # silently replaced by an older generated export.
     existing = ROOT / 'materials' / 'student_books' / f'course_{course:02d}' / f'chapter_{number:02d}.md'
-    if course == 1 and number == 1 and existing.exists():
+    if existing.exists():
         return existing.read_text().strip() + '\n'
     if course == 3 and number >= 14:
         return c03_from_paste(number)

@@ -1226,7 +1226,7 @@ Check-your-understanding answers
 14. Vendor/model availability differs by organization data centre.
 15. Admin and Super Admin can deploy in the accessed role model; Collaborator can build and test but not deploy.
 16. Agent version, model, knowledge, tools, connections, parameter mapping, input, output, tool calls, timestamp and status.
-17. Agent or provider file identifiers may change; the business source ID preserves governance and version identity.
+17. A provider may assign a new file ID when a document is uploaded again. Keep the business source ID as well, so a reviewer can still identify the approved document and version used by the agent.
 18. An integration lets a person or channel interact with the agent. A trigger starts an autonomous run from a business event.
 10. Chapter recap and next step
 Zia Agent Studio provides a platform-specific way to assemble an agent from identity, model, knowledge, tools, connections, parameter mappings and guardrails.

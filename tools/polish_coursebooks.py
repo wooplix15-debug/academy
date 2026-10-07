@@ -28,7 +28,9 @@ for course, info in BOOKS.items():
         number = int(m.group(1))
         page = chapter.read_text()
         page = re.sub(r'<div class="chapter-strip" data-coursebook-polish="chapter-strip">.*?</div>', '', page, flags=re.S)
-        page = re.sub(r'<section class="book-reading-guide" data-coursebook-polish="reading-guide"[^>]*>.*?</section>', '', page, flags=re.S)
+        # Older cleanup passes may remove the data attribute. Remove every
+        # existing guide so rebuilds always leave exactly one concise guide.
+        page = re.sub(r'<section class="book-reading-guide"[^>]*>.*?</section>', '', page, flags=re.S)
         strip = f'''<div class="chapter-strip" data-coursebook-polish="chapter-strip"><b>Course {int(course)} · Chapter {number} of {info['total']}</b><a href="/course-book/course-{course}">Course contents →</a></div>'''
         guide = '''<section class="book-reading-guide" data-coursebook-polish="reading-guide" aria-label="How to use this chapter"><p><strong>Study path:</strong> read the lesson, complete the practice, then open the solutions.</p></section>'''
         page = page.replace('<div class="book-layout">', strip+'<div class="book-layout">', 1)

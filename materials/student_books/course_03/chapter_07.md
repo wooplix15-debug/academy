@@ -257,37 +257,65 @@ A useful citation should identify:
 - section or page when available;
 - the text or chunk used;
 - retrieval timestamp or trace ID where needed.
-Example:
+### A source label is not enough
+
+Consider this answer:
+
+```json
 {
   "claim": "A Sales Representative needs manager approval for a 10% discount.",
   "source_id": "NST-POLICY-001:v3.0",
   "section": "Discount approval",
   "chunk_id": "NST-POLICY-001:v3.0#discount-approval"
 }
-A citation is not valid merely because the model included a source ID. The application or evaluator should verify that the cited source supports the claim.
-Source citation versus provider file citation
-A provider may return a file identifier or file citation. Northstar should also preserve its business source ID and version.
-Provider file ID: file_abc123
-Northstar business source: NST-POLICY-001:v3.0
-Chunk: NST-POLICY-001:v3.0#discount-approval
-The provider identifier supports technical tracing. The Northstar identifier supports business interpretation and version control.
-Insufficient-evidence behavior
-When the retrieved context is silent, the answer should say so:
-The approved NS-4000 product guide does not specify WarehousePro compatibility. I have not inferred compatibility. Source: NST-PROD-001:v1.2.
-When the retrieved context conflicts:
-The available approved sources conflict about the West-region discount limit. I cannot determine the current applicable limit from the supplied metadata. A Knowledge Editor or policy owner must resolve the conflict.
-Do not fill an evidence gap with general model knowledge.
-Human review
-A human reviewer should have access to:
-- the user question;
-- the retrieved chunks;
-- source IDs and versions;
-- the generated answer;
-- any missing or conflicting evidence signal.
-A citation without visible evidence makes review harder.
-Check for understanding
-If a model cites NST-PROD-001:v1.2 for the claim “the NS-4000 supports WarehousePro,” but that source says compatibility is unspecified, is the answer grounded?
-No. The citation is present, but the claim is not supported by the cited text.
+```
+
+The source label looks useful, but it is only a starting point. Check the source text before trusting the answer. In this case, the cited section must actually say that a 10% discount needs manager approval.
+
+Use this simple test:
+
+| Ask | A good result looks like |
+| --- | --- |
+| What is the claim? | “A 10% discount needs manager approval.” |
+| Which source supports it? | `NST-POLICY-001:v3.0` |
+| Where in that source? | The “Discount approval” section |
+| Does the text support the claim? | Yes — the policy states the 10% rule |
+
+If the source is silent, outdated or says something different, the answer is not supported. A source ID beside a sentence does not make that sentence true.
+
+### Keep the technical file ID and the business source ID
+
+You may see two identifiers for the same document:
+
+| Identifier | Example | Why keep it? |
+| --- | --- | --- |
+| Provider file ID | `file_abc123` | Helps developers trace the uploaded file in a provider system. |
+| Business source ID | `NST-POLICY-001:v3.0` | Tells the business which policy and version the answer used. |
+| Chunk ID | `NST-POLICY-001:v3.0#discount-approval` | Points to the relevant part of that policy. |
+
+Think of the provider file ID as a storage reference. Think of the business source ID as the policy name and version that a reviewer understands. Keep both; they answer different questions.
+
+### When the evidence is missing or conflicts
+
+If an approved source does not answer the question, say that plainly:
+
+> The approved NS-4000 product guide does not state whether it works with WarehousePro. I cannot confirm compatibility from this source. Source: `NST-PROD-001:v1.2`.
+
+If approved sources disagree, do not choose the answer that sounds most likely:
+
+> The approved sources give different West-region discount limits. I cannot confirm the current limit. A Knowledge Editor or policy owner must resolve this before a customer-facing answer is given.
+
+Do not use general model knowledge to fill a gap in business evidence.
+
+### What a reviewer needs to see
+
+A reviewer should be able to see the original question, the retrieved text, its source and version, the draft answer, and any missing or conflicting evidence. This makes it possible to check the answer instead of trusting a source label blindly.
+
+#### Quick check
+
+The model cites `NST-PROD-001:v1.2` and says, “The NS-4000 supports WarehousePro.” The cited product guide says compatibility is unspecified. Is the answer supported?
+
+No. The answer has a citation, but the cited text does not prove the claim.
 Lesson 5: Evaluate retrieval and grounding
 Retrieval quality and answer quality are different
 A system can retrieve the correct source and still generate a wrong answer. It can also generate a plausible answer after retrieving the wrong source.

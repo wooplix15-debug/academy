@@ -1,5 +1,3 @@
-# Business Process Discovery
-
 # Chapter 1 — Business Process Discovery
 
 
