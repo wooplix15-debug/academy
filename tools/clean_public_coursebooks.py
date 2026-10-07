@@ -22,6 +22,18 @@ for chapter in sorted((ROOT / "public" / "course-book").glob("course-*/chapter-*
     page = page.replace('<h2>Continue your course work</h2>', '<h2>Next step</h2>')
     page = re.sub(r'<p>####\s+(.+?)</p>', r'<h4>\1</h4>', page, flags=re.S)
     page = page.replace('<p>---</p>', '<hr>')
+    # Make this step repeatable when the cleanup is run after a rebuild.
+    page = re.sub(
+        r'<details class="diagram-source"><summary>View diagram text</summary>(<pre><code class="language-mermaid">.*?</code></pre>)</details>',
+        r'\1', page, flags=re.S,
+    )
+    # Original Mermaid source remains available for accessibility and review,
+    # but it should not interrupt the lesson as a wall of diagram syntax.
+    page = re.sub(
+        r'<pre><code class="language-mermaid">(.*?)</code></pre>',
+        r'<details class="diagram-source"><summary>View diagram text</summary><pre><code class="language-mermaid">\1</code></pre></details>',
+        page, flags=re.S,
+    )
     chapter.write_text(page)
 
 print("Cleaned public course-book reader pages.")

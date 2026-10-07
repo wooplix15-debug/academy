@@ -43,23 +43,7 @@
     &quot;additionalProperties&quot;: false
   },
   &quot;side_effects&quot;: false
-}</code></pre><p>A separate execution operation can create the task only after approval and record revalidation.</p><h4>Tool failure and bounded loops</h4><p>A tool may return a timeout, permission error, not-found result or invalid data. The agent must not fill the gap with an invented value. A bounded design might allow:</p><ul><li>at most two retrieval attempts for one user request;</li><li>no repeated call with unchanged arguments;</li><li>one clarification question if a required identifier is missing;</li><li>a clear stop message after a failed tool;</li><li>no write after a failed permission or revalidation check.</li></ul><hr></section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation</h2><h3>Architecture for Northstar</h3><pre><code class="language-mermaid">flowchart TD
-    U[Authenticated sales representative] --&gt; A[Northstar assistant]
-    A --&gt; G{Classify request}
-    G --&gt; K[Retrieve approved product or policy content]
-    G --&gt; C[Read permitted CRM context]
-    K --&gt; F[Filter by tenant, role, approval and version]
-    C --&gt; F
-    F --&gt; R[Generate answer with source IDs]
-    R --&gt; D{Follow-up needed?}
-    D -- No --&gt; O[Show answer and citations]
-    D -- Yes --&gt; P[Create proposed note or task]
-    P --&gt; H[Human approval]
-    H -- Rejected --&gt; X[Keep proposal and record rejection]
-    H -- Approved --&gt; V[Revalidate user, record version and permissions]
-    V -- Failed --&gt; Y[Stop and report revalidation failure]
-    V -- Passed --&gt; W[Execute approved write]
-    W --&gt; T[Record audit evidence]</code></pre><h4>Plain-text explanation</h4><pre><code class="language-text">User
+}</code></pre><p>A separate execution operation can create the task only after approval and record revalidation.</p><h4>Tool failure and bounded loops</h4><p>A tool may return a timeout, permission error, not-found result or invalid data. The agent must not fill the gap with an invented value. A bounded design might allow:</p><ul><li>at most two retrieval attempts for one user request;</li><li>no repeated call with unchanged arguments;</li><li>one clarification question if a required identifier is missing;</li><li>a clear stop message after a failed tool;</li><li>no write after a failed permission or revalidation check.</li></ul><hr></section><section class="book-section" aria-labelledby="section-3"><h2 id="section-3">3. Visual explanation</h2><h3>Architecture for Northstar</h3><figure class="book-figure learning-figure" data-learning-visual="ai-system-choices.svg"><img src="/assets/learning-diagrams/ai-system-choices.svg" alt="Start with the simplest dependable mechanism and add agency only when it is needed." width="960" height="335"><figcaption><b>Choosing an AI system.</b> Start with the simplest dependable mechanism and add agency only when it is needed.</figcaption></figure><h4>Plain-text explanation</h4><pre><code class="language-text">User
   |
   v
 Assistant selects permitted read operations

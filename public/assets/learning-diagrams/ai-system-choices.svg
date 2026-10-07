@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 335" role="img" aria-labelledby="title desc">
+<title id="title">Choosing an AI system</title><desc id="desc">Start with the simplest dependable mechanism and add agency only when it is needed.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#2a6556"/></marker>
+<style>.label{font:600 16px Arial,sans-serif;fill:#163d34}.small{font:500 13px Arial,sans-serif;fill:#5a7068}.box{fill:#f3f8f5;stroke:#78a58f;stroke-width:1.5}.arrow{fill:none;stroke:#2a6556;stroke-width:2.2}</style></defs>
+<rect width="960" height="335" rx="18" fill="#fcfdfa"/><text x="42" y="50" class="label" font-size="21">Choosing an AI system</text><text x="42" y="78" class="small">Start with the simplest dependable mechanism and add agency only when it is needed.</text>
+<rect x="42" y="120" width="184" height="82" rx="13" class="box"/><text x="134" y="163" text-anchor="middle" class="label">Rule</text><rect x="270" y="120" width="184" height="82" rx="13" class="box"/><text x="362" y="163" text-anchor="middle" class="label">Workflow</text><rect x="498" y="120" width="184" height="82" rx="13" class="box"/><text x="590" y="163" text-anchor="middle" class="label">Assistant</text><rect x="726" y="120" width="184" height="82" rx="13" class="box"/><text x="818" y="163" text-anchor="middle" class="label">Bounded agent</text><path d="M226 161 H257" class="arrow" marker-end="url(#arrow)"/><path d="M454 161 H485" class="arrow" marker-end="url(#arrow)"/><path d="M682 161 H713" class="arrow" marker-end="url(#arrow)"/>
+<path d="M480 246 L540 286 L480 326 L420 286 Z" fill="#fff2d9" stroke="#c29543" stroke-width="1.5"/>
+<text x="480" y="282" text-anchor="middle" class="label" font-size="13">Who chooses next step?</text><text x="480" y="300" text-anchor="middle" class="small" font-size="11">check before continuing</text>
+</svg>

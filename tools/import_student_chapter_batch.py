@@ -53,11 +53,11 @@ def markdown_html(body):
     plain_mode = re.search(r'^## ', body, re.M) is None
     top_sections = re.compile(
         r'^\d+\.\s+(What you will learn|Lessons|Visual explanation|Worked case.*|Try it yourself.*|'
-        r'Independent challenge.*|Common problems.*|Check your understanding|Solutions and explanations|'
+        r'Independent challenge.*|Common problems.*|Solutions and explanations|'
         r'Chapter recap.*|Glossary.*)$', re.I)
     plain_top_sections = re.compile(
         r'^(What you will learn|Visual explanation.*|Worked case.*|Try it yourself.*|'
-        r'Independent challenge.*|Common problems.*|Knowledge check|Check your understanding|'
+        r'Independent challenge.*|Common problems.*|Knowledge check|'
         r'Solutions.*|Chapter recap.*|Glossary.*|Further reading)$', re.I)
     def numbered_top_section(index):
         hit = re.match(r'^(\d+)\.\s+\S+', lines[index])
@@ -70,10 +70,14 @@ def markdown_html(body):
         return probe < len(lines) and re.match(r'^' + re.escape(number) + r'\.\d+\s+', lines[probe]) is not None
     def heading_tag(index):
         line = lines[index].strip()
+        if re.match(r'^8\.\s+Check your understanding$', line, re.I):
+            return 'h2'
         if top_sections.match(line) or numbered_top_section(index) or plain_top_sections.match(line):
             return 'h2'
         if re.match(r'^Lesson\s+\d+\b', line, re.I):
             return 'h2' if plain_mode else 'h3'
+        if re.match(r'^(Check your understanding|Checkpoint)\b', line, re.I):
+            return 'h4'
         if re.match(r'^\d+\.\d+\s+\S+', line):
             return 'h3'
         return None
