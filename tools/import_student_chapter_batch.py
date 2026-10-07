@@ -58,6 +58,8 @@ def markdown_html(body):
             lang=line[3:].strip(); i+=1; code=[]
             while i<len(lines) and not lines[i].startswith('```'): code.append(lines[i]); i+=1
             i+=1; out.append(f'<pre><code class="language-{escape(lang)}">{escape(chr(10).join(code))}</code></pre>'); continue
+        if line.strip() == '---': out.append('<hr>'); i+=1; continue
+        if line.startswith('#### '): out.append('<h4>'+links(line[5:].strip())+'</h4>'); i+=1; continue
         if line.startswith('### '): out.append('<h3>'+links(line[4:].strip())+'</h3>'); i+=1; continue
         if line.startswith('## '): out.append('<h2>'+links(line[3:].strip())+'</h2>'); i+=1; continue
         if line.startswith('# '): i+=1; continue
@@ -94,7 +96,8 @@ def sections(markup):
             continue
         title=re.sub('<[^>]+>','',hit.group(1)); n=len(nav)+1; ident=f'section-{n}'
         b=b.replace('<h2>',f'<h2 id="{ident}">',1)
-        nav.append(f'<a href="#{ident}">{n}. {escape(title)}</a>')
+        nav_title=re.sub(r'^\d+\.\s*', '', title)
+        nav.append(f'<a href="#{ident}">{n}. {escape(nav_title)}</a>')
         if title.lower().startswith('solutions'):
             inside=b.split('</h2>',1)[1]
             b=f'<section class="book-section" aria-labelledby="{ident}"><h2 id="{ident}">{escape(title)}</h2><p>Try the exercises before opening the worked explanations.</p><details class="solutions"><summary>Show solutions and explanations</summary><div>{inside}</div></details></section>'

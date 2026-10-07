@@ -29,8 +29,8 @@ for course, info in BOOKS.items():
         page = chapter.read_text()
         page = re.sub(r'<div class="chapter-strip" data-coursebook-polish="chapter-strip">.*?</div>', '', page, flags=re.S)
         page = re.sub(r'<section class="book-reading-guide" data-coursebook-polish="reading-guide"[^>]*>.*?</section>', '', page, flags=re.S)
-        strip = f'''<div class="chapter-strip" data-coursebook-polish="chapter-strip"><b>Course {int(course)} · Chapter {number} of {info['total']}</b><a href="/course-book/course-{course}">View all available chapters →</a></div>'''
-        guide = '''<section class="book-reading-guide" data-coursebook-polish="reading-guide" aria-label="How to use this chapter"><b>How to use this chapter</b><p>Read the lesson first. Then work through the case and practice before opening the solutions. Keep your notes or worksheet for the next chapter.</p></section>'''
+        strip = f'''<div class="chapter-strip" data-coursebook-polish="chapter-strip"><b>Course {int(course)} · Chapter {number} of {info['total']}</b><a href="/course-book/course-{course}">Course contents →</a></div>'''
+        guide = '''<section class="book-reading-guide" data-coursebook-polish="reading-guide" aria-label="How to use this chapter"><p><strong>Study path:</strong> read the lesson, complete the practice, then open the solutions.</p></section>'''
         page = page.replace('<div class="book-layout">', strip+'<div class="book-layout">', 1)
         page = page.replace('<article class="book-content">', '<article class="book-content">'+guide, 1)
         chapter.write_text(page)
