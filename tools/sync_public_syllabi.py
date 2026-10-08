@@ -3,6 +3,7 @@ import json
 import re
 from html import escape
 from pathlib import Path
+from migrate_academy_routes import migrate_links
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
@@ -67,7 +68,7 @@ for course, slug in zip(DATA['courses'], SLUGS):
     page = re.sub(r'<div class="course-hero-aside">.*?</div>', lambda _: f'<div class="course-hero-aside"><span>PROGRAMME {course["id"]:02}</span><b>{len(course["chapters"])} chapters.<br>Practice tasks.<br>Final project.</b><small>WOOPLIX ACADEMY</small></div>', page)
     if 'href="/syllabus.html">Curriculum' not in page:
         page = page.replace('<a href="/#programmes">Programmes</a>', '<a href="/#programmes">Programmes</a><a href="/syllabus.html">Curriculum</a>', 1)
-    path.write_text(page)
+    path.write_text(migrate_links(page))
 
 template = (PUBLIC / 'courses' / (SLUGS[0] + '.html')).read_text()
 head = template[:template.index('<main id="main">')]
@@ -84,7 +85,7 @@ main = f'''<main id="main"><section class="curriculum-header"><p class="eyebrow"
 
 # Keep the home page course library aligned with the same syllabus source. The
 # detailed chapter directory remains at /syllabus.html.
-home_path = PUBLIC / 'index.html'
+home_path = PUBLIC / 'academy.html'
 home = home_path.read_text()
 total_chapters = sum(len(course['chapters']) for course in DATA['courses'])
 course_labels = {
