@@ -24,6 +24,7 @@ When a booking provider is chosen, replace the session request links with the ow
 
 - Main page: `public/index.html`
 - Main styling: `public/personal-brand.css`
+- Shared vector icons: `public/assets/brand-icons.svg` (arrows, service symbols and session clocks)
 - Enquiry page and behaviour: `public/enquire.html`, `public/personal-brand.js`
 - Academy page and styling: `public/academy.html`, `public/academy-home.css`
 - Academy library generator: `tools/sync_public_syllabi.py`
@@ -32,3 +33,5 @@ When a booking provider is chosen, replace the session request links with the ow
 The 19-year experience statement comes from the owner's meeting summary. No client logos, testimonials, speaker engagements, accreditation, revenue figures or measured AI savings were invented. The AI Lab and multi-agent delivery system are labelled as development directions.
 
 All 84 chapter HTML pages and student Markdown downloads retain their content. Chapter-page changes are confined to navigation destinations so Academy links return to `/academy` and enquiry links stay on this website. Course source materials and assessment rules are unaffected.
+
+The personal website uses shared SVG icons, rounded button badges, distinct service cards and numbered delivery stages. Hover motion respects the visitor's reduced-motion preference. This visual styling is scoped to the main website and enquiry page; the Academy keeps its existing styling.
