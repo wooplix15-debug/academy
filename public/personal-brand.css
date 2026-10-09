@@ -148,3 +148,26 @@
 .event-feature-copy .overline{margin-bottom:18px}
 .event-feature-copy .text-action span{color:var(--rust);font-size:18px}
 @media(max-width:800px){.event-feature{grid-template-columns:1fr;gap:30px;padding-top:40px;padding-bottom:50px}.event-feature-media{max-width:560px}.event-feature-media img{max-height:620px}.event-feature-copy{max-width:620px}}
+
+/* Small-screen refinements for phones and compact tablets. */
+@media(max-width:800px){
+  .brand-header nav a{min-height:44px;display:flex;align-items:center}
+  .brand-header nav .nav-action{min-height:48px}
+  .event-feature-media img{max-width:100%}
+  .event-feature-media figcaption{right:10px;bottom:10px;padding:7px 10px;font-size:9px}
+}
+@media(max-width:480px){
+  .event-feature{gap:24px;padding-top:32px;padding-bottom:40px}
+  .event-feature-copy h2{font-size:clamp(31px,9vw,38px);letter-spacing:-1.4px}
+  .event-feature-copy>p:not(.overline){font-size:15px;line-height:1.7}
+  .detail-hero h1{font-size:clamp(36px,10vw,43px)}
+  .detail-next{padding:22px;border-radius:14px}
+  .enquiry-form input,.enquiry-form select,.enquiry-form textarea{font-size:16px}
+}
+@media(max-width:360px){
+  .shell{width:calc(100% - 32px)}
+  .identity{gap:9px;font-size:14px}
+  .identity-mark{font-size:34px}
+  .event-feature-copy h2{font-size:31px}
+  .action{max-width:100%;white-space:normal}
+}
