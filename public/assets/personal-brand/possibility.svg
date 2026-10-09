@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Business, technology and people connected by purpose</title>
+  <desc id="desc">A copper and cream abstract system diagram showing three connected ideas: business, technology and people.</desc>
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5eadf"/><stop offset="1" stop-color="#dce7da"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#17232f" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="640" height="640" rx="28" fill="url(#wash)"/>
+  <g fill="none" stroke="#9b684d" stroke-width="1.4" opacity=".42"><circle cx="320" cy="300" r="211"/><circle cx="320" cy="300" r="151"/><circle cx="320" cy="300" r="91"/><path d="M105 300h430M320 85v430M168 148l304 304M472 148 168 452"/></g>
+  <g filter="url(#shadow)"><circle cx="320" cy="300" r="87" fill="#182a39"/><circle cx="320" cy="300" r="70" fill="#21394b" stroke="#d8b59d" stroke-width="1"/><text x="320" y="286" fill="#f7f4ed" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">PRACTICAL</text><text x="320" y="318" fill="#f7f4ed" text-anchor="middle" font-family="Georgia,serif" font-size="33">AI</text><text x="320" y="340" fill="#cedbc6" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" letter-spacing="1">WITH PURPOSE</text></g>
+  <g fill="#f7f4ed" stroke="#b46542" stroke-width="1.5"><circle cx="320" cy="89" r="34"/><circle cx="529" cy="430" r="34"/><circle cx="111" cy="430" r="34"/></g>
+  <g fill="#182a39" text-anchor="middle" font-family="Arial,sans-serif"><text x="320" y="86" font-size="11" font-weight="bold">BUSINESS</text><text x="320" y="101" font-size="9">context</text><text x="529" y="427" font-size="11" font-weight="bold">TECHNOLOGY</text><text x="529" y="442" font-size="9">systems</text><text x="111" y="427" font-size="11" font-weight="bold">PEOPLE</text><text x="111" y="442" font-size="9">capability</text></g>
+  <g fill="none" stroke="#b46542" stroke-width="2" stroke-linecap="round"><path d="M320 123v90"/><path d="m303 196 17 17 17-17"/><path d="M499 414 403 350"/><path d="m420 349-17 1 7 15"/><path d="M141 414 237 350"/><path d="m220 349 17 1-7 15"/></g>
+  <g fill="#b46542"><circle cx="320" cy="154" r="4"/><circle cx="457" cy="385" r="4"/><circle cx="183" cy="385" r="4"/></g>
+  <text x="320" y="570" fill="#6d5a4f" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">STRATEGY · SYSTEMS · SKILLS</text>
+</svg>

@@ -1,5 +1,5 @@
 /* Wooplix Academy uses the same visual identity as Vivek Pandey's main site. */
-.academy-page{--academy-cream:#faf8f2;--academy-ink:#17251f;--academy-sage:#e9eeae;--academy-rust:#995334;--academy-soft:#eef0e7;--academy-line:#d9ded5;background:var(--academy-cream)}
+.academy-page{--ink:#182a39;--paper:#f7f4ed;--white:#fffdf8;--muted:#647078;--line:#d8ddd8;--soft:#edf0e8;--sage:#dce7da;--rust:#b46542;--font:"DM Sans",sans-serif;--display:"Plus Jakarta Sans",sans-serif;--serif:Georgia,"Times New Roman",serif;--academy-cream:#f7f4ed;--academy-ink:#182a39;--academy-sage:#dce7da;--academy-rust:#b46542;--academy-soft:#edf0e8;--academy-line:#d8ddd8;background:var(--academy-cream);color:var(--academy-ink)}
 .academy-page .academy-header nav{gap:22px}
 .academy-page .academy-header nav a[aria-current="page"]{color:var(--academy-rust)}
 .academy-page .academy-hero{overflow:hidden;background:var(--academy-ink);color:var(--academy-cream)}
