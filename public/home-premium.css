@@ -273,7 +273,9 @@ body[data-page="index"] .nav-toggle span { background: var(--paper); }
 .hero-content h1 em { color: var(--paper); font-family: var(--serif); font-weight: 400; letter-spacing: -4px; }
 .hero-intro { max-width: 430px; margin-bottom: 29px; color: #d4ded8; font-size: 16px; line-height: 1.6; }
 .hero-button { color: var(--ink); background: var(--paper); }.hero-button:hover { color: var(--ink); background: var(--copper-light); }
-.hero-text-link { display: inline-flex; align-items: center; gap: 12px; border-bottom: 1px solid #ffffff7a; padding-bottom: 4px; color: var(--paper); font-size: 12px; font-weight: 700; }.hero-text-link:hover { color: var(--copper-light); border-color: var(--copper-light); }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 30px; }
+.hero-button { min-height: 62px; gap: 22px; padding: 10px 13px 10px 24px; font-size: 15px; }
+.hero-text-link { display: inline-flex; align-items: center; gap: 13px; border-bottom: 1px solid #ffffff7a; padding: 5px 0; color: var(--paper); font-size: 14px; font-weight: 700; }.hero-text-link:hover { color: var(--copper-light); border-color: var(--copper-light); }
 .hero-bottom { position: absolute; right: 0; bottom: 28px; left: 0; z-index: 3; display: flex; align-items: flex-end; justify-content: space-between; gap: 25px; }
 .hero-location { display: flex; flex-wrap: wrap; gap: 15px; color: #d2ddd6; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }.hero-location span + span { padding-left: 15px; border-left: 1px solid #ffffff55; }
 .hero-controls { display: flex; align-items: center; gap: 20px; }.slide-count { color: #d7e1db; font: 11px var(--display); }.slide-count b { color: var(--copper-light); font-size: 15px; }.slide-dots { display: flex; gap: 7px; }.slide-dots button { width: 30px; height: 2px; padding: 0; background: #ffffff72; }.slide-dots button.is-active { background: var(--paper); }
@@ -361,47 +363,27 @@ body[data-page="index"] .site-nav.is-past-hero {
   width: 27px;
   height: 27px;
   flex: 0 0 27px;
+  display: inline-grid;
+  place-items: center;
   border: 1px solid currentColor;
   border-radius: 50%;
   color: inherit;
   background: transparent;
   transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .25s ease;
 }
-.direction-mark:before {
-  position: absolute;
-  top: 7px;
-  left: 7px;
-  width: 10px;
-  height: 10px;
-  border-top: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
-  content: "";
-  transform: rotate(45deg);
-}
-.direction-mark:after {
-  position: absolute;
-  top: 13px;
-  left: 7px;
-  width: 12px;
-  border-top: 1.5px solid currentColor;
-  content: "";
-  transform: rotate(-45deg);
-  transform-origin: right center;
-}
-.direction-mark.down:before { top: 6px; left: 8px; transform: rotate(135deg); }
-.direction-mark.down:after { top: 8px; left: 7px; transform: rotate(45deg); transform-origin: left center; }
-.direction-mark.up:before { top: 9px; left: 8px; transform: rotate(-45deg); }
-.direction-mark.up:after { top: 8px; left: 7px; transform: rotate(-45deg); transform-origin: right center; }
-.hero-button .direction-mark { color: var(--ink); border-color: #182a3933; background: #182a3908; }
+.direction-mark:before { content: "→"; font: 500 19px/1 var(--font); }
+.direction-mark.down:before { content: "↓"; }
+.direction-mark.up:before { content: "↑"; }
+.hero-button .direction-mark { width: 38px; height: 38px; flex-basis: 38px; color: var(--ink); border-color: #182a3933; background: #182a3908; }
+.hero-button .direction-mark:before { content: "+"; font-size: 27px; font-weight: 400; }
+.hero-text-link .direction-mark { width: 34px; height: 34px; flex-basis: 34px; }
+.hero-text-link .direction-mark:before { content: "↓"; font-size: 21px; }
 .hero-button:hover .direction-mark,
 .nav-contact:hover .direction-mark,
-.button.primary:hover .direction-mark { color: var(--paper); border-color: var(--ink); background: var(--ink); transform: rotate(45deg); }
+.button.primary:hover .direction-mark { color: var(--paper); border-color: var(--ink); background: var(--ink); transform: translateY(-1px); }
 .hero-text-link:hover .direction-mark,
 .card-link:hover .direction-mark,
 .text-link:hover .direction-mark { color: var(--copper); background: #b4654210; transform: translate(2px, -2px); }
-.hero-text-link .direction-mark { width: 22px; height: 22px; flex-basis: 22px; }
-.hero-text-link .direction-mark:before { top: 5px; left: 6px; width: 8px; height: 8px; }
-.hero-text-link .direction-mark:after { top: 10px; left: 6px; width: 9px; }
 .nav-contact .direction-mark { width: 29px; height: 29px; flex-basis: 29px; color: var(--ink); border-color: transparent; background: var(--copper-light); }
 .footer-links .direction-mark,
 .footer-academy .direction-mark,
