@@ -1,0 +1,165 @@
+{
+  "about": {
+    "title": "About Vivek Pandey",
+    "label": "ABOUT VIVEK PANDEY",
+    "headline": "Business experience that informs practical AI work.",
+    "intro": "I bring 19 years of industry experience to a practical question: where can AI improve the way a business works? My work brings together consulting, speaking and education.",
+    "summary_title": "Start with the work",
+    "summary": "A useful AI solution starts with understanding the people, information and decisions involved. The technology should support that work and give the team a clear way to judge whether it helps.",
+    "icon": "consulting",
+    "cta": "Discuss your business question",
+    "cta_href": "/contact?service=AI%20consulting",
+    "sections": [
+      {
+        "title": "How I approach a business problem",
+        "paragraphs": [
+          "I start by understanding the current process, including its delays, exceptions and responsibilities. That makes it easier to decide whether the answer is better software, a straightforward automation, AI assistance or an agent that uses connected tools.",
+          "The next step is to define a small piece of work that can be evaluated. The people involved need to know what the system may do, what it must ask permission to do and how an incorrect result will be handled. A pilot should help the business make a decision about the next investment."
+        ]
+      },
+      {
+        "title": "Three parts of my work",
+        "cards": [
+          {"title": "AI consulting", "text": "Helping leaders and teams choose an opportunity, assess their readiness and plan an implementation they can evaluate.", "href": "/ai-consulting", "link": "Explore consulting"},
+          {"title": "AI speaking", "text": "Explaining practical AI applications to business audiences, technical teams and students, using examples they can relate to their own work.", "href": "/ai-speaking", "link": "Explore speaking"},
+          {"title": "AI courses", "text": "Supporting structured learning through the Academy, with complete chapters, worked examples, exercises and explained solutions.", "href": "/ai-courses", "link": "Explore courses"}
+        ]
+      },
+      {
+        "title": "Current areas of interest",
+        "paragraphs": [
+          "I am exploring AI applications in manufacturing, software development, sports and apparel. These areas raise useful questions about operational knowledge, document handling, product information and the support that teams need to make decisions.",
+          "Research directions include software delivery supported by specialist agents and a practical Agentic AI Lab. These are development plans. Their usefulness and delivery performance need to be established through real projects."
+        ]
+      },
+      {
+        "title": "Working with international teams",
+        "paragraphs": ["For a consulting or speaking enquiry, share your location, time zone and preferred format. We can then agree the scope, schedule and arrangements before confirming the engagement."]
+      }
+    ]
+  },
+  "ai-consulting": {
+    "title": "AI Consulting",
+    "label": "AI CONSULTING",
+    "headline": "Decide where AI belongs in your business.",
+    "intro": "Bring a process, a recurring problem or an implementation idea. We will examine the current work, compare the options and identify a practical first step.",
+    "summary_title": "For leaders and delivery teams",
+    "summary": "A useful starting point is one business question: which task needs to improve, who owns it and how will you know that the change helped?",
+    "icon": "consulting",
+    "cta": "Choose a consulting session",
+    "cta_href": "#sessions",
+    "sections": [
+      {
+        "title": "What we can work on",
+        "cards": [
+          {"title": "Choosing an AI opportunity", "text": "Review repetitive work, information gaps and slow decisions. Compare AI with simpler alternatives and identify a problem worth addressing."},
+          {"title": "Planning implementation", "text": "Assess the available data, existing systems, permissions and team skills. Define a pilot with a clear boundary and a way to measure its usefulness."},
+          {"title": "Preparing the team", "text": "Identify where people need to review outputs, approve actions and handle exceptions. Plan training, ownership and support alongside the technology."}
+        ]
+      },
+      {
+        "title": "How a consulting engagement works",
+        "items": [
+          "Understand the process. Walk through the current work, the people involved and the problem that needs attention.",
+          "Compare possible approaches. Consider existing tools, rules, automation and AI, including the dependencies and limitations of each option.",
+          "Define a pilot. Agree its scope, required access, measures, human review and the conditions for continuing or stopping.",
+          "Plan the next stage. Identify implementation work, responsibilities, training and support. A larger engagement has its own agreed scope and deliverables."
+        ]
+      },
+      {
+        "title": "Example discussion areas",
+        "intro": "These examples help frame a first conversation. The approach depends on the actual process, data and access available in your organisation.",
+        "cards": [
+          {"title": "Manufacturing", "text": "Finding approved operating information, handling incoming documents and supporting production or maintenance enquiries."},
+          {"title": "Software development", "text": "Organising requirements, preparing development and test inputs, maintaining documentation and reviewing agent-assisted work."},
+          {"title": "Sports and apparel", "text": "Answering product enquiries, preparing customer responses and improving document or order-related workflows."}
+        ]
+      },
+      {
+        "title": "What to bring to the first conversation",
+        "paragraphs": ["Share a short description of your business, the process you want to improve, the systems involved and the decision you need help making. Include your time zone and any important deadline. A brief example is useful; confidential client documents are not needed for the initial enquiry."]
+      }
+    ]
+  },
+  "ai-speaking": {
+    "title": "AI Speaking and Workshops",
+    "label": "AI SPEAKING AND WORKSHOPS",
+    "headline": "Help your audience understand AI they can use.",
+    "intro": "Practical talks and workshops for conferences, universities, colleges and corporate teams. The session is shaped around what your audience needs to understand or decide.",
+    "summary_title": "A session with a clear purpose",
+    "summary": "Start with the audience, their experience and the question you want them to leave able to answer. Examples and technical depth should serve that purpose.",
+    "icon": "speaking",
+    "cta": "Discuss your event",
+    "cta_href": "/contact?service=Speaking%20enquiry",
+    "sections": [
+      {
+        "title": "Topics we can shape for your audience",
+        "cards": [
+          {"title": "AI for business leaders", "text": "Where AI can support business work, how to compare opportunities and what to ask before investing in a pilot."},
+          {"title": "From workflows to agents", "text": "How an AI agent uses information and tools, where a fixed workflow is more suitable and why permissions and human review matter."},
+          {"title": "Building with AI", "text": "Foundations for students and technical teams, with examples of knowledge assistants, structured outputs and the checks needed before release."}
+        ]
+      },
+      {
+        "title": "Choose the right session format",
+        "cards": [
+          {"title": "Talk and discussion", "text": "Introduce a topic, work through relevant examples and leave time for questions. Suitable when the audience needs a shared understanding."},
+          {"title": "Technical session", "text": "Examine a system design or implementation example in more detail. Agree the audience's technical background before choosing the scope."},
+          {"title": "Practical workshop", "text": "Work on an exercise or a business opportunity with participants. Agree the tools, access, group size and expected outputs in advance."}
+        ]
+      },
+      {
+        "title": "What makes a session useful",
+        "paragraphs": [
+          "The material should explain technical ideas in language the audience understands. A worked example needs to show the original problem, the proposed approach and the checks that determine whether the result is useful.",
+          "Demonstrations depend on the tools and access agreed for the event. Future developments can be discussed as possibilities; predictions and proposed time savings should not be presented as measured results."
+        ]
+      },
+      {
+        "title": "Information to include in an event enquiry",
+        "items": [
+          "The organisation, event purpose and audience, including their experience with AI.",
+          "The date, location or online format, time zone and expected audience size.",
+          "The preferred topic, session format and the question or skill the audience should take away.",
+          "Any practical constraints, including tools, internet access and requirements for a demonstration."
+        ],
+        "paragraphs": ["Availability, topic, scope, fees and arrangements are agreed before the event is confirmed."]
+      }
+    ]
+  },
+  "ai-courses": {
+    "title": "AI Courses and Business Automation Learning",
+    "label": "AI COURSES AND BUSINESS AUTOMATION",
+    "headline": "Learn the skills needed to build useful business systems.",
+    "intro": "Choose a technical AI programme or a workshop for your business team. The Academy also offers Zoho process, development and implementation courses that support the wider work of business automation.",
+    "summary_title": "Read and practise",
+    "summary": "Course Books contain complete chapters, worked examples, guided exercises, independent challenges and explained solutions. Use the syllabus to judge whether the programme fits your current skills and learning goal.",
+    "icon": "courses",
+    "cta": "Explore the Academy",
+    "cta_href": "/academy",
+    "sections": [
+      {
+        "title": "Choose your programme",
+        "cards": [
+          {"title": "AI and Agentic AI Builder for Business Systems", "text": "For developers and technical teams who need to build knowledge assistants and agents. Study model APIs, prompting, retrieval, tools, agent workflows, evaluation, security, cost and release. Familiarity with APIs and JSON is expected; custom-tool exercises require programming.", "href": "/course-book/course-03", "link": "Open AI Builder Course Book"},
+          {"title": "Corporate AI and Automation Opportunity Workshop", "text": "For leaders and teams choosing their first practical AI project. Map a process, compare opportunities, assess data and risk, then prepare a pilot brief with ownership and success measures.", "href": "/course-book/course-04", "link": "Open Workshop Course Book"},
+          {"title": "Zoho Business Process and Corporate Automation", "text": "For process owners and application administrators. Learn how business requirements connect to application configuration, automation, reporting and operational controls.", "href": "/course-book/course-01", "link": "Open Business Process Course Book"},
+          {"title": "Zoho Developer and Implementation Engineer", "text": "For Zoho developers and implementation teams. Study Creator, data modelling, Deluge, APIs, integrations, security and release practices.", "href": "/course-book/course-02", "link": "Open Developer Course Book"},
+          {"title": "Zoho Implementation and Consulting Practicum", "text": "For practitioners preparing to manage an implementation. Work through discovery, scope, design, delivery, acceptance, go-live and handover.", "href": "/course-book/course-05", "link": "Open Consulting Practicum Course Book"}
+        ]
+      },
+      {
+        "title": "How the learning material is organised",
+        "paragraphs": [
+          "Each chapter explains the topic before asking you to apply it. Worked cases show the inputs and reasoning. Exercises let you practise the method, and the solutions help you check your understanding.",
+          "The technical programme includes business examples with access rules, approval steps and failure cases. The corporate workshop focuses on selecting and planning a sensible pilot. The Zoho programmes develop the platform and implementation skills needed around that work."
+        ]
+      },
+      {
+        "title": "Training for a team",
+        "paragraphs": ["Tell us the roles involved, their current experience and the process or system they need to work on. We can discuss the most relevant programme or a focused workshop. Dates, delivery format, prerequisites, tool access and fees are confirmed before enrolment."],
+        "items": ["Read the syllabus and sample chapters.", "Share your learning goal and the team's starting point.", "Agree the training scope, access requirements and commercial terms before confirming a place."]
+      }
+    ]
+  }
+}
