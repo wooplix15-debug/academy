@@ -38,7 +38,7 @@ doc.styles['Heading 3'].font.size=Pt(11)
 doc.styles['Heading 3'].paragraph_format.space_before=Pt(5)
 doc.styles['Heading 3'].paragraph_format.space_after=Pt(3)
 doc.core_properties.title='Vivek Pandey website content and direction'
-doc.core_properties.subject='Personal website and six public pages'
+doc.core_properties.subject='Personal website and five public pages'
 doc.core_properties.author='Vivek Pandey'
 doc.core_properties.keywords='AI consulting, AI speaking, AI courses, website'
 
@@ -61,13 +61,13 @@ def labelled(label,text):
     row=p(''); row.add_run(label+'  ').bold=True; row.add_run(text)
 
 doc.add_paragraph('Vivek Pandey website content and direction','Title')
-p('The website presents Vivek Pandey as an independent personal brand for AI consulting, speaking and education. It should help a business leader, event organiser or learner understand the offer and take a clear next step.')
+p('The website presents Vivek Pandey as an independent personal brand for AI consulting, speaking and education. Its five main pages are Home, Consulting, Speaking, Academy and Contact.')
 h('Purpose and audience')
-p('The aim is to build a credible professional presence for international clients while making the services easy to understand. The main audience includes business owners and leaders, software teams, manufacturing organisations, universities, colleges and conference organisers. The profile highlights 19 years of industry experience.')
+p('The aim is to build a credible professional presence for international clients while making the services easy to understand. The profile highlights 19 years of industry experience.')
 h('The three business areas')
 labelled('AI consulting','Help businesses understand where AI fits, compare solutions and plan implementation. Manufacturing, software development, sports and apparel provide starting points for discussion.')
 labelled('AI speaking','Explain practical AI applications through talks and workshops shaped around the audience and the purpose of the event.')
-labelled('AI courses','Offer advanced learning through the personal website, with Wooplix Academy providing the existing course library. Training enquiries are handled separately from the reading material.')
+labelled('Academy','Offer five practical AI and Zoho programmes with syllabi and Course Books, as the education section of this website.')
 h('Website structure and live pages')
 table=doc.add_table(rows=1,cols=2); table.alignment=WD_TABLE_ALIGNMENT.CENTER
 table.autofit=False; table.columns[0].width=Inches(1.45); table.columns[1].width=Inches(5.45)
@@ -75,7 +75,7 @@ for cell,text in zip(table.rows[0].cells,['Page','Live address']):
     cell.text=text; cell.paragraphs[0].runs[0].bold=True;cell.paragraphs[0].runs[0].font.color.rgb=RGBColor(255,255,255)
     shading=OxmlElement('w:shd');shading.set(qn('w:fill'),'414141');cell._tc.get_or_add_tcPr().append(shading)
 repeat=OxmlElement('w:tblHeader');table.rows[0]._tr.get_or_add_trPr().append(repeat)
-routes=[('Home','/'),('About','/about'),('Contact','/contact'),('AI Consulting','/ai-consulting'),('AI Speaking','/ai-speaking'),('AI Courses','/ai-courses')]
+routes=[('Home','/'),('AI Consulting','/ai-consulting'),('Speaking','/ai-speaking'),('Academy','/academy'),('Contact','/contact')]
 for label,route in routes:
     a,b=table.add_row().cells;a.text=label;hyperlink(b.paragraphs[0],BASE+route,BASE+route)
 for row in table.rows:
@@ -109,12 +109,12 @@ h('Experience and approach')
 p('With 19 years of industry experience, I focus on a straightforward question: how can technology make business work better? My work brings together AI consulting, speaking and education.')
 p('For consulting, the process begins with the current work, compares possible solutions and defines a pilot before planning delivery and adoption. Example discussion areas include manufacturing, software teams, sports and apparel.')
 h('Learning and future development')
-p('The Academy remains the education part of the website. Visitors can open the AI Builder programme or Corporate AI and Automation Workshop, then browse all five programmes and their Course Books.')
+p('Academy is the education part of the website. Visitors can browse five programmes, their syllabi and Course Books.')
 p('Research directions include an Agentic AI Lab and software delivery supported by specialist agents. Delivery speed and business results need measurement in real projects.')
 h('The next step')
-p('Visitors can choose a 30-minute focused discussion or a 60-minute working discussion. The request page asks for the business question and relevant context. The Home page also links directly to About, Contact and each service page.')
+p('Visitors can request a 30-minute focused discussion or a 60-minute working discussion. The Home page links to Consulting, Speaking, Academy and Contact.')
 
-for slug in ['ai-consulting','ai-speaking','ai-courses','about']:
+for slug in ['ai-consulting','ai-speaking']:
     data=PAGES[slug]; page(data['title'],'/'+slug)
     p(data['headline']);p(data['intro'])
     for item in data['sections']:
@@ -137,19 +137,17 @@ for slug in ['ai-consulting','ai-speaking','ai-courses','about']:
         labelled('30 minutes','A focused discussion of one opportunity or decision, its constraints and a useful next step.')
         labelled('60 minutes','A deeper discussion of a process, possible approaches, risks and priorities for a pilot.')
         p('Both are session requests. Timing, scope and fees are agreed before confirmation.')
-    if slug=='ai-courses':
-        row=p('Complete course library  ');hyperlink(row,BASE+'/academy',BASE+'/academy')
     labelled('Main action',data['cta'])
 
 page('Contact','/contact')
 h('Main message')
 p('Contact Vivek Pandey.')
-p('A little context makes the conversation more useful. Prepare your enquiry here, then send it from your email app.')
+p('The form asks only for name, phone number, email and topic. It prepares an email draft for review and sending.')
 h('How to get in touch')
-p('Use the contact page for consulting, speaking, course or general enquiries. Email directly at wooplix15@gmail.com if that is more convenient. Include your location or time zone so arrangements can be discussed clearly.')
+p('Use the Contact page for consulting, speaking or Academy enquiries. Email directly at wooplix15@gmail.com if that is more convenient.')
 h('The enquiry form')
-p('The form asks for your name, email, organisation, enquiry type, preferred session, time zone and a short question or brief. Name, email and the brief are required. The session choices are 30 minutes, 60 minutes or not specified.')
-p('The Open email draft button prepares an email to wooplix15@gmail.com in your email app. Review it before sending. Copy enquiry provides another way to paste the details into an email. The website does not send the enquiry automatically or reserve a calendar slot.')
+p('Consulting links can include a requested 30- or 60-minute session in the email draft.')
+p('The Continue by email button prepares an email to wooplix15@gmail.com. Review and send it from your email app; the website does not send it or reserve a calendar slot.')
 h('What to include')
 labelled('Consulting','Your industry, the current process and systems, the main challenge and the decision you need help making.')
 labelled('Speaking','The audience, event purpose, date, location or online format, preferred topic and session format.')
@@ -157,7 +155,7 @@ labelled('Courses','Your current experience, the programme that interests you an
 h('Session requests')
 p('A 30-minute option suits a focused question. A 60-minute option allows more time to examine a process or implementation idea. Timing, scope and fees are confirmed separately. Use a brief description rather than confidential client documents for the first enquiry.')
 h('Visitor actions')
-p('Open email draft. Copy enquiry. Email directly. Return to the Home page or explore the Academy.')
+p('Continue by email. Review and send the message in your email app. Return to Home or explore the Academy.')
 
 footer=section.footer.paragraphs[0]
 footer.paragraph_format.space_after=Pt(0)

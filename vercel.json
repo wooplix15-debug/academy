@@ -2,7 +2,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {"source": "/enquire", "destination": "/contact", "permanent": true}
+    {
+      "source": "/ai-courses",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/#journey",
+      "permanent": true
+    },
+    {
+      "source": "/enquire",
+      "destination": "/contact",
+      "permanent": true
+    }
   ],
   "headers": [
     {

@@ -131,3 +131,9 @@
 @media(max-width:800px){.brand-header nav .nav-action{padding:7px 8px 7px 16px;justify-content:space-between}.service-grid{gap:14px}.service-grid article,.service-grid article+article{padding:24px}.service-grid p{min-height:0}.service-symbol{width:54px;height:54px}.service-drawing{width:34px;height:34px}.hero-note{border-radius:18px 18px 48px 18px;box-shadow:5px 6px 0 #17251f06}.note-top{margin-bottom:20px}.course-picks>a:not(.all-courses){padding:22px}.session-grid article{padding:27px}}
 @media(max-width:440px){.back-link{font-size:11px;gap:8px;white-space:nowrap}.action{gap:12px;padding-left:17px}.session-grid .action{width:100%}.delivery-flow li{font-size:10px;padding:9px 8px}.enquiry-buttons .action{width:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.action,.link-icon svg,.nav-action,.service-grid article,.service-grid article+article,.course-picks>a,.secondary-button{transition:none}.action:hover,.service-grid article:hover,.service-grid article:focus-within,.action:hover .link-icon svg,.action:focus-visible .link-icon svg,.text-action:hover .link-icon svg{transform:none}}
+
+/* Compact single-purpose contact form */
+.enquiry-grid { display: block; max-width: 760px; margin: 0 auto; }
+.enquiry-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.enquiry-form .wide { grid-column: 1 / -1; }
+.enquiry-form .enquiry-status:empty { display: none; }

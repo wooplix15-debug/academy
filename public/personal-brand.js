@@ -104,34 +104,31 @@ if (portraitSlides.length) {
 const enquiryForm = document.querySelector('#enquiry-form');
 if (enquiryForm) {
   const parameters = new URLSearchParams(window.location.search);
-  const services = ['AI consulting', 'Speaking enquiry', 'Course enquiry', 'General enquiry'];
-  if (services.includes(parameters.get('service'))) enquiryForm.elements.service.value = parameters.get('service');
-  if (['30', '60'].includes(parameters.get('duration'))) enquiryForm.elements.duration.value = parameters.get('duration');
+  const topicAliases = {
+    'AI consulting': 'AI consulting',
+    'Speaking enquiry': 'Speaking',
+    'Speaking': 'Speaking',
+    'Course enquiry': 'Academy',
+    'Academy': 'Academy',
+    'General enquiry': 'Other',
+    'Other': 'Other'
+  };
+  const requestedTopic = parameters.get('topic') || parameters.get('service');
+  if (topicAliases[requestedTopic]) enquiryForm.elements.topic.value = topicAliases[requestedTopic];
   const status = document.querySelector('#enquiry-status');
-  function composeEnquiry() {
-    const data = new FormData(enquiryForm);
-    const duration = data.get('duration');
-    const session = duration === 'Not specified' ? duration : `${duration} minutes`;
-    return {
-      subject: `Vivek Pandey — ${data.get('service')}${duration === 'Not specified' ? '' : ` (${session})`}`,
-      body: `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nOrganisation: ${data.get('organisation') || 'Not specified'}\nEnquiry: ${data.get('service')}\nPreferred session: ${session}\nTime zone: ${data.get('timezone') || 'Not specified'}\n\n${data.get('message')}\n\nPlease confirm availability, scope and fees.`
-    };
-  }
   enquiryForm.addEventListener('submit', event => {
     event.preventDefault();
-    const enquiry = composeEnquiry();
-    const emailDraft = `mailto:wooplix15@gmail.com?subject=${encodeURIComponent(enquiry.subject)}&body=${encodeURIComponent(enquiry.body)}`;
-    window.location.href = emailDraft;
-    status.textContent = 'Email draft requested. Review and send it in your email app. If the app did not open, copy the enquiry and email it to wooplix15@gmail.com.';
-  });
-  document.querySelector('#copy-enquiry')?.addEventListener('click', async () => {
-    if (!enquiryForm.reportValidity()) return;
-    const enquiry = composeEnquiry();
-    try {
-      await navigator.clipboard.writeText(`To: wooplix15@gmail.com\nSubject: ${enquiry.subject}\n\n${enquiry.body}`);
-      status.textContent = 'Enquiry copied. Paste it into an email to wooplix15@gmail.com. It has not been sent.';
-    } catch {
-      status.textContent = 'Copy is unavailable in this browser. Open an email draft or email your brief directly to wooplix15@gmail.com.';
-    }
+    const data = new FormData(enquiryForm);
+    const duration = ['30', '60'].includes(parameters.get('duration')) ? parameters.get('duration') : '';
+    const subject = `Vivek Pandey — ${data.get('topic')}`;
+    const body = [
+      `Name: ${data.get('name')}`,
+      `Phone: ${data.get('phone')}`,
+      `Email: ${data.get('email')}`,
+      `Topic: ${data.get('topic')}`,
+      ...(duration ? [`Requested session: ${duration} minutes`] : [])
+    ].join('\n');
+    window.location.href = `mailto:wooplix15@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    status.textContent = 'Your email app should open with this enquiry. Review it and press Send.';
   });
 }
