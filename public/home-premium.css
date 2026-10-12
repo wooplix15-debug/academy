@@ -497,3 +497,65 @@ body[data-page="index"] .hero-content h1.hero-intro {
   body[data-page="index"] .hero-actions { gap: 16px 22px; }
   body[data-page="index"] .hero-button { min-height: 52px; padding-left: 18px; font-size: 14px; }
 }
+
+/* Keep the portrait clear of the copy on compact laptops and tablets. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero-content { padding-right: 47%; }
+  .hero-content h1 { max-width: 100%; font-size: clamp(46px, 6.2vw, 62px); }
+  .hero-intro { max-width: 100%; }
+  .hero-slide img { object-position: 16% center; }
+  .hero-slide:nth-child(2) img { object-position: 16% 38%; }
+  .hero-actions { gap: 18px; }
+  .hero-bottom { right: 30px; left: 30px; }
+}
+
+/* On phones, place the introduction above the portrait instead of over it. */
+@media (max-width: 600px) {
+  .hero-stage {
+    display: flex;
+    min-height: 100svh;
+    min-height: 100dvh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 42svh;
+    background: var(--ink);
+  }
+  .hero-slides { top: auto; bottom: 0; height: 42svh; }
+  .hero-slide img,
+  .hero-slide:nth-child(2) img { object-position: center 35%; }
+  .hero-shade {
+    background: linear-gradient(0deg, #07152270 0%, #07152200 65%);
+  }
+  .hero-content {
+    min-height: 0;
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    padding: 92px 22px 23px;
+    background: var(--ink);
+  }
+  body[data-page="index"] .hero-content h1.hero-intro {
+    max-width: 520px;
+    margin-bottom: 18px;
+    font-size: clamp(21px, 6.2vw, 27px);
+    line-height: 1.24;
+  }
+  .hero-kicker { margin-bottom: 17px; }
+  .hero-intro { max-width: 460px; margin-bottom: 20px; font-size: 14px; }
+  .hero-actions { gap: 14px 20px; }
+  .hero-button { min-height: 48px; }
+  .hero-text-link { font-size: 12px; }
+  .hero-bottom { bottom: calc(42svh + 14px); right: 22px; left: 22px; gap: 12px; }
+  .hero-location { display: none; }
+  .hero-controls { justify-content: flex-end; }
+  .hero-controls .slide-count { display: none; }
+}
+
+@media (max-width: 380px) {
+  .hero-content { padding-right: 18px; padding-left: 18px; }
+  .hero-kicker { font-size: 9px; letter-spacing: 1.2px; }
+  .hero-button { padding-right: 12px; padding-left: 15px; font-size: 12px; }
+  .hero-text-link { gap: 8px; font-size: 11px; }
+  .hero-slides { height: 38svh; }
+  .hero-stage { padding-bottom: 38svh; }
+  .hero-bottom { bottom: calc(38svh + 12px); }
+}
