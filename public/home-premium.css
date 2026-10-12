@@ -503,8 +503,8 @@ body[data-page="index"] .hero-content h1.hero-intro {
   .hero-content { padding-right: 47%; }
   .hero-content h1 { max-width: 100%; font-size: clamp(46px, 6.2vw, 62px); }
   .hero-intro { max-width: 100%; }
-  .hero-slide img { object-position: 16% 22%; }
-  .hero-slide:nth-child(2) img { object-position: 16% 30%; }
+  .hero-slide img { object-position: 35% 22%; }
+  .hero-slide:nth-child(2) img { object-position: 35% 30%; }
   .hero-actions { gap: 18px; }
   .hero-bottom { right: 30px; left: 30px; }
 }
