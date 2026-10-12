@@ -1,0 +1,36 @@
+# Vivek Pandey — AI Consulting, Speaking and Education
+
+> Vivek Pandey's website brings together AI consulting, practical speaking sessions and an Academy for AI and Zoho business systems learning.
+
+The site is currently hosted at https://academy-tools-jade.vercel.app/. Academy is the education section of the website. The course pages describe the syllabus; the course books contain student lessons, worked examples, exercises and solutions.
+
+## Main pages
+
+- [Home](https://academy-tools-jade.vercel.app/): Background, work areas and career journey.
+- [AI Consulting](https://academy-tools-jade.vercel.app/ai-consulting): Business process assessment, AI opportunities and implementation planning.
+- [AI Speaking](https://academy-tools-jade.vercel.app/ai-speaking): Talks and workshops for conferences, universities and corporate teams.
+- [Academy](https://academy-tools-jade.vercel.app/academy): AI and Zoho course catalogue.
+- [Contact](https://academy-tools-jade.vercel.app/contact): Consulting, speaking and course enquiries.
+
+## Course syllabi
+
+- [Zoho Business Process & Corporate Automation](https://academy-tools-jade.vercel.app/courses/zoho-business-process-automation): Configure Zoho applications for business processes.
+- [Zoho Developer & Implementation Engineer](https://academy-tools-jade.vercel.app/courses/zoho-developer-implementation-engineer): Custom applications, Deluge, APIs and implementation.
+- [AI & Agentic AI Builder for Business Systems](https://academy-tools-jade.vercel.app/courses/ai-agentic-ai-builder): Business assistants, retrieval, tools, evaluation and controlled actions.
+- [Corporate AI & Automation Opportunity Workshop](https://academy-tools-jade.vercel.app/courses/corporate-ai-automation-workshop): Assess a process and prepare an AI or automation pilot plan.
+- [Zoho Implementation & Consulting Practicum](https://academy-tools-jade.vercel.app/courses/zoho-implementation-consulting-practicum): Discovery, scope, delivery, go-live and handover.
+
+## Student course books
+
+- [Course 1 book](https://academy-tools-jade.vercel.app/course-book/course-01): Zoho Business Process & Corporate Automation.
+- [Course 2 book](https://academy-tools-jade.vercel.app/course-book/course-02): Zoho Developer & Implementation Engineer.
+- [Course 3 book](https://academy-tools-jade.vercel.app/course-book/course-03): AI & Agentic AI Builder for Business Systems.
+- [Course 4 book](https://academy-tools-jade.vercel.app/course-book/course-04): Corporate AI & Automation Opportunity Workshop.
+- [Course 5 book](https://academy-tools-jade.vercel.app/course-book/course-05): Zoho Implementation & Consulting Practicum.
+
+## Site information
+
+- [Sitemap](https://academy-tools-jade.vercel.app/sitemap.xml): Public page and chapter URLs.
+- [Robots file](https://academy-tools-jade.vercel.app/robots.txt): Crawler directives.
+
+Course scenarios may use fictional businesses and sample data. They should not be described as client results. For current offers and contact options, use the relevant public page. For changing Zoho or AI product behaviour, use the official documentation cited in the lessons.
