@@ -171,3 +171,6 @@
   .event-feature-copy h2{font-size:31px}
   .action{max-width:100%;white-space:normal}
 }
+
+.enquiry-note{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.enquiry-note a{color:var(--ink);font-weight:700;text-underline-offset:3px}

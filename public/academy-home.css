@@ -111,3 +111,28 @@
 @media(max-width:800px){.academy-page .academy-header{height:74px}.academy-page .academy-header nav{display:none;position:absolute;top:73px;left:0;right:0;padding:18px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}.academy-page .academy-header nav.is-open{display:flex}.academy-page .academy-header nav a{padding:9px 0}.academy-page .academy-header nav .nav-action{padding:7px 8px 7px 16px;justify-content:space-between}.academy-hero-grid{grid-template-columns:1fr;gap:36px;padding-top:60px;padding-bottom:49px}.academy-hero h1{font-size:clamp(48px,10vw,68px);letter-spacing:-3.6px}.academy-lede{max-width:570px;font-size:16px}.learning-card{max-width:560px;padding:25px;border-radius:17px 17px 46px 17px}.learning-card h2{font-size:33px}.academy-ribbon>.shell{justify-content:flex-start;flex-wrap:wrap;padding-top:13px;padding-bottom:13px;gap:10px 13px}.academy-ribbon span{font-size:8px}.academy-proof{gap:18px 22px}.academy-proof>div{padding-left:13px}.academy-page .section-heading,.library-heading,.method-grid,.academy-teams{grid-template-columns:1fr;gap:26px}.academy-featured,.academy-library{padding-top:67px;padding-bottom:72px}.academy-page .section-heading{margin-bottom:27px}.academy-page .section-heading h2,.academy-library h2,.academy-method h2,.academy-teams h2{font-size:42px;letter-spacing:-2px}.featured-grid{grid-template-columns:1fr}.featured-card{min-height:0;padding:25px}.card-type{margin-top:27px}.featured-card ul{margin-bottom:21px}.library-heading{margin-bottom:25px}.course-row{grid-template-columns:34px 1fr;gap:12px;padding:19px 10px}.course-number{font-size:20px}.course-copy h3{font-size:15px}.course-actions{grid-column:2;flex-wrap:wrap}.course-actions a{min-height:34px}.academy-method{padding:67px 0}.method-grid{gap:27px}.academy-teams{padding-top:68px;padding-bottom:68px}.academy-contact{padding:62px 0}.academy-footer>.shell>div{gap:12px;flex-wrap:wrap;justify-content:flex-end}}
 @media(max-width:440px){.academy-page .shell{width:calc(100% - 38px)}.academy-hero-grid{padding-top:48px}.academy-hero h1{font-size:45px}.academy-actions{gap:17px}.academy-actions .action{font-size:10px;padding-left:14px}.academy-actions .text-action{font-size:10px}.learning-card{padding:21px}.academy-proof{grid-template-columns:1fr}.academy-proof>img{grid-column:auto;max-width:280px}.academy-proof>div{border-left:0;padding:12px 0 0;border-top:1px solid var(--academy-line)}.academy-page .section-heading h2,.academy-library h2,.academy-method h2,.academy-teams h2{font-size:37px}.featured-card{padding:22px}.featured-card h3{font-size:26px}.course-row{padding-left:2px;padding-right:2px}.course-actions{gap:6px}.course-actions a{padding:0 8px;font-size:8px}.academy-teams aside{padding:22px}}
 @media(prefers-reduced-motion:reduce){.academy-page *, .academy-page *:before,.academy-page *:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Readability and touch targets across laptop and mobile widths. */
+.academy-ribbon span{font-size:10px}
+.academy-proof small{font-size:12px;line-height:1.55}
+.course-copy>p{font-size:10px;letter-spacing:1px}
+.course-copy small{font-size:13px;line-height:1.6}
+.course-actions a{min-height:42px;padding:0 13px;font-size:12px}
+.method-grid p{font-size:14px;line-height:1.65}
+.academy-teams>div>p:not(.overline),.library-heading>div:last-child>p{font-size:15px;line-height:1.7}
+.academy-contact p:not(.overline){font-size:15px;line-height:1.65}
+@media(max-width:800px){
+  .course-copy h3{font-size:16px}
+  .course-actions a{min-height:42px;padding:0 12px;font-size:12px}
+  .method-grid p{font-size:14px}
+}
+@media(max-width:440px){
+  .academy-page .shell{width:calc(100% - 32px)}
+  .course-row{grid-template-columns:30px minmax(0,1fr);gap:10px;padding:18px 0}
+  .course-copy h3{font-size:15px;line-height:1.4}
+  .course-copy>p{font-size:10px}
+  .course-copy small{font-size:13px}
+  .course-actions{gap:7px}
+  .course-actions a{min-height:42px;padding:0 10px;font-size:11px;white-space:normal}
+  .academy-ribbon span{font-size:9px}
+}
