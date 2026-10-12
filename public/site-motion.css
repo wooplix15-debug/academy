@@ -1,0 +1,37 @@
+/* Small feedback across all page families, without changing layout or image crops. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  :is(.button, .action, .nav-action, .nav-contact, .nav-cta, .reader-actions button) {
+    transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease;
+  }
+  :is(.button, .action, .nav-action, .nav-contact, .nav-cta):active { transform: translateY(1px); }
+  :is(.service-card, .course-card, .course-row, .detail-cards > article, .session-grid > article, .programme-card, .program-card, .learning-card, .work-tiles article, .book-chapter) {
+    transition: box-shadow 280ms ease, border-color 280ms ease, background-color 280ms ease;
+  }
+  :is(.nav-toggle, .menu-toggle) span { transition: transform 220ms ease, opacity 220ms ease; }
+  :is(#brand-nav, #primary-nav).is-open { animation: menu-arrive 260ms ease both; }
+  @keyframes menu-arrive {
+    from { opacity: 0; translate: 0 -8px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(.button, .action, .nav-action, .nav-contact, .nav-cta):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgb(15 27 35 / 14%);
+  }
+  :is(.service-card, .course-card, .course-row, .detail-cards > article, .session-grid > article, .programme-card, .program-card, .learning-card, .work-tiles article, .book-chapter):hover {
+    box-shadow: 0 14px 34px rgb(15 27 35 / 9%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+@media print {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
