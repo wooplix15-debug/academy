@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ConsultingPage, ContactPage, SpeakingPage } from './BrandPages.jsx';
+import { buildEnquiryMailto } from './enquiryEmail.js';
 
 const services = [
   {
@@ -176,7 +177,7 @@ function SelectedWork() {
 }
 
 function CallToAction() {
-  return <section className="home-cta"><div className="contact-marquee" data-scroll-marquee aria-hidden="true"><div className="contact-marquee-track"><span>Let’s talk.</span><span>Let’s talk.</span><span>Let’s talk.</span></div></div><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2 data-reveal className="title-reveal">Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href="/contact?topic=AI%20consulting&duration=30">Request 30 minutes</a><a className="home-button outline" href="/contact?topic=AI%20consulting&duration=60">Request 60 minutes</a></div></div></section>;
+  return <section className="home-cta"><div className="contact-marquee" data-scroll-marquee aria-hidden="true"><div className="contact-marquee-track"><span>Let’s talk.</span><span>Let’s talk.</span><span>Let’s talk.</span></div></div><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2 data-reveal className="title-reveal">Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href={buildEnquiryMailto({ topic: 'AI consulting', duration: '30' })}>Request 30 minutes</a><a className="home-button outline" href={buildEnquiryMailto({ topic: 'AI consulting', duration: '60' })}>Request 60 minutes</a></div></div></section>;
 }
 
 function Footer({ compact = false }) {

@@ -268,3 +268,8 @@ body { margin: 0; min-width: 320px; }
 @media(max-width:380px){.hero-copy .home-actions{gap:10px}.hero-copy .home-button{font-size:11px;padding-inline:16px}}
 .hero-copy>p.hero-introduction { display:flex;align-items:center;flex-wrap:wrap;gap:16px; }
 .hero-introduction>span { font-size:11px;font-weight:400;letter-spacing:0;border-left:1px solid #c8dcd1;padding-left:16px;color:#6c8277; }
+.email-template-links { display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:768px;margin-bottom:24px; }
+.email-template-links a { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border:1px solid #d2e7dc;border-radius:12px;background:#f0faf5;color:#084d49;font-size:13px;font-weight:600;transition:background .2s,border-color .2s; }
+.email-template-links a:hover { background:#dff4e9;border-color:#74c8aa; }
+.email-template-links a:focus-visible { outline:2px solid #008d80;outline-offset:3px; }
+@media(max-width:450px){.email-template-links{grid-template-columns:1fr}}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { buildEnquiryMailto } from './enquiryEmail.js';
 
 function Arrow({ down = false }) {
   return <span aria-hidden="true" className={`inline-grid size-9 shrink-0 place-items-center rounded-full border border-current/20 ${down ? 'rotate-90' : ''}`}><svg viewBox="0 0 20 20" className="size-4" fill="none"><path d="M3.5 10h12m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span>;
@@ -79,7 +80,7 @@ export function ConsultingPage() {
           ['DEEPER WORKING DISCUSSION', '60', 'Work through a process or implementation idea with more time for the options, risks and pilot scope.', ['Current process and pain points', 'Possible approach and controls', 'Priorities for a pilot or roadmap']],
         ].map(([label, duration, text, bullets]) => <article key={duration} data-reveal className="flex flex-col rounded-2xl border border-ink/10 border-t-4 border-t-copper bg-white p-6 sm:p-8">
           <p className="text-[0.65rem] font-bold tracking-[0.16em] text-copper">{label}</p><h3 className="font-display mt-5 text-4xl font-semibold text-forest">{duration}<span className="ml-2 text-base font-normal text-ink/50">minutes</span></h3><p className="mt-4 text-sm leading-relaxed text-ink/65">{text}</p><ul className="my-5 space-y-2 border-t border-ink/10 pt-5 text-sm text-ink/65">{bullets.map(item => <li key={item}>•&nbsp; {item}</li>)}</ul>
-          <a className="group mt-auto inline-flex items-center justify-between gap-3 rounded-full bg-forest py-2 pl-5 pr-2 text-sm font-semibold text-white" href={`/contact?topic=AI%20consulting&duration=${duration}`}>Request a {duration}-minute session <span className="rounded-full bg-copper text-forest"><Arrow /></span></a>
+          <a className="group mt-auto inline-flex items-center justify-between gap-3 rounded-full bg-forest py-2 pl-5 pr-2 text-sm font-semibold text-white" href={buildEnquiryMailto({ topic: 'AI consulting', duration })}>Request a {duration}-minute session <span className="rounded-full bg-copper text-forest"><Arrow /></span></a>
         </article>)}
       </div>
       <p className="mt-5 text-xs text-ink/55">These are session requests. Timing, scope and fees are agreed before a session is confirmed.</p>
@@ -105,7 +106,7 @@ export function SpeakingPage() {
     'Any practical constraints, including tools, internet access and requirements for a demonstration.',
   ];
   return <>
-    <PageHero eyebrow="AI SPEAKING AND WORKSHOPS" title="Help your audience understand AI they can use." intro="Practical talks and workshops for conferences, universities, colleges and corporate teams. The session is shaped around what your audience needs to understand or decide." action={{ href: '/contact?topic=Speaking', label: 'Discuss your event' }} sideTitle="A session with a clear purpose" sideText="Start with the audience, their experience and the question you want them to leave able to answer. Examples and technical depth should serve that purpose." sideIcon="◉" />
+    <PageHero eyebrow="AI SPEAKING AND WORKSHOPS" title="Help your audience understand AI they can use." intro="Practical talks and workshops for conferences, universities, colleges and corporate teams. The session is shaped around what your audience needs to understand or decide." action={{ href: buildEnquiryMailto({ topic: 'Speaking' }), label: 'Discuss your event' }} sideTitle="A session with a clear purpose" sideText="Start with the audience, their experience and the question you want them to leave able to answer. Examples and technical depth should serve that purpose." sideIcon="◉" />
     <section className="border-t border-ink/10"><div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-[0.75fr_1.25fr] md:items-center md:gap-16 lg:px-12">
       <figure data-reveal className="relative m-0 overflow-hidden rounded-2xl bg-[#ecfaf6]"><img className="mx-auto max-h-[680px] w-full object-contain" src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at the Zoholics India 2026 event" loading="lazy" /><figcaption className="absolute bottom-3 right-3 rounded-full bg-forest/90 px-4 py-2 text-xs text-white">Zoholics India 2026</figcaption></figure>
       <div data-reveal><Eyebrow>INDUSTRY EVENT</Eyebrow><h2 className="font-display mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.04em] text-forest sm:text-4xl lg:text-5xl">Ideas are better when they meet real work.</h2><p className="mt-5 max-w-lg text-sm leading-relaxed text-ink/65 sm:text-base">A moment from Zoholics India 2026, where people working with business technology came together to learn, share and connect.</p><a className="text-link mt-6" href="#topics">Explore speaking topics <Arrow down /></a></div>
@@ -113,7 +114,7 @@ export function SpeakingPage() {
     <BrandSection id="topics" title="Topics we can shape for your audience"><CardGrid items={topics} /></BrandSection>
     <BrandSection title="Choose the right session format" dark><CardGrid items={formats} dark /></BrandSection>
     <BrandSection title="What makes a session useful"><div data-reveal className="max-w-3xl space-y-4 text-sm leading-relaxed text-ink/65 sm:text-base"><p>The material should explain technical ideas in language the audience understands. A worked example needs to show the original problem, the proposed approach and the checks that determine whether the result is useful.</p><p>Demonstrations depend on the tools and access agreed for the event. Future developments can be discussed as possibilities; predictions and proposed time savings should not be presented as measured results.</p></div></BrandSection>
-    <BrandSection title="Information to include in an event enquiry"><StepList items={eventDetails} /><p className="mt-5 text-sm text-ink/60">Availability, topic, scope, fees and arrangements are agreed before the event is confirmed.</p><a className="group mt-7 inline-flex items-center gap-3 rounded-full bg-forest py-2 pl-5 pr-2 text-sm font-semibold text-white" href="/contact?topic=Speaking">Discuss your event <span className="rounded-full bg-copper text-forest"><Arrow /></span></a></BrandSection>
+    <BrandSection title="Information to include in an event enquiry"><StepList items={eventDetails} /><p className="mt-5 text-sm text-ink/60">Availability, topic, scope, fees and arrangements are agreed before the event is confirmed.</p><a className="group mt-7 inline-flex items-center gap-3 rounded-full bg-forest py-2 pl-5 pr-2 text-sm font-semibold text-white" href={buildEnquiryMailto({ topic: 'Speaking' })}>Discuss your event <span className="rounded-full bg-copper text-forest"><Arrow /></span></a></BrandSection>
   </>;
 }
 
@@ -135,30 +136,34 @@ export function ContactPage() {
     const data = new FormData(event.currentTarget);
     const params = new URLSearchParams(window.location.search);
     const duration = ['30', '60'].includes(params.get('duration')) ? params.get('duration') : '';
-    const subject = `Vivek Pandey — ${data.get('topic')}`;
-    const body = [
-      `Name: ${data.get('name')}`,
-      `Phone: ${data.get('phone')}`,
-      `Email: ${data.get('email')}`,
-      `Topic: ${data.get('topic')}`,
-      ...(duration ? [`Requested session: ${duration} minutes`] : []),
-    ].join('\n');
-    setStatus('Your email app should open with this enquiry. Review it and press Send.');
-    window.location.href = `mailto:wooplix15@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = buildEnquiryMailto({
+      topic: data.get('topic'), duration,
+      name: data.get('name'), phone: data.get('phone'), email: data.get('email'),
+    });
+    setStatus('Your email app should open with a ready-to-edit message. Add the details in brackets, then press Send.');
+    window.location.href = mailto;
   }
 
   return <>
     <section className="brand-hero mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 sm:pb-12 sm:pt-20 lg:px-12">
-      <div data-reveal><Eyebrow>CONTACT</Eyebrow><h1 className="font-display mt-5 text-4xl font-semibold tracking-[-0.045em] text-forest sm:text-5xl lg:text-6xl">Start a conversation.</h1><p className="mt-5 text-base text-ink/60 sm:text-lg">Share your details and choose a topic.</p></div>
+      <div data-reveal><Eyebrow>CONTACT</Eyebrow><h1 className="font-display mt-5 text-4xl font-semibold tracking-[-0.045em] text-forest sm:text-5xl lg:text-6xl">Start a conversation.</h1><p className="mt-5 text-base text-ink/60 sm:text-lg">Choose an email template, or add your details below.</p></div>
     </section>
     <section className="border-t border-ink/10"><div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12">
+      <div className="email-template-links" aria-label="Email templates">
+        {[
+          ['30-minute session', 'AI consulting', '30'],
+          ['60-minute session', 'AI consulting', '60'],
+          ['Speaking enquiry', 'Speaking', ''],
+          ['Course enquiry', 'Academy', ''],
+        ].map(([label, selectedTopic, session]) => <a key={label} href={buildEnquiryMailto({ topic: selectedTopic, duration: session })}>{label}<span aria-hidden="true">＋</span></a>)}
+      </div>
       <form data-reveal onSubmit={submitEnquiry} className="grid max-w-3xl gap-5 sm:grid-cols-2 sm:gap-6">
         <label className="text-xs font-semibold text-forest">Name<input className="mt-2 block min-h-12 w-full rounded-lg border border-ink/20 bg-white px-4 text-base font-normal outline-none transition focus:border-forest focus:ring-2 focus:ring-copper/30" name="name" autoComplete="name" maxLength="100" required /></label>
         <label className="text-xs font-semibold text-forest">Phone number<input className="mt-2 block min-h-12 w-full rounded-lg border border-ink/20 bg-white px-4 text-base font-normal outline-none transition focus:border-forest focus:ring-2 focus:ring-copper/30" name="phone" type="tel" autoComplete="tel" maxLength="40" required /></label>
         <label className="text-xs font-semibold text-forest">Email<input className="mt-2 block min-h-12 w-full rounded-lg border border-ink/20 bg-white px-4 text-base font-normal outline-none transition focus:border-forest focus:ring-2 focus:ring-copper/30" name="email" type="email" autoComplete="email" maxLength="200" required /></label>
         <label className="text-xs font-semibold text-forest">Topic<select className="mt-2 block min-h-12 w-full rounded-lg border border-ink/20 bg-white px-4 text-base font-normal outline-none transition focus:border-forest focus:ring-2 focus:ring-copper/30" name="topic" value={topic} onChange={event => setTopic(event.target.value)} required><option value="" disabled>Choose a topic</option><option>AI consulting</option><option>Speaking</option><option>Academy</option><option>Other</option></select></label>
-        <button className="group inline-flex min-h-12 items-center justify-between gap-4 rounded-full bg-forest py-1.5 pl-5 pr-2 text-sm font-semibold text-white transition hover:bg-[#244637] sm:col-span-2 sm:w-fit" type="submit">Continue by email <span className="rounded-full bg-copper text-forest"><Arrow /></span></button>
-        <p className="text-xs leading-relaxed text-ink/55 sm:col-span-2">This opens a draft in your email app. Review it and press Send; this website does not store your details. If no email app opens, write to <a className="font-semibold text-forest underline underline-offset-2" href="mailto:wooplix15@gmail.com">wooplix15@gmail.com</a>.</p>
+        <button className="group inline-flex min-h-12 items-center justify-between gap-4 rounded-full bg-forest py-1.5 pl-5 pr-2 text-sm font-semibold text-white transition hover:bg-[#244637] sm:col-span-2 sm:w-fit" type="submit">Open email draft <span className="rounded-full bg-copper text-forest"><Arrow /></span></button>
+        <p className="text-xs leading-relaxed text-ink/55 sm:col-span-2">Your email app opens a prefilled draft. Add the details in brackets, review it and press Send. Nothing is stored by this website. You can also write to <a className="font-semibold text-forest underline underline-offset-2" href="mailto:wooplix15@gmail.com">wooplix15@gmail.com</a>.</p>
         <p className="text-xs text-forest sm:col-span-2" role="status" aria-live="polite">{status}</p>
       </form>
     </div></section>
