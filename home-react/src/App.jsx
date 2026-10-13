@@ -142,15 +142,12 @@ function HomeIcon({ type = 'build' }) {
 function Hero() {
   return <section id="top" className="new-hero" aria-label="Vivek Pandey introduction"><div className="home-container hero-grid">
     <div className="hero-copy animate-rise">
-      <h1><span className="headline-mask"><span>Practical AI for business,</span></span><span className="headline-mask headline-accent"><span>grounded in experience.</span></span></h1>
-      <p>Find useful AI opportunities, improve business processes and build practical skills.</p>
-      <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/academy">Discover the Academy</a></div>
-      <div className="hero-metrics" aria-label="Experience in numbers">{[['19', 'years in technology'], ['995+', 'Wooplix projects'], ['75+', 'countries reached by Wooplix'], ['35+', 'Zoho apps']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
+      <h1><span className="headline-mask"><span>Meet</span></span><span className="headline-mask headline-accent"><span>Vivek.</span></span></h1>
+      <p>AI consulting, speaking and practical learning.</p>
+      <div className="home-actions"><a className="home-button primary" href="#work">Explore my work <span aria-hidden="true">＋</span></a></div>
     </div>
     <figure className="hero-portrait-stack">
       <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
-      <figcaption><strong>Vivek Pandey</strong><span>Business. Technology. People.</span></figcaption>
-      <span className="portrait-outline" aria-hidden="true" />
       <a className="portrait-contact" href="/contact" aria-label="Start a conversation with Vivek Pandey"><svg className="contact-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="home-contact-circle" d="M 60,60 m -43,0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0" /></defs><text><textPath href="#home-contact-circle" textLength="263" lengthAdjust="spacing">LET’S TALK · YOUR NEXT STEP · </textPath></text></svg><span aria-hidden="true">＋</span></a>
     </figure>
   </div></section>;
