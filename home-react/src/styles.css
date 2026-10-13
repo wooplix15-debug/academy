@@ -184,3 +184,34 @@ body { margin: 0; min-width: 320px; }
 @media (max-width: 767px) { .brand-page .brand-hero { padding-block: 42px; }.brand-page form { padding: 22px; }.brand-page .brand-hero h1 { font-size: 37px; } }
 @media (prefers-reduced-motion: reduce) { .motion-ready .brand-page [data-reveal] { opacity: 1; transform: none; } }
 .brand-page .home-footer .home-container { padding-block: 30px; }
+
+/* Editorial motion: photographs and type lead the page. */
+.home-page::before { content: ''; position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 2px; background: #008d80; transform-origin: left; transform: scaleX(var(--page-progress, 0)); pointer-events: none; }
+.new-hero { background: linear-gradient(125deg, #fff 35%, #eff8f3); }
+.hero-grid { grid-template-columns: 1.12fr .88fr; gap: 74px; padding-block: 60px 80px; }
+.hero-copy h1 > .headline-mask { display: block; overflow: hidden; color: #0d4745; }
+.hero-copy h1 > .headline-accent { color: #008d80; }
+.headline-mask > span { display: block; animation: editorial-title-in 1s cubic-bezier(.16,1,.3,1) both; }
+.headline-accent > span { animation-delay: 180ms; }
+@keyframes editorial-title-in { from { transform: translateY(110%); } to { transform: translateY(0); } }
+.hero-portrait-stack { position: relative; margin: 0; align-self: center; padding: 0 18px 0 0; }
+.hero-portrait-frame { position: relative; overflow: hidden; border-radius: 180px 180px 18px 18px; background: #d9e9e3; aspect-ratio: .86; animation: portrait-open 1300ms cubic-bezier(.16,1,.3,1) both; }
+.hero-portrait-frame img { height: 100%; width: 100%; object-fit: cover; object-position: 57% center; transform: translateY(var(--portrait-drift, 0px)) scale(1.08); }
+@keyframes portrait-open { from { clip-path: inset(100% 0 0); opacity: .3; } to { clip-path: inset(0); opacity: 1; } }
+.hero-portrait-stack figcaption { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 18px; font-size: 13px; }.hero-portrait-stack figcaption span { color: #6c8580; font-size: 11px; }
+.portrait-outline { position: absolute; z-index: -1; inset: 20px 0 28px 20px; border: 1px solid #91bcb0; border-radius: 180px 180px 18px 18px; }
+.motion-ready .home-page .title-reveal { opacity: 0; transform: translateY(24px); clip-path: inset(0 0 100%); transition: clip-path .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1), opacity .65s; }
+.motion-ready .home-page .title-reveal.is-visible { opacity: 1; transform: none; clip-path: inset(0); }
+.home-service { background: #fff; border-radius: 9px; border-width: 0 0 1px; border-color: #bad7ce; box-shadow: none; transition: background .35s, border-color .35s; }
+.home-service:hover { background: #e9f6f0; box-shadow: none; border-color: #008d80; }
+.home-service a span, .nav-contact > span, .home-button > span { transition: transform .4s cubic-bezier(.16,1,.3,1); }.home-service:hover a span, .nav-contact:hover > span, .home-button:hover > span { transform: rotate(90deg); }
+.site-nav > a:not(.nav-contact) { position: relative; }.site-nav > a:not(.nav-contact)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s; }.site-nav > a:hover::after, .site-nav > a[aria-current='page']::after { transform: scaleX(1); }
+.motion-ready .event-portrait { clip-path: inset(12% 4% 12% 4% round 36px); transition: opacity .9s, transform .9s, clip-path 1.15s cubic-bezier(.16,1,.3,1); }.motion-ready .event-portrait.is-visible { clip-path: inset(0 round 18px); }
+.experience-portrait.event-portrait { background: #0d4745; border-radius: 18px; }.event-portrait img { height: 450px; object-fit: cover; object-position: center 45%; transform: translateY(var(--portrait-drift, 0px)) scale(1.05); }.event-portrait:hover img { transform: translateY(var(--portrait-drift, 0px)) scale(1.07); }.event-portrait figcaption { position: relative; background: #0d4745; color: white; }.event-portrait figcaption span { color: #b1ccc2; line-height: 1.5; }
+.project-grid { grid-template-columns: repeat(2, 1fr); column-gap: 55px; row-gap: 0; }
+.home-project { display: flex; align-items: flex-start; border: 0; border-top: 1px solid #d2e2db; border-radius: 0; padding: 30px 0; gap: 24px; transition: border-color .35s, background .35s; }.home-project:hover { border-color: #008d80; background: #f7fbf9; }.project-index { color: #76948a; font-size: 12px; padding-top: 4px; font-variant-numeric: tabular-nums; }.project-copy { padding: 0; }.project-copy h3 { font-size: 23px; letter-spacing: -.04em; margin-block: 10px; }.project-copy p { font-size: 13px; }.project-copy > span { font-size: 9px; }
+.home-cta { border-radius: 28px 28px 0 0; background: #084d45; }.home-cta .home-actions .home-button { transition: transform .3s, background .3s, box-shadow .3s; }.home-cta .home-actions .home-button:hover { transform: translateY(-5px); box-shadow: 0 12px 28px #021e1920; }
+@media (max-width: 1000px) { .hero-grid { gap: 36px; }.hero-portrait-stack figcaption { flex-direction: column; align-items: flex-start; gap: 4px; } }
+@media (max-width: 767px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-block: 42px 50px; }.hero-portrait-stack { width: min(100%, 380px); justify-self: center; }.hero-portrait-stack figcaption { flex-direction: row; gap: 10px; }.hero-portrait-frame { aspect-ratio: 1; }.project-grid { grid-template-columns: 1fr; }.project-copy h3 { font-size: 21px; }.event-portrait img { height: 520px; object-fit: contain; }.home-cta { border-radius: 18px 18px 0 0; }.site-nav > a:not(.nav-contact)::after { bottom: 5px; left: 14px; right: 14px; } }
+@media (prefers-reduced-motion: reduce) { .headline-mask > span, .hero-portrait-frame { animation: none; }.hero-portrait-frame img, .event-portrait img, .event-portrait:hover img { transform: none; }.motion-ready .home-page .title-reveal, .motion-ready .event-portrait { opacity: 1; transform: none; clip-path: none; }.home-page::before { display: none; } }
+.hero-copy .headline-mask > span { color: inherit; }

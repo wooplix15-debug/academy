@@ -81,6 +81,24 @@ function useScrollReveals() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
 
+    const portraits = [...document.querySelectorAll('[data-parallax]')];
+    let frame = 0;
+    const paintScroll = () => {
+      frame = 0;
+      portraits.forEach(image => {
+        const bounds = image.parentElement.getBoundingClientRect();
+        if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
+        const progress = (window.innerHeight / 2 - bounds.top - bounds.height / 2) / window.innerHeight;
+        image.style.setProperty('--portrait-drift', `${Math.max(-18, Math.min(18, progress * 36))}px`);
+      });
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      document.documentElement.style.setProperty('--page-progress', String(height > 0 ? window.scrollY / height : 0));
+    };
+    const scheduleScroll = () => { if (!frame) frame = requestAnimationFrame(paintScroll); };
+    window.addEventListener('scroll', scheduleScroll, { passive: true });
+    window.addEventListener('resize', scheduleScroll);
+    paintScroll();
+
     const observer = new IntersectionObserver((entries, currentObserver) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -94,6 +112,9 @@ function useScrollReveals() {
 
     return () => {
       observer.disconnect();
+      window.removeEventListener('scroll', scheduleScroll);
+      window.removeEventListener('resize', scheduleScroll);
+      cancelAnimationFrame(frame);
       document.documentElement.classList.remove('motion-ready');
     };
   }, []);
@@ -112,43 +133,43 @@ function HomeIcon({ type = 'build' }) {
 function Hero() {
   return <section id="top" className="new-hero" aria-label="Vivek Pandey introduction"><div className="home-container hero-grid">
     <div className="hero-copy animate-rise">
-      <h1>Practical AI for business,<br /><span>grounded in experience.</span></h1>
+      <h1><span className="headline-mask"><span>Practical AI for business,</span></span><span className="headline-mask headline-accent"><span>grounded in experience.</span></span></h1>
       <p>Find useful AI opportunities, improve business processes and build practical skills.</p>
       <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/academy">Discover the Academy</a></div>
       <div className="hero-metrics" aria-label="Experience in numbers">{[['19', 'years in technology'], ['995+', 'Wooplix projects'], ['75+', 'countries reached by Wooplix'], ['35+', 'Zoho apps']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
     </div>
-    <div className="ai-visual" role="img" aria-label="AI connects analysis, automation and implementation">
-      <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" /><div className="orbit-track"><i /></div>
-      <div className="ai-core"><span>AI</span></div>
-      <span className="orbit-label label-analyse"><HomeIcon type="analyse" />Analyse</span><span className="orbit-label label-automate"><HomeIcon type="automate" />Automate</span><span className="orbit-label label-build"><HomeIcon />Build</span>
-    </div>
+    <figure className="hero-portrait-stack">
+      <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
+      <figcaption><strong>Vivek Pandey</strong><span>Business. Technology. People.</span></figcaption>
+      <span className="portrait-outline" aria-hidden="true" />
+    </figure>
   </div></section>;
 }
 
 function Experience() {
   return <section className="home-section experience-section"><div className="home-container experience-grid">
-    <div data-reveal className="reveal"><p className="home-eyebrow">WHY WORK WITH ME</p><h2 className="home-heading">Real experience.<br /><span>Practical solutions.</span></h2><p className="home-body">19 years of software, business systems and automation. I help teams turn an idea into a clear plan and a useful solution.</p><a className="home-button secondary" href="#journey">Explore my journey</a></div>
+    <div data-reveal className="reveal"><p className="home-eyebrow">WHY WORK WITH ME</p><h2 data-reveal className="home-heading title-reveal">Real experience.<br /><span>Practical solutions.</span></h2><p className="home-body">19 years of software, business systems and automation. I help teams turn an idea into a clear plan and a useful solution.</p><a className="home-button secondary" href="#journey">Explore my journey</a></div>
     <ul className="capability-list">{[['analyse', 'AI & automation', 'Strategy and implementation'], ['build', 'Zoho ecosystem', 'Custom solutions and integrations'], ['automate', 'Business processes', 'Connect technology with daily work'], ['speaking', 'Training & enablement', 'Build skills your team can use']].map(([icon, title, detail]) => <li key={title} data-reveal className="reveal"><span><HomeIcon type={icon} /></span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
-    <figure data-reveal className="reveal experience-portrait"><img src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" loading="lazy" /><figcaption><strong>Vivek Pandey</strong><span>AI consulting · Speaking · Education</span></figcaption></figure>
+    <figure data-reveal className="reveal experience-portrait event-portrait"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" loading="lazy" /><figcaption><strong>Zoholics India 2026</strong><span>Learning and connecting with the technology community.</span></figcaption></figure>
   </div></section>;
 }
 
 function Services() {
-  return <section id="work" className="home-section services-section"><div className="home-container"><p className="home-eyebrow">HOW I CAN HELP</p><h2 className="home-heading">Three ways to <span>move forward.</span></h2><div className="service-grid">
+  return <section id="work" className="home-section services-section"><div className="home-container"><p className="home-eyebrow">HOW I CAN HELP</p><h2 data-reveal className="home-heading title-reveal">Three ways to <span>move forward.</span></h2><div className="service-grid">
     {services.map((service, index) => <article key={service.number} data-reveal className="reveal home-service"><span className="card-number">{service.number}</span><div className="service-icon"><HomeIcon type={['automate', 'speaking', 'build'][index]} /></div><h3>{service.title}</h3><p>{service.description}</p><a href={service.href}>Explore {service.title === 'Academy' ? 'courses' : index === 0 ? 'consulting' : 'speaking'} <span aria-hidden="true">＋</span></a></article>)}
   </div></div></section>;
 }
 
 function Journey() {
-  return <section id="journey" className="home-section timeline-section"><div className="home-container"><p className="home-eyebrow">MY JOURNEY</p><h2 className="home-heading">From foundations <span>to applied AI.</span></h2><ol className="home-timeline">{milestones.map(([year, title, description]) => <li key={year} data-reveal className={`reveal ${year === '2026' ? 'current' : ''}`}><i aria-hidden="true" /><strong>{year}</strong><h3>{title}</h3><p>{description}</p></li>)}</ol></div></section>;
+  return <section id="journey" className="home-section timeline-section"><div className="home-container"><p className="home-eyebrow">MY JOURNEY</p><h2 data-reveal className="home-heading title-reveal">From foundations <span>to applied AI.</span></h2><ol className="home-timeline">{milestones.map(([year, title, description]) => <li key={year} data-reveal className={`reveal ${year === '2026' ? 'current' : ''}`}><i aria-hidden="true" /><strong>{year}</strong><h3>{title}</h3><p>{description}</p></li>)}</ol></div></section>;
 }
 
 function SelectedWork() {
-  return <section className="home-section projects-section"><div className="home-container"><p className="home-eyebrow">SELECTED COMPANY WORK</p><h2 className="home-heading">Selected <span>work.</span></h2><p className="project-note">Examples from Wooplix Technologies’ public portfolio.</p><div className="project-grid">{projects.map(([category, title, description], index) => <article key={title} data-reveal className="reveal home-project"><div className={`project-art art-${index}`} aria-hidden="true"><div className="project-sheet"><i /><i /><i /><i /></div></div><div className="project-copy"><span>{category}</span><h3>{title}</h3><p>{description}</p></div></article>)}</div></div></section>;
+  return <section className="home-section projects-section"><div className="home-container"><p className="home-eyebrow">SELECTED COMPANY WORK</p><h2 data-reveal className="home-heading title-reveal">Selected <span>work.</span></h2><p className="project-note">Examples from Wooplix Technologies’ public portfolio.</p><div className="project-grid">{projects.map(([category, title, description], index) => <article key={title} data-reveal className="reveal home-project"><span className="project-index" aria-hidden="true">0{index + 1}</span><div className="project-copy"><span>{category}</span><h3>{title}</h3><p>{description}</p></div></article>)}</div></div></section>;
 }
 
 function CallToAction() {
-  return <section className="home-cta"><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2>Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href="/contact?topic=AI%20consulting&duration=30">Request 30 minutes</a><a className="home-button outline" href="/contact?topic=AI%20consulting&duration=60">Request 60 minutes</a></div></div></section>;
+  return <section className="home-cta"><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2 data-reveal className="title-reveal">Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href="/contact?topic=AI%20consulting&duration=30">Request 30 minutes</a><a className="home-button outline" href="/contact?topic=AI%20consulting&duration=60">Request 60 minutes</a></div></div></section>;
 }
 
 function Footer({ compact = false }) {
