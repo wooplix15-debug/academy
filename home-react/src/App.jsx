@@ -92,7 +92,7 @@ function useScrollReveals() {
         if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
         const progress = (window.innerHeight / 2 - bounds.top - bounds.height / 2) / window.innerHeight;
         image.style.setProperty('--portrait-drift', `${Math.max(-45, Math.min(45, progress * (window.innerWidth < 768 ? 40 : 110)))}px`);
-        image.closest('.hero-portrait-stack, .event-portrait')?.style.setProperty('--surface-drift', `${Math.max(-45, Math.min(45, progress * (window.innerWidth < 768 ? 40 : 110)))}px`);
+        image.closest('.hero-portrait-stack, .event-portrait, .experience-photo')?.style.setProperty('--surface-drift', `${Math.max(-45, Math.min(45, progress * (window.innerWidth < 768 ? 40 : 110)))}px`);
       });
       marquees.forEach(element => {
         const bounds = element.getBoundingClientRect();
@@ -155,10 +155,21 @@ function Hero() {
 }
 
 function Experience() {
-  return <section className="home-section experience-section"><div className="home-container experience-grid">
-    <div data-reveal className="reveal"><p className="home-eyebrow">WHY WORK WITH ME</p><h2 data-reveal className="home-heading title-reveal">Real experience.<br /><span>Practical solutions.</span></h2><p className="home-body">19 years of software, business systems and automation. I help teams turn an idea into a clear plan and a useful solution.</p><a className="home-button secondary" href="#journey">Explore my journey</a></div>
-    <ul className="capability-list">{[['analyse', 'AI & automation', 'Strategy and implementation'], ['build', 'Zoho ecosystem', 'Custom solutions and integrations'], ['automate', 'Business processes', 'Connect technology with daily work'], ['speaking', 'Training & enablement', 'Build skills your team can use']].map(([icon, title, detail]) => <li key={title} data-reveal className="reveal"><span><HomeIcon type={icon} /></span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
-    <figure data-reveal className="reveal experience-portrait event-portrait"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" loading="lazy" /><figcaption><strong>Zoholics India 2026</strong><span>Learning and connecting with the technology community.</span></figcaption></figure>
+  const capabilities = [
+    ['analyse', 'AI & automation', 'From opportunity to implementation'],
+    ['build', 'Zoho systems', 'Applications and integrations'],
+    ['automate', 'Business processes', 'Technology that fits the work'],
+    ['speaking', 'Team learning', 'Practical skills and adoption'],
+  ];
+  return <section className="home-section experience-section"><div className="home-container experience-editorial">
+    <div className="experience-copy">
+      <p className="home-eyebrow">EXPERIENCE</p>
+      <h2 data-reveal className="home-heading title-reveal">Built on experience.<br /><span>Focused on your work.</span></h2>
+      <p data-reveal className="reveal home-body">19 years in software, business systems and automation. I help teams choose a clear approach and put it into practice.</p>
+      <ul className="experience-skills">{capabilities.map(([icon, title, detail]) => <li key={title} data-reveal className="reveal"><span className="experience-skill-icon"><HomeIcon type={icon} /></span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
+      <a className="experience-journey-link" href="#journey">Explore my journey <span aria-hidden="true">＋</span></a>
+    </div>
+    <figure data-reveal className="reveal experience-photo"><div className="experience-photo-frame"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" loading="lazy" /></div><figcaption><strong>Zoholics India 2026</strong><span>Learning. Sharing. Connecting.</span></figcaption></figure>
   </div></section>;
 }
 
