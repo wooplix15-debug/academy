@@ -215,3 +215,23 @@ body { margin: 0; min-width: 320px; }
 @media (max-width: 767px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-block: 42px 50px; }.hero-portrait-stack { width: min(100%, 380px); justify-self: center; }.hero-portrait-stack figcaption { flex-direction: row; gap: 10px; }.hero-portrait-frame { aspect-ratio: 1; }.project-grid { grid-template-columns: 1fr; }.project-copy h3 { font-size: 21px; }.event-portrait img { height: 520px; object-fit: contain; }.home-cta { border-radius: 18px 18px 0 0; }.site-nav > a:not(.nav-contact)::after { bottom: 5px; left: 14px; right: 14px; } }
 @media (prefers-reduced-motion: reduce) { .headline-mask > span, .hero-portrait-frame { animation: none; }.hero-portrait-frame img, .event-portrait img, .event-portrait:hover img { transform: none; }.motion-ready .home-page .title-reveal, .motion-ready .event-portrait { opacity: 1; transform: none; clip-path: none; }.home-page::before { display: none; } }
 .hero-copy .headline-mask > span { color: inherit; }
+
+/* Continuous scroll effects adapted from the reference's interaction patterns. */
+.hero-portrait-frame img { transform: translateY(var(--portrait-drift,0px)) scale(1.2); }
+.portrait-contact { position:absolute;z-index:3;left:-40px;bottom:68px;width:118px;height:118px;border-radius:50%;background:#ddf0e5;color:#084d49;display:grid;place-items:center;border:6px solid #fff;transition:background .3s; }
+.portrait-contact:hover { background:#aae5ce; }.contact-ring { position:absolute;inset:0;width:100%;height:100%;transform:rotate(var(--contact-turn,0deg)); }.contact-ring text { fill:currentColor;font-size:10px;font-weight:700;letter-spacing:1.4px; }.portrait-contact>span { font-size:36px;line-height:1;transition:transform .4s; }.portrait-contact:hover>span { transform:rotate(90deg); }
+.contact-marquee { overflow:hidden;padding-block:10px 40px; }.contact-marquee-track { display:flex;gap:70px;white-space:nowrap;width:max-content;transform:translateX(var(--marquee-shift,180px));font-size:clamp(60px,10vw,140px);line-height:1;letter-spacing:-.06em;font-weight:600;color:#80d7bc; }.contact-marquee-track span:nth-child(even) { color:transparent;-webkit-text-stroke:1px #80d7bc; }
+.event-portrait img { transform:translateY(var(--portrait-drift,0px)) scale(1.2); }.event-portrait:hover img { transform:translateY(var(--portrait-drift,0px)) scale(1.22); }
+@media(max-width:767px){.portrait-contact { left:8px;bottom:65px;width:98px;height:98px; }.hero-portrait-frame img { transform:translateY(var(--portrait-drift,0px)) scale(1.13); }.event-portrait img,.event-portrait:hover img { transform:translateY(var(--portrait-drift,0px)); }.contact-marquee-track { gap:38px; }.site-nav { display:flex;flex-direction:column;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-16px);transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s,visibility .3s; }.site-nav.is-open { visibility:visible;opacity:1;pointer-events:auto;transform:none; }.site-nav.is-open>a { animation:menu-item-in .45s cubic-bezier(.16,1,.3,1) both; }.site-nav.is-open>a:nth-child(2){animation-delay:50ms}.site-nav.is-open>a:nth-child(3){animation-delay:100ms}.site-nav.is-open>a:nth-child(4){animation-delay:150ms}.site-nav.is-open>a:nth-child(5){animation-delay:200ms} }
+@keyframes menu-item-in { from{opacity:0;transform:translateX(-15px)}to{opacity:1;transform:none} }
+@media(prefers-reduced-motion:reduce){.contact-ring{transform:none}.contact-marquee-track{transform:none}.contact-marquee-track span:not(:first-child){display:none}.hero-portrait-frame img,.event-portrait img,.event-portrait:hover img{transform:none}.site-nav,.site-nav.is-open>a{animation:none;transition:none}.portrait-contact:hover>span{transform:none} }
+/* Move the photograph's frame, preserving the full head and event portrait. */
+.hero-portrait-stack,.event-portrait { translate:0 var(--surface-drift,0px); }
+.hero-portrait-frame img { transform:scale(1.03); }
+.event-portrait img,.event-portrait:hover img { transform:none;object-fit:contain; }
+@media(prefers-reduced-motion:reduce){.hero-portrait-stack,.event-portrait{translate:none}.hero-portrait-frame img{transform:none}}
+/* Observe the full heading box; apply the mask only after entry. */
+.motion-ready .home-page .title-reveal { clip-path:none; }
+.motion-ready .home-page .title-reveal.is-visible { animation:scroll-title-mask .9s cubic-bezier(.16,1,.3,1) both; }
+@keyframes scroll-title-mask { from { clip-path:inset(0 0 100%); } to { clip-path:inset(0); } }
+@media(prefers-reduced-motion:reduce){.motion-ready .home-page .title-reveal.is-visible{animation:none}}

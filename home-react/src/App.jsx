@@ -82,6 +82,7 @@ function useScrollReveals() {
     if (reduceMotion) return;
 
     const portraits = [...document.querySelectorAll('[data-parallax]')];
+    const marquees = [...document.querySelectorAll('[data-scroll-marquee]')];
     let frame = 0;
     const paintScroll = () => {
       frame = 0;
@@ -89,10 +90,18 @@ function useScrollReveals() {
         const bounds = image.parentElement.getBoundingClientRect();
         if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
         const progress = (window.innerHeight / 2 - bounds.top - bounds.height / 2) / window.innerHeight;
-        image.style.setProperty('--portrait-drift', `${Math.max(-18, Math.min(18, progress * 36))}px`);
+        image.style.setProperty('--portrait-drift', `${Math.max(-45, Math.min(45, progress * (window.innerWidth < 768 ? 40 : 110)))}px`);
+        image.closest('.hero-portrait-stack, .event-portrait')?.style.setProperty('--surface-drift', `${Math.max(-45, Math.min(45, progress * (window.innerWidth < 768 ? 40 : 110)))}px`);
+      });
+      marquees.forEach(element => {
+        const bounds = element.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+        element.style.setProperty('--marquee-shift', `${180 - progress * 360}px`);
+        element.style.setProperty('--contact-turn', `${progress * 360}deg`);
       });
       const height = document.documentElement.scrollHeight - window.innerHeight;
       document.documentElement.style.setProperty('--page-progress', String(height > 0 ? window.scrollY / height : 0));
+      document.documentElement.style.setProperty('--contact-turn', `${height > 0 ? window.scrollY / height * 360 : 0}deg`);
     };
     const scheduleScroll = () => { if (!frame) frame = requestAnimationFrame(paintScroll); };
     window.addEventListener('scroll', scheduleScroll, { passive: true });
@@ -142,6 +151,7 @@ function Hero() {
       <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
       <figcaption><strong>Vivek Pandey</strong><span>Business. Technology. People.</span></figcaption>
       <span className="portrait-outline" aria-hidden="true" />
+      <a className="portrait-contact" href="/contact" aria-label="Start a conversation with Vivek Pandey"><svg className="contact-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="home-contact-circle" d="M 60,60 m -43,0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0" /></defs><text><textPath href="#home-contact-circle" textLength="263" lengthAdjust="spacing">LET’S TALK · YOUR NEXT STEP · </textPath></text></svg><span aria-hidden="true">＋</span></a>
     </figure>
   </div></section>;
 }
@@ -169,7 +179,7 @@ function SelectedWork() {
 }
 
 function CallToAction() {
-  return <section className="home-cta"><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2 data-reveal className="title-reveal">Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href="/contact?topic=AI%20consulting&duration=30">Request 30 minutes</a><a className="home-button outline" href="/contact?topic=AI%20consulting&duration=60">Request 60 minutes</a></div></div></section>;
+  return <section className="home-cta"><div className="contact-marquee" data-scroll-marquee aria-hidden="true"><div className="contact-marquee-track"><span>Let’s talk.</span><span>Let’s talk.</span><span>Let’s talk.</span></div></div><div className="home-container cta-grid"><div><p className="home-eyebrow">LET’S CONNECT</p><h2 data-reveal className="title-reveal">Bring a question.<br /><span>Leave with a next step.</span></h2><p>Choose an introduction or a working session.</p></div><div className="home-actions"><a className="home-button primary" href="/contact?topic=AI%20consulting&duration=30">Request 30 minutes</a><a className="home-button outline" href="/contact?topic=AI%20consulting&duration=60">Request 60 minutes</a></div></div></section>;
 }
 
 function Footer({ compact = false }) {

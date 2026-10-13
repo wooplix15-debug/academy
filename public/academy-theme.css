@@ -1,0 +1,37 @@
+/* This file is loaded only by the Academy landing page. */
+.academy-page { --ink:#0d4745;--paper:#ffffff;--white:#ffffff;--muted:#617d77;--line:#d8e9e2;--soft:#f1faf6;--sage:#d6f5e9;--rust:#008d80;--academy-cream:#ffffff;--academy-ink:#0d4745;--academy-sage:#d6f5e9;--academy-rust:#008d80;--academy-soft:#f1faf6;--academy-line:#d8e9e2;background:#fff;color:#0d4745; }
+.academy-page .shell { width:min(1200px,calc(100% - 64px)); }
+.academy-page .brand-header { background:white;color:#0d4745;border-color:#e6efeb;height:auto;min-height:84px; }
+.academy-page .nav-wrap { min-height:84px; }.academy-page .identity { color:#0d4745; }.academy-page .identity-mark { color:#0d4745; }
+.academy-page .academy-header nav a { font-size:13px;color:#526d66; }.academy-page .academy-header nav a[aria-current='page'] { color:#008d80; }
+.academy-page .academy-header nav .nav-action { background:#084d49;color:white;border-color:#084d49;border-radius:32px;min-height:44px;padding:8px 20px;gap:20px; }
+.academy-page .academy-header .nav-action .link-icon { width:20px;height:20px;background:transparent;color:white;border:0; }
+.academy-page .academy-hero { background:radial-gradient(ellipse at 100% 0%,#dcfaf0,transparent 65%),#fff;color:#0d4745; }
+.academy-page .academy-hero-grid { grid-template-columns:1.2fr .8fr;gap:70px;padding-block:64px 70px; }
+.academy-page .academy-hero h1 { font-size:clamp(40px,4.7vw,65px);letter-spacing:-.05em;line-height:1.08;font-weight:700; }
+.academy-page h1 em,.academy-page h2 em { font-family:var(--display);font-style:normal;font-weight:700;color:#008d80;letter-spacing:inherit; }
+.academy-page .academy-hero-copy>.overline { color:#008d80;font-size:10px;letter-spacing:.15em; }
+.academy-page .academy-lede { color:#668178;font-size:16px;max-width:500px; }
+.academy-page .academy-actions .action,.academy-page .academy-teams .action { background:#00bda5;border-color:#00bda5;color:#06463b;min-height:48px; }
+.academy-page .academy-actions .action .link-icon,.academy-page .academy-teams .action .link-icon { background:transparent;color:#06463b; }
+.academy-page .academy-actions .text-action { color:#0d4745; }.academy-page .academy-actions .text-action .link-icon { background:#e0f6ec;color:#008d80; }
+.academy-page .learning-card { background:white;border:1px solid #d4e8df;border-radius:20px;padding:30px;box-shadow:0 18px 45px #0754430c; }
+.academy-page .learning-card-top,.academy-page .learning-card li small { color:#6a8479; }.academy-page .learning-mark,.academy-page .learning-card li>span { color:#008d80; }
+.academy-page .learning-card h2 { font-size:32px; }.academy-page .learning-card ol,.academy-page .learning-card li { border-color:#d9e9e0; }
+.academy-page .academy-ribbon { background:#eaf8f2; }.academy-page .academy-ribbon i { background:#00aa91; }.academy-page .academy-ribbon>.shell { min-height:54px; }
+.academy-page .academy-proof { padding-block:30px; }.academy-page .proof-number { color:#008d80; }
+.academy-page .academy-library { background:#f3faf7;padding-block:75px;border-color:#e1ece5; }.academy-page .library-heading { gap:50px; }
+.academy-page .academy-library h2,.academy-page .academy-method h2,.academy-page .academy-teams h2 { font-size:clamp(32px,3.8vw,48px);letter-spacing:-.045em; }
+.academy-page .course-list { border-color:#c6ddd1; }.academy-page .course-row { padding:28px 18px;border-color:#d1e5da;transition:background .3s,border-color .3s; }
+.academy-page .course-row:hover { background:#e3f6ed;border-color:#80cbb0; }.academy-page .course-row-ai { background:#e9f8f1; }.academy-page .course-row-ai:hover { background:#d9f2e6; }
+.academy-page .course-number { color:#008d80; }.academy-page .course-copy p { color:#008d80; }.academy-page .course-copy h3 { font-size:20px;line-height:1.3;letter-spacing:-.035em; }.academy-page .course-copy small { color:#637d72;font-size:13px;line-height:1.65; }
+.academy-page .course-actions { gap:10px; }.academy-page .course-actions a { min-height:44px;border-color:#aacfb9;background:white;color:#0d4745;border-radius:30px;font-size:12px;padding-inline:16px; }.academy-page .course-actions a:last-child { background:#084d49;color:white;border-color:#084d49; }
+.academy-page .academy-method { background:white;border-color:#e0ebe3; }.academy-page .method-grid ol li { border-color:#d8e8dd; }.academy-page .method-grid li>span { color:#008d80; }
+.academy-page .academy-teams aside { background:#eef9f3;border-color:#d3e7d9;border-radius:20px; }.academy-page .academy-teams aside li span { color:#008d80; }
+.academy-page .academy-contact { background:linear-gradient(100deg,#073b38,#086457);border-radius:24px 24px 0 0; }.academy-page .academy-contact h2 em { color:#34d6b4; }.academy-page .academy-contact .overline { color:#80debc; }.academy-page .academy-contact p:not(.overline) { color:#b1d0be; }
+.academy-page .academy-contact .action { background:#00bda5;border-color:#00bda5;color:#06463b; }.academy-page .academy-contact .action .link-icon { background:transparent;color:#06463b; }
+.academy-page .academy-footer { background:#052f2d; }.academy-page .academy-footer .identity,.academy-page .academy-footer .identity-mark { color:white; }.academy-page .academy-footer p { color:#9dbfaf; }.academy-page .academy-footer .link-icon { background:transparent;color:#ace3c8; }
+.academy-page a:focus-visible,.academy-page button:focus-visible { outline:2px solid #008d80;outline-offset:4px; }
+@media(max-width:900px){.academy-page .academy-hero-grid { gap:35px;grid-template-columns:1.1fr .9fr; }.academy-page .course-row { grid-template-columns:35px 1fr; }.academy-page .course-actions { grid-column:2;justify-content:flex-start; }.academy-page .learning-card { padding:24px; }}
+@media(max-width:800px){.academy-page .shell { width:calc(100% - 40px); }.academy-page .academy-header,.academy-page .nav-wrap { min-height:74px;height:auto; }.academy-page .academy-hero-grid { grid-template-columns:1fr;padding-block:45px; }.academy-page .academy-hero h1 { font-size:clamp(39px,8vw,55px); }.academy-page .academy-header nav { top:74px;background:white; }.academy-page .course-copy h3 { font-size:18px; }.academy-page .course-row { padding:23px 0; }.academy-page .learning-card { max-width:none; }.academy-page .academy-library { padding-block:55px; }}
+@media(max-width:440px){.academy-page .course-actions a { font-size:11px;min-height:44px; }.academy-page .academy-actions .action,.academy-page .academy-actions .text-action { font-size:12px; }.academy-page .academy-proof { grid-template-columns:1fr; }.academy-page .academy-ribbon span { font-size:8px; }}
