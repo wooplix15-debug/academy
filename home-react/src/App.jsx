@@ -161,7 +161,7 @@ function Experience() {
     ['automate', 'Business processes', 'Technology that fits the work'],
     ['speaking', 'Team learning', 'Practical skills and adoption'],
   ];
-  return <section className="home-section experience-section"><div className="home-container experience-editorial">
+  return <section id="experience" className="home-section experience-section"><div className="home-container experience-editorial">
     <div className="experience-copy">
       <p className="home-eyebrow">EXPERIENCE</p>
       <h2 data-reveal className="home-heading title-reveal">Built on experience.<br /><span>Focused on your work.</span></h2>
