@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ConsultingPage, ContactPage, SpeakingPage } from './BrandPages.jsx';
 
 const services = [
   {
@@ -52,17 +53,18 @@ function DirectionMark({ down = false }) {
   );
 }
 
-function Wordmark() {
+function Wordmark({ dark = false }) {
   return (
-    <a className="inline-flex items-center gap-3 text-white" href="/" aria-label="Vivek Pandey home">
+    <a className={`inline-flex items-center gap-3 ${dark ? 'text-forest' : 'text-white'}`} href="/" aria-label="Vivek Pandey home">
       <span className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.1em]">vp<span className="text-copper">.</span></span>
       <span className="text-sm font-semibold tracking-tight sm:text-base">Vivek Pandey</span>
     </a>
   );
 }
 
-function Header() {
+function Header({ currentPath = '/' }) {
   const [open, setOpen] = useState(false);
+  const onHome = currentPath === '/';
   const links = [
     ['Home', '/'],
     ['Consulting', '/ai-consulting'],
@@ -71,25 +73,25 @@ function Header() {
   ];
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30 border-b border-white/15 text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-        <Wordmark />
+    <header className={`inset-x-0 top-0 z-30 border-b ${onHome ? 'absolute border-white/15 text-white' : 'sticky border-ink/10 bg-ivory/95 text-forest backdrop-blur-md'}`}>
+      <div className={`mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12 ${!onHome ? 'text-forest' : ''}`}>
+        <Wordmark dark={!onHome} />
         <button
           type="button"
-          className="flex size-11 flex-col items-center justify-center gap-1.5 rounded-full border border-white/30 md:hidden"
+          className={`flex size-11 flex-col items-center justify-center gap-1.5 rounded-full border md:hidden ${onHome ? 'border-white/30' : 'border-forest/25'}`}
           aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={open}
           aria-controls="main-navigation"
           onClick={() => setOpen(value => !value)}
         >
-          <span className="h-px w-4 bg-white" />
-          <span className="h-px w-4 bg-white" />
+          <span className={`h-px w-4 ${onHome ? 'bg-white' : 'bg-forest'}`} />
+          <span className={`h-px w-4 ${onHome ? 'bg-white' : 'bg-forest'}`} />
         </button>
-        <nav id="main-navigation" className={`${open ? 'flex' : 'hidden'} absolute left-4 right-4 top-[calc(100%+0.5rem)] flex-col gap-1 rounded-2xl border border-white/15 bg-forest/95 p-3 shadow-2xl backdrop-blur-lg md:static md:flex md:flex-row md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none`} aria-label="Main navigation">
+        <nav id="main-navigation" className={`${open ? 'flex' : 'hidden'} absolute left-4 right-4 top-[calc(100%+0.5rem)] flex-col gap-1 rounded-2xl border border-white/15 bg-forest/95 p-3 text-white shadow-2xl backdrop-blur-lg md:static md:flex md:flex-row md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none ${!onHome ? 'md:text-forest' : ''}`} aria-label="Main navigation">
           {links.map(([label, href]) => (
-            <a key={label} className={`rounded-xl px-3 py-3 text-sm font-medium text-white/80 transition hover:text-white md:px-0 md:py-2 ${label === 'Home' ? 'text-white' : ''}`} href={href} aria-current={label === 'Home' ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>
+            <a key={label} className={`rounded-xl px-3 py-3 text-sm font-medium transition hover:text-copper md:px-0 md:py-2 ${href === currentPath ? 'text-copper' : onHome ? 'text-white/80' : 'text-forest/75'}`} href={href} aria-current={href === currentPath ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>
           ))}
-          <a className="group mt-1 inline-flex items-center justify-between gap-3 rounded-full border border-white/50 py-1 pl-5 pr-1 text-sm font-semibold transition hover:bg-white hover:text-forest md:ml-1 md:mt-0" href="/contact" onClick={() => setOpen(false)}>
+          <a aria-current={currentPath === '/contact' ? 'page' : undefined} className={`group mt-1 inline-flex items-center justify-between gap-3 rounded-full border py-1 pl-5 pr-1 text-sm font-semibold transition hover:bg-forest hover:text-white md:ml-1 md:mt-0 ${onHome ? 'border-white/50' : 'border-forest/25'}`} href="/contact" onClick={() => setOpen(false)}>
             Contact <span className="grid size-9 place-items-center rounded-full bg-copper text-forest transition group-hover:bg-forest group-hover:text-white"><DirectionMark /></span>
           </a>
         </nav>
@@ -266,14 +268,22 @@ function Footer() {
   );
 }
 
-export default function App() {
+export default function App({ path: suppliedPath } = {}) {
   useScrollReveals();
+  const currentPath = suppliedPath ?? (typeof window !== 'undefined' ? window.location.pathname.replace(/\.html$/, '') : '/');
+  const content = currentPath === '/ai-consulting'
+    ? <ConsultingPage />
+    : currentPath === '/ai-speaking'
+      ? <SpeakingPage />
+      : currentPath === '/contact'
+        ? <ContactPage />
+        : <><Hero /><Experience /><Services /><Journey /><SelectedWork /><CallToAction /></>;
 
   return (
     <div className="min-h-screen bg-ivory text-ink antialiased">
       <a className="skip-link" href="#main">Skip to content</a>
-      <Header />
-      <main id="main"><Hero /><Experience /><Services /><Journey /><SelectedWork /><CallToAction /></main>
+      <Header currentPath={currentPath} />
+      <main id="main">{content}</main>
       <Footer />
     </div>
   );
