@@ -11,6 +11,8 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+/node_modules/
+/dist/
 
 # Local agent runs and personal review records
 /drafts/*

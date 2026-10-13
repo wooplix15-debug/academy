@@ -1,0 +1,21 @@
+{
+  "name": "wooplix-academy-home",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.js",
+    "build": "node scripts/prepare-dist.mjs && vite build --config vite.config.js && vite build --config vite.config.js --ssr src/entry-server.jsx --outDir ../dist/server && node scripts/prerender-home.mjs",
+    "preview": "vite preview --config vite.config.js"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
+  }
+}
