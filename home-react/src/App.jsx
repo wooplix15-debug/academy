@@ -143,7 +143,6 @@ function Hero() {
   return <section id="top" className="new-hero" aria-label="Vivek Pandey introduction"><div className="home-container hero-grid">
     <div className="hero-copy animate-rise">
       <h1><span className="headline-mask"><span>Meet</span></span><span className="headline-mask headline-accent"><span>Vivek.</span></span></h1>
-      <p>AI consulting, speaking and practical learning.</p>
       <div className="home-actions"><a className="home-button primary" href="#work">Explore my work <span aria-hidden="true">＋</span></a></div>
     </div>
     <figure className="hero-portrait-stack">

@@ -247,3 +247,10 @@ body { margin: 0; min-width: 320px; }
 .portrait-contact { width:102px;height:102px;left:-28px;bottom:24px;border-width:5px; }.portrait-contact>span { font-size:29px; }
 @media(max-width:1000px){.hero-grid { gap:50px; }.hero-copy h1 { font-size:78px; }.hero-copy>p { font-size:17px; }.hero-portrait-stack { max-width:410px; }}
 @media(max-width:767px){.new-hero { min-height:0; }.hero-grid { width:calc(100% - 40px);grid-template-columns:1fr;gap:42px;padding-block:40px 45px; }.hero-copy h1 { font-size:clamp(60px,14vw,80px); }.hero-copy>p { max-width:300px;font-size:16px;margin-top:20px; }.hero-copy .home-actions { margin-top:22px; }.hero-portrait-stack { max-width:360px;justify-self:center; }.hero-portrait-frame { aspect-ratio:1.02; }.portrait-contact { width:88px;height:88px;left:8px;bottom:12px; }}
+
+/* Give the portrait more space in the minimal introduction. */
+.hero-grid { width:min(100% - 64px,1200px);grid-template-columns:.85fr 1.15fr;gap:64px;padding-block:32px 44px; }
+.hero-portrait-stack { max-width:570px; }.hero-portrait-frame { aspect-ratio:.99; }
+.hero-copy .home-actions { margin-top:36px; }
+@media(max-width:1000px){.hero-grid{grid-template-columns:.85fr 1.15fr;gap:36px}.hero-portrait-stack{max-width:510px}}
+@media(max-width:767px){.hero-grid{width:calc(100% - 40px);grid-template-columns:1fr;gap:36px;padding-block:36px 42px}.hero-portrait-stack{max-width:440px;width:100%}.hero-portrait-frame{aspect-ratio:.96}.hero-copy .home-actions{margin-top:24px}}
