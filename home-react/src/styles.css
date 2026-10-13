@@ -254,3 +254,17 @@ body { margin: 0; min-width: 320px; }
 .hero-copy .home-actions { margin-top:36px; }
 @media(max-width:1000px){.hero-grid{grid-template-columns:.85fr 1.15fr;gap:36px}.hero-portrait-stack{max-width:510px}}
 @media(max-width:767px){.hero-grid{width:calc(100% - 40px);grid-template-columns:1fr;gap:36px;padding-block:36px 42px}.hero-portrait-stack{max-width:440px;width:100%}.hero-portrait-frame{aspect-ratio:.96}.hero-copy .home-actions{margin-top:24px}}
+
+/* Compact, informative hero with a personal introduction. */
+.new-hero { min-height:0; }
+.hero-grid { width:min(100% - 64px,1200px);grid-template-columns:1.1fr .9fr;gap:64px;padding-block:42px 50px; }
+.hero-copy>p.hero-introduction { margin:0 0 18px;max-width:none;font-size:13px;font-weight:600;letter-spacing:.035em;color:#577469; }
+.hero-copy h1 { max-width:610px;font-size:clamp(36px,4.4vw,60px);line-height:1.09;letter-spacing:-.05em; }
+.hero-copy .headline-accent { font-family:var(--font-display);font-style:normal;font-weight:700;letter-spacing:inherit; }
+.hero-copy .home-actions { margin-top:30px;gap:12px; }.hero-copy .home-button { font-size:12px;min-height:46px;padding-inline:21px; }
+.hero-portrait-stack { max-width:500px; }.hero-portrait-frame { aspect-ratio:.94; }.portrait-contact { width:92px;height:92px;left:-24px;bottom:22px; }
+@media(max-width:1000px){.hero-grid{gap:34px;grid-template-columns:1.05fr .95fr}.hero-copy h1{font-size:43px}.hero-portrait-stack{max-width:450px}}
+@media(max-width:767px){.hero-grid{width:calc(100% - 40px);grid-template-columns:1fr;gap:34px;padding-block:34px 40px}.hero-copy h1{font-size:clamp(36px,7.7vw,48px);max-width:530px}.hero-copy>p.hero-introduction{margin-bottom:14px}.hero-copy .home-actions{margin-top:24px}.hero-portrait-stack{max-width:420px;justify-self:center}.hero-portrait-frame{aspect-ratio:1.02}.portrait-contact{left:8px;bottom:15px}}
+@media(max-width:380px){.hero-copy .home-actions{gap:10px}.hero-copy .home-button{font-size:11px;padding-inline:16px}}
+.hero-copy>p.hero-introduction { display:flex;align-items:center;flex-wrap:wrap;gap:16px; }
+.hero-introduction>span { font-size:11px;font-weight:400;letter-spacing:0;border-left:1px solid #c8dcd1;padding-left:16px;color:#6c8277; }

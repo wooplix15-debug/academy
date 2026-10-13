@@ -142,8 +142,9 @@ function HomeIcon({ type = 'build' }) {
 function Hero() {
   return <section id="top" className="new-hero" aria-label="Vivek Pandey introduction"><div className="home-container hero-grid">
     <div className="hero-copy animate-rise">
-      <h1><span className="headline-mask"><span>Meet</span></span><span className="headline-mask headline-accent"><span>Vivek.</span></span></h1>
-      <div className="home-actions"><a className="home-button primary" href="#work">Explore my work <span aria-hidden="true">＋</span></a></div>
+      <p className="hero-introduction">Meet Vivek <span>19 years in technology</span></p>
+      <h1><span className="headline-mask"><span>Practical AI for business,</span></span><span className="headline-mask headline-accent"><span>grounded in experience.</span></span></h1>
+      <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/academy">Discover the Academy</a></div>
     </div>
     <figure className="hero-portrait-stack">
       <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
