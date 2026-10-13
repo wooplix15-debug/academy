@@ -10,21 +10,21 @@ function Eyebrow({ children, light = false }) {
 
 function PageHero({ eyebrow, title, intro, action, sideTitle, sideText, sideIcon }) {
   return (
-    <section className="mx-auto grid max-w-7xl gap-8 px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-start lg:gap-20 lg:px-12">
+    <section className="brand-hero mx-auto grid max-w-7xl gap-8 px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-start lg:gap-20 lg:px-12">
       <div data-reveal>
         <Eyebrow>{eyebrow}</Eyebrow>
         <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-forest sm:text-5xl lg:text-[4rem]">{title}</h1>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink/65 sm:text-lg">{intro}</p>
         {action && <a className="group mt-7 inline-flex items-center gap-3 rounded-full bg-forest py-2 pl-5 pr-2 text-sm font-semibold text-white transition hover:bg-[#244637]" href={action.href}>{action.label}<span className="rounded-full bg-copper text-forest"><Arrow /></span></a>}
       </div>
-      {sideTitle && <aside data-reveal className="rounded-2xl border border-ink/10 bg-[#f0eee7] p-6 sm:p-8"><span className="mb-6 grid size-12 place-items-center rounded-full bg-white text-xl text-forest" aria-hidden="true">{sideIcon}</span><h2 className="font-display text-xl font-semibold tracking-tight text-forest">{sideTitle}</h2><p className="mt-3 text-sm leading-relaxed text-ink/65">{sideText}</p></aside>}
+      {sideTitle && <aside data-reveal className="rounded-2xl border border-ink/10 bg-[#ecfaf6] p-6 sm:p-8"><span className="mb-6 grid size-12 place-items-center rounded-full bg-white text-xl text-forest" aria-hidden="true">{sideIcon}</span><h2 className="font-display text-xl font-semibold tracking-tight text-forest">{sideTitle}</h2><p className="mt-3 text-sm leading-relaxed text-ink/65">{sideText}</p></aside>}
     </section>
   );
 }
 
 function BrandSection({ title, intro, children, dark = false, id }) {
   return (
-    <section id={id} className={`border-t ${dark ? 'border-white/10 bg-forest text-white' : 'border-ink/10'} `}>
+    <section id={id} className={`brand-section border-t ${dark ? 'border-white/10 bg-forest text-white' : 'border-ink/10'} `}>
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <header data-reveal className="mb-8 max-w-3xl sm:mb-11"><h2 className={`font-display text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-3xl lg:text-4xl ${dark ? 'text-white' : 'text-forest'}`}>{title}</h2>{intro && <p className={`mt-4 max-w-2xl text-sm leading-relaxed sm:text-base ${dark ? 'text-white/60' : 'text-ink/60'}`}>{intro}</p>}</header>
         {children}
@@ -35,7 +35,7 @@ function BrandSection({ title, intro, children, dark = false, id }) {
 
 function CardGrid({ items, dark = false, columns = 3 }) {
   return <div className={`grid gap-3 sm:gap-4 ${columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
-    {items.map(([title, text], index) => <article key={title} data-reveal className={`rounded-2xl border p-6 transition duration-300 hover:-translate-y-1 sm:p-7 ${dark ? 'border-white/10 bg-white/[0.04] hover:border-copper/40' : 'border-ink/10 bg-white hover:border-copper/40 hover:shadow-[0_20px_60px_-35px_rgba(23,45,34,0.35)]'}`}>
+    {items.map(([title, text], index) => <article key={title} data-reveal className={`brand-card rounded-2xl border p-6 transition duration-300 hover:-translate-y-1 sm:p-7 ${dark ? 'border-white/10 bg-white/[0.04] hover:border-copper/40' : 'border-ink/10 bg-white hover:border-copper/40 hover:shadow-[0_20px_60px_-35px_rgba(23,45,34,0.35)]'}`}>
       <span className={`font-display text-xs font-semibold ${dark ? 'text-copper' : 'text-copper'}`}>{String(index + 1).padStart(2, '0')}</span>
       <h3 className={`font-display mt-7 text-lg font-semibold leading-snug ${dark ? 'text-white' : 'text-forest'}`}>{title}</h3>
       <p className={`mt-3 text-sm leading-relaxed ${dark ? 'text-white/60' : 'text-ink/65'}`}>{text}</p>
@@ -107,7 +107,7 @@ export function SpeakingPage() {
   return <>
     <PageHero eyebrow="AI SPEAKING AND WORKSHOPS" title="Help your audience understand AI they can use." intro="Practical talks and workshops for conferences, universities, colleges and corporate teams. The session is shaped around what your audience needs to understand or decide." action={{ href: '/contact?topic=Speaking', label: 'Discuss your event' }} sideTitle="A session with a clear purpose" sideText="Start with the audience, their experience and the question you want them to leave able to answer. Examples and technical depth should serve that purpose." sideIcon="◉" />
     <section className="border-t border-ink/10"><div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-[0.75fr_1.25fr] md:items-center md:gap-16 lg:px-12">
-      <figure data-reveal className="relative m-0 overflow-hidden rounded-2xl bg-[#e7e2dc]"><img className="mx-auto max-h-[680px] w-full object-contain" src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at the Zoholics India 2026 event" loading="lazy" /><figcaption className="absolute bottom-3 right-3 rounded-full bg-forest/90 px-4 py-2 text-xs text-white">Zoholics India 2026</figcaption></figure>
+      <figure data-reveal className="relative m-0 overflow-hidden rounded-2xl bg-[#ecfaf6]"><img className="mx-auto max-h-[680px] w-full object-contain" src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at the Zoholics India 2026 event" loading="lazy" /><figcaption className="absolute bottom-3 right-3 rounded-full bg-forest/90 px-4 py-2 text-xs text-white">Zoholics India 2026</figcaption></figure>
       <div data-reveal><Eyebrow>INDUSTRY EVENT</Eyebrow><h2 className="font-display mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.04em] text-forest sm:text-4xl lg:text-5xl">Ideas are better when they meet real work.</h2><p className="mt-5 max-w-lg text-sm leading-relaxed text-ink/65 sm:text-base">A moment from Zoholics India 2026, where people working with business technology came together to learn, share and connect.</p><a className="text-link mt-6" href="#topics">Explore speaking topics <Arrow down /></a></div>
     </div></section>
     <BrandSection id="topics" title="Topics we can shape for your audience"><CardGrid items={topics} /></BrandSection>
@@ -148,7 +148,7 @@ export function ContactPage() {
   }
 
   return <>
-    <section className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 sm:pb-12 sm:pt-20 lg:px-12">
+    <section className="brand-hero mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 sm:pb-12 sm:pt-20 lg:px-12">
       <div data-reveal><Eyebrow>CONTACT</Eyebrow><h1 className="font-display mt-5 text-4xl font-semibold tracking-[-0.045em] text-forest sm:text-5xl lg:text-6xl">Start a conversation.</h1><p className="mt-5 text-base text-ink/60 sm:text-lg">Share your details and choose a topic.</p></div>
     </section>
     <section className="border-t border-ink/10"><div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12">
