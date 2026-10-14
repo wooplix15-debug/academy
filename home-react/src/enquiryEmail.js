@@ -1,7 +1,10 @@
 const recipient = 'wooplix15@gmail.com';
 
 // Build an email draft locally. The visitor's email app sends it after review.
-export function buildEnquiryMailto({ topic = 'Other', duration = '', name = '', phone = '', email = '' } = {}) {
+export function buildEnquiryMailto({
+  topic = 'Other', duration = '', name = '', phone = '', email = '', eventType = '', eventDate = '',
+  location = '', audienceSize = '', speakingTopic = '',
+} = {}) {
   const kind = ['AI consulting', 'Speaking', 'Academy', 'Other'].includes(topic) ? topic : 'Other';
   const minutes = kind === 'AI consulting' && ['30', '60'].includes(String(duration)) ? String(duration) : '';
   const titles = {
@@ -18,7 +21,14 @@ export function buildEnquiryMailto({ topic = 'Other', duration = '', name = '', 
   };
   const details = {
     'AI consulting': ['What I need help with: [one or two sentences]', 'Preferred date and time: [add your preference]', 'Time zone: [add your time zone]'],
-    Speaking: ['Event or organisation: [add the name]', 'Date and location / online: [add details]', 'Audience and topic: [a short description]'],
+    Speaking: [
+      `Event type: ${String(eventType).trim() || '[conference / corporate session / workshop / other]'}`,
+      `Event date: ${String(eventDate).trim() || '[add the date]'}`,
+      `Location: ${String(location).trim() || '[city, venue or online]'}`,
+      `Expected audience size: ${String(audienceSize).trim() || '[add an estimate]'}`,
+      `Speaking topic: ${String(speakingTopic).trim() || '[what should the audience take away?]'}`,
+      'Event or organisation: [add the name]',
+    ],
     Academy: ['Course I am interested in: [add the course name]', 'Learning goal: [one or two sentences]', 'Learning for: [myself / my team]'],
     Other: ['My question: [one or two sentences]'],
   };

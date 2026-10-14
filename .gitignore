@@ -13,6 +13,7 @@ __pycache__/
 .idea/
 /node_modules/
 /dist/
+.playwright-cli/
 
 # Local agent runs and personal review records
 /drafts/*

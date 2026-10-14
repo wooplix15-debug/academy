@@ -295,3 +295,70 @@ body { margin: 0; min-width: 320px; }
 @media(max-width:767px){.experience-editorial{grid-template-columns:1fr;gap:32px}.experience-copy .home-body{font-size:15px;margin-block:20px 26px;max-width:560px}.experience-skills{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}.experience-photo{justify-self:center;max-width:300px;translate:none}.experience-copy .home-heading{font-size:clamp(30px,5.5vw,38px);max-width:560px}}
 @media(max-width:480px){.experience-skills{grid-template-columns:1fr;gap:18px}.experience-skills p{max-width:none}.experience-photo{max-width:280px}.experience-copy .home-heading{font-size:30px}.experience-photo-frame{border-radius:14px}}
 @media(prefers-reduced-motion:reduce){.experience-photo{translate:none}.motion-ready .experience-photo{opacity:1;transform:none}.experience-journey-link{transition:none}}
+
+/* Feedback pass: clearer hierarchy, practical positioning and an evidence-led image rhythm. */
+.hero-supporting-copy { max-width: 500px; margin: 22px 0 0; color: #577269; font-size: 16px; line-height: 1.75; }
+.hero-portrait-frame { box-shadow: 0 24px 70px rgb(8 77 69 / 12%); border: 1px solid rgb(8 77 69 / 8%); }
+.hero-portrait-frame img { object-fit: cover; object-position: center 30%; }
+.hero-portrait-stack figcaption { margin-top: 14px; padding-left: 3px; }
+.hero-portrait-stack figcaption strong { color: #0d4745; font-size: 13px; }
+.hero-portrait-stack figcaption span { color: #6c8580; font-size: 11px; }
+.portrait-contact { bottom: 48px; }
+.services-section { background: linear-gradient(180deg, #f1faf6 0%, #ffffff 72%); }
+.services-intro { max-width: 580px; margin: 17px 0 0; color: #658078; font-size: 15px; line-height: 1.75; }
+.home-service { min-height: 280px; padding: 30px 28px 27px; }
+.home-service h3 { font-size: 21px; color: #123f3c; }
+.home-service p { max-width: 290px; }
+.experience-editorial { align-items: start; }
+.experience-photo { align-self: start; }
+.experience-photo-frame { box-shadow: 0 24px 65px rgb(8 77 69 / 12%); }
+.experience-photo img { aspect-ratio: 3 / 2; object-fit: cover; object-position: center center; }
+.experience-credibility { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(180px, .45fr) minmax(0, 1.55fr); gap: 32px; align-items: end; margin-top: 8px; padding-top: 28px; border-top: 1px solid #dbeae2; }
+.credibility-heading { max-width: 220px; }
+.credibility-heading .home-eyebrow { margin-bottom: 11px; }
+.credibility-heading > p:last-child { color: #668078; font-size: 13px; line-height: 1.65; }
+.credibility-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.credibility-grid figure { margin: 0; min-width: 0; }
+.credibility-grid img { display: block; width: 100%; height: 150px; object-fit: cover; border-radius: 12px; background: #e7f2ec; }
+.credibility-grid figure:first-child img { object-position: center 22%; }
+.credibility-grid figure:last-child img { object-position: center 38%; }
+.credibility-grid figcaption { display: grid; gap: 3px; padding: 10px 2px 0; }
+.credibility-grid figcaption strong { color: #244b42; font-size: 12px; }
+.credibility-grid figcaption span { color: #789087; font-size: 10px; }
+.journey-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .68fr); gap: 52px; align-items: end; }
+.journey-lead { max-width: 520px; margin-top: 20px; color: #5e786e; font-size: 15px; line-height: 1.8; }
+.journey-photo { margin: 0; }
+.journey-photo img { display: block; width: 100%; height: 190px; border-radius: 15px; object-fit: cover; object-position: center 44%; box-shadow: 0 20px 50px rgb(8 77 69 / 10%); }
+.journey-photo figcaption { display: flex; flex-direction: column; gap: 3px; margin-top: 11px; padding-inline: 2px; }
+.journey-photo figcaption strong { color: #244b42; font-size: 12px; }
+.journey-photo figcaption span { color: #789087; font-size: 11px; }
+.home-timeline { margin-top: 48px; }
+.home-timeline h3 { color: #214a41; }
+.home-timeline .current h3 { color: white; }
+.home-timeline .current { background: #0a5a50; }
+.home-footer { border-top: 1px solid rgb(255 255 255 / 8%); }
+@media (max-width: 1000px) {
+  .experience-credibility { grid-template-columns: 1fr; gap: 20px; }
+  .credibility-heading { max-width: 500px; }
+  .journey-intro { gap: 30px; }
+}
+@media (max-width: 767px) {
+  .hero-supporting-copy { font-size: 15px; line-height: 1.7; }
+  .portrait-contact { bottom: 55px; }
+  .experience-credibility { margin-top: 0; padding-top: 24px; }
+  .credibility-grid { gap: 10px; }
+  .credibility-grid img { height: 110px; border-radius: 10px; }
+  .credibility-grid figcaption strong { font-size: 11px; }
+  .credibility-grid figcaption span { font-size: 9px; }
+  .journey-intro { grid-template-columns: 1fr; gap: 25px; }
+  .journey-photo img { height: 210px; }
+  .journey-lead { font-size: 14px; }
+}
+@media (max-width: 480px) {
+  .credibility-grid { grid-template-columns: 1fr; gap: 16px; }
+  .credibility-grid img { height: 170px; }
+  .credibility-grid figure:first-child img, .credibility-grid figure:last-child img { object-position: center 35%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-frame img { transform: none; }
+}

@@ -12,7 +12,7 @@ const pages = [
     path: '/',
     file: htmlPath,
     title: 'Practical AI for Business | Vivek Pandey',
-    description: 'Vivek Pandey brings 19 years of experience in software and business systems to practical AI consulting, speaking and education.',
+    description: 'Make AI useful in the work that matters. Vivek Pandey brings practical consulting, speaking and learning to Generative AI, Agentic AI and business automation.',
   },
   {
     path: '/ai-consulting',

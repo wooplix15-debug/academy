@@ -5,9 +5,9 @@ import { buildEnquiryMailto } from './enquiryEmail.js';
 const services = [
   {
     number: '01',
-    label: 'STRATEGY',
+    label: 'CONSULTING',
     title: 'AI Consulting',
-    description: 'Find useful opportunities, shape a pilot and plan implementation.',
+    description: 'Generative AI, agentic AI and business automation shaped around a real process, with people and controls in the loop.',
     href: '/ai-consulting',
     icon: '✳',
   },
@@ -21,9 +21,9 @@ const services = [
   },
   {
     number: '03',
-    label: 'EDUCATION',
-    title: 'Academy',
-    description: 'Advanced AI and Zoho courses with practical work and project learning.',
+    label: 'AI LEARNING',
+    title: 'AI Learning',
+    description: 'Practice with business cases, tested workflows and evidence you can take back to your team.',
     href: '/academy',
     icon: '▦',
   },
@@ -143,12 +143,14 @@ function HomeIcon({ type = 'build' }) {
 function Hero() {
   return <section id="top" className="new-hero" aria-label="Vivek Pandey introduction"><div className="home-container hero-grid">
     <div className="hero-copy animate-rise">
-      <p className="hero-introduction">Meet Vivek <span>19 years in technology</span></p>
-      <h1><span className="headline-mask"><span>Practical AI for business,</span></span><span className="headline-mask headline-accent"><span>grounded in experience.</span></span></h1>
-      <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/academy">Discover the Academy</a></div>
+      <p className="hero-introduction">Vivek Pandey <span>19 years in software, systems and automation</span></p>
+      <h1><span className="headline-mask"><span>Make AI useful</span></span><span className="headline-mask headline-accent"><span>in the work that matters.</span></span></h1>
+      <p className="hero-supporting-copy">Practical consulting, speaking and learning for leaders and teams moving from AI interest to responsible action.</p>
+      <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/ai-speaking">Book Vivek Pandey</a></div>
     </div>
     <figure className="hero-portrait-stack">
-      <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
+      <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" fetchPriority="high" /></div>
+      <figcaption><strong>Zoholics India · 2026</strong><span>Learning, sharing, connecting.</span></figcaption>
       <a className="portrait-contact" href="/contact" aria-label="Start a conversation with Vivek Pandey"><svg className="contact-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="home-contact-circle" d="M 60,60 m -43,0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0" /></defs><text><textPath href="#home-contact-circle" textLength="263" lengthAdjust="spacing">LET’S TALK · YOUR NEXT STEP · </textPath></text></svg><span aria-hidden="true">＋</span></a>
     </figure>
   </div></section>;
@@ -169,18 +171,26 @@ function Experience() {
       <ul className="experience-skills">{capabilities.map(([icon, title, detail]) => <li key={title} data-reveal className="reveal"><span className="experience-skill-icon"><HomeIcon type={icon} /></span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
       <a className="experience-journey-link" href="#journey">Explore my journey <span aria-hidden="true">＋</span></a>
     </div>
-    <figure data-reveal className="reveal experience-photo"><div className="experience-photo-frame"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" loading="lazy" /></div><figcaption><strong>Zoholics India 2026</strong><span>Learning. Sharing. Connecting.</span></figcaption></figure>
-  </div></section>;
+     <figure data-reveal className="reveal experience-photo"><div className="experience-photo-frame"><img data-parallax src="/assets/personal-brand/life-at-wooplix-09.jpg" width="1200" height="800" alt="Vivek Pandey at a NASSCOM event" loading="lazy" /></div><figcaption><strong>In the room with business leaders</strong><span>Listening, learning and contributing.</span></figcaption></figure>
+     <div className="experience-credibility" data-reveal>
+       <div className="credibility-heading"><p className="home-eyebrow">CREDIBILITY IN CONTEXT</p><p>Real moments from the work, learning and life around Wooplix.</p></div>
+       <div className="credibility-grid">
+         <figure><img src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" loading="lazy" /><figcaption><strong>Zoholics India</strong><span>Professional learning</span></figcaption></figure>
+         <figure><img src="/assets/personal-brand/life-at-wooplix-05.jpg" width="1200" height="800" alt="NASSCOM event roundtable with Vivek Pandey" loading="lazy" /><figcaption><strong>NASSCOM event</strong><span>Industry conversations</span></figcaption></figure>
+         <figure><img src="/assets/personal-brand/life-at-wooplix-24.jpg" width="1200" height="800" alt="Runner wearing a half-marathon bib at a community event" loading="lazy" /><figcaption><strong>Half marathon</strong><span>Life beyond the desk</span></figcaption></figure>
+       </div>
+     </div>
+   </div></section>;
 }
 
 function Services() {
-  return <section id="work" className="home-section services-section"><div className="home-container"><p className="home-eyebrow">HOW I CAN HELP</p><h2 data-reveal className="home-heading title-reveal">Three ways to <span>move forward.</span></h2><div className="service-grid">
-    {services.map((service, index) => <article key={service.number} data-reveal className="reveal home-service"><span className="card-number">{service.number}</span><div className="service-icon"><HomeIcon type={['automate', 'speaking', 'build'][index]} /></div><h3>{service.title}</h3><p>{service.description}</p><a href={service.href}>Explore {service.title === 'Academy' ? 'courses' : index === 0 ? 'consulting' : 'speaking'} <span aria-hidden="true">＋</span></a></article>)}
+  return <section id="work" className="home-section services-section"><div className="home-container"><p className="home-eyebrow">HOW I CAN HELP</p><h2 data-reveal className="home-heading title-reveal">AI that earns its place <span>in the business.</span></h2><p data-reveal className="services-intro">Start with the work, not the hype. We will find where Generative AI, Agentic AI or business automation can make a useful difference.</p><div className="service-grid">
+    {services.map((service, index) => <article key={service.number} data-reveal className="reveal home-service"><span className="card-number">{service.number}</span><div className="service-icon"><HomeIcon type={['automate', 'speaking', 'build'][index]} /></div><h3>{service.title}</h3><p>{service.description}</p><a href={service.href}>Explore {service.title === 'AI Learning' ? 'learning' : index === 0 ? 'consulting' : 'speaking'} <span aria-hidden="true">＋</span></a></article>)}
   </div></div></section>;
 }
 
 function Journey() {
-  return <section id="journey" className="home-section timeline-section"><div className="home-container"><p className="home-eyebrow">MY JOURNEY</p><h2 data-reveal className="home-heading title-reveal">From foundations <span>to applied AI.</span></h2><ol className="home-timeline">{milestones.map(([year, title, description]) => <li key={year} data-reveal className={`reveal ${year === '2026' ? 'current' : ''}`}><i aria-hidden="true" /><strong>{year}</strong><h3>{title}</h3><p>{description}</p></li>)}</ol></div></section>;
+  return <section id="journey" className="home-section timeline-section"><div className="home-container"><p className="home-eyebrow">AI LEARNING · MY JOURNEY</p><div className="journey-intro"><div><h2 data-reveal className="home-heading title-reveal">Build the skill by <span>solving real work.</span></h2><p data-reveal className="journey-lead">The learning is practical by design: understand the problem, try the workflow, test the edge cases and leave with evidence you can review.</p></div><figure data-reveal className="journey-photo"><img src="/assets/personal-brand/life-at-wooplix-06.jpg" width="1200" height="800" alt="Vivek Pandey in conversation at a NASSCOM event" loading="lazy" /><figcaption><strong>Curiosity becomes capability</strong><span>Real questions make better learning.</span></figcaption></figure></div><ol className="home-timeline">{milestones.map(([year, title, description]) => <li key={year} data-reveal className={`reveal ${year === '2026' ? 'current' : ''}`}><i aria-hidden="true" /><strong>{year}</strong><h3>{title}</h3><p>{description}</p></li>)}</ol></div></section>;
 }
 
 function SelectedWork() {
