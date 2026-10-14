@@ -299,7 +299,7 @@ body { margin: 0; min-width: 320px; }
 /* Feedback pass: clearer hierarchy, practical positioning and an evidence-led image rhythm. */
 .hero-supporting-copy { max-width: 500px; margin: 22px 0 0; color: #577269; font-size: 16px; line-height: 1.75; }
 .hero-portrait-frame { box-shadow: 0 24px 70px rgb(8 77 69 / 12%); border: 1px solid rgb(8 77 69 / 8%); }
-.hero-portrait-frame img { object-fit: cover; object-position: center 30%; }
+.hero-portrait-frame img { object-fit: cover; object-position: 57% center; }
 .hero-portrait-stack figcaption { margin-top: 14px; padding-left: 3px; }
 .hero-portrait-stack figcaption strong { color: #0d4745; font-size: 13px; }
 .hero-portrait-stack figcaption span { color: #6c8580; font-size: 11px; }

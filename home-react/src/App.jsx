@@ -149,8 +149,8 @@ function Hero() {
       <div className="home-actions"><a className="home-button primary" href="/ai-consulting">Explore AI consulting <span aria-hidden="true">＋</span></a><a className="home-button secondary" href="/ai-speaking">Book Vivek Pandey</a></div>
     </div>
     <figure className="hero-portrait-stack">
-      <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-zoholics-2026.webp" width="944" height="1666" alt="Vivek Pandey at Zoholics India 2026" fetchPriority="high" /></div>
-      <figcaption><strong>Zoholics India · 2026</strong><span>Learning, sharing, connecting.</span></figcaption>
+      <div className="hero-portrait-frame"><img data-parallax src="/assets/personal-brand/vivek-office-02.jpg" width="2400" height="1350" alt="Vivek Pandey in his office" fetchPriority="high" /></div>
+      <figcaption><strong>Vivek Pandey</strong><span>Business understanding. Technology with purpose.</span></figcaption>
       <a className="portrait-contact" href="/contact" aria-label="Start a conversation with Vivek Pandey"><svg className="contact-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="home-contact-circle" d="M 60,60 m -43,0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0" /></defs><text><textPath href="#home-contact-circle" textLength="263" lengthAdjust="spacing">LET’S TALK · YOUR NEXT STEP · </textPath></text></svg><span aria-hidden="true">＋</span></a>
     </figure>
   </div></section>;

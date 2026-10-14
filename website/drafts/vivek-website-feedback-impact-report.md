@@ -5,7 +5,7 @@ Prepared for the website feedback pass on 14 October 2026.
 ## User-visible changes
 
 - The existing homepage sections were retained; no route or new top-level section was added.
-- The hero now leads with “Make AI useful in the work that matters,” adds a concise positioning line and uses the existing Zoholics India photograph as the primary visual.
+- The hero now leads with “Make AI useful in the work that matters,” adds a concise positioning line and uses the older office portrait (`vivek-office-02.jpg`) at the front of the homepage, as requested. Newer event and lifestyle photographs remain elsewhere.
 - The existing services section no longer uses “Three ways to move forward.” It now positions AI Consulting around Generative AI, Agentic AI and business automation, while keeping Speaking and AI Learning links working.
 - The existing Speaking page has clearer positioning and two “Book Vivek Pandey” calls to action.
 - The existing Journey section now combines practical AI learning language with a concise career timeline and an authentic event photograph.
@@ -31,7 +31,8 @@ Prepared for the website feedback pass on 14 October 2026.
 ## Content-owner checklist
 
 - [ ] Confirm photo permissions and preferred captions.
-- [ ] Confirm the final hero photograph and whether the Zoholics date should remain in public copy.
+- [x] Use the older office photograph in the homepage hero, as requested by the owner.
+- [ ] Confirm whether the Zoholics date should remain in public copy outside the hero.
 - [ ] Confirm the receiving mailbox and test a speaking enquiry end to end.
 - [ ] Review the event form wording, required fields and privacy notice before publishing.
 - [ ] Have the owner and content reviewer approve the final public copy.
